@@ -21,11 +21,11 @@ for class_name in classes:
         continue
     print(class_name)
     template = """
-Package: qgis\.core
-----------------------------
+.. package: qgis\.core
 
 Class: %(CLASS)s
 =============================
+
 
 .. autoclass:: qgis.core.%(CLASS)s
    :members:
@@ -45,11 +45,12 @@ for class_name in classes:
         continue
     print(class_name)
     template = """
-Package: qgis\.gui
-----------------------------
+
+.. package: qgis\.gui
 
 Class: %(CLASS)s
 =============================
+
 
 .. autoclass:: qgis.gui.%(CLASS)s
    :members:
