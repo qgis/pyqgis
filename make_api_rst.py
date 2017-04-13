@@ -3,8 +3,8 @@
 from qgis import core, gui
 index = open('docs/index.rst', 'w')
 header = """
-Welcome to QGIS's documentation!
-================================
+Welcome to QGIS's API documentation!
+==============================================================
 
 .. toctree::
    :maxdepth: 2
@@ -24,7 +24,7 @@ for class_name in classes:
 .. package: qgis\.core
 
 Class: %(CLASS)s
-=============================
+==============================================================
 
 
 .. autoclass:: qgis.core.%(CLASS)s
@@ -49,7 +49,7 @@ for class_name in classes:
 .. package: qgis\.gui
 
 Class: %(CLASS)s
-=============================
+==============================================================
 
 
 .. autoclass:: qgis.gui.%(CLASS)s
