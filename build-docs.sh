@@ -11,3 +11,5 @@ rm *.rst
 make html
 open _build/html/docs/index.html
 cp -r themes/qgis-theme/static/ _build/html/_static
+cd _build
+rsync -av html mountain:/home/timlinux/QGISPythonDocumentation

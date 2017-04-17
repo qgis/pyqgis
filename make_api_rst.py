@@ -5,7 +5,7 @@ from qgis import core, gui, analysis
 
 index = open('docs/index.rst', 'w')
 header = """
-Welcome to QGIS's API documentation!
+Welcome to the QGIS Python API documentation project!
 ==============================================================
 
 .. toctree::
