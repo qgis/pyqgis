@@ -15,7 +15,7 @@ Welcome to the QGIS Python API documentation project!
 ==============================================================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :numbered:
    :caption: Contents:
 
@@ -31,14 +31,14 @@ Indices and tables
 
 package_header = """
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: PACKAGENAME:
 
 """
 
 sub_group_header = """
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: SUBGROUPNAME:
 
 """
