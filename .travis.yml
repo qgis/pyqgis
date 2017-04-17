@@ -1,0 +1,34 @@
+services:
+
+language: python
+
+cache:
+  directories:
+    - $HOME/.cache/pip
+
+python:
+  - "3.6"
+
+virtualenv:
+  system_site_packages: true
+
+branches:
+  only:
+    - master
+    - develop
+
+addons:
+  apt:
+    packages:
+      - git
+
+install:
+  - pip install --upgrade pip
+  - pip install --upgrade pep8
+  - pip install --upgrade nose
+
+script:
+  - nosetests
+  - make pep8
+
+sudo: false
