@@ -43,6 +43,7 @@ sub_group_header = """
 
 """
 
+
 def generate_docs():
     """Generate RST documentation by introspection of QGIS libs.
 
