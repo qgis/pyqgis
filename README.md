@@ -3,6 +3,7 @@ Sphinx project to build python API documentation for QGIS
 
 ![qgis](https://cloud.githubusercontent.com/assets/178003/25028142/8e29f5a0-20b2-11e7-891c-3c370d09065f.gif)
 
+You can see an online version of the generated documentation at this (temporary) website - http://qgis-python.kartoza.com/docs/.
 
 ## What it doesn't do:
 
