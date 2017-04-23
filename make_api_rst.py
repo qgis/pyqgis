@@ -11,6 +11,8 @@ from shutil import rmtree
 # Make sure :numbered: is only specified in the top level index - see
 # sphinx docs about this.
 document_header = """
+:tocdepth: 1
+
 Welcome to the QGIS Python API documentation project!
 ==============================================================
 
@@ -30,6 +32,10 @@ Indices and tables
 * :ref:`search`"""
 
 package_header = """
+
+PACKAGENAME
+===================================
+
 .. toctree::
    :maxdepth: 1
    :caption: PACKAGENAME:
@@ -37,6 +43,9 @@ package_header = """
 """
 
 sub_group_header = """
+SUBGROUPNAME
+-----------------------------------
+
 .. toctree::
    :maxdepth: 1
    :caption: SUBGROUPNAME:
@@ -57,6 +66,7 @@ def generate_docs():
     After this function has completed, you should run the 'make html'
     sphinx command to generate the actual html output.
     """
+    rmtree('build', ignore_errors=True)
     rmtree('docs', ignore_errors=True)
     mkdir('docs')
     index = open('docs/index.rst', 'w')

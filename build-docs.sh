@@ -6,12 +6,10 @@ PYTHONPATH=$PYTHONPATH:/Users/timlinux/dev/cpp/QGIS-QtCreator-Build/output/pytho
 export PYTHONPATH
 
 make test
-rm -rf _build/*
-rm *.rst
 ./make_api_rst.py
 make html
-open _build/html/docs/index.html
-cp -r themes/qgis-theme/static/ _build/html/_static
-cd _build
+open build/html/docs/index.html
+cp -r themes/qgis-theme/static/ build/html/_static
+cd build
 rsync -av html mountain:/home/timlinux/QGISPythonDocumentation
 cd -
