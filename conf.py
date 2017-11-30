@@ -12,11 +12,14 @@
 # serve to show the default.
 
 import sys, os
+import sphinx_rtd_theme
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
-sys.path.insert(0, os.path.abspath('.'))
+sys.path.insert(0, os.path.abspath('../'))
+#sys.path.insert(0, '/Users/denis/opt/qgis/QGIS/build/output/python/qgis')
+
 
 # -- General configuration -----------------------------------------------------
 
@@ -25,10 +28,10 @@ sys.path.insert(0, os.path.abspath('.'))
 
 # Add any Sphinx extension module names here, as strings. They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
-extensions = ['sphinx.ext.autodoc']
+extensions = ['sphinx.ext.autodoc', 'sphinx.ext.autosummary']
 
 # Add any paths that contain templates here, relative to this directory.
-templates_path = ['themes/qgis-theme']
+#templates_path = ['themes/qgis-theme']
 
 # The suffix of source filenames.
 source_suffix = '.rst'
@@ -95,12 +98,17 @@ pygments_style = 'sphinx'
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-html_theme = 'basic'
+html_theme = 'sphinx_rtd_theme'
+html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]  # use with module import
+
+# html_theme_path = ['.']  # use with git submodule
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
 # documentation.
 html_theme_options = {
+  'collapse_navigation': False,
+  'sticky_navigation': True
 }
 
 # Add any paths that contain custom themes here, relative to this directory.
@@ -125,7 +133,7 @@ html_logo = 'resources/en/common/logo.png'
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['themes/qgis-theme/static']
+#html_static_path = ['themes/qgis-theme/static']
 
 # If not '', a 'Last updated on:' timestamp is inserted at every page bottom,
 # using the given strftime format.
@@ -136,29 +144,29 @@ html_last_updated_fmt = '%H:%M %b %d, %Y'
 #html_use_smartypants = True
 
 # Custom sidebar templates, maps document names to template names.
-html_sidebars = {
-    #'site/index': [],
-    #'site/about/**': ['myglobaltoc.html'],
-    #'site/about/index': [],
-    #'site/forusers/**': ['myglobaltoc.html'],
-    #'site/forusers/index': [],
-    #'site/forusers/download': [],
-    ##'site/getinvolved/**': ['myglobaltoc.html'],
-    #'site/getinvolved/index': [],
-    #'site/getinvolved/donations': [],
-#    'docs/index': ['myglobaltoc.html'],
-#    'docs/**': ['mylocaltoc.html'],
-    'index': ['myglobaltoc.html'],
-    'search': [],
-    '**': ['myglobaltoc.html'],
-}
+# html_sidebars = {
+#     #'site/index': [],
+#     #'site/about/**': ['myglobaltoc.html'],
+#     #'site/about/index': [],
+#     #'site/forusers/**': ['myglobaltoc.html'],
+#     #'site/forusers/index': [],
+#     #'site/forusers/download': [],
+#     ##'site/getinvolved/**': ['myglobaltoc.html'],
+#     #'site/getinvolved/index': [],
+#     #'site/getinvolved/donations': [],
+# #    'docs/index': ['myglobaltoc.html'],
+# #    'docs/**': ['mylocaltoc.html'],
+#     'index': ['myglobaltoc.html'],
+#     'search': [],
+#     '**': ['myglobaltoc.html'],
+# }
 
 # Additional templates that should be rendered to pages, maps page names to
 # template names.
 #html_additional_pages = {}
 
 # If false, no module index is generated.
-#html_domain_indices = True
+html_domain_indices = True
 
 # If false, no index is generated.
 #html_use_index = True
@@ -268,6 +276,14 @@ texinfo_documents = [
 
 locale_dirs = ['../i18n/']
 gettext_compact = False
+
+
+def setup(app):
+    try:
+        from autoautosummary import AutoAutoSummary
+        app.add_directive('autoautosummary', AutoAutoSummary)
+    except BaseException as e:
+        raise e
 
 # adding this because in pycookbook a lot of text is referencing classes, which cannot be found by sphinx
 # eg: Map canvas is implemented as :class:`QgsMapCanvas` ...
