@@ -69,9 +69,9 @@ def generate_docs():
     sphinx command to generate the actual html output.
     """
     rmtree('build', ignore_errors=True)
-    rmtree('docs', ignore_errors=True)
-    mkdir('docs')
-    index = open('docs/index.rst', 'w')
+    rmtree('api', ignore_errors=True)
+    mkdir('api')
+    index = open('api/index.rst', 'w')
     # Read in the standard rst template we will use for classes
     index.write(document_header)
 
@@ -88,18 +88,18 @@ def generate_docs():
 
     for package_name, package in packages.items():
         package_subgroups = extract_package_subgroups(package)
-        mkdir('docs/%s' % package_name)
+        mkdir('api/%s' % package_name)
         index.write('   %s/index\n' % package_name)
 
-        package_index = open('docs/%s/index.rst' % package_name, 'w')
+        package_index = open('api/%s/index.rst' % package_name, 'w')
         # Read in the standard rst template we will use for classes
         package_index.write(
             package_header.replace('PACKAGENAME', package_name))
         for package_subgroup, classes in package_subgroups.items():
             package_index.write(
                 '   %s/index\n' % package_subgroup)
-            mkdir('docs/%s/%s' % (package_name, package_subgroup))
-            subgroup_index = open('docs/%s/%s/index.rst' % (
+            mkdir('api/%s/%s' % (package_name, package_subgroup))
+            subgroup_index = open('api/%s/%s/index.rst' % (
                 package_name, package_subgroup), 'w')
             # Read in the standard rst template we will use for classes
             subgroup_index.write(
@@ -116,7 +116,7 @@ def generate_docs():
                 }
                 class_template = template.substitute(**substitutions)
                 class_rst = open(
-                    'docs/%s/%s/%s.rst' % (
+                    'api/%s/%s/%s.rst' % (
                         package_name,
                         package_subgroup,
                         class_name), 'w')
