@@ -1,5 +1,6 @@
-#!/usr/local/bin/python3
+#!/usr/bin/env python3
 # coding=utf-8
+
 from collections import OrderedDict
 from string import Template
 from os import mkdir
@@ -8,19 +9,28 @@ import re
 from qgis import core, gui, analysis
 from shutil import rmtree
 
-limit = False
-class_limit = 'QgsAdvancedDigitizingCanvasItem'
+import argparse
+
+parser = argparse.ArgumentParser(description='Create RST files for QGIS Python API Documentation')
+parser.add_argument('--package', '-p', dest='package_limit', default=None,
+# action='store_const', default=None, type=str,
+                   choices=['core', 'gui', 'server', 'analysis'],
+                   help='limit the build of the docs to one package (core, gui, server, analysis) ')
+parser.add_argument('--class', '-c', dest='class_limit',
+                   help='limit the build of the docs to a single class')
+args = parser.parse_args()
+
 
 # Make sure :numbered: is only specified in the top level index - see
 # sphinx docs about this.
 document_header = """
-:tocdepth: 1
+:tocdepth: 5
 
-Welcome to the QGIS Python API documentation project!
+Welcome to the QGIS Python API documentation project
 ==============================================================
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 5
    :caption: Contents:
 
 """
@@ -39,7 +49,7 @@ PACKAGENAME
 ===================================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 4
    :caption: PACKAGENAME:
 
 """
@@ -49,7 +59,7 @@ SUBGROUPNAME
 -----------------------------------
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 3
    :caption: SUBGROUPNAME:
 
 """
@@ -81,10 +91,10 @@ def generate_docs():
 
     # Iterate over every class in every package and write out an rst
     # template based on standard rst template
-    if (not limit):
-        packages = {'core': core, 'gui': gui, 'analysis': analysis}
+    if (args.package_limit):
+        packages = {args.package_limit: eval(args.package_limit)}
     else:
-        packages = {'gui': gui}
+        packages = {'core': core, 'gui': gui, 'analysis': analysis}
 
     for package_name, package in packages.items():
         package_subgroups = extract_package_subgroups(package)
@@ -186,7 +196,7 @@ def extract_package_subgroups(package):
     candidates = list()
     subgroups = list()
     for class_name in classes:
-        if limit and not class_name.startswith(class_limit):
+        if args.class_limit and not class_name.startswith(args.class_limit):
             continue
         prefix = class_name[0:3]
         if prefix != 'Qgs':
@@ -208,7 +218,7 @@ def extract_package_subgroups(package):
     # Now look through the list again, this time adding the classes into
     # their relevant subgroups or other as appropriate
     for class_name in classes:
-        if limit and not class_name.startswith(class_limit):
+        if args.class_limit and not class_name.startswith(args.class_limit):
             continue
         prefix = class_name[0:3]
         if prefix != 'Qgs':
