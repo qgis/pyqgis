@@ -12,10 +12,10 @@ QGIS_BUILD_DIR=$1
 
 mkdir publish
 cd publish
-git clone git@github.com:qgis/QGISPythonAPIDocumentation.git --depth 1 --branch docs
+git clone git@github.com:qgis/QGISPythonAPIDocumentation.git --depth 1 --branch gh-pages
 git rm . -r
 cp ../build/html/* . -r
 touch .nojekyll
 git add -A
-#git commit -m "Automatic update from https://github.com/qgis/QGISPythonDocumentation/docs/commit/${TRAVIS_COMMIT}"
-#git push
+git commit -m "Automatic update from https://github.com/qgis/QGISPythonDocumentation/docs/commit/${TRAVIS_COMMIT}"
+git push
