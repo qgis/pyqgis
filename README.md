@@ -9,15 +9,20 @@ https://qgis.github.io/QGISPythonAPIDocumentation/api/index.html.
 
 ## Prerequisites:
 
+Building and mostly pushing the docs properly requires SIP 4.19.7+.
+
 pip3 install sphinx
-pip3 install -r requirements.txt 
+pip3 install -r requirements.txt
 
 
 ## To build:
 
-Call ``build-docs.sh`` providing the path to you QGIS build dir as appropriate.
+Call ``build-docs.sh``. QGIS python package must be found.
+You can either:
 
-e.g. ``./build-docs.sh /Users/timlinux/dev/cpp/QGIS-QtCreator-Build``
+* export the PYTHONPATH yourself
+* export your QGIS build directory with ``export QGIS-BUILD-DIR=/Users/timlinux/dev/QGIS/build``
+* or provide QGIS build directory as argument to the script: ``./build-docs.sh -qgis-build-dir /Users/timlinux/dev/QGIS/build``
 
 ## Viewing the docs
 
@@ -27,10 +32,7 @@ e.g. on MacOS you can do ``open open build/html/docs/index.html``
 
 ## Publishing the docs
 
-Use the ``publish-docs.sh`` script, providing the path to you QGIS build dir as
-appropriate.
-
-e.g. ``./publish-docs.sh /Users/timlinux/dev/cpp/QGIS-QtCreator-Build``
+Use the ``publish-docs.sh`` script, with having build the docs before publishing them.
 
 ## Credits
 

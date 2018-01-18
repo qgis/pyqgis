@@ -1,21 +1,36 @@
-#!/bin/bash
-if [ $# -eq 0 ]
-  then
-    echo "No arguments supplied"
-    echo "Usage:"
-    echo "$0 <path to QGIS buid directory>"
-    echo "$0 /Users/timlinux/dev/cpp/QGIS-QtCreator-Build"
+#!/usr/bin/env bash
+
+set -e
+
+# https://stackoverflow.com/questions/16989598/bash-comparing-version-numbers
+function version_gt() { test "$(printf '%s\n' "$@" | sort -V | head -n 1)" != "$1"; }
+if version_gt '4.19.7' $(sip -V); then
+     echo "Your version of SIP is too old. SIP 4.19.7+ is required"
+     exit 1
 fi
-QGIS_BUILD_DIR=$1
 
-./build-docs.sh $QGIS_BUILD_DIR
+echo "*** Create publish directory"
+mkdir -p publish
+rm -rf publish/*
+pushd publish
 
-mkdir publish
-cd publish
+echo "*** Clone gh-pages branch"
 git clone git@github.com:qgis/QGISPythonAPIDocumentation.git --depth 1 --branch gh-pages
-git rm . -r
-cp ../build/html/* . -r
+pushd QGISPythonAPIDocumentation
+git rm -rf . &>/dev/null
 touch .nojekyll
+cp -R ../../publish-contents/* .
+cp -R ../../build/html/* .
+
+echo "*** Add and push"
 git add -A
-git commit -m "Automatic update from https://github.com/qgis/QGISPythonDocumentation/docs/commit/${TRAVIS_COMMIT}"
-git push
+git commit -m "Update docs"
+read -p "Are you sure to push? (y/n)" -n 1 -r response
+echo    # (optional) move to a new line
+if [[ $response =~ ^[Yy](es)?$ ]]
+then
+    git push
+fi
+
+popd
+popd
