@@ -10,4 +10,4 @@ COPY . /root/QGISPythonAPIDocumentation
 
 WORKDIR /root/QGISPythonAPIDocumentation
 
-CMD ./scripts/build-docs.sh
+CMD /root/QGISPythonAPIDocumentation/scripts/build-docs.sh

@@ -4,7 +4,7 @@ set -e
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-puhsd ${DIR}
+pushd ${DIR}
 
 # https://stackoverflow.com/questions/16989598/bash-comparing-version-numbers
 function version_gt() { test "$(printf '%s\n' "$@" | sort -V | head -n 1)" != "$1"; }
