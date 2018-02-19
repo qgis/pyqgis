@@ -1,4 +1,5 @@
 services:
+  - docker
 
 language: python
 
@@ -9,23 +10,21 @@ cache:
 python:
   - "3.6"
 
-virtualenv:
-  system_site_packages: true
-
 branches:
-  only:
-    - master
-    - develop
+  except:
+    - gh-pages
 
 addons:
   apt:
     packages:
       - git
 
+env:
+  - QGIS_VERSION=bionic
+
 install:
   - pip install --upgrade pip
-  - pip install --upgrade pep8
-  - pip install --upgrade nose
+  - pip install -r requirements.txt
 
 script:
   - nosetests

@@ -11,7 +11,6 @@ https://qgis.github.io/QGISPythonAPIDocumentation/api/index.html.
 
 Building and mostly pushing the docs properly requires SIP 4.19.7+.
 
-pip3 install sphinx
 pip3 install -r requirements.txt
 
 

@@ -2,6 +2,10 @@
 
 set -e
 
+DIR=$(git rev-parse --show-toplevel)
+
+puhsd ${DIR}
+
 # https://stackoverflow.com/questions/16989598/bash-comparing-version-numbers
 function version_gt() { test "$(printf '%s\n' "$@" | sort -V | head -n 1)" != "$1"; }
 if version_gt '4.19.7' $(sip -V); then
@@ -17,12 +21,28 @@ if [[ -n $QGIS_BUILD_DIR ]]; then
           ;;
           *) break
       esac
+      case $1 in
+          -p|--package) $PACKAGE="--package=$2"
+          shift
+          ;;
+          *) break
+      esac
+      case $1 in
+          -c|--class) $CLASS="--class=$2"
+          shift
+          ;;
+          *) break
+      esac
       shift
   done
 fi
 
-export PYTHONPATH=$PYTHONPATH:$QGIS_BUILD_DIR/output/python/:.
-#export PATH=$PATH:/usr/local/bin/:$QGIS_BUILD_DIR/build/output/bin
+if [[ -n $PYTHONPATH ]]; then
+  export PYTHONPATH=$PYTHONPATH:$QGIS_BUILD_DIR/output/python/:.
+  #export PATH=$PATH:/usr/local/bin/:$QGIS_BUILD_DIR/build/output/bin
+fi
 
-./rst/make_api_rst.py
+./rst/make_api_rst.py $PACKAGE $CLASS
 make html
+
+popd
