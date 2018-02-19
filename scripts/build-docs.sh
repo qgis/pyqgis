@@ -13,7 +13,7 @@ if version_gt '4.19.7' $(sip -V); then
      exit 1
 fi
 
-if [[ -n $QGIS_BUILD_DIR ]]; then
+if [[ -z $QGIS_BUILD_DIR ]]; then
   while :; do
       case $1 in
           -q|--qgis-build-dir) QGIS_BUILD_DIR=$2
@@ -37,12 +37,12 @@ if [[ -n $QGIS_BUILD_DIR ]]; then
   done
 fi
 
-if [[ -n $PYTHONPATH ]]; then
-  export PYTHONPATH=$PYTHONPATH:$QGIS_BUILD_DIR/output/python/:${DIR}/..
+if [[ -n $QGIS_BUILD_DIR ]]; then
+  export PYTHONPATH=$PYTHONPATH:$QGIS_BUILD_DIR/output/python
   #export PATH=$PATH:/usr/local/bin/:$QGIS_BUILD_DIR/build/output/bin
 fi
+export PYTHONPATH=$PYTHONPATH:${DIR}/..
 
-ls -la
 
 echo "travis_fold:start:make_api_rst"
 echo "make API RST"
