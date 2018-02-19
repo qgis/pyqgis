@@ -10,6 +10,6 @@ COPY . /usr/src/QGISPythonAPIDocumentation
 
 WORKDIR /usr/src/QGISPythonAPIDocumentation
 
-RUN ./scripts/build-docs.sh
+CMD ./scripts/build-docs.sh
 
 WORKDIR /
