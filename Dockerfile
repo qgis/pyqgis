@@ -6,6 +6,8 @@ ARG QGIS_VERSION=latest
 FROM  qgis/qgis:${QGIS_VERSION}
 MAINTAINER Denis Rouzaud <denis.rouzaud@gmail.com>
 
+RUN pip3 install sphinx sphinx_rtd_theme
+
 COPY . /root/QGISPythonAPIDocumentation
 
 WORKDIR /root/QGISPythonAPIDocumentation
