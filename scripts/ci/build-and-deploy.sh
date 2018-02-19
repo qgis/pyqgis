@@ -4,7 +4,12 @@ set -e
 
 DIR=$(git rev-parse --show-toplevel)
 
+pushd ${DIR}
+
 docker pull "qgis/qgis:${QGIS_VERSION}"
 
+docker build --build-arg QGIS_VERSION=${QGIS_VERSION} -t qgis/qgis-python-api-doc .
 
-docker run -it qgis/qgis:${QGIS_VERSION} ${DIR}/scripts/build-docs.sh
+docker run qgis/qgis-python-api-doc
+
+popd

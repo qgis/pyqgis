@@ -2,9 +2,9 @@
 
 set -e
 
-DIR=$(git rev-parse --show-toplevel)
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-puhsd ${DIR}
+pushd ${DIR}/..
 
 # https://stackoverflow.com/questions/16989598/bash-comparing-version-numbers
 function version_gt() { test "$(printf '%s\n' "$@" | sort -V | head -n 1)" != "$1"; }
@@ -13,7 +13,7 @@ if version_gt '4.19.7' $(sip -V); then
      exit 1
 fi
 
-if [[ -n $QGIS_BUILD_DIR ]]; then
+if [[ -z $QGIS_BUILD_DIR ]]; then
   while :; do
       case $1 in
           -q|--qgis-build-dir) QGIS_BUILD_DIR=$2
@@ -37,12 +37,18 @@ if [[ -n $QGIS_BUILD_DIR ]]; then
   done
 fi
 
-if [[ -n $PYTHONPATH ]]; then
-  export PYTHONPATH=$PYTHONPATH:$QGIS_BUILD_DIR/output/python/:.
+if [[ -n $QGIS_BUILD_DIR ]]; then
+  export PYTHONPATH=$PYTHONPATH:$QGIS_BUILD_DIR/output/python
   #export PATH=$PATH:/usr/local/bin/:$QGIS_BUILD_DIR/build/output/bin
 fi
+export PYTHONPATH=$PYTHONPATH:${DIR}/..
 
+
+echo "travis_fold:start:make_api_rst"
+echo "make API RST"
 ./rst/make_api_rst.py $PACKAGE $CLASS
+echo "travis_fold:end:make_api_rst"
+
 make html
 
 popd
