@@ -38,15 +38,16 @@ if [[ -n $QGIS_BUILD_DIR ]]; then
 fi
 
 if [[ -n $PYTHONPATH ]]; then
-  export PYTHONPATH=$PYTHONPATH:$QGIS_BUILD_DIR/output/python/:.
+  export PYTHONPATH=$PYTHONPATH:$QGIS_BUILD_DIR/output/python/:${DIR}/..
   #export PATH=$PATH:/usr/local/bin/:$QGIS_BUILD_DIR/build/output/bin
 fi
 
 ls -la
 
-echo "travis_fold:start:make API RST"
+echo "travis_fold:start:make_api_rst"
+echo "make API RST"
 ./rst/make_api_rst.py $PACKAGE $CLASS
-echo "travis_fold:end:make API RST"
+echo "travis_fold:end:make_api_rst"
 
 make html
 
