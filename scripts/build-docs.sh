@@ -42,6 +42,8 @@ if [[ -n $PYTHONPATH ]]; then
   #export PATH=$PATH:/usr/local/bin/:$QGIS_BUILD_DIR/build/output/bin
 fi
 
+ls -la
+
 ./rst/make_api_rst.py $PACKAGE $CLASS
 make html
 

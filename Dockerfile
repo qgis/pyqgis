@@ -4,7 +4,7 @@
 ARG QGIS_VERSION=latest
 
 FROM  qgis/qgis:${QGIS_VERSION}
-MAINTAINER Denis Rouzaud <denis.rouzaud@gmail.com>
+MAINTAINER Denis Rouzaud <denis@opengis.ch>
 
 RUN apt-get install -y python3-pip
 RUN pip3 install sphinx sphinx_rtd_theme
