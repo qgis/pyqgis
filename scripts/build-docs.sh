@@ -44,7 +44,10 @@ fi
 
 ls -la
 
+echo "travis_fold:start:make API RST"
 ./rst/make_api_rst.py $PACKAGE $CLASS
+echo "travis_fold:end:make API RST"
+
 make html
 
 popd
