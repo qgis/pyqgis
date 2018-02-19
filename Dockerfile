@@ -6,10 +6,8 @@ ARG QGIS_VERSION=latest
 FROM  qgis/qgis:${QGIS_VERSION}
 MAINTAINER Denis Rouzaud <denis.rouzaud@gmail.com>
 
-COPY . /usr/src/QGISPythonAPIDocumentation
+COPY . /root/QGISPythonAPIDocumentation
 
-WORKDIR /usr/src/QGISPythonAPIDocumentation
+WORKDIR /root/QGISPythonAPIDocumentation
 
 CMD ./scripts/build-docs.sh
-
-WORKDIR /
