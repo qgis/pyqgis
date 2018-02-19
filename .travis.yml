@@ -3,9 +3,10 @@ services:
 
 language: python
 
+dist: trusty
+sudo: false
 cache:
-  directories:
-    - $HOME/.cache/pip
+  pip: true
 
 python:
   - "3.6"
@@ -13,11 +14,6 @@ python:
 branches:
   except:
     - gh-pages
-
-addons:
-  apt:
-    packages:
-      - git
 
 env:
   - QGIS_VERSION=bionic
@@ -28,5 +24,3 @@ install:
 
 script:
   - ./scripts/ci/build-and-deploy.sh
-
-sudo: false
