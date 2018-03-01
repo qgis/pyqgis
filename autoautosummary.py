@@ -42,10 +42,9 @@ class AutoAutoSummary(Autosummary):
             c = getattr(m, class_name)
             if 'methods' in self.options:
                 _, methods = self.get_members(c, 'method', ['__init__'])
-
                 self.content = ["~%s.%s" % (clazz, method) for method in methods if not method.startswith('_')]
             if 'attributes' in self.options:
-                _, attribs = self.get_members(c, 'attribute')
+                x, attribs = self.get_members(c, 'attribute')
                 self.content = ["~%s.%s" % (clazz, attrib) for attrib in attribs if not attrib.startswith('_')]
         finally:
             return super(AutoAutoSummary, self).run()

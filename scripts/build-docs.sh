@@ -13,42 +13,41 @@ if version_gt '4.19.7' $(sip -V); then
      exit 1
 fi
 
-if [[ -z $QGIS_BUILD_DIR ]]; then
-  while :; do
-      case $1 in
-          -q|--qgis-build-dir) QGIS_BUILD_DIR=$2
-          shift
-          ;;
-          *) break
-      esac
-      case $1 in
-          -p|--package) $PACKAGE="--package=$2"
-          shift
-          ;;
-          *) break
-      esac
-      case $1 in
-          -c|--class) $CLASS="--class=$2"
-          shift
-          ;;
-          *) break
-      esac
-      shift
-  done
-fi
+while getopts ":q:p:c:" opt; do
+  case $opt in
+    q)
+      QGIS_BUILD_DIR=$OPTARG
+      ;;
+    p)
+      PACKAGE="--package=$OPTARG"
+      ;;
+    c)
+      CLASS="--class=$OPTARG"
+      ;;
+    \?)
+      echo "Invalid option: -$OPTARG" >&2
+      exit 1
+      ;;
+  esac
+done
+shift $(expr $OPTIND - 1)
 
 if [[ -n $QGIS_BUILD_DIR ]]; then
   export PYTHONPATH=$PYTHONPATH:$QGIS_BUILD_DIR/output/python
   #export PATH=$PATH:/usr/local/bin/:$QGIS_BUILD_DIR/build/output/bin
 fi
 export PYTHONPATH=$PYTHONPATH:${DIR}/..
+echo "setting PYTHONPATH $PYTHONPATH"
 
 
 echo "travis_fold:start:make_api_rst"
-echo "make API RST"
+echo "make API RST ./rst/make_api_rst.py $PACKAGE $CLASS"
 ./rst/make_api_rst.py $PACKAGE $CLASS
 echo "travis_fold:end:make_api_rst"
 
+echo "travis_fold:start:build_html"
+echo "build HTML"
 make html
+echo "travis_fold:end:build_html"
 
 popd
