@@ -29,12 +29,18 @@ SPHINXBUILD   = sphinx-build
 SPHINXPROJ    = QGIS
 SOURCEDIR     = .
 BUILDDIR      = build
+QGISVERSION   = master
+
+# QGISVERSION might be override by doing make prepare QGISVERSION=3.2
 
 # Put it first so that "make" without argument is like "make help".
 help:
 	@$(SPHINXBUILD) -M help "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 
 .PHONY: help Makefile
+
+prepare:
+	gsed -r 's/__QGISVERSION__/${QGISVERSION}/g' conf.py.in > conf.py
 
 # Catch-all target: route all unknown targets to Sphinx using the new
 # "make mode" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).
