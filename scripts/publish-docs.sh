@@ -40,3 +40,4 @@ fi
 
 popd
 popd
+rm -rf publish/*

@@ -47,7 +47,7 @@ echo "travis_fold:end:make_api_rst"
 
 echo "travis_fold:start:build_html"
 echo "build HTML"
-make html
+#make html
 echo "travis_fold:end:build_html"
 
 popd
