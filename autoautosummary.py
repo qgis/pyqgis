@@ -7,11 +7,13 @@ from sphinx.ext.autosummary import get_documenter
 from docutils.parsers.rst import directives
 from sphinx.util.inspect import safe_getattr
 import re
+import PyQt5
 
 class AutoAutoSummary(Autosummary):
 
     option_spec = {
         'methods': directives.unchanged,
+        'signals':  directives.unchanged,
         'attributes': directives.unchanged,
         'nosignatures': directives.unchanged,
         'toctree': directives.unchanged
@@ -20,17 +22,23 @@ class AutoAutoSummary(Autosummary):
     required_arguments = 1
 
     @staticmethod
-    def get_members(obj, typ, include_public=None):
+    def get_members(obj, typ, include_public=None, signal=False):
         if not include_public:
             include_public = []
         items = []
         for name in dir(obj):
-            try:
-                documenter = get_documenter(safe_getattr(obj, name), obj)
-            except AttributeError:
-                continue
-            if documenter.objtype == typ:
-                items.append(name)
+            # try:
+                chobj = safe_getattr(obj, name)
+                documenter = get_documenter(chobj, obj)
+                if documenter.objtype == typ:
+                    if typ == 'attribute':
+                        if signal and type(chobj) != PyQt5.QtCore.pyqtSignal:
+                            continue
+                        if not signal and type(chobj) == PyQt5.QtCore.pyqtSignal:
+                            continue
+                    items.append(name)
+            # except AttributeError:
+            #     continue
         public = [x for x in items if x in include_public or not x.startswith('_')]
         return public, items
 
@@ -43,8 +51,11 @@ class AutoAutoSummary(Autosummary):
             if 'methods' in self.options:
                 _, methods = self.get_members(c, 'method', ['__init__'])
                 self.content = ["~%s.%s" % (clazz, method) for method in methods if not method.startswith('_')]
+            if 'signals' in self.options:
+                x, attribs = self.get_members(c, 'attribute', None, True)
+                self.content = ["~%s.%s" % (clazz, attrib) for attrib in attribs if not attrib.startswith('_')]
             if 'attributes' in self.options:
-                x, attribs = self.get_members(c, 'attribute')
+                x, attribs = self.get_members(c, 'attribute', None, False)
                 self.content = ["~%s.%s" % (clazz, attrib) for attrib in attribs if not attrib.startswith('_')]
         finally:
-            return super(AutoAutoSummary, self).run()
+            return super().run()
