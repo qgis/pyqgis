@@ -13,8 +13,13 @@ if version_gt '4.19.7' $(sip -V); then
      exit 1
 fi
 
-while getopts ":q:p:c:" opt; do
+QGIS_VERSION=master
+
+while getopts ":q:p:c:v:" opt; do
   case $opt in
+    v)
+      QGIS_VERSION=$OPTARG
+      ;;
     q)
       QGIS_BUILD_DIR=$OPTARG
       ;;
@@ -41,13 +46,14 @@ echo "setting PYTHONPATH $PYTHONPATH"
 
 
 echo "travis_fold:start:make_api_rst"
-echo "make API RST ./rst/make_api_rst.py $PACKAGE $CLASS"
-./rst/make_api_rst.py $PACKAGE $CLASS
+echo "make API RST ./rst/make_api_rst.py $PACKAGE $CLASS -v ${QGIS_VERSION}"
+./rst/make_api_rst.py $PACKAGE $CLASS -v ${QGIS_VERSION}
 echo "travis_fold:end:make_api_rst"
 
 echo "travis_fold:start:build_html"
 echo "build HTML"
-make html
+make prepare QGISVERSION=${QGIS_VERSION}
+make html QGISVERSION=${QGIS_VERSION}
 echo "travis_fold:end:build_html"
 
 popd

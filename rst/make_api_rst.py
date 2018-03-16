@@ -12,6 +12,7 @@ from shutil import rmtree
 import argparse
 
 parser = argparse.ArgumentParser(description='Create RST files for QGIS Python API Documentation')
+parser.add_argument('--version', '-v', dest='qgis_version', default="master")
 parser.add_argument('--package', '-p', dest='package_limit', default=None,
 # action='store_const', default=None, type=str,
                    choices=['core', 'gui', 'server', 'analysis'],
@@ -78,10 +79,14 @@ def generate_docs():
     After this function has completed, you should run the 'make html'
     sphinx command to generate the actual html output.
     """
-    rmtree('build', ignore_errors=True)
-    rmtree('api', ignore_errors=True)
-    mkdir('api')
-    index = open('api/index.rst', 'w')
+
+    #qgis_version = 'master'
+    qgis_version = args.qgis_version
+
+    rmtree('build/{}'.format(qgis_version), ignore_errors=True)
+    rmtree('api/{}'.format(qgis_version), ignore_errors=True)
+    mkdir('api/{}'.format(qgis_version))
+    index = open('api/{}/index.rst'.format(qgis_version), 'w')
     # Read in the standard rst template we will use for classes
     index.write(document_header)
 
@@ -98,19 +103,18 @@ def generate_docs():
 
     for package_name, package in packages.items():
         package_subgroups = extract_package_subgroups(package)
-        mkdir('api/%s' % package_name)
+        mkdir('api/{}/{}'.format(qgis_version, package_name))
         index.write('   %s/index\n' % package_name)
 
-        package_index = open('api/%s/index.rst' % package_name, 'w')
+        package_index = open('api/{}/{}/index.rst'.format(qgis_version, package_name), 'w')
         # Read in the standard rst template we will use for classes
         package_index.write(
             package_header.replace('PACKAGENAME', package_name))
         for package_subgroup, classes in package_subgroups.items():
             package_index.write(
                 '   %s/index\n' % package_subgroup)
-            mkdir('api/%s/%s' % (package_name, package_subgroup))
-            subgroup_index = open('api/%s/%s/index.rst' % (
-                package_name, package_subgroup), 'w')
+            mkdir('api/{}/{}/{}'.format(qgis_version, package_name, package_subgroup))
+            subgroup_index = open('api/{}/{}/{}/index.rst'.format(qgis_version, package_name, package_subgroup), 'w')
             # Read in the standard rst template we will use for classes
             subgroup_index.write(
                 sub_group_header.replace('SUBGROUPNAME', package_subgroup))
@@ -125,8 +129,8 @@ def generate_docs():
                     'CLASS': class_name
                 }
                 class_template = template.substitute(**substitutions)
-                class_rst = open(
-                    'api/%s/%s/%s.rst' % (
+                class_rst = open('api/{}/{}/{}/{}.rst'.format(
+                        qgis_version,
                         package_name,
                         package_subgroup,
                         class_name), 'w')
