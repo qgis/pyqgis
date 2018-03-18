@@ -30,7 +30,7 @@ sys.path.insert(0, os.path.abspath('../../'))
 extensions = ['sphinx.ext.autodoc', 'sphinx.ext.autosummary']
 
 # Add any paths that contain templates here, relative to this directory.
-#templates_path = ['themes/qgis-theme']
+# templates_path = ['../templates']
 
 # The suffix of source filenames.
 source_suffix = '.rst'
@@ -130,7 +130,7 @@ html_logo = '../../resources/en/common/logo.png'
 # The name of an image file (within the static path) to use as favicon of the
 # docs.  This file should be a Windows icon file (.ico) being 16x16 or 32x32
 # pixels large.
-#html_favicon = None
+html_favicon = '../../resources/en/common/qgis.ico'
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
@@ -146,7 +146,7 @@ html_last_updated_fmt = '%H:%M %b %d, %Y'
 #html_use_smartypants = True
 
 # Custom sidebar templates, maps document names to template names.
-# html_sidebars = {
+html_sidebars = {
 #     #'site/index': [],
 #     #'site/about/**': ['myglobaltoc.html'],
 #     #'site/about/index': [],
@@ -159,9 +159,9 @@ html_last_updated_fmt = '%H:%M %b %d, %Y'
 # #    'docs/index': ['myglobaltoc.html'],
 # #    'docs/**': ['mylocaltoc.html'],
 #     'index': ['myglobaltoc.html'],
-#     'search': [],
-#     '**': ['myglobaltoc.html'],
-# }
+#    'search': ['versions.html'],
+     '**': ['versions.html'],
+}
 
 # Additional templates that should be rendered to pages, maps page names to
 # template names.
@@ -284,6 +284,20 @@ def setup(app):
     try:
         from autoautosummary import AutoAutoSummary
         app.add_directive('autoautosummary', AutoAutoSummary)
+
+        # Add versions.html to sidebar.
+        """
+        from sphinx.builders.html import StandaloneHTMLBuilder
+        if '**' not in app.config.html_sidebars:
+            if 'html_sidebars' in StandaloneHTMLBuilder(app).get_theme_config()[1].keys():
+                app.config.html_sidebars['**'] = StandaloneHTMLBuilder(app).get_theme_config()[1]['html_sidebars'] + ['versions.html']
+            else:
+                app.config.html_sidebars['**'] = ['versions.html']
+        elif 'versions.html' not in app.config.html_sidebars['**']:
+            app.config.html_sidebars['**'].append('versions.html')
+        """
+        print(app.config.html_sidebars)
+
     except BaseException as e:
         raise e
 
