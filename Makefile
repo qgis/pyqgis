@@ -31,7 +31,8 @@ QGISVERSION   = master
 BUILDDIR      = build/${QGISVERSION}
 SOURCEDIR     = api/${QGISVERSION}
 
-# QGISVERSION might be override by doing make prepare QGISVERSION=3.
+# QGISVERSION might be override by doing make prepare QGISVERSION=3.2
+# SPHINX_RTD_EGG_PATH can be used to provide a custom version of sphinx_rtd_theme to support versioning
 
 OS := $(shell uname)
 ifeq ($(OS), Darwin)
@@ -47,7 +48,7 @@ help:
 .PHONY: help Makefile
 
 prepare:
-	${SED} -r 's/__QGISVERSION__/${QGISVERSION}/g' conf.py.in > $(SOURCEDIR)/conf.py
+	${SED} -r 's/__QGISVERSION__/${QGISVERSION}/g; s@__SPHINX_RTD_EGG_PATH__@${SPHINX_RTD_EGG_PATH}@g' conf.py.in > $(SOURCEDIR)/conf.py
 
 # Catch-all target: route all unknown targets to Sphinx using the new
 # "make mode" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).

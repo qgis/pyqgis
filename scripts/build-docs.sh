@@ -15,7 +15,7 @@ fi
 
 QGIS_VERSION=master
 
-while getopts ":q:p:c:v:" opt; do
+while getopts ":q:p:c:v:t:" opt; do
   case $opt in
     v)
       QGIS_VERSION=$OPTARG
@@ -28,6 +28,9 @@ while getopts ":q:p:c:v:" opt; do
       ;;
     c)
       CLASS="--class=$OPTARG"
+      ;;
+    t)
+      THEME_PATH=$OPTARG
       ;;
     \?)
       echo "Invalid option: -$OPTARG" >&2
@@ -52,8 +55,9 @@ echo "travis_fold:end:make_api_rst"
 
 echo "travis_fold:start:build_html"
 echo "build HTML"
-make prepare QGISVERSION=${QGIS_VERSION}
+make prepare QGISVERSION=${QGIS_VERSION} SPHINX_RTD_EGG_PATH=${THEME_PATH}
 make html QGISVERSION=${QGIS_VERSION}
+#make rinoh QGISVERSION=${QGIS_VERSION}
 echo "travis_fold:end:build_html"
 
 popd

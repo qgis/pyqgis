@@ -13,4 +13,5 @@ COPY . /root/QGISPythonAPIDocumentation
 
 WORKDIR /root/QGISPythonAPIDocumentation
 
-CMD /root/QGISPythonAPIDocumentation/scripts/build-docs.sh
+CMD bash -l -c '/root/QGISPythonAPIDocumentation/scripts/install_rtd_version_theme.sh | egrep \'^Installed.*\.egg$\' | ${GP}sed \'s/^Installed //\' >> /root/sphinx_rtd_egg_path'
+CMD /root/QGISPythonAPIDocumentation/scripts/build-docs.sh -v master -t $(cat /root/sphinx_rtd_egg_path)
