@@ -2,7 +2,7 @@
 
 set -e
 
-QGISVERSION=$1
+QGIS_VERSION=$(sed 's/release-//; s/_/./g' <<< $1)
 
 # https://stackoverflow.com/questions/16989598/bash-comparing-version-numbers
 function version_gt() { test "$(printf '%s\n' "$@" | sort -V | head -n 1)" != "$1"; }
@@ -17,25 +17,20 @@ rm -rf publish/*
 pushd publish
 
 echo "*** Clone gh-pages branch"
-#git clone git@github.com:qgis/QGISPythonAPIDocumentation.git --depth 1 --branch gh-pages
-mkdir QGISPythonAPIDocumentation
+git clone git@github.com:qgis/QGISPythonAPIDocumentation.git --depth 1 --branch gh-pages
 pushd QGISPythonAPIDocumentation
-git init
-git remote add origin git@github.com:qgis/QGISPythonAPIDocumentation.git
-git checkout --orphan $QGISVERSION
-#git rm -rf . &>/dev/null
-touch .nojekyll
-cp -R ../../publish-contents/* .
-cp -R ../../build/html/* .
+rm -rf $QGIS_VERSION
+mkdir $QGIS_VERSION
+cp -R ../../build/${QGIS_VERSION}/html/* ${QGIS_VERSION}
 
 echo "*** Add and push"
-git add -A
-git commit -m "Update docs"
+git add --all
+git commit -m "Update docs for QGIS ${QGIS_VERSION}"
 read -p "Are you sure to push? (y/n)" -n 1 -r response
 echo    # (optional) move to a new line
 if [[ $response =~ ^[Yy](es)?$ ]]
 then
-    git push -u origin $QGISVERSION
+    git push
 fi
 
 popd
