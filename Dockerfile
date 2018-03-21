@@ -13,4 +13,4 @@ COPY . /root/QGISPythonAPIDocumentation
 
 WORKDIR /root/QGISPythonAPIDocumentation
 
-CMD /root/QGISPythonAPIDocumentation/scripts/build-docs.sh -v master -t $(/root/QGISPythonAPIDocumentation/scripts/install_rtd_version_theme.sh | egrep '^Installed.*\.egg$' | ${GP}sed 's/^Installed //')
+CMD /root/QGISPythonAPIDocumentation/scripts/build-docs.sh -v master -t $(/root/QGISPythonAPIDocumentation/scripts/install_rtd_version_theme.sh | egrep '^Installed.*\.egg$' | sed 's/^Installed //')
