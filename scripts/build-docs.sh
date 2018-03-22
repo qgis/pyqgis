@@ -15,10 +15,10 @@ fi
 
 QGIS_VERSION=master
 
-while getopts ":q:p:c:v:t:" opt; do
+while getopts "q:p:c:v:t:" opt; do
   case $opt in
     v)
-      QGIS_VERSION_BRANCH=$OPTARG
+      QGIS_VERSION=$OPTARG
       ;;
     q)
       QGIS_BUILD_DIR=$OPTARG
@@ -40,7 +40,10 @@ while getopts ":q:p:c:v:t:" opt; do
 done
 shift $(expr $OPTIND - 1)
 
-QGIS_VERSION=$(sed 's/release-//; s/_/./g' <<< $1)
+QGIS_VERSION=$(sed 's/release-//; s/_/./g' <<< $QGIS_VERSION)
+
+echo "QGIS VERSION: ${QGIS_VERSION}"
+echo "THEME PATH: ${THEME_PATH}"
 
 if [[ -n $QGIS_BUILD_DIR ]]; then
   export PYTHONPATH=$PYTHONPATH:$QGIS_BUILD_DIR/output/python

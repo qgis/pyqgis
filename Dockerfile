@@ -13,4 +13,6 @@ COPY . /root/QGISPythonAPIDocumentation
 
 WORKDIR /root/QGISPythonAPIDocumentation
 
-CMD /root/QGISPythonAPIDocumentation/scripts/ci/build-and-deploy.sh ${QGIS_DOCKER_TAG}
+RUN echo "QGIS_DOCKER_TAG: ${QGIS_DOCKER_TAG}"
+
+CMD /bin/bash -c "/root/QGISPythonAPIDocumentation/scripts/ci/build-and-deploy.sh ${QGIS_DOCKER_TAG}"
