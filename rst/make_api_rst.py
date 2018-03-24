@@ -85,6 +85,7 @@ def generate_docs():
 
     rmtree('build/{}'.format(qgis_version), ignore_errors=True)
     rmtree('api/{}'.format(qgis_version), ignore_errors=True)
+    mkdir('api')
     mkdir('api/{}'.format(qgis_version))
     index = open('api/{}/index.rst'.format(qgis_version), 'w')
     # Read in the standard rst template we will use for classes
