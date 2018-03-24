@@ -40,8 +40,6 @@ while getopts "q:p:c:v:t:" opt; do
 done
 shift $(expr $OPTIND - 1)
 
-QGIS_VERSION=$(sed 's/release-//; s/_/./g' <<< $QGIS_VERSION)
-
 echo "QGIS VERSION: ${QGIS_VERSION}"
 echo "THEME PATH: ${THEME_PATH}"
 
