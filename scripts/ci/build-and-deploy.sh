@@ -2,8 +2,10 @@
 
 set -e
 
-# latest => master, release-3_0 => 3.0
-QGIS_VERSION=$( sed 's/latest/master/; s/release-//; s/_/./g' <<< "$1" )
+# latest => master, final-3_0_2 => 3.0
+QGIS_DOCKER_TAG=$1
+QGIS_VERSION=$( sed 's/latest/master/; s/^final-(\d_\d)(_\d)?/\1/; s/_/./g' <<< $DOCKER_IMAGE )
+echo "Building for ${QGIS_VERSION}"
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
