@@ -12,4 +12,5 @@ echo "Custom theme installed in ${THEME_PATH}"
 
 ${DIR}/../build-docs.sh -v ${QGIS_VERSION} -t ${THEME_PATH} -p gui -c QgsMapCanvas
 
+export TRAVIS=true
 ${DIR}/../publish-docs.sh ${QGIS_VERSION}
