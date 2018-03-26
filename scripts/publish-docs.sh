@@ -12,9 +12,11 @@ fi
 git config --global user.email "qgisninja@gmail.com"
 git config --global user.name "QGIS Ninja"
 
+echo "Current dir: $(pwd)"
+
 
 echo "*** Create publish directory"
-mkdir -p publish
+mkdir -p "publish"
 rm -rf publish/*
 pushd publish
 
