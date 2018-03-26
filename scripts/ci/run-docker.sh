@@ -20,7 +20,7 @@ echo "travis_fold:end:dockerbuild"
 
 echo "travis_fold:start:dockerrun"
 echo "Docker run"
-docker run -e "QGIS_DOCKER_TAG=${QGIS_DOCKER_TAG}" qgis/qgis-python-api-doc
+docker run -e "QGIS_DOCKER_TAG=${QGIS_DOCKER_TAG}" -e "GH_TOKEN=${GH_TOKEN}" qgis/qgis-python-api-doc
 echo "travis_fold:end:dockerrun"
 
 popd
