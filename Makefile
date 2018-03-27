@@ -31,6 +31,7 @@ QGISVERSION   = master
 BUILDDIR      = build/${QGISVERSION}
 SOURCEDIR     = api/${QGISVERSION}
 
+# Following variables should be sent when making
 # QGISVERSION might be override by doing make prepare QGISVERSION=3.2
 # SPHINX_RTD_EGG_PATH can be used to provide a custom version of sphinx_rtd_theme to support versioning
 
@@ -48,7 +49,7 @@ help:
 .PHONY: help Makefile
 
 prepare:
-	${SED} -r 's/__QGISVERSION__/${QGISVERSION}/g; s@__SPHINX_RTD_EGG_PATH__@${SPHINX_RTD_EGG_PATH}@g' conf.py.in > $(SOURCEDIR)/conf.py
+	${SED} -r 's/__QGISVERSION__/${QGISVERSION}/g; s@__SPHINX_RTD_EGG_PATH__@${SPHINX_RTD_EGG_PATH}@g; s/__QGISVERSIONLIST__/${QGISVERSIONLIST}/; s/__PYQGISURL__/${PYQGISURL}/' conf.py.in > $(SOURCEDIR)/conf.py
 
 # Catch-all target: route all unknown targets to Sphinx using the new
 # "make mode" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).
