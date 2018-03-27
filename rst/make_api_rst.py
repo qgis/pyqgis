@@ -6,7 +6,7 @@ from string import Template
 from os import mkdir
 
 import re
-from qgis import core, gui, analysis
+from qgis import core, gui, analysis, server
 from shutil import rmtree
 
 import argparse
