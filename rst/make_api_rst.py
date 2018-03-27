@@ -100,7 +100,7 @@ def generate_docs():
     if (args.package_limit):
         packages = {args.package_limit: eval(args.package_limit)}
     else:
-        packages = {'core': core, 'gui': gui, 'analysis': analysis}
+        packages = {'core': core, 'gui': gui, 'analysis': analysis, 'server': server}
 
     for package_name, package in packages.items():
         package_subgroups = extract_package_subgroups(package)
