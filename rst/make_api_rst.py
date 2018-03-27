@@ -120,8 +120,7 @@ def generate_docs():
             subgroup_index.write(
                 sub_group_header.replace('SUBGROUPNAME', package_subgroup))
             for class_name in classes:
-                prefix = class_name[0:3]
-                if prefix != 'Qgs':
+                if not re.match('^Qgi?s', class_name):
                     continue
                 print(class_name)
                 substitutions = {
@@ -162,9 +161,9 @@ def current_subgroup(class_name):
     :raises: No exceptions are raises - in the event of error, None is
         returned.
     """
-    stripped_prefix = class_name.replace('Qgs', '')
+    stripped_prefix = re.sub('^Qgi?s', '', class_name)
     try:
-        first_word = re.search('^[A-Z][a-z]*', stripped_prefix).group(0)
+        first_word = re.search('^[A-Z][a-z0-9]*', stripped_prefix).group(0)
     except AttributeError:
         return None
 
@@ -203,8 +202,7 @@ def extract_package_subgroups(package):
     for class_name in classes:
         if args.class_limit and not class_name.startswith(args.class_limit):
             continue
-        prefix = class_name[0:3]
-        if prefix != 'Qgs':
+        if not re.match('^Qgi?s', class_name):
             continue
         subgroup = current_subgroup(class_name)
         if subgroup is None:
@@ -225,8 +223,7 @@ def extract_package_subgroups(package):
     for class_name in classes:
         if args.class_limit and not class_name.startswith(args.class_limit):
             continue
-        prefix = class_name[0:3]
-        if prefix != 'Qgs':
+        if not re.match('^Qgi?s', class_name):
             continue
         subgroup = current_subgroup(class_name)
         if subgroup is None:
