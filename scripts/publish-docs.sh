@@ -26,8 +26,8 @@ echo "*** Clone gh-pages branch"
 git clone https://${GH_TOKEN}@github.com/qgis/QGISPythonAPIDocumentation.git --depth 1 --branch gh-pages
 pushd QGISPythonAPIDocumentation
 rm -rf ${QGIS_VERSION}
-mkdir "${QGIS_VERSION}"
-cp -R ../../build/${QGIS_VERSION}/html/* ${QGIS_VERSION}/
+mkdir "${QGIS_VERSION}_temp"
+cp -R ../../build/${QGIS_VERSION}/html/* ${QGIS_VERSION}_temp/
 
 echo "travis_fold:start:gitcommit"
 echo "*** Add and push"
