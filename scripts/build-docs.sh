@@ -24,10 +24,10 @@ while getopts "q:p:c:v:t:" opt; do
       QGIS_BUILD_DIR=$OPTARG
       ;;
     p)
-      PACKAGE="--package=$OPTARG"
+      PACKAGE="--package $OPTARG"
       ;;
     c)
-      CLASS="--class=$OPTARG"
+      CLASS="--class $OPTARG"
       ;;
     t)
       THEME_PATH=$OPTARG

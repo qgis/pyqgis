@@ -6,20 +6,26 @@ from string import Template
 from os import mkdir
 
 import re
-from qgis import core, gui, analysis, server
 from shutil import rmtree
 
 import argparse
 
 parser = argparse.ArgumentParser(description='Create RST files for QGIS Python API Documentation')
 parser.add_argument('--version', '-v', dest='qgis_version', default="master")
-parser.add_argument('--package', '-p', dest='package_limit', default=None,
+parser.add_argument('--package', '-p', dest='package_limit', default=None, nargs='+',
 # action='store_const', default=None, type=str,
                    choices=['core', 'gui', 'server', 'analysis'],
                    help='limit the build of the docs to one package (core, gui, server, analysis) ')
 parser.add_argument('--class', '-c', dest='class_limit',
                    help='limit the build of the docs to a single class')
 args = parser.parse_args()
+
+if (args.package_limit):
+    exec("from qgis import {}".format(', '.join(args.package_limit)))
+    packages = {pkg: eval(pkg) for pkg in args.package_limit}
+else:
+    packages = {'core': core, 'gui': gui, 'analysis': analysis, 'server': server}
+    from qgis import core, gui, analysis, server
 
 
 # Make sure :numbered: is only specified in the top level index - see
@@ -97,10 +103,6 @@ def generate_docs():
 
     # Iterate over every class in every package and write out an rst
     # template based on standard rst template
-    if (args.package_limit):
-        packages = {args.package_limit: eval(args.package_limit)}
-    else:
-        packages = {'core': core, 'gui': gui, 'analysis': analysis, 'server': server}
 
     for package_name, package in packages.items():
         package_subgroups = extract_package_subgroups(package)
