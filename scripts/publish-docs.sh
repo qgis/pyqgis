@@ -11,9 +11,6 @@ if version_gt '4.19.7' $(sip -V); then
      exit 1
 fi
 
-git config --global user.email "qgisninja@gmail.com"
-git config --global user.name "QGIS Ninja"
-
 echo "Current dir: $(pwd)"
 
 
@@ -23,9 +20,15 @@ rm -rf publish/*
 pushd publish
 
 echo "*** Clone gh-pages branch"
-git clone https://${GH_TOKEN}@github.com/qgis/QGISPythonAPIDocumentation.git --depth 1 --branch gh-pages
+if [[ $TRAVIS =~ true ]]; then
+  git config --global user.email "qgisninja@gmail.com"
+  git config --global user.name "Geo-Ninja"
+  git clone https://${GH_TOKEN}@github.com/qgis/QGISPythonAPIDocumentation.git --depth 1 --branch gh-pages
+else
+  git clone git@github.com:qgis/QGISPythonAPIDocumentation.git --depth 1 --branch gh-pages
+fi
 pushd QGISPythonAPIDocumentation
-rm -rf ${QGIS_VERSION}
+rm -rf ${QGIS_VERSION}_temp
 mkdir "${QGIS_VERSION}_temp"
 cp -R ../../build/${QGIS_VERSION}/html/* ${QGIS_VERSION}_temp/
 
