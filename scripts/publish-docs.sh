@@ -19,18 +19,22 @@ mkdir -p "publish"
 rm -rf publish/*
 pushd publish
 
+OUTPUT=${QGIS_VERSION}
+
 echo "*** Clone gh-pages branch"
 if [[ $TRAVIS =~ true ]]; then
   git config --global user.email "qgisninja@gmail.com"
   git config --global user.name "Geo-Ninja"
   git clone https://${GH_TOKEN}@github.com/qgis/QGISPythonAPIDocumentation.git --depth 1 --branch gh-pages
+  # temp output to avoid overwriting
+  OUTPUT=${OUTPUT}_temp
 else
   git clone git@github.com:qgis/QGISPythonAPIDocumentation.git --depth 1 --branch gh-pages
 fi
 pushd QGISPythonAPIDocumentation
-rm -rf ${QGIS_VERSION}_temp
-mkdir "${QGIS_VERSION}_temp"
-cp -R ../../build/${QGIS_VERSION}/html/* ${QGIS_VERSION}_temp/
+rm -rf ${OUTPUT}
+mkdir "${OUTPUT}"
+cp -R ../../build/${QGIS_VERSION}/html/* ${OUTPUT}/
 
 echo "travis_fold:start:gitcommit"
 echo "*** Add and push"
