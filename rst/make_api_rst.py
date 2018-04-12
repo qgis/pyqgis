@@ -24,8 +24,8 @@ if (args.package_limit):
     exec("from qgis import {}".format(', '.join(args.package_limit)))
     packages = {pkg: eval(pkg) for pkg in args.package_limit}
 else:
-    packages = {'core': core, 'gui': gui, 'analysis': analysis, 'server': server}
     from qgis import core, gui, analysis, server
+    packages = {'core': core, 'gui': gui, 'analysis': analysis, 'server': server}
 
 
 # Make sure :numbered: is only specified in the top level index - see
