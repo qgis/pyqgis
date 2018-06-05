@@ -2,16 +2,16 @@
 
 Sphinx project to build python API documentation for QGIS
 
-You can see an online version of the generated documentation at this temporary
-website -
+You can see an online version of the generated documentation at this
+website:
 
-https://qgis.github.io/QGISPythonAPIDocumentation/api/index.html.
+https://qgis.org/pyqgis/master/index.html
 
 ## Prerequisites:
 
 Building and mostly pushing the docs properly requires SIP 4.19.7+.
 
-pip3 install -r requirements.txt
+``pip3 install -r requirements.txt``
 
 
 ## To build:
@@ -35,5 +35,5 @@ Use the ``publish-docs.sh`` script, with having build the docs before publishing
 
 ## Credits
 
-Tim Sutton 2017 - Initial prototype for this build system
-Denis Rouzaud 2017 - Including work funded by QGIS.org
+- Tim Sutton 2017 - Initial prototype for this build system
+- Denis Rouzaud 2017 - Including work funded by QGIS.org
