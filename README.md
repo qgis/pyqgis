@@ -1,3 +1,5 @@
+[![Read the documentation](https://img.shields.io/badge/Read-the%20docs-green.svg)](https://qgis.org/pyqgis/master/index.html)
+
 # QGIS Python API Documentation
 
 Sphinx project to build python API documentation for QGIS
