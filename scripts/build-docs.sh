@@ -24,7 +24,11 @@ while getopts "q:p:c:v:t:" opt; do
       QGIS_BUILD_DIR=$OPTARG
       ;;
     p)
-      PACKAGE="--package $OPTARG"
+      if [[ -z $PACKAGE ]]; then
+        PACKAGE="--package $OPTARG"
+      else
+        PACKAGE="$PACKAGE $OPTARG"
+      fi
       ;;
     c)
       CLASS="--class $OPTARG"
