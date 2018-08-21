@@ -3,7 +3,7 @@
 
 from collections import OrderedDict
 from string import Template
-from os import mkdir
+from os import makedirs
 
 import re
 from shutil import rmtree
@@ -91,8 +91,8 @@ def generate_docs():
 
     rmtree('build/{}'.format(qgis_version), ignore_errors=True)
     rmtree('api/{}'.format(qgis_version), ignore_errors=True)
-    mkdir('api')
-    mkdir('api/{}'.format(qgis_version))
+    makedirs('api', exist_ok=True)
+    makedirs('api/{}'.format(qgis_version))
     index = open('api/{}/index.rst'.format(qgis_version), 'w')
     # Read in the standard rst template we will use for classes
     index.write(document_header)
@@ -106,7 +106,7 @@ def generate_docs():
 
     for package_name, package in packages.items():
         package_subgroups = extract_package_subgroups(package)
-        mkdir('api/{}/{}'.format(qgis_version, package_name))
+        makedirs('api/{}/{}'.format(qgis_version, package_name))
         index.write('   %s/index\n' % package_name)
 
         package_index = open('api/{}/{}/index.rst'.format(qgis_version, package_name), 'w')
@@ -116,7 +116,7 @@ def generate_docs():
         for package_subgroup, classes in package_subgroups.items():
             package_index.write(
                 '   %s/index\n' % package_subgroup)
-            mkdir('api/{}/{}/{}'.format(qgis_version, package_name, package_subgroup))
+            makedirs('api/{}/{}/{}'.format(qgis_version, package_name, package_subgroup))
             subgroup_index = open('api/{}/{}/{}/index.rst'.format(qgis_version, package_name, package_subgroup), 'w')
             # Read in the standard rst template we will use for classes
             subgroup_index.write(
