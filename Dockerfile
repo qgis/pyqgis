@@ -9,8 +9,8 @@ MAINTAINER Denis Rouzaud <denis@opengis.ch>
 RUN curl https://bootstrap.pypa.io/get-pip.py | python3
 RUN pip3 install sphinx
 
-COPY . /root/QGISPythonAPIDocumentation
+COPY . /root/pyqgis
 
-WORKDIR /root/QGISPythonAPIDocumentation
+WORKDIR /root/pyqgis
 
-CMD /bin/bash -c "/root/QGISPythonAPIDocumentation/scripts/ci/build-and-deploy.sh ${QGIS_DOCKER_TAG}"
+CMD /bin/bash -c "/root/pyqgis/scripts/ci/build-and-deploy.sh ${QGIS_DOCKER_TAG}"
