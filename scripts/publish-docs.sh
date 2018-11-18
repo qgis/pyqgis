@@ -22,16 +22,18 @@ pushd publish
 OUTPUT=${QGIS_VERSION}
 
 echo "*** Clone gh-pages branch"
-if [[ $TRAVIS =~ true ]]; then
+if [[ ${TRAVIS} =~ true ]]; then
   git config --global user.email "qgisninja@gmail.com"
   git config --global user.name "Geo-Ninja"
   git clone https://${GH_TOKEN}@github.com/qgis/pyqgis.git --depth 1 --branch gh-pages
-  # temp output to avoid overwriting
-  OUTPUT=${OUTPUT}_temp
+  # temp output to avoid overwriting if build is not cron
+  if [[ ${BUILD_TESTING} =~ true ]]; then
+    OUTPUT=${OUTPUT}_temp
+  fi
 else
   git clone git@github.com:qgis/pyqgis.git --depth 1 --branch gh-pages
 fi
-pushd QGISPythonAPIDocumentation
+pushd pyqgis
 rm -rf ${OUTPUT}
 mkdir "${OUTPUT}"
 cp -R ../../build/${QGIS_VERSION}/html/* ${OUTPUT}/
