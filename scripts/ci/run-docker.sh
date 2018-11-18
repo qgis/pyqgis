@@ -6,7 +6,7 @@ DIR=$(git rev-parse --show-toplevel)
 
 pushd ${DIR}
 
-QGIS_DOCKER_TAG=$(sed 's/master/latest/' <<< ${QGIS_VERSION_BRANCH})
+QGIS_DOCKER_TAG="$(sed 's/master/latest/' <<< ${QGIS_VERSION_BRANCH})_cosmic"
 
 echo "travis_fold:start:pullqgis"
 echo "Pull QGIS"
