@@ -25,11 +25,11 @@ echo "*** Clone gh-pages branch"
 if [[ $TRAVIS =~ true ]]; then
   git config --global user.email "qgisninja@gmail.com"
   git config --global user.name "Geo-Ninja"
-  git clone https://${GH_TOKEN}@github.com/qgis/QGISPythonAPIDocumentation.git --depth 1 --branch gh-pages
+  git clone https://${GH_TOKEN}@github.com/qgis/pyqgis.git --depth 1 --branch gh-pages
   # temp output to avoid overwriting
   OUTPUT=${OUTPUT}_temp
 else
-  git clone git@github.com:qgis/QGISPythonAPIDocumentation.git --depth 1 --branch gh-pages
+  git clone git@github.com:qgis/pyqgis.git --depth 1 --branch gh-pages
 fi
 pushd QGISPythonAPIDocumentation
 rm -rf ${OUTPUT}
