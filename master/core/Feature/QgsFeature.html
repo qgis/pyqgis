@@ -331,9 +331,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../Geometry/index.html">Geometry</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../Geometry/QgsGeometry.html">Class: QgsGeometry</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Geometry/QgsGeometryCollection.html">Class: QgsGeometryCollection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Geometry/QgsGeometryConstPartIterator.html">Class: QgsGeometryConstPartIterator</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Geometry/QgsGeometryEngine.html">Class: QgsGeometryEngine</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Geometry/QgsGeometryGeneratorSymbolLayer.html">Class: QgsGeometryGeneratorSymbolLayer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Geometry/QgsGeometryOptions.html">Class: QgsGeometryOptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Geometry/QgsGeometryPartIterator.html">Class: QgsGeometryPartIterator</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Geometry/QgsGeometryUtils.html">Class: QgsGeometryUtils</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Geometry/QgsGeometryValidator.html">Class: QgsGeometryValidator</a></li>
 </ul>
@@ -2379,6 +2381,38 @@ Python: Defaults to true</li>
 <p class="first admonition-title">See also</p>
 <p class="last"><a class="reference internal" href="#qgis.core.QgsFeature.clearGeometry" title="qgis.core.QgsFeature.clearGeometry"><code class="xref py py-func docutils literal notranslate"><span class="pre">clearGeometry()</span></code></a></p>
 </div>
+<p>setGeometry(self, geometry: QgsAbstractGeometry)
+Set the feature’s <code class="docutils literal notranslate"><span class="pre">geometry</span></code>. Ownership of the geometry is transferred to the feature.
+The feature will be made valid after calling this method.</p>
+<p>This method is a shortcut for calling:
+.. code-block:: python</p>
+<blockquote>
+<div>feature.setGeometry( QgsGeometry( geometry ) )</div></blockquote>
+<ul class="simple">
+<li>Example:</li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Sets a feature&#39;s geometry to a point geometry</span>
+<span class="n">feature</span><span class="o">.</span><span class="n">setGeometry</span><span class="p">(</span> <span class="n">QgsPoint</span><span class="p">(</span> <span class="mi">210</span><span class="p">,</span> <span class="mi">41</span> <span class="p">)</span> <span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">feature</span><span class="o">.</span><span class="n">geometry</span><span class="p">())</span>
+<span class="c1"># output: &lt;QgsGeometry: Point (210 41)&gt;</span>
+
+<span class="c1"># Sets a feature&#39;s geometry to a line string</span>
+<span class="n">feature</span><span class="o">.</span><span class="n">setGeometry</span><span class="p">(</span> <span class="n">QgsLineString</span><span class="p">(</span> <span class="p">[</span> <span class="n">QgsPoint</span><span class="p">(</span> <span class="mi">210</span><span class="p">,</span> <span class="mi">41</span> <span class="p">),</span> <span class="n">QgsPoint</span><span class="p">(</span> <span class="mi">301</span><span class="p">,</span> <span class="mi">55</span> <span class="p">)</span> <span class="p">]</span> <span class="p">)</span> <span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">feature</span><span class="o">.</span><span class="n">geometry</span><span class="p">())</span>
+<span class="c1"># output: &lt;QgsGeometry: LineString (210 41, 301 55)&gt;</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#qgis.core.QgsFeature.geometry" title="qgis.core.QgsFeature.geometry"><code class="xref py py-func docutils literal notranslate"><span class="pre">geometry()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#qgis.core.QgsFeature.clearGeometry" title="qgis.core.QgsFeature.clearGeometry"><code class="xref py py-func docutils literal notranslate"><span class="pre">clearGeometry()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 3.6.</span></p>
+</div>
 </dd></dl>
 
 <dl class="method">
@@ -2437,7 +2471,7 @@ Python: Defaults to true</li>
 
   <div role="contentinfo">
     <p>
-      Last updated on 18:24 Nov 18, 2018.
+      Last updated on 18:28 Nov 25, 2018.
 
     </p>
   </div> 

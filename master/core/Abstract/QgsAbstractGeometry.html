@@ -331,9 +331,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../Geometry/index.html">Geometry</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../Geometry/QgsGeometry.html">Class: QgsGeometry</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Geometry/QgsGeometryCollection.html">Class: QgsGeometryCollection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Geometry/QgsGeometryConstPartIterator.html">Class: QgsGeometryConstPartIterator</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Geometry/QgsGeometryEngine.html">Class: QgsGeometryEngine</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Geometry/QgsGeometryGeneratorSymbolLayer.html">Class: QgsGeometryGeneratorSymbolLayer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Geometry/QgsGeometryOptions.html">Class: QgsGeometryOptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Geometry/QgsGeometryPartIterator.html">Class: QgsGeometryPartIterator</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Geometry/QgsGeometryUtils.html">Class: QgsGeometryUtils</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Geometry/QgsGeometryValidator.html">Class: QgsGeometryValidator</a></li>
 </ul>
@@ -2018,55 +2020,58 @@
 <tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsAbstractGeometry.partCount" title="qgis.core.QgsAbstractGeometry.partCount"><code class="xref py py-obj docutils literal notranslate"><span class="pre">partCount</span></code></a></td>
 <td>Returns count of parts contained in the geometry.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsAbstractGeometry.perimeter" title="qgis.core.QgsAbstractGeometry.perimeter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">perimeter</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsAbstractGeometry.parts" title="qgis.core.QgsAbstractGeometry.parts"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parts</span></code></a></td>
+<td>Returns Java-style iterator for traversal of parts of the geometry.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsAbstractGeometry.perimeter" title="qgis.core.QgsAbstractGeometry.perimeter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">perimeter</span></code></a></td>
 <td>Returns the perimeter of the geometry.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsAbstractGeometry.removeDuplicateNodes" title="qgis.core.QgsAbstractGeometry.removeDuplicateNodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeDuplicateNodes</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsAbstractGeometry.removeDuplicateNodes" title="qgis.core.QgsAbstractGeometry.removeDuplicateNodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeDuplicateNodes</span></code></a></td>
 <td>Removes duplicate nodes from the geometry, wherever removing the nodes does not result in a degenerate geometry.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsAbstractGeometry.ringCount" title="qgis.core.QgsAbstractGeometry.ringCount"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ringCount</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsAbstractGeometry.ringCount" title="qgis.core.QgsAbstractGeometry.ringCount"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ringCount</span></code></a></td>
 <td>Returns the number of rings of which this geometry is built.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsAbstractGeometry.segmentLength" title="qgis.core.QgsAbstractGeometry.segmentLength"><code class="xref py py-obj docutils literal notranslate"><span class="pre">segmentLength</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsAbstractGeometry.segmentLength" title="qgis.core.QgsAbstractGeometry.segmentLength"><code class="xref py py-obj docutils literal notranslate"><span class="pre">segmentLength</span></code></a></td>
 <td>Returns the length of the segment of the geometry which begins at <code class="docutils literal notranslate"><span class="pre">startVertex</span></code>.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsAbstractGeometry.segmentize" title="qgis.core.QgsAbstractGeometry.segmentize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">segmentize</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsAbstractGeometry.segmentize" title="qgis.core.QgsAbstractGeometry.segmentize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">segmentize</span></code></a></td>
 <td>Returns a version of the geometry without curves.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsAbstractGeometry.setZMTypeFromSubGeometry" title="qgis.core.QgsAbstractGeometry.setZMTypeFromSubGeometry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setZMTypeFromSubGeometry</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsAbstractGeometry.setZMTypeFromSubGeometry" title="qgis.core.QgsAbstractGeometry.setZMTypeFromSubGeometry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setZMTypeFromSubGeometry</span></code></a></td>
 <td>Updates the geometry type based on whether sub geometries contain z or m values.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsAbstractGeometry.snappedToGrid" title="qgis.core.QgsAbstractGeometry.snappedToGrid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">snappedToGrid</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsAbstractGeometry.snappedToGrid" title="qgis.core.QgsAbstractGeometry.snappedToGrid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">snappedToGrid</span></code></a></td>
 <td>Makes a new geometry with all the points or vertices snapped to the closest point of the grid.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsAbstractGeometry.swapXy" title="qgis.core.QgsAbstractGeometry.swapXy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">swapXy</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsAbstractGeometry.swapXy" title="qgis.core.QgsAbstractGeometry.swapXy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">swapXy</span></code></a></td>
 <td>Swaps the x and y coordinates from the geometry.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsAbstractGeometry.toCurveType" title="qgis.core.QgsAbstractGeometry.toCurveType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">toCurveType</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsAbstractGeometry.toCurveType" title="qgis.core.QgsAbstractGeometry.toCurveType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">toCurveType</span></code></a></td>
 <td>Returns the geometry converted to the more generic curve type.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsAbstractGeometry.transform" title="qgis.core.QgsAbstractGeometry.transform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">transform</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsAbstractGeometry.transform" title="qgis.core.QgsAbstractGeometry.transform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">transform</span></code></a></td>
 <td>Transforms the geometry using a coordinate transform</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsAbstractGeometry.vertexAngle" title="qgis.core.QgsAbstractGeometry.vertexAngle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">vertexAngle</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsAbstractGeometry.vertexAngle" title="qgis.core.QgsAbstractGeometry.vertexAngle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">vertexAngle</span></code></a></td>
 <td>Returns approximate angle at a vertex.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsAbstractGeometry.vertexAt" title="qgis.core.QgsAbstractGeometry.vertexAt"><code class="xref py py-obj docutils literal notranslate"><span class="pre">vertexAt</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsAbstractGeometry.vertexAt" title="qgis.core.QgsAbstractGeometry.vertexAt"><code class="xref py py-obj docutils literal notranslate"><span class="pre">vertexAt</span></code></a></td>
 <td>Returns the point corresponding to a specified vertex id</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsAbstractGeometry.vertexCount" title="qgis.core.QgsAbstractGeometry.vertexCount"><code class="xref py py-obj docutils literal notranslate"><span class="pre">vertexCount</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsAbstractGeometry.vertexCount" title="qgis.core.QgsAbstractGeometry.vertexCount"><code class="xref py py-obj docutils literal notranslate"><span class="pre">vertexCount</span></code></a></td>
 <td>Returns the number of vertices of which this geometry is built.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsAbstractGeometry.vertexNumberFromVertexId" title="qgis.core.QgsAbstractGeometry.vertexNumberFromVertexId"><code class="xref py py-obj docutils literal notranslate"><span class="pre">vertexNumberFromVertexId</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsAbstractGeometry.vertexNumberFromVertexId" title="qgis.core.QgsAbstractGeometry.vertexNumberFromVertexId"><code class="xref py py-obj docutils literal notranslate"><span class="pre">vertexNumberFromVertexId</span></code></a></td>
 <td>Returns the vertex number corresponding to a vertex <code class="docutils literal notranslate"><span class="pre">id</span></code>.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsAbstractGeometry.vertices" title="qgis.core.QgsAbstractGeometry.vertices"><code class="xref py py-obj docutils literal notranslate"><span class="pre">vertices</span></code></a></td>
-<td>Returns Java-style iterator for traversal of vertices of the geometry</td>
+<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsAbstractGeometry.vertices" title="qgis.core.QgsAbstractGeometry.vertices"><code class="xref py py-obj docutils literal notranslate"><span class="pre">vertices</span></code></a></td>
+<td>Returns a read-only, Java-style iterator for traversal of vertices of all the geometry, including all geometry parts and rings.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsAbstractGeometry.wkbType" title="qgis.core.QgsAbstractGeometry.wkbType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wkbType</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsAbstractGeometry.wkbType" title="qgis.core.QgsAbstractGeometry.wkbType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wkbType</span></code></a></td>
 <td>Returns the WKB type of the geometry.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsAbstractGeometry.wktTypeStr" title="qgis.core.QgsAbstractGeometry.wktTypeStr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wktTypeStr</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsAbstractGeometry.wktTypeStr" title="qgis.core.QgsAbstractGeometry.wktTypeStr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wktTypeStr</span></code></a></td>
 <td>Returns the WKT type string of the geometry.</td>
 </tr>
 </tbody>
@@ -2833,6 +2838,45 @@ in this variable if found.</li>
 </dd></dl>
 
 <dl class="method">
+<dt id="qgis.core.QgsAbstractGeometry.parts">
+<code class="descname">parts</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; QgsGeometryPartIterator<a class="headerlink" href="#qgis.core.QgsAbstractGeometry.parts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns Java-style iterator for traversal of parts of the geometry. This iterator
+can safely be used to modify parts of the geometry.</p>
+<ul class="simple">
+<li>Example:</li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># print the WKT representation of each part in a multi-point geometry</span>
+<span class="n">geometry</span> <span class="o">=</span> <span class="n">QgsMultiPoint</span><span class="o">.</span><span class="n">fromWkt</span><span class="p">(</span> <span class="s1">&#39;MultiPoint( 0 0, 1 1, 2 2)&#39;</span> <span class="p">)</span>
+<span class="k">for</span> <span class="n">part</span> <span class="ow">in</span> <span class="n">geometry</span><span class="o">.</span><span class="n">parts</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">part</span><span class="o">.</span><span class="n">asWkt</span><span class="p">())</span>
+
+<span class="c1"># single part geometries only have one part - this loop will iterate once only</span>
+<span class="n">geometry</span> <span class="o">=</span> <span class="n">QgsLineString</span><span class="o">.</span><span class="n">fromWkt</span><span class="p">(</span> <span class="s1">&#39;LineString( 0 0, 10 10 )&#39;</span> <span class="p">)</span>
+<span class="k">for</span> <span class="n">part</span> <span class="ow">in</span> <span class="n">geometry</span><span class="o">.</span><span class="n">parts</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">part</span><span class="o">.</span><span class="n">asWkt</span><span class="p">())</span>
+
+<span class="c1"># parts can be modified during the iteration</span>
+<span class="n">geometry</span> <span class="o">=</span> <span class="n">QgsMultiPoint</span><span class="o">.</span><span class="n">fromWkt</span><span class="p">(</span> <span class="s1">&#39;MultiPoint( 0 0, 1 1, 2 2)&#39;</span> <span class="p">)</span>
+<span class="k">for</span> <span class="n">part</span> <span class="ow">in</span> <span class="n">geometry</span><span class="o">.</span><span class="n">parts</span><span class="p">():</span>
+    <span class="n">part</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">ct</span><span class="p">)</span>
+
+<span class="c1"># part iteration can also be combined with vertex iteration</span>
+<span class="n">geometry</span> <span class="o">=</span> <span class="n">QgsMultiPolygon</span><span class="o">.</span><span class="n">fromWkt</span><span class="p">(</span> <span class="s1">&#39;MultiPolygon((( 0 0, 0 10, 10 10, 10 0, 0 0 ),( 5 5, 5 6, 6 6, 6 5, 5 5)),((20 2, 22 2, 22 4, 20 4, 20 2)))&#39;</span> <span class="p">)</span>
+<span class="k">for</span> <span class="n">part</span> <span class="ow">in</span> <span class="n">geometry</span><span class="o">.</span><span class="n">parts</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">part</span><span class="o">.</span><span class="n">vertices</span><span class="p">():</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">x</span><span class="p">(),</span> <span class="n">v</span><span class="o">.</span><span class="n">y</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#qgis.core.QgsAbstractGeometry.vertices" title="qgis.core.QgsAbstractGeometry.vertices"><code class="xref py py-func docutils literal notranslate"><span class="pre">vertices()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 3.6.</span></p>
+</div>
+</dd></dl>
+
+<dl class="method">
 <dt id="qgis.core.QgsAbstractGeometry.perimeter">
 <code class="descname">perimeter</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#qgis.core.QgsAbstractGeometry.perimeter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the perimeter of the geometry.</p>
@@ -3040,7 +3084,30 @@ to the first vertex.</p>
 <dl class="method">
 <dt id="qgis.core.QgsAbstractGeometry.vertices">
 <code class="descname">vertices</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; QgsVertexIterator<a class="headerlink" href="#qgis.core.QgsAbstractGeometry.vertices" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns Java-style iterator for traversal of vertices of the geometry</p>
+<dd><p>Returns a read-only, Java-style iterator for traversal of vertices of all the geometry, including all geometry parts and rings.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">The iterator returns a copy of individual vertices, and accordingly geometries cannot be
+modified using the iterator. See transformVertices() for a safe method to modify vertices “in-place”.</p>
+</div>
+<ul class="simple">
+<li>Example:</li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># print the x and y coordinate for each vertex in a LineString</span>
+<span class="n">geometry</span> <span class="o">=</span> <span class="n">QgsLineString</span><span class="o">.</span><span class="n">fromWkt</span><span class="p">(</span> <span class="s1">&#39;LineString( 0 0, 1 1, 2 2)&#39;</span> <span class="p">)</span>
+<span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">geometry</span><span class="o">.</span><span class="n">vertices</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">x</span><span class="p">(),</span> <span class="n">v</span><span class="o">.</span><span class="n">y</span><span class="p">())</span>
+
+<span class="c1"># vertex iteration includes all parts and rings</span>
+<span class="n">geometry</span> <span class="o">=</span> <span class="n">QgsMultiPolygon</span><span class="o">.</span><span class="n">fromWkt</span><span class="p">(</span> <span class="s1">&#39;MultiPolygon((( 0 0, 0 10, 10 10, 10 0, 0 0 ),( 5 5, 5 6, 6 6, 6 5, 5 5)),((20 2, 22 2, 22 4, 20 4, 20 2)))&#39;</span> <span class="p">)</span>
+<span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">geometry</span><span class="o">.</span><span class="n">vertices</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">x</span><span class="p">(),</span> <span class="n">v</span><span class="o">.</span><span class="n">y</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#qgis.core.QgsAbstractGeometry.parts" title="qgis.core.QgsAbstractGeometry.parts"><code class="xref py py-func docutils literal notranslate"><span class="pre">parts()</span></code></a></p>
+</div>
 <div class="versionadded">
 <p><span class="versionmodified">New in version 3.0.</span></p>
 </div>
@@ -3089,7 +3156,7 @@ to the first vertex.</p>
 
   <div role="contentinfo">
     <p>
-      Last updated on 18:24 Nov 18, 2018.
+      Last updated on 18:28 Nov 25, 2018.
 
     </p>
   </div> 
