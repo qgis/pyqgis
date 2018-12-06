@@ -92,6 +92,8 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">core</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../Abstract/index.html">Abstract</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../Abstract/QgsAbstractCacheIndex.html">Class: QgsAbstractCacheIndex</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Abstract/QgsAbstractContentCacheBase.html">Class: QgsAbstractContentCacheBase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Abstract/QgsAbstractContentCacheEntry.html">Class: QgsAbstractContentCacheEntry</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Abstract/QgsAbstractFeatureIterator.html">Class: QgsAbstractFeatureIterator</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Abstract/QgsAbstractFeatureIteratorFromSourceQgsVectorLayerFeatureSourceBase.html">Class: QgsAbstractFeatureIteratorFromSourceQgsVectorLayerFeatureSourceBase</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Abstract/QgsAbstractFeatureSource.html">Class: QgsAbstractFeatureSource</a></li>
@@ -370,6 +372,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../Image/index.html">Image</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Image/QgsImageCache.html">Class: QgsImageCache</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Image/QgsImageFetcher.html">Class: QgsImageFetcher</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Image/QgsImageFillSymbolLayer.html">Class: QgsImageFillSymbolLayer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Image/QgsImageLegendNode.html">Class: QgsImageLegendNode</a></li>
@@ -741,6 +744,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../Raster/QgsRasterInterface.html">Class: QgsRasterInterface</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Raster/QgsRasterIterator.html">Class: QgsRasterIterator</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Raster/QgsRasterLayer.html">Class: QgsRasterLayer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Raster/QgsRasterMarkerSymbolLayer.html">Class: QgsRasterMarkerSymbolLayer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Raster/QgsRasterMinMaxOrigin.html">Class: QgsRasterMinMaxOrigin</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Raster/QgsRasterNuller.html">Class: QgsRasterNuller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Raster/QgsRasterPipe.html">Class: QgsRasterPipe</a></li>
@@ -1471,6 +1475,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../gui/Raster/QgsRasterFormatSaveOptionsWidget.html">Class: QgsRasterFormatSaveOptionsWidget</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../gui/Raster/QgsRasterHistogramWidget.html">Class: QgsRasterHistogramWidget</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../gui/Raster/QgsRasterLayerSaveAsDialog.html">Class: QgsRasterLayerSaveAsDialog</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../gui/Raster/QgsRasterMarkerSymbolLayerWidget.html">Class: QgsRasterMarkerSymbolLayerWidget</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../gui/Raster/QgsRasterMinMaxWidget.html">Class: QgsRasterMinMaxWidget</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../gui/Raster/QgsRasterPyramidsOptionsWidget.html">Class: QgsRasterPyramidsOptionsWidget</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../gui/Raster/QgsRasterRendererWidget.html">Class: QgsRasterRendererWidget</a></li>
@@ -1967,19 +1972,22 @@ to a common area of analysis.</p>
 <tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsProcessingProvider.supportedOutputRasterLayerExtensions" title="qgis.core.QgsProcessingProvider.supportedOutputRasterLayerExtensions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">supportedOutputRasterLayerExtensions</span></code></a></td>
 <td>Returns a list of the raster format file extensions supported by this provider.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsProcessingProvider.supportedOutputVectorLayerExtensions" title="qgis.core.QgsProcessingProvider.supportedOutputVectorLayerExtensions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">supportedOutputVectorLayerExtensions</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsProcessingProvider.supportedOutputTableExtensions" title="qgis.core.QgsProcessingProvider.supportedOutputTableExtensions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">supportedOutputTableExtensions</span></code></a></td>
+<td>Returns a list of the table (geometry-less vector layers) file extensions supported by this provider.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsProcessingProvider.supportedOutputVectorLayerExtensions" title="qgis.core.QgsProcessingProvider.supportedOutputVectorLayerExtensions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">supportedOutputVectorLayerExtensions</span></code></a></td>
 <td>Returns a list of the vector format file extensions supported by this provider.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsProcessingProvider.supportsNonFileBasedOutput" title="qgis.core.QgsProcessingProvider.supportsNonFileBasedOutput"><code class="xref py py-obj docutils literal notranslate"><span class="pre">supportsNonFileBasedOutput</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsProcessingProvider.supportsNonFileBasedOutput" title="qgis.core.QgsProcessingProvider.supportsNonFileBasedOutput"><code class="xref py py-obj docutils literal notranslate"><span class="pre">supportsNonFileBasedOutput</span></code></a></td>
 <td>Returns true if the provider supports non-file based outputs (such as memory layers or direct database outputs).</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsProcessingProvider.svgIconPath" title="qgis.core.QgsProcessingProvider.svgIconPath"><code class="xref py py-obj docutils literal notranslate"><span class="pre">svgIconPath</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsProcessingProvider.svgIconPath" title="qgis.core.QgsProcessingProvider.svgIconPath"><code class="xref py py-obj docutils literal notranslate"><span class="pre">svgIconPath</span></code></a></td>
 <td>Returns a path to an SVG version of the provider’s icon.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsProcessingProvider.timerEvent" title="qgis.core.QgsProcessingProvider.timerEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">timerEvent</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsProcessingProvider.timerEvent" title="qgis.core.QgsProcessingProvider.timerEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">timerEvent</span></code></a></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsProcessingProvider.unload" title="qgis.core.QgsProcessingProvider.unload"><code class="xref py py-obj docutils literal notranslate"><span class="pre">unload</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsProcessingProvider.unload" title="qgis.core.QgsProcessingProvider.unload"><code class="xref py py-obj docutils literal notranslate"><span class="pre">unload</span></code></a></td>
 <td>Unloads the provider.</td>
 </tr>
 </tbody>
@@ -2255,9 +2263,40 @@ This string should be short (e.g. “Lastools”) and localised.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="qgis.core.QgsProcessingProvider.supportedOutputTableExtensions">
+<code class="descname">supportedOutputTableExtensions</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; List[str]<a class="headerlink" href="#qgis.core.QgsProcessingProvider.supportedOutputTableExtensions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of the table (geometry-less vector layers) file extensions supported by this provider.</p>
+<p>By default this is the same as supportedOutputVectorLayerExtensions(). Providers which utilize different
+formats for geometry-less layers can override this method to return a different list of supported formats.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#qgis.core.QgsProcessingProvider.supportedOutputVectorLayerExtensions" title="qgis.core.QgsProcessingProvider.supportedOutputVectorLayerExtensions"><code class="xref py py-func docutils literal notranslate"><span class="pre">supportedOutputVectorLayerExtensions()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#qgis.core.QgsProcessingProvider.defaultVectorFileExtension" title="qgis.core.QgsProcessingProvider.defaultVectorFileExtension"><code class="xref py py-func docutils literal notranslate"><span class="pre">defaultVectorFileExtension()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#qgis.core.QgsProcessingProvider.supportedOutputRasterLayerExtensions" title="qgis.core.QgsProcessingProvider.supportedOutputRasterLayerExtensions"><code class="xref py py-func docutils literal notranslate"><span class="pre">supportedOutputRasterLayerExtensions()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#qgis.core.QgsProcessingProvider.supportsNonFileBasedOutput" title="qgis.core.QgsProcessingProvider.supportsNonFileBasedOutput"><code class="xref py py-func docutils literal notranslate"><span class="pre">supportsNonFileBasedOutput()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 3.4.3.</span></p>
+</div>
+</dd></dl>
+
+<dl class="method">
 <dt id="qgis.core.QgsProcessingProvider.supportedOutputVectorLayerExtensions">
 <code class="descname">supportedOutputVectorLayerExtensions</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; List[str]<a class="headerlink" href="#qgis.core.QgsProcessingProvider.supportedOutputVectorLayerExtensions" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a list of the vector format file extensions supported by this provider.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#qgis.core.QgsProcessingProvider.supportedOutputTableExtensions" title="qgis.core.QgsProcessingProvider.supportedOutputTableExtensions"><code class="xref py py-func docutils literal notranslate"><span class="pre">supportedOutputTableExtensions()</span></code></a></p>
+</div>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
 <p class="last"><a class="reference internal" href="#qgis.core.QgsProcessingProvider.defaultVectorFileExtension" title="qgis.core.QgsProcessingProvider.defaultVectorFileExtension"><code class="xref py py-func docutils literal notranslate"><span class="pre">defaultVectorFileExtension()</span></code></a></p>
@@ -2329,7 +2368,7 @@ or external dependencies) will automatically support this.</p>
 
   <div role="contentinfo">
     <p>
-      Last updated on 18:24 Dec 02, 2018.
+      Last updated on 12:18 Dec 06, 2018.
 
     </p>
   </div> 

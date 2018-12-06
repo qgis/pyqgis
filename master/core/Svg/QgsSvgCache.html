@@ -92,6 +92,8 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">core</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../Abstract/index.html">Abstract</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../Abstract/QgsAbstractCacheIndex.html">Class: QgsAbstractCacheIndex</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Abstract/QgsAbstractContentCacheBase.html">Class: QgsAbstractContentCacheBase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Abstract/QgsAbstractContentCacheEntry.html">Class: QgsAbstractContentCacheEntry</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Abstract/QgsAbstractFeatureIterator.html">Class: QgsAbstractFeatureIterator</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Abstract/QgsAbstractFeatureIteratorFromSourceQgsVectorLayerFeatureSourceBase.html">Class: QgsAbstractFeatureIteratorFromSourceQgsVectorLayerFeatureSourceBase</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Abstract/QgsAbstractFeatureSource.html">Class: QgsAbstractFeatureSource</a></li>
@@ -370,6 +372,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../Image/index.html">Image</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Image/QgsImageCache.html">Class: QgsImageCache</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Image/QgsImageFetcher.html">Class: QgsImageFetcher</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Image/QgsImageFillSymbolLayer.html">Class: QgsImageFillSymbolLayer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Image/QgsImageLegendNode.html">Class: QgsImageLegendNode</a></li>
@@ -741,6 +744,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../Raster/QgsRasterInterface.html">Class: QgsRasterInterface</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Raster/QgsRasterIterator.html">Class: QgsRasterIterator</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Raster/QgsRasterLayer.html">Class: QgsRasterLayer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Raster/QgsRasterMarkerSymbolLayer.html">Class: QgsRasterMarkerSymbolLayer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Raster/QgsRasterMinMaxOrigin.html">Class: QgsRasterMinMaxOrigin</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Raster/QgsRasterNuller.html">Class: QgsRasterNuller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Raster/QgsRasterPipe.html">Class: QgsRasterPipe</a></li>
@@ -1471,6 +1475,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../gui/Raster/QgsRasterFormatSaveOptionsWidget.html">Class: QgsRasterFormatSaveOptionsWidget</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../gui/Raster/QgsRasterHistogramWidget.html">Class: QgsRasterHistogramWidget</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../gui/Raster/QgsRasterLayerSaveAsDialog.html">Class: QgsRasterLayerSaveAsDialog</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../gui/Raster/QgsRasterMarkerSymbolLayerWidget.html">Class: QgsRasterMarkerSymbolLayerWidget</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../gui/Raster/QgsRasterMinMaxWidget.html">Class: QgsRasterMinMaxWidget</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../gui/Raster/QgsRasterPyramidsOptionsWidget.html">Class: QgsRasterPyramidsOptionsWidget</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../gui/Raster/QgsRasterRendererWidget.html">Class: QgsRasterRendererWidget</a></li>
@@ -1882,7 +1887,7 @@
 <dl class="class">
 <dt id="qgis.core.QgsSvgCache">
 <em class="property">class </em><code class="descclassname">qgis.core.</code><code class="descname">QgsSvgCache</code><span class="sig-paren">(</span><em>parent: QObject = None</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsSvgCache" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">PyQt5.QtCore.QObject</span></code></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">qgis._core.QgsAbstractContentCacheBase</span></code></p>
 <p>Constructor for QgsSvgCache.</p>
 <p>A cache for images / pictures derived from svg files. This class supports parameter replacement in svg files
 according to the svg params specification (<a class="reference external" href="http://www.w3.org/TR/2009/WD-SVGParamPrimer-20090616/">http://www.w3.org/TR/2009/WD-SVGParamPrimer-20090616/</a>). Supported are
@@ -1897,28 +1902,34 @@ the parameters ‘fill-color’, ‘pen-color’, ‘outline-width’, ‘stroke
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsSvgCache.childEvent" title="qgis.core.QgsSvgCache.childEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">childEvent</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsSvgCache.checkReply" title="qgis.core.QgsSvgCache.checkReply"><code class="xref py py-obj docutils literal notranslate"><span class="pre">checkReply</span></code></a></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsSvgCache.connectNotify" title="qgis.core.QgsSvgCache.connectNotify"><code class="xref py py-obj docutils literal notranslate"><span class="pre">connectNotify</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsSvgCache.childEvent" title="qgis.core.QgsSvgCache.childEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">childEvent</span></code></a></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsSvgCache.containsParams" title="qgis.core.QgsSvgCache.containsParams"><code class="xref py py-obj docutils literal notranslate"><span class="pre">containsParams</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsSvgCache.connectNotify" title="qgis.core.QgsSvgCache.connectNotify"><code class="xref py py-obj docutils literal notranslate"><span class="pre">connectNotify</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsSvgCache.containsParams" title="qgis.core.QgsSvgCache.containsParams"><code class="xref py py-obj docutils literal notranslate"><span class="pre">containsParams</span></code></a></td>
 <td>Tests if an svg file contains parameters for fill, stroke color, stroke width.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsSvgCache.containsParamsV3" title="qgis.core.QgsSvgCache.containsParamsV3"><code class="xref py py-obj docutils literal notranslate"><span class="pre">containsParamsV3</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsSvgCache.containsParamsV3" title="qgis.core.QgsSvgCache.containsParamsV3"><code class="xref py py-obj docutils literal notranslate"><span class="pre">containsParamsV3</span></code></a></td>
 <td>Tests if an svg file contains parameters for fill, stroke color, stroke width.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsSvgCache.customEvent" title="qgis.core.QgsSvgCache.customEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">customEvent</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsSvgCache.customEvent" title="qgis.core.QgsSvgCache.customEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">customEvent</span></code></a></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsSvgCache.disconnectNotify" title="qgis.core.QgsSvgCache.disconnectNotify"><code class="xref py py-obj docutils literal notranslate"><span class="pre">disconnectNotify</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsSvgCache.disconnectNotify" title="qgis.core.QgsSvgCache.disconnectNotify"><code class="xref py py-obj docutils literal notranslate"><span class="pre">disconnectNotify</span></code></a></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsSvgCache.getImageData" title="qgis.core.QgsSvgCache.getImageData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getImageData</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsSvgCache.getImageData" title="qgis.core.QgsSvgCache.getImageData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getImageData</span></code></a></td>
 <td>Gets image data</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsSvgCache.isSignalConnected" title="qgis.core.QgsSvgCache.isSignalConnected"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isSignalConnected</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsSvgCache.isSignalConnected" title="qgis.core.QgsSvgCache.isSignalConnected"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isSignalConnected</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsSvgCache.onRemoteContentFetched" title="qgis.core.QgsSvgCache.onRemoteContentFetched"><code class="xref py py-obj docutils literal notranslate"><span class="pre">onRemoteContentFetched</span></code></a></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsSvgCache.receivers" title="qgis.core.QgsSvgCache.receivers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">receivers</span></code></a></td>
@@ -1958,7 +1969,7 @@ the parameters ‘fill-color’, ‘pen-color’, ‘outline-width’, ‘stroke
 <td>Emitted when the cache has finished retrieving an SVG file from a remote <code class="docutils literal notranslate"><span class="pre">url</span></code>.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsSvgCache.statusChanged" title="qgis.core.QgsSvgCache.statusChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">statusChanged</span></code></a></td>
-<td>Emit a signal to be caught by qgisapp and display a msg on status bar [signal]</td>
+<td>Emit a signal to be caught by qgisapp and display a msg on status bar.</td>
 </tr>
 </tbody>
 </table>
@@ -1972,6 +1983,11 @@ the parameters ‘fill-color’, ‘pen-color’, ‘outline-width’, ‘stroke
 </tbody>
 </table>
 </div></blockquote>
+<dl class="method">
+<dt id="qgis.core.QgsSvgCache.checkReply">
+<code class="descname">checkReply</code><span class="sig-paren">(</span><em>self</em>, <em>reply: QNetworkReply</em>, <em>path: str</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsSvgCache.checkReply" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="method">
 <dt id="qgis.core.QgsSvgCache.childEvent">
 <code class="descname">childEvent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsSvgCache.childEvent" title="Permalink to this definition">¶</a></dt>
@@ -2051,6 +2067,11 @@ default values in the svg file, only the first one is considered.</p>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="qgis.core.QgsSvgCache.onRemoteContentFetched">
+<code class="descname">onRemoteContentFetched</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsSvgCache.onRemoteContentFetched" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="qgis.core.QgsSvgCache.receivers">
 <code class="descname">receivers</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsSvgCache.receivers" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -2077,7 +2098,10 @@ default values in the svg file, only the first one is considered.</p>
 <dl class="attribute">
 <dt id="qgis.core.QgsSvgCache.statusChanged">
 <code class="descname">statusChanged</code><a class="headerlink" href="#qgis.core.QgsSvgCache.statusChanged" title="Permalink to this definition">¶</a></dt>
-<dd><p>Emit a signal to be caught by qgisapp and display a msg on status bar [signal]</p>
+<dd><p>Emit a signal to be caught by qgisapp and display a msg on status bar.</p>
+<div class="deprecated">
+<p><span class="versionmodified">Deprecated since version Deprecated: </span>since QGIS 3.6 – no longer emitted. [signal]</p>
+</div>
 </dd></dl>
 
 <dl class="method">
@@ -2183,7 +2207,7 @@ default values in the svg file, only the first one is considered.</p>
 
   <div role="contentinfo">
     <p>
-      Last updated on 18:24 Dec 02, 2018.
+      Last updated on 12:18 Dec 06, 2018.
 
     </p>
   </div> 
