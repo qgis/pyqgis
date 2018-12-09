@@ -541,6 +541,8 @@
 </ul>
 </li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">Mesh</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="QgsMesh.html">Class: QgsMesh</a></li>
+<li class="toctree-l3"><a class="reference internal" href="QgsMeshDataBlock.html">Class: QgsMeshDataBlock</a></li>
 <li class="toctree-l3"><a class="reference internal" href="QgsMeshDataProvider.html">Class: QgsMeshDataProvider</a></li>
 <li class="toctree-l3"><a class="reference internal" href="QgsMeshDataSourceInterface.html">Class: QgsMeshDataSourceInterface</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Class: QgsMeshDatasetGroupMetadata</a></li>
@@ -1891,7 +1893,7 @@
 <em class="property">class </em><code class="descclassname">qgis.core.</code><code class="descname">QgsMeshDatasetGroupMetadata</code><a class="headerlink" href="#qgis.core.QgsMeshDatasetGroupMetadata" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sip.wrapper</span></code></p>
 <p>Constructs an empty metadata object</p>
-<p>QgsMeshDatasetGroupMetadata(name: str, isScalar: bool, isOnVertices: bool, extraOptions: Dict[str, str])
+<p>QgsMeshDatasetGroupMetadata(name: str, isScalar: bool, isOnVertices: bool, minimum: float, maximum: float, extraOptions: Dict[str, str])
 Constructs a valid metadata object</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1901,6 +1903,8 @@ Constructs a valid metadata object</p>
 <li><strong>name</strong> – name of the dataset group</li>
 <li><strong>isScalar</strong> – dataset contains scalar data, specifically the y-value of QgsMeshDatasetValue is NaN</li>
 <li><strong>isOnVertices</strong> – dataset values are defined on mesh’s vertices. If false, values are defined on faces.</li>
+<li><strong>minimum</strong> – minimum value (magnitude for vectors) present among all group’s dataset values</li>
+<li><strong>maximum</strong> – maximum value (magnitude for vectors) present among all group’s dataset values</li>
 <li><strong>extraOptions</strong> – dataset’s extra options stored by the provider. Usually contains the name, time value, time units, data file vendor, …</li>
 </ul>
 </td>
@@ -1933,6 +1937,12 @@ such as whether the data is vector or scalar, name</p>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsMeshDatasetGroupMetadata.isVector" title="qgis.core.QgsMeshDatasetGroupMetadata.isVector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isVector</span></code></a></td>
 <td>Returns whether dataset group has vector data</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsMeshDatasetGroupMetadata.maximum" title="qgis.core.QgsMeshDatasetGroupMetadata.maximum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">maximum</span></code></a></td>
+<td>Returns maximum scalar value/vector magnitude present for whole dataset group</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsMeshDatasetGroupMetadata.minimum" title="qgis.core.QgsMeshDatasetGroupMetadata.minimum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">minimum</span></code></a></td>
+<td>Returns minimum scalar value/vector magnitude present for whole dataset group</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsMeshDatasetGroupMetadata.name" title="qgis.core.QgsMeshDatasetGroupMetadata.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code></a></td>
 <td>Returns name of the dataset group</td>
@@ -2005,6 +2015,18 @@ such as whether the data is vector or scalar, name</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="qgis.core.QgsMeshDatasetGroupMetadata.maximum">
+<code class="descname">maximum</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#qgis.core.QgsMeshDatasetGroupMetadata.maximum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns maximum scalar value/vector magnitude present for whole dataset group</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qgis.core.QgsMeshDatasetGroupMetadata.minimum">
+<code class="descname">minimum</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#qgis.core.QgsMeshDatasetGroupMetadata.minimum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns minimum scalar value/vector magnitude present for whole dataset group</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="qgis.core.QgsMeshDatasetGroupMetadata.name">
 <code class="descname">name</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.core.QgsMeshDatasetGroupMetadata.name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns name of the dataset group</p>
@@ -2025,7 +2047,7 @@ such as whether the data is vector or scalar, name</p>
 
   <div role="contentinfo">
     <p>
-      Last updated on 12:19 Dec 08, 2018.
+      Last updated on 12:20 Dec 09, 2018.
 
     </p>
   </div> 
