@@ -390,6 +390,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../Label/index.html">Label</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Label/QgsLabelBlockingRegion.html">Class: QgsLabelBlockingRegion</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Label/QgsLabelCandidate.html">Class: QgsLabelCandidate</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Label/QgsLabelPosition.html">Class: QgsLabelPosition</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Label/QgsLabelSearchTree.html">Class: QgsLabelSearchTree</a></li>
@@ -661,6 +662,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../Processing/QgsProcessingOutputRasterLayer.html">Class: QgsProcessingOutputRasterLayer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Processing/QgsProcessingOutputString.html">Class: QgsProcessingOutputString</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Processing/QgsProcessingOutputVectorLayer.html">Class: QgsProcessingOutputVectorLayer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Processing/QgsProcessingParameterAuthConfig.html">Class: QgsProcessingParameterAuthConfig</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Processing/QgsProcessingParameterBand.html">Class: QgsProcessingParameterBand</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Processing/QgsProcessingParameterBoolean.html">Class: QgsProcessingParameterBoolean</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Processing/QgsProcessingParameterCrs.html">Class: QgsProcessingParameterCrs</a></li>
@@ -1917,7 +1919,7 @@ to be rendered etc.</p>
 <td>Converts a size from the specified units to painter units (pixels).</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsRenderContext.coordinateTransform" title="qgis.core.QgsRenderContext.coordinateTransform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coordinateTransform</span></code></a></td>
-<td>Returns the current coordinate transform for the context, or an invalid transform is no coordinate transformation is required.</td>
+<td>Returns the current coordinate transform for the context.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsRenderContext.distanceArea" title="qgis.core.QgsRenderContext.distanceArea"><code class="xref py py-obj docutils literal notranslate"><span class="pre">distanceArea</span></code></a></td>
 <td>A general purpose distance and area calculator, capable of performing ellipsoid based calculations.</td>
@@ -1929,7 +1931,7 @@ to be rendered etc.</p>
 <td>Gets the expression context.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsRenderContext.extent" title="qgis.core.QgsRenderContext.extent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">extent</span></code></a></td>
-<td></td>
+<td>When rendering a map layer, calling this method returns the “clipping” extent for the layer (in the layer’s CRS).</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsRenderContext.featureFilterProvider" title="qgis.core.QgsRenderContext.featureFilterProvider"><code class="xref py py-obj docutils literal notranslate"><span class="pre">featureFilterProvider</span></code></a></td>
 <td>Gets the filter feature provider used for additional filtering of rendered features.</td>
@@ -1977,7 +1979,7 @@ to be rendered etc.</p>
 <td></td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsRenderContext.setCoordinateTransform" title="qgis.core.QgsRenderContext.setCoordinateTransform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setCoordinateTransform</span></code></a></td>
-<td>Sets coordinate transformation.</td>
+<td>Sets the current coordinate transform for the context.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsRenderContext.setDistanceArea" title="qgis.core.QgsRenderContext.setDistanceArea"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setDistanceArea</span></code></a></td>
 <td>A general purpose distance and area calculator, capable of performing ellipsoid based calculations.</td>
@@ -1989,7 +1991,7 @@ to be rendered etc.</p>
 <td>Sets the expression context.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsRenderContext.setExtent" title="qgis.core.QgsRenderContext.setExtent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setExtent</span></code></a></td>
-<td></td>
+<td>When rendering a map layer, calling this method sets the “clipping” extent for the layer (in the layer’s CRS).</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsRenderContext.setFeatureFilterProvider" title="qgis.core.QgsRenderContext.setFeatureFilterProvider"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setFeatureFilterProvider</span></code></a></td>
 <td>Set a filter feature provider used for additional filtering of rendered features.</td>
@@ -2264,8 +2266,15 @@ specified by the optional scale parameter.</p>
 <dl class="method">
 <dt id="qgis.core.QgsRenderContext.coordinateTransform">
 <code class="descname">coordinateTransform</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; QgsCoordinateTransform<a class="headerlink" href="#qgis.core.QgsRenderContext.coordinateTransform" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the current coordinate transform for the context, or an invalid
-transform is no coordinate transformation is required.</p>
+<dd><p>Returns the current coordinate transform for the context.</p>
+<p>This represents the coordinate transform required to transform a layer
+which is being rendered back to the CRS of the rendered map. If no coordinate
+transformation is required, or the render context is not associated with
+a map layer render, then an invalid coordinate transformation is returned.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#qgis.core.QgsRenderContext.setCoordinateTransform" title="qgis.core.QgsRenderContext.setCoordinateTransform"><code class="xref py py-func docutils literal notranslate"><span class="pre">setCoordinateTransform()</span></code></a></p>
+</div>
 </dd></dl>
 
 <dl class="method">
@@ -2299,7 +2308,22 @@ associated with this render context.</p>
 <dl class="method">
 <dt id="qgis.core.QgsRenderContext.extent">
 <code class="descname">extent</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; QgsRectangle<a class="headerlink" href="#qgis.core.QgsRenderContext.extent" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>When rendering a map layer, calling this method returns the “clipping”
+extent for the layer (in the layer’s CRS).</p>
+<p>This extent is a “worst-case” scenario, which is guaranteed to cover the complete
+visible portion of the layer when it is rendered to a map. It is often larger
+than the actual visible portion of that layer.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">For some layers, depending on the visible extent and the coordinate
+transforms involved, this extent will represent the entire globe. This method
+should never be used to determine the actual visible extent of a map render.</p>
+</div>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#qgis.core.QgsRenderContext.setExtent" title="qgis.core.QgsRenderContext.setExtent"><code class="xref py py-func docutils literal notranslate"><span class="pre">setExtent()</span></code></a></p>
+</div>
+</dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsRenderContext.featureFilterProvider">
@@ -2439,7 +2463,14 @@ per millimeter.</p>
 <dl class="method">
 <dt id="qgis.core.QgsRenderContext.setCoordinateTransform">
 <code class="descname">setCoordinateTransform</code><span class="sig-paren">(</span><em>self</em>, <em>t: QgsCoordinateTransform</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsRenderContext.setCoordinateTransform" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sets coordinate transformation.</p>
+<dd><p>Sets the current coordinate transform for the context.</p>
+<p>This represents the coordinate transform required to transform the layer
+which is being rendered back to the CRS of the rendered map.</p>
+<p>Set to an invalid QgsCoordinateTransform to indicate that no transformation is required.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#qgis.core.QgsRenderContext.coordinateTransform" title="qgis.core.QgsRenderContext.coordinateTransform"><code class="xref py py-func docutils literal notranslate"><span class="pre">coordinateTransform()</span></code></a></p>
+</div>
 </dd></dl>
 
 <dl class="method">
@@ -2474,7 +2505,17 @@ associated with this render context.</p>
 <dl class="method">
 <dt id="qgis.core.QgsRenderContext.setExtent">
 <code class="descname">setExtent</code><span class="sig-paren">(</span><em>self</em>, <em>extent: QgsRectangle</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsRenderContext.setExtent" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>When rendering a map layer, calling this method sets the “clipping”
+extent for the layer (in the layer’s CRS).</p>
+<p>This extent should be a “worst-case” scenario, which is guaranteed to
+completely cover the entire visible portion of the layer when it is rendered
+to the map. It may be larger than the actual visible area, but MUST contain at least the
+entire visible area.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#qgis.core.QgsRenderContext.setExtent" title="qgis.core.QgsRenderContext.setExtent"><code class="xref py py-func docutils literal notranslate"><span class="pre">setExtent()</span></code></a></p>
+</div>
+</dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsRenderContext.setFeatureFilterProvider">
@@ -2782,7 +2823,7 @@ from a source to destination coordinate reference system.</p>
 
   <div role="contentinfo">
     <p>
-      Last updated on 12:24 Dec 16, 2018.
+      Last updated on 12:24 Dec 17, 2018.
 
     </p>
   </div> 

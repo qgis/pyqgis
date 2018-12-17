@@ -390,6 +390,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../Label/index.html">Label</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Label/QgsLabelBlockingRegion.html">Class: QgsLabelBlockingRegion</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Label/QgsLabelCandidate.html">Class: QgsLabelCandidate</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Label/QgsLabelPosition.html">Class: QgsLabelPosition</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Label/QgsLabelSearchTree.html">Class: QgsLabelSearchTree</a></li>
@@ -661,6 +662,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../Processing/QgsProcessingOutputRasterLayer.html">Class: QgsProcessingOutputRasterLayer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Processing/QgsProcessingOutputString.html">Class: QgsProcessingOutputString</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Processing/QgsProcessingOutputVectorLayer.html">Class: QgsProcessingOutputVectorLayer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Processing/QgsProcessingParameterAuthConfig.html">Class: QgsProcessingParameterAuthConfig</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Processing/QgsProcessingParameterBand.html">Class: QgsProcessingParameterBand</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Processing/QgsProcessingParameterBoolean.html">Class: QgsProcessingParameterBoolean</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Processing/QgsProcessingParameterCrs.html">Class: QgsProcessingParameterCrs</a></li>
@@ -1943,6 +1945,12 @@ ratio shall be set accordingly.</p>
 <tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsMapSettings.hasValidSettings" title="qgis.core.QgsMapSettings.hasValidSettings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hasValidSettings</span></code></a></td>
 <td>Check whether the map settings are valid and can be used for rendering</td>
 </tr>
+<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsMapSettings.labelBlockingRegions" title="qgis.core.QgsMapSettings.labelBlockingRegions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">labelBlockingRegions</span></code></a></td>
+<td>Returns the list of regions to avoid placing labels within.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsMapSettings.labelBoundaryGeometry" title="qgis.core.QgsMapSettings.labelBoundaryGeometry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">labelBoundaryGeometry</span></code></a></td>
+<td>Returns the label boundary geometry, which restricts where in the rendered map labels are permitted to be placed.</td>
+</tr>
 <tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsMapSettings.labelingEngineSettings" title="qgis.core.QgsMapSettings.labelingEngineSettings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">labelingEngineSettings</span></code></a></td>
 <td>Returns the global configuration of the labeling engine.</td>
 </tr>
@@ -2041,6 +2049,12 @@ ratio shall be set accordingly.</p>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsMapSettings.setFlags" title="qgis.core.QgsMapSettings.setFlags"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setFlags</span></code></a></td>
 <td>Sets combination of flags that will be used for rendering</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsMapSettings.setLabelBlockingRegions" title="qgis.core.QgsMapSettings.setLabelBlockingRegions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setLabelBlockingRegions</span></code></a></td>
+<td>Sets a list of <code class="docutils literal notranslate"><span class="pre">regions</span></code> to avoid placing labels within.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsMapSettings.setLabelBoundaryGeometry" title="qgis.core.QgsMapSettings.setLabelBoundaryGeometry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setLabelBoundaryGeometry</span></code></a></td>
+<td>Sets the label <code class="docutils literal notranslate"><span class="pre">boundary</span></code> geometry, which restricts where in the rendered map labels are permitted to be placed.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsMapSettings.setLabelingEngineSettings" title="qgis.core.QgsMapSettings.setLabelingEngineSettings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setLabelingEngineSettings</span></code></a></td>
 <td>Sets the global configuration of the labeling engine.</td>
@@ -2335,6 +2349,43 @@ of output size. Use visibleExtent() to get the resulting extent.</p>
 <dt id="qgis.core.QgsMapSettings.hasValidSettings">
 <code class="descname">hasValidSettings</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsMapSettings.hasValidSettings" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check whether the map settings are valid and can be used for rendering</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qgis.core.QgsMapSettings.labelBlockingRegions">
+<code class="descname">labelBlockingRegions</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; List[QgsLabelBlockingRegion]<a class="headerlink" href="#qgis.core.QgsMapSettings.labelBlockingRegions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the list of regions to avoid placing labels within.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#qgis.core.QgsMapSettings.setLabelBlockingRegions" title="qgis.core.QgsMapSettings.setLabelBlockingRegions"><code class="xref py py-func docutils literal notranslate"><span class="pre">setLabelBlockingRegions()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#qgis.core.QgsMapSettings.labelBoundaryGeometry" title="qgis.core.QgsMapSettings.labelBoundaryGeometry"><code class="xref py py-func docutils literal notranslate"><span class="pre">labelBoundaryGeometry()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 3.6.</span></p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="qgis.core.QgsMapSettings.labelBoundaryGeometry">
+<code class="descname">labelBoundaryGeometry</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; QgsGeometry<a class="headerlink" href="#qgis.core.QgsMapSettings.labelBoundaryGeometry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the label boundary geometry, which restricts where in the rendered map labels are permitted to be
+placed. By default this is a null geometry, which indicates that labels can be placed anywhere within
+the map’s visiblePolygon().</p>
+<p>The geometry is specified using the map’s destinationCrs().</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#qgis.core.QgsMapSettings.setLabelBoundaryGeometry" title="qgis.core.QgsMapSettings.setLabelBoundaryGeometry"><code class="xref py py-func docutils literal notranslate"><span class="pre">setLabelBoundaryGeometry()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#qgis.core.QgsMapSettings.labelBlockingRegions" title="qgis.core.QgsMapSettings.labelBlockingRegions"><code class="xref py py-func docutils literal notranslate"><span class="pre">labelBlockingRegions()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 3.6.</span></p>
+</div>
 </dd></dl>
 
 <dl class="method">
@@ -2709,6 +2760,44 @@ of output size. Use visibleExtent() to get the resulting extent.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="qgis.core.QgsMapSettings.setLabelBlockingRegions">
+<code class="descname">setLabelBlockingRegions</code><span class="sig-paren">(</span><em>self</em>, <em>regions: object</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsMapSettings.setLabelBlockingRegions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets a list of <code class="docutils literal notranslate"><span class="pre">regions</span></code> to avoid placing labels within.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#qgis.core.QgsMapSettings.labelBlockingRegions" title="qgis.core.QgsMapSettings.labelBlockingRegions"><code class="xref py py-func docutils literal notranslate"><span class="pre">labelBlockingRegions()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#qgis.core.QgsMapSettings.setLabelBoundaryGeometry" title="qgis.core.QgsMapSettings.setLabelBoundaryGeometry"><code class="xref py py-func docutils literal notranslate"><span class="pre">setLabelBoundaryGeometry()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 3.6.</span></p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="qgis.core.QgsMapSettings.setLabelBoundaryGeometry">
+<code class="descname">setLabelBoundaryGeometry</code><span class="sig-paren">(</span><em>self</em>, <em>boundary: QgsGeometry</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsMapSettings.setLabelBoundaryGeometry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the label <code class="docutils literal notranslate"><span class="pre">boundary</span></code> geometry, which restricts where in the rendered map labels are permitted to be
+placed.</p>
+<p>A null <code class="docutils literal notranslate"><span class="pre">boundary</span></code> geometry (the default) indicates that labels can be placed anywhere within
+the map’s visiblePolygon().</p>
+<p>The geometry is specified using the map’s destinationCrs().</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#qgis.core.QgsMapSettings.labelBoundaryGeometry" title="qgis.core.QgsMapSettings.labelBoundaryGeometry"><code class="xref py py-func docutils literal notranslate"><span class="pre">labelBoundaryGeometry()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#qgis.core.QgsMapSettings.setLabelBlockingRegions" title="qgis.core.QgsMapSettings.setLabelBlockingRegions"><code class="xref py py-func docutils literal notranslate"><span class="pre">setLabelBlockingRegions()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 3.6.</span></p>
+</div>
+</dd></dl>
+
+<dl class="method">
 <dt id="qgis.core.QgsMapSettings.setLabelingEngineSettings">
 <code class="descname">setLabelingEngineSettings</code><span class="sig-paren">(</span><em>self</em>, <em>settings: QgsLabelingEngineSettings</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsMapSettings.setLabelingEngineSettings" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets the global configuration of the labeling engine.</p>
@@ -2953,7 +3042,7 @@ from a source to destination coordinate reference system.</p>
 
   <div role="contentinfo">
     <p>
-      Last updated on 12:24 Dec 16, 2018.
+      Last updated on 12:24 Dec 17, 2018.
 
     </p>
   </div> 

@@ -390,6 +390,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../Label/index.html">Label</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Label/QgsLabelBlockingRegion.html">Class: QgsLabelBlockingRegion</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Label/QgsLabelCandidate.html">Class: QgsLabelCandidate</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Label/QgsLabelPosition.html">Class: QgsLabelPosition</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Label/QgsLabelSearchTree.html">Class: QgsLabelSearchTree</a></li>
@@ -661,6 +662,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../Processing/QgsProcessingOutputRasterLayer.html">Class: QgsProcessingOutputRasterLayer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Processing/QgsProcessingOutputString.html">Class: QgsProcessingOutputString</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Processing/QgsProcessingOutputVectorLayer.html">Class: QgsProcessingOutputVectorLayer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Processing/QgsProcessingParameterAuthConfig.html">Class: QgsProcessingParameterAuthConfig</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Processing/QgsProcessingParameterBand.html">Class: QgsProcessingParameterBand</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Processing/QgsProcessingParameterBoolean.html">Class: QgsProcessingParameterBoolean</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Processing/QgsProcessingParameterCrs.html">Class: QgsProcessingParameterCrs</a></li>
@@ -1954,7 +1956,7 @@ can be accessed via the get() method or set using the set() method.</p>
 <td>Returns contents of the geometry as a multi linestring if wkbType is WKBMultiLineString, otherwise an empty list</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsGeometry.asPoint" title="qgis.core.QgsGeometry.asPoint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">asPoint</span></code></a></td>
-<td>Returns contents of the geometry as a point if wkbType is WKBPoint, otherwise returns [0,0]</td>
+<td>Returns the contents of the geometry as a 2-dimensional point.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsGeometry.asPolygon" title="qgis.core.QgsGeometry.asPolygon"><code class="xref py py-obj docutils literal notranslate"><span class="pre">asPolygon</span></code></a></td>
 <td>Returns contents of the geometry as a polygon if wkbType is WKBPolygon, otherwise an empty list</td>
@@ -2814,8 +2816,11 @@ if wkbType is WKBMultiLineString, otherwise an empty list</p>
 <dl class="method">
 <dt id="qgis.core.QgsGeometry.asPoint">
 <code class="descname">asPoint</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; QgsPointXY<a class="headerlink" href="#qgis.core.QgsGeometry.asPoint" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns contents of the geometry as a point
-if wkbType is WKBPoint, otherwise returns [0,0]</p>
+<dd><p>Returns the contents of the geometry as a 2-dimensional point.</p>
+<p>Any z or m values present in the geometry will be discarded.</p>
+<p>This method works only with single-point geometry types. If the geometry
+is not a single-point type, a TypeError will be raised. If the geometry
+is null, a ValueError will be raised.</p>
 </dd></dl>
 
 <dl class="method">
@@ -4906,7 +4911,7 @@ An empty geometry will be returned if the diagram could not be calculated.</p>
 
   <div role="contentinfo">
     <p>
-      Last updated on 12:24 Dec 16, 2018.
+      Last updated on 12:24 Dec 17, 2018.
 
     </p>
   </div> 
