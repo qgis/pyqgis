@@ -283,6 +283,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../Expression/QgsExpressionNodeCondition.html">Class: QgsExpressionNodeCondition</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Expression/QgsExpressionNodeFunction.html">Class: QgsExpressionNodeFunction</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Expression/QgsExpressionNodeInOperator.html">Class: QgsExpressionNodeInOperator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Expression/QgsExpressionNodeIndexOperator.html">Class: QgsExpressionNodeIndexOperator</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Expression/QgsExpressionNodeLiteral.html">Class: QgsExpressionNodeLiteral</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Expression/QgsExpressionNodeUnaryOperator.html">Class: QgsExpressionNodeUnaryOperator</a></li>
 </ul>
@@ -2500,15 +2501,12 @@ if a more efficient bounding box calculation is available.</p>
 <li><strong>pt</strong> – specifies the point to find closest segment to</li>
 <li><strong>segmentPt</strong> – storage for the closest point within the geometry</li>
 <li><strong>vertexAfter</strong> – storage for the ID of the vertex at the end of the closest segment</li>
-<li><strong>leftOf</strong> – indicates whether the point lies on the left side of the geometry (-1 if point is to the left
-of the geometry, +1 if the point is to the right of the geometry, or 0 for cases where left/right could not
-be determined, e.g. point exactly on a line)
-false if point is to right of segment)</li>
 <li><strong>epsilon</strong> – epsilon for segment snapping</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">squared distance to closest segment or negative value on error</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">squared distance to closest segment or negative value on error
+leftOf:  indicates whether the point lies on the left side of the geometry (-1 if point is to the left of the geometry, +1 if the point is to the right of the geometry, or 0 for cases where left/right could not be determined, e.g. point exactly on a line) false if point is to right of segment)</p>
 </td>
 </tr>
 </tbody>
@@ -2821,15 +2819,11 @@ After successful read the wkb argument will be at the position where the reading
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>id</strong> – initial value should be the starting vertex id. The next vertex id will be stored
-in this variable if found.</li>
-<li><strong>vertex</strong> – container for found node</li>
-</ul>
-</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>id</strong> – initial value should be the starting vertex id. The next vertex id will be stored
+in this variable if found.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">false if at end</p>
-</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">false if at end
+vertex:  container for found node</td>
 </tr>
 </tbody>
 </table>
@@ -3168,7 +3162,7 @@ modified using the iterator. See transformVertices() for a safe method to modify
 
   <div role="contentinfo">
     <p>
-      Last updated on 12:24 Dec 18, 2018.
+      Last updated on 10:45 Dec 19, 2018.
 
     </p>
   </div> 

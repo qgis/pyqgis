@@ -283,6 +283,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../Expression/QgsExpressionNodeCondition.html">Class: QgsExpressionNodeCondition</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Expression/QgsExpressionNodeFunction.html">Class: QgsExpressionNodeFunction</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Expression/QgsExpressionNodeInOperator.html">Class: QgsExpressionNodeInOperator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Expression/QgsExpressionNodeIndexOperator.html">Class: QgsExpressionNodeIndexOperator</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Expression/QgsExpressionNodeLiteral.html">Class: QgsExpressionNodeLiteral</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Expression/QgsExpressionNodeUnaryOperator.html">Class: QgsExpressionNodeUnaryOperator</a></li>
 </ul>
@@ -1960,10 +1961,10 @@ can be accessed via the get() method or set using the set() method.</p>
 <td>Returns the contents of the geometry as a 2-dimensional point.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsGeometry.asPolygon" title="qgis.core.QgsGeometry.asPolygon"><code class="xref py py-obj docutils literal notranslate"><span class="pre">asPolygon</span></code></a></td>
-<td>Returns contents of the geometry as a polygon if wkbType is WKBPolygon, otherwise an empty list</td>
+<td>Returns the contents of the geometry as a polygon.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsGeometry.asPolyline" title="qgis.core.QgsGeometry.asPolyline"><code class="xref py py-obj docutils literal notranslate"><span class="pre">asPolyline</span></code></a></td>
-<td>Returns contents of the geometry as a polyline if wkbType is WKBLineString, otherwise an empty list</td>
+<td>Returns the contents of the geometry as a polyline.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsGeometry.asQPointF" title="qgis.core.QgsGeometry.asQPointF"><code class="xref py py-obj docutils literal notranslate"><span class="pre">asQPointF</span></code></a></td>
 <td>Returns contents of the geometry as a QPointF if wkbType is WKBPoint, otherwise returns a null QPointF.</td>
@@ -2826,16 +2827,24 @@ is null, a ValueError will be raised.</p>
 
 <dl class="method">
 <dt id="qgis.core.QgsGeometry.asPolygon">
-<code class="descname">asPolygon</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; object<a class="headerlink" href="#qgis.core.QgsGeometry.asPolygon" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns contents of the geometry as a polygon
-if wkbType is WKBPolygon, otherwise an empty list</p>
+<code class="descname">asPolygon</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; QgsPolygonXY<a class="headerlink" href="#qgis.core.QgsGeometry.asPolygon" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the contents of the geometry as a polygon.</p>
+<p>Any z or m values present in the geometry will be discarded. If the geometry is a curved polygon type
+(such as a CurvePolygon), it will be automatically segmentized.</p>
+<p>This method works only with single-polygon (or single-curve polygon) geometry types. If the geometry
+is not a single-polygon type, a TypeError will be raised. If the geometry is null, a ValueError
+will be raised.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsGeometry.asPolyline">
-<code class="descname">asPolyline</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; List[QgsPointXY]<a class="headerlink" href="#qgis.core.QgsGeometry.asPolyline" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns contents of the geometry as a polyline
-if wkbType is WKBLineString, otherwise an empty list</p>
+<code class="descname">asPolyline</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; QgsPolylineXY<a class="headerlink" href="#qgis.core.QgsGeometry.asPolyline" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the contents of the geometry as a polyline.</p>
+<p>Any z or m values present in the geometry will be discarded. If the geometry is a curved line type
+(such as a CircularString), it will be automatically segmentized.</p>
+<p>This method works only with single-line (or single-curve) geometry types. If the geometry
+is not a single-line type, a TypeError will be raised. If the geometry is null, a ValueError
+will be raised.</p>
 </dd></dl>
 
 <dl class="method">
@@ -2894,17 +2903,12 @@ then the result will be a closed QPolygonF of the geometry’s exterior ring.</p
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">0 in case of success,
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>avoidIntersectionsLayers</strong> – list of layers to check for intersections</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">0 in case of success,
 1 if geometry is not of polygon type,
 2 if avoid intersection would change the geometry type,
-3 other error during intersection removal</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>avoidIntersectionsLayers</strong> – list of layers to check for intersections</li>
-<li><strong>ignoreFeatures</strong> – possibility to give a list of features where intersections should be ignored (not available in Python bindings)</li>
-</ul>
-</td>
+3 other error during intersection removal</td>
 </tr>
 </tbody>
 </table>
@@ -3035,7 +3039,6 @@ a <code class="docutils literal notranslate"><span class="pre">rectangle</span><
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>point</strong> – Specifies the point for search</li>
-<li><strong>minDistPoint</strong> – Receives the nearest point on the segment</li>
 <li><strong>afterVertex</strong> – Receives index of the vertex after the closest segment. The vertex
 before the closest segment is always afterVertex - 1</li>
 <li><strong>leftOf</strong> – Out: Returns if the point lies on the left of left side of the geometry ( &lt; 0 means left, &gt; 0 means right, 0 indicates
@@ -3044,7 +3047,8 @@ that the test was unsuccessful, e.g. for a point exactly on the line)</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The squared Cartesian distance is also returned in sqrDist, negative number on error</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The squared Cartesian distance is also returned in sqrDist, negative number on error
+minDistPoint:  Receives the nearest point on the segment</p>
 </td>
 </tr>
 </tbody>
@@ -3064,14 +3068,10 @@ that the test was unsuccessful, e.g. for a point exactly on the line)</li>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>point</strong> – Specifiest the point for search</li>
-<li><strong>atVertex</strong> – Receives index of the closest vertex</li>
-</ul>
-</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>point</strong> – Specifiest the point for search</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The squared Cartesian distance is also returned in sqrDist, negative number on error</p>
-</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The squared Cartesian distance is also returned in sqrDist, negative number on error
+atVertex:  Receives index of the closest vertex</td>
 </tr>
 </tbody>
 </table>
@@ -4161,7 +4161,6 @@ MultiLineString geometry.</td>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>center</strong> – Center of the minimal enclosing circle returneds</li>
 <li><strong>radius</strong> – Radius of the minimal enclosing circle returned</li>
 <li><strong>segments</strong> – Number of segments used to segment geometry. <a class="reference internal" href="../Ellipse/QgsEllipse.html#qgis.core.QgsEllipse.toPolygon" title="qgis.core.QgsEllipse.toPolygon"><code class="xref py py-func docutils literal notranslate"><span class="pre">QgsEllipse.toPolygon()</span></code></a></li>
 </ul>
@@ -4912,7 +4911,7 @@ An empty geometry will be returned if the diagram could not be calculated.</p>
 
   <div role="contentinfo">
     <p>
-      Last updated on 12:24 Dec 18, 2018.
+      Last updated on 10:45 Dec 19, 2018.
 
     </p>
   </div> 
