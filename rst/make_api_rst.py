@@ -61,16 +61,6 @@ PACKAGENAME
 
 """
 
-sub_group_header = """
-SUBGROUPNAME
------------------------------------
-
-.. toctree::
-   :maxdepth: 3
-   :caption: SUBGROUPNAME:
-
-"""
-
 
 def generate_docs():
     """Generate RST documentation by introspection of QGIS libs.
@@ -105,7 +95,6 @@ def generate_docs():
     # template based on standard rst template
 
     for package_name, package in packages.items():
-        package_subgroups = extract_package_subgroups(package)
         makedirs('api/{}/{}'.format(qgis_version, package_name))
         index.write('   %s/index\n' % package_name)
 
@@ -113,129 +102,48 @@ def generate_docs():
         # Read in the standard rst template we will use for classes
         package_index.write(
             package_header.replace('PACKAGENAME', package_name))
-        for package_subgroup, classes in package_subgroups.items():
+
+        for class_name in extract_package_classes(package):
+            print(class_name)
+            substitutions = {
+                'PACKAGE': package_name,
+                'CLASS': class_name
+            }
+            class_template = template.substitute(**substitutions)
+            class_rst = open('api/{}/{}/{}.rst'.format(
+                    qgis_version,
+                    package_name,
+                    class_name), 'w')
+            print(class_template, file=class_rst)
+            class_rst.close()
             package_index.write(
-                '   %s/index\n' % package_subgroup)
-            makedirs('api/{}/{}/{}'.format(qgis_version, package_name, package_subgroup))
-            subgroup_index = open('api/{}/{}/{}/index.rst'.format(qgis_version, package_name, package_subgroup), 'w')
-            # Read in the standard rst template we will use for classes
-            subgroup_index.write(
-                sub_group_header.replace('SUBGROUPNAME', package_subgroup))
-            for class_name in classes:
-                if not re.match('^Qgi?s', class_name):
-                    continue
-                print(class_name)
-                substitutions = {
-                    'PACKAGE': package_name,
-                    'SUBGROUP': package_subgroup,
-                    'CLASS': class_name
-                }
-                class_template = template.substitute(**substitutions)
-                class_rst = open('api/{}/{}/{}/{}.rst'.format(
-                        qgis_version,
-                        package_name,
-                        package_subgroup,
-                        class_name), 'w')
-                print(class_template, file=class_rst)
-                class_rst.close()
-                subgroup_index.write(
-                    '   %s\n' % class_name)
-            subgroup_index.close()
+                '   %s\n' % class_name)
         package_index.close()
 
     index.write(document_footer)
     index.close()
 
 
-def current_subgroup(class_name):
-    """A helper to determine the current subgroup given the class name.
-
-    For example we want to know if we are dealing with the composer classes,
-    the geometry classes etc. In the case of QgsComposerStyle the extracted
-    subgroup would be 'Composer'.
-
-    :param class_name: The class name that we want to extract the subgroup
-        name for. e.g. 'QgsComposerStyle', or None if parsing fails.
-    :type class_name: str, None
-
-    :returns: The subgroup name e.g. 'Composer'
-
-    :raises: No exceptions are raises - in the event of error, None is
-        returned.
-    """
-    stripped_prefix = re.sub('^Qgi?s', '', class_name)
-    try:
-        first_word = re.search('^[A-Z][a-z0-9]*', stripped_prefix).group(0)
-    except AttributeError:
-        return None
-
-    return first_word
-
-
-def extract_package_subgroups(package):
-    """Extract the subgroups from the package provided.
-
-    Groups are defined by any classes that have the same prefix (excluding
-    the 'Qgs' prefix. So for example::
-
-        QgsComposerItem
-        QgsComposer
-
-    Would both be part of the `Composer` groups. Classes that do no have other
-    classes with a similar prefix will be consider part of the 'main'
-    package group and not of a subgroup.
-
-    TODO: Add rules so that items can eb explicitly placed into groups where
-    needed.
+def extract_package_classes(package):
+    """Extract the classes from the package provided.
 
     :param package: The  package to extract groups from e.g. qgis.core.
     :type package: object
 
-    :returns: A dictionary where keys are subgroup names and values are
-        lists of class names that are part of that subgroup.
-    :rtype: OrderedDict
+    :returns: A list of classes alphabetically ordered.
+    :rtype: list
     """
-    classes = dir(package)
-    result = OrderedDict()
+    classes = []
 
-    # First get a list of all unique subgroups
-    candidates = list()
-    subgroups = list()
-    for class_name in classes:
+    for class_name in dir(package):
         if args.class_limit and not class_name.startswith(args.class_limit):
             continue
         if not re.match('^Qgi?s', class_name):
             continue
-        subgroup = current_subgroup(class_name)
-        if subgroup is None:
-            continue
-        if subgroup not in candidates:
-            # make it a candidate - it will become a subgroup when another
-            # class is found that belongs to the same subgroup
-            candidates.append(subgroup)
-        elif subgroup not in subgroups:
-            # It has already been found once before so make a group
-            subgroups.append(subgroup)
-            result[subgroup] = []
-    # Bucket for all classes lacking an obvious subgroup
-    subgroups.append('other')
-    result['other'] = []
-    # Now look through the list again, this time adding the classes into
-    # their relevant subgroups or other as appropriate
-    for class_name in classes:
-        if args.class_limit and not class_name.startswith(args.class_limit):
-            continue
-        if not re.match('^Qgi?s', class_name):
-            continue
-        subgroup = current_subgroup(class_name)
-        if subgroup is None:
-            continue
-        if subgroup in result.keys():
-            result[subgroup].append(class_name)
-        else:
-            result['other'].append(class_name)
+        classes.append(class_name)
 
-    return result
+    return sorted(classes)
+
 
 if __name__ == "__main__":
     generate_docs()
