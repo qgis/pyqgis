@@ -109,6 +109,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsAbstractMetadataBaseValidator.html">Class: QgsAbstractMetadataBaseValidator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAbstractPropertyCollection.html">Class: QgsAbstractPropertyCollection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAbstractReportSection.html">Class: QgsAbstractReportSection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsAbstractValidityCheck.html">Class: QgsAbstractValidityCheck</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAbstractVectorLayerLabeling.html">Class: QgsAbstractVectorLayerLabeling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAction.html">Class: QgsAction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsActionManager.html">Class: QgsActionManager</a></li>
@@ -397,6 +398,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsLayoutUndoObjectInterface.html">Class: QgsLayoutUndoObjectInterface</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsLayoutUndoStack.html">Class: QgsLayoutUndoStack</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsLayoutUtils.html">Class: QgsLayoutUtils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsLayoutValidityCheckContext.html">Class: QgsLayoutValidityCheckContext</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsLegendModel.html">Class: QgsLegendModel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsLegendRenderer.html">Class: QgsLegendRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsLegendSettings.html">Class: QgsLegendSettings</a></li>
@@ -749,6 +751,9 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsUserColorScheme.html">Class: QgsUserColorScheme</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsUserProfile.html">Class: QgsUserProfile</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsUserProfileManager.html">Class: QgsUserProfileManager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsValidityCheckContext.html">Class: QgsValidityCheckContext</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsValidityCheckRegistry.html">Class: QgsValidityCheckRegistry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsValidityCheckResult.html">Class: QgsValidityCheckResult</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsValueMapFieldFormatter.html">Class: QgsValueMapFieldFormatter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsValueRelationFieldFormatter.html">Class: QgsValueRelationFieldFormatter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsVector.html">Class: QgsVector</a></li>
@@ -1220,6 +1225,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsUnitSelectionWidget.html">Class: QgsUnitSelectionWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsUserInputWidget.html">Class: QgsUserInputWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsVScrollArea.html">Class: QgsVScrollArea</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui/QgsValidityCheckResultsModel.html">Class: QgsValidityCheckResultsModel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui/QgsValidityCheckResultsWidget.html">Class: QgsValidityCheckResultsWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsValueMapSearchWidgetWrapper.html">Class: QgsValueMapSearchWidgetWrapper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsValueRelationSearchWidgetWrapper.html">Class: QgsValueRelationSearchWidgetWrapper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsVariableEditorWidget.html">Class: QgsVariableEditorWidget</a></li>
@@ -1492,8 +1499,11 @@ such as blending modes.</p>
 
 <dl class="method">
 <dt id="qgis.core.QgsLayoutItemMapItemStack.drawItems">
-<code class="descname">drawItems</code><span class="sig-paren">(</span><em>self</em>, <em>painter: QPainter</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsLayoutItemMapItemStack.drawItems" title="Permalink to this definition">¶</a></dt>
+<code class="descname">drawItems</code><span class="sig-paren">(</span><em>self</em>, <em>painter: QPainter</em>, <em>ignoreStacking: bool = True</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsLayoutItemMapItemStack.drawItems" title="Permalink to this definition">¶</a></dt>
 <dd><p>Draws the items from the stack on a specified <code class="docutils literal notranslate"><span class="pre">painter</span></code>.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">ignoreStacking</span></code> is true, then all items will be drawn, regardless
+of their actual stacking position settings. If it is false, only items
+which are set to stack above the map item will be drawn.</p>
 </dd></dl>
 
 <dl class="method">
@@ -1613,7 +1623,7 @@ Returns true if write was successful.</p>
 
   <div role="contentinfo">
     <p>
-      Last updated on 14:28 Jan 02, 2019.
+      Last updated on 14:29 Jan 03, 2019.
 
     </p>
   </div> 

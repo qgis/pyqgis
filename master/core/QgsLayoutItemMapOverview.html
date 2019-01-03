@@ -109,6 +109,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsAbstractMetadataBaseValidator.html">Class: QgsAbstractMetadataBaseValidator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAbstractPropertyCollection.html">Class: QgsAbstractPropertyCollection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAbstractReportSection.html">Class: QgsAbstractReportSection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsAbstractValidityCheck.html">Class: QgsAbstractValidityCheck</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAbstractVectorLayerLabeling.html">Class: QgsAbstractVectorLayerLabeling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAction.html">Class: QgsAction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsActionManager.html">Class: QgsActionManager</a></li>
@@ -397,6 +398,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsLayoutUndoObjectInterface.html">Class: QgsLayoutUndoObjectInterface</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsLayoutUndoStack.html">Class: QgsLayoutUndoStack</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsLayoutUtils.html">Class: QgsLayoutUtils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsLayoutValidityCheckContext.html">Class: QgsLayoutValidityCheckContext</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsLegendModel.html">Class: QgsLegendModel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsLegendRenderer.html">Class: QgsLegendRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsLegendSettings.html">Class: QgsLegendSettings</a></li>
@@ -749,6 +751,9 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsUserColorScheme.html">Class: QgsUserColorScheme</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsUserProfile.html">Class: QgsUserProfile</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsUserProfileManager.html">Class: QgsUserProfileManager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsValidityCheckContext.html">Class: QgsValidityCheckContext</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsValidityCheckRegistry.html">Class: QgsValidityCheckRegistry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsValidityCheckResult.html">Class: QgsValidityCheckResult</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsValueMapFieldFormatter.html">Class: QgsValueMapFieldFormatter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsValueRelationFieldFormatter.html">Class: QgsValueRelationFieldFormatter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsVector.html">Class: QgsVector</a></li>
@@ -1220,6 +1225,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsUnitSelectionWidget.html">Class: QgsUnitSelectionWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsUserInputWidget.html">Class: QgsUserInputWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsVScrollArea.html">Class: QgsVScrollArea</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui/QgsValidityCheckResultsModel.html">Class: QgsValidityCheckResultsModel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui/QgsValidityCheckResultsWidget.html">Class: QgsValidityCheckResultsWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsValueMapSearchWidgetWrapper.html">Class: QgsValueMapSearchWidgetWrapper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsValueRelationSearchWidgetWrapper.html">Class: QgsValueRelationSearchWidgetWrapper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsVariableEditorWidget.html">Class: QgsVariableEditorWidget</a></li>
@@ -1409,88 +1416,91 @@
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverview.blendMode" title="qgis.core.QgsLayoutItemMapOverview.blendMode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">blendMode</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverview.asMapLayer" title="qgis.core.QgsLayoutItemMapOverview.asMapLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">asMapLayer</span></code></a></td>
+<td>Returns a vector layer to render as part of the QgsLayoutItemMap render, containing a feature representing the overview extent (and with an appropriate renderer set matching the overview’s frameSymbol() ).</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverview.blendMode" title="qgis.core.QgsLayoutItemMapOverview.blendMode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">blendMode</span></code></a></td>
 <td>Retrieves the blending mode used for drawing the overview.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverview.centered" title="qgis.core.QgsLayoutItemMapOverview.centered"><code class="xref py py-obj docutils literal notranslate"><span class="pre">centered</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverview.centered" title="qgis.core.QgsLayoutItemMapOverview.centered"><code class="xref py py-obj docutils literal notranslate"><span class="pre">centered</span></code></a></td>
 <td>Returns whether the extent of the map is forced to center on the overview.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverview.childEvent" title="qgis.core.QgsLayoutItemMapOverview.childEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">childEvent</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverview.childEvent" title="qgis.core.QgsLayoutItemMapOverview.childEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">childEvent</span></code></a></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverview.connectNotify" title="qgis.core.QgsLayoutItemMapOverview.connectNotify"><code class="xref py py-obj docutils literal notranslate"><span class="pre">connectNotify</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverview.connectNotify" title="qgis.core.QgsLayoutItemMapOverview.connectNotify"><code class="xref py py-obj docutils literal notranslate"><span class="pre">connectNotify</span></code></a></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverview.connectSignals" title="qgis.core.QgsLayoutItemMapOverview.connectSignals"><code class="xref py py-obj docutils literal notranslate"><span class="pre">connectSignals</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverview.connectSignals" title="qgis.core.QgsLayoutItemMapOverview.connectSignals"><code class="xref py py-obj docutils literal notranslate"><span class="pre">connectSignals</span></code></a></td>
 <td>Reconnects signals for overview map, so that overview correctly follows changes to source map’s extent.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverview.customEvent" title="qgis.core.QgsLayoutItemMapOverview.customEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">customEvent</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverview.customEvent" title="qgis.core.QgsLayoutItemMapOverview.customEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">customEvent</span></code></a></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverview.disconnectNotify" title="qgis.core.QgsLayoutItemMapOverview.disconnectNotify"><code class="xref py py-obj docutils literal notranslate"><span class="pre">disconnectNotify</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverview.disconnectNotify" title="qgis.core.QgsLayoutItemMapOverview.disconnectNotify"><code class="xref py py-obj docutils literal notranslate"><span class="pre">disconnectNotify</span></code></a></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverview.draw" title="qgis.core.QgsLayoutItemMapOverview.draw"><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverview.draw" title="qgis.core.QgsLayoutItemMapOverview.draw"><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw</span></code></a></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverview.finalizeRestoreFromXml" title="qgis.core.QgsLayoutItemMapOverview.finalizeRestoreFromXml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">finalizeRestoreFromXml</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverview.finalizeRestoreFromXml" title="qgis.core.QgsLayoutItemMapOverview.finalizeRestoreFromXml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">finalizeRestoreFromXml</span></code></a></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverview.frameSymbol" title="qgis.core.QgsLayoutItemMapOverview.frameSymbol"><code class="xref py py-obj docutils literal notranslate"><span class="pre">frameSymbol</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverview.frameSymbol" title="qgis.core.QgsLayoutItemMapOverview.frameSymbol"><code class="xref py py-obj docutils literal notranslate"><span class="pre">frameSymbol</span></code></a></td>
 <td>Returns the fill symbol used for drawing the overview extent.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverview.inverted" title="qgis.core.QgsLayoutItemMapOverview.inverted"><code class="xref py py-obj docutils literal notranslate"><span class="pre">inverted</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverview.inverted" title="qgis.core.QgsLayoutItemMapOverview.inverted"><code class="xref py py-obj docutils literal notranslate"><span class="pre">inverted</span></code></a></td>
 <td>Returns whether the overview frame is inverted, ie, whether the shaded area is drawn outside the extent of the overview map.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverview.isSignalConnected" title="qgis.core.QgsLayoutItemMapOverview.isSignalConnected"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isSignalConnected</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverview.isSignalConnected" title="qgis.core.QgsLayoutItemMapOverview.isSignalConnected"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isSignalConnected</span></code></a></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverview.linkedMap" title="qgis.core.QgsLayoutItemMapOverview.linkedMap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">linkedMap</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverview.linkedMap" title="qgis.core.QgsLayoutItemMapOverview.linkedMap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">linkedMap</span></code></a></td>
 <td>Returns the source map to show the overview extent of.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverview.overviewExtentChanged" title="qgis.core.QgsLayoutItemMapOverview.overviewExtentChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">overviewExtentChanged</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverview.overviewExtentChanged" title="qgis.core.QgsLayoutItemMapOverview.overviewExtentChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">overviewExtentChanged</span></code></a></td>
 <td>Handles recentering of the map and redrawing of the map’s overview</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverview.readObjectPropertiesFromElement" title="qgis.core.QgsLayoutItemMapOverview.readObjectPropertiesFromElement"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readObjectPropertiesFromElement</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverview.readObjectPropertiesFromElement" title="qgis.core.QgsLayoutItemMapOverview.readObjectPropertiesFromElement"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readObjectPropertiesFromElement</span></code></a></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverview.readXml" title="qgis.core.QgsLayoutItemMapOverview.readXml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readXml</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverview.readXml" title="qgis.core.QgsLayoutItemMapOverview.readXml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readXml</span></code></a></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverview.receivers" title="qgis.core.QgsLayoutItemMapOverview.receivers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">receivers</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverview.receivers" title="qgis.core.QgsLayoutItemMapOverview.receivers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">receivers</span></code></a></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverview.sender" title="qgis.core.QgsLayoutItemMapOverview.sender"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sender</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverview.sender" title="qgis.core.QgsLayoutItemMapOverview.sender"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sender</span></code></a></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverview.senderSignalIndex" title="qgis.core.QgsLayoutItemMapOverview.senderSignalIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">senderSignalIndex</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverview.senderSignalIndex" title="qgis.core.QgsLayoutItemMapOverview.senderSignalIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">senderSignalIndex</span></code></a></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverview.setBlendMode" title="qgis.core.QgsLayoutItemMapOverview.setBlendMode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setBlendMode</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverview.setBlendMode" title="qgis.core.QgsLayoutItemMapOverview.setBlendMode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setBlendMode</span></code></a></td>
 <td>Sets the blending <code class="docutils literal notranslate"><span class="pre">mode</span></code> used for drawing the overview.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverview.setCentered" title="qgis.core.QgsLayoutItemMapOverview.setCentered"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setCentered</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverview.setCentered" title="qgis.core.QgsLayoutItemMapOverview.setCentered"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setCentered</span></code></a></td>
 <td>Sets whether the extent of the map is forced to center on the overview</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverview.setFrameSymbol" title="qgis.core.QgsLayoutItemMapOverview.setFrameSymbol"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setFrameSymbol</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverview.setFrameSymbol" title="qgis.core.QgsLayoutItemMapOverview.setFrameSymbol"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setFrameSymbol</span></code></a></td>
 <td>Sets the fill <code class="docutils literal notranslate"><span class="pre">symbol</span></code> used for drawing the overview extent.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverview.setInverted" title="qgis.core.QgsLayoutItemMapOverview.setInverted"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setInverted</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverview.setInverted" title="qgis.core.QgsLayoutItemMapOverview.setInverted"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setInverted</span></code></a></td>
 <td>Sets whether the overview frame is <code class="docutils literal notranslate"><span class="pre">inverted</span></code>, ie, whether the shaded area is drawn outside the extent of the overview map.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverview.setLinkedMap" title="qgis.core.QgsLayoutItemMapOverview.setLinkedMap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setLinkedMap</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverview.setLinkedMap" title="qgis.core.QgsLayoutItemMapOverview.setLinkedMap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setLinkedMap</span></code></a></td>
 <td>Sets the <code class="docutils literal notranslate"><span class="pre">map</span></code> to show the overview extent of.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverview.timerEvent" title="qgis.core.QgsLayoutItemMapOverview.timerEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">timerEvent</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverview.timerEvent" title="qgis.core.QgsLayoutItemMapOverview.timerEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">timerEvent</span></code></a></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverview.usesAdvancedEffects" title="qgis.core.QgsLayoutItemMapOverview.usesAdvancedEffects"><code class="xref py py-obj docutils literal notranslate"><span class="pre">usesAdvancedEffects</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverview.usesAdvancedEffects" title="qgis.core.QgsLayoutItemMapOverview.usesAdvancedEffects"><code class="xref py py-obj docutils literal notranslate"><span class="pre">usesAdvancedEffects</span></code></a></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverview.writeObjectPropertiesToElement" title="qgis.core.QgsLayoutItemMapOverview.writeObjectPropertiesToElement"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeObjectPropertiesToElement</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverview.writeObjectPropertiesToElement" title="qgis.core.QgsLayoutItemMapOverview.writeObjectPropertiesToElement"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeObjectPropertiesToElement</span></code></a></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverview.writeXml" title="qgis.core.QgsLayoutItemMapOverview.writeXml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeXml</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverview.writeXml" title="qgis.core.QgsLayoutItemMapOverview.writeXml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeXml</span></code></a></td>
 <td></td>
 </tr>
 </tbody>
@@ -1514,6 +1524,18 @@
 </tbody>
 </table>
 </div>
+<dl class="method">
+<dt id="qgis.core.QgsLayoutItemMapOverview.asMapLayer">
+<code class="descname">asMapLayer</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; QgsVectorLayer<a class="headerlink" href="#qgis.core.QgsLayoutItemMapOverview.asMapLayer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a vector layer to render as part of the QgsLayoutItemMap render, containing
+a feature representing the overview extent (and with an appropriate renderer set matching
+the overview’s frameSymbol() ).</p>
+<p>Ownership of the layer remain with the overview item.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 3.6.</span></p>
+</div>
+</dd></dl>
+
 <dl class="method">
 <dt id="qgis.core.QgsLayoutItemMapOverview.blendMode">
 <code class="descname">blendMode</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; QPainter.CompositionMode<a class="headerlink" href="#qgis.core.QgsLayoutItemMapOverview.blendMode" title="Permalink to this definition">¶</a></dt>
@@ -1725,7 +1747,7 @@ the extent of the overview map.</p>
 
   <div role="contentinfo">
     <p>
-      Last updated on 14:28 Jan 02, 2019.
+      Last updated on 14:29 Jan 03, 2019.
 
     </p>
   </div> 

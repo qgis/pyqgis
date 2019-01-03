@@ -109,6 +109,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsAbstractMetadataBaseValidator.html">Class: QgsAbstractMetadataBaseValidator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAbstractPropertyCollection.html">Class: QgsAbstractPropertyCollection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAbstractReportSection.html">Class: QgsAbstractReportSection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsAbstractValidityCheck.html">Class: QgsAbstractValidityCheck</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAbstractVectorLayerLabeling.html">Class: QgsAbstractVectorLayerLabeling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAction.html">Class: QgsAction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsActionManager.html">Class: QgsActionManager</a></li>
@@ -397,6 +398,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsLayoutUndoObjectInterface.html">Class: QgsLayoutUndoObjectInterface</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsLayoutUndoStack.html">Class: QgsLayoutUndoStack</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsLayoutUtils.html">Class: QgsLayoutUtils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsLayoutValidityCheckContext.html">Class: QgsLayoutValidityCheckContext</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsLegendModel.html">Class: QgsLegendModel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsLegendRenderer.html">Class: QgsLegendRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsLegendSettings.html">Class: QgsLegendSettings</a></li>
@@ -749,6 +751,9 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsUserColorScheme.html">Class: QgsUserColorScheme</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsUserProfile.html">Class: QgsUserProfile</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsUserProfileManager.html">Class: QgsUserProfileManager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsValidityCheckContext.html">Class: QgsValidityCheckContext</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsValidityCheckRegistry.html">Class: QgsValidityCheckRegistry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsValidityCheckResult.html">Class: QgsValidityCheckResult</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsValueMapFieldFormatter.html">Class: QgsValueMapFieldFormatter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsValueRelationFieldFormatter.html">Class: QgsValueRelationFieldFormatter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsVector.html">Class: QgsVector</a></li>
@@ -1220,6 +1225,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsUnitSelectionWidget.html">Class: QgsUnitSelectionWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsUserInputWidget.html">Class: QgsUserInputWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsVScrollArea.html">Class: QgsVScrollArea</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui/QgsValidityCheckResultsModel.html">Class: QgsValidityCheckResultsModel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui/QgsValidityCheckResultsWidget.html">Class: QgsValidityCheckResultsWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsValueMapSearchWidgetWrapper.html">Class: QgsValueMapSearchWidgetWrapper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsValueRelationSearchWidgetWrapper.html">Class: QgsValueRelationSearchWidgetWrapper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsVariableEditorWidget.html">Class: QgsVariableEditorWidget</a></li>
@@ -1412,31 +1419,34 @@ order they are drawn in.</p>
 <tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverviewStack.item" title="qgis.core.QgsLayoutItemMapOverviewStack.item"><code class="xref py py-obj docutils literal notranslate"><span class="pre">item</span></code></a></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverviewStack.moveItemDown" title="qgis.core.QgsLayoutItemMapOverviewStack.moveItemDown"><code class="xref py py-obj docutils literal notranslate"><span class="pre">moveItemDown</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverviewStack.modifyMapLayerList" title="qgis.core.QgsLayoutItemMapOverviewStack.modifyMapLayerList"><code class="xref py py-obj docutils literal notranslate"><span class="pre">modifyMapLayerList</span></code></a></td>
+<td>Alters the list of map <code class="docutils literal notranslate"><span class="pre">layers</span></code> which will be rendered for the link map item, inserting temporary layers which represent overview extents as required.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverviewStack.moveItemDown" title="qgis.core.QgsLayoutItemMapOverviewStack.moveItemDown"><code class="xref py py-obj docutils literal notranslate"><span class="pre">moveItemDown</span></code></a></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverviewStack.moveItemUp" title="qgis.core.QgsLayoutItemMapOverviewStack.moveItemUp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">moveItemUp</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverviewStack.moveItemUp" title="qgis.core.QgsLayoutItemMapOverviewStack.moveItemUp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">moveItemUp</span></code></a></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverviewStack.moveOverviewDown" title="qgis.core.QgsLayoutItemMapOverviewStack.moveOverviewDown"><code class="xref py py-obj docutils literal notranslate"><span class="pre">moveOverviewDown</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverviewStack.moveOverviewDown" title="qgis.core.QgsLayoutItemMapOverviewStack.moveOverviewDown"><code class="xref py py-obj docutils literal notranslate"><span class="pre">moveOverviewDown</span></code></a></td>
 <td>Moves an overview with matching overviewId down the stack, causing it to be rendered below other overviews.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverviewStack.moveOverviewUp" title="qgis.core.QgsLayoutItemMapOverviewStack.moveOverviewUp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">moveOverviewUp</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverviewStack.moveOverviewUp" title="qgis.core.QgsLayoutItemMapOverviewStack.moveOverviewUp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">moveOverviewUp</span></code></a></td>
 <td>Moves an overview with matching overviewId up the stack, causing it to be rendered above other overviews.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverviewStack.overview" title="qgis.core.QgsLayoutItemMapOverviewStack.overview"><code class="xref py py-obj docutils literal notranslate"><span class="pre">overview</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverviewStack.overview" title="qgis.core.QgsLayoutItemMapOverviewStack.overview"><code class="xref py py-obj docutils literal notranslate"><span class="pre">overview</span></code></a></td>
 <td>Returns a reference to an overview with matching overviewId within the stack.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverviewStack.readXml" title="qgis.core.QgsLayoutItemMapOverviewStack.readXml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readXml</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverviewStack.readXml" title="qgis.core.QgsLayoutItemMapOverviewStack.readXml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readXml</span></code></a></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverviewStack.removeItem" title="qgis.core.QgsLayoutItemMapOverviewStack.removeItem"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeItem</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverviewStack.removeItem" title="qgis.core.QgsLayoutItemMapOverviewStack.removeItem"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeItem</span></code></a></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverviewStack.removeItems" title="qgis.core.QgsLayoutItemMapOverviewStack.removeItems"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeItems</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverviewStack.removeItems" title="qgis.core.QgsLayoutItemMapOverviewStack.removeItems"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeItems</span></code></a></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverviewStack.removeOverview" title="qgis.core.QgsLayoutItemMapOverviewStack.removeOverview"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeOverview</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverviewStack.removeOverview" title="qgis.core.QgsLayoutItemMapOverviewStack.removeOverview"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeOverview</span></code></a></td>
 <td>Removes an overview with matching overviewId from the stack and deletes the corresponding <a class="reference internal" href="QgsLayoutItemMapOverview.html#module-QgsLayoutItemMapOverview" title="QgsLayoutItemMapOverview"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsLayoutItemMapOverview</span></code></a></td>
 </tr>
 </tbody>
@@ -1492,6 +1502,16 @@ should be called for the QgsLayoutItemMap to prevent rendering artifacts.</p>
 <dt id="qgis.core.QgsLayoutItemMapOverviewStack.item">
 <code class="descname">item</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsLayoutItemMapOverviewStack.item" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="method">
+<dt id="qgis.core.QgsLayoutItemMapOverviewStack.modifyMapLayerList">
+<code class="descname">modifyMapLayerList</code><span class="sig-paren">(</span><em>self, layers: Iterable[QgsMapLayer]</em><span class="sig-paren">)</span> &#x2192; List[QgsMapLayer]<a class="headerlink" href="#qgis.core.QgsLayoutItemMapOverviewStack.modifyMapLayerList" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alters the list of map <code class="docutils literal notranslate"><span class="pre">layers</span></code> which will be rendered for the link map item, inserting
+temporary layers which represent overview extents as required.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 3.6.</span></p>
+</div>
+</dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsLayoutItemMapOverviewStack.moveItemDown">
@@ -1586,7 +1606,7 @@ should be called for the QgsLayoutItemMap to prevent rendering artifacts.</p>
 
   <div role="contentinfo">
     <p>
-      Last updated on 14:28 Jan 02, 2019.
+      Last updated on 14:29 Jan 03, 2019.
 
     </p>
   </div> 
