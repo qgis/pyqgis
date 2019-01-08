@@ -1391,10 +1391,14 @@
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sip.wrapper</span></code></p>
 <p>Constructor for QgsRendererCategory.</p>
 <p>QgsRendererCategory(value: Any, symbol: QgsSymbol, label: str, render: bool = True)
-takes ownership of symbol</p>
+Constructor for a new QgsRendererCategory, with the specified <code class="docutils literal notranslate"><span class="pre">value</span></code> and <code class="docutils literal notranslate"><span class="pre">symbol</span></code>.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">value</span></code> is a list, then the category will match any of the values from this list.</p>
+<p>The ownership of <code class="docutils literal notranslate"><span class="pre">symbol</span></code> is transferred to the category.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">label</span></code> argument specifies the label used for this category in legends and the layer tree.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">render</span></code> argument indicates whether the category should initially be rendered and appear checked in the layer tree.</p>
 <p>QgsRendererCategory(cat: QgsRendererCategory)
-copy constructor</p>
-<p>categorized renderer</p>
+Copy constructor.</p>
+<p>Represents an individual category (class) from a QgsCategorizedSymbolRenderer.</p>
 <blockquote>
 <div><p class="rubric">Methods</p>
 <table border="1" class="longtable docutils">
@@ -1404,37 +1408,37 @@ copy constructor</p>
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsRendererCategory.dump" title="qgis.core.QgsRendererCategory.dump"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dump</span></code></a></td>
-<td></td>
+<td>Returns a string representing the categories settings, used for debugging purposes only.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsRendererCategory.label" title="qgis.core.QgsRendererCategory.label"><code class="xref py py-obj docutils literal notranslate"><span class="pre">label</span></code></a></td>
-<td></td>
+<td>Returns the label for this category, which is used to represent the category within legends and the layer tree.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsRendererCategory.renderState" title="qgis.core.QgsRendererCategory.renderState"><code class="xref py py-obj docutils literal notranslate"><span class="pre">renderState</span></code></a></td>
 <td>Returns true if the category is currently enabled and should be rendered.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsRendererCategory.setLabel" title="qgis.core.QgsRendererCategory.setLabel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setLabel</span></code></a></td>
-<td></td>
+<td>Sets the <code class="docutils literal notranslate"><span class="pre">label</span></code> for this category, which is used to represent the category within legends and the layer tree.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsRendererCategory.setRenderState" title="qgis.core.QgsRendererCategory.setRenderState"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setRenderState</span></code></a></td>
 <td>Sets whether the category is currently enabled and should be rendered.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsRendererCategory.setSymbol" title="qgis.core.QgsRendererCategory.setSymbol"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setSymbol</span></code></a></td>
-<td></td>
+<td>Sets the symbol which will be used to render this category.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsRendererCategory.setValue" title="qgis.core.QgsRendererCategory.setValue"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setValue</span></code></a></td>
-<td></td>
+<td>Sets the <code class="docutils literal notranslate"><span class="pre">value</span></code> corresponding to this category.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsRendererCategory.swap" title="qgis.core.QgsRendererCategory.swap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">swap</span></code></a></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsRendererCategory.symbol" title="qgis.core.QgsRendererCategory.symbol"><code class="xref py py-obj docutils literal notranslate"><span class="pre">symbol</span></code></a></td>
-<td></td>
+<td>Returns the symbol which will be used to render this category.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsRendererCategory.toSld" title="qgis.core.QgsRendererCategory.toSld"><code class="xref py py-obj docutils literal notranslate"><span class="pre">toSld</span></code></a></td>
-<td></td>
+<td>Converts the category to a matching SLD rule, within the specified DOM document and <code class="docutils literal notranslate"><span class="pre">element</span></code>.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsRendererCategory.value" title="qgis.core.QgsRendererCategory.value"><code class="xref py py-obj docutils literal notranslate"><span class="pre">value</span></code></a></td>
-<td></td>
+<td>Returns the value corresponding to this category.</td>
 </tr>
 </tbody>
 </table>
@@ -1460,12 +1464,19 @@ copy constructor</p>
 <dl class="method">
 <dt id="qgis.core.QgsRendererCategory.dump">
 <code class="descname">dump</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.core.QgsRendererCategory.dump" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Returns a string representing the categories settings, used for debugging purposes only.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsRendererCategory.label">
 <code class="descname">label</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.core.QgsRendererCategory.label" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Returns the label for this category, which is used to represent the category within
+legends and the layer tree.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#qgis.core.QgsRendererCategory.setLabel" title="qgis.core.QgsRendererCategory.setLabel"><code class="xref py py-func docutils literal notranslate"><span class="pre">setLabel()</span></code></a></p>
+</div>
+</dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsRendererCategory.renderState">
@@ -1483,7 +1494,13 @@ copy constructor</p>
 <dl class="method">
 <dt id="qgis.core.QgsRendererCategory.setLabel">
 <code class="descname">setLabel</code><span class="sig-paren">(</span><em>self</em>, <em>label: str</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsRendererCategory.setLabel" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Sets the <code class="docutils literal notranslate"><span class="pre">label</span></code> for this category, which is used to represent the category within
+legends and the layer tree.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#qgis.core.QgsRendererCategory.label" title="qgis.core.QgsRendererCategory.label"><code class="xref py py-func docutils literal notranslate"><span class="pre">label()</span></code></a></p>
+</div>
+</dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsRendererCategory.setRenderState">
@@ -1501,12 +1518,24 @@ copy constructor</p>
 <dl class="method">
 <dt id="qgis.core.QgsRendererCategory.setSymbol">
 <code class="descname">setSymbol</code><span class="sig-paren">(</span><em>self</em>, <em>s: QgsSymbol</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsRendererCategory.setSymbol" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Sets the symbol which will be used to render this category.</p>
+<p>Ownership of the symbol is transferred to the category.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#qgis.core.QgsRendererCategory.symbol" title="qgis.core.QgsRendererCategory.symbol"><code class="xref py py-func docutils literal notranslate"><span class="pre">symbol()</span></code></a></p>
+</div>
+</dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsRendererCategory.setValue">
 <code class="descname">setValue</code><span class="sig-paren">(</span><em>self</em>, <em>value: Any</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsRendererCategory.setValue" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Sets the <code class="docutils literal notranslate"><span class="pre">value</span></code> corresponding to this category.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">value</span></code> is a list, then the category will match any of the values from this list.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#qgis.core.QgsRendererCategory.value" title="qgis.core.QgsRendererCategory.value"><code class="xref py py-func docutils literal notranslate"><span class="pre">value()</span></code></a></p>
+</div>
+</dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsRendererCategory.swap">
@@ -1516,17 +1545,29 @@ copy constructor</p>
 <dl class="method">
 <dt id="qgis.core.QgsRendererCategory.symbol">
 <code class="descname">symbol</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; QgsSymbol<a class="headerlink" href="#qgis.core.QgsRendererCategory.symbol" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Returns the symbol which will be used to render this category.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#qgis.core.QgsRendererCategory.setSymbol" title="qgis.core.QgsRendererCategory.setSymbol"><code class="xref py py-func docutils literal notranslate"><span class="pre">setSymbol()</span></code></a></p>
+</div>
+</dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsRendererCategory.toSld">
 <code class="descname">toSld</code><span class="sig-paren">(</span><em>self, doc: QDomDocument, element: QDomElement, props: Dict[str, str]</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsRendererCategory.toSld" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Converts the category to a matching SLD rule, within the specified DOM document and <code class="docutils literal notranslate"><span class="pre">element</span></code>.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsRendererCategory.value">
 <code class="descname">value</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; Any<a class="headerlink" href="#qgis.core.QgsRendererCategory.value" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Returns the value corresponding to this category.</p>
+<p>If the returned value is a list, then the category will match any of the values from this list.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#qgis.core.QgsRendererCategory.setValue" title="qgis.core.QgsRendererCategory.setValue"><code class="xref py py-func docutils literal notranslate"><span class="pre">setValue()</span></code></a></p>
+</div>
+</dd></dl>
 
 </dd></dl>
 
@@ -1543,7 +1584,7 @@ copy constructor</p>
 
   <div role="contentinfo">
     <p>
-      Last updated on 14:30 Jan 07, 2019.
+      Last updated on 15:05 Jan 08, 2019.
 
     </p>
   </div> 

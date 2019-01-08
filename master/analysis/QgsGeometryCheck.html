@@ -1391,9 +1391,80 @@
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sip.wrapper</span></code></p>
 <p>Create a new geometry check.</p>
 <p>QgsGeometryCheck(QgsGeometryCheck)</p>
-<p>This class manages all known geometry check factories.</p>
-<p>QgsGeometryCheckRegistry is not usually directly created, but rather accessed through
-<a class="reference internal" href="QgsAnalysis.html#qgis.analysis.QgsAnalysis.geometryCheckRegistry" title="qgis.analysis.QgsAnalysis.geometryCheckRegistry"><code class="xref py py-func docutils literal notranslate"><span class="pre">QgsAnalysis.geometryCheckRegistry()</span></code></a></p>
+<p>This class implements a geometry check.</p>
+<p>Geometry checks run over a set of features and can detect errors like topological
+or other issues which are reported in the geometry validation panel in QGIS and
+help a user to create valid geometries.</p>
+<p>Implementing a custom geometry check consists of the following parts</p>
+<p>### Writing the check</p>
+<p>A new subclass of QgsGeometryCheck needs to be written and at least the following
+abstract methods need to be implemented:</p>
+<ul class="simple">
+<li><cite>compatibleGeometryTypes()</cite></li>
+</ul>
+<p>A list of geometry types to which this check applies</p>
+<ul class="simple">
+<li><cite>resolutionMethods()</cite></li>
+</ul>
+<p>A list of names for (automated) resolution methods that can be used to fix errors of this type</p>
+<ul class="simple">
+<li><cite>description()</cite></li>
+</ul>
+<p>A description for the geometry check.</p>
+<ul class="simple">
+<li><cite>id()</cite></li>
+</ul>
+<p>A unique id for this check.</p>
+<ul class="simple">
+<li><cite>checkType()</cite></li>
+</ul>
+<p>One of QgsGeometryCheck.LayerCheck, QgsGeometryCheck.FeatureCheck,QgsGeometryCheck.FeatureNodeCheck</p>
+<ul class="simple">
+<li>link collectErrors() <cite>collectErrors(featurePools, errors, messages, feedback, ids)</cite>endlink</li>
+</ul>
+<p>This method will be called to validate geometries. All geometries which should be validated are passed
+into this method with the parameter ids and should be retrieved from the available featurePools to make
+use of caching. New errors should be appended to the error list and other message strings to messages.
+The method needs to return a tuple (errors, messages).</p>
+<p>### Creating a geometry check factory</p>
+<p>A Geometry check factory manages meta information for checks. There will always be one single
+geometry check factory created per check type, but it’s possible that multiple QgsGeometryCheck
+instances are created and used in parallel.</p>
+<p>A new subclass of QgsGeometryCheckFactory needs to be written and at least the following
+abstract methods need to be implemented:</p>
+<ul class="simple">
+<li>link QgsGeometryCheckFactory.createGeometryCheck() <cite>createGeometryCheck(context, configuration)</cite>endlink</li>
+</ul>
+<p>Needs to return a new subclassed QgsGeometryCheck object that has been written in the previous step.</p>
+<ul class="simple">
+<li>link QgsGeometryCheckFactory.id() <a href="#id1"><span class="problematic" id="id2">`</span></a>id()endlink</li>
+</ul>
+<p>A unique id for this geometry check.</p>
+<ul class="simple">
+<li>link QgsGeometryCheckFactory.description() <a href="#id3"><span class="problematic" id="id4">`</span></a>description()endlink</li>
+</ul>
+<p>A description for this geometry check that can be presented to the user for more explanation.</p>
+<ul class="simple">
+<li>link QgsGeometryCheckFactory.isCompatible() <cite>QgsGeometryCheckFactory.isCompatible(layer)</cite>endlink</li>
+</ul>
+<p>Returns a boolean that determines if this check is available for a given layer. This often
+checks for the geometry type of the layer.</p>
+<ul class="simple">
+<li>link QgsGeometryCheckFactory.flags() <cite>flags()</cite>endlink</li>
+</ul>
+<p>Returns additional flags for a geometry check. If unsure return QgsGeometryCheck.AvailableInValidation.</p>
+<ul class="simple">
+<li>link QgsGeometryCheckFactory.checkType() <cite>checkType()</cite>endlink</li>
+</ul>
+<p>Returns the type of this geometry check.</p>
+<p>### Registering the geometry check</p>
+<p>Finally the geometry check factory needs to be registered in QGIS, so the system
+is aware of the available geometry checks.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make sure you always keep a</span>
+<span class="n">checkFactory</span> <span class="o">=</span> <span class="n">MyGeometryCheckFactory</span><span class="p">()</span>
+<span class="n">QgsAnalysis</span><span class="o">.</span><span class="n">geometryCheckRegistry</span><span class="p">()</span><span class="o">.</span><span class="n">registerGeometryCheck</span><span class="p">(</span><span class="n">checkFactory</span><span class="p">)</span>
+</pre></div>
+</div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">This class is a technology preview and unstable API.</p>
@@ -1681,7 +1752,7 @@ Progress should be reported to <code class="docutils literal notranslate"><span 
 <dt id="qgis.analysis.QgsGeometryCheck.isCompatible">
 <code class="descname">isCompatible</code><span class="sig-paren">(</span><em>self</em>, <em>layer: QgsVectorLayer</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.analysis.QgsGeometryCheck.isCompatible" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns if this geometry check is compatible with <code class="docutils literal notranslate"><span class="pre">layer</span></code>.
-By default it checks for the geometry type in <a href="#id1"><span class="problematic" id="id2">``</span></a>compatibleGeometryTypes``().</p>
+By default it checks for the geometry type in <a href="#id5"><span class="problematic" id="id6">``</span></a>compatibleGeometryTypes``().</p>
 <div class="versionadded">
 <p><span class="versionmodified">New in version 3.4.</span></p>
 </div>
@@ -1716,7 +1787,7 @@ By default it checks for the geometry type in <a href="#id1"><span class="proble
 
   <div role="contentinfo">
     <p>
-      Last updated on 14:30 Jan 07, 2019.
+      Last updated on 15:05 Jan 08, 2019.
 
     </p>
   </div> 
