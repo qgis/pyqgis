@@ -1389,7 +1389,8 @@
 <dt id="qgis.core.QgsLegendRenderer">
 <em class="property">class </em><code class="descclassname">qgis.core.</code><code class="descname">QgsLegendRenderer</code><span class="sig-paren">(</span><em>legendModel: QgsLayerTreeModel</em>, <em>settings: QgsLegendSettings</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsLegendRenderer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sip.wrapper</span></code></p>
-<p>Construct legend renderer. The ownership of legend model does not change</p>
+<p>Constructor for QgsLegendRenderer. The ownership of the legend model is not changed,
+and the model must exist for the lifetime of this renderer.</p>
 <p>QgsLegendRenderer(QgsLegendRenderer)</p>
 <p>The QgsLegendRenderer class handles automatic layout and rendering of legend.
 The content is given by QgsLayerTreeModel instance. Various layout properties can be configured
@@ -1404,22 +1405,22 @@ within QgsLegendRenderer.</p>
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsLegendRenderer.drawLegend" title="qgis.core.QgsLegendRenderer.drawLegend"><code class="xref py py-obj docutils literal notranslate"><span class="pre">drawLegend</span></code></a></td>
-<td>Draw the legend with given painter.</td>
+<td>Draws the legend with given <code class="docutils literal notranslate"><span class="pre">painter</span></code>.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsLegendRenderer.legendSize" title="qgis.core.QgsLegendRenderer.legendSize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legendSize</span></code></a></td>
-<td>Find out preferred legend size set by the client.</td>
+<td>Returns the preferred legend size set by the client.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsLegendRenderer.minimumSize" title="qgis.core.QgsLegendRenderer.minimumSize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">minimumSize</span></code></a></td>
-<td>Run the layout algorithm and determine the size required for legend</td>
+<td>Runs the layout algorithm and returns the minimum size required for the legend.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsLegendRenderer.nodeLegendStyle" title="qgis.core.QgsLegendRenderer.nodeLegendStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nodeLegendStyle</span></code></a></td>
-<td></td>
+<td>Returns the style for the given <code class="docutils literal notranslate"><span class="pre">node</span></code>, within the specified <code class="docutils literal notranslate"><span class="pre">model</span></code>.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsLegendRenderer.setLegendSize" title="qgis.core.QgsLegendRenderer.setLegendSize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setLegendSize</span></code></a></td>
 <td>Sets the preferred resulting legend size.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsLegendRenderer.setNodeLegendStyle" title="qgis.core.QgsLegendRenderer.setNodeLegendStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setNodeLegendStyle</span></code></a></td>
-<td></td>
+<td>Sets the <code class="docutils literal notranslate"><span class="pre">style</span></code> of a <code class="docutils literal notranslate"><span class="pre">node</span></code>.</td>
 </tr>
 </tbody>
 </table>
@@ -1445,37 +1446,78 @@ within QgsLegendRenderer.</p>
 <dl class="method">
 <dt id="qgis.core.QgsLegendRenderer.drawLegend">
 <code class="descname">drawLegend</code><span class="sig-paren">(</span><em>self</em>, <em>painter: QPainter</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsLegendRenderer.drawLegend" title="Permalink to this definition">¶</a></dt>
-<dd><p>Draw the legend with given painter. It will occupy the area reported in legendSize().
-Painter should be scaled beforehand so that units correspond to millimeters.</p>
+<dd><p>Draws the legend with given <code class="docutils literal notranslate"><span class="pre">painter</span></code>. The legend will occupy the area reported in legendSize().
+The <code class="docutils literal notranslate"><span class="pre">painter</span></code> should be scaled beforehand so that units correspond to millimeters.</p>
+<p>drawLegend(self, context: QgsRenderContext)
+Draws the legend using a given render <code class="docutils literal notranslate"><span class="pre">context</span></code>. The legend will occupy the area reported in legendSize().</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 3.6.</span></p>
+</div>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsLegendRenderer.legendSize">
 <code class="descname">legendSize</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; QSizeF<a class="headerlink" href="#qgis.core.QgsLegendRenderer.legendSize" title="Permalink to this definition">¶</a></dt>
-<dd><p>Find out preferred legend size set by the client. If null, the legend will be drawn with the minimum size</p>
+<dd><p>Returns the preferred legend size set by the client.</p>
+<p>If the returned size is null, the legend will be drawn with the minimum possible size to fit its content.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#qgis.core.QgsLegendRenderer.minimumSize" title="qgis.core.QgsLegendRenderer.minimumSize"><code class="xref py py-func docutils literal notranslate"><span class="pre">minimumSize()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#qgis.core.QgsLegendRenderer.setLegendSize" title="qgis.core.QgsLegendRenderer.setLegendSize"><code class="xref py py-func docutils literal notranslate"><span class="pre">setLegendSize()</span></code></a></p>
+</div>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsLegendRenderer.minimumSize">
 <code class="descname">minimumSize</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; QSizeF<a class="headerlink" href="#qgis.core.QgsLegendRenderer.minimumSize" title="Permalink to this definition">¶</a></dt>
-<dd><p>Run the layout algorithm and determine the size required for legend</p>
+<dd><p>Runs the layout algorithm and returns the minimum size required for the legend.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#qgis.core.QgsLegendRenderer.setLegendSize" title="qgis.core.QgsLegendRenderer.setLegendSize"><code class="xref py py-func docutils literal notranslate"><span class="pre">setLegendSize()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#qgis.core.QgsLegendRenderer.legendSize" title="qgis.core.QgsLegendRenderer.legendSize"><code class="xref py py-func docutils literal notranslate"><span class="pre">legendSize()</span></code></a></p>
+</div>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsLegendRenderer.nodeLegendStyle">
 <code class="descname">nodeLegendStyle</code><span class="sig-paren">(</span><em>node: QgsLayerTreeNode</em>, <em>model: QgsLayerTreeModel</em><span class="sig-paren">)</span> &#x2192; QgsLegendStyle.Style<a class="headerlink" href="#qgis.core.QgsLegendRenderer.nodeLegendStyle" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Returns the style for the given <code class="docutils literal notranslate"><span class="pre">node</span></code>, within the specified <code class="docutils literal notranslate"><span class="pre">model</span></code>.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#qgis.core.QgsLegendRenderer.setNodeLegendStyle" title="qgis.core.QgsLegendRenderer.setNodeLegendStyle"><code class="xref py py-func docutils literal notranslate"><span class="pre">setNodeLegendStyle()</span></code></a></p>
+</div>
+</dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsLegendRenderer.setLegendSize">
 <code class="descname">setLegendSize</code><span class="sig-paren">(</span><em>self</em>, <em>s: QSizeF</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsLegendRenderer.setLegendSize" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets the preferred resulting legend size.</p>
+<p>If the size is null, the legend will be drawn with the minimum possible size to fit its content.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#qgis.core.QgsLegendRenderer.legendSize" title="qgis.core.QgsLegendRenderer.legendSize"><code class="xref py py-func docutils literal notranslate"><span class="pre">legendSize()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#qgis.core.QgsLegendRenderer.minimumSize" title="qgis.core.QgsLegendRenderer.minimumSize"><code class="xref py py-func docutils literal notranslate"><span class="pre">minimumSize()</span></code></a></p>
+</div>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsLegendRenderer.setNodeLegendStyle">
 <code class="descname">setNodeLegendStyle</code><span class="sig-paren">(</span><em>node: QgsLayerTreeNode</em>, <em>style: QgsLegendStyle.Style</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsLegendRenderer.setNodeLegendStyle" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Sets the <code class="docutils literal notranslate"><span class="pre">style</span></code> of a <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#qgis.core.QgsLegendRenderer.nodeLegendStyle" title="qgis.core.QgsLegendRenderer.nodeLegendStyle"><code class="xref py py-func docutils literal notranslate"><span class="pre">nodeLegendStyle()</span></code></a></p>
+</div>
+</dd></dl>
 
 </dd></dl>
 
@@ -1492,7 +1534,7 @@ Painter should be scaled beforehand so that units correspond to millimeters.</p>
 
   <div role="contentinfo">
     <p>
-      Last updated on 14:31 Jan 10, 2019.
+      Last updated on 15:16 Jan 11, 2019.
 
     </p>
   </div> 
