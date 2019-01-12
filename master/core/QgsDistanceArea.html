@@ -1293,6 +1293,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../server/QgsBufferServerResponse.html">Class: QgsBufferServerResponse</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../server/QgsCapabilitiesCache.html">Class: QgsCapabilitiesCache</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../server/QgsConfigCache.html">Class: QgsConfigCache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../server/QgsFcgiServerRequest.html">Class: QgsFcgiServerRequest</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../server/QgsFeatureFilter.html">Class: QgsFeatureFilter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../server/QgsFeatureFilterProviderGroup.html">Class: QgsFeatureFilterProviderGroup</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../server/QgsMapServiceException.html">Class: QgsMapServiceException</a></li>
@@ -1450,8 +1451,8 @@ by calling lengthUnits() and areaUnits().</p>
 <tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsDistanceArea.geodesicLine" title="qgis.core.QgsDistanceArea.geodesicLine"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geodesicLine</span></code></a></td>
 <td>Calculates the geodesic line between <code class="docutils literal notranslate"><span class="pre">p1</span></code> and <code class="docutils literal notranslate"><span class="pre">p2</span></code>, which represents the shortest path on the ellipsoid between these two points.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsDistanceArea.latitudeGeodesicCrossesDateLine" title="qgis.core.QgsDistanceArea.latitudeGeodesicCrossesDateLine"><code class="xref py py-obj docutils literal notranslate"><span class="pre">latitudeGeodesicCrossesDateLine</span></code></a></td>
-<td>Calculates the latitude at which the geodesic line joining <code class="docutils literal notranslate"><span class="pre">p1</span></code> and <code class="docutils literal notranslate"><span class="pre">p2</span></code> crosses the international date line (longitude +/- 180 degrees).</td>
+<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsDistanceArea.latitudeGeodesicCrossesAntimeridian" title="qgis.core.QgsDistanceArea.latitudeGeodesicCrossesAntimeridian"><code class="xref py py-obj docutils literal notranslate"><span class="pre">latitudeGeodesicCrossesAntimeridian</span></code></a></td>
+<td>Calculates the latitude at which the geodesic line joining <code class="docutils literal notranslate"><span class="pre">p1</span></code> and <code class="docutils literal notranslate"><span class="pre">p2</span></code> crosses the antimeridian (longitude +/- 180 degrees).</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsDistanceArea.lengthUnits" title="qgis.core.QgsDistanceArea.lengthUnits"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lengthUnits</span></code></a></td>
 <td>Returns the units of distance for length calculations made by this object.</td>
@@ -1483,7 +1484,10 @@ by calling lengthUnits() and areaUnits().</p>
 <tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsDistanceArea.sourceCrs" title="qgis.core.QgsDistanceArea.sourceCrs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sourceCrs</span></code></a></td>
 <td>Returns the source spatial reference system.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsDistanceArea.willUseEllipsoid" title="qgis.core.QgsDistanceArea.willUseEllipsoid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">willUseEllipsoid</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsDistanceArea.splitGeometryAtAntimeridian" title="qgis.core.QgsDistanceArea.splitGeometryAtAntimeridian"><code class="xref py py-obj docutils literal notranslate"><span class="pre">splitGeometryAtAntimeridian</span></code></a></td>
+<td>Splits a (Multi)LineString <code class="docutils literal notranslate"><span class="pre">geometry</span></code> at the antimeridian (longitude +/- 180 degrees).</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsDistanceArea.willUseEllipsoid" title="qgis.core.QgsDistanceArea.willUseEllipsoid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">willUseEllipsoid</span></code></a></td>
 <td>Returns whether calculations will use the ellipsoid.</td>
 </tr>
 </tbody>
@@ -1796,19 +1800,19 @@ will also be in this same CRS.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">interval</span></code> parameter gives the maximum distance between points on the computed line.
 This argument is always specified in meters. A shorter distance results in a denser line,
 at the cost of extra computing time.</p>
-<p>If the geodesic line crosses the international date line and <code class="docutils literal notranslate"><span class="pre">breakLine</span></code> is true, then
-the line will be split into two parts, broken at the date line. In this case the function
-will return two lines, corresponding to the portions at either side of the date line.</p>
+<p>If the geodesic line crosses the antimeridian (+/- 180 degrees longitude) and <code class="docutils literal notranslate"><span class="pre">breakLine</span></code> is true, then
+the line will be split into two parts, broken at the antimeridian. In this case the function
+will return two lines, corresponding to the portions at either side of the antimeridian.</p>
 <div class="versionadded">
 <p><span class="versionmodified">New in version 3.6.</span></p>
 </div>
 </dd></dl>
 
 <dl class="method">
-<dt id="qgis.core.QgsDistanceArea.latitudeGeodesicCrossesDateLine">
-<code class="descname">latitudeGeodesicCrossesDateLine</code><span class="sig-paren">(</span><em>self</em>, <em>p1: QgsPointXY</em>, <em>p2: QgsPointXY</em><span class="sig-paren">)</span> &#x2192; Tuple[float, float]<a class="headerlink" href="#qgis.core.QgsDistanceArea.latitudeGeodesicCrossesDateLine" title="Permalink to this definition">¶</a></dt>
+<dt id="qgis.core.QgsDistanceArea.latitudeGeodesicCrossesAntimeridian">
+<code class="descname">latitudeGeodesicCrossesAntimeridian</code><span class="sig-paren">(</span><em>self</em>, <em>p1: QgsPointXY</em>, <em>p2: QgsPointXY</em><span class="sig-paren">)</span> &#x2192; Tuple[float, float]<a class="headerlink" href="#qgis.core.QgsDistanceArea.latitudeGeodesicCrossesAntimeridian" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculates the latitude at which the geodesic line joining <code class="docutils literal notranslate"><span class="pre">p1</span></code> and <code class="docutils literal notranslate"><span class="pre">p2</span></code> crosses
-the international date line (longitude +/- 180 degrees).</p>
+the antimeridian (longitude +/- 180 degrees).</p>
 <p>The ellipsoid settings defined on this QgsDistanceArea object will be used during the calculations.</p>
 <p><code class="docutils literal notranslate"><span class="pre">p1</span></code> and <code class="docutils literal notranslate"><span class="pre">p2</span></code> must be in the ellipsoidCrs() of this QgsDistanceArea object. The returned latitude
 will also be in this same CRS.</p>
@@ -1823,14 +1827,18 @@ will also be in this same CRS.</p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
-<li>the latitude at which the geodesic crosses the date line</li>
-<li>fractionAlongLine:  will be set to the fraction along the geodesic line joining <code class="docutils literal notranslate"><span class="pre">p1</span></code> to <code class="docutils literal notranslate"><span class="pre">p2</span></code> at which the date line crossing occurs.</li>
+<li>the latitude at which the geodesic crosses the antimeridian</li>
+<li>fractionAlongLine:  will be set to the fraction along the geodesic line joining <code class="docutils literal notranslate"><span class="pre">p1</span></code> to <code class="docutils literal notranslate"><span class="pre">p2</span></code> at which the antimeridian crossing occurs.</li>
 </ul>
 </p>
 </td>
 </tr>
 </tbody>
 </table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#qgis.core.QgsDistanceArea.splitGeometryAtAntimeridian" title="qgis.core.QgsDistanceArea.splitGeometryAtAntimeridian"><code class="xref py py-func docutils literal notranslate"><span class="pre">splitGeometryAtAntimeridian()</span></code></a></p>
+</div>
 <div class="versionadded">
 <p><span class="versionmodified">New in version 3.6.</span></p>
 </div>
@@ -2109,6 +2117,32 @@ a valid ellipsoid been set.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="qgis.core.QgsDistanceArea.splitGeometryAtAntimeridian">
+<code class="descname">splitGeometryAtAntimeridian</code><span class="sig-paren">(</span><em>self</em>, <em>geometry: QgsGeometry</em><span class="sig-paren">)</span> &#x2192; QgsGeometry<a class="headerlink" href="#qgis.core.QgsDistanceArea.splitGeometryAtAntimeridian" title="Permalink to this definition">¶</a></dt>
+<dd><p>Splits a (Multi)LineString <code class="docutils literal notranslate"><span class="pre">geometry</span></code> at the antimeridian (longitude +/- 180 degrees).
+The returned geometry will always be a multi-part geometry.</p>
+<p>Whenever line segments in the input geometry cross the antimeridian, they will be
+split into two segments, with the latitude of the breakpoint being determined using a geodesic
+line connecting the points either side of this segment.</p>
+<p>The ellipsoid settings defined on this QgsDistanceArea object will be used during the calculations.</p>
+<p><code class="docutils literal notranslate"><span class="pre">geometry</span></code> must be in the sourceCrs() of this QgsDistanceArea object. The returned geometry
+will also be in this same CRS.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">geometry</span></code> contains M or Z values, these will be linearly interpolated for the new vertices
+created at the antimeridian.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Non-(Multi)LineString geometries will be returned unchanged.</p>
+</div>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#qgis.core.QgsDistanceArea.latitudeGeodesicCrossesAntimeridian" title="qgis.core.QgsDistanceArea.latitudeGeodesicCrossesAntimeridian"><code class="xref py py-func docutils literal notranslate"><span class="pre">latitudeGeodesicCrossesAntimeridian()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 3.6.</span></p>
+</div>
+</dd></dl>
+
+<dl class="method">
 <dt id="qgis.core.QgsDistanceArea.willUseEllipsoid">
 <code class="descname">willUseEllipsoid</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsDistanceArea.willUseEllipsoid" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns whether calculations will use the ellipsoid. Calculations will only use the
@@ -2137,7 +2171,7 @@ ellipsoid if a valid ellipsoid() has been set.</p>
 
   <div role="contentinfo">
     <p>
-      Last updated on 15:16 Jan 11, 2019.
+      Last updated on 14:33 Jan 12, 2019.
 
     </p>
   </div> 

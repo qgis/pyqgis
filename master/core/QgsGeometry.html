@@ -1293,6 +1293,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../server/QgsBufferServerResponse.html">Class: QgsBufferServerResponse</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../server/QgsCapabilitiesCache.html">Class: QgsCapabilitiesCache</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../server/QgsConfigCache.html">Class: QgsConfigCache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../server/QgsFcgiServerRequest.html">Class: QgsFcgiServerRequest</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../server/QgsFeatureFilter.html">Class: QgsFeatureFilter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../server/QgsFeatureFilterProviderGroup.html">Class: QgsFeatureFilterProviderGroup</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../server/QgsMapServiceException.html">Class: QgsMapServiceException</a></li>
@@ -1442,13 +1443,13 @@ can be accessed via the get() method or set using the set() method.</p>
 <td>Exports the geometry to a GeoJSON string.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsGeometry.asMultiPoint" title="qgis.core.QgsGeometry.asMultiPoint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">asMultiPoint</span></code></a></td>
-<td>Returns contents of the geometry as a multi point if wkbType is WKBMultiPoint, otherwise an empty list</td>
+<td>Returns the contents of the geometry as a multi-point.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsGeometry.asMultiPolygon" title="qgis.core.QgsGeometry.asMultiPolygon"><code class="xref py py-obj docutils literal notranslate"><span class="pre">asMultiPolygon</span></code></a></td>
-<td>Returns contents of the geometry as a multi polygon if wkbType is WKBMultiPolygon, otherwise an empty list</td>
+<td>Returns the contents of the geometry as a multi-polygon.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsGeometry.asMultiPolyline" title="qgis.core.QgsGeometry.asMultiPolyline"><code class="xref py py-obj docutils literal notranslate"><span class="pre">asMultiPolyline</span></code></a></td>
-<td>Returns contents of the geometry as a multi linestring if wkbType is WKBMultiLineString, otherwise an empty list</td>
+<td>Returns the contents of the geometry as a multi-linestring.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsGeometry.asPoint" title="qgis.core.QgsGeometry.asPoint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">asPoint</span></code></a></td>
 <td>Returns the contents of the geometry as a 2-dimensional point.</td>
@@ -2289,23 +2290,34 @@ skip equal vertex positions).</p>
 
 <dl class="method">
 <dt id="qgis.core.QgsGeometry.asMultiPoint">
-<code class="descname">asMultiPoint</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; object<a class="headerlink" href="#qgis.core.QgsGeometry.asMultiPoint" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns contents of the geometry as a multi point
-if wkbType is WKBMultiPoint, otherwise an empty list</p>
+<code class="descname">asMultiPoint</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; QgsMultiPointXY<a class="headerlink" href="#qgis.core.QgsGeometry.asMultiPoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the contents of the geometry as a multi-point.</p>
+<p>Any z or m values present in the geometry will be discarded.</p>
+<p>This method works only with multi-point geometry types. If the geometry
+is not a multi-point type, a TypeError will be raised. If the geometry is null, a ValueError
+will be raised.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsGeometry.asMultiPolygon">
-<code class="descname">asMultiPolygon</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; object<a class="headerlink" href="#qgis.core.QgsGeometry.asMultiPolygon" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns contents of the geometry as a multi polygon
-if wkbType is WKBMultiPolygon, otherwise an empty list</p>
+<code class="descname">asMultiPolygon</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; QgsMultiPolygonXY<a class="headerlink" href="#qgis.core.QgsGeometry.asMultiPolygon" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the contents of the geometry as a multi-polygon.</p>
+<p>Any z or m values present in the geometry will be discarded. If the geometry is a curved polygon type
+(such as a MultiSurface), it will be automatically segmentized.</p>
+<p>This method works only with multi-polygon (or multi-curve polygon) geometry types. If the geometry
+is not a multi-polygon type, a TypeError will be raised. If the geometry is null, a ValueError
+will be raised.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsGeometry.asMultiPolyline">
-<code class="descname">asMultiPolyline</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; object<a class="headerlink" href="#qgis.core.QgsGeometry.asMultiPolyline" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns contents of the geometry as a multi linestring
-if wkbType is WKBMultiLineString, otherwise an empty list</p>
+<code class="descname">asMultiPolyline</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; QgsMultiPolylineXY<a class="headerlink" href="#qgis.core.QgsGeometry.asMultiPolyline" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the contents of the geometry as a multi-linestring.</p>
+<p>Any z or m values present in the geometry will be discarded. If the geometry is a curved line type
+(such as a MultiCurve), it will be automatically segmentized.</p>
+<p>This method works only with multi-linestring (or multi-curve) geometry types. If the geometry
+is not a multi-linestring type, a TypeError will be raised. If the geometry is null, a ValueError
+will be raised.</p>
 </dd></dl>
 
 <dl class="method">
@@ -4417,7 +4429,7 @@ An empty geometry will be returned if the diagram could not be calculated.</p>
 
   <div role="contentinfo">
     <p>
-      Last updated on 15:16 Jan 11, 2019.
+      Last updated on 14:33 Jan 12, 2019.
 
     </p>
   </div> 
