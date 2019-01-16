@@ -613,6 +613,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsProxyFeatureSink.html">Class: QgsProxyFeatureSink</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsProxyProgressTask.html">Class: QgsProxyProgressTask</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsPythonRunner.html">Class: QgsPythonRunner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../core/QgsQuadrilateral.html">Class: QgsQuadrilateral</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsRandomColorRamp.html">Class: QgsRandomColorRamp</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsRangeFieldFormatter.html">Class: QgsRangeFieldFormatter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsRaster.html">Class: QgsRaster</a></li>
@@ -1266,6 +1267,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../analysis/QgsInterpolator.html">Class: QgsInterpolator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../analysis/QgsInterpolatorVertexData.html">Class: QgsInterpolatorVertexData</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../analysis/QgsKernelDensityEstimation.html">Class: QgsKernelDensityEstimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../analysis/QgsMeshCalculator.html">Class: QgsMeshCalculator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../analysis/QgsNativeAlgorithms.html">Class: QgsNativeAlgorithms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../analysis/QgsNetworkDistanceStrategy.html">Class: QgsNetworkDistanceStrategy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../analysis/QgsNetworkSpeedStrategy.html">Class: QgsNetworkSpeedStrategy</a></li>
@@ -1388,7 +1390,7 @@
 <span id="class-qgsstylemanagerdialog"></span><h1>Class: QgsStyleManagerDialog<a class="headerlink" href="#module-QgsStyleManagerDialog" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="qgis.gui.QgsStyleManagerDialog">
-<em class="property">class </em><code class="descclassname">qgis.gui.</code><code class="descname">QgsStyleManagerDialog</code><span class="sig-paren">(</span><em>style: QgsStyle</em>, <em>parent: QWidget = None</em>, <em>flags: Union[Qt.WindowFlags</em>, <em>Qt.WindowType] = Qt.WindowFlags()</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsStyleManagerDialog" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">qgis.gui.</code><code class="descname">QgsStyleManagerDialog</code><span class="sig-paren">(</span><em>style: QgsStyle</em>, <em>parent: QWidget = None</em>, <em>flags: Union[Qt.WindowFlags</em>, <em>Qt.WindowType] = Qt.WindowFlags()</em>, <em>readOnly: bool = False</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsStyleManagerDialog" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">PyQt5.QtWidgets.QDialog</span></code></p>
 <p>Constructor for QgsStyleManagerDialog, with the specified <code class="docutils literal notranslate"><span class="pre">parent</span></code> widget and window <code class="docutils literal notranslate"><span class="pre">flags</span></code>.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">style</span></code> argument specifies the linked QgsStyle database. Symbols and objects contained within
@@ -1419,16 +1421,16 @@ The <code class="docutils literal notranslate"><span class="pre">style</span></c
 <td>Add selected symbols to favorites</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#qgis.gui.QgsStyleManagerDialog.addItem" title="qgis.gui.QgsStyleManagerDialog.addItem"><code class="xref py py-obj docutils literal notranslate"><span class="pre">addItem</span></code></a></td>
-<td></td>
+<td>Triggers the dialog for adding a new item, based on the currently selected item type tab.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#qgis.gui.QgsStyleManagerDialog.addSmartgroup" title="qgis.gui.QgsStyleManagerDialog.addSmartgroup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">addSmartgroup</span></code></a></td>
-<td>add a smartgroup</td>
+<td>Triggers the dialog to add a new smart group.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#qgis.gui.QgsStyleManagerDialog.addSymbol" title="qgis.gui.QgsStyleManagerDialog.addSymbol"><code class="xref py py-obj docutils literal notranslate"><span class="pre">addSymbol</span></code></a></td>
 <td>add a new symbol to style</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#qgis.gui.QgsStyleManagerDialog.addTag" title="qgis.gui.QgsStyleManagerDialog.addTag"><code class="xref py py-obj docutils literal notranslate"><span class="pre">addTag</span></code></a></td>
-<td>add a tag</td>
+<td>Triggers the dialog to add a new tag.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#qgis.gui.QgsStyleManagerDialog.changeEvent" title="qgis.gui.QgsStyleManagerDialog.changeEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">changeEvent</span></code></a></td>
 <td></td>
@@ -1482,10 +1484,10 @@ The <code class="docutils literal notranslate"><span class="pre">style</span></c
 <td></td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#qgis.gui.QgsStyleManagerDialog.editItem" title="qgis.gui.QgsStyleManagerDialog.editItem"><code class="xref py py-obj docutils literal notranslate"><span class="pre">editItem</span></code></a></td>
-<td></td>
+<td>Triggers the dialog for editing the current item.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#qgis.gui.QgsStyleManagerDialog.editSmartgroupAction" title="qgis.gui.QgsStyleManagerDialog.editSmartgroupAction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">editSmartgroupAction</span></code></a></td>
-<td>edit the selected smart group</td>
+<td>Triggers the dialog for editing the selected smart group.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#qgis.gui.QgsStyleManagerDialog.editSymbol" title="qgis.gui.QgsStyleManagerDialog.editSymbol"><code class="xref py py-obj docutils literal notranslate"><span class="pre">editSymbol</span></code></a></td>
 <td></td>
@@ -1509,19 +1511,19 @@ The <code class="docutils literal notranslate"><span class="pre">style</span></c
 <td></td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#qgis.gui.QgsStyleManagerDialog.exportItems" title="qgis.gui.QgsStyleManagerDialog.exportItems"><code class="xref py py-obj docutils literal notranslate"><span class="pre">exportItems</span></code></a></td>
-<td></td>
+<td>Triggers the dialog to export items.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#qgis.gui.QgsStyleManagerDialog.exportItemsPNG" title="qgis.gui.QgsStyleManagerDialog.exportItemsPNG"><code class="xref py py-obj docutils literal notranslate"><span class="pre">exportItemsPNG</span></code></a></td>
-<td></td>
+<td>Triggers the dialog to export selected items as PNG files.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#qgis.gui.QgsStyleManagerDialog.exportItemsSVG" title="qgis.gui.QgsStyleManagerDialog.exportItemsSVG"><code class="xref py py-obj docutils literal notranslate"><span class="pre">exportItemsSVG</span></code></a></td>
-<td></td>
+<td>Triggers the dialog to export selected items as SVG files.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#qgis.gui.QgsStyleManagerDialog.exportSelectedItemsImages" title="qgis.gui.QgsStyleManagerDialog.exportSelectedItemsImages"><code class="xref py py-obj docutils literal notranslate"><span class="pre">exportSelectedItemsImages</span></code></a></td>
-<td></td>
+<td>Triggers the dialog to export selected items as images of the specified <code class="docutils literal notranslate"><span class="pre">format</span></code> and <code class="docutils literal notranslate"><span class="pre">size</span></code>.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#qgis.gui.QgsStyleManagerDialog.filterSymbols" title="qgis.gui.QgsStyleManagerDialog.filterSymbols"><code class="xref py py-obj docutils literal notranslate"><span class="pre">filterSymbols</span></code></a></td>
-<td>filter the symbols based on input search term</td>
+<td>Sets the <code class="docutils literal notranslate"><span class="pre">filter</span></code> string to filter symbols by.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#qgis.gui.QgsStyleManagerDialog.focusInEvent" title="qgis.gui.QgsStyleManagerDialog.focusInEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">focusInEvent</span></code></a></td>
 <td></td>
@@ -1539,10 +1541,10 @@ The <code class="docutils literal notranslate"><span class="pre">style</span></c
 <td></td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#qgis.gui.QgsStyleManagerDialog.groupChanged" title="qgis.gui.QgsStyleManagerDialog.groupChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">groupChanged</span></code></a></td>
-<td></td>
+<td>Trigerred when the current group (or tag) is changed.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#qgis.gui.QgsStyleManagerDialog.groupRenamed" title="qgis.gui.QgsStyleManagerDialog.groupRenamed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">groupRenamed</span></code></a></td>
-<td></td>
+<td>Triggered when a group <code class="docutils literal notranslate"><span class="pre">item</span></code> is renamed.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#qgis.gui.QgsStyleManagerDialog.grouptreeContextMenu" title="qgis.gui.QgsStyleManagerDialog.grouptreeContextMenu"><code class="xref py py-obj docutils literal notranslate"><span class="pre">grouptreeContextMenu</span></code></a></td>
 <td>Context menu for the groupTree</td>
@@ -1551,7 +1553,7 @@ The <code class="docutils literal notranslate"><span class="pre">style</span></c
 <td></td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#qgis.gui.QgsStyleManagerDialog.importItems" title="qgis.gui.QgsStyleManagerDialog.importItems"><code class="xref py py-obj docutils literal notranslate"><span class="pre">importItems</span></code></a></td>
-<td></td>
+<td>Triggers the dialog to import items.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#qgis.gui.QgsStyleManagerDialog.initPainter" title="qgis.gui.QgsStyleManagerDialog.initPainter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">initPainter</span></code></a></td>
 <td></td>
@@ -1563,7 +1565,10 @@ The <code class="docutils literal notranslate"><span class="pre">style</span></c
 <td></td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#qgis.gui.QgsStyleManagerDialog.itemChanged" title="qgis.gui.QgsStyleManagerDialog.itemChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">itemChanged</span></code></a></td>
-<td></td>
+<td><div class="deprecated">
+<p><span class="versionmodified">Deprecated since version in: </span>QGIS 3.6 - has no effect and will be removed in QGIS 4.0</p>
+</div>
+</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#qgis.gui.QgsStyleManagerDialog.keyPressEvent" title="qgis.gui.QgsStyleManagerDialog.keyPressEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">keyPressEvent</span></code></a></td>
 <td></td>
@@ -1599,49 +1604,58 @@ The <code class="docutils literal notranslate"><span class="pre">style</span></c
 <td></td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#qgis.gui.QgsStyleManagerDialog.onClose" title="qgis.gui.QgsStyleManagerDialog.onClose"><code class="xref py py-obj docutils literal notranslate"><span class="pre">onClose</span></code></a></td>
-<td>Close the dialog</td>
+<td>Closes the dialog</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#qgis.gui.QgsStyleManagerDialog.onFinished" title="qgis.gui.QgsStyleManagerDialog.onFinished"><code class="xref py py-obj docutils literal notranslate"><span class="pre">onFinished</span></code></a></td>
-<td>called when the dialog is going to be closed</td>
+<td>Called when the dialog is going to be closed.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#qgis.gui.QgsStyleManagerDialog.paintEvent" title="qgis.gui.QgsStyleManagerDialog.paintEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">paintEvent</span></code></a></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#qgis.gui.QgsStyleManagerDialog.populateColorRamps" title="qgis.gui.QgsStyleManagerDialog.populateColorRamps"><code class="xref py py-obj docutils literal notranslate"><span class="pre">populateColorRamps</span></code></a></td>
-<td>populate list view with color ramps</td>
+<td>Populates the list view with color ramps of the current type with the given names.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#qgis.gui.QgsStyleManagerDialog.populateGroups" title="qgis.gui.QgsStyleManagerDialog.populateGroups"><code class="xref py py-obj docutils literal notranslate"><span class="pre">populateGroups</span></code></a></td>
 <td>populate the groups</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#qgis.gui.QgsStyleManagerDialog.populateList" title="qgis.gui.QgsStyleManagerDialog.populateList"><code class="xref py py-obj docutils literal notranslate"><span class="pre">populateList</span></code></a></td>
-<td>adds symbols of some type to list</td>
+<td>Refreshes the list of items.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#qgis.gui.QgsStyleManagerDialog.populateSymbols" title="qgis.gui.QgsStyleManagerDialog.populateSymbols"><code class="xref py py-obj docutils literal notranslate"><span class="pre">populateSymbols</span></code></a></td>
-<td>populate list view with symbols of the current type with the given names</td>
+<td>Populates the list view with symbols of the current type with the given names.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#qgis.gui.QgsStyleManagerDialog.populateTypes" title="qgis.gui.QgsStyleManagerDialog.populateTypes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">populateTypes</span></code></a></td>
-<td>populate combo box with known style items (symbols, color ramps)</td>
+<td>Populate combo box with known style items (symbols, color ramps).</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#qgis.gui.QgsStyleManagerDialog.receivers" title="qgis.gui.QgsStyleManagerDialog.receivers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">receivers</span></code></a></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#qgis.gui.QgsStyleManagerDialog.regrouped" title="qgis.gui.QgsStyleManagerDialog.regrouped"><code class="xref py py-obj docutils literal notranslate"><span class="pre">regrouped</span></code></a></td>
-<td>symbol changed from one group</td>
+<td><div class="deprecated">
+<p><span class="versionmodified">Deprecated since version in: </span>QGIS 3.6 - has no effect and will be removed in QGIS 4.0</p>
+</div>
+</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#qgis.gui.QgsStyleManagerDialog.removeColorRamp" title="qgis.gui.QgsStyleManagerDialog.removeColorRamp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeColorRamp</span></code></a></td>
-<td></td>
+<td><div class="deprecated">
+<p><span class="versionmodified">Deprecated since version in: </span>QGIS 3.6 - has no effect and will be removed in QGIS 4.0</p>
+</div>
+</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#qgis.gui.QgsStyleManagerDialog.removeFavoriteSelectedSymbols" title="qgis.gui.QgsStyleManagerDialog.removeFavoriteSelectedSymbols"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeFavoriteSelectedSymbols</span></code></a></td>
 <td>Remove selected symbols from favorites</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#qgis.gui.QgsStyleManagerDialog.removeGroup" title="qgis.gui.QgsStyleManagerDialog.removeGroup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeGroup</span></code></a></td>
-<td>remove a tag or smartgroup</td>
+<td>Removes the selected tag or smartgroup.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#qgis.gui.QgsStyleManagerDialog.removeItem" title="qgis.gui.QgsStyleManagerDialog.removeItem"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeItem</span></code></a></td>
-<td></td>
+<td>Removes the current selected item.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#qgis.gui.QgsStyleManagerDialog.removeSymbol" title="qgis.gui.QgsStyleManagerDialog.removeSymbol"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeSymbol</span></code></a></td>
-<td></td>
+<td><div class="deprecated">
+<p><span class="versionmodified">Deprecated since version in: </span>QGIS 3.6 - has no effect and will be removed in QGIS 4.0</p>
+</div>
+</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#qgis.gui.QgsStyleManagerDialog.resizeEvent" title="qgis.gui.QgsStyleManagerDialog.resizeEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">resizeEvent</span></code></a></td>
 <td></td>
@@ -1655,40 +1669,52 @@ The <code class="docutils literal notranslate"><span class="pre">style</span></c
 <tr class="row-even"><td><a class="reference internal" href="#qgis.gui.QgsStyleManagerDialog.senderSignalIndex" title="qgis.gui.QgsStyleManagerDialog.senderSignalIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">senderSignalIndex</span></code></a></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#qgis.gui.QgsStyleManagerDialog.setBold" title="qgis.gui.QgsStyleManagerDialog.setBold"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setBold</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#qgis.gui.QgsStyleManagerDialog.setBaseStyleName" title="qgis.gui.QgsStyleManagerDialog.setBaseStyleName"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setBaseStyleName</span></code></a></td>
+<td>Sets the base <code class="docutils literal notranslate"><span class="pre">name</span></code> for the style, which is used by the dialog to reflect the original style/XML file name.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#qgis.gui.QgsStyleManagerDialog.setBold" title="qgis.gui.QgsStyleManagerDialog.setBold"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setBold</span></code></a></td>
 <td>sets the text of the item with bold font</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#qgis.gui.QgsStyleManagerDialog.setSymbolsChecked" title="qgis.gui.QgsStyleManagerDialog.setSymbolsChecked"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setSymbolsChecked</span></code></a></td>
-<td>to set symbols checked when in editing mode</td>
+<tr class="row-odd"><td><a class="reference internal" href="#qgis.gui.QgsStyleManagerDialog.setFavoritesGroupVisible" title="qgis.gui.QgsStyleManagerDialog.setFavoritesGroupVisible"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setFavoritesGroupVisible</span></code></a></td>
+<td>Sets whether the favorites group should be shown.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#qgis.gui.QgsStyleManagerDialog.sharedPainter" title="qgis.gui.QgsStyleManagerDialog.sharedPainter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sharedPainter</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#qgis.gui.QgsStyleManagerDialog.setSmartGroupsVisible" title="qgis.gui.QgsStyleManagerDialog.setSmartGroupsVisible"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setSmartGroupsVisible</span></code></a></td>
+<td>Sets whether smart groups should be shown.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#qgis.gui.QgsStyleManagerDialog.setSymbolsChecked" title="qgis.gui.QgsStyleManagerDialog.setSymbolsChecked"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setSymbolsChecked</span></code></a></td>
+<td><div class="deprecated">
+<p><span class="versionmodified">Deprecated since version in: </span>QGIS 3.6 - has no effect and will be removed in QGIS 4.0</p>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#qgis.gui.QgsStyleManagerDialog.sharedPainter" title="qgis.gui.QgsStyleManagerDialog.sharedPainter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sharedPainter</span></code></a></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#qgis.gui.QgsStyleManagerDialog.showEvent" title="qgis.gui.QgsStyleManagerDialog.showEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">showEvent</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#qgis.gui.QgsStyleManagerDialog.showEvent" title="qgis.gui.QgsStyleManagerDialog.showEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">showEvent</span></code></a></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#qgis.gui.QgsStyleManagerDialog.showHelp" title="qgis.gui.QgsStyleManagerDialog.showHelp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">showHelp</span></code></a></td>
-<td>Open the associated help</td>
+<tr class="row-even"><td><a class="reference internal" href="#qgis.gui.QgsStyleManagerDialog.showHelp" title="qgis.gui.QgsStyleManagerDialog.showHelp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">showHelp</span></code></a></td>
+<td>Opens the associated help</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#qgis.gui.QgsStyleManagerDialog.symbolSelected" title="qgis.gui.QgsStyleManagerDialog.symbolSelected"><code class="xref py py-obj docutils literal notranslate"><span class="pre">symbolSelected</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#qgis.gui.QgsStyleManagerDialog.symbolSelected" title="qgis.gui.QgsStyleManagerDialog.symbolSelected"><code class="xref py py-obj docutils literal notranslate"><span class="pre">symbolSelected</span></code></a></td>
 <td>Perform symbol specific tasks when selected</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#qgis.gui.QgsStyleManagerDialog.tabletEvent" title="qgis.gui.QgsStyleManagerDialog.tabletEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tabletEvent</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#qgis.gui.QgsStyleManagerDialog.tabletEvent" title="qgis.gui.QgsStyleManagerDialog.tabletEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tabletEvent</span></code></a></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#qgis.gui.QgsStyleManagerDialog.tagSelectedSymbols" title="qgis.gui.QgsStyleManagerDialog.tagSelectedSymbols"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tagSelectedSymbols</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#qgis.gui.QgsStyleManagerDialog.tagSelectedSymbols" title="qgis.gui.QgsStyleManagerDialog.tagSelectedSymbols"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tagSelectedSymbols</span></code></a></td>
 <td>Tag selected symbols using menu item selection</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#qgis.gui.QgsStyleManagerDialog.tagSymbolsAction" title="qgis.gui.QgsStyleManagerDialog.tagSymbolsAction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tagSymbolsAction</span></code></a></td>
-<td>carry out symbol tagging using check boxes</td>
+<tr class="row-even"><td><a class="reference internal" href="#qgis.gui.QgsStyleManagerDialog.tagSymbolsAction" title="qgis.gui.QgsStyleManagerDialog.tagSymbolsAction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tagSymbolsAction</span></code></a></td>
+<td>Toggles the interactive item tagging mode.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#qgis.gui.QgsStyleManagerDialog.timerEvent" title="qgis.gui.QgsStyleManagerDialog.timerEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">timerEvent</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#qgis.gui.QgsStyleManagerDialog.timerEvent" title="qgis.gui.QgsStyleManagerDialog.timerEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">timerEvent</span></code></a></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#qgis.gui.QgsStyleManagerDialog.updateMicroFocus" title="qgis.gui.QgsStyleManagerDialog.updateMicroFocus"><code class="xref py py-obj docutils literal notranslate"><span class="pre">updateMicroFocus</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#qgis.gui.QgsStyleManagerDialog.updateMicroFocus" title="qgis.gui.QgsStyleManagerDialog.updateMicroFocus"><code class="xref py py-obj docutils literal notranslate"><span class="pre">updateMicroFocus</span></code></a></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#qgis.gui.QgsStyleManagerDialog.wheelEvent" title="qgis.gui.QgsStyleManagerDialog.wheelEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wheelEvent</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#qgis.gui.QgsStyleManagerDialog.wheelEvent" title="qgis.gui.QgsStyleManagerDialog.wheelEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wheelEvent</span></code></a></td>
 <td></td>
 </tr>
 </tbody>
@@ -1748,12 +1774,14 @@ add a new color ramp to style</p>
 <dl class="method">
 <dt id="qgis.gui.QgsStyleManagerDialog.addItem">
 <code class="descname">addItem</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsStyleManagerDialog.addItem" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Triggers the dialog for adding a new item, based on the currently
+selected item type tab.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="qgis.gui.QgsStyleManagerDialog.addSmartgroup">
 <code class="descname">addSmartgroup</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#qgis.gui.QgsStyleManagerDialog.addSmartgroup" title="Permalink to this definition">¶</a></dt>
-<dd><p>add a smartgroup</p>
+<dd><p>Triggers the dialog to add a new smart group.</p>
 </dd></dl>
 
 <dl class="method">
@@ -1765,7 +1793,7 @@ add a new color ramp to style</p>
 <dl class="method">
 <dt id="qgis.gui.QgsStyleManagerDialog.addTag">
 <code class="descname">addTag</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#qgis.gui.QgsStyleManagerDialog.addTag" title="Permalink to this definition">¶</a></dt>
-<dd><p>add a tag</p>
+<dd><p>Triggers the dialog to add a new tag.</p>
 </dd></dl>
 
 <dl class="method">
@@ -1857,12 +1885,13 @@ add a new color ramp to style</p>
 <dl class="method">
 <dt id="qgis.gui.QgsStyleManagerDialog.editItem">
 <code class="descname">editItem</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsStyleManagerDialog.editItem" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Triggers the dialog for editing the current item.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="qgis.gui.QgsStyleManagerDialog.editSmartgroupAction">
 <code class="descname">editSmartgroupAction</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsStyleManagerDialog.editSmartgroupAction" title="Permalink to this definition">¶</a></dt>
-<dd><p>edit the selected smart group</p>
+<dd><p>Triggers the dialog for editing the selected smart group.</p>
 </dd></dl>
 
 <dl class="method">
@@ -1906,27 +1935,59 @@ add a new color ramp to style</p>
 <dl class="method">
 <dt id="qgis.gui.QgsStyleManagerDialog.exportItems">
 <code class="descname">exportItems</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsStyleManagerDialog.exportItems" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Triggers the dialog to export items.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#qgis.gui.QgsStyleManagerDialog.importItems" title="qgis.gui.QgsStyleManagerDialog.importItems"><code class="xref py py-func docutils literal notranslate"><span class="pre">importItems()</span></code></a></p>
+</div>
+</dd></dl>
 
 <dl class="method">
 <dt id="qgis.gui.QgsStyleManagerDialog.exportItemsPNG">
 <code class="descname">exportItemsPNG</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsStyleManagerDialog.exportItemsPNG" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Triggers the dialog to export selected items as PNG files.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#qgis.gui.QgsStyleManagerDialog.exportItemsSVG" title="qgis.gui.QgsStyleManagerDialog.exportItemsSVG"><code class="xref py py-func docutils literal notranslate"><span class="pre">exportItemsSVG()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#qgis.gui.QgsStyleManagerDialog.exportSelectedItemsImages" title="qgis.gui.QgsStyleManagerDialog.exportSelectedItemsImages"><code class="xref py py-func docutils literal notranslate"><span class="pre">exportSelectedItemsImages()</span></code></a></p>
+</div>
+</dd></dl>
 
 <dl class="method">
 <dt id="qgis.gui.QgsStyleManagerDialog.exportItemsSVG">
 <code class="descname">exportItemsSVG</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsStyleManagerDialog.exportItemsSVG" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Triggers the dialog to export selected items as SVG files.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#qgis.gui.QgsStyleManagerDialog.exportItemsPNG" title="qgis.gui.QgsStyleManagerDialog.exportItemsPNG"><code class="xref py py-func docutils literal notranslate"><span class="pre">exportItemsPNG()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#qgis.gui.QgsStyleManagerDialog.exportSelectedItemsImages" title="qgis.gui.QgsStyleManagerDialog.exportSelectedItemsImages"><code class="xref py py-func docutils literal notranslate"><span class="pre">exportSelectedItemsImages()</span></code></a></p>
+</div>
+</dd></dl>
 
 <dl class="method">
 <dt id="qgis.gui.QgsStyleManagerDialog.exportSelectedItemsImages">
 <code class="descname">exportSelectedItemsImages</code><span class="sig-paren">(</span><em>self</em>, <em>dir: str</em>, <em>format: str</em>, <em>size: QSize</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsStyleManagerDialog.exportSelectedItemsImages" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Triggers the dialog to export selected items as images of the specified <code class="docutils literal notranslate"><span class="pre">format</span></code> and <code class="docutils literal notranslate"><span class="pre">size</span></code>.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#qgis.gui.QgsStyleManagerDialog.exportItemsSVG" title="qgis.gui.QgsStyleManagerDialog.exportItemsSVG"><code class="xref py py-func docutils literal notranslate"><span class="pre">exportItemsSVG()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#qgis.gui.QgsStyleManagerDialog.exportItemsPNG" title="qgis.gui.QgsStyleManagerDialog.exportItemsPNG"><code class="xref py py-func docutils literal notranslate"><span class="pre">exportItemsPNG()</span></code></a></p>
+</div>
+</dd></dl>
 
 <dl class="method">
 <dt id="qgis.gui.QgsStyleManagerDialog.filterSymbols">
-<code class="descname">filterSymbols</code><span class="sig-paren">(</span><em>self</em>, <em>str</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsStyleManagerDialog.filterSymbols" title="Permalink to this definition">¶</a></dt>
-<dd><p>filter the symbols based on input search term</p>
+<code class="descname">filterSymbols</code><span class="sig-paren">(</span><em>self</em>, <em>filter: str</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsStyleManagerDialog.filterSymbols" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the <code class="docutils literal notranslate"><span class="pre">filter</span></code> string to filter symbols by.</p>
 </dd></dl>
 
 <dl class="method">
@@ -1957,12 +2018,14 @@ add a new color ramp to style</p>
 <dl class="method">
 <dt id="qgis.gui.QgsStyleManagerDialog.groupChanged">
 <code class="descname">groupChanged</code><span class="sig-paren">(</span><em>self</em>, <em>QModelIndex</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsStyleManagerDialog.groupChanged" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Trigerred when the current group (or tag) is changed.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="qgis.gui.QgsStyleManagerDialog.groupRenamed">
-<code class="descname">groupRenamed</code><span class="sig-paren">(</span><em>self</em>, <em>QStandardItem</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsStyleManagerDialog.groupRenamed" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="descname">groupRenamed</code><span class="sig-paren">(</span><em>self</em>, <em>item: QStandardItem</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsStyleManagerDialog.groupRenamed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Triggered when a group <code class="docutils literal notranslate"><span class="pre">item</span></code> is renamed.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="qgis.gui.QgsStyleManagerDialog.grouptreeContextMenu">
@@ -1978,7 +2041,12 @@ add a new color ramp to style</p>
 <dl class="method">
 <dt id="qgis.gui.QgsStyleManagerDialog.importItems">
 <code class="descname">importItems</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsStyleManagerDialog.importItems" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Triggers the dialog to import items.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#qgis.gui.QgsStyleManagerDialog.exportItems" title="qgis.gui.QgsStyleManagerDialog.exportItems"><code class="xref py py-func docutils literal notranslate"><span class="pre">exportItems()</span></code></a></p>
+</div>
+</dd></dl>
 
 <dl class="method">
 <dt id="qgis.gui.QgsStyleManagerDialog.initPainter">
@@ -1998,7 +2066,10 @@ add a new color ramp to style</p>
 <dl class="method">
 <dt id="qgis.gui.QgsStyleManagerDialog.itemChanged">
 <code class="descname">itemChanged</code><span class="sig-paren">(</span><em>self</em>, <em>item: QStandardItem</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsStyleManagerDialog.itemChanged" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><div class="deprecated">
+<p><span class="versionmodified">Deprecated since version in: </span>QGIS 3.6 - has no effect and will be removed in QGIS 4.0</p>
+</div>
+</dd></dl>
 
 <dl class="method">
 <dt id="qgis.gui.QgsStyleManagerDialog.keyPressEvent">
@@ -2059,13 +2130,13 @@ add a new color ramp to style</p>
 <dl class="method">
 <dt id="qgis.gui.QgsStyleManagerDialog.onClose">
 <code class="descname">onClose</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsStyleManagerDialog.onClose" title="Permalink to this definition">¶</a></dt>
-<dd><p>Close the dialog</p>
+<dd><p>Closes the dialog</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.gui.QgsStyleManagerDialog.onFinished">
 <code class="descname">onFinished</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsStyleManagerDialog.onFinished" title="Permalink to this definition">¶</a></dt>
-<dd><p>called when the dialog is going to be closed</p>
+<dd><p>Called when the dialog is going to be closed.</p>
 </dd></dl>
 
 <dl class="method">
@@ -2076,7 +2147,10 @@ add a new color ramp to style</p>
 <dl class="method">
 <dt id="qgis.gui.QgsStyleManagerDialog.populateColorRamps">
 <code class="descname">populateColorRamps</code><span class="sig-paren">(</span><em>self, colorRamps: Iterable[str], checkable: bool = False</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsStyleManagerDialog.populateColorRamps" title="Permalink to this definition">¶</a></dt>
-<dd><p>populate list view with color ramps</p>
+<dd><p>Populates the list view with color ramps of the current type with the given names.</p>
+<div class="deprecated">
+<p><span class="versionmodified">Deprecated since version No: </span>longer required in QGIS 3.6, as the model is updated live. Has no effect and will be removed in QGIS 4.0</p>
+</div>
 </dd></dl>
 
 <dl class="method">
@@ -2088,19 +2162,25 @@ add a new color ramp to style</p>
 <dl class="method">
 <dt id="qgis.gui.QgsStyleManagerDialog.populateList">
 <code class="descname">populateList</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsStyleManagerDialog.populateList" title="Permalink to this definition">¶</a></dt>
-<dd><p>adds symbols of some type to list</p>
+<dd><p>Refreshes the list of items.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.gui.QgsStyleManagerDialog.populateSymbols">
 <code class="descname">populateSymbols</code><span class="sig-paren">(</span><em>self, symbolNames: Iterable[str], checkable: bool = False</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsStyleManagerDialog.populateSymbols" title="Permalink to this definition">¶</a></dt>
-<dd><p>populate list view with symbols of the current type with the given names</p>
+<dd><p>Populates the list view with symbols of the current type with the given names.</p>
+<div class="deprecated">
+<p><span class="versionmodified">Deprecated since version No: </span>longer required in QGIS 3.6, as the model is updated live. Has no effect and will be removed in QGIS 4.0</p>
+</div>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.gui.QgsStyleManagerDialog.populateTypes">
 <code class="descname">populateTypes</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsStyleManagerDialog.populateTypes" title="Permalink to this definition">¶</a></dt>
-<dd><p>populate combo box with known style items (symbols, color ramps)</p>
+<dd><p>Populate combo box with known style items (symbols, color ramps).</p>
+<div class="deprecated">
+<p><span class="versionmodified">Deprecated since version in: </span>QGIS 3.6 - has no effect and will be removed in QGIS 4.0</p>
+</div>
 </dd></dl>
 
 <dl class="method">
@@ -2111,13 +2191,18 @@ add a new color ramp to style</p>
 <dl class="method">
 <dt id="qgis.gui.QgsStyleManagerDialog.regrouped">
 <code class="descname">regrouped</code><span class="sig-paren">(</span><em>self</em>, <em>QStandardItem</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsStyleManagerDialog.regrouped" title="Permalink to this definition">¶</a></dt>
-<dd><p>symbol changed from one group</p>
+<dd><div class="deprecated">
+<p><span class="versionmodified">Deprecated since version in: </span>QGIS 3.6 - has no effect and will be removed in QGIS 4.0</p>
+</div>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.gui.QgsStyleManagerDialog.removeColorRamp">
 <code class="descname">removeColorRamp</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.gui.QgsStyleManagerDialog.removeColorRamp" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><div class="deprecated">
+<p><span class="versionmodified">Deprecated since version in: </span>QGIS 3.6 - has no effect and will be removed in QGIS 4.0</p>
+</div>
+</dd></dl>
 
 <dl class="method">
 <dt id="qgis.gui.QgsStyleManagerDialog.removeFavoriteSelectedSymbols">
@@ -2128,18 +2213,22 @@ add a new color ramp to style</p>
 <dl class="method">
 <dt id="qgis.gui.QgsStyleManagerDialog.removeGroup">
 <code class="descname">removeGroup</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsStyleManagerDialog.removeGroup" title="Permalink to this definition">¶</a></dt>
-<dd><p>remove a tag or smartgroup</p>
+<dd><p>Removes the selected tag or smartgroup.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.gui.QgsStyleManagerDialog.removeItem">
 <code class="descname">removeItem</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsStyleManagerDialog.removeItem" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Removes the current selected item.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="qgis.gui.QgsStyleManagerDialog.removeSymbol">
 <code class="descname">removeSymbol</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.gui.QgsStyleManagerDialog.removeSymbol" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><div class="deprecated">
+<p><span class="versionmodified">Deprecated since version in: </span>QGIS 3.6 - has no effect and will be removed in QGIS 4.0</p>
+</div>
+</dd></dl>
 
 <dl class="method">
 <dt id="qgis.gui.QgsStyleManagerDialog.resizeEvent">
@@ -2163,15 +2252,47 @@ add a new color ramp to style</p>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="qgis.gui.QgsStyleManagerDialog.setBaseStyleName">
+<code class="descname">setBaseStyleName</code><span class="sig-paren">(</span><em>self</em>, <em>name: str</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsStyleManagerDialog.setBaseStyleName" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the base <code class="docutils literal notranslate"><span class="pre">name</span></code> for the style, which is used by the dialog to reflect the
+original style/XML file name.</p>
+<p><code class="docutils literal notranslate"><span class="pre">name</span></code> should be stripped of any extensions and folder information, e.g. “transport_styles”,
+not “d:/stuff/transport_styles.xml”.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 3.6.</span></p>
+</div>
+</dd></dl>
+
+<dl class="method">
 <dt id="qgis.gui.QgsStyleManagerDialog.setBold">
 <code class="descname">setBold</code><span class="sig-paren">(</span><em>self</em>, <em>QStandardItem</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsStyleManagerDialog.setBold" title="Permalink to this definition">¶</a></dt>
 <dd><p>sets the text of the item with bold font</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="qgis.gui.QgsStyleManagerDialog.setFavoritesGroupVisible">
+<code class="descname">setFavoritesGroupVisible</code><span class="sig-paren">(</span><em>self</em>, <em>show: bool</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsStyleManagerDialog.setFavoritesGroupVisible" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets whether the favorites group should be shown. The default is to show the group.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 3.6.</span></p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="qgis.gui.QgsStyleManagerDialog.setSmartGroupsVisible">
+<code class="descname">setSmartGroupsVisible</code><span class="sig-paren">(</span><em>self</em>, <em>show: bool</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsStyleManagerDialog.setSmartGroupsVisible" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets whether smart groups should be shown. The default is to show the groups.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 3.6.</span></p>
+</div>
+</dd></dl>
+
+<dl class="method">
 <dt id="qgis.gui.QgsStyleManagerDialog.setSymbolsChecked">
 <code class="descname">setSymbolsChecked</code><span class="sig-paren">(</span><em>self, Iterable[str]</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsStyleManagerDialog.setSymbolsChecked" title="Permalink to this definition">¶</a></dt>
-<dd><p>to set symbols checked when in editing mode</p>
+<dd><div class="deprecated">
+<p><span class="versionmodified">Deprecated since version in: </span>QGIS 3.6 - has no effect and will be removed in QGIS 4.0</p>
+</div>
 </dd></dl>
 
 <dl class="method">
@@ -2187,7 +2308,7 @@ add a new color ramp to style</p>
 <dl class="method">
 <dt id="qgis.gui.QgsStyleManagerDialog.showHelp">
 <code class="descname">showHelp</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsStyleManagerDialog.showHelp" title="Permalink to this definition">¶</a></dt>
-<dd><p>Open the associated help</p>
+<dd><p>Opens the associated help</p>
 </dd></dl>
 
 <dl class="method">
@@ -2210,7 +2331,7 @@ add a new color ramp to style</p>
 <dl class="method">
 <dt id="qgis.gui.QgsStyleManagerDialog.tagSymbolsAction">
 <code class="descname">tagSymbolsAction</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsStyleManagerDialog.tagSymbolsAction" title="Permalink to this definition">¶</a></dt>
-<dd><p>carry out symbol tagging using check boxes</p>
+<dd><p>Toggles the interactive item tagging mode.</p>
 </dd></dl>
 
 <dl class="method">
@@ -2243,7 +2364,7 @@ add a new color ramp to style</p>
 
   <div role="contentinfo">
     <p>
-      Last updated on 14:34 Jan 15, 2019.
+      Last updated on 14:51 Jan 16, 2019.
 
     </p>
   </div> 
