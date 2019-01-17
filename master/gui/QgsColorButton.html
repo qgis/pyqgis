@@ -1534,6 +1534,12 @@ and pasting colors, picking colors from the screen, and selecting colors from co
 <tr class="row-even"><td><a class="reference internal" href="#qgis.gui.QgsColorButton.leaveEvent" title="qgis.gui.QgsColorButton.leaveEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">leaveEvent</span></code></a></td>
 <td></td>
 </tr>
+<tr class="row-odd"><td><a class="reference internal" href="#qgis.gui.QgsColorButton.linkToProjectColor" title="qgis.gui.QgsColorButton.linkToProjectColor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">linkToProjectColor</span></code></a></td>
+<td>Sets the button to link to an existing project color, by color <code class="docutils literal notranslate"><span class="pre">name</span></code>.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#qgis.gui.QgsColorButton.linkedProjectColorName" title="qgis.gui.QgsColorButton.linkedProjectColorName"><code class="xref py py-obj docutils literal notranslate"><span class="pre">linkedProjectColorName</span></code></a></td>
+<td>Returns the linked project color name, if set.</td>
+</tr>
 <tr class="row-odd"><td><a class="reference internal" href="#qgis.gui.QgsColorButton.metric" title="qgis.gui.QgsColorButton.metric"><code class="xref py py-obj docutils literal notranslate"><span class="pre">metric</span></code></a></td>
 <td></td>
 </tr>
@@ -1654,10 +1660,13 @@ and pasting colors, picking colors from the screen, and selecting colors from co
 <tr class="row-even"><td><a class="reference internal" href="#qgis.gui.QgsColorButton.transparentBackground" title="qgis.gui.QgsColorButton.transparentBackground"><code class="xref py py-obj docutils literal notranslate"><span class="pre">transparentBackground</span></code></a></td>
 <td>Returns a checkboard pattern pixmap for use as a background to transparent colors</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#qgis.gui.QgsColorButton.updateMicroFocus" title="qgis.gui.QgsColorButton.updateMicroFocus"><code class="xref py py-obj docutils literal notranslate"><span class="pre">updateMicroFocus</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#qgis.gui.QgsColorButton.unlink" title="qgis.gui.QgsColorButton.unlink"><code class="xref py py-obj docutils literal notranslate"><span class="pre">unlink</span></code></a></td>
+<td>Unlinks the button from a project color.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#qgis.gui.QgsColorButton.updateMicroFocus" title="qgis.gui.QgsColorButton.updateMicroFocus"><code class="xref py py-obj docutils literal notranslate"><span class="pre">updateMicroFocus</span></code></a></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#qgis.gui.QgsColorButton.wheelEvent" title="qgis.gui.QgsColorButton.wheelEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wheelEvent</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#qgis.gui.QgsColorButton.wheelEvent" title="qgis.gui.QgsColorButton.wheelEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wheelEvent</span></code></a></td>
 <td></td>
 </tr>
 </tbody>
@@ -1674,6 +1683,9 @@ and pasting colors, picking colors from the screen, and selecting colors from co
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#qgis.gui.QgsColorButton.colorClicked" title="qgis.gui.QgsColorButton.colorClicked"><code class="xref py py-obj docutils literal notranslate"><span class="pre">colorClicked</span></code></a></td>
 <td>Emitted when the button is clicked, if the button’s behavior is set to SignalOnly</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#qgis.gui.QgsColorButton.unlinked" title="qgis.gui.QgsColorButton.unlinked"><code class="xref py py-obj docutils literal notranslate"><span class="pre">unlinked</span></code></a></td>
+<td>Emitted when the color is unlinked, e.g.</td>
 </tr>
 </tbody>
 </table>
@@ -2090,6 +2102,41 @@ option is disabled.</td>
 <dt id="qgis.gui.QgsColorButton.leaveEvent">
 <code class="descname">leaveEvent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorButton.leaveEvent" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="method">
+<dt id="qgis.gui.QgsColorButton.linkToProjectColor">
+<code class="descname">linkToProjectColor</code><span class="sig-paren">(</span><em>self</em>, <em>name: str</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorButton.linkToProjectColor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the button to link to an existing project color, by color <code class="docutils literal notranslate"><span class="pre">name</span></code>.</p>
+<p>This changes the behavior of the button to a “linked” mode. Specifically,
+the button will show the linked color and respond to changes in the project
+color scheme by refreshing the displayed color automatically. Additionally,
+the button’s menu will show items specific to linked color mode, including
+an option to “unlink” from the project color.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#qgis.gui.QgsColorButton.linkedProjectColorName" title="qgis.gui.QgsColorButton.linkedProjectColorName"><code class="xref py py-func docutils literal notranslate"><span class="pre">linkedProjectColorName()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#qgis.gui.QgsColorButton.unlink" title="qgis.gui.QgsColorButton.unlink"><code class="xref py py-func docutils literal notranslate"><span class="pre">unlink()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 3.6.</span></p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="qgis.gui.QgsColorButton.linkedProjectColorName">
+<code class="descname">linkedProjectColorName</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.gui.QgsColorButton.linkedProjectColorName" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the linked project color name, if set.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#qgis.gui.QgsColorButton.linkToProjectColor" title="qgis.gui.QgsColorButton.linkToProjectColor"><code class="xref py py-func docutils literal notranslate"><span class="pre">linkToProjectColor()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 3.6.</span></p>
+</div>
+</dd></dl>
 
 <dl class="method">
 <dt id="qgis.gui.QgsColorButton.metric">
@@ -2602,6 +2649,41 @@ dialog</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="qgis.gui.QgsColorButton.unlink">
+<code class="descname">unlink</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorButton.unlink" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unlinks the button from a project color.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#qgis.gui.QgsColorButton.unlinked" title="qgis.gui.QgsColorButton.unlinked"><code class="xref py py-func docutils literal notranslate"><span class="pre">unlinked()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#qgis.gui.QgsColorButton.linkToProjectColor" title="qgis.gui.QgsColorButton.linkToProjectColor"><code class="xref py py-func docutils literal notranslate"><span class="pre">linkToProjectColor()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 3.6.</span></p>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="qgis.gui.QgsColorButton.unlinked">
+<code class="descname">unlinked</code><a class="headerlink" href="#qgis.gui.QgsColorButton.unlinked" title="Permalink to this definition">¶</a></dt>
+<dd><p>Emitted when the color is unlinked, e.g. when it was previously set to link
+to a project color and is now no longer linked.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#qgis.gui.QgsColorButton.unlink" title="qgis.gui.QgsColorButton.unlink"><code class="xref py py-func docutils literal notranslate"><span class="pre">unlink()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#qgis.gui.QgsColorButton.linkToProjectColor" title="qgis.gui.QgsColorButton.linkToProjectColor"><code class="xref py py-func docutils literal notranslate"><span class="pre">linkToProjectColor()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 3.6: </span>[signal]</p>
+</div>
+</dd></dl>
+
+<dl class="method">
 <dt id="qgis.gui.QgsColorButton.updateMicroFocus">
 <code class="descname">updateMicroFocus</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorButton.updateMicroFocus" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -2626,7 +2708,7 @@ dialog</p>
 
   <div role="contentinfo">
     <p>
-      Last updated on 14:51 Jan 16, 2019.
+      Last updated on 14:38 Jan 17, 2019.
 
     </p>
   </div> 
