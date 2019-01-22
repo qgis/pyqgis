@@ -7,7 +7,7 @@ FROM  qgis/qgis:${QGIS_DOCKER_TAG}
 MAINTAINER Denis Rouzaud <denis@opengis.ch>
 
 RUN curl https://bootstrap.pypa.io/get-pip.py | python3
-RUN pip3 install sphinx
+RUN pip3 install sphinx sphinx-autodoc-typehints
 
 COPY . /root/pyqgis
 
