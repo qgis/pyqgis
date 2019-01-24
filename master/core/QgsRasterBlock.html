@@ -490,6 +490,8 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsNetworkContentFetcher.html">Class: QgsNetworkContentFetcher</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsNetworkContentFetcherRegistry.html">Class: QgsNetworkContentFetcherRegistry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsNetworkContentFetcherTask.html">Class: QgsNetworkContentFetcherTask</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsNetworkReplyContent.html">Class: QgsNetworkReplyContent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsNetworkRequestParameters.html">Class: QgsNetworkRequestParameters</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsNmeaConnection.html">Class: QgsNmeaConnection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsNullSymbolRenderer.html">Class: QgsNullSymbolRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsNumericScaleBarRenderer.html">Class: QgsNumericScaleBarRenderer</a></li>
@@ -1458,7 +1460,7 @@ Constructor which allocates data block in memory</p>
 <td>Returns true if block is empty, i.e.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsRasterBlock.isNoData" title="qgis.core.QgsRasterBlock.isNoData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isNoData</span></code></a></td>
-<td>Check if value at position is no data</td>
+<td>Checks if value at position is no data</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsRasterBlock.isValid" title="qgis.core.QgsRasterBlock.isValid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isValid</span></code></a></td>
 <td>Returns true if the block is valid (correctly filled with data).</td>
@@ -1714,7 +1716,7 @@ This method does not return true if size is not zero and all values are
 <dl class="method">
 <dt id="qgis.core.QgsRasterBlock.isNoData">
 <code class="descname">isNoData</code><span class="sig-paren">(</span><em>self</em>, <em>row: int</em>, <em>column: int</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsRasterBlock.isNoData" title="Permalink to this definition">¶</a></dt>
-<dd><p>Check if value at position is no data</p>
+<dd><p>Checks if value at position is no data</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -1725,11 +1727,15 @@ This method does not return true if size is not zero and all values are
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">true if value is no data *</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">true if value is no data</p>
 </td>
 </tr>
 </tbody>
 </table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><code class="xref py py-func docutils literal notranslate"><span class="pre">valueAndNoData()</span></code></p>
+</div>
 <p>isNoData(self, row: int, column: int) -&gt; bool
 Check if value at position is no data</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -1742,11 +1748,15 @@ Check if value at position is no data</p>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">true if value is no data *</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">true if value is no data</p>
 </td>
 </tr>
 </tbody>
 </table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><code class="xref py py-func docutils literal notranslate"><span class="pre">valueAndNoData()</span></code></p>
+</div>
 <p>isNoData(self, index: int) -&gt; bool
 Check if value at position is no data</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -1755,10 +1765,14 @@ Check if value at position is no data</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>index</strong> – data matrix index (long type in Python)</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">true if value is no data *</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">true if value is no data</td>
 </tr>
 </tbody>
 </table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><code class="xref py py-func docutils literal notranslate"><span class="pre">valueAndNoData()</span></code></p>
+</div>
 </dd></dl>
 
 <dl class="method">
@@ -2137,13 +2151,17 @@ returned value is undefined.</p>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">value *</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">value</p>
 </td>
 </tr>
 </tbody>
 </table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><code class="xref py py-func docutils literal notranslate"><span class="pre">valueAndNoData()</span></code></p>
+</div>
 <p>value(self, index: int) -&gt; float
-Read a single value if type of block is numeric. If type is color,
+Reads a single value if type of block is numeric. If type is color,
 returned value is undefined.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -2151,10 +2169,14 @@ returned value is undefined.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>index</strong> – data matrix index (long type in Python)</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">value *</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">value</td>
 </tr>
 </tbody>
 </table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><code class="xref py py-func docutils literal notranslate"><span class="pre">valueAndNoData()</span></code></p>
+</div>
 </dd></dl>
 
 <dl class="method">
@@ -2206,7 +2228,7 @@ returned value is undefined.</p>
 
   <div role="contentinfo">
     <p>
-      Last updated on 14:47 Jan 23, 2019.
+      Last updated on 14:53 Jan 24, 2019.
 
     </p>
   </div> 

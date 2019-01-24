@@ -490,6 +490,8 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsNetworkContentFetcher.html">Class: QgsNetworkContentFetcher</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsNetworkContentFetcherRegistry.html">Class: QgsNetworkContentFetcherRegistry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsNetworkContentFetcherTask.html">Class: QgsNetworkContentFetcherTask</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsNetworkReplyContent.html">Class: QgsNetworkReplyContent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsNetworkRequestParameters.html">Class: QgsNetworkRequestParameters</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsNmeaConnection.html">Class: QgsNmeaConnection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsNullSymbolRenderer.html">Class: QgsNullSymbolRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsNumericScaleBarRenderer.html">Class: QgsNumericScaleBarRenderer</a></li>
@@ -1413,19 +1415,22 @@
 <tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsRasterIterator.maximumTileWidth" title="qgis.core.QgsRasterIterator.maximumTileWidth"><code class="xref py py-obj docutils literal notranslate"><span class="pre">maximumTileWidth</span></code></a></td>
 <td>Returns the maximum tile width returned during iteration.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsRasterIterator.readNextRasterPart" title="qgis.core.QgsRasterIterator.readNextRasterPart"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readNextRasterPart</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsRasterIterator.next" title="qgis.core.QgsRasterIterator.next"><code class="xref py py-obj docutils literal notranslate"><span class="pre">next</span></code></a></td>
+<td>Fetches details of the next part of the raster data.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsRasterIterator.readNextRasterPart" title="qgis.core.QgsRasterIterator.readNextRasterPart"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readNextRasterPart</span></code></a></td>
 <td>Fetches next part of raster data, caller takes ownership of the block and caller should delete the block.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsRasterIterator.setMaximumTileHeight" title="qgis.core.QgsRasterIterator.setMaximumTileHeight"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setMaximumTileHeight</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsRasterIterator.setMaximumTileHeight" title="qgis.core.QgsRasterIterator.setMaximumTileHeight"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setMaximumTileHeight</span></code></a></td>
 <td>Sets the minimum tile height returned during iteration.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsRasterIterator.setMaximumTileWidth" title="qgis.core.QgsRasterIterator.setMaximumTileWidth"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setMaximumTileWidth</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsRasterIterator.setMaximumTileWidth" title="qgis.core.QgsRasterIterator.setMaximumTileWidth"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setMaximumTileWidth</span></code></a></td>
 <td>Sets the maximum tile width returned during iteration.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsRasterIterator.startRasterRead" title="qgis.core.QgsRasterIterator.startRasterRead"><code class="xref py py-obj docutils literal notranslate"><span class="pre">startRasterRead</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsRasterIterator.startRasterRead" title="qgis.core.QgsRasterIterator.startRasterRead"><code class="xref py py-obj docutils literal notranslate"><span class="pre">startRasterRead</span></code></a></td>
 <td>Start reading of raster band.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsRasterIterator.stopRasterRead" title="qgis.core.QgsRasterIterator.stopRasterRead"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stopRasterRead</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsRasterIterator.stopRasterRead" title="qgis.core.QgsRasterIterator.stopRasterRead"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stopRasterRead</span></code></a></td>
 <td>Cancels the raster iteration and resets the iterator.</td>
 </tr>
 </tbody>
@@ -1496,6 +1501,41 @@
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
 <p class="last"><a class="reference internal" href="#qgis.core.QgsRasterIterator.maximumTileHeight" title="qgis.core.QgsRasterIterator.maximumTileHeight"><code class="xref py py-func docutils literal notranslate"><span class="pre">maximumTileHeight()</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="qgis.core.QgsRasterIterator.next">
+<code class="descname">next</code><span class="sig-paren">(</span><em>self</em>, <em>bandNumber: int</em><span class="sig-paren">)</span> &#x2192; Tuple[bool, int, int, int, int, QgsRectangle]<a class="headerlink" href="#qgis.core.QgsRasterIterator.next" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fetches details of the next part of the raster data. This method does NOT actually fetch the raster
+data itself, rather it calculates and iterates over the details of the raster alone.</p>
+<p>It’s useful for iterating over several layers using a target “reference” layer. E.g. summing
+the pixels in n rasters whilst aligning the result to a reference layer which is not being summed.</p>
+<p>Note that calling this method also advances the iterator, just like calling readNextRasterPart().</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>bandNumber</strong> – band to read</li>
+<li><strong>rows</strong> – number of rows on output device</li>
+<li><strong>topLeftColumn</strong> – top left column</li>
+<li><strong>topLeftRow</strong> – top left row</li>
+<li><strong>blockExtent</strong> – exact extent of returned raster block</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
+<li>false if the last part was already returned</li>
+<li>columns:  number of columns on output device</li>
+</ul>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 3.6.</span></p>
 </div>
 </dd></dl>
 
@@ -1595,7 +1635,7 @@ caller should delete the block.</p>
 
   <div role="contentinfo">
     <p>
-      Last updated on 14:47 Jan 23, 2019.
+      Last updated on 14:53 Jan 24, 2019.
 
     </p>
   </div> 

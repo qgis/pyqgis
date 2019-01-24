@@ -490,6 +490,8 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsNetworkContentFetcher.html">Class: QgsNetworkContentFetcher</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsNetworkContentFetcherRegistry.html">Class: QgsNetworkContentFetcherRegistry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsNetworkContentFetcherTask.html">Class: QgsNetworkContentFetcherTask</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsNetworkReplyContent.html">Class: QgsNetworkReplyContent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsNetworkRequestParameters.html">Class: QgsNetworkRequestParameters</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsNmeaConnection.html">Class: QgsNmeaConnection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsNullSymbolRenderer.html">Class: QgsNullSymbolRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsNumericScaleBarRenderer.html">Class: QgsNumericScaleBarRenderer</a></li>
@@ -1484,14 +1486,23 @@ that the fallback proxy should not be used for, then no proxy will be used.</p>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsNetworkAccessManager.requestAboutToBeCreated" title="qgis.core.QgsNetworkAccessManager.requestAboutToBeCreated"><code class="xref py py-obj docutils literal notranslate"><span class="pre">requestAboutToBeCreated</span></code></a></td>
-<td>requestAboutToBeCreated(self, QNetworkAccessManager.Operation, QNetworkRequest, QIODevice) [signal]</td>
+<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsNetworkAccessManager.finished" title="qgis.core.QgsNetworkAccessManager.finished"><code class="xref py py-obj docutils literal notranslate"><span class="pre">finished</span></code></a></td>
+<td>This signal is emitted whenever a pending network reply is finished.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsNetworkAccessManager.requestCreated" title="qgis.core.QgsNetworkAccessManager.requestCreated"><code class="xref py py-obj docutils literal notranslate"><span class="pre">requestCreated</span></code></a></td>
-<td>requestCreated(self, QNetworkReply) [signal]</td>
+<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsNetworkAccessManager.requestAboutToBeCreated" title="qgis.core.QgsNetworkAccessManager.requestAboutToBeCreated"><code class="xref py py-obj docutils literal notranslate"><span class="pre">requestAboutToBeCreated</span></code></a></td>
+<td><div class="deprecated">
+<p><span class="versionmodified">Deprecated since version Use: </span>the thread-safe requestAboutToBeCreated( QgsNetworkRequestParameters ) signal instead. [signal]</p>
+</div>
+</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsNetworkAccessManager.requestTimedOut" title="qgis.core.QgsNetworkAccessManager.requestTimedOut"><code class="xref py py-obj docutils literal notranslate"><span class="pre">requestTimedOut</span></code></a></td>
-<td>requestTimedOut(self, QNetworkReply) [signal]</td>
+<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsNetworkAccessManager.requestCreated" title="qgis.core.QgsNetworkAccessManager.requestCreated"><code class="xref py py-obj docutils literal notranslate"><span class="pre">requestCreated</span></code></a></td>
+<td><div class="deprecated">
+<p><span class="versionmodified">Deprecated since version Use: </span>the thread-safe requestAboutToBeCreated( QgsNetworkRequestParameters ) signal instead. [signal]</p>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsNetworkAccessManager.requestTimedOut" title="qgis.core.QgsNetworkAccessManager.requestTimedOut"><code class="xref py py-obj docutils literal notranslate"><span class="pre">requestTimedOut</span></code></a></td>
+<td>Emitted when a network request has timed out.</td>
 </tr>
 </tbody>
 </table>
@@ -1554,6 +1565,28 @@ that the fallback proxy should not be used for, then no proxy will be used.</p>
 <dd><p>retrieve fall back proxy (for urls that no factory returned proxies for)</p>
 </dd></dl>
 
+<dl class="attribute">
+<dt id="qgis.core.QgsNetworkAccessManager.finished">
+<code class="descname">finished</code><a class="headerlink" href="#qgis.core.QgsNetworkAccessManager.finished" title="Permalink to this definition">¶</a></dt>
+<dd><p>This signal is emitted whenever a pending network reply is finished.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">reply</span></code> parameter will contain a QgsNetworkReplyContent object, containing all the useful
+information relating to the reply, including headers and reply content.</p>
+<p>This signal is propagated to the main thread QgsNetworkAccessManager instance, so it is necessary
+only to connect to the main thread’s signal in order to receive notifications about requests
+created in any thread.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#qgis.core.QgsNetworkAccessManager.requestAboutToBeCreated" title="qgis.core.QgsNetworkAccessManager.requestAboutToBeCreated"><code class="xref py py-func docutils literal notranslate"><span class="pre">requestAboutToBeCreated()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#qgis.core.QgsNetworkAccessManager.requestTimedOut" title="qgis.core.QgsNetworkAccessManager.requestTimedOut"><code class="xref py py-func docutils literal notranslate"><span class="pre">requestTimedOut()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 3.6: </span>[signal]</p>
+</div>
+</dd></dl>
+
 <dl class="method">
 <dt id="qgis.core.QgsNetworkAccessManager.insertProxyFactory">
 <code class="descname">insertProxyFactory</code><span class="sig-paren">(</span><em>self</em>, <em>factory: QNetworkProxyFactory</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsNetworkAccessManager.insertProxyFactory" title="Permalink to this definition">¶</a></dt>
@@ -1611,19 +1644,54 @@ continued.</td>
 <dl class="attribute">
 <dt id="qgis.core.QgsNetworkAccessManager.requestAboutToBeCreated">
 <code class="descname">requestAboutToBeCreated</code><a class="headerlink" href="#qgis.core.QgsNetworkAccessManager.requestAboutToBeCreated" title="Permalink to this definition">¶</a></dt>
-<dd><p>requestAboutToBeCreated(self, QNetworkAccessManager.Operation, QNetworkRequest, QIODevice) [signal]</p>
+<dd><div class="deprecated">
+<p><span class="versionmodified">Deprecated since version Use: </span>the thread-safe requestAboutToBeCreated( QgsNetworkRequestParameters ) signal instead. [signal]</p>
+</div>
+<p>requestAboutToBeCreated(self, QgsNetworkRequestParameters)
+Emitted when a network request is about to be created.</p>
+<p>This signal is propagated to the main thread QgsNetworkAccessManager instance, so it is necessary
+only to connect to the main thread’s signal in order to receive notifications about requests
+created in any thread.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#qgis.core.QgsNetworkAccessManager.finished" title="qgis.core.QgsNetworkAccessManager.finished"><code class="xref py py-func docutils literal notranslate"><span class="pre">finished()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#qgis.core.QgsNetworkAccessManager.requestTimedOut" title="qgis.core.QgsNetworkAccessManager.requestTimedOut"><code class="xref py py-func docutils literal notranslate"><span class="pre">requestTimedOut()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 3.6: </span>[signal]</p>
+</div>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="qgis.core.QgsNetworkAccessManager.requestCreated">
 <code class="descname">requestCreated</code><a class="headerlink" href="#qgis.core.QgsNetworkAccessManager.requestCreated" title="Permalink to this definition">¶</a></dt>
-<dd><p>requestCreated(self, QNetworkReply) [signal]</p>
+<dd><div class="deprecated">
+<p><span class="versionmodified">Deprecated since version Use: </span>the thread-safe requestAboutToBeCreated( QgsNetworkRequestParameters ) signal instead. [signal]</p>
+</div>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="qgis.core.QgsNetworkAccessManager.requestTimedOut">
 <code class="descname">requestTimedOut</code><a class="headerlink" href="#qgis.core.QgsNetworkAccessManager.requestTimedOut" title="Permalink to this definition">¶</a></dt>
-<dd><p>requestTimedOut(self, QNetworkReply) [signal]</p>
+<dd><p>Emitted when a network request has timed out.</p>
+<p>This signal is propagated to the main thread QgsNetworkAccessManager instance, so it is necessary
+only to connect to the main thread’s signal in order to receive notifications about requests
+created in any thread.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#qgis.core.QgsNetworkAccessManager.requestAboutToBeCreated" title="qgis.core.QgsNetworkAccessManager.requestAboutToBeCreated"><code class="xref py py-func docutils literal notranslate"><span class="pre">requestAboutToBeCreated()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#qgis.core.QgsNetworkAccessManager.finished" title="qgis.core.QgsNetworkAccessManager.finished"><code class="xref py py-func docutils literal notranslate"><span class="pre">finished()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 3.6: </span>[signal]</p>
+</div>
+<p>requestTimedOut(self, QNetworkReply) [signal]</p>
 </dd></dl>
 
 <dl class="method">
@@ -1683,7 +1751,7 @@ for the constructor of this class.</p>
 
   <div role="contentinfo">
     <p>
-      Last updated on 14:47 Jan 23, 2019.
+      Last updated on 14:53 Jan 24, 2019.
 
     </p>
   </div> 
