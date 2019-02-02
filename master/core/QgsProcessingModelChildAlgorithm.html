@@ -137,6 +137,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsAuxiliaryStorage.html">Class: QgsAuxiliaryStorage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsBearingUtils.html">Class: QgsBearingUtils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsBilinearRasterResampler.html">Class: QgsBilinearRasterResampler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsBlockingNetworkRequest.html">Class: QgsBlockingNetworkRequest</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsBlurEffect.html">Class: QgsBlurEffect</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsBox3d.html">Class: QgsBox3d</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsBrightnessContrastFilter.html">Class: QgsBrightnessContrastFilter</a></li>
@@ -1419,7 +1420,7 @@ should be set to a QgsProcessingAlgorithm algorithm ID.</p>
 <td>Returns the underlying child algorithm’s ID.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsProcessingModelChildAlgorithm.asPythonCode" title="qgis.core.QgsProcessingModelChildAlgorithm.asPythonCode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">asPythonCode</span></code></a></td>
-<td>Attempts to convert the child to executable Python code.</td>
+<td>Attempts to convert the child to executable Python code, and returns a list of the generated lines of code.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsProcessingModelChildAlgorithm.childId" title="qgis.core.QgsProcessingModelChildAlgorithm.childId"><code class="xref py py-obj docutils literal notranslate"><span class="pre">childId</span></code></a></td>
 <td>Returns the child algorithm’s unique ID string, used the identify this child algorithm within its parent model.</td>
@@ -1565,8 +1566,11 @@ if a matching algorithm is not available.</p>
 
 <dl class="method">
 <dt id="qgis.core.QgsProcessingModelChildAlgorithm.asPythonCode">
-<code class="descname">asPythonCode</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.core.QgsProcessingModelChildAlgorithm.asPythonCode" title="Permalink to this definition">¶</a></dt>
-<dd><p>Attempts to convert the child to executable Python code.</p>
+<code class="descname">asPythonCode</code><span class="sig-paren">(</span><em>self, outputType: QgsProcessing.PythonOutputType, extraParameters: Dict[str, str], currentIndent: int, indentSize: int</em><span class="sig-paren">)</span> &#x2192; List[str]<a class="headerlink" href="#qgis.core.QgsProcessingModelChildAlgorithm.asPythonCode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Attempts to convert the child to executable Python code, and returns a list of the generated lines of code.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">outputType</span></code> argument specifies the type of script to generate.</p>
+<p>Additional parameters to be passed to the child algorithm are specified in the <code class="docutils literal notranslate"><span class="pre">extraParameters</span></code> argument.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">currentIndent</span></code> and <code class="docutils literal notranslate"><span class="pre">indentSize</span></code> are used to set the base line indent and size of further indented lines respectively.</p>
 </dd></dl>
 
 <dl class="method">
@@ -1918,7 +1922,7 @@ in the graphical modeler.</p>
 
   <div role="contentinfo">
     <p>
-      Last updated on 14:43 Feb 01, 2019.
+      Last updated on 14:44 Feb 02, 2019.
 
     </p>
   </div> 
