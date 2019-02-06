@@ -1398,6 +1398,9 @@
 <dt id="qgis.core.QgsMarkerSymbol">
 <em class="property">class </em><code class="descclassname">qgis.core.</code><code class="descname">QgsMarkerSymbol</code><span class="sig-paren">(</span><em>layers: object = QgsSymbolLayerList()</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsMarkerSymbol" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">qgis._core.QgsSymbol</span></code></p>
+<p>Constructor for QgsMarkerSymbol, with the specified list of initial symbol <code class="docutils literal notranslate"><span class="pre">layers</span></code>.</p>
+<p>Ownership of the <code class="docutils literal notranslate"><span class="pre">layers</span></code> are transferred to the symbol.</p>
+<p>A marker symbol type, for rendering Point and MultiPoint geometries.</p>
 <blockquote>
 <div><p class="rubric">Methods</p>
 <table border="1" class="longtable docutils">
@@ -1464,7 +1467,7 @@
 <td>Sets the size units for the whole symbol (including all symbol layers).</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsMarkerSymbol.size" title="qgis.core.QgsMarkerSymbol.size"><code class="xref py py-obj docutils literal notranslate"><span class="pre">size</span></code></a></td>
-<td>Returns the size for the whole symbol, which is the maximum size of all marker symbol layers in the symbol.</td>
+<td>Returns the estimated size for the whole symbol, which is the maximum size of all marker symbol layers in the symbol.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsMarkerSymbol.sizeMapUnitScale" title="qgis.core.QgsMarkerSymbol.sizeMapUnitScale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sizeMapUnitScale</span></code></a></td>
 <td>Returns the size map unit scale for the whole symbol.</td>
@@ -1774,8 +1777,14 @@ will be scaled to maintain their current relative size to the whole symbol size.
 <dl class="method">
 <dt id="qgis.core.QgsMarkerSymbol.size">
 <code class="descname">size</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#qgis.core.QgsMarkerSymbol.size" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the size for the whole symbol, which is the maximum size of
+<dd><p>Returns the estimated size for the whole symbol, which is the maximum size of
 all marker symbol layers in the symbol.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">This returned value is inaccurate if the symbol consists of multiple
+symbol layers with different size units. Use the overload accepting a <a class="reference internal" href="QgsRenderContext.html#module-QgsRenderContext" title="QgsRenderContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsRenderContext</span></code></a>
+argument instead for accurate sizes in this case.</p>
+</div>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
 <p class="last"><a class="reference internal" href="#qgis.core.QgsMarkerSymbol.setSize" title="qgis.core.QgsMarkerSymbol.setSize"><code class="xref py py-func docutils literal notranslate"><span class="pre">setSize()</span></code></a></p>
@@ -1787,6 +1796,26 @@ all marker symbol layers in the symbol.</p>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
 <p class="last"><a class="reference internal" href="#qgis.core.QgsMarkerSymbol.sizeMapUnitScale" title="qgis.core.QgsMarkerSymbol.sizeMapUnitScale"><code class="xref py py-func docutils literal notranslate"><span class="pre">sizeMapUnitScale()</span></code></a></p>
+</div>
+<p>size(self, context: QgsRenderContext) -&gt; float
+Returns the symbol size, in painter units. This is the maximum size of
+all marker symbol layers in the symbol.</p>
+<p>This method returns an accurate size by calculating the actual rendered
+size of each symbol layer using the provided render <code class="docutils literal notranslate"><span class="pre">context</span></code>.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#qgis.core.QgsMarkerSymbol.setSize" title="qgis.core.QgsMarkerSymbol.setSize"><code class="xref py py-func docutils literal notranslate"><span class="pre">setSize()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#qgis.core.QgsMarkerSymbol.sizeUnit" title="qgis.core.QgsMarkerSymbol.sizeUnit"><code class="xref py py-func docutils literal notranslate"><span class="pre">sizeUnit()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#qgis.core.QgsMarkerSymbol.sizeMapUnitScale" title="qgis.core.QgsMarkerSymbol.sizeMapUnitScale"><code class="xref py py-func docutils literal notranslate"><span class="pre">sizeMapUnitScale()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 3.4.5.</span></p>
 </div>
 </dd></dl>
 
@@ -1857,7 +1886,7 @@ for the first symbol layer.</p>
 
   <div role="contentinfo">
     <p>
-      Last updated on 14:46 Feb 05, 2019.
+      Last updated on 14:46 Feb 06, 2019.
 
     </p>
   </div> 

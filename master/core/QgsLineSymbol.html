@@ -1398,6 +1398,9 @@
 <dt id="qgis.core.QgsLineSymbol">
 <em class="property">class </em><code class="descclassname">qgis.core.</code><code class="descname">QgsLineSymbol</code><span class="sig-paren">(</span><em>layers: object = QgsSymbolLayerList()</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsLineSymbol" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">qgis._core.QgsSymbol</span></code></p>
+<p>Constructor for QgsLineSymbol, with the specified list of initial symbol <code class="docutils literal notranslate"><span class="pre">layers</span></code>.</p>
+<p>Ownership of the <code class="docutils literal notranslate"><span class="pre">layers</span></code> are transferred to the symbol.</p>
+<p>A line symbol type, for rendering LineString and MultiLineString geometries.</p>
 <blockquote>
 <div><p class="rubric">Methods</p>
 <table border="1" class="longtable docutils">
@@ -1431,10 +1434,10 @@
 <td>Set data defined width for whole symbol (including all symbol layers).</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsLineSymbol.setWidth" title="qgis.core.QgsLineSymbol.setWidth"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setWidth</span></code></a></td>
-<td></td>
+<td>Sets the <code class="docutils literal notranslate"><span class="pre">width</span></code> for the whole line symbol.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsLineSymbol.width" title="qgis.core.QgsLineSymbol.width"><code class="xref py py-obj docutils literal notranslate"><span class="pre">width</span></code></a></td>
-<td></td>
+<td>Returns the estimated width for the whole symbol, which is the maximum width of all marker symbol layers in the symbol.</td>
 </tr>
 </tbody>
 </table>
@@ -1527,12 +1530,42 @@ at the line level. Caller takes responsibility for deleting the returned object.
 <dl class="method">
 <dt id="qgis.core.QgsLineSymbol.setWidth">
 <code class="descname">setWidth</code><span class="sig-paren">(</span><em>self</em>, <em>width: float</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsLineSymbol.setWidth" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Sets the <code class="docutils literal notranslate"><span class="pre">width</span></code> for the whole line symbol. Individual symbol layer sizes
+will be scaled to maintain their current relative size to the whole symbol size.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#qgis.core.QgsLineSymbol.width" title="qgis.core.QgsLineSymbol.width"><code class="xref py py-func docutils literal notranslate"><span class="pre">width()</span></code></a></p>
+</div>
+</dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsLineSymbol.width">
 <code class="descname">width</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#qgis.core.QgsLineSymbol.width" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Returns the estimated width for the whole symbol, which is the maximum width of
+all marker symbol layers in the symbol.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">This returned value is inaccurate if the symbol consists of multiple
+symbol layers with different width units. Use the overload accepting a <a class="reference internal" href="QgsRenderContext.html#module-QgsRenderContext" title="QgsRenderContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsRenderContext</span></code></a>
+argument instead for accurate sizes in this case.</p>
+</div>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#qgis.core.QgsLineSymbol.setWidth" title="qgis.core.QgsLineSymbol.setWidth"><code class="xref py py-func docutils literal notranslate"><span class="pre">setWidth()</span></code></a></p>
+</div>
+<p>width(self, context: QgsRenderContext) -&gt; float
+Returns the symbol width, in painter units. This is the maximum width of
+all marker symbol layers in the symbol.</p>
+<p>This method returns an accurate width by calculating the actual rendered
+width of each symbol layer using the provided render <code class="docutils literal notranslate"><span class="pre">context</span></code>.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#qgis.core.QgsLineSymbol.setWidth" title="qgis.core.QgsLineSymbol.setWidth"><code class="xref py py-func docutils literal notranslate"><span class="pre">setWidth()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 3.4.5.</span></p>
+</div>
+</dd></dl>
 
 </dd></dl>
 
@@ -1549,7 +1582,7 @@ at the line level. Caller takes responsibility for deleting the returned object.
 
   <div role="contentinfo">
     <p>
-      Last updated on 14:46 Feb 05, 2019.
+      Last updated on 14:46 Feb 06, 2019.
 
     </p>
   </div> 
