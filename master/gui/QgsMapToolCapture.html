@@ -1417,7 +1417,7 @@
 <td></td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.addVertex" title="qgis.gui.QgsMapToolCapture.addVertex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">addVertex</span></code></a></td>
-<td>addVertex(self, mapPoint: QgsPointXY, match: QgsPointLocator.Match) -&gt; int Variant to supply more information in the case of snapping</td>
+<td>Adds a point to the rubber band (in map coordinates) and to the capture list (in layer coordinates)</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.cadCanvasMoveEvent" title="qgis.gui.QgsMapToolCapture.cadCanvasMoveEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cadCanvasMoveEvent</span></code></a></td>
 <td></td>
@@ -1471,7 +1471,7 @@
 <td></td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.fetchLayerPoint" title="qgis.gui.QgsMapToolCapture.fetchLayerPoint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fetchLayerPoint</span></code></a></td>
-<td></td>
+<td>Fetches the original point from the source layer if it has the same CRS as the current layer.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.isCapturing" title="qgis.gui.QgsMapToolCapture.isCapturing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isCapturing</span></code></a></td>
 <td>Are we currently capturing?</td>
@@ -1489,7 +1489,7 @@
 <td>The capture mode</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.nextPoint" title="qgis.gui.QgsMapToolCapture.nextPoint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nextPoint</span></code></a></td>
-<td>nextPoint(self, p: QPoint, layerPoint: QgsPoint, mapPoint: QgsPoint) -&gt; int</td>
+<td>Converts a map point to layer coordinates</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.notifyNotEditableLayer" title="qgis.gui.QgsMapToolCapture.notifyNotEditableLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">notifyNotEditableLayer</span></code></a></td>
 <td></td>
@@ -1626,7 +1626,16 @@
 <dl class="method">
 <dt id="qgis.gui.QgsMapToolCapture.addVertex">
 <code class="descname">addVertex</code><span class="sig-paren">(</span><em>self</em>, <em>point: QgsPointXY</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#qgis.gui.QgsMapToolCapture.addVertex" title="Permalink to this definition">¶</a></dt>
-<dd><p>addVertex(self, mapPoint: QgsPointXY, match: QgsPointLocator.Match) -&gt; int
+<dd><p>Adds a point to the rubber band (in map coordinates) and to the capture list (in layer coordinates)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">0 in case of success, 1 if current layer is not a vector layer, 2 if coordinate transformation failed</td>
+</tr>
+</tbody>
+</table>
+<p>addVertex(self, mapPoint: QgsPointXY, match: QgsPointLocator.Match) -&gt; int
 Variant to supply more information in the case of snapping</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1749,7 +1758,20 @@ Variant to supply more information in the case of snapping</p>
 <dl class="method">
 <dt id="qgis.gui.QgsMapToolCapture.fetchLayerPoint">
 <code class="descname">fetchLayerPoint</code><span class="sig-paren">(</span><em>self</em>, <em>match: QgsPointLocator.Match</em>, <em>layerPoint: QgsPoint</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#qgis.gui.QgsMapToolCapture.fetchLayerPoint" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Fetches the original point from the source layer if it has the same
+CRS as the current layer.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">0 in case of success, 1 if not applicable (CRS mismatch), 2 in case of failure</td>
+</tr>
+</tbody>
+</table>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 2.14.</span></p>
+</div>
+</dd></dl>
 
 <dl class="method">
 <dt id="qgis.gui.QgsMapToolCapture.isCapturing">
@@ -1838,7 +1860,48 @@ WkbType of the current layer).</p>
 <dl class="method">
 <dt id="qgis.gui.QgsMapToolCapture.nextPoint">
 <code class="descname">nextPoint</code><span class="sig-paren">(</span><em>self</em>, <em>mapPoint: QgsPoint</em>, <em>layerPoint: QgsPoint</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#qgis.gui.QgsMapToolCapture.nextPoint" title="Permalink to this definition">¶</a></dt>
-<dd><p>nextPoint(self, p: QPoint, layerPoint: QgsPoint, mapPoint: QgsPoint) -&gt; int</p>
+<dd><p>Converts a map point to layer coordinates</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>mapPoint</strong> – the point in map coordinates</td>
+</tr>
+</tbody>
+</table>
+<p>param[in,out] layerPoint the point in layer coordinates</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">0 in case of success
+1 if the current layer is null or not a vector layer
+2 if the transformation failed</td>
+</tr>
+</tbody>
+</table>
+<p>nextPoint(self, p: QPoint, layerPoint: QgsPoint, mapPoint: QgsPoint) -&gt; int
+Converts a point to map coordinates and layer coordinates</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>p</strong> – the input point</td>
+</tr>
+</tbody>
+</table>
+<p>param[in,out] layerPoint the point in layer coordinates
+param[in,out] mapPoint the point in map coordinates</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">0 in case of success
+1 if the current layer is null or not a vector layer
+2 if the transformation failed</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -1985,7 +2048,7 @@ WkbType of the current layer).</p>
 
   <div role="contentinfo">
     <p>
-      Last updated on 14:47 Feb 08, 2019.
+      Last updated on 14:47 Feb 09, 2019.
 
     </p>
   </div> 

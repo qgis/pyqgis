@@ -1839,7 +1839,7 @@ properties.</p>
 <td>Emitted when a project is being read.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsProject.removeAll" title="qgis.core.QgsProject.removeAll"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeAll</span></code></a></td>
-<td>removeAll(self) [signal]</td>
+<td>Emitted when all layers are removed, before layersWillBeRemoved() and layerWillBeRemoved() signals are emitted.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsProject.snappingConfigChanged" title="qgis.core.QgsProject.snappingConfigChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">snappingConfigChanged</span></code></a></td>
 <td>Emitted whenever the configuration for snapping has changed.</td>
@@ -3084,7 +3084,10 @@ with any changes in the datasource.</p>
 <dl class="attribute">
 <dt id="qgis.core.QgsProject.removeAll">
 <code class="descname">removeAll</code><a class="headerlink" href="#qgis.core.QgsProject.removeAll" title="Permalink to this definition">¶</a></dt>
-<dd><p>removeAll(self) [signal]</p>
+<dd><p>Emitted when all layers are removed, before layersWillBeRemoved() and
+layerWillBeRemoved() signals are emitted. The layersWillBeRemoved() and
+layerWillBeRemoved() signals will still be emitted following this signal.
+You can use this signal to do easy (and fast) cleanup. [signal]</p>
 </dd></dl>
 
 <dl class="method">
@@ -3198,7 +3201,30 @@ of any layers these layers will also be deleted.</p>
 <div class="versionadded">
 <p><span class="versionmodified">New in version 1.8.</span></p>
 </div>
-<p>removeMapLayers(self, layers: Iterable[QgsMapLayer])</p>
+<p>removeMapLayers(self, layers: Iterable[QgsMapLayer])
+Remove a set of layers from the registry.</p>
+<p>The specified layers will be removed from the registry. If the registry has ownership
+of any layers these layers will also be deleted.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>layers</strong> – A list of layers to remove. Null pointers are ignored.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">As a side-effect the QgsProject instance is marked dirty.</p>
+</div>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#qgis.core.QgsProject.removeMapLayer" title="qgis.core.QgsProject.removeMapLayer"><code class="xref py py-func docutils literal notranslate"><span class="pre">removeMapLayer()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#qgis.core.QgsProject.removeAllMapLayers" title="qgis.core.QgsProject.removeAllMapLayers"><code class="xref py py-func docutils literal notranslate"><span class="pre">removeAllMapLayers()</span></code></a></p>
+</div>
 </dd></dl>
 
 <dl class="method">
@@ -3863,7 +3889,7 @@ Paths written to the project file should be prepared with this method.</p>
 
   <div role="contentinfo">
     <p>
-      Last updated on 14:47 Feb 08, 2019.
+      Last updated on 14:47 Feb 09, 2019.
 
     </p>
   </div> 
