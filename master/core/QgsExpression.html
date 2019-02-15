@@ -2301,7 +2301,9 @@ and area conversion</li>
 <dl class="method">
 <dt id="qgis.core.QgsExpression.setAreaUnits">
 <code class="descname">setAreaUnits</code><span class="sig-paren">(</span><em>self</em>, <em>unit: QgsUnitTypes.AreaUnit</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsExpression.setAreaUnits" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sets the desired areal units for calculations involving geomCalculator(), e.g., “$area”.</p>
+<dd><p>Sets the desired areal units for calculations involving geomCalculator(), e.g., “$area”.
+If distance units are set to QgsUnitTypes.AreaUnknownUnit (default), prepare() will read
+variables from the expression context (“project_distance_units”) to determine distance units.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">areas are only converted when a geomCalculator() has been set</p>
@@ -2322,7 +2324,9 @@ and area conversion</li>
 <dl class="method">
 <dt id="qgis.core.QgsExpression.setDistanceUnits">
 <code class="descname">setDistanceUnits</code><span class="sig-paren">(</span><em>self</em>, <em>unit: QgsUnitTypes.DistanceUnit</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsExpression.setDistanceUnits" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sets the desired distance units for calculations involving geomCalculator(), e.g., “$length” and “$perimeter”.</p>
+<dd><p>Sets the desired distance units for calculations involving geomCalculator(), e.g., “$length” and “$perimeter”.
+If distance units are set to QgsUnitTypes.DistanceUnknownUnit (default), prepare() will read
+variables from the expression context (“project_distance_units”) to determine distance units.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">distances are only converted when a geomCalculator() has been set</p>
@@ -2359,8 +2363,12 @@ and area conversion</li>
 <dt id="qgis.core.QgsExpression.setGeomCalculator">
 <code class="descname">setGeomCalculator</code><span class="sig-paren">(</span><em>self</em>, <em>calc: QgsDistanceArea</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsExpression.setGeomCalculator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets the geometry calculator used for distance and area calculations in expressions.
-(used by $length, $area and $perimeter functions only). By default, no geometry
-calculator is set and all distance and area calculations are performed using simple
+(used by $length, $area and $perimeter functions only).
+If the geometry calculator is set to None (default), prepare() will read variables
+from the expression context (“project_ellipsoid”, “_project_transform_context” and
+“_layer_crs”) to build a geometry calculator.
+If these variables does not exist and if setGeomCalculator() is not called,
+all distance and area calculations are performed using simple
 Cartesian methods (ie no ellipsoidal calculations).</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -2476,7 +2484,7 @@ Cartesian calculations.</td>
 
   <div role="contentinfo">
     <p>
-      Last updated on 14:50 Feb 14, 2019.
+      Last updated on 14:51 Feb 15, 2019.
 
     </p>
   </div> 
