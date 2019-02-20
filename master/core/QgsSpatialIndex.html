@@ -1396,10 +1396,10 @@
 <span id="class-qgsspatialindex"></span><h1>Class: QgsSpatialIndex<a class="headerlink" href="#module-QgsSpatialIndex" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="qgis.core.QgsSpatialIndex">
-<em class="property">class </em><code class="descclassname">qgis.core.</code><code class="descname">QgsSpatialIndex</code><a class="headerlink" href="#qgis.core.QgsSpatialIndex" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">qgis.core.</code><code class="descname">QgsSpatialIndex</code><span class="sig-paren">(</span><em>flags: Union[QgsSpatialIndex.Flags</em>, <em>QgsSpatialIndex.Flag] = 0</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsSpatialIndex" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">qgis._core.QgsFeatureSink</span></code></p>
 <p>Constructor for QgsSpatialIndex. Creates an empty R-tree index.</p>
-<p>QgsSpatialIndex(fi: QgsFeatureIterator, feedback: QgsFeedback = None)
+<p>QgsSpatialIndex(fi: QgsFeatureIterator, feedback: QgsFeedback = None, flags: Union[QgsSpatialIndex.Flags, QgsSpatialIndex.Flag] = 0)
 Constructor - creates R-tree and bulk loads it with features from the iterator.
 This is much faster approach than creating an empty index and then inserting features one by one.</p>
 <p>The optional <code class="docutils literal notranslate"><span class="pre">feedback</span></code> object can be used to allow cancelation of bulk feature loading. Ownership
@@ -1408,7 +1408,7 @@ that of the spatial index construction.</p>
 <div class="versionadded">
 <p><span class="versionmodified">New in version 2.8.</span></p>
 </div>
-<p>QgsSpatialIndex(source: QgsFeatureSource, feedback: QgsFeedback = None)
+<p>QgsSpatialIndex(source: QgsFeatureSource, feedback: QgsFeedback = None, flags: Union[QgsSpatialIndex.Flags, QgsSpatialIndex.Flag] = 0)
 Constructor - creates R-tree and bulk loads it with features from the source.
 This is much faster approach than creating an empty index and then inserting features one by one.</p>
 <p>The optional <code class="docutils literal notranslate"><span class="pre">feedback</span></code> object can be used to allow cancelation of bulk feature loading. Ownership
@@ -1450,16 +1450,19 @@ be used across multiple threads.</p>
 <tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsSpatialIndex.deleteFeature" title="qgis.core.QgsSpatialIndex.deleteFeature"><code class="xref py py-obj docutils literal notranslate"><span class="pre">deleteFeature</span></code></a></td>
 <td>Removes a <code class="docutils literal notranslate"><span class="pre">feature</span></code> from the index.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsSpatialIndex.insertFeature" title="qgis.core.QgsSpatialIndex.insertFeature"><code class="xref py py-obj docutils literal notranslate"><span class="pre">insertFeature</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsSpatialIndex.geometry" title="qgis.core.QgsSpatialIndex.geometry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geometry</span></code></a></td>
+<td>Returns the stored geometry for the indexed feature with matching <code class="docutils literal notranslate"><span class="pre">id</span></code>.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsSpatialIndex.insertFeature" title="qgis.core.QgsSpatialIndex.insertFeature"><code class="xref py py-obj docutils literal notranslate"><span class="pre">insertFeature</span></code></a></td>
 <td>Adds a <code class="docutils literal notranslate"><span class="pre">feature</span></code> to the index.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsSpatialIndex.intersects" title="qgis.core.QgsSpatialIndex.intersects"><code class="xref py py-obj docutils literal notranslate"><span class="pre">intersects</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsSpatialIndex.intersects" title="qgis.core.QgsSpatialIndex.intersects"><code class="xref py py-obj docutils literal notranslate"><span class="pre">intersects</span></code></a></td>
 <td>Returns a list of features with a bounding box which intersects the specified <code class="docutils literal notranslate"><span class="pre">rectangle</span></code>.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsSpatialIndex.nearestNeighbor" title="qgis.core.QgsSpatialIndex.nearestNeighbor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nearestNeighbor</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsSpatialIndex.nearestNeighbor" title="qgis.core.QgsSpatialIndex.nearestNeighbor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nearestNeighbor</span></code></a></td>
 <td>Returns nearest neighbors to a <code class="docutils literal notranslate"><span class="pre">point</span></code>.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsSpatialIndex.refs" title="qgis.core.QgsSpatialIndex.refs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">refs</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsSpatialIndex.refs" title="qgis.core.QgsSpatialIndex.refs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">refs</span></code></a></td>
 <td>Gets reference count - just for debugging!</td>
 </tr>
 </tbody>
@@ -1480,9 +1483,31 @@ be used across multiple threads.</p>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsSpatialIndex.FlagStoreFeatureGeometries" title="qgis.core.QgsSpatialIndex.FlagStoreFeatureGeometries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FlagStoreFeatureGeometries</span></code></a></td>
+<td></td>
+</tr>
 </tbody>
 </table>
 </div>
+<dl class="class">
+<dt id="qgis.core.QgsSpatialIndex.Flag">
+<em class="property">class </em><code class="descname">Flag</code><a class="headerlink" href="#qgis.core.QgsSpatialIndex.Flag" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="qgis.core.QgsSpatialIndex.FlagStoreFeatureGeometries">
+<code class="descname">FlagStoreFeatureGeometries</code><em class="property"> = 1</em><a class="headerlink" href="#qgis.core.QgsSpatialIndex.FlagStoreFeatureGeometries" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="qgis.core.QgsSpatialIndex.Flags">
+<em class="property">class </em><code class="descname">Flags</code><a class="headerlink" href="#qgis.core.QgsSpatialIndex.Flags" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sip.wrapper</span></code></p>
+<p>QgsSpatialIndex.Flags(Union[QgsSpatialIndex.Flags, QgsSpatialIndex.Flag])
+QgsSpatialIndex.Flags(QgsSpatialIndex.Flags)</p>
+</dd></dl>
+
 <dl class="method">
 <dt id="qgis.core.QgsSpatialIndex.addFeature">
 <code class="descname">addFeature</code><span class="sig-paren">(</span><em>self</em>, <em>feature: QgsFeature</em>, <em>flags: Union[QgsFeatureSink.Flags</em>, <em>QgsFeatureSink.Flag] = 0</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsSpatialIndex.addFeature" title="Permalink to this definition">¶</a></dt>
@@ -1524,6 +1549,17 @@ Add a feature <code class="docutils literal notranslate"><span class="pre">id</s
 </dd></dl>
 
 <dl class="method">
+<dt id="qgis.core.QgsSpatialIndex.geometry">
+<code class="descname">geometry</code><span class="sig-paren">(</span><em>self</em>, <em>id: int</em><span class="sig-paren">)</span> &#x2192; QgsGeometry<a class="headerlink" href="#qgis.core.QgsSpatialIndex.geometry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the stored geometry for the indexed feature with matching <code class="docutils literal notranslate"><span class="pre">id</span></code>. A KeyError will be raised if no
+geometry with the specified feature id exists in the index.</p>
+<p>Geometry is only stored if the QgsSpatialIndex was created with the FlagStoreFeatureGeometries flag.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 3.6.</span></p>
+</div>
+</dd></dl>
+
+<dl class="method">
 <dt id="qgis.core.QgsSpatialIndex.insertFeature">
 <code class="descname">insertFeature</code><span class="sig-paren">(</span><em>self</em>, <em>feature: QgsFeature</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsSpatialIndex.insertFeature" title="Permalink to this definition">¶</a></dt>
 <dd><p>Adds a <code class="docutils literal notranslate"><span class="pre">feature</span></code> to the index.</p>
@@ -1559,13 +1595,20 @@ when required.</p>
 
 <dl class="method">
 <dt id="qgis.core.QgsSpatialIndex.nearestNeighbor">
-<code class="descname">nearestNeighbor</code><span class="sig-paren">(</span><em>self</em>, <em>point: QgsPointXY</em>, <em>neighbors: int</em><span class="sig-paren">)</span> &#x2192; object<a class="headerlink" href="#qgis.core.QgsSpatialIndex.nearestNeighbor" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns nearest neighbors to a <code class="docutils literal notranslate"><span class="pre">point</span></code>. The number of neighbours returned is specified
-by the <code class="docutils literal notranslate"><span class="pre">neighbours</span></code> argument.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The nearest neighbour test is performed based on the feature bounding boxes only, so for non-point
-geometry features this method is not guaranteed to return the actual closest neighbours.</p>
+<code class="descname">nearestNeighbor</code><span class="sig-paren">(</span><em>self</em>, <em>point: QgsPointXY</em>, <em>neighbors: int = 1</em>, <em>maxDistance: float = 0</em><span class="sig-paren">)</span> &#x2192; object<a class="headerlink" href="#qgis.core.QgsSpatialIndex.nearestNeighbor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns nearest neighbors to a <code class="docutils literal notranslate"><span class="pre">point</span></code>. The number of neighbors returned is specified
+by the <code class="docutils literal notranslate"><span class="pre">neighbors</span></code> argument.</p>
+<p>If the <code class="docutils literal notranslate"><span class="pre">maxDistance</span></code> argument is greater than 0, then only features within the specified
+distance of <code class="docutils literal notranslate"><span class="pre">point</span></code> will be considered.</p>
+<p>Note that in some cases the number of returned features may differ from the requested
+number of <code class="docutils literal notranslate"><span class="pre">neighbors</span></code>. E.g. if not enough features exist within the <code class="docutils literal notranslate"><span class="pre">maxDistance</span></code> of the
+search point. If multiple features are equidistant from the search <code class="docutils literal notranslate"><span class="pre">point</span></code> then the
+number of returned feature IDs may exceed <code class="docutils literal notranslate"><span class="pre">neighbors</span></code>.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">If this QgsSpatialIndex object was not constructed with the FlagStoreFeatureGeometries flag,
+then the nearest neighbor test is performed based on the feature bounding boxes ONLY, so for non-point
+geometry features this method is not guaranteed to return the actual closest neighbors.</p>
 </div>
 </dd></dl>
 
@@ -1590,7 +1633,7 @@ geometry features this method is not guaranteed to return the actual closest nei
 
   <div role="contentinfo">
     <p>
-      Last updated on 14:55 Feb 19, 2019.
+      Last updated on 14:55 Feb 20, 2019.
 
     </p>
   </div> 
