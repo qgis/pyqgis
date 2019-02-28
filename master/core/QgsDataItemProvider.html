@@ -1401,7 +1401,7 @@
 <p>This is the interface for those who want to add custom data items to the browser tree.</p>
 <p>The method createDataItem() is ever called only if capabilities() return non-zero value.
 There are two occasions when createDataItem() is called:
-1. to create root items (passed path is empty, parent item is null).
+1. to create root items (passed path is empty, parent item is <code class="docutils literal notranslate"><span class="pre">None</span></code>).
 2. to create items in directory structure. For this capabilities have to return at least
 of the following: QgsDataProvider.Dir or QgsDataProvider.File. Passed path is the file
 or directory being inspected, parent item is a valid QgsDirectoryItem</p>
@@ -1417,13 +1417,13 @@ or directory being inspected, parent item is a valid QgsDirectoryItem</p>
 <td>Returns combination of flags from QgsDataProvider.DataCapabilities</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsDataItemProvider.createDataItem" title="qgis.core.QgsDataItemProvider.createDataItem"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createDataItem</span></code></a></td>
-<td>Create a new instance of <a class="reference internal" href="QgsDataItem.html#module-QgsDataItem" title="QgsDataItem"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsDataItem</span></code></a> (or null) for given path and parent item.</td>
+<td>Create a new instance of <a class="reference internal" href="QgsDataItem.html#module-QgsDataItem" title="QgsDataItem"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsDataItem</span></code></a> (or <code class="docutils literal notranslate"><span class="pre">None</span></code>) for given path and parent item.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsDataItemProvider.createDataItems" title="qgis.core.QgsDataItemProvider.createDataItems"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createDataItems</span></code></a></td>
-<td>Create a vector of instances of <a class="reference internal" href="QgsDataItem.html#module-QgsDataItem" title="QgsDataItem"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsDataItem</span></code></a> (or null) for given path and parent item.</td>
+<td>Create a vector of instances of <a class="reference internal" href="QgsDataItem.html#module-QgsDataItem" title="QgsDataItem"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsDataItem</span></code></a> (or <code class="docutils literal notranslate"><span class="pre">None</span></code>) for given path and parent item.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsDataItemProvider.handlesDirectoryPath" title="qgis.core.QgsDataItemProvider.handlesDirectoryPath"><code class="xref py py-obj docutils literal notranslate"><span class="pre">handlesDirectoryPath</span></code></a></td>
-<td>Returns true if the provider will handle the directory at the specified <code class="docutils literal notranslate"><span class="pre">path</span></code>.</td>
+<td>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the provider will handle the directory at the specified <code class="docutils literal notranslate"><span class="pre">path</span></code>.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsDataItemProvider.name" title="qgis.core.QgsDataItemProvider.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code></a></td>
 <td>Human-readable name of the provider name</td>
@@ -1458,25 +1458,25 @@ or directory being inspected, parent item is a valid QgsDirectoryItem</p>
 <dl class="method">
 <dt id="qgis.core.QgsDataItemProvider.createDataItem">
 <code class="descname">createDataItem</code><span class="sig-paren">(</span><em>self</em>, <em>path: str</em>, <em>parentItem: QgsDataItem</em><span class="sig-paren">)</span> &#x2192; QgsDataItem<a class="headerlink" href="#qgis.core.QgsDataItemProvider.createDataItem" title="Permalink to this definition">¶</a></dt>
-<dd><p>Create a new instance of <a class="reference internal" href="QgsDataItem.html#module-QgsDataItem" title="QgsDataItem"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsDataItem</span></code></a> (or null) for given path and parent item.
+<dd><p>Create a new instance of <a class="reference internal" href="QgsDataItem.html#module-QgsDataItem" title="QgsDataItem"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsDataItem</span></code></a> (or <code class="docutils literal notranslate"><span class="pre">None</span></code>) for given path and parent item.
 Caller takes responsibility of deleting created items.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsDataItemProvider.createDataItems">
 <code class="descname">createDataItems</code><span class="sig-paren">(</span><em>self</em>, <em>path: str</em>, <em>parentItem: QgsDataItem</em><span class="sig-paren">)</span> &#x2192; object<a class="headerlink" href="#qgis.core.QgsDataItemProvider.createDataItems" title="Permalink to this definition">¶</a></dt>
-<dd><p>Create a vector of instances of <a class="reference internal" href="QgsDataItem.html#module-QgsDataItem" title="QgsDataItem"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsDataItem</span></code></a> (or null) for given path and parent item.
+<dd><p>Create a vector of instances of <a class="reference internal" href="QgsDataItem.html#module-QgsDataItem" title="QgsDataItem"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsDataItem</span></code></a> (or <code class="docutils literal notranslate"><span class="pre">None</span></code>) for given path and parent item.
 Caller takes responsibility of deleting created items.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsDataItemProvider.handlesDirectoryPath">
 <code class="descname">handlesDirectoryPath</code><span class="sig-paren">(</span><em>self</em>, <em>path: str</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsDataItemProvider.handlesDirectoryPath" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns true if the provider will handle the directory at the specified <code class="docutils literal notranslate"><span class="pre">path</span></code>.</p>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the provider will handle the directory at the specified <code class="docutils literal notranslate"><span class="pre">path</span></code>.</p>
 <p>If the provider indicates that it will handle the directory, the default creation and
 population of directory items for the path will be avoided and it is left to the
 provider to correctly populate relevant entries for the path.</p>
-<p>The default implementation returns false for all paths.</p>
+<p>The default implementation returns <code class="docutils literal notranslate"><span class="pre">False</span></code> for all paths.</p>
 <div class="versionadded">
 <p><span class="versionmodified">New in version 3.0.</span></p>
 </div>
@@ -1503,7 +1503,7 @@ provider to correctly populate relevant entries for the path.</p>
 
   <div role="contentinfo">
     <p>
-      Last updated on 14:57 Feb 27, 2019.
+      Last updated on 14:59 Feb 28, 2019.
 
     </p>
   </div> 

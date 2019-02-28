@@ -1462,7 +1462,7 @@
 <td>Determines whether the geometry is simple (according to OGC definition).</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsGeometryEngine.isValid" title="qgis.core.QgsGeometryEngine.isValid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isValid</span></code></a></td>
-<td></td>
+<td>Returns true if the geometry is valid.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsGeometryEngine.length" title="qgis.core.QgsGeometryEngine.length"><code class="xref py py-obj docutils literal notranslate"><span class="pre">length</span></code></a></td>
 <td></td>
@@ -1606,7 +1606,7 @@
 <dt id="qgis.core.QgsGeometryEngine.centroid">
 <code class="descname">centroid</code><span class="sig-paren">(</span><em>self</em>, <em>errorMsg: str = ''</em><span class="sig-paren">)</span> &#x2192; QgsPoint<a class="headerlink" href="#qgis.core.QgsGeometryEngine.centroid" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculates the centroid of this.
-May return a <cite>None</cite>.</p>
+May return a <code class="docutils literal notranslate"><span class="pre">`None`</span></code>.</p>
 <div class="versionadded">
 <p><span class="versionmodified">New in version 3.0.</span></p>
 </div>
@@ -1726,7 +1726,7 @@ has been modified and the engine must be updated to suit.</p>
 <dt id="qgis.core.QgsGeometryEngine.isEqual">
 <code class="descname">isEqual</code><span class="sig-paren">(</span><em>self</em>, <em>geom: QgsAbstractGeometry</em>, <em>errorMsg: str = ''</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsGeometryEngine.isEqual" title="Permalink to this definition">¶</a></dt>
 <dd><p>Checks if this is equal to <code class="docutils literal notranslate"><span class="pre">geom</span></code>.
-If both are Null geometries, <cite>false</cite> is returned.</p>
+If both are Null geometries, <code class="docutils literal notranslate"><span class="pre">`False`</span></code> is returned.</p>
 <div class="versionadded">
 <p><span class="versionmodified">New in version 3.0.</span></p>
 </div>
@@ -1743,8 +1743,14 @@ If both are Null geometries, <cite>false</cite> is returned.</p>
 
 <dl class="method">
 <dt id="qgis.core.QgsGeometryEngine.isValid">
-<code class="descname">isValid</code><span class="sig-paren">(</span><em>self</em>, <em>errorMsg: str = ''</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsGeometryEngine.isValid" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="descname">isValid</code><span class="sig-paren">(</span><em>self</em>, <em>errorMsg: str = ''</em>, <em>allowSelfTouchingHoles: bool = False</em>, <em>errorLoc: QgsGeometry = None</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsGeometryEngine.isValid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns true if the geometry is valid.</p>
+<p>If the geometry is invalid, <code class="docutils literal notranslate"><span class="pre">errorMsg</span></code> will be filled with the reported geometry error.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">allowSelfTouchingHoles</span></code> argument specifies whether self-touching holes are permitted.
+OGC validity states that self-touching holes are NOT permitted, whilst other vendor
+validity checks (e.g. ESRI) permit self-touching holes.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">errorLoc</span></code> is specified, it will be set to the geometry of the error location.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsGeometryEngine.length">
@@ -1769,7 +1775,7 @@ If both are Null geometries, <cite>false</cite> is returned.</p>
 <dt id="qgis.core.QgsGeometryEngine.pointOnSurface">
 <code class="descname">pointOnSurface</code><span class="sig-paren">(</span><em>self</em>, <em>errorMsg: str = ''</em><span class="sig-paren">)</span> &#x2192; QgsPoint<a class="headerlink" href="#qgis.core.QgsGeometryEngine.pointOnSurface" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate a point that is guaranteed to be on the surface of this.
-May return a <cite>None</cite>.</p>
+May return a <code class="docutils literal notranslate"><span class="pre">`None`</span></code>.</p>
 <div class="versionadded">
 <p><span class="versionmodified">New in version 3.0.</span></p>
 </div>
@@ -1829,7 +1835,7 @@ pattern.</p>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">true if geometry relationship matches with pattern</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><code class="docutils literal notranslate"><span class="pre">True</span></code> if geometry relationship matches with pattern</p>
 </td>
 </tr>
 </tbody>
@@ -1857,7 +1863,7 @@ pattern.</p>
 </tbody>
 </table>
 <p>param[out] newGeometries list of new geometries that have been created with the split
-:param topological: true if topological editing is enabled
+:param topological: <code class="docutils literal notranslate"><span class="pre">True</span></code> if topological editing is enabled
 param[out] topologyTestPoints points that need to be tested for topological completeness in the dataset
 param[out] errorMsg error messages emitted, if any</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -1912,7 +1918,7 @@ param[out] errorMsg error messages emitted, if any</p>
 
   <div role="contentinfo">
     <p>
-      Last updated on 14:57 Feb 27, 2019.
+      Last updated on 14:59 Feb 28, 2019.
 
     </p>
   </div> 
