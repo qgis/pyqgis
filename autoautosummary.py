@@ -10,12 +10,14 @@ from sphinx.util.inspect import safe_getattr
 import re
 import PyQt5
 import inspect
+from enum import Enum
 
 class AutoAutoSummary(Autosummary):
 
     option_spec = {
         'methods': directives.unchanged,
         'signals':  directives.unchanged,
+        'enums': directives.unchanged,
         'attributes': directives.unchanged,
         'nosignatures': directives.unchanged,
         'toctree': directives.unchanged
@@ -24,7 +26,7 @@ class AutoAutoSummary(Autosummary):
     required_arguments = 1
 
     @staticmethod
-    def get_members(doc, obj, typ, include_public=None, signal=False):
+    def get_members(doc, obj, typ, include_public=None, signal=False, enum=False):
         try:
             if not include_public:
                 include_public = []
@@ -36,13 +38,18 @@ class AutoAutoSummary(Autosummary):
                 try:
                     chobj = safe_getattr(obj, name)
                     documenter = get_documenter(doc.settings.env.app, chobj, obj)
-                    # cl = get_class_that_defined_method(chobj)
-                    # print(name, type(cl), repr(cl))
+                    #cl = get_class_that_defined_method(chobj)
+                    #print(name, chobj.__qualname__, type(chobj), issubclass(chobj, Enum), documenter.objtype)
                     if documenter.objtype == typ:
                         if typ == 'attribute':
                             if signal and type(chobj) != PyQt5.QtCore.pyqtSignal:
                                 continue
                             if not signal and type(chobj) == PyQt5.QtCore.pyqtSignal:
+                                continue
+                        elif typ == 'class':
+                            if enum and not issubclass(chobj, Enum):
+                                continue
+                            if not enum and issubclass(chobj, Enum):
                                 continue
                         items.append(name)
                 except AttributeError:
@@ -62,6 +69,9 @@ class AutoAutoSummary(Autosummary):
             if 'methods' in self.options:
                 _, methods = self.get_members(self.state.document, c, 'method', ['__init__'])
                 self.content = ["~%s.%s" % (clazz, method) for method in methods if not method.startswith('_')]
+            if 'enums' in self.options:
+                x, attribs = self.get_members(self.state.document, c, 'class', None, False, True)
+                self.content = ["~%s.%s" % (clazz, attrib) for attrib in attribs if not attrib.startswith('_')]
             if 'signals' in self.options:
                 x, attribs = self.get_members(self.state.document, c, 'attribute', None, True)
                 self.content = ["~%s.%s" % (clazz, attrib) for attrib in attribs if not attrib.startswith('_')]

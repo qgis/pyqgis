@@ -56,7 +56,7 @@ echo "setting PYTHONPATH $PYTHONPATH"
 
 
 echo "travis_fold:start:make_api_rst"
-echo "make API RST ./rst/make_api_rst.py $PACKAGE $CLASS -v ${QGIS_VERSION}"
+echo "make API RST ./rst/make_api_rst.py $PACKAGE $CLASS -v $QGIS_VERSION"
 ./rst/make_api_rst.py $PACKAGE $CLASS -v ${QGIS_VERSION}
 echo "travis_fold:end:make_api_rst"
 
