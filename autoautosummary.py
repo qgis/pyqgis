@@ -7,9 +7,10 @@ from sphinx.ext.autosummary import get_documenter
 from docutils.parsers.rst import directives
 from sphinx.util.inspect import safe_getattr
 # from sphinx.directives import directive
+
 import PyQt5
 from docutils import nodes
-
+from enum import Enum
 
 class AutoAutoSummary(Autosummary):
     """
@@ -23,6 +24,7 @@ class AutoAutoSummary(Autosummary):
     option_spec = {
         'methods': directives.unchanged,
         'signals':  directives.unchanged,
+        'enums': directives.unchanged,
         'attributes': directives.unchanged,
         'nosignatures': directives.unchanged,
         'toctree': directives.unchanged
@@ -31,7 +33,7 @@ class AutoAutoSummary(Autosummary):
     required_arguments = 1
 
     @staticmethod
-    def get_members(doc, obj, typ, include_public=None, signal=False):
+    def get_members(doc, obj, typ, include_public=None, signal=False, enum=False):
         try:
             if not include_public:
                 include_public = []
@@ -43,13 +45,18 @@ class AutoAutoSummary(Autosummary):
                 try:
                     chobj = safe_getattr(obj, name)
                     documenter = get_documenter(doc.settings.env.app, chobj, obj)
-                    # cl = get_class_that_defined_method(chobj)
-                    # print(name, type(cl), repr(cl))
+                    #cl = get_class_that_defined_method(chobj)
+                    #print(name, chobj.__qualname__, type(chobj), issubclass(chobj, Enum), documenter.objtype)
                     if documenter.objtype == typ:
                         if typ == 'attribute':
                             if signal and type(chobj) != PyQt5.QtCore.pyqtSignal:
                                 continue
                             if not signal and type(chobj) == PyQt5.QtCore.pyqtSignal:
+                                continue
+                        elif typ == 'class':
+                            if enum and not issubclass(chobj, Enum):
+                                continue
+                            if not enum and issubclass(chobj, Enum):
                                 continue
                         items.append(name)
                 except AttributeError:
@@ -72,6 +79,9 @@ class AutoAutoSummary(Autosummary):
             if 'methods' in self.options:
                 rubric_title = 'Methods'
                 _, rubric_elems = self.get_members(self.state.document, c, 'method', ['__init__'])
+            elif 'enums' in self.options:
+                rubric_title = 'Enums'
+                _, rubric_elems = self.get_members(self.state.document, c, 'class', None, False, True)
             elif 'signals' in self.options:
                 rubric_title = 'Signals'
                 _, rubric_elems = self.get_members(self.state.document, c, 'attribute', None, True)
