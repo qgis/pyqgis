@@ -1366,7 +1366,16 @@
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">PyQt5.QtCore.QThread</span></code></p>
 <p>Constructor for QgsGeometryValidator.</p>
 <blockquote>
-<div><p class="rubric">Methods</p>
+<div><p class="rubric">Enums</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+</tbody>
+</table>
+<p class="rubric">Methods</p>
 <table border="1" class="longtable docutils">
 <colgroup>
 <col width="10%" />
@@ -1419,7 +1428,7 @@
 <td></td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsGeometryValidator.validateGeometry" title="qgis.core.QgsGeometryValidator.validateGeometry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">validateGeometry</span></code></a></td>
-<td>Validate geometry and produce a list of geometry errors</td>
+<td>Validate geometry and produce a list of geometry errors.</td>
 </tr>
 </tbody>
 </table>
@@ -1431,7 +1440,10 @@
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsGeometryValidator.errorFound" title="qgis.core.QgsGeometryValidator.errorFound"><code class="xref py py-obj docutils literal notranslate"><span class="pre">errorFound</span></code></a></td>
-<td>errorFound(self, QgsGeometry.Error) [signal]</td>
+<td>Sent when an error has been found during the validation process.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsGeometryValidator.validationFinished" title="qgis.core.QgsGeometryValidator.validationFinished"><code class="xref py py-obj docutils literal notranslate"><span class="pre">validationFinished</span></code></a></td>
+<td>Sent when the validation is finished.</td>
 </tr>
 </tbody>
 </table>
@@ -1473,7 +1485,8 @@
 <dl class="attribute">
 <dt id="qgis.core.QgsGeometryValidator.errorFound">
 <code class="descname">errorFound</code><a class="headerlink" href="#qgis.core.QgsGeometryValidator.errorFound" title="Permalink to this definition">¶</a></dt>
-<dd><p>errorFound(self, QgsGeometry.Error) [signal]</p>
+<dd><p>Sent when an error has been found during the validation process.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">error</span></code> contains details about the error. [signal]</p>
 </dd></dl>
 
 <dl class="method">
@@ -1529,7 +1542,20 @@
 <dl class="method">
 <dt id="qgis.core.QgsGeometryValidator.validateGeometry">
 <code class="descname">validateGeometry</code><span class="sig-paren">(</span><em>geometry: QgsGeometry</em>, <em>method: QgsGeometry.ValidationMethod = QgsGeometry.ValidatorQgisInternal</em><span class="sig-paren">)</span> &#x2192; List[QgsGeometry.Error]<a class="headerlink" href="#qgis.core.QgsGeometryValidator.validateGeometry" title="Permalink to this definition">¶</a></dt>
-<dd><p>Validate geometry and produce a list of geometry errors</p>
+<dd><p>Validate geometry and produce a list of geometry errors.
+This method blocks the thread until the validation is finished.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="qgis.core.QgsGeometryValidator.validationFinished">
+<code class="descname">validationFinished</code><a class="headerlink" href="#qgis.core.QgsGeometryValidator.validationFinished" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sent when the validation is finished.</p>
+<p>The result is in a human readable <code class="docutils literal notranslate"><span class="pre">summary</span></code>, mentioning
+if the validation has been aborted, successfully been validated
+or how many errors have been found.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 3.6: </span>[signal]</p>
+</div>
 </dd></dl>
 
 </dd></dl>
@@ -1547,7 +1573,7 @@
 
   <div role="contentinfo">
     <p>
-      Last updated on 19:05 Mar 06, 2019.
+      Last updated on 18:22 Mar 13, 2019.
 
     </p>
   </div> 

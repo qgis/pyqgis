@@ -1366,7 +1366,16 @@
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sip.wrapper</span></code></p>
 <p>Contains geometry relation and modification algorithms.</p>
 <div class="versionadded">
-<p class="rubric"><span class="versionmodified">New in version 2.10: </span>Methods</p>
+<p class="rubric"><span class="versionmodified">New in version 2.10: </span>Enums</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+</tbody>
+</table>
+<p class="rubric">Methods</p>
 <table border="1" class="longtable docutils">
 <colgroup>
 <col width="10%" />
@@ -1428,7 +1437,7 @@
 <td>Determines whether the geometry is simple (according to OGC definition).</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#qgis.core.QgsGeometryEngine.isValid" title="qgis.core.QgsGeometryEngine.isValid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isValid</span></code></a></td>
-<td></td>
+<td>Returns true if the geometry is valid.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#qgis.core.QgsGeometryEngine.length" title="qgis.core.QgsGeometryEngine.length"><code class="xref py py-obj docutils literal notranslate"><span class="pre">length</span></code></a></td>
 <td></td>
@@ -1709,8 +1718,14 @@ If both are Null geometries, <cite>false</cite> is returned.</p>
 
 <dl class="method">
 <dt id="qgis.core.QgsGeometryEngine.isValid">
-<code class="descname">isValid</code><span class="sig-paren">(</span><em>self</em>, <em>errorMsg: str = ''</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsGeometryEngine.isValid" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="descname">isValid</code><span class="sig-paren">(</span><em>self</em>, <em>errorMsg: str = ''</em>, <em>allowSelfTouchingHoles: bool = False</em>, <em>errorLoc: QgsGeometry = None</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsGeometryEngine.isValid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns true if the geometry is valid.</p>
+<p>If the geometry is invalid, <code class="docutils literal notranslate"><span class="pre">errorMsg</span></code> will be filled with the reported geometry error.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">allowSelfTouchingHoles</span></code> argument specifies whether self-touching holes are permitted.
+OGC validity states that self-touching holes are NOT permitted, whilst other vendor
+validity checks (e.g. ESRI) permit self-touching holes.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">errorLoc</span></code> is specified, it will be set to the geometry of the error location.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsGeometryEngine.length">
@@ -1878,7 +1893,7 @@ param[out] errorMsg error messages emitted, if any</p>
 
   <div role="contentinfo">
     <p>
-      Last updated on 19:05 Mar 06, 2019.
+      Last updated on 18:22 Mar 13, 2019.
 
     </p>
   </div> 
