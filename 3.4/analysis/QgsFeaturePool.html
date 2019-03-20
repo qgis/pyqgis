@@ -1396,7 +1396,7 @@
 <td>The geometry type of this layer.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#qgis.analysis.QgsFeaturePool.getFeature" title="qgis.analysis.QgsFeaturePool.getFeature"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getFeature</span></code></a></td>
-<td>Retrieve the feature with the specified <code class="docutils literal notranslate"><span class="pre">id</span></code> into <code class="docutils literal notranslate"><span class="pre">feature</span></code>.</td>
+<td>Retrieves the feature with the specified <code class="docutils literal notranslate"><span class="pre">id</span></code> into <code class="docutils literal notranslate"><span class="pre">feature</span></code>.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#qgis.analysis.QgsFeaturePool.layer" title="qgis.analysis.QgsFeaturePool.layer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">layer</span></code></a></td>
 <td>Get a pointer to the underlying layer.</td>
@@ -1404,7 +1404,10 @@
 <tr class="row-even"><td><a class="reference internal" href="#qgis.analysis.QgsFeaturePool.layerId" title="qgis.analysis.QgsFeaturePool.layerId"><code class="xref py py-obj docutils literal notranslate"><span class="pre">layerId</span></code></a></td>
 <td>The layer id of the layer.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#qgis.analysis.QgsFeaturePool.updateFeature" title="qgis.analysis.QgsFeaturePool.updateFeature"><code class="xref py py-obj docutils literal notranslate"><span class="pre">updateFeature</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#qgis.analysis.QgsFeaturePool.layerName" title="qgis.analysis.QgsFeaturePool.layerName"><code class="xref py py-obj docutils literal notranslate"><span class="pre">layerName</span></code></a></td>
+<td>Returns the name of the layer.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#qgis.analysis.QgsFeaturePool.updateFeature" title="qgis.analysis.QgsFeaturePool.updateFeature"><code class="xref py py-obj docutils literal notranslate"><span class="pre">updateFeature</span></code></a></td>
 <td>Updates a feature in this pool.</td>
 </tr>
 </tbody>
@@ -1449,11 +1452,10 @@ Implementations will remove the feature from the layer or from the data provider
 
 <dl class="method">
 <dt id="qgis.analysis.QgsFeaturePool.getFeature">
-<code class="descname">getFeature</code><span class="sig-paren">(</span><em>self</em>, <em>id: int</em>, <em>feature: QgsFeature</em>, <em>feedback: QgsFeedback = None</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.analysis.QgsFeaturePool.getFeature" title="Permalink to this definition">¶</a></dt>
-<dd><p>Retrieve the feature with the specified <code class="docutils literal notranslate"><span class="pre">id</span></code> into <code class="docutils literal notranslate"><span class="pre">feature</span></code>.
-It will be retrieved from the cache or from the underlying layer if unavailable.
-If the feature is neither available from the cache nor from the layer it will return false.
-If <code class="docutils literal notranslate"><span class="pre">feedback</span></code> is specified, the call may return if the feedback is canceled.</p>
+<code class="descname">getFeature</code><span class="sig-paren">(</span><em>self</em>, <em>id: int</em>, <em>feature: QgsFeature</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.analysis.QgsFeaturePool.getFeature" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves the feature with the specified <code class="docutils literal notranslate"><span class="pre">id</span></code> into <code class="docutils literal notranslate"><span class="pre">feature</span></code>.
+It will be retrieved from the cache or from the underlying feature source if unavailable.
+If the feature is neither available from the cache nor from the source it will return FALSE.</p>
 </dd></dl>
 
 <dl class="method">
@@ -1468,6 +1470,14 @@ This must only be called from the main thread.</p>
 <dt id="qgis.analysis.QgsFeaturePool.layerId">
 <code class="descname">layerId</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.analysis.QgsFeaturePool.layerId" title="Permalink to this definition">¶</a></dt>
 <dd><p>The layer id of the layer.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qgis.analysis.QgsFeaturePool.layerName">
+<code class="descname">layerName</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.analysis.QgsFeaturePool.layerName" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the name of the layer.</p>
+<p>Should be preferred over layer().name() because it can directly be run on
+the background thread.</p>
 </dd></dl>
 
 <dl class="method">
@@ -1492,7 +1502,7 @@ Implementations will update the feature on the layer or on the data provider.</p
 
   <div role="contentinfo">
     <p>
-      Last updated on 18:22 Mar 13, 2019.
+      Last updated on 18:21 Mar 20, 2019.
 
     </p>
   </div> 
