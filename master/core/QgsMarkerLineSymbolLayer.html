@@ -306,6 +306,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsGradientFillSymbolLayer.html">Class: QgsGradientFillSymbolLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsGradientStop.html">Class: QgsGradientStop</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsGraduatedSymbolRenderer.html">Class: QgsGraduatedSymbolRenderer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsHashedLineSymbolLayer.html">Class: QgsHashedLineSymbolLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsHeatmapRenderer.html">Class: QgsHeatmapRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsHillshadeRenderer.html">Class: QgsHillshadeRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsHistogram.html">Class: QgsHistogram</a></li>
@@ -744,6 +745,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsTask.html">Class: QgsTask</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsTaskManager.html">Class: QgsTaskManager</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsTaskWrapper.html">Class: QgsTaskWrapper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsTemplatedLineSymbolLayerBase.html">Class: QgsTemplatedLineSymbolLayerBase</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsTessellator.html">Class: QgsTessellator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsTestUtils.html">Class: QgsTestUtils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsTextAnnotation.html">Class: QgsTextAnnotation</a></li>
@@ -995,6 +997,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsGroupBoxCollapseButton.html">Class: QgsGroupBoxCollapseButton</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsGroupWmsDataDialog.html">Class: QgsGroupWmsDataDialog</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsGui.html">Class: QgsGui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui/QgsHashedLineSymbolLayerWidget.html">Class: QgsHashedLineSymbolLayerWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsHeatmapRendererWidget.html">Class: QgsHeatmapRendererWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsHelp.html">Class: QgsHelp</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsHighlight.html">Class: QgsHighlight</a></li>
@@ -1410,7 +1413,7 @@
 <dl class="class">
 <dt id="qgis.core.QgsMarkerLineSymbolLayer">
 <em class="property">class </em><code class="descclassname">qgis.core.</code><code class="descname">QgsMarkerLineSymbolLayer</code><span class="sig-paren">(</span><em>rotateMarker: bool = DEFAULT_MARKERLINE_ROTATE</em>, <em>interval: float = DEFAULT_MARKERLINE_INTERVAL</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsMarkerLineSymbolLayer" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">qgis._core.QgsLineSymbolLayer</span></code></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">qgis._core.QgsTemplatedLineSymbolLayerBase</span></code></p>
 <p>Constructor for QgsMarkerLineSymbolLayer. Creates a marker line
 with a default marker symbol, placed at the specified <code class="docutils literal notranslate"><span class="pre">interval</span></code> (in millimeters).</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">rotateMarker</span></code> argument specifies whether individual marker symbols
@@ -1445,124 +1448,70 @@ should be rotated to match the line segment alignment.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.copyPaintEffect" title="qgis.core.QgsMarkerLineSymbolLayer.copyPaintEffect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">copyPaintEffect</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.create" title="qgis.core.QgsMarkerLineSymbolLayer.create"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.copyTemplateSymbolProperties" title="qgis.core.QgsMarkerLineSymbolLayer.copyTemplateSymbolProperties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">copyTemplateSymbolProperties</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.create" title="qgis.core.QgsMarkerLineSymbolLayer.create"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create</span></code></a></p></td>
 <td><p>Creates a new QgsMarkerLineSymbolLayer, using the settings serialized in the <code class="docutils literal notranslate"><span class="pre">properties</span></code> map (corresponding to the output from QgsMarkerLineSymbolLayer.properties() ).</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.createFromSld" title="qgis.core.QgsMarkerLineSymbolLayer.createFromSld"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createFromSld</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.createFromSld" title="qgis.core.QgsMarkerLineSymbolLayer.createFromSld"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createFromSld</span></code></a></p></td>
 <td><p>Creates a new QgsMarkerLineSymbolLayer from an SLD XML DOM <code class="docutils literal notranslate"><span class="pre">element</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.estimateMaxBleed" title="qgis.core.QgsMarkerLineSymbolLayer.estimateMaxBleed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">estimateMaxBleed</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.estimateMaxBleed" title="qgis.core.QgsMarkerLineSymbolLayer.estimateMaxBleed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">estimateMaxBleed</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.hasDataDefinedProperties" title="qgis.core.QgsMarkerLineSymbolLayer.hasDataDefinedProperties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hasDataDefinedProperties</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.hasDataDefinedProperties" title="qgis.core.QgsMarkerLineSymbolLayer.hasDataDefinedProperties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hasDataDefinedProperties</span></code></a></p></td>
 <td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.interval" title="qgis.core.QgsMarkerLineSymbolLayer.interval"><code class="xref py py-obj docutils literal notranslate"><span class="pre">interval</span></code></a></p></td>
-<td><p>Returns the interval between individual markers.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.intervalMapUnitScale" title="qgis.core.QgsMarkerLineSymbolLayer.intervalMapUnitScale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">intervalMapUnitScale</span></code></a></p></td>
-<td><p>Returns the map unit scale for the interval between symbols.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.intervalUnit" title="qgis.core.QgsMarkerLineSymbolLayer.intervalUnit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">intervalUnit</span></code></a></p></td>
-<td><p>Returns the units for the interval between symbols.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.layerType" title="qgis.core.QgsMarkerLineSymbolLayer.layerType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">layerType</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.mapUnitScale" title="qgis.core.QgsMarkerLineSymbolLayer.mapUnitScale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mapUnitScale</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.markerAngle" title="qgis.core.QgsMarkerLineSymbolLayer.markerAngle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">markerAngle</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.offsetAlongLine" title="qgis.core.QgsMarkerLineSymbolLayer.offsetAlongLine"><code class="xref py py-obj docutils literal notranslate"><span class="pre">offsetAlongLine</span></code></a></p></td>
-<td><p>Returns the offset along the line for the marker placement.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.offsetAlongLineMapUnitScale" title="qgis.core.QgsMarkerLineSymbolLayer.offsetAlongLineMapUnitScale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">offsetAlongLineMapUnitScale</span></code></a></p></td>
-<td><p>Returns the map unit scale used for calculating the offset in map units along line for symbols.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.offsetAlongLineUnit" title="qgis.core.QgsMarkerLineSymbolLayer.offsetAlongLineUnit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">offsetAlongLineUnit</span></code></a></p></td>
-<td><p>Returns the unit used for calculating the offset along line for markers.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.outputUnit" title="qgis.core.QgsMarkerLineSymbolLayer.outputUnit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">outputUnit</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.placement" title="qgis.core.QgsMarkerLineSymbolLayer.placement"><code class="xref py py-obj docutils literal notranslate"><span class="pre">placement</span></code></a></p></td>
-<td><p>Returns the placement of the symbols.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.properties" title="qgis.core.QgsMarkerLineSymbolLayer.properties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">properties</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.renderPolygonStroke" title="qgis.core.QgsMarkerLineSymbolLayer.renderPolygonStroke"><code class="xref py py-obj docutils literal notranslate"><span class="pre">renderPolygonStroke</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.renderPolyline" title="qgis.core.QgsMarkerLineSymbolLayer.renderPolyline"><code class="xref py py-obj docutils literal notranslate"><span class="pre">renderPolyline</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.renderPolylineCentral" title="qgis.core.QgsMarkerLineSymbolLayer.renderPolylineCentral"><code class="xref py py-obj docutils literal notranslate"><span class="pre">renderPolylineCentral</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.renderPolylineInterval" title="qgis.core.QgsMarkerLineSymbolLayer.renderPolylineInterval"><code class="xref py py-obj docutils literal notranslate"><span class="pre">renderPolylineInterval</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.renderPolylineVertex" title="qgis.core.QgsMarkerLineSymbolLayer.renderPolylineVertex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">renderPolylineVertex</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.renderSymbol" title="qgis.core.QgsMarkerLineSymbolLayer.renderSymbol"><code class="xref py py-obj docutils literal notranslate"><span class="pre">renderSymbol</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.restoreOldDataDefinedProperties" title="qgis.core.QgsMarkerLineSymbolLayer.restoreOldDataDefinedProperties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">restoreOldDataDefinedProperties</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.rotateMarker" title="qgis.core.QgsMarkerLineSymbolLayer.rotateMarker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rotateMarker</span></code></a></p></td>
-<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the repeating symbols will be rotated to match their line segment orientation.</p></td>
+<td><p>Shall the marker be rotated.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.setColor" title="qgis.core.QgsMarkerLineSymbolLayer.setColor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setColor</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.setDataDefinedProperty" title="qgis.core.QgsMarkerLineSymbolLayer.setDataDefinedProperty"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setDataDefinedProperty</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.setCommonProperties" title="qgis.core.QgsMarkerLineSymbolLayer.setCommonProperties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setCommonProperties</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.setInterval" title="qgis.core.QgsMarkerLineSymbolLayer.setInterval"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setInterval</span></code></a></p></td>
-<td><p>Sets the interval between individual markers.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.setIntervalMapUnitScale" title="qgis.core.QgsMarkerLineSymbolLayer.setIntervalMapUnitScale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setIntervalMapUnitScale</span></code></a></p></td>
-<td><p>Sets the map unit <code class="docutils literal notranslate"><span class="pre">scale</span></code> for the interval between symbols.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.setIntervalUnit" title="qgis.core.QgsMarkerLineSymbolLayer.setIntervalUnit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setIntervalUnit</span></code></a></p></td>
-<td><p>Sets the units for the interval between symbols.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.setMapUnitScale" title="qgis.core.QgsMarkerLineSymbolLayer.setMapUnitScale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setMapUnitScale</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.setDataDefinedProperty" title="qgis.core.QgsMarkerLineSymbolLayer.setDataDefinedProperty"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setDataDefinedProperty</span></code></a></p></td>
 <td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.setOffsetAlongLine" title="qgis.core.QgsMarkerLineSymbolLayer.setOffsetAlongLine"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setOffsetAlongLine</span></code></a></p></td>
-<td><p>Sets the the offset along the line for the marker placement.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.setOffsetAlongLineMapUnitScale" title="qgis.core.QgsMarkerLineSymbolLayer.setOffsetAlongLineMapUnitScale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setOffsetAlongLineMapUnitScale</span></code></a></p></td>
-<td><p>Sets the map unit <code class="docutils literal notranslate"><span class="pre">scale</span></code> used for calculating the offset in map units along line for symbols.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.setOffsetAlongLineUnit" title="qgis.core.QgsMarkerLineSymbolLayer.setOffsetAlongLineUnit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setOffsetAlongLineUnit</span></code></a></p></td>
-<td><p>Sets the unit used for calculating the offset along line for markers.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.setOutputUnit" title="qgis.core.QgsMarkerLineSymbolLayer.setOutputUnit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setOutputUnit</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.setPlacement" title="qgis.core.QgsMarkerLineSymbolLayer.setPlacement"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setPlacement</span></code></a></p></td>
-<td><p>Sets the <code class="docutils literal notranslate"><span class="pre">placement</span></code> of the symbols.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.setRotateMarker" title="qgis.core.QgsMarkerLineSymbolLayer.setRotateMarker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setRotateMarker</span></code></a></p></td>
+<td><p>Shall the marker be rotated.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.setRotateMarker" title="qgis.core.QgsMarkerLineSymbolLayer.setRotateMarker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setRotateMarker</span></code></a></p></td>
-<td><p>Sets whether the repeating symbols should be rotated to match their line segment orientation.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.setSubSymbol" title="qgis.core.QgsMarkerLineSymbolLayer.setSubSymbol"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setSubSymbol</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.setSubSymbol" title="qgis.core.QgsMarkerLineSymbolLayer.setSubSymbol"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setSubSymbol</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.setWidth" title="qgis.core.QgsMarkerLineSymbolLayer.setWidth"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setWidth</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.setSymbolAngle" title="qgis.core.QgsMarkerLineSymbolLayer.setSymbolAngle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setSymbolAngle</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.startRender" title="qgis.core.QgsMarkerLineSymbolLayer.startRender"><code class="xref py py-obj docutils literal notranslate"><span class="pre">startRender</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.setSymbolLineAngle" title="qgis.core.QgsMarkerLineSymbolLayer.setSymbolLineAngle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setSymbolLineAngle</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.stopRender" title="qgis.core.QgsMarkerLineSymbolLayer.stopRender"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stopRender</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.setWidth" title="qgis.core.QgsMarkerLineSymbolLayer.setWidth"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setWidth</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.subSymbol" title="qgis.core.QgsMarkerLineSymbolLayer.subSymbol"><code class="xref py py-obj docutils literal notranslate"><span class="pre">subSymbol</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.startRender" title="qgis.core.QgsMarkerLineSymbolLayer.startRender"><code class="xref py py-obj docutils literal notranslate"><span class="pre">startRender</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.stopRender" title="qgis.core.QgsMarkerLineSymbolLayer.stopRender"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stopRender</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.subSymbol" title="qgis.core.QgsMarkerLineSymbolLayer.subSymbol"><code class="xref py py-obj docutils literal notranslate"><span class="pre">subSymbol</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.symbolAngle" title="qgis.core.QgsMarkerLineSymbolLayer.symbolAngle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">symbolAngle</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.toSld" title="qgis.core.QgsMarkerLineSymbolLayer.toSld"><code class="xref py py-obj docutils literal notranslate"><span class="pre">toSld</span></code></a></p></td>
@@ -1638,12 +1587,6 @@ should be rotated to match the line segment alignment.</p>
 <code class="descname">LastVertex</code><em class="property"> = 2</em><a class="headerlink" href="#qgis.core.QgsMarkerLineSymbolLayer.LastVertex" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="class">
-<dt id="qgis.core.QgsMarkerLineSymbolLayer.Placement">
-<em class="property">class </em><code class="descname">Placement</code><a class="headerlink" href="#qgis.core.QgsMarkerLineSymbolLayer.Placement" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
-</dd></dl>
-
 <dl class="attribute">
 <dt id="qgis.core.QgsMarkerLineSymbolLayer.Vertex">
 <code class="descname">Vertex</code><em class="property"> = 1</em><a class="headerlink" href="#qgis.core.QgsMarkerLineSymbolLayer.Vertex" title="Permalink to this definition">¶</a></dt>
@@ -1667,6 +1610,11 @@ should be rotated to match the line segment alignment.</p>
 <dl class="method">
 <dt id="qgis.core.QgsMarkerLineSymbolLayer.copyPaintEffect">
 <code class="descname">copyPaintEffect</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsMarkerLineSymbolLayer.copyPaintEffect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="qgis.core.QgsMarkerLineSymbolLayer.copyTemplateSymbolProperties">
+<code class="descname">copyTemplateSymbolProperties</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsMarkerLineSymbolLayer.copyTemplateSymbolProperties" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -1694,167 +1642,13 @@ QgsMarkerLineSymbolLayer.properties() ).</p>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="qgis.core.QgsMarkerLineSymbolLayer.interval">
-<code class="descname">interval</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#qgis.core.QgsMarkerLineSymbolLayer.interval" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the interval between individual markers. Units are specified through intervalUnits().</p>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.setInterval" title="qgis.core.QgsMarkerLineSymbolLayer.setInterval"><code class="xref py py-func docutils literal notranslate"><span class="pre">setInterval()</span></code></a></p>
-</div>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.intervalUnit" title="qgis.core.QgsMarkerLineSymbolLayer.intervalUnit"><code class="xref py py-func docutils literal notranslate"><span class="pre">intervalUnit()</span></code></a></p>
-</div>
-</dd></dl>
-
-<dl class="method">
-<dt id="qgis.core.QgsMarkerLineSymbolLayer.intervalMapUnitScale">
-<code class="descname">intervalMapUnitScale</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; QgsMapUnitScale<a class="headerlink" href="#qgis.core.QgsMarkerLineSymbolLayer.intervalMapUnitScale" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the map unit scale for the interval between symbols.</p>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.setIntervalMapUnitScale" title="qgis.core.QgsMarkerLineSymbolLayer.setIntervalMapUnitScale"><code class="xref py py-func docutils literal notranslate"><span class="pre">setIntervalMapUnitScale()</span></code></a></p>
-</div>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.intervalUnit" title="qgis.core.QgsMarkerLineSymbolLayer.intervalUnit"><code class="xref py py-func docutils literal notranslate"><span class="pre">intervalUnit()</span></code></a></p>
-</div>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.interval" title="qgis.core.QgsMarkerLineSymbolLayer.interval"><code class="xref py py-func docutils literal notranslate"><span class="pre">interval()</span></code></a></p>
-</div>
-</dd></dl>
-
-<dl class="method">
-<dt id="qgis.core.QgsMarkerLineSymbolLayer.intervalUnit">
-<code class="descname">intervalUnit</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; QgsUnitTypes.RenderUnit<a class="headerlink" href="#qgis.core.QgsMarkerLineSymbolLayer.intervalUnit" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the units for the interval between symbols.</p>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.setIntervalUnit" title="qgis.core.QgsMarkerLineSymbolLayer.setIntervalUnit"><code class="xref py py-func docutils literal notranslate"><span class="pre">setIntervalUnit()</span></code></a></p>
-</div>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.interval" title="qgis.core.QgsMarkerLineSymbolLayer.interval"><code class="xref py py-func docutils literal notranslate"><span class="pre">interval()</span></code></a></p>
-</div>
-</dd></dl>
-
-<dl class="method">
 <dt id="qgis.core.QgsMarkerLineSymbolLayer.layerType">
 <code class="descname">layerType</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.core.QgsMarkerLineSymbolLayer.layerType" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="qgis.core.QgsMarkerLineSymbolLayer.mapUnitScale">
-<code class="descname">mapUnitScale</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; QgsMapUnitScale<a class="headerlink" href="#qgis.core.QgsMarkerLineSymbolLayer.mapUnitScale" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="qgis.core.QgsMarkerLineSymbolLayer.markerAngle">
-<code class="descname">markerAngle</code><span class="sig-paren">(</span><em>self</em>, <em>points: QPolygonF</em>, <em>isRing: bool</em>, <em>vertex: int</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#qgis.core.QgsMarkerLineSymbolLayer.markerAngle" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="qgis.core.QgsMarkerLineSymbolLayer.offsetAlongLine">
-<code class="descname">offsetAlongLine</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#qgis.core.QgsMarkerLineSymbolLayer.offsetAlongLine" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the offset along the line for the marker placement. For Interval placements, this is the distance
-between the start of the line and the first marker. For FirstVertex and LastVertex placements, this is the
-distance between the marker and the start of the line or the end of the line respectively.
-This setting has no effect for Vertex or CentralPoint placements.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>The offset along the line. The unit for the offset is retrievable via offsetAlongLineUnit.</p>
-</dd>
-</dl>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.setOffsetAlongLine" title="qgis.core.QgsMarkerLineSymbolLayer.setOffsetAlongLine"><code class="xref py py-func docutils literal notranslate"><span class="pre">setOffsetAlongLine()</span></code></a></p>
-</div>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.offsetAlongLineUnit" title="qgis.core.QgsMarkerLineSymbolLayer.offsetAlongLineUnit"><code class="xref py py-func docutils literal notranslate"><span class="pre">offsetAlongLineUnit()</span></code></a></p>
-</div>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.placement" title="qgis.core.QgsMarkerLineSymbolLayer.placement"><code class="xref py py-func docutils literal notranslate"><span class="pre">placement()</span></code></a></p>
-</div>
-<div class="versionadded">
-<p><span class="versionmodified added">New in version 2.3.</span></p>
-</div>
-</dd></dl>
-
-<dl class="method">
-<dt id="qgis.core.QgsMarkerLineSymbolLayer.offsetAlongLineMapUnitScale">
-<code class="descname">offsetAlongLineMapUnitScale</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; QgsMapUnitScale<a class="headerlink" href="#qgis.core.QgsMarkerLineSymbolLayer.offsetAlongLineMapUnitScale" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the map unit scale used for calculating the offset in map units along line for symbols.</p>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.setOffsetAlongLineMapUnitScale" title="qgis.core.QgsMarkerLineSymbolLayer.setOffsetAlongLineMapUnitScale"><code class="xref py py-func docutils literal notranslate"><span class="pre">setOffsetAlongLineMapUnitScale()</span></code></a></p>
-</div>
-</dd></dl>
-
-<dl class="method">
-<dt id="qgis.core.QgsMarkerLineSymbolLayer.offsetAlongLineUnit">
-<code class="descname">offsetAlongLineUnit</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; QgsUnitTypes.RenderUnit<a class="headerlink" href="#qgis.core.QgsMarkerLineSymbolLayer.offsetAlongLineUnit" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the unit used for calculating the offset along line for markers.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>Offset along line unit type.</p>
-</dd>
-</dl>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.setOffsetAlongLineUnit" title="qgis.core.QgsMarkerLineSymbolLayer.setOffsetAlongLineUnit"><code class="xref py py-func docutils literal notranslate"><span class="pre">setOffsetAlongLineUnit()</span></code></a></p>
-</div>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.offsetAlongLine" title="qgis.core.QgsMarkerLineSymbolLayer.offsetAlongLine"><code class="xref py py-func docutils literal notranslate"><span class="pre">offsetAlongLine()</span></code></a></p>
-</div>
-</dd></dl>
-
-<dl class="method">
-<dt id="qgis.core.QgsMarkerLineSymbolLayer.outputUnit">
-<code class="descname">outputUnit</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; QgsUnitTypes.RenderUnit<a class="headerlink" href="#qgis.core.QgsMarkerLineSymbolLayer.outputUnit" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="qgis.core.QgsMarkerLineSymbolLayer.placement">
-<code class="descname">placement</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; QgsMarkerLineSymbolLayer.Placement<a class="headerlink" href="#qgis.core.QgsMarkerLineSymbolLayer.placement" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the placement of the symbols.</p>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.setPlacement" title="qgis.core.QgsMarkerLineSymbolLayer.setPlacement"><code class="xref py py-func docutils literal notranslate"><span class="pre">setPlacement()</span></code></a></p>
-</div>
-</dd></dl>
-
-<dl class="method">
-<dt id="qgis.core.QgsMarkerLineSymbolLayer.properties">
-<code class="descname">properties</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; Dict[str, str]<a class="headerlink" href="#qgis.core.QgsMarkerLineSymbolLayer.properties" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="qgis.core.QgsMarkerLineSymbolLayer.renderPolygonStroke">
-<code class="descname">renderPolygonStroke</code><span class="sig-paren">(</span><em>self, points: QPolygonF, rings: Iterable[QPolygonF], context: QgsSymbolRenderContext</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsMarkerLineSymbolLayer.renderPolygonStroke" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="qgis.core.QgsMarkerLineSymbolLayer.renderPolyline">
-<code class="descname">renderPolyline</code><span class="sig-paren">(</span><em>self</em>, <em>points: QPolygonF</em>, <em>context: QgsSymbolRenderContext</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsMarkerLineSymbolLayer.renderPolyline" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="qgis.core.QgsMarkerLineSymbolLayer.renderPolylineCentral">
-<code class="descname">renderPolylineCentral</code><span class="sig-paren">(</span><em>self</em>, <em>points: QPolygonF</em>, <em>context: QgsSymbolRenderContext</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsMarkerLineSymbolLayer.renderPolylineCentral" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="qgis.core.QgsMarkerLineSymbolLayer.renderPolylineInterval">
-<code class="descname">renderPolylineInterval</code><span class="sig-paren">(</span><em>self</em>, <em>points: QPolygonF</em>, <em>context: QgsSymbolRenderContext</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsMarkerLineSymbolLayer.renderPolylineInterval" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="qgis.core.QgsMarkerLineSymbolLayer.renderPolylineVertex">
-<code class="descname">renderPolylineVertex</code><span class="sig-paren">(</span><em>self</em>, <em>points: QPolygonF</em>, <em>context: QgsSymbolRenderContext</em>, <em>placement: QgsMarkerLineSymbolLayer.Placement = QgsMarkerLineSymbolLayer.Vertex</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsMarkerLineSymbolLayer.renderPolylineVertex" title="Permalink to this definition">¶</a></dt>
+<dt id="qgis.core.QgsMarkerLineSymbolLayer.renderSymbol">
+<code class="descname">renderSymbol</code><span class="sig-paren">(</span><em>self, point: Union[QPointF, QPoint], feature: QgsFeature, context: QgsRenderContext, layer: int = -1, selected: bool = False</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsMarkerLineSymbolLayer.renderSymbol" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -1865,10 +1659,14 @@ This setting has no effect for Vertex or CentralPoint placements.</p>
 <dl class="method">
 <dt id="qgis.core.QgsMarkerLineSymbolLayer.rotateMarker">
 <code class="descname">rotateMarker</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsMarkerLineSymbolLayer.rotateMarker" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the repeating symbols will be rotated to match their line segment orientation.</p>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.setRotateMarker" title="qgis.core.QgsMarkerLineSymbolLayer.setRotateMarker"><code class="xref py py-func docutils literal notranslate"><span class="pre">setRotateMarker()</span></code></a></p>
+<dd><p>Shall the marker be rotated.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the marker should be rotated.</p>
+</dd>
+</dl>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version Use: </span>rotateSymbols() instead.</p>
 </div>
 </dd></dl>
 
@@ -1878,129 +1676,14 @@ This setting has no effect for Vertex or CentralPoint placements.</p>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="qgis.core.QgsMarkerLineSymbolLayer.setCommonProperties">
+<code class="descname">setCommonProperties</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsMarkerLineSymbolLayer.setCommonProperties" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="qgis.core.QgsMarkerLineSymbolLayer.setDataDefinedProperty">
 <code class="descname">setDataDefinedProperty</code><span class="sig-paren">(</span><em>self</em>, <em>key: QgsSymbolLayer.Property</em>, <em>property: QgsProperty</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsMarkerLineSymbolLayer.setDataDefinedProperty" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
-<dl class="method">
-<dt id="qgis.core.QgsMarkerLineSymbolLayer.setInterval">
-<code class="descname">setInterval</code><span class="sig-paren">(</span><em>self</em>, <em>interval: float</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsMarkerLineSymbolLayer.setInterval" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sets the interval between individual markers.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>interval</strong> – interval size. Units are specified through setIntervalUnit()</p>
-</dd>
-</dl>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.interval" title="qgis.core.QgsMarkerLineSymbolLayer.interval"><code class="xref py py-func docutils literal notranslate"><span class="pre">interval()</span></code></a></p>
-</div>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.setIntervalUnit" title="qgis.core.QgsMarkerLineSymbolLayer.setIntervalUnit"><code class="xref py py-func docutils literal notranslate"><span class="pre">setIntervalUnit()</span></code></a></p>
-</div>
-</dd></dl>
-
-<dl class="method">
-<dt id="qgis.core.QgsMarkerLineSymbolLayer.setIntervalMapUnitScale">
-<code class="descname">setIntervalMapUnitScale</code><span class="sig-paren">(</span><em>self</em>, <em>scale: QgsMapUnitScale</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsMarkerLineSymbolLayer.setIntervalMapUnitScale" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sets the map unit <code class="docutils literal notranslate"><span class="pre">scale</span></code> for the interval between symbols.</p>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.intervalMapUnitScale" title="qgis.core.QgsMarkerLineSymbolLayer.intervalMapUnitScale"><code class="xref py py-func docutils literal notranslate"><span class="pre">intervalMapUnitScale()</span></code></a></p>
-</div>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.setIntervalUnit" title="qgis.core.QgsMarkerLineSymbolLayer.setIntervalUnit"><code class="xref py py-func docutils literal notranslate"><span class="pre">setIntervalUnit()</span></code></a></p>
-</div>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.setInterval" title="qgis.core.QgsMarkerLineSymbolLayer.setInterval"><code class="xref py py-func docutils literal notranslate"><span class="pre">setInterval()</span></code></a></p>
-</div>
-</dd></dl>
-
-<dl class="method">
-<dt id="qgis.core.QgsMarkerLineSymbolLayer.setIntervalUnit">
-<code class="descname">setIntervalUnit</code><span class="sig-paren">(</span><em>self</em>, <em>unit: QgsUnitTypes.RenderUnit</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsMarkerLineSymbolLayer.setIntervalUnit" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sets the units for the interval between symbols.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>unit</strong> – interval units</p>
-</dd>
-</dl>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.intervalUnit" title="qgis.core.QgsMarkerLineSymbolLayer.intervalUnit"><code class="xref py py-func docutils literal notranslate"><span class="pre">intervalUnit()</span></code></a></p>
-</div>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.setInterval" title="qgis.core.QgsMarkerLineSymbolLayer.setInterval"><code class="xref py py-func docutils literal notranslate"><span class="pre">setInterval()</span></code></a></p>
-</div>
-</dd></dl>
-
-<dl class="method">
-<dt id="qgis.core.QgsMarkerLineSymbolLayer.setMapUnitScale">
-<code class="descname">setMapUnitScale</code><span class="sig-paren">(</span><em>self</em>, <em>scale: QgsMapUnitScale</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsMarkerLineSymbolLayer.setMapUnitScale" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="qgis.core.QgsMarkerLineSymbolLayer.setOffsetAlongLine">
-<code class="descname">setOffsetAlongLine</code><span class="sig-paren">(</span><em>self</em>, <em>offsetAlongLine: float</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsMarkerLineSymbolLayer.setOffsetAlongLine" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sets the the offset along the line for the marker placement. For Interval placements, this is the distance
-between the start of the line and the first marker. For FirstVertex and LastVertex placements, this is the
-distance between the marker and the start of the line or the end of the line respectively.
-This setting has no effect for Vertex or CentralPoint placements.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>offsetAlongLine</strong> – Distance to offset markers along the line. The offset
-unit is set via setOffsetAlongLineUnit.</p>
-</dd>
-</dl>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.offsetAlongLine" title="qgis.core.QgsMarkerLineSymbolLayer.offsetAlongLine"><code class="xref py py-func docutils literal notranslate"><span class="pre">offsetAlongLine()</span></code></a></p>
-</div>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.setOffsetAlongLineUnit" title="qgis.core.QgsMarkerLineSymbolLayer.setOffsetAlongLineUnit"><code class="xref py py-func docutils literal notranslate"><span class="pre">setOffsetAlongLineUnit()</span></code></a></p>
-</div>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.setPlacement" title="qgis.core.QgsMarkerLineSymbolLayer.setPlacement"><code class="xref py py-func docutils literal notranslate"><span class="pre">setPlacement()</span></code></a></p>
-</div>
-<div class="versionadded">
-<p><span class="versionmodified added">New in version 2.3.</span></p>
-</div>
-</dd></dl>
-
-<dl class="method">
-<dt id="qgis.core.QgsMarkerLineSymbolLayer.setOffsetAlongLineMapUnitScale">
-<code class="descname">setOffsetAlongLineMapUnitScale</code><span class="sig-paren">(</span><em>self</em>, <em>scale: QgsMapUnitScale</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsMarkerLineSymbolLayer.setOffsetAlongLineMapUnitScale" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sets the map unit <code class="docutils literal notranslate"><span class="pre">scale</span></code> used for calculating the offset in map units along line for symbols.</p>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.offsetAlongLineMapUnitScale" title="qgis.core.QgsMarkerLineSymbolLayer.offsetAlongLineMapUnitScale"><code class="xref py py-func docutils literal notranslate"><span class="pre">offsetAlongLineMapUnitScale()</span></code></a></p>
-</div>
-</dd></dl>
-
-<dl class="method">
-<dt id="qgis.core.QgsMarkerLineSymbolLayer.setOffsetAlongLineUnit">
-<code class="descname">setOffsetAlongLineUnit</code><span class="sig-paren">(</span><em>self</em>, <em>unit: QgsUnitTypes.RenderUnit</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsMarkerLineSymbolLayer.setOffsetAlongLineUnit" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sets the unit used for calculating the offset along line for markers.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>unit</strong> – Offset along line unit type.</p>
-</dd>
-</dl>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.offsetAlongLineUnit" title="qgis.core.QgsMarkerLineSymbolLayer.offsetAlongLineUnit"><code class="xref py py-func docutils literal notranslate"><span class="pre">offsetAlongLineUnit()</span></code></a></p>
-</div>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.setOffsetAlongLine" title="qgis.core.QgsMarkerLineSymbolLayer.setOffsetAlongLine"><code class="xref py py-func docutils literal notranslate"><span class="pre">setOffsetAlongLine()</span></code></a></p>
-</div>
-</dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsMarkerLineSymbolLayer.setOutputUnit">
@@ -2008,28 +1691,27 @@ unit is set via setOffsetAlongLineUnit.</p>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="qgis.core.QgsMarkerLineSymbolLayer.setPlacement">
-<code class="descname">setPlacement</code><span class="sig-paren">(</span><em>self</em>, <em>p: QgsMarkerLineSymbolLayer.Placement</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsMarkerLineSymbolLayer.setPlacement" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sets the <code class="docutils literal notranslate"><span class="pre">placement</span></code> of the symbols.</p>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.placement" title="qgis.core.QgsMarkerLineSymbolLayer.placement"><code class="xref py py-func docutils literal notranslate"><span class="pre">placement()</span></code></a></p>
-</div>
-</dd></dl>
-
-<dl class="method">
 <dt id="qgis.core.QgsMarkerLineSymbolLayer.setRotateMarker">
 <code class="descname">setRotateMarker</code><span class="sig-paren">(</span><em>self</em>, <em>rotate: bool</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsMarkerLineSymbolLayer.setRotateMarker" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sets whether the repeating symbols should be rotated to match their line segment orientation.</p>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p><a class="reference internal" href="#qgis.core.QgsMarkerLineSymbolLayer.rotateMarker" title="qgis.core.QgsMarkerLineSymbolLayer.rotateMarker"><code class="xref py py-func docutils literal notranslate"><span class="pre">rotateMarker()</span></code></a></p>
+<dd><p>Shall the marker be rotated.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version Use: </span>setRotateSymbols() instead.</p>
 </div>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsMarkerLineSymbolLayer.setSubSymbol">
 <code class="descname">setSubSymbol</code><span class="sig-paren">(</span><em>self</em>, <em>symbol: QgsSymbol</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsMarkerLineSymbolLayer.setSubSymbol" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="qgis.core.QgsMarkerLineSymbolLayer.setSymbolAngle">
+<code class="descname">setSymbolAngle</code><span class="sig-paren">(</span><em>self</em>, <em>angle: float</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsMarkerLineSymbolLayer.setSymbolAngle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="qgis.core.QgsMarkerLineSymbolLayer.setSymbolLineAngle">
+<code class="descname">setSymbolLineAngle</code><span class="sig-paren">(</span><em>self</em>, <em>angle: float</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsMarkerLineSymbolLayer.setSymbolLineAngle" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -2050,6 +1732,11 @@ unit is set via setOffsetAlongLineUnit.</p>
 <dl class="method">
 <dt id="qgis.core.QgsMarkerLineSymbolLayer.subSymbol">
 <code class="descname">subSymbol</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; QgsSymbol<a class="headerlink" href="#qgis.core.QgsMarkerLineSymbolLayer.subSymbol" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="qgis.core.QgsMarkerLineSymbolLayer.symbolAngle">
+<code class="descname">symbolAngle</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#qgis.core.QgsMarkerLineSymbolLayer.symbolAngle" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -2083,7 +1770,7 @@ unit is set via setOffsetAlongLineUnit.</p>
 
   <div role="contentinfo">
     <p>
-      Last updated on 13:27 Apr 02, 2019.
+      Last updated on 13:34 Apr 03, 2019.
 
     </p>
   </div> 

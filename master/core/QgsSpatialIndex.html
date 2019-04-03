@@ -306,6 +306,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsGradientFillSymbolLayer.html">Class: QgsGradientFillSymbolLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsGradientStop.html">Class: QgsGradientStop</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsGraduatedSymbolRenderer.html">Class: QgsGraduatedSymbolRenderer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsHashedLineSymbolLayer.html">Class: QgsHashedLineSymbolLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsHeatmapRenderer.html">Class: QgsHeatmapRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsHillshadeRenderer.html">Class: QgsHillshadeRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsHistogram.html">Class: QgsHistogram</a></li>
@@ -744,6 +745,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsTask.html">Class: QgsTask</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsTaskManager.html">Class: QgsTaskManager</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsTaskWrapper.html">Class: QgsTaskWrapper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsTemplatedLineSymbolLayerBase.html">Class: QgsTemplatedLineSymbolLayerBase</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsTessellator.html">Class: QgsTessellator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsTestUtils.html">Class: QgsTestUtils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsTextAnnotation.html">Class: QgsTextAnnotation</a></li>
@@ -995,6 +997,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsGroupBoxCollapseButton.html">Class: QgsGroupBoxCollapseButton</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsGroupWmsDataDialog.html">Class: QgsGroupWmsDataDialog</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsGui.html">Class: QgsGui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui/QgsHashedLineSymbolLayerWidget.html">Class: QgsHashedLineSymbolLayerWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsHeatmapRendererWidget.html">Class: QgsHeatmapRendererWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsHelp.html">Class: QgsHelp</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsHighlight.html">Class: QgsHighlight</a></li>
@@ -1626,6 +1629,24 @@ number of returned feature IDs may exceed <code class="docutils literal notransl
 then the nearest neighbor test is performed based on the feature bounding boxes ONLY, so for non-point
 geometry features this method is not guaranteed to return the actual closest neighbors.</p>
 </div>
+<p>nearestNeighbor(self, geometry: QgsGeometry, neighbors: int = 1, maxDistance: float = 0) -&gt; object
+Returns nearest neighbors to a <code class="docutils literal notranslate"><span class="pre">geometry</span></code>. The number of neighbors returned is specified
+by the <code class="docutils literal notranslate"><span class="pre">neighbors</span></code> argument.</p>
+<p>If the <code class="docutils literal notranslate"><span class="pre">maxDistance</span></code> argument is greater than 0, then only features within the specified
+distance of <code class="docutils literal notranslate"><span class="pre">point</span></code> will be considered.</p>
+<p>Note that in some cases the number of returned features may differ from the requested
+number of <code class="docutils literal notranslate"><span class="pre">neighbors</span></code>. E.g. if not enough features exist within the <code class="docutils literal notranslate"><span class="pre">maxDistance</span></code> of the
+search point. If multiple features are equidistant from the search <code class="docutils literal notranslate"><span class="pre">point</span></code> then the
+number of returned feature IDs may exceed <code class="docutils literal notranslate"><span class="pre">neighbors</span></code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If this QgsSpatialIndex object was not constructed with the FlagStoreFeatureGeometries flag,
+then the nearest neighbor test is performed based on the feature bounding boxes ONLY, so for non-point
+geometry features this method is not guaranteed to return the actual closest neighbors.</p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.8.</span></p>
+</div>
 </dd></dl>
 
 <dl class="method">
@@ -1649,7 +1670,7 @@ geometry features this method is not guaranteed to return the actual closest nei
 
   <div role="contentinfo">
     <p>
-      Last updated on 13:27 Apr 02, 2019.
+      Last updated on 13:34 Apr 03, 2019.
 
     </p>
   </div> 
