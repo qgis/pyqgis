@@ -1412,9 +1412,48 @@
 <span id="class-qgsrastercalculator"></span><h1>Class: QgsRasterCalculator<a class="headerlink" href="#module-QgsRasterCalculator" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="qgis.analysis.QgsRasterCalculator">
-<em class="property">class </em><code class="descclassname">qgis.analysis.</code><code class="descname">QgsRasterCalculator</code><span class="sig-paren">(</span><em>formulaString: str, outputFile: str, outputFormat: str, outputExtent: QgsRectangle, nOutputColumns: int, nOutputRows: int, rasterEntries: Iterable[QgsRasterCalculatorEntry]</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.analysis.QgsRasterCalculator" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">qgis.analysis.</code><code class="descname">QgsRasterCalculator</code><span class="sig-paren">(</span><em>formulaString: str, outputFile: str, outputFormat: str, outputExtent: QgsRectangle, nOutputColumns: int, nOutputRows: int, rasterEntries: Iterable[QgsRasterCalculatorEntry], transformContext: QgsCoordinateTransformContext</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.analysis.QgsRasterCalculator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sip.wrapper</span></code></p>
 <p>QgsRasterCalculator constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>formulaString</strong> – formula for raster calculation</p></li>
+<li><p><strong>outputFile</strong> – output file path</p></li>
+<li><p><strong>outputFormat</strong> – output file format</p></li>
+<li><p><strong>outputExtent</strong> – output extent. CRS for output is taken from first entry in rasterEntries.</p></li>
+<li><p><strong>nOutputColumns</strong> – number of columns in output raster</p></li>
+<li><p><strong>nOutputRows</strong> – number of rows in output raster</p></li>
+<li><p><strong>rasterEntries</strong> – list of referenced raster layers</p></li>
+<li><p><strong>transformContext</strong> – coordinate transformation context</p></li>
+</ul>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.8.</span></p>
+</div>
+<p>QgsRasterCalculator(formulaString: str, outputFile: str, outputFormat: str, outputExtent: QgsRectangle, outputCrs: QgsCoordinateReferenceSystem, nOutputColumns: int, nOutputRows: int, rasterEntries: Iterable[QgsRasterCalculatorEntry], transformContext: QgsCoordinateTransformContext)
+QgsRasterCalculator constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>formulaString</strong> – formula for raster calculation</p></li>
+<li><p><strong>outputFile</strong> – output file path</p></li>
+<li><p><strong>outputFormat</strong> – output file format</p></li>
+<li><p><strong>outputExtent</strong> – output extent, CRS is specified by outputCrs parameter</p></li>
+<li><p><strong>outputCrs</strong> – destination CRS for output raster</p></li>
+<li><p><strong>nOutputColumns</strong> – number of columns in output raster</p></li>
+<li><p><strong>nOutputRows</strong> – number of rows in output raster</p></li>
+<li><p><strong>rasterEntries</strong> – list of referenced raster layers</p></li>
+<li><p><strong>transformContext</strong> – coordinate transformation context</p></li>
+</ul>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.8.</span></p>
+</div>
+<p>QgsRasterCalculator(formulaString: str, outputFile: str, outputFormat: str, outputExtent: QgsRectangle, nOutputColumns: int, nOutputRows: int, rasterEntries: Iterable[QgsRasterCalculatorEntry])
+QgsRasterCalculator constructor.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -1428,6 +1467,9 @@
 </ul>
 </dd>
 </dl>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version since: </span>QGIS 3.8, use the version with transformContext instead</p>
+</div>
 <p>QgsRasterCalculator(formulaString: str, outputFile: str, outputFormat: str, outputExtent: QgsRectangle, outputCrs: QgsCoordinateReferenceSystem, nOutputColumns: int, nOutputRows: int, rasterEntries: Iterable[QgsRasterCalculatorEntry])
 QgsRasterCalculator constructor.</p>
 <dl class="field-list simple">
@@ -1444,6 +1486,9 @@ QgsRasterCalculator constructor.</p>
 </ul>
 </dd>
 </dl>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version since: </span>QGIS 3.8, use the version with transformContext instead</p>
+</div>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 2.10.</span></p>
 </div>
@@ -1592,7 +1637,7 @@ a description of the error can be obtained by calling lastError().</p>
 
   <div role="contentinfo">
     <p>
-      Last updated on 13:40 Apr 16, 2019.
+      Last updated on 14:34 Apr 18, 2019.
 
     </p>
   </div> 
