@@ -555,6 +555,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingModelOutput.html">Class: QgsProcessingModelOutput</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingModelParameter.html">Class: QgsProcessingModelParameter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingMultiStepFeedback.html">Class: QgsProcessingMultiStepFeedback</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsProcessingOutputBoolean.html">Class: QgsProcessingOutputBoolean</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingOutputDefinition.html">Class: QgsProcessingOutputDefinition</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingOutputFile.html">Class: QgsProcessingOutputFile</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingOutputFolder.html">Class: QgsProcessingOutputFolder</a></li>
@@ -837,6 +838,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsActionMenu.html">Class: QgsActionMenu</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsAdvancedDigitizingCanvasItem.html">Class: QgsAdvancedDigitizingCanvasItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsAdvancedDigitizingDockWidget.html">Class: QgsAdvancedDigitizingDockWidget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui/QgsAdvancedDigitizingFloater.html">Class: QgsAdvancedDigitizingFloater</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsAggregateToolButton.html">Class: QgsAggregateToolButton</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsArrowSymbolLayerWidget.html">Class: QgsArrowSymbolLayerWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsAttributeDialog.html">Class: QgsAttributeDialog</a></li>
@@ -1142,6 +1144,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsProcessingContextGenerator.html">Class: QgsProcessingContextGenerator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsProcessingGui.html">Class: QgsProcessingGui</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsProcessingGuiRegistry.html">Class: QgsProcessingGuiRegistry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui/QgsProcessingMapLayerComboBox.html">Class: QgsProcessingMapLayerComboBox</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsProcessingModelerParameterWidget.html">Class: QgsProcessingModelerParameterWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsProcessingMultipleSelectionDialog.html">Class: QgsProcessingMultipleSelectionDialog</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsProcessingParameterWidgetContext.html">Class: QgsProcessingParameterWidgetContext</a></li>
@@ -1415,14 +1418,35 @@
 <span id="class-qgslabelposition"></span><h1>Class: QgsLabelPosition<a class="headerlink" href="#module-QgsLabelPosition" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="qgis.core.QgsLabelPosition">
-<em class="property">class </em><code class="descclassname">qgis.core.</code><code class="descname">QgsLabelPosition</code><span class="sig-paren">(</span><em>id: int, r: float, corners: Iterable[QgsPointXY], rect: QgsRectangle, w: float, h: float, layer: str, labeltext: str, labelfont: QFont, upside_down: bool, diagram: bool = False, pinned: bool = False, providerId: str = ''</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsLabelPosition" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">qgis.core.</code><code class="sig-name descname">QgsLabelPosition</code><span class="sig-paren">(</span><em class="sig-param">id: int, r: float, corners: Iterable[QgsPointXY], rect: QgsRectangle, w: float, h: float, layer: str, labeltext: str, labelfont: QFont, upside_down: bool, diagram: bool = False, pinned: bool = False, providerId: str = '', labelGeometry: QgsGeometry = QgsGeometry()</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsLabelPosition" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sip.wrapper</span></code></p>
+<p>Constructor for QgsLabelPosition.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> – associated feature ID</p></li>
+<li><p><strong>r</strong> – label rotation in degrees clockwise</p></li>
+<li><p><strong>corners</strong> – corner points of label bounding box, in map units</p></li>
+<li><p><strong>rect</strong> – label bounding box, in map units</p></li>
+<li><p><strong>w</strong> – width of label, in map units</p></li>
+<li><p><strong>h</strong> – height of label, in map units</p></li>
+<li><p><strong>layer</strong> – ID of associated map layer</p></li>
+<li><p><strong>labeltext</strong> – text rendered for label</p></li>
+<li><p><strong>labelfont</strong> – font used to render label</p></li>
+<li><p><strong>upside_down</strong> – <code class="docutils literal notranslate"><span class="pre">True</span></code> if label is upside down</p></li>
+<li><p><strong>diagram</strong> – <code class="docutils literal notranslate"><span class="pre">True</span></code> if label is a diagram</p></li>
+<li><p><strong>pinned</strong> – <code class="docutils literal notranslate"><span class="pre">True</span></code> if label has pinned placement</p></li>
+<li><p><strong>providerId</strong> – ID of associated label provider</p></li>
+<li><p><strong>labelGeometry</strong> – polygon geometry of label boundary</p></li>
+</ul>
+</dd>
+</dl>
 <p>QgsLabelPosition()
 Constructor for QgsLabelPosition</p>
 <p>QgsLabelPosition(QgsLabelPosition)</p>
 <blockquote>
 <div><p class="rubric">Enums</p>
-<table class="longtable docutils align-center">
+<table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
 <col style="width: 90%" />
@@ -1431,7 +1455,7 @@ Constructor for QgsLabelPosition</p>
 </tbody>
 </table>
 <p class="rubric">Methods</p>
-<table class="longtable docutils align-center">
+<table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
 <col style="width: 90%" />
@@ -1440,7 +1464,7 @@ Constructor for QgsLabelPosition</p>
 </tbody>
 </table>
 <p class="rubric">Signals</p>
-<table class="longtable docutils align-center">
+<table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
 <col style="width: 90%" />
@@ -1449,7 +1473,7 @@ Constructor for QgsLabelPosition</p>
 </tbody>
 </table>
 <p class="rubric">Attributes</p>
-<table class="longtable docutils align-center">
+<table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
 <col style="width: 90%" />
@@ -1473,25 +1497,28 @@ Constructor for QgsLabelPosition</p>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLabelPosition.labelFont" title="qgis.core.QgsLabelPosition.labelFont"><code class="xref py py-obj docutils literal notranslate"><span class="pre">qgis.core.QgsLabelPosition.labelFont</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLabelPosition.labelRect" title="qgis.core.QgsLabelPosition.labelRect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">qgis.core.QgsLabelPosition.labelRect</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLabelPosition.labelGeometry" title="qgis.core.QgsLabelPosition.labelGeometry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">qgis.core.QgsLabelPosition.labelGeometry</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLabelPosition.labelText" title="qgis.core.QgsLabelPosition.labelText"><code class="xref py py-obj docutils literal notranslate"><span class="pre">qgis.core.QgsLabelPosition.labelText</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLabelPosition.labelRect" title="qgis.core.QgsLabelPosition.labelRect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">qgis.core.QgsLabelPosition.labelRect</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLabelPosition.layerID" title="qgis.core.QgsLabelPosition.layerID"><code class="xref py py-obj docutils literal notranslate"><span class="pre">qgis.core.QgsLabelPosition.layerID</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLabelPosition.labelText" title="qgis.core.QgsLabelPosition.labelText"><code class="xref py py-obj docutils literal notranslate"><span class="pre">qgis.core.QgsLabelPosition.labelText</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLabelPosition.providerID" title="qgis.core.QgsLabelPosition.providerID"><code class="xref py py-obj docutils literal notranslate"><span class="pre">qgis.core.QgsLabelPosition.providerID</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLabelPosition.layerID" title="qgis.core.QgsLabelPosition.layerID"><code class="xref py py-obj docutils literal notranslate"><span class="pre">qgis.core.QgsLabelPosition.layerID</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLabelPosition.rotation" title="qgis.core.QgsLabelPosition.rotation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">qgis.core.QgsLabelPosition.rotation</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLabelPosition.providerID" title="qgis.core.QgsLabelPosition.providerID"><code class="xref py py-obj docutils literal notranslate"><span class="pre">qgis.core.QgsLabelPosition.providerID</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLabelPosition.upsideDown" title="qgis.core.QgsLabelPosition.upsideDown"><code class="xref py py-obj docutils literal notranslate"><span class="pre">qgis.core.QgsLabelPosition.upsideDown</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLabelPosition.rotation" title="qgis.core.QgsLabelPosition.rotation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">qgis.core.QgsLabelPosition.rotation</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLabelPosition.width" title="qgis.core.QgsLabelPosition.width"><code class="xref py py-obj docutils literal notranslate"><span class="pre">qgis.core.QgsLabelPosition.width</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLabelPosition.upsideDown" title="qgis.core.QgsLabelPosition.upsideDown"><code class="xref py py-obj docutils literal notranslate"><span class="pre">qgis.core.QgsLabelPosition.upsideDown</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLabelPosition.width" title="qgis.core.QgsLabelPosition.width"><code class="xref py py-obj docutils literal notranslate"><span class="pre">qgis.core.QgsLabelPosition.width</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -1499,67 +1526,72 @@ Constructor for QgsLabelPosition</p>
 </div></blockquote>
 <dl class="attribute">
 <dt id="qgis.core.QgsLabelPosition.cornerPoints">
-<code class="descname">cornerPoints</code><a class="headerlink" href="#qgis.core.QgsLabelPosition.cornerPoints" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">cornerPoints</code><a class="headerlink" href="#qgis.core.QgsLabelPosition.cornerPoints" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="qgis.core.QgsLabelPosition.featureId">
-<code class="descname">featureId</code><a class="headerlink" href="#qgis.core.QgsLabelPosition.featureId" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">featureId</code><a class="headerlink" href="#qgis.core.QgsLabelPosition.featureId" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="qgis.core.QgsLabelPosition.height">
-<code class="descname">height</code><a class="headerlink" href="#qgis.core.QgsLabelPosition.height" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">height</code><a class="headerlink" href="#qgis.core.QgsLabelPosition.height" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="qgis.core.QgsLabelPosition.isDiagram">
-<code class="descname">isDiagram</code><a class="headerlink" href="#qgis.core.QgsLabelPosition.isDiagram" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">isDiagram</code><a class="headerlink" href="#qgis.core.QgsLabelPosition.isDiagram" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="qgis.core.QgsLabelPosition.isPinned">
-<code class="descname">isPinned</code><a class="headerlink" href="#qgis.core.QgsLabelPosition.isPinned" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">isPinned</code><a class="headerlink" href="#qgis.core.QgsLabelPosition.isPinned" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="qgis.core.QgsLabelPosition.labelFont">
-<code class="descname">labelFont</code><a class="headerlink" href="#qgis.core.QgsLabelPosition.labelFont" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">labelFont</code><a class="headerlink" href="#qgis.core.QgsLabelPosition.labelFont" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qgis.core.QgsLabelPosition.labelGeometry">
+<code class="sig-name descname">labelGeometry</code><a class="headerlink" href="#qgis.core.QgsLabelPosition.labelGeometry" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="qgis.core.QgsLabelPosition.labelRect">
-<code class="descname">labelRect</code><a class="headerlink" href="#qgis.core.QgsLabelPosition.labelRect" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">labelRect</code><a class="headerlink" href="#qgis.core.QgsLabelPosition.labelRect" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="qgis.core.QgsLabelPosition.labelText">
-<code class="descname">labelText</code><a class="headerlink" href="#qgis.core.QgsLabelPosition.labelText" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">labelText</code><a class="headerlink" href="#qgis.core.QgsLabelPosition.labelText" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="qgis.core.QgsLabelPosition.layerID">
-<code class="descname">layerID</code><a class="headerlink" href="#qgis.core.QgsLabelPosition.layerID" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">layerID</code><a class="headerlink" href="#qgis.core.QgsLabelPosition.layerID" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="qgis.core.QgsLabelPosition.providerID">
-<code class="descname">providerID</code><a class="headerlink" href="#qgis.core.QgsLabelPosition.providerID" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">providerID</code><a class="headerlink" href="#qgis.core.QgsLabelPosition.providerID" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="qgis.core.QgsLabelPosition.rotation">
-<code class="descname">rotation</code><a class="headerlink" href="#qgis.core.QgsLabelPosition.rotation" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">rotation</code><a class="headerlink" href="#qgis.core.QgsLabelPosition.rotation" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="qgis.core.QgsLabelPosition.upsideDown">
-<code class="descname">upsideDown</code><a class="headerlink" href="#qgis.core.QgsLabelPosition.upsideDown" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">upsideDown</code><a class="headerlink" href="#qgis.core.QgsLabelPosition.upsideDown" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="qgis.core.QgsLabelPosition.width">
-<code class="descname">width</code><a class="headerlink" href="#qgis.core.QgsLabelPosition.width" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">width</code><a class="headerlink" href="#qgis.core.QgsLabelPosition.width" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -1577,7 +1609,7 @@ Constructor for QgsLabelPosition</p>
 
   <div role="contentinfo">
     <p>
-      Last updated on 14:00 May 12, 2019.
+      Last updated on 22:58 Jun 18, 2019.
 
     </p>
   </div> 
