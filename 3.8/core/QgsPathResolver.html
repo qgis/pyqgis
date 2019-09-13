@@ -535,6 +535,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsPointPatternFillSymbolLayer.html">Class: QgsPointPatternFillSymbolLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsPointXY.html">Class: QgsPointXY</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsPolygon.html">Class: QgsPolygon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsPostgresStringUtils.html">Class: QgsPostgresStringUtils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsPresetSchemeColorRamp.html">Class: QgsPresetSchemeColorRamp</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsPrintLayout.html">Class: QgsPrintLayout</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessing.html">Class: QgsProcessing</a></li>
@@ -1445,10 +1446,13 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsPathResolver.readPath" title="qgis.core.QgsPathResolver.readPath"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readPath</span></code></a></p></td>
 <td><p>Turn filename read from the project file to an absolute path</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsPathResolver.setPathPreprocessor" title="qgis.core.QgsPathResolver.setPathPreprocessor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setPathPreprocessor</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsPathResolver.removePathPreprocessor" title="qgis.core.QgsPathResolver.removePathPreprocessor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removePathPreprocessor</span></code></a></p></td>
+<td><p>Removes the custom pre-processor function with matching <code class="docutils literal notranslate"><span class="pre">id</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsPathResolver.setPathPreprocessor" title="qgis.core.QgsPathResolver.setPathPreprocessor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setPathPreprocessor</span></code></a></p></td>
 <td><p>Sets a path pre-processor function, which allows for manipulation of paths and data sources prior to resolving them to file references or layer sources.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsPathResolver.writePath" title="qgis.core.QgsPathResolver.writePath"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writePath</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsPathResolver.writePath" title="qgis.core.QgsPathResolver.writePath"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writePath</span></code></a></p></td>
 <td><p>Prepare a filename to save it to the project file.</p></td>
 </tr>
 </tbody>
@@ -1479,8 +1483,23 @@
 </dd></dl>
 
 <dl class="method">
+<dt id="qgis.core.QgsPathResolver.removePathPreprocessor">
+<code class="sig-name descname">removePathPreprocessor</code><span class="sig-paren">(</span><em class="sig-param">id: str</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsPathResolver.removePathPreprocessor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes the custom pre-processor function with matching <code class="docutils literal notranslate"><span class="pre">id</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">id</span></code> must correspond to a pre-processor previously added via a call to setPathPreprocessor().
+An KeyError will be raised if no processor with the specified <code class="docutils literal notranslate"><span class="pre">id</span></code> exists.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsPathResolver.setPathPreprocessor" title="qgis.core.QgsPathResolver.setPathPreprocessor"><code class="xref py py-func docutils literal notranslate"><span class="pre">setPathPreprocessor()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.10.</span></p>
+</div>
+</dd></dl>
+
+<dl class="method">
 <dt id="qgis.core.QgsPathResolver.setPathPreprocessor">
-<code class="sig-name descname">setPathPreprocessor</code><span class="sig-paren">(</span><em class="sig-param">Callable[..., None]</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsPathResolver.setPathPreprocessor" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">setPathPreprocessor</code><span class="sig-paren">(</span><em class="sig-param">Callable[..., None]</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.core.QgsPathResolver.setPathPreprocessor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets a path pre-processor function, which allows for manipulation of paths and data sources prior
 to resolving them to file references or layer sources.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">processor</span></code> function must accept a single string argument (representing the original file path
@@ -1490,35 +1509,29 @@ or data source), and return a processed version of this path.</p>
 <p class="admonition-title">Note</p>
 <p>Setting a new <code class="docutils literal notranslate"><span class="pre">processor</span></code> replaces any existing processor.</p>
 </div>
-<p>Example - replace an outdated folder path with a new one:
-.. code-block:: python</p>
-<blockquote>
-<div><dl class="simple">
-<dt>def my_processor(path):</dt><dd><p>return path.replace(‘c:/Users/ClintBarton/Documents/Projects’, ‘x:/Projects/’)</p>
-</dd>
-</dl>
-<p>QgsPathResolver.setPathPreprocessor(my_processor)</p>
-</div></blockquote>
-<p>Example - replace a stored database host with a new one:
-.. code-block:: python</p>
-<blockquote>
-<div><dl class="simple">
-<dt>def my_processor(path):</dt><dd><p>return path.replace(‘host=10.1.1.115’, ‘host=10.1.1.116’)</p>
-</dd>
-</dl>
-<p>QgsPathResolver.setPathPreprocessor(my_processor)</p>
-</div></blockquote>
-<p>Example - replace stored database credentials with new ones:
-.. code-block:: python</p>
-<blockquote>
-<div><dl class="simple">
-<dt>def my_processor(path):</dt><dd><p>path = path.replace(“user=’gis_team’”, “user=’team_awesome’”)
-path = path.replace(“password=’cats’”, “password=’g7as!m*’”)
-return path</p>
-</dd>
-</dl>
-<p>QgsPathResolver.setPathPreprocessor(my_processor)</p>
-</div></blockquote>
+<p>Example - replace an outdated folder path with a new one:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">my_processor</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+   <span class="k">return</span> <span class="n">path</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;c:/Users/ClintBarton/Documents/Projects&#39;</span><span class="p">,</span> <span class="s1">&#39;x:/Projects/&#39;</span><span class="p">)</span>
+
+<span class="n">QgsPathResolver</span><span class="o">.</span><span class="n">setPathPreprocessor</span><span class="p">(</span><span class="n">my_processor</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Example - replace a stored database host with a new one:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">my_processor</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+   <span class="k">return</span> <span class="n">path</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;host=10.1.1.115&#39;</span><span class="p">,</span> <span class="s1">&#39;host=10.1.1.116&#39;</span><span class="p">)</span>
+
+<span class="n">QgsPathResolver</span><span class="o">.</span><span class="n">setPathPreprocessor</span><span class="p">(</span><span class="n">my_processor</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Example - replace stored database credentials with new ones:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">my_processor</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+   <span class="n">path</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;user=&#39;gis_team&#39;&quot;</span><span class="p">,</span> <span class="s2">&quot;user=&#39;team_awesome&#39;&quot;</span><span class="p">)</span>
+   <span class="n">path</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;password=&#39;cats&#39;&quot;</span><span class="p">,</span> <span class="s2">&quot;password=&#39;g7as!m*&#39;&quot;</span><span class="p">)</span>
+   <span class="k">return</span> <span class="n">path</span>
+
+<span class="n">QgsPathResolver</span><span class="o">.</span><span class="n">setPathPreprocessor</span><span class="p">(</span><span class="n">my_processor</span><span class="p">)</span>
+</pre></div>
+</div>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.10.</span></p>
 </div>
@@ -1547,7 +1560,7 @@ Paths written to the project file should be prepared with this method.</p>
 
   <div role="contentinfo">
     <p>
-      Last updated on 16:09 Aug 16, 2019.
+      Last updated on 17:09 Sep 13, 2019.
 
     </p>
   </div> 
