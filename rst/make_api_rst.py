@@ -96,12 +96,11 @@ def generate_docs():
 
     for package_name, package in packages.items():
         makedirs('api/{}/{}'.format(qgis_version, package_name))
-        index.write('   %s/index\n' % package_name)
+        index.write('   {}/index\n'.format(package_name))
 
         package_index = open('api/{}/{}/index.rst'.format(qgis_version, package_name), 'w')
         # Read in the standard rst template we will use for classes
-        package_index.write(
-            package_header.replace('PACKAGENAME', package_name))
+        package_index.write(package_header.replace('PACKAGENAME', package_name))
 
         for class_name in extract_package_classes(package):
             print(class_name)
@@ -110,14 +109,14 @@ def generate_docs():
                 'CLASS': class_name
             }
             class_template = template.substitute(**substitutions)
-            class_rst = open('api/{}/{}/{}.rst'.format(
-                    qgis_version,
-                    package_name,
-                    class_name), 'w')
+            class_rst = open(
+                'api/{}/{}/{}.rst'.format(
+                    qgis_version, package_name, class_name
+                ), 'w'
+            )
             print(class_template, file=class_rst)
             class_rst.close()
-            package_index.write(
-                '   %s\n' % class_name)
+            package_index.write('   {}\n'.format(class_name))
         package_index.close()
 
     index.write(document_footer)
