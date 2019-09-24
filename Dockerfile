@@ -13,4 +13,6 @@ COPY . /root/pyqgis
 
 WORKDIR /root/pyqgis
 
-CMD /bin/bash -c "/root/pyqgis/scripts/ci/build-and-deploy.sh ${QGIS_DOCKER_TAG}"
+RUN /root/pyqgis/scripts/install_rtd_version_theme.sh | egrep '^Installed.*\.egg$' | sed 's/^Installed //' > /root/pyqgis/rtd_theme_path
+
+CMD /bin/bash -c "THEME_PATH=$(cat /root/pyqgis/rtd_theme_path) /root/pyqgis/scripts/build-docs.sh -v ${QGIS_VERSION} ${BUILD_OPTIONS}"
