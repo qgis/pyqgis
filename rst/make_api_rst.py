@@ -135,10 +135,12 @@ def extract_package_classes(package):
     classes = []
 
     for class_name in dir(package):
-        if args.class_limit and not class_name.startswith(args.class_limit):
+        if class_name.startswith('_'):
             continue
-        if not re.match('^Qgi?s', class_name):
-            continue
+        # if args.class_limit and not class_name.startswith(args.class_limit):
+        #     continue
+        # if not re.match('^Qgi?s', class_name):
+        #     continue
         classes.append(class_name)
 
     return sorted(classes)

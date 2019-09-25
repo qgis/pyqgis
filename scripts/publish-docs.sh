@@ -3,6 +3,7 @@
 set -e
 
 QGIS_VERSION=$1
+DATA_PATH=$2
 
 # https://stackoverflow.com/questions/16989598/bash-comparing-version-numbers
 function version_gt() { test "$(printf '%s\n' "$@" | sort -V | head -n 1)" != "$1"; }
@@ -19,8 +20,6 @@ mkdir -p "publish"
 rm -rf publish/*
 pushd publish
 
-OUTPUT=${QGIS_VERSION}
-
 echo "*** Clone gh-pages branch"
 if [[ ${TRAVIS} =~ true ]]; then
   git config --global user.email "qgisninja@gmail.com"
@@ -34,9 +33,9 @@ else
   git clone git@github.com:qgis/pyqgis.git --depth 1 --branch gh-pages
 fi
 pushd pyqgis
-rm -rf ${OUTPUT}
-mkdir "${OUTPUT}"
-cp -R ../../build/${QGIS_VERSION}/html/* ${OUTPUT}/
+rm -rf ${QGIS_VERSION}
+mkdir "${QGIS_VERSION}"
+cp -R ${DATA_PATH}/* ${QGIS_VERSION}/
 
 echo "travis_fold:start:gitcommit"
 echo "*** Add and push"

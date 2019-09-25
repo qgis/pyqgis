@@ -49,4 +49,6 @@ mkdir -p ${DIR}/build/${QGIS_VERSION}
 CONTAINER_ID=$(docker ps -aqf "name=pyqgis")
 docker cp ${CONTAINER_ID}:/root/pyqgis/build/${QGIS_VERSION}/html ${DIR}/build/${QGIS_VERSION}
 
+./scripts/publish-docs.sh ${QGIS_VERSION} ${DIR}/build/${QGIS_VERSION}
+
 popd
