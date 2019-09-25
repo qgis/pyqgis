@@ -21,6 +21,7 @@ rm -rf publish/*
 pushd publish
 
 echo "*** Clone gh-pages branch"
+OUTPUT=${QGIS_VERSION}
 if [[ ${TRAVIS} =~ true ]]; then
   git config --global user.email "qgisninja@gmail.com"
   git config --global user.name "Geo-Ninja"
@@ -33,9 +34,9 @@ else
   git clone git@github.com:qgis/pyqgis.git --depth 1 --branch gh-pages
 fi
 pushd pyqgis
-rm -rf ${QGIS_VERSION}
-mkdir "${QGIS_VERSION}"
-cp -R ${DATA_PATH}/* ${QGIS_VERSION}/
+rm -rf ${OUTPUT}
+mkdir "${OUTPUT}"
+cp -R ${DATA_PATH}/* ${OUTPUT}/
 
 echo "travis_fold:start:gitcommit"
 echo "*** Add and push"
