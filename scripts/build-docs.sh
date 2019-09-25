@@ -46,6 +46,7 @@ shift $(expr $OPTIND - 1)
 
 echo "QGIS VERSION: ${QGIS_VERSION}"
 echo "THEME PATH: ${THEME_PATH}"
+echo "PACKAGE LIMIT: ${PACKAGE}"
 
 if [[ -n $QGIS_BUILD_DIR ]]; then
   export PYTHONPATH=$PYTHONPATH:$QGIS_BUILD_DIR/output/python
