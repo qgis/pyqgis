@@ -24,9 +24,13 @@ if (args.package_limit):
     exec("from qgis import {}".format(', '.join(args.package_limit)))
     packages = {pkg: eval(pkg) for pkg in args.package_limit}
 else:
-    from qgis import core, gui, analysis, server, processing
-    packages = {'core': core, 'gui': gui, 'analysis': analysis, 'server': server, 'processing': processing}
-
+    if (args.qgis_version == 3.4):
+        from qgis import core, gui, analysis, server
+        packages = {'core': core, 'gui': gui, 'analysis': analysis, 'server': server}
+    else:
+        from qgis import core, gui, analysis, server, processing
+        packages = {'core': core, 'gui': gui, 'analysis': analysis, 'server': server, 'processing': processing}
+ 
 
 # Make sure :numbered: is only specified in the top level index - see
 # sphinx docs about this.
