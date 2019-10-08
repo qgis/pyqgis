@@ -27,8 +27,8 @@ if [[ ${TRAVIS} =~ true ]]; then
   git config --global user.name "Geo-Ninja"
   git clone https://${GH_TOKEN}@github.com/qgis/pyqgis.git --depth 1 --branch gh-pages
   # temp output to avoid overwriting if build is not cron
-  if [[ ${BUILD_TESTING} =~ true ]]; then
-    OUTPUT=${OUTPUT}_temp
+  if [[ ${BUILD_TESTING} -ne false ]]; then
+    OUTPUT=${OUTPUT}_PR${BUILD_TESTING}
   fi
 else
   git clone git@github.com:qgis/pyqgis.git --depth 1 --branch gh-pages
