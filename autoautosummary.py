@@ -7,13 +7,21 @@ from sphinx.ext.autosummary import get_documenter
 from docutils.parsers.rst import directives
 from sphinx.util.inspect import safe_getattr
 # from sphinx.directives import directive
-import re
+
 import PyQt5
-import inspect
+from docutils import nodes
 from enum import Enum
 
-class AutoAutoSummary(Autosummary):
 
+class AutoAutoSummary(Autosummary):
+    """
+    Create a summary for methods, attributes and signals (autosummary).
+
+    If the summary contains elements, a title (Methods, Attributes or Signals)
+    is automatically added before (using the rubric directive).
+
+    see https://stackoverflow.com/questions/20569011/python-sphinx-autosummary-automated-listing-of-member-functions
+    """
     option_spec = {
         'methods': directives.unchanged,
         'signals':  directives.unchanged,
@@ -62,24 +70,37 @@ class AutoAutoSummary(Autosummary):
 
     def run(self):
         clazz = self.arguments[0]
+        rubric_title = None
+        rubric_elems = None
+        rubric_public_elems = None
         try:
             (module_name, class_name) = clazz.rsplit('.', 1)
             m = __import__(module_name, globals(), locals(), [class_name])
             c = getattr(m, class_name)
             if 'methods' in self.options:
-                _, methods = self.get_members(self.state.document, c, 'method', ['__init__'])
-                self.content = ["~%s.%s" % (clazz, method) for method in methods if not method.startswith('_')]
-            if 'enums' in self.options:
-                x, attribs = self.get_members(self.state.document, c, 'class', None, False, True)
-                self.content = ["~%s.%s" % (clazz, attrib) for attrib in attribs if not attrib.startswith('_')]
-            if 'signals' in self.options:
-                x, attribs = self.get_members(self.state.document, c, 'attribute', None, True)
-                self.content = ["~%s.%s" % (clazz, attrib) for attrib in attribs if not attrib.startswith('_')]
-            if 'attributes' in self.options:
-                x, attribs = self.get_members(self.state.document, c, 'attribute', None, False)
-                self.content = ["~%s.%s" % (clazz, attrib) for attrib in attribs if not attrib.startswith('_')]
+                rubric_title = 'Methods'
+                _, rubric_elems = self.get_members(self.state.document, c, 'method', ['__init__'])
+            elif 'enums' in self.options:
+                rubric_title = 'Enums'
+                _, rubric_elems = self.get_members(self.state.document, c, 'class', None, False, True)
+            elif 'signals' in self.options:
+                rubric_title = 'Signals'
+                _, rubric_elems = self.get_members(self.state.document, c, 'attribute', None, True)
+            elif 'attributes' in self.options:
+                rubric_title = 'Attributes'
+                _, rubric_elems = self.get_members(self.state.document, c, 'attribute', None, False)
+
+            if rubric_elems:
+                rubric_public_elems = list(filter(lambda e: not e.startswith('_'), rubric_elems))
+                self.content = ["~%s.%s" % (clazz, elem) for elem in rubric_public_elems]
         except BaseException as e:
             print(str(e))
             raise e
         finally:
-            return super().run()
+            # add the title before the return of the run
+            ret = super().run()
+            if rubric_title:
+                if rubric_public_elems and len(rubric_public_elems) > 0:
+                    rub = nodes.rubric('', rubric_title)
+                    ret.insert(0, rub)
+            return ret
