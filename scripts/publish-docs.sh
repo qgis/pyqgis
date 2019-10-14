@@ -5,6 +5,16 @@ set -e
 QGIS_VERSION=$1
 DATA_PATH=$2
 
+if [[ ${QGIS_VERSION} -eq "FIX_VERSION" ]]; then
+  FIX_VERSION=TRUE
+fi;
+
+# GNU prefix command for mac os support (gsed, gsplit)
+GP=
+if [[ "$OSTYPE" =~ darwin* ]]; then
+  GP=g
+fi
+
 echo "Current dir: $(pwd)"
 
 
@@ -27,9 +37,22 @@ else
   git clone git@github.com:qgis/pyqgis.git --depth 1 --branch gh-pages
 fi
 pushd pyqgis
-rm -rf ${OUTPUT}
-mkdir "${OUTPUT}"
-cp -R ${DATA_PATH}/* ${OUTPUT}/
+
+if [[ -n ${FIX_VERSION} ]]; then
+  IFS=', ' read -r -a VERSIONS <<< $(${GP}sed -n 's/version_list: //p' ../../pyqgis_conf.yml)
+  HTML=""
+  for v in "${VERSIONS[@]}"; do
+    HTML="${HTML}\n      \n        <dd><a href=\"https://qgis.org/pyqgis/${v}\">${v}</a></dd>"
+  done
+  export LANGUAGE=en_US.UTF-8
+  export LANG=en_US.UTF-8
+  export LC_ALL=en_US.UTF-8
+  find . -type f -iname "*.html" -exec perl -i -p0e "s@<dl>(\s*)<dt>Versions</dt>.*</dl>@<dl>\1<dt>Versions</dt>${HTML}\n      \n    </dl>@smg" {} \;
+else
+  rm -rf ${OUTPUT}
+  mkdir "${OUTPUT}"
+  cp -R ${DATA_PATH}/* ${OUTPUT}/
+fi
 
 echo "travis_fold:start:gitcommit"
 echo "*** Add and push"
