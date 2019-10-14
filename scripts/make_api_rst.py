@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 # coding=utf-8
 
-from collections import OrderedDict
 from string import Template
 from os import makedirs
 
@@ -13,11 +12,10 @@ import argparse
 parser = argparse.ArgumentParser(description='Create RST files for QGIS Python API Documentation')
 parser.add_argument('--version', '-v', dest='qgis_version', default="master")
 parser.add_argument('--package', '-p', dest='package_limit', default=None, nargs='+',
-# action='store_const', default=None, type=str,
-                   choices=['core', 'gui', 'server', 'analysis', 'processing'],
-                   help='limit the build of the docs to one package (core, gui, server, analysis, processing) ')
+                    choices=['core', 'gui', 'server', 'analysis', 'processing'],
+                    help='limit the build of the docs to one package (core, gui, server, analysis, processing) ')
 parser.add_argument('--class', '-c', dest='class_limit',
-                   help='limit the build of the docs to a single class')
+                    help='limit the build of the docs to a single class')
 args = parser.parse_args()
 
 if (args.package_limit):
@@ -141,8 +139,8 @@ def extract_package_classes(package):
     for class_name in dir(package):
         if class_name.startswith('_'):
             continue
-        # if args.class_limit and not class_name.startswith(args.class_limit):
-        #     continue
+        if args.class_limit and not class_name.startswith(args.class_limit):
+            continue
         # if not re.match('^Qgi?s', class_name):
         #     continue
         classes.append(class_name)

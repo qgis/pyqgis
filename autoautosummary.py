@@ -12,12 +12,13 @@ import PyQt5
 from docutils import nodes
 from enum import Enum
 
+
 class AutoAutoSummary(Autosummary):
     """
     Create a summary for methods, attributes and signals (autosummary).
 
     If the summary contains elements, a title (Methods, Attributes or Signals)
-    is automtically added before (using the rubric deirective).
+    is automatically added before (using the rubric directive).
 
     see https://stackoverflow.com/questions/20569011/python-sphinx-autosummary-automated-listing-of-member-functions
     """
@@ -88,6 +89,7 @@ class AutoAutoSummary(Autosummary):
             elif 'attributes' in self.options:
                 rubric_title = 'Attributes'
                 _, rubric_elems = self.get_members(self.state.document, c, 'attribute', None, False)
+
             if rubric_elems:
                 rubric_public_elems = list(filter(lambda e: not e.startswith('_'), rubric_elems))
                 self.content = ["~%s.%s" % (clazz, elem) for elem in rubric_public_elems]
