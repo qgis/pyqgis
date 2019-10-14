@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# for a quick local run: QGIS_VERSION_BRANCH=master BUILD_OPTIONS='-c QgsVectorLayer' PUBLISH=false ./scripts/run-docker.sh
+
 set -e
 
 # GNU prefix command for mac os support (gsed, gsplit)
@@ -40,15 +42,18 @@ docker rm -f pyqgis || true
 docker run --name pyqgis \
            -e "QGIS_VERSION=${QGIS_VERSION}" \
            -e "BUILD_TESTING=${BUILD_TESTING}" \
+           -e "BUILD_OPTIONS=${BUILD_OPTIONS}" \
            qgis/qgis-python-api-doc:${QGIS_DOCKER_TAG}
 echo "travis_fold:end:dockerrun"
 
-echo "Copy files"
-mkdir -p ${DIR}/build
-mkdir -p ${DIR}/build/${QGIS_VERSION}
-CONTAINER_ID=$(docker ps -aqf "name=pyqgis")
-docker cp ${CONTAINER_ID}:/root/pyqgis/build/${QGIS_VERSION}/html ${DIR}/build/${QGIS_VERSION}
+if [[ ${PUBLISH} -ne "false" ]]; then
+  echo "Copy files"
+  mkdir -p ${DIR}/build
+  mkdir -p ${DIR}/build/${QGIS_VERSION}
+  CONTAINER_ID=$(docker ps -aqf "name=pyqgis")
+  docker cp ${CONTAINER_ID}:/root/pyqgis/build/${QGIS_VERSION}/html ${DIR}/build/${QGIS_VERSION}
 
-./scripts/publish-docs.sh ${QGIS_VERSION} ${DIR}/build/${QGIS_VERSION}/html
+  ./scripts/publish-docs.sh ${QGIS_VERSION} ${DIR}/build/${QGIS_VERSION}/html
+fi
 
 popd
