@@ -3,22 +3,23 @@
 
 from string import Template
 from os import makedirs
-
-import re
 from shutil import rmtree
-
+import yaml
 import argparse
+
+with open('pyqgis_conf.yml', 'r') as f:
+    cfg = yaml.load(f)
 
 parser = argparse.ArgumentParser(description='Create RST files for QGIS Python API Documentation')
 parser.add_argument('--version', '-v', dest='qgis_version', default="master")
 parser.add_argument('--package', '-p', dest='package_limit', default=None, nargs='+',
                     choices=['core', 'gui', 'server', 'analysis', 'processing'],
                     help='limit the build of the docs to one package (core, gui, server, analysis, processing) ')
-parser.add_argument('--class', '-c', dest='class_limit',
+parser.add_argument('--class', '-c', dest='class_limit', default=None, nargs='+',
                     help='limit the build of the docs to a single class')
 args = parser.parse_args()
 
-if (args.package_limit):
+if args.package_limit:
     exec("from qgis import {}".format(', '.join(args.package_limit)))
     packages = {pkg: eval(pkg) for pkg in args.package_limit}
 else:
@@ -139,7 +140,15 @@ def extract_package_classes(package):
     for class_name in dir(package):
         if class_name.startswith('_'):
             continue
-        if args.class_limit and not class_name.startswith(args.class_limit):
+        if args.class_limit:
+            found = False
+            for _class in args.class_limit:
+                if class_name.startswith(_class):
+                    found = True
+                    break
+            if not found:
+                continue
+        if class_name in cfg['skipped']:
             continue
         # if not re.match('^Qgi?s', class_name):
         #     continue
