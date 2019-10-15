@@ -8,6 +8,11 @@
 import re
 import enum
 
+from qgis.analysis import QgsAnalysis
+
+NON_INSTANTIABLE_CLASSES = [QgsAnalysis]
+
+
 # https://github.com/sphinx-doc/sphinx/blob/685e3fdb49c42b464e09ec955e1033e2a8729fff/sphinx/ext/autodoc/__init__.py#L51
 # adapted to handle signals
 
@@ -62,7 +67,9 @@ def process_docstring(app, what, name, obj, options, lines):
         if signature != '':
             match = py_ext_sig_re.match(signature)
             if not match:
-                raise NameError('invalid signature for {}: {}'.format(name, signature))
+                print(obj)
+                if obj not in NON_INSTANTIABLE_CLASSES:
+                    raise Warning('invalid signature for {}: {}'.format(name, signature))
             else:
                 exmod, path, base, args, retann, signal = match.groups()
 
