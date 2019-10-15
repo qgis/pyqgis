@@ -14,7 +14,6 @@ if version_gt '4.19.7' $(sip -V); then
 fi
 
 QGIS_VERSION=master
-
 while getopts "q:p:c:v:t:" opt; do
   case $opt in
     v)
@@ -31,7 +30,11 @@ while getopts "q:p:c:v:t:" opt; do
       fi
       ;;
     c)
-      CLASS="--class $OPTARG"
+      if [[ -z $CLASS ]]; then
+        CLASS="--class $OPTARG"
+      else
+        CLASS="$CLASS $OPTARG"
+      fi
       ;;
     t)
       THEME_PATH=$OPTARG
