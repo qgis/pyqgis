@@ -5,7 +5,7 @@ set -e
 QGIS_VERSION=$1
 DATA_PATH=$2
 
-if [[ ${QGIS_VERSION} -eq "FIX_VERSION" ]]; then
+if [[ ${QGIS_VERSION} == "FIX_VERSION" ]]; then
   FIX_VERSION=TRUE
 fi;
 
