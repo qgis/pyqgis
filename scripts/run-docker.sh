@@ -52,7 +52,7 @@ mkdir -p ${DIR}/build/${QGIS_VERSION}
 CONTAINER_ID=$(docker ps -aqf "name=pyqgis")
 docker cp ${CONTAINER_ID}:/root/pyqgis/build/${QGIS_VERSION}/html ${DIR}/build/${QGIS_VERSION}
 
-if [[ ${PUBLISH} -ne "false" ]]; then
+if [[ ${PUBLISH} != "false" ]]; then
   ./scripts/publish-docs.sh ${QGIS_VERSION} ${DIR}/build/${QGIS_VERSION}/html
 fi
 
