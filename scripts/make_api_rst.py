@@ -3,11 +3,12 @@
 
 from string import Template
 from os import makedirs
-
-import re
 from shutil import rmtree
-
+import yaml
 import argparse
+
+with open('pyqgis_conf.yml', 'r') as f:
+    cfg = yaml.load(f)
 
 parser = argparse.ArgumentParser(description='Create RST files for QGIS Python API Documentation')
 parser.add_argument('--version', '-v', dest='qgis_version', default="master")
@@ -147,6 +148,8 @@ def extract_package_classes(package):
                     break
             if not found:
                 continue
+        if class_name in cfg['skipped']:
+            continue
         # if not re.match('^Qgi?s', class_name):
         #     continue
         classes.append(class_name)

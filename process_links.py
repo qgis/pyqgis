@@ -7,10 +7,10 @@
 
 import re
 import enum
+import yaml
 
-from qgis.analysis import QgsAnalysis
-
-NON_INSTANTIABLE_CLASSES = [QgsAnalysis]
+with open('pyqgis_conf.yml', 'r') as f:
+    cfg = yaml.load(f)
 
 
 # https://github.com/sphinx-doc/sphinx/blob/685e3fdb49c42b464e09ec955e1033e2a8729fff/sphinx/ext/autodoc/__init__.py#L51
@@ -68,7 +68,7 @@ def process_docstring(app, what, name, obj, options, lines):
             match = py_ext_sig_re.match(signature)
             if not match:
                 print(obj)
-                if obj not in NON_INSTANTIABLE_CLASSES:
+                if name not in cfg['non-instantiable']:
                     raise Warning('invalid signature for {}: {}'.format(name, signature))
             else:
                 exmod, path, base, args, retann, signal = match.groups()
