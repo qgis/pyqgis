@@ -6,6 +6,7 @@
 # This logic has been copied from the existing extension with some tuning for PyQGIS
 
 import re
+import enum
 
 # https://github.com/sphinx-doc/sphinx/blob/685e3fdb49c42b464e09ec955e1033e2a8729fff/sphinx/ext/autodoc/__init__.py#L51
 # adapted to handle signals
@@ -22,7 +23,21 @@ py_ext_sig_re = re.compile(
           ''', re.VERBOSE)
 
 
+def show_inheritance(obj):
+    # handle inheritance printing to patch qgis._core with qgis.core
+    # https://github.com/sphinx-doc/sphinx/blob/685e3fdb49c42b464e09ec955e1033e2a8729fff/sphinx/ext/autodoc/__init__.py#L1103-L1109
+    if hasattr(obj, '__bases__') and len(obj.__bases__):
+        bases = [b.__module__ in ('__builtin__', 'builtins') and
+                 ':class:`%s`' % b.__name__ or
+                 ':class:`%s.%s`' % (b.__module__, b.__name__)
+                 for b in obj.__bases__]
+        return 'Bases: %s' % ', '.join(bases)
+    return None
+
+
 def create_links(doc: str) -> str:
+    # fix inheritance
+    doc = re.sub(r'qgis\._(core|gui|analysis|processing)\.', r'', doc)
     # class
     doc = re.sub(r'\b(Qgi?s[A-Z]\w+)([, )]|\. )', r':py:class:`.\1`\2', doc)
     return doc
@@ -30,13 +45,19 @@ def create_links(doc: str) -> str:
 
 def process_docstring(app, what, name, obj, options, lines):
     # print('d', what, name, obj, options)
+    bases = show_inheritance(obj)
+    if bases:
+        lines.insert(0, '')
+        lines.insert(0, bases)
+
     for i in range(len(lines)):
+
         # fix seealso
         # lines[i] = re.sub(r':py: func:`(\w+\(\))`', r':func:`.{}.\1()'.format(what), lines[i])
         lines[i] = create_links(lines[i])
 
     # add return type and param type
-    if obj.__doc__:
+    if not isinstance(obj, enum.EnumMeta) and obj.__doc__:
         signature = obj.__doc__.split('\n')[0]
         if signature != '':
             match = py_ext_sig_re.match(signature)
