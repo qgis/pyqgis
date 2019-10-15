@@ -122,7 +122,6 @@
 <li class="toctree-l2"><a class="reference internal" href="PROJECT_SCALES.html">Class: PROJECT_SCALES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PluginLayer.html">Class: PluginLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ProjectDirtyBlocker.html">Class: ProjectDirtyBlocker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="PyProviderMetadata.html">Class: PyProviderMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgis.html">Class: Qgis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs25DRenderer.html">Class: Qgs25DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs3DRendererAbstractMetadata.html">Class: Qgs3DRendererAbstractMetadata</a></li>
@@ -1546,8 +1545,6 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/core/QgsTask.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -1569,13 +1566,13 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>description</strong> – text description of task</p></li>
-<li><p><strong>flags</strong> – task flags</p></li>
+<li><p><strong>description</strong> (<em>str = ''</em>) – text description of task</p></li>
+<li><p><strong>flags</strong> (<em>Union</em><em>[</em><a class="reference internal" href="#qgis.core.QgsTask.Flags" title="qgis.core.QgsTask.Flags"><em>QgsTask.Flags</em></a>) – task flags</p></li>
 </ul>
 </dd>
 </dl>
 <p>Abstract base class for long running background tasks. Tasks can be controlled directly,
-or added to a QgsTaskManager for automatic management.</p>
+or added to a <a class="reference internal" href="QgsTaskManager.html#qgis.core.QgsTaskManager" title="qgis.core.QgsTaskManager"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsTaskManager</span></code></a> for automatic management.</p>
 <p>Derived classes should implement the process they want to execute in the background
 within the run() method. This method will be called when the
 task commences (ie via calling run() ).</p>
@@ -1629,13 +1626,13 @@ clean up and terminate at the earliest possible convenience.</p>
 <td><p>Returns the elapsed time since the task commenced, in milliseconds.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsTask.finished" title="qgis.core.QgsTask.finished"><code class="xref py py-obj docutils literal notranslate"><span class="pre">finished</span></code></a></p></td>
-<td><p>If the task is managed by a QgsTaskManager, this will be called after the task has finished (whether through successful completion or via early termination).</p></td>
+<td><p>If the task is managed by a <a class="reference internal" href="QgsTaskManager.html#qgis.core.QgsTaskManager" title="qgis.core.QgsTaskManager"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsTaskManager</span></code></a>, this will be called after the task has finished (whether through successful completion or via early termination).</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsTask.flags" title="qgis.core.QgsTask.flags"><code class="xref py py-obj docutils literal notranslate"><span class="pre">flags</span></code></a></p></td>
 <td><p>Returns the flags associated with the task.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsTask.fromFunction" title="qgis.core.QgsTask.fromFunction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fromFunction</span></code></a></p></td>
-<td><p>Creates a new QgsTask task from a python function.</p></td>
+<td><p>Creates a new <a class="reference internal" href="#qgis.core.QgsTask" title="qgis.core.QgsTask"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsTask</span></code></a> task from a python function.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsTask.hold" title="qgis.core.QgsTask.hold"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hold</span></code></a></p></td>
 <td><p>Places the task on hold.</p></td>
@@ -1832,11 +1829,20 @@ of the parent task, ie they can be run either before, after, or at the same
 time as the parent task. This behavior can be overridden through the subTaskDependency
 argument. Note that subtasks should NEVER be dependent on their parent task, and violating
 this constraint will prevent the task from completing successfully.</p>
-<p>The parent task must be added to a QgsTaskManager for subtasks to be utilized.
-Subtasks should not be added manually to a QgsTaskManager, rather, only the parent
+<p>The parent task must be added to a <a class="reference internal" href="QgsTaskManager.html#qgis.core.QgsTaskManager" title="qgis.core.QgsTaskManager"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsTaskManager</span></code></a> for subtasks to be utilized.
+Subtasks should not be added manually to a <a class="reference internal" href="QgsTaskManager.html#qgis.core.QgsTaskManager" title="qgis.core.QgsTaskManager"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsTaskManager</span></code></a>, rather, only the parent
 task should be added to the manager.</p>
 <p>Subtasks can be nested, ie a subtask can legally be a parent task itself with
 its own set of subtasks.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>subTask</strong> (<a class="reference internal" href="#qgis.core.QgsTask" title="qgis.core.QgsTask"><em>QgsTask</em></a>) – </p></li>
+<li><p><strong>dependencies</strong> (<em>Iterable</em><em>[</em><a class="reference internal" href="#qgis.core.QgsTask" title="qgis.core.QgsTask"><em>QgsTask</em></a><em>] </em><em>=</em><em> [</em><em>]</em>) – </p></li>
+<li><p><strong>subTaskDependency</strong> (<em>QgsTask.SubTaskDependency = QgsTask.SubTaskIndependent</em>) – </p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="attribute">
@@ -1854,6 +1860,11 @@ be emitted when the task begins [signal]</p>
 <dt id="qgis.core.QgsTask.canCancel">
 <code class="sig-name descname">canCancel</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsTask.canCancel" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the task can be canceled.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1895,12 +1906,22 @@ be canceled if any of these layers are about to be removed.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsTask.setDependentLayers" title="qgis.core.QgsTask.setDependentLayers"><code class="xref py py-func docutils literal notranslate"><span class="pre">setDependentLayers()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List[<a class="reference internal" href="QgsMapLayer.html#qgis.core.QgsMapLayer" title="qgis.core.QgsMapLayer">QgsMapLayer</a>]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsTask.description">
 <code class="sig-name descname">description</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.core.QgsTask.description" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the task’s description.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1916,12 +1937,17 @@ be canceled if any of these layers are about to be removed.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.4.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsTask.finished">
 <code class="sig-name descname">finished</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">result: bool</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsTask.finished" title="Permalink to this definition">¶</a></dt>
-<dd><p>If the task is managed by a QgsTaskManager, this will be called after the
+<dd><p>If the task is managed by a <a class="reference internal" href="QgsTaskManager.html#qgis.core.QgsTaskManager" title="qgis.core.QgsTaskManager"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsTaskManager</span></code></a>, this will be called after the
 task has finished (whether through successful completion or via early
 termination). The result argument reflects whether
 the task was successfully completed or not. This method is always called
@@ -1929,18 +1955,28 @@ from the main thread, so it is safe to create widgets and perform other
 operations which require the main thread. However, the GUI will be blocked
 for the duration of this method so tasks should avoid performing any
 lengthy operations here.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>result</strong> (<em>bool</em>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsTask.flags">
 <code class="sig-name descname">flags</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QgsTask.Flags<a class="headerlink" href="#qgis.core.QgsTask.flags" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the flags associated with the task.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#qgis.core.QgsTask.Flags" title="qgis.core.QgsTask.Flags">QgsTask.Flags</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsTask.fromFunction">
 <em class="property">static </em><code class="sig-name descname">fromFunction</code><span class="sig-paren">(</span><em class="sig-param">description</em>, <em class="sig-param">function</em>, <em class="sig-param">*args</em>, <em class="sig-param">on_finished=None</em>, <em class="sig-param">flags=2</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsTask.fromFunction" title="Permalink to this definition">¶</a></dt>
-<dd><p>Creates a new QgsTask task from a python function.</p>
+<dd><p>Creates a new <a class="reference internal" href="#qgis.core.QgsTask" title="qgis.core.QgsTask"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsTask</span></code></a> task from a python function.</p>
 <p>Example:</p>
 <dl class="simple">
 <dt>def calculate(task):</dt><dd><p># pretend this is some complex maths and stuff we want
@@ -1984,6 +2020,11 @@ by a QgsTaskManager.</p>
 <code class="sig-name descname">isActive</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsTask.isActive" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the task is active, ie it is not complete and has
 not been canceled.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1992,6 +2033,11 @@ not been canceled.</p>
 <dd><p>Will return <code class="docutils literal notranslate"><span class="pre">True</span></code> if task should terminate ASAP. If the task reports the CanCancel
 flag, then derived classes’ run() methods should periodically check this and
 terminate in a safe manner.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2003,6 +2049,11 @@ terminate in a safe manner.</p>
 <dt id="qgis.core.QgsTask.progress">
 <code class="sig-name descname">progress</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#qgis.core.QgsTask.progress" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the task’s progress (between 0.0 and 100.0)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="attribute">
@@ -2011,7 +2062,7 @@ terminate in a safe manner.</p>
 <dd><p>Will be emitted by task when its progress changes.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>progress</strong> – percent of progress, from 0.0 - 100.0</p>
+<dd class="field-odd"><p><strong>progress</strong> (<em>float</em>) – percent of progress, from 0.0 - 100.0</p>
 </dd>
 </dl>
 <div class="admonition note">
@@ -2034,6 +2085,11 @@ setProgress() [signal]</p>
 wish to perform in the background within this method.</p>
 <p>A task must return a boolean value to indicate whether the
 task was completed successfully or terminated before completion.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2055,16 +2111,26 @@ be canceled if any of these layers are about to be removed.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsTask.dependentLayers" title="qgis.core.QgsTask.dependentLayers"><code class="xref py py-func docutils literal notranslate"><span class="pre">dependentLayers()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>dependentLayers</strong> (<em>Iterable</em><em>[</em><a class="reference internal" href="QgsMapLayer.html#qgis.core.QgsMapLayer" title="qgis.core.QgsMapLayer"><em>QgsMapLayer</em></a><em>]</em>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsTask.setDescription">
 <code class="sig-name descname">setDescription</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">description: str</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsTask.setDescription" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sets the task’s <code class="docutils literal notranslate"><span class="pre">description</span></code>. This must be called before adding the task to a QgsTaskManager,
+<dd><p>Sets the task’s <code class="docutils literal notranslate"><span class="pre">description</span></code>. This must be called before adding the task to a <a class="reference internal" href="QgsTaskManager.html#qgis.core.QgsTaskManager" title="qgis.core.QgsTaskManager"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsTaskManager</span></code></a>,
 changing the description after queuing the task has no effect.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.10.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>description</strong> (<em>str</em>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2074,7 +2140,7 @@ changing the description after queuing the task has no effect.</p>
 the task wants to update its progress. Calling will automatically emit the progressChanged signal.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>progress</strong> – percent of progress, from 0.0 - 100.0</p>
+<dd class="field-odd"><p><strong>progress</strong> (<em>float</em>) – percent of progress, from 0.0 - 100.0</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2083,6 +2149,11 @@ the task wants to update its progress. Calling will automatically emit the progr
 <dt id="qgis.core.QgsTask.status">
 <code class="sig-name descname">status</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QgsTask.TaskStatus<a class="headerlink" href="#qgis.core.QgsTask.status" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the current task status.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#qgis.core.QgsTask.TaskStatus" title="qgis.core.QgsTask.TaskStatus">QgsTask.TaskStatus</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="attribute">
@@ -2091,7 +2162,7 @@ the task wants to update its progress. Calling will automatically emit the progr
 <dd><p>Will be emitted by task when its status changes.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>status</strong> – new task status</p>
+<dd class="field-odd"><p><strong>status</strong> (<em>int</em>) – new task status</p>
 </dd>
 </dl>
 <div class="admonition note">
@@ -2151,6 +2222,14 @@ In case of a timeout, the task will still be running.
 In case the task already is finished, the method will return immediately while
 returning <code class="docutils literal notranslate"><span class="pre">``True``</span></code>.</p>
 <p>The result will be <code class="docutils literal notranslate"><span class="pre">False</span></code> if the wait timed out and <code class="docutils literal notranslate"><span class="pre">True</span></code> in any other case.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>timeout</strong> (<em>int = 30000</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -2169,7 +2248,7 @@ returning <code class="docutils literal notranslate"><span class="pre">``True``<
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 10:58 Oct 14, 2019.
+        Last updated on 15:06 Oct 15, 2019.
       </span>
 
     </p>
@@ -2196,20 +2275,20 @@ returning <code class="docutils literal notranslate"><span class="pre">``True``<
     <div class="rst-other-versions">
       <dl>
         <dt>Versions</dt>
-      
-        <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
-      
-    </dl>
+        
+          <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
+        
+      </dl>
       
       
     </div>

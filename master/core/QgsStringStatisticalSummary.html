@@ -122,7 +122,6 @@
 <li class="toctree-l2"><a class="reference internal" href="PROJECT_SCALES.html">Class: PROJECT_SCALES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PluginLayer.html">Class: PluginLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ProjectDirtyBlocker.html">Class: ProjectDirtyBlocker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="PyProviderMetadata.html">Class: PyProviderMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgis.html">Class: Qgis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs25DRenderer.html">Class: Qgs25DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs3DRendererAbstractMetadata.html">Class: Qgs3DRendererAbstractMetadata</a></li>
@@ -1546,8 +1545,6 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/core/QgsStringStatisticalSummary.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -1568,10 +1565,10 @@
 <p>Constructor for <code class="xref py py-class docutils literal notranslate"><span class="pre">QgsStringStatistics</span></code></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>stats</strong> – flags for statistics to calculate</p>
+<dd class="field-odd"><p><strong>stats</strong> (<em>Union</em><em>[</em><a class="reference internal" href="#qgis.core.QgsStringStatisticalSummary.Statistics" title="qgis.core.QgsStringStatisticalSummary.Statistics"><em>QgsStringStatisticalSummary.Statistics</em></a>) – flags for statistics to calculate</p>
 </dd>
 </dl>
-<p>QgsStringStatisticalSummary(QgsStringStatisticalSummary)</p>
+<p>QgsStringStatisticalSummary(<a class="reference internal" href="#qgis.core.QgsStringStatisticalSummary" title="qgis.core.QgsStringStatisticalSummary"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsStringStatisticalSummary</span></code></a>)</p>
 <p>Calculator for summary statistics and aggregates for a list of strings.</p>
 <p>Statistics are calculated by calling calculate() and passing a list of strings. The
 individual statistics can then be retrieved using the associated methods. Note that not all statistics
@@ -1765,7 +1762,7 @@ quantities of strings this may be more efficient then first adding all the
 strings to a list and calling calculate().</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>string</strong> – string to add</p>
+<dd class="field-odd"><p><strong>string</strong> (<em>str</em>) – string to add</p>
 </dd>
 </dl>
 <div class="admonition note">
@@ -1801,7 +1798,7 @@ quantities of variants this may be more efficient then first adding all the
 variants to a list and calling calculateFromVariants().</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>value</strong> – variant to add</p>
+<dd class="field-odd"><p><strong>value</strong> (<em>Any</em>) – variant to add</p>
 </dd>
 </dl>
 <div class="admonition note">
@@ -1830,7 +1827,7 @@ retrieving calculated statistics.</p>
 <dd><p>Calculates summary statistics for an entire list of strings at once.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>values</strong> – list of strings</p>
+<dd class="field-odd"><p><strong>values</strong> (<em>Iterable</em><em>[</em><em>str</em><em>]</em>) – list of strings</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -1850,7 +1847,7 @@ retrieving calculated statistics.</p>
 non-string variants will be ignored.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>values</strong> – list of variants</p>
+<dd class="field-odd"><p><strong>values</strong> (<em>Iterable</em><em>[</em><em>Any</em><em>]</em>) – list of variants</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -1867,6 +1864,11 @@ non-string variants will be ignored.</p>
 <dt id="qgis.core.QgsStringStatisticalSummary.count">
 <code class="sig-name descname">count</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#qgis.core.QgsStringStatisticalSummary.count" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the calculated count of values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1877,12 +1879,22 @@ non-string variants will be ignored.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsStringStatisticalSummary.distinctValues" title="qgis.core.QgsStringStatisticalSummary.distinctValues"><code class="xref py py-func docutils literal notranslate"><span class="pre">distinctValues()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsStringStatisticalSummary.countMissing">
 <code class="sig-name descname">countMissing</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#qgis.core.QgsStringStatisticalSummary.countMissing" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the number of missing (null) string values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1891,7 +1903,10 @@ non-string variants will be ignored.</p>
 <dd><p>Returns the friendly display name for a statistic</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>statistic</strong> – statistic to return name for</p>
+<dd class="field-odd"><p><strong>statistic</strong> (<a class="reference internal" href="#qgis.core.QgsStringStatisticalSummary.Statistic" title="qgis.core.QgsStringStatisticalSummary.Statistic"><em>QgsStringStatisticalSummary.Statistic</em></a>) – statistic to return name for</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1904,6 +1919,11 @@ non-string variants will be ignored.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsStringStatisticalSummary.countDistinct" title="qgis.core.QgsStringStatisticalSummary.countDistinct"><code class="xref py py-func docutils literal notranslate"><span class="pre">countDistinct()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Set[str]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1921,12 +1941,22 @@ any calculated string statistics.</p>
 <dt id="qgis.core.QgsStringStatisticalSummary.max">
 <code class="sig-name descname">max</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.core.QgsStringStatisticalSummary.max" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the maximum (non-null) string value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsStringStatisticalSummary.maxLength">
 <code class="sig-name descname">maxLength</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#qgis.core.QgsStringStatisticalSummary.maxLength" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the maximum length of strings.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1936,18 +1966,33 @@ any calculated string statistics.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsStringStatisticalSummary.min">
 <code class="sig-name descname">min</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.core.QgsStringStatisticalSummary.min" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the minimum (non-null) string value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsStringStatisticalSummary.minLength">
 <code class="sig-name descname">minLength</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#qgis.core.QgsStringStatisticalSummary.minLength" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the minimum length of strings.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1963,7 +2008,7 @@ any calculated string statistics.</p>
 are always calculated (e.g., count).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>stats</strong> – flags for statistics to calculate</p>
+<dd class="field-odd"><p><strong>stats</strong> (<em>Union</em><em>[</em><a class="reference internal" href="#qgis.core.QgsStringStatisticalSummary.Statistics" title="qgis.core.QgsStringStatisticalSummary.Statistics"><em>QgsStringStatisticalSummary.Statistics</em></a>) – flags for statistics to calculate</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -1978,10 +2023,13 @@ are always calculated (e.g., count).</p>
 <dd><p>Returns the value of a specified statistic</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>stat</strong> – statistic to return</p>
+<dd class="field-odd"><p><strong>stat</strong> (<a class="reference internal" href="#qgis.core.QgsStringStatisticalSummary.Statistic" title="qgis.core.QgsStringStatisticalSummary.Statistic"><em>QgsStringStatisticalSummary.Statistic</em></a>) – statistic to return</p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>calculated value of statistic</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Any</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>calculated value of statistic</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1995,6 +2043,11 @@ are always calculated (e.g., count).</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsStringStatisticalSummary.setStatistics" title="qgis.core.QgsStringStatisticalSummary.setStatistics"><code class="xref py py-func docutils literal notranslate"><span class="pre">setStatistics()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#qgis.core.QgsStringStatisticalSummary.Statistics" title="qgis.core.QgsStringStatisticalSummary.Statistics">QgsStringStatisticalSummary.Statistics</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -2013,7 +2066,7 @@ are always calculated (e.g., count).</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 10:58 Oct 14, 2019.
+        Last updated on 15:06 Oct 15, 2019.
       </span>
 
     </p>
@@ -2040,20 +2093,20 @@ are always calculated (e.g., count).</p>
     <div class="rst-other-versions">
       <dl>
         <dt>Versions</dt>
-      
-        <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
-      
-    </dl>
+        
+          <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
+        
+      </dl>
       
       
     </div>

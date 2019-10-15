@@ -122,7 +122,6 @@
 <li class="toctree-l2"><a class="reference internal" href="PROJECT_SCALES.html">Class: PROJECT_SCALES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PluginLayer.html">Class: PluginLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ProjectDirtyBlocker.html">Class: ProjectDirtyBlocker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="PyProviderMetadata.html">Class: PyProviderMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgis.html">Class: Qgis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs25DRenderer.html">Class: Qgs25DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs3DRendererAbstractMetadata.html">Class: Qgs3DRendererAbstractMetadata</a></li>
@@ -1546,8 +1545,6 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/core/QgsFieldFormatter.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -1569,7 +1566,7 @@
 <p>It allows for using a shared configuration with the editor widgets
 for representation of attribute values.
 Field kits normally have one single instance which is managed by the
-QgsFieldFormatterRegistry. Custom field formatters should be registered there and
+<a class="reference internal" href="QgsFieldFormatterRegistry.html#qgis.core.QgsFieldFormatterRegistry" title="qgis.core.QgsFieldFormatterRegistry"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsFieldFormatterRegistry</span></code></a>. Custom field formatters should be registered there and
 field formatters for use within code should normally be obtained from there.</p>
 <p>This is an abstract base class and will always need to be subclassed.</p>
 <div class="versionadded">
@@ -1630,6 +1627,18 @@ values are represented.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>layer</strong> (<a class="reference internal" href="QgsVectorLayer.html#qgis.core.QgsVectorLayer" title="qgis.core.QgsVectorLayer"><em>QgsVectorLayer</em></a>) – </p></li>
+<li><p><strong>fieldIndex</strong> (<em>int</em>) – </p></li>
+<li><p><strong>config</strong> (<em>Dict</em><em>[</em><em>str</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Qt.AlignmentFlag</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1637,14 +1646,26 @@ values are represented.</p>
 <code class="sig-name descname">createCache</code><span class="sig-paren">(</span><em class="sig-param">self, layer: QgsVectorLayer, fieldIndex: int, config: Dict[str, Any]</em><span class="sig-paren">)</span> &#x2192; Any<a class="headerlink" href="#qgis.core.QgsFieldFormatter.createCache" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a cache for a given field.</p>
 <p>This will be used in situations where a field is being represented various times in a loop. And will be passed
-to other methods on QgsFieldKit and <a class="reference internal" href="../gui/QgsEditorWidgetWrapper.html#module-QgsEditorWidgetWrapper" title="QgsEditorWidgetWrapper"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsEditorWidgetWrapper</span></code></a>.</p>
+to other methods on <code class="xref py py-class docutils literal notranslate"><span class="pre">QgsFieldKit</span></code> and <a class="reference internal" href="../gui/QgsEditorWidgetWrapper.html#module-QgsEditorWidgetWrapper" title="QgsEditorWidgetWrapper"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsEditorWidgetWrapper</span></code></a>.</p>
 <p>For example, the attribute table will create a cache once for each field and then use this
-cache for representation. The QgsValueRelationFieldFormatter and <code class="xref py py-class docutils literal notranslate"><span class="pre">QgsValueRelationEditorWidget</span></code>
+cache for representation. The <a class="reference internal" href="QgsValueRelationFieldFormatter.html#qgis.core.QgsValueRelationFieldFormatter" title="qgis.core.QgsValueRelationFieldFormatter"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsValueRelationFieldFormatter</span></code></a> and <code class="xref py py-class docutils literal notranslate"><span class="pre">QgsValueRelationEditorWidget</span></code>
 implement this functionality to create a lookuptable once (a QVariantMap / dict) and are
 make use of a cache if present.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>layer</strong> (<a class="reference internal" href="QgsVectorLayer.html#qgis.core.QgsVectorLayer" title="qgis.core.QgsVectorLayer"><em>QgsVectorLayer</em></a>) – </p></li>
+<li><p><strong>fieldIndex</strong> (<em>int</em>) – </p></li>
+<li><p><strong>config</strong> (<em>Dict</em><em>[</em><em>str</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Any</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1653,6 +1674,11 @@ make use of a cache if present.</p>
 <dd><p>Returns a unique id for this field formatter.
 This id will later be used to identify this field formatter in the registry with <a class="reference internal" href="QgsFieldFormatterRegistry.html#qgis.core.QgsFieldFormatterRegistry.fieldFormatter" title="qgis.core.QgsFieldFormatterRegistry.fieldFormatter"><code class="xref py py-func docutils literal notranslate"><span class="pre">QgsFieldFormatterRegistry.fieldFormatter()</span></code></a></p>
 <p>This id matches the id of a <a class="reference internal" href="../gui/QgsEditorWidgetFactory.html#module-QgsEditorWidgetFactory" title="QgsEditorWidgetFactory"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsEditorWidgetFactory</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1660,13 +1686,27 @@ This id will later be used to identify this field formatter in the registry with
 <code class="sig-name descname">representValue</code><span class="sig-paren">(</span><em class="sig-param">self, layer: QgsVectorLayer, fieldIndex: int, config: Dict[str, Any], cache: Any, value: Any</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.core.QgsFieldFormatter.representValue" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a pretty String representation of the value.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>By default the string representation of the provided value as implied by the field definition is returned.</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>By default the string representation of the provided value as implied by the field definition is returned.</p>
 </dd>
 </dl>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>layer</strong> (<a class="reference internal" href="QgsVectorLayer.html#qgis.core.QgsVectorLayer" title="qgis.core.QgsVectorLayer"><em>QgsVectorLayer</em></a>) – </p></li>
+<li><p><strong>fieldIndex</strong> (<em>int</em>) – </p></li>
+<li><p><strong>config</strong> (<em>Dict</em><em>[</em><em>str</em>) – </p></li>
+<li><p><strong>cache</strong> (<em>Any</em>) – </p></li>
+<li><p><strong>value</strong> (<em>Any</em>) – </p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1674,13 +1714,27 @@ This id will later be used to identify this field formatter in the registry with
 <code class="sig-name descname">sortValue</code><span class="sig-paren">(</span><em class="sig-param">self, layer: QgsVectorLayer, fieldIndex: int, config: Dict[str, Any], cache: Any, value: Any</em><span class="sig-paren">)</span> &#x2192; Any<a class="headerlink" href="#qgis.core.QgsFieldFormatter.sortValue" title="Permalink to this definition">¶</a></dt>
 <dd><p>If the default sort order should be overwritten for this widget, you can transform the value in here.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>an unmodified value by default.</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Any</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>an unmodified value by default.</p>
 </dd>
 </dl>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>layer</strong> (<a class="reference internal" href="QgsVectorLayer.html#qgis.core.QgsVectorLayer" title="qgis.core.QgsVectorLayer"><em>QgsVectorLayer</em></a>) – </p></li>
+<li><p><strong>fieldIndex</strong> (<em>int</em>) – </p></li>
+<li><p><strong>config</strong> (<em>Dict</em><em>[</em><em>str</em>) – </p></li>
+<li><p><strong>cache</strong> (<em>Any</em>) – </p></li>
+<li><p><strong>value</strong> (<em>Any</em>) – </p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -1699,7 +1753,7 @@ This id will later be used to identify this field formatter in the registry with
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 10:58 Oct 14, 2019.
+        Last updated on 15:06 Oct 15, 2019.
       </span>
 
     </p>
@@ -1726,20 +1780,20 @@ This id will later be used to identify this field formatter in the registry with
     <div class="rst-other-versions">
       <dl>
         <dt>Versions</dt>
-      
-        <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
-      
-    </dl>
+        
+          <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
+        
+      </dl>
       
       
     </div>

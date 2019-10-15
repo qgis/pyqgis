@@ -122,7 +122,6 @@
 <li class="toctree-l2"><a class="reference internal" href="PROJECT_SCALES.html">Class: PROJECT_SCALES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PluginLayer.html">Class: PluginLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ProjectDirtyBlocker.html">Class: ProjectDirtyBlocker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="PyProviderMetadata.html">Class: PyProviderMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgis.html">Class: Qgis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs25DRenderer.html">Class: Qgs25DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs3DRendererAbstractMetadata.html">Class: Qgs3DRendererAbstractMetadata</a></li>
@@ -1546,8 +1545,6 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/core/QgsLogger.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -1565,7 +1562,7 @@
 <dt id="qgis.core.QgsLogger">
 <em class="property">class </em><code class="sig-prename descclassname">qgis.core.</code><code class="sig-name descname">QgsLogger</code><a class="headerlink" href="#qgis.core.QgsLogger" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sip.wrapper</span></code></p>
-<p>QgsLogger is a class to print debug/warning/error messages to the console.
+<p><a class="reference internal" href="#qgis.core.QgsLogger" title="qgis.core.QgsLogger"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsLogger</span></code></a> is a class to print debug/warning/error messages to the console.
 The advantage of this class over iostream &amp; co. is that the
 output can be controlled with environment variables:
 QGIS_DEBUG is an int describing what debug messages are written to the console.
@@ -1637,6 +1634,11 @@ to this file rather than to stdout.</p>
 <dt id="qgis.core.QgsLogger.critical">
 <code class="sig-name descname">critical</code><span class="sig-paren">(</span><em class="sig-param">msg: str</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsLogger.critical" title="Permalink to this definition">¶</a></dt>
 <dd><p>Goes to qCritical</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>msg</strong> (<em>str</em>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1646,11 +1648,11 @@ to this file rather than to stdout.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>msg</strong> – the message to be printed</p></li>
-<li><p><strong>debuglevel</strong> – </p></li>
-<li><p><strong>file</strong> – file name where the message comes from</p></li>
-<li><p><strong>function</strong> – function where the message comes from</p></li>
-<li><p><strong>line</strong> – place in file where the message comes from*</p></li>
+<li><p><strong>msg</strong> (<em>str</em>) – the message to be printed</p></li>
+<li><p><strong>debuglevel</strong> (<em>int = 1</em>) – </p></li>
+<li><p><strong>file</strong> (<em>str = None</em>) – file name where the message comes from</p></li>
+<li><p><strong>function</strong> (<em>str = None</em>) – function where the message comes from</p></li>
+<li><p><strong>line</strong> (<em>int = -1</em>) – place in file where the message comes from*</p></li>
 </ul>
 </dd>
 </dl>
@@ -1663,12 +1665,22 @@ Similar to the previous method, but prints a variable int-value pair</p>
 <code class="sig-name descname">debugLevel</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#qgis.core.QgsLogger.debugLevel" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reads the environment variable QGIS_DEBUG and converts it to int. If QGIS_DEBUG is not set,
 the function returns 1 if QGISDEBUG is defined and 0 if not*</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsLogger.fatal">
 <code class="sig-name descname">fatal</code><span class="sig-paren">(</span><em class="sig-param">msg: str</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsLogger.fatal" title="Permalink to this definition">¶</a></dt>
 <dd><p>Goes to qFatal</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>msg</strong> (<em>str</em>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1676,18 +1688,33 @@ the function returns 1 if QGISDEBUG is defined and 0 if not*</p>
 <code class="sig-name descname">logFile</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.core.QgsLogger.logFile" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reads the environment variable QGIS_LOG_FILE. Returns NULL if the variable is not set,
 otherwise returns a file name for writing log messages to.*</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsLogger.logMessageToFile">
 <code class="sig-name descname">logMessageToFile</code><span class="sig-paren">(</span><em class="sig-param">message: str</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsLogger.logMessageToFile" title="Permalink to this definition">¶</a></dt>
 <dd><p>Logs the message passed in to the logfile defined in QGIS_LOG_FILE if any. *</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>message</strong> (<em>str</em>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsLogger.warning">
 <code class="sig-name descname">warning</code><span class="sig-paren">(</span><em class="sig-param">msg: str</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsLogger.warning" title="Permalink to this definition">¶</a></dt>
 <dd><p>Goes to qWarning</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>msg</strong> (<em>str</em>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -1706,7 +1733,7 @@ otherwise returns a file name for writing log messages to.*</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 10:58 Oct 14, 2019.
+        Last updated on 15:06 Oct 15, 2019.
       </span>
 
     </p>
@@ -1733,20 +1760,20 @@ otherwise returns a file name for writing log messages to.*</p>
     <div class="rst-other-versions">
       <dl>
         <dt>Versions</dt>
-      
-        <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
-      
-    </dl>
+        
+          <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
+        
+      </dl>
       
       
     </div>

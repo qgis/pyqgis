@@ -122,7 +122,6 @@
 <li class="toctree-l2"><a class="reference internal" href="PROJECT_SCALES.html">Class: PROJECT_SCALES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PluginLayer.html">Class: PluginLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ProjectDirtyBlocker.html">Class: ProjectDirtyBlocker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="PyProviderMetadata.html">Class: PyProviderMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgis.html">Class: Qgis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs25DRenderer.html">Class: Qgs25DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs3DRendererAbstractMetadata.html">Class: Qgs3DRendererAbstractMetadata</a></li>
@@ -1546,8 +1545,6 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/core/QgsRasterTransparency.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -1566,7 +1563,7 @@
 <em class="property">class </em><code class="sig-prename descclassname">qgis.core.</code><code class="sig-name descname">QgsRasterTransparency</code><a class="headerlink" href="#qgis.core.QgsRasterTransparency" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sip.wrapper</span></code></p>
 <p>Constructor for QgsRasterTransparency.</p>
-<p>QgsRasterTransparency(QgsRasterTransparency)</p>
+<p>QgsRasterTransparency(<a class="reference internal" href="#qgis.core.QgsRasterTransparency" title="qgis.core.QgsRasterTransparency"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsRasterTransparency</span></code></a>)</p>
 <p>Defines the list of pixel values to be considered as transparent or semi
 transparent when rendering rasters.</p>
 <blockquote>
@@ -1689,8 +1686,8 @@ by the stored transparency value.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>value</strong> – the needle to search for in the transparency hay stack</p></li>
-<li><p><strong>globalTransparency</strong> – the overall transparency level for the layer</p></li>
+<li><p><strong>value</strong> (<em>float</em>) – the needle to search for in the transparency hay stack</p></li>
+<li><p><strong>globalTransparency</strong> (<em>int = 255</em>) – the overall transparency level for the layer</p></li>
 </ul>
 </dd>
 </dl>
@@ -1707,6 +1704,9 @@ by the stored transparency value.</p>
 <li><p><strong>globalTransparency</strong> – the overall transparency level for the layer</p></li>
 </ul>
 </dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
 </dl>
 </dd></dl>
 
@@ -1716,18 +1716,33 @@ by the stored transparency value.</p>
 <dd><p>Resets the transparency list to a single <code class="docutils literal notranslate"><span class="pre">value</span></code>.</p>
 <p>initializeTransparentPixelList(self, redValue: float, greenValue: float, blueValue: float)
 Resets the transparency list to single red, green, and blue values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>float</em>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsRasterTransparency.isEmpty">
 <code class="sig-name descname">isEmpty</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsRasterTransparency.isEmpty" title="Permalink to this definition">¶</a></dt>
 <dd><p>True if there are no entries in the pixel lists except the nodata value</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsRasterTransparency.readXml">
 <code class="sig-name descname">readXml</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">elem: QDomElement</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsRasterTransparency.readXml" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reads the transparency information from an XML document.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>elem</strong> (<em>QDomElement</em>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1738,6 +1753,11 @@ Resets the transparency list to single red, green, and blue values.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsRasterTransparency.transparentSingleValuePixelList" title="qgis.core.QgsRasterTransparency.transparentSingleValuePixelList"><code class="xref py py-func docutils literal notranslate"><span class="pre">transparentSingleValuePixelList()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>newList</strong> (<em>Iterable</em><em>[</em><a class="reference internal" href="#qgis.core.QgsRasterTransparency.TransparentSingleValuePixel" title="qgis.core.QgsRasterTransparency.TransparentSingleValuePixel"><em>QgsRasterTransparency.TransparentSingleValuePixel</em></a><em>]</em>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1748,6 +1768,11 @@ Resets the transparency list to single red, green, and blue values.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsRasterTransparency.transparentThreeValuePixelList" title="qgis.core.QgsRasterTransparency.transparentThreeValuePixelList"><code class="xref py py-func docutils literal notranslate"><span class="pre">transparentThreeValuePixelList()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>newList</strong> (<em>Iterable</em><em>[</em><a class="reference internal" href="#qgis.core.QgsRasterTransparency.TransparentThreeValuePixel" title="qgis.core.QgsRasterTransparency.TransparentThreeValuePixel"><em>QgsRasterTransparency.TransparentThreeValuePixel</em></a><em>]</em>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1758,6 +1783,11 @@ Resets the transparency list to single red, green, and blue values.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsRasterTransparency.setTransparentSingleValuePixelList" title="qgis.core.QgsRasterTransparency.setTransparentSingleValuePixelList"><code class="xref py py-func docutils literal notranslate"><span class="pre">setTransparentSingleValuePixelList()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List[<a class="reference internal" href="#qgis.core.QgsRasterTransparency.TransparentSingleValuePixel" title="qgis.core.QgsRasterTransparency.TransparentSingleValuePixel">QgsRasterTransparency.TransparentSingleValuePixel</a>]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1768,12 +1798,25 @@ Resets the transparency list to single red, green, and blue values.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsRasterTransparency.setTransparentThreeValuePixelList" title="qgis.core.QgsRasterTransparency.setTransparentThreeValuePixelList"><code class="xref py py-func docutils literal notranslate"><span class="pre">setTransparentThreeValuePixelList()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List[<a class="reference internal" href="#qgis.core.QgsRasterTransparency.TransparentThreeValuePixel" title="qgis.core.QgsRasterTransparency.TransparentThreeValuePixel">QgsRasterTransparency.TransparentThreeValuePixel</a>]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsRasterTransparency.writeXml">
 <code class="sig-name descname">writeXml</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">doc: QDomDocument</em>, <em class="sig-param">parentElem: QDomElement</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsRasterTransparency.writeXml" title="Permalink to this definition">¶</a></dt>
 <dd><p>Writes the transparency information to an XML document.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>doc</strong> (<em>QDomDocument</em>) – </p></li>
+<li><p><strong>parentElem</strong> (<em>QDomElement</em>) – </p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -1792,7 +1835,7 @@ Resets the transparency list to single red, green, and blue values.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 10:58 Oct 14, 2019.
+        Last updated on 15:06 Oct 15, 2019.
       </span>
 
     </p>
@@ -1819,20 +1862,20 @@ Resets the transparency list to single red, green, and blue values.</p>
     <div class="rst-other-versions">
       <dl>
         <dt>Versions</dt>
-      
-        <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
-      
-    </dl>
+        
+          <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
+        
+      </dl>
       
       
     </div>

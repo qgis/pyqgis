@@ -122,7 +122,6 @@
 <li class="toctree-l2"><a class="reference internal" href="PROJECT_SCALES.html">Class: PROJECT_SCALES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PluginLayer.html">Class: PluginLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ProjectDirtyBlocker.html">Class: ProjectDirtyBlocker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="PyProviderMetadata.html">Class: PyProviderMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgis.html">Class: Qgis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs25DRenderer.html">Class: Qgs25DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs3DRendererAbstractMetadata.html">Class: Qgs3DRendererAbstractMetadata</a></li>
@@ -1546,8 +1545,6 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/core/QgsPropertyTransformer.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -1569,12 +1566,12 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>minValue</strong> – minimum expected value from source property</p></li>
-<li><p><strong>maxValue</strong> – maximum expected value from source property</p></li>
+<li><p><strong>minValue</strong> (<em>float = 0</em>) – minimum expected value from source property</p></li>
+<li><p><strong>maxValue</strong> (<em>float = 1</em>) – maximum expected value from source property</p></li>
 </ul>
 </dd>
 </dl>
-<p>QgsPropertyTransformer(other: QgsPropertyTransformer)
+<p>QgsPropertyTransformer(other: <a class="reference internal" href="#qgis.core.QgsPropertyTransformer" title="qgis.core.QgsPropertyTransformer"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsPropertyTransformer</span></code></a>)
 Copy constructor.</p>
 <p>Abstract base class for objects which transform the calculated value of a property.
 Possible uses include transformers which map a value into a scaled size or color from a gradient.</p>
@@ -1693,6 +1690,11 @@ Possible uses include transformers which map a value into a scaled size or color
 <dt id="qgis.core.QgsPropertyTransformer.clone">
 <code class="sig-name descname">clone</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QgsPropertyTransformer<a class="headerlink" href="#qgis.core.QgsPropertyTransformer.clone" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a clone of the transformer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#qgis.core.QgsPropertyTransformer" title="qgis.core.QgsPropertyTransformer">QgsPropertyTransformer</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1701,7 +1703,10 @@ Possible uses include transformers which map a value into a scaled size or color
 <dd><p>Factory method for creating a new property transformer of the specified type.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>type</strong> – transformer type to create</p>
+<dd class="field-odd"><p><strong>type</strong> (<a class="reference internal" href="#qgis.core.QgsPropertyTransformer.Type" title="qgis.core.QgsPropertyTransformer.Type"><em>QgsPropertyTransformer.Type</em></a>) – transformer type to create</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#qgis.core.QgsPropertyTransformer" title="qgis.core.QgsPropertyTransformer">QgsPropertyTransformer</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -1715,6 +1720,11 @@ by the individual transform subclasses.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsPropertyTransformer.setCurveTransform" title="qgis.core.QgsPropertyTransformer.setCurveTransform"><code class="xref py py-func docutils literal notranslate"><span class="pre">setCurveTransform()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsCurveTransform.html#qgis.core.QgsCurveTransform" title="qgis.core.QgsCurveTransform">QgsCurveTransform</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1724,14 +1734,17 @@ by the individual transform subclasses.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>expression</strong> – expression to parse</p></li>
+<li><p><strong>expression</strong> (<em>str</em>) – expression to parse</p></li>
 <li><p><strong>fieldName</strong> – will be set to a field name which is used to calculate the input
 to the property transformer. This will be set to an
 empty string if an expression is the transformer input.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><ul class="simple">
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Tuple[<a class="reference internal" href="#qgis.core.QgsPropertyTransformer" title="qgis.core.QgsPropertyTransformer"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsPropertyTransformer</span></code></a>, str, str]</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><ul class="simple">
 <li><p>corresponding property transformer, or <code class="docutils literal notranslate"><span class="pre">None</span></code> if expression could not</p></li>
 <li><p>baseExpression: will be set to the component of the source expression which is used to calculate the input to the property transformer. This will be set to an empty string if a field reference is the transformer input.</p></li>
 </ul>
@@ -1750,6 +1763,14 @@ You can use QgsXmlUtils.readVariant to read it from an XML document.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsPropertyTransformer.toVariant" title="qgis.core.QgsPropertyTransformer.toVariant"><code class="xref py py-func docutils literal notranslate"><span class="pre">toVariant()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>transformer</strong> (<em>Any</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1764,6 +1785,11 @@ You can use QgsXmlUtils.readVariant to read it from an XML document.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsPropertyTransformer.setMaxValue" title="qgis.core.QgsPropertyTransformer.setMaxValue"><code class="xref py py-func docutils literal notranslate"><span class="pre">setMaxValue()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1778,6 +1804,11 @@ You can use QgsXmlUtils.readVariant to read it from an XML document.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsPropertyTransformer.setMinValue" title="qgis.core.QgsPropertyTransformer.setMinValue"><code class="xref py py-func docutils literal notranslate"><span class="pre">setMinValue()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1790,6 +1821,11 @@ to the property transformer.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsPropertyTransformer.curveTransform" title="qgis.core.QgsPropertyTransformer.curveTransform"><code class="xref py py-func docutils literal notranslate"><span class="pre">curveTransform()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>transform</strong> (<a class="reference internal" href="QgsCurveTransform.html#qgis.core.QgsCurveTransform" title="qgis.core.QgsCurveTransform"><em>QgsCurveTransform</em></a>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1798,7 +1834,7 @@ to the property transformer.</p>
 <dd><p>Sets the maximum value expected by the transformer.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>max</strong> – maximum value</p>
+<dd class="field-odd"><p><strong>max</strong> (<em>float</em>) – maximum value</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -1817,7 +1853,7 @@ to the property transformer.</p>
 <dd><p>Sets the minimum value expected by the transformer.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>min</strong> – minimum value</p>
+<dd class="field-odd"><p><strong>min</strong> (<em>float</em>) – minimum value</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -1835,6 +1871,14 @@ to the property transformer.</p>
 <code class="sig-name descname">toExpression</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">baseExpression: str</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.core.QgsPropertyTransformer.toExpression" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts the transformer to a QGIS expression string. The <code class="docutils literal notranslate"><span class="pre">baseExpression</span></code> string consists
 of a sub-expression reflecting the parent property’s state.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>baseExpression</strong> (<em>str</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1846,6 +1890,11 @@ You can use QgsXmlUtils.writeVariant to save it to an XML document.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsPropertyTransformer.loadVariant" title="qgis.core.QgsPropertyTransformer.loadVariant"><code class="xref py py-func docutils literal notranslate"><span class="pre">loadVariant()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Any</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1856,9 +1905,12 @@ on input values</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>context</strong> – expression context</p></li>
-<li><p><strong>value</strong> – input value to transform</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsExpressionContext.html#qgis.core.QgsExpressionContext" title="qgis.core.QgsExpressionContext"><em>QgsExpressionContext</em></a>) – expression context</p></li>
+<li><p><strong>value</strong> (<em>Any</em>) – input value to transform</p></li>
 </ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Any</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1869,12 +1921,25 @@ on input values</p>
 <dd><p>Applies base class numeric transformations. Derived classes should call this
 to transform an <code class="docutils literal notranslate"><span class="pre">input</span></code> numeric value before they apply any transform to the result.
 This applies any curve transforms which may exist on the transformer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>input</strong> (<em>float</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsPropertyTransformer.transformerType">
 <code class="sig-name descname">transformerType</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QgsPropertyTransformer.Type<a class="headerlink" href="#qgis.core.QgsPropertyTransformer.transformerType" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the transformer type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#qgis.core.QgsPropertyTransformer.Type" title="qgis.core.QgsPropertyTransformer.Type">QgsPropertyTransformer.Type</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -1893,7 +1958,7 @@ This applies any curve transforms which may exist on the transformer.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 10:58 Oct 14, 2019.
+        Last updated on 15:06 Oct 15, 2019.
       </span>
 
     </p>
@@ -1920,20 +1985,20 @@ This applies any curve transforms which may exist on the transformer.</p>
     <div class="rst-other-versions">
       <dl>
         <dt>Versions</dt>
-      
-        <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
-      
-    </dl>
+        
+          <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
+        
+      </dl>
       
       
     </div>

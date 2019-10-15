@@ -122,7 +122,6 @@
 <li class="toctree-l2"><a class="reference internal" href="PROJECT_SCALES.html">Class: PROJECT_SCALES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PluginLayer.html">Class: PluginLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ProjectDirtyBlocker.html">Class: ProjectDirtyBlocker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="PyProviderMetadata.html">Class: PyProviderMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgis.html">Class: Qgis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs25DRenderer.html">Class: Qgs25DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs3DRendererAbstractMetadata.html">Class: Qgs3DRendererAbstractMetadata</a></li>
@@ -1546,8 +1545,6 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/core/QgsSymbol.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -1819,9 +1816,15 @@ QgsSymbol.RenderHints(QgsSymbol.RenderHints)</p>
 <dd><p>Appends a symbol <code class="docutils literal notranslate"><span class="pre">layer</span></code> at the end of the current symbol layer list.
 Ownership of <code class="docutils literal notranslate"><span class="pre">layer</span></code> is transferred to the symbol.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the layer was successfully added, <code class="docutils literal notranslate"><span class="pre">False</span></code> if the layer is not compatible with the
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the layer was successfully added, <code class="docutils literal notranslate"><span class="pre">False</span></code> if the layer is not compatible with the
 symbol’s type().</p>
+</dd>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>layer</strong> (<a class="reference internal" href="QgsSymbolLayer.html#qgis.core.QgsSymbolLayer" title="qgis.core.QgsSymbolLayer"><em>QgsSymbolLayer</em></a>) – </p>
 </dd>
 </dl>
 </dd></dl>
@@ -1840,6 +1843,17 @@ matches the settings from that context.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsSymbol.drawPreviewIcon" title="qgis.core.QgsSymbol.drawPreviewIcon"><code class="xref py py-func docutils literal notranslate"><span class="pre">drawPreviewIcon()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>size</strong> (<em>QSize</em>) – </p></li>
+<li><p><strong>customContext</strong> (<a class="reference internal" href="QgsRenderContext.html#qgis.core.QgsRenderContext" title="qgis.core.QgsRenderContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsRenderContext</span></code></a> = None) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>QImage</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1848,7 +1862,7 @@ matches the settings from that context.</p>
 <dd><p>Returns a large (roughly 100x100 pixel) preview image for the symbol.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>expressionContext</strong> – optional expression context, for evaluation of
+<dd class="field-odd"><p><strong>expressionContext</strong> (<a class="reference internal" href="QgsExpressionContext.html#qgis.core.QgsExpressionContext" title="qgis.core.QgsExpressionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsExpressionContext</span></code></a> = None) – optional expression context, for evaluation of
 data defined symbol properties</p>
 </dd>
 </dl>
@@ -1860,6 +1874,11 @@ data defined symbol properties</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsSymbol.drawPreviewIcon" title="qgis.core.QgsSymbol.drawPreviewIcon"><code class="xref py py-func docutils literal notranslate"><span class="pre">drawPreviewIcon()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>QImage</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1869,6 +1888,17 @@ data defined symbol properties</p>
 Ownership of <code class="docutils literal notranslate"><span class="pre">layer</span></code> is transferred to the symbol.</p>
 <p>Returns <code class="docutils literal notranslate"><span class="pre">False</span></code> if <code class="docutils literal notranslate"><span class="pre">layer</span></code> is not compatible with the symbol’s type(), or
 <code class="docutils literal notranslate"><span class="pre">True</span></code> if the layer was successfully replaced.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>index</strong> (<em>int</em>) – </p></li>
+<li><p><strong>layer</strong> (<a class="reference internal" href="QgsSymbolLayer.html#qgis.core.QgsSymbolLayer" title="qgis.core.QgsSymbolLayer"><em>QgsSymbolLayer</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1879,8 +1909,11 @@ extent. If this option is enabled then features which are partially outside the 
 will be clipped. This speeds up rendering of the feature, but may have undesirable
 side effects for certain symbol types.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if features will be clipped</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if features will be clipped</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -1897,6 +1930,11 @@ side effects for certain symbol types.</p>
 <code class="sig-name descname">clone</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QgsSymbol<a class="headerlink" href="#qgis.core.QgsSymbol.clone" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a deep copy of this symbol.</p>
 <p>Ownership is transferred to the caller.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#qgis.core.QgsSymbol" title="qgis.core.QgsSymbol">QgsSymbol</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1904,6 +1942,11 @@ side effects for certain symbol types.</p>
 <code class="sig-name descname">cloneLayers</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; List[QgsSymbolLayer]<a class="headerlink" href="#qgis.core.QgsSymbol.cloneLayers" title="Permalink to this definition">¶</a></dt>
 <dd><p>Retrieve a cloned list of all layers that make up this symbol.
 Ownership is transferred to the caller.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List[<a class="reference internal" href="QgsSymbolLayer.html#qgis.core.QgsSymbolLayer" title="qgis.core.QgsSymbolLayer">QgsSymbolLayer</a>]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1916,6 +1959,11 @@ layer.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsSymbol.setColor" title="qgis.core.QgsSymbol.setColor"><code class="xref py py-func docutils literal notranslate"><span class="pre">setColor()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>QColor</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1923,12 +1971,28 @@ layer.</p>
 <code class="sig-name descname">defaultSymbol</code><span class="sig-paren">(</span><em class="sig-param">geomType: QgsWkbTypes.GeometryType</em><span class="sig-paren">)</span> &#x2192; QgsSymbol<a class="headerlink" href="#qgis.core.QgsSymbol.defaultSymbol" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a new default symbol for the specified geometry type.</p>
 <p>The caller takes ownership of the returned object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>geomType</strong> (<a class="reference internal" href="QgsWkbTypes.html#qgis.core.QgsWkbTypes.GeometryType" title="qgis.core.QgsWkbTypes.GeometryType"><em>QgsWkbTypes.GeometryType</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#qgis.core.QgsSymbol" title="qgis.core.QgsSymbol">QgsSymbol</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsSymbol.deleteSymbolLayer">
 <code class="sig-name descname">deleteSymbolLayer</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">index: int</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsSymbol.deleteSymbolLayer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Removes and deletes the symbol layer at the specified <code class="docutils literal notranslate"><span class="pre">index</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>index</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1948,12 +2012,26 @@ matches the settings from that context.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 2.6.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>painter</strong> (<em>QPainter</em>) – </p></li>
+<li><p><strong>size</strong> (<em>QSize</em>) – </p></li>
+<li><p><strong>customContext</strong> (<a class="reference internal" href="QgsRenderContext.html#qgis.core.QgsRenderContext" title="qgis.core.QgsRenderContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsRenderContext</span></code></a> = None) – </p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsSymbol.dump">
 <code class="sig-name descname">dump</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.core.QgsSymbol.dump" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a string dump of the symbol’s properties.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1970,6 +2048,15 @@ specified format will be created.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsSymbol.drawPreviewIcon" title="qgis.core.QgsSymbol.drawPreviewIcon"><code class="xref py py-func docutils literal notranslate"><span class="pre">drawPreviewIcon()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>str</em>) – </p></li>
+<li><p><strong>format</strong> (<em>str</em>) – </p></li>
+<li><p><strong>size</strong> (<em>QSize</em>) – </p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1987,6 +2074,11 @@ direction.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.6.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1996,6 +2088,11 @@ direction.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 2.12.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2006,12 +2103,15 @@ Ownership of <code class="docutils literal notranslate"><span class="pre">layer<
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>index</strong> – The index at which the layer should be added</p></li>
-<li><p><strong>layer</strong> – The symbol layer to add</p></li>
+<li><p><strong>index</strong> (<em>int</em>) – The index at which the layer should be added</p></li>
+<li><p><strong>layer</strong> (<a class="reference internal" href="QgsSymbolLayer.html#qgis.core.QgsSymbolLayer" title="qgis.core.QgsSymbolLayer"><em>QgsSymbolLayer</em></a>) – The symbol layer to add</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the layer is added, <code class="docutils literal notranslate"><span class="pre">False</span></code> if the index or the layer is bad</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the layer is added, <code class="docutils literal notranslate"><span class="pre">False</span></code> if the index or the layer is bad</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2022,6 +2122,11 @@ Ownership of <code class="docutils literal notranslate"><span class="pre">layer<
 <dd><div class="deprecated">
 <p><span class="versionmodified deprecated">Deprecated since version Will: </span>be removed in QGIS 4.0</p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsVectorLayer.html#qgis.core.QgsVectorLayer" title="qgis.core.QgsVectorLayer">QgsVectorLayer</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2035,6 +2140,11 @@ a default constructed map unit scale is returned.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsSymbol.setMapUnitScale" title="qgis.core.QgsSymbol.setMapUnitScale"><code class="xref py py-func docutils literal notranslate"><span class="pre">setMapUnitScale()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsMapUnitScale.html#qgis.core.QgsMapUnitScale" title="qgis.core.QgsMapUnitScale">QgsMapUnitScale</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2042,8 +2152,11 @@ a default constructed map unit scale is returned.</p>
 <code class="sig-name descname">opacity</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#qgis.core.QgsSymbol.opacity" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the opacity for the symbol.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>opacity value between 0 (fully transparent) and 1 (fully opaque)</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>opacity value between 0 (fully transparent) and 1 (fully opaque)</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -2060,8 +2173,11 @@ symbol layer definitions will interpret this in different ways, e.g., a marker s
 may use it to specify the units for the marker size, while a line symbol
 may use it to specify the units for the line width.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>output unit, or QgsUnitTypes.RenderUnknownUnit if the symbol contains mixed units</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsUnitTypes.html#qgis.core.QgsUnitTypes.RenderUnit" title="qgis.core.QgsUnitTypes.RenderUnit">QgsUnitTypes.RenderUnit</a></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>output unit, or QgsUnitTypes.RenderUnknownUnit if the symbol contains mixed units</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -2075,6 +2191,19 @@ may use it to specify the units for the line width.</p>
 <code class="sig-name descname">renderFeature</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">feature: QgsFeature</em>, <em class="sig-param">context: QgsRenderContext</em>, <em class="sig-param">layer: int = -1</em>, <em class="sig-param">selected: bool = False</em>, <em class="sig-param">drawVertexMarker: bool = False</em>, <em class="sig-param">currentVertexMarkerType: int = 0</em>, <em class="sig-param">currentVertexMarkerSize: float = 0</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsSymbol.renderFeature" title="Permalink to this definition">¶</a></dt>
 <dd><p>Render a feature. Before calling this the startRender() method should be called to initialize
 the rendering process. After rendering all features stopRender() must be called.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>feature</strong> (<a class="reference internal" href="QgsFeature.html#qgis.core.QgsFeature" title="qgis.core.QgsFeature"><em>QgsFeature</em></a>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsRenderContext.html#qgis.core.QgsRenderContext" title="qgis.core.QgsRenderContext"><em>QgsRenderContext</em></a>) – </p></li>
+<li><p><strong>layer</strong> (<em>int = -1</em>) – </p></li>
+<li><p><strong>selected</strong> (<em>bool = False</em>) – </p></li>
+<li><p><strong>drawVertexMarker</strong> (<em>bool = False</em>) – </p></li>
+<li><p><strong>currentVertexMarkerType</strong> (<em>int = 0</em>) – </p></li>
+<li><p><strong>currentVertexMarkerSize</strong> (<em>float = 0</em>) – </p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2085,6 +2214,11 @@ the rendering process. After rendering all features stopRender() must be called.
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsSymbol.setRenderHints" title="qgis.core.QgsSymbol.setRenderHints"><code class="xref py py-func docutils literal notranslate"><span class="pre">setRenderHints()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#qgis.core.QgsSymbol.RenderHints" title="qgis.core.QgsSymbol.RenderHints">QgsSymbol.RenderHints</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2097,6 +2231,14 @@ called and will call the layer’s rendering method anyway but the
 geometry passed to the layer will be empty.
 This is required for layers that generate their own geometry from other
 information in the rendering context.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>layer</strong> (<a class="reference internal" href="QgsSymbolLayer.html#qgis.core.QgsSymbolLayer" title="qgis.core.QgsSymbolLayer"><em>QgsSymbolLayer</em></a>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsSymbolRenderContext.html#qgis.core.QgsSymbolRenderContext" title="qgis.core.QgsSymbolRenderContext"><em>QgsSymbolRenderContext</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2106,6 +2248,16 @@ information in the rendering context.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 2.16.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pt</strong> (<em>Union</em><em>[</em><em>QPointF</em>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsRenderContext.html#qgis.core.QgsRenderContext" title="qgis.core.QgsRenderContext"><em>QgsRenderContext</em></a>) – </p></li>
+<li><p><strong>currentVertexMarkerType</strong> (<em>int</em>) – </p></li>
+<li><p><strong>currentVertexMarkerSize</strong> (<em>float</em>) – </p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2117,7 +2269,7 @@ will be clipped. This speeds up rendering of the feature, but may have undesirab
 side effects for certain symbol types.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>clipFeaturesToExtent</strong> – set to true to enable clipping (defaults to <code class="docutils literal notranslate"><span class="pre">True</span></code>)</p>
+<dd class="field-odd"><p><strong>clipFeaturesToExtent</strong> (<em>bool</em>) – set to true to enable clipping (defaults to <code class="docutils literal notranslate"><span class="pre">True</span></code>)</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -2140,6 +2292,11 @@ within the symbol to <code class="docutils literal notranslate"><span class="pre
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsSymbol.color" title="qgis.core.QgsSymbol.color"><code class="xref py py-func docutils literal notranslate"><span class="pre">color()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>color</strong> (<em>Union</em><em>[</em><em>QColor</em>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2157,6 +2314,11 @@ direction.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.6.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>force</strong> (<em>bool</em>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2169,6 +2331,11 @@ direction.</p>
 <div class="deprecated">
 <p><span class="versionmodified deprecated">Deprecated since version Will: </span>be removed in QGIS 4.0</p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>layer</strong> (<a class="reference internal" href="QgsVectorLayer.html#qgis.core.QgsVectorLayer" title="qgis.core.QgsVectorLayer"><em>QgsVectorLayer</em></a>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2181,6 +2348,11 @@ symbol.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsSymbol.mapUnitScale" title="qgis.core.QgsSymbol.mapUnitScale"><code class="xref py py-func docutils literal notranslate"><span class="pre">mapUnitScale()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>scale</strong> (<a class="reference internal" href="QgsMapUnitScale.html#qgis.core.QgsMapUnitScale" title="qgis.core.QgsMapUnitScale"><em>QgsMapUnitScale</em></a>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2189,7 +2361,7 @@ symbol.</p>
 <dd><p>Sets the <code class="docutils literal notranslate"><span class="pre">opacity</span></code> for the symbol.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>opacity</strong> – opacity value between 0 (fully transparent) and 1 (fully opaque)</p>
+<dd class="field-odd"><p><strong>opacity</strong> (<em>float</em>) – opacity value between 0 (fully transparent) and 1 (fully opaque)</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -2207,7 +2379,7 @@ may use it to specify the units for the marker size, while a line symbol
 may use it to specify the units for the line width.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>unit</strong> – output units</p>
+<dd class="field-odd"><p><strong>unit</strong> (<a class="reference internal" href="QgsUnitTypes.html#qgis.core.QgsUnitTypes.RenderUnit" title="qgis.core.QgsUnitTypes.RenderUnit"><em>QgsUnitTypes.RenderUnit</em></a>) – output units</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -2224,6 +2396,11 @@ may use it to specify the units for the line width.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsSymbol.renderHints" title="qgis.core.QgsSymbol.renderHints"><code class="xref py py-func docutils literal notranslate"><span class="pre">renderHints()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>hints</strong> (<em>Union</em><em>[</em><a class="reference internal" href="#qgis.core.QgsSymbol.RenderHints" title="qgis.core.QgsSymbol.RenderHints"><em>QgsSymbol.RenderHints</em></a>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2234,8 +2411,8 @@ and should be followed by a call to stopRender().</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>context</strong> – render context which symbol will be drawn using</p></li>
-<li><p><strong>fields</strong> – fields for features to be rendered (usually the associated
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsRenderContext.html#qgis.core.QgsRenderContext" title="qgis.core.QgsRenderContext"><em>QgsRenderContext</em></a>) – render context which symbol will be drawn using</p></li>
+<li><p><strong>fields</strong> (<a class="reference internal" href="QgsFields.html#qgis.core.QgsFields" title="qgis.core.QgsFields"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsFields</span></code></a> = QgsFields()) – fields for features to be rendered (usually the associated
 vector layer’s fields). Required for correct calculation of data defined
 overrides.</p></li>
 </ul>
@@ -2253,7 +2430,7 @@ overrides.</p></li>
 <dd><p>Ends the rendering process. This should be called after rendering all desired features.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>context</strong> – render context, must match the context specified when startRender()
+<dd class="field-odd"><p><strong>context</strong> (<a class="reference internal" href="QgsRenderContext.html#qgis.core.QgsRenderContext" title="qgis.core.QgsRenderContext"><em>QgsRenderContext</em></a>) – render context, must match the context specified when startRender()
 was called.</p>
 </dd>
 </dl>
@@ -2278,6 +2455,14 @@ was called.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 2.7.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>layer</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsSymbolLayer.html#qgis.core.QgsSymbolLayer" title="qgis.core.QgsSymbolLayer">QgsSymbolLayer</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2285,8 +2470,11 @@ was called.</p>
 <code class="sig-name descname">symbolLayerCount</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#qgis.core.QgsSymbol.symbolLayerCount" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the total number of symbol layers contained in the symbol.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>count of symbol layers</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>count of symbol layers</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -2307,8 +2495,11 @@ was called.</p>
 <code class="sig-name descname">symbolLayers</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; List[QgsSymbolLayer]<a class="headerlink" href="#qgis.core.QgsSymbol.symbolLayers" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the list of symbol layers contained in the symbol.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>symbol layers list</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List[<a class="reference internal" href="QgsSymbolLayer.html#qgis.core.QgsSymbolLayer" title="qgis.core.QgsSymbolLayer">QgsSymbolLayer</a>]</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>symbol layers list</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -2329,8 +2520,11 @@ was called.</p>
 <code class="sig-name descname">symbolRenderContext</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QgsSymbolRenderContext<a class="headerlink" href="#qgis.core.QgsSymbol.symbolRenderContext" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the symbol render context. Only valid between startRender and stopRender calls.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>The symbol render context</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsSymbolRenderContext.html#qgis.core.QgsSymbolRenderContext" title="qgis.core.QgsSymbolRenderContext">QgsSymbolRenderContext</a></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The symbol render context</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2342,10 +2536,13 @@ was called.</p>
 Ownership of the layer is handed to the caller.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>index</strong> – The index of the layer to remove</p>
+<dd class="field-odd"><p><strong>index</strong> (<em>int</em>) – The index of the layer to remove</p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>A pointer to the removed layer</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsSymbolLayer.html#qgis.core.QgsSymbolLayer" title="qgis.core.QgsSymbolLayer">QgsSymbolLayer</a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A pointer to the removed layer</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2354,12 +2551,26 @@ Ownership of the layer is handed to the caller.</p>
 <dt id="qgis.core.QgsSymbol.toSld">
 <code class="sig-name descname">toSld</code><span class="sig-paren">(</span><em class="sig-param">self, doc: QDomDocument, element: QDomElement, props: Dict[str, str]</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsSymbol.toSld" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts the symbol to a SLD representation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>doc</strong> (<em>QDomDocument</em>) – </p></li>
+<li><p><strong>element</strong> (<em>QDomElement</em>) – </p></li>
+<li><p><strong>props</strong> (<em>Dict</em><em>[</em><em>str</em>) – </p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsSymbol.type">
 <code class="sig-name descname">type</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QgsSymbol.SymbolType<a class="headerlink" href="#qgis.core.QgsSymbol.type" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the symbol’s type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#qgis.core.QgsSymbol.SymbolType" title="qgis.core.QgsSymbol.SymbolType">QgsSymbol.SymbolType</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2368,6 +2579,14 @@ Ownership of the layer is handed to the caller.</p>
 <dd><p>Returns a list of attributes required to render this feature.
 This should include any attributes required by the symbology including
 the ones required by expressions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>context</strong> (<a class="reference internal" href="QgsRenderContext.html#qgis.core.QgsRenderContext" title="qgis.core.QgsRenderContext"><em>QgsRenderContext</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Set[str]</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -2386,7 +2605,7 @@ the ones required by expressions.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 10:58 Oct 14, 2019.
+        Last updated on 15:06 Oct 15, 2019.
       </span>
 
     </p>
@@ -2413,20 +2632,20 @@ the ones required by expressions.</p>
     <div class="rst-other-versions">
       <dl>
         <dt>Versions</dt>
-      
-        <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
-      
-    </dl>
+        
+          <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
+        
+      </dl>
       
       
     </div>

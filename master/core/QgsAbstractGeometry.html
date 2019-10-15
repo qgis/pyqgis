@@ -122,7 +122,6 @@
 <li class="toctree-l2"><a class="reference internal" href="PROJECT_SCALES.html">Class: PROJECT_SCALES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PluginLayer.html">Class: PluginLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ProjectDirtyBlocker.html">Class: ProjectDirtyBlocker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="PyProviderMetadata.html">Class: PyProviderMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgis.html">Class: Qgis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs25DRenderer.html">Class: Qgs25DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs3DRendererAbstractMetadata.html">Class: Qgs3DRendererAbstractMetadata</a></li>
@@ -1546,8 +1545,6 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/core/QgsAbstractGeometry.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -1566,7 +1563,7 @@
 <em class="property">class </em><code class="sig-prename descclassname">qgis.core.</code><code class="sig-name descname">QgsAbstractGeometry</code><a class="headerlink" href="#qgis.core.QgsAbstractGeometry" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sip.wrapper</span></code></p>
 <p>Constructor for QgsAbstractGeometry.</p>
-<p>QgsAbstractGeometry(geom: QgsAbstractGeometry)</p>
+<p>QgsAbstractGeometry(geom: <a class="reference internal" href="#qgis.core.QgsAbstractGeometry" title="qgis.core.QgsAbstractGeometry"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsAbstractGeometry</span></code></a>)</p>
 <p>Abstract base class for all geometries</p>
 <div class="versionadded">
 <table class="longtable docutils align-default">
@@ -1846,10 +1843,13 @@
 <dd><p>Adds a measure to the geometry, initialized to a preset value.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>mValue</strong> – initial m-value for all nodes</p>
+<dd class="field-odd"><p><strong>mValue</strong> (<em>float = 0</em>) – initial m-value for all nodes</p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> on success</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> on success</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -1871,10 +1871,13 @@
 <dd><p>Adds a z-dimension to the geometry, initialized to a preset value.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>zValue</strong> – initial z-value for all nodes</p>
+<dd class="field-odd"><p><strong>zValue</strong> (<em>float = 0</em>) – initial z-value for all nodes</p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> on success</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> on success</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -1897,6 +1900,14 @@
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>vertex</strong> (<a class="reference internal" href="QgsVertexId.html#qgis.core.QgsVertexId" title="qgis.core.QgsVertexId"><em>QgsVertexId</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Tuple[<a class="reference internal" href="QgsVertexId.html#qgis.core.QgsVertexId" title="qgis.core.QgsVertexId"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsVertexId</span></code></a>, QgsVertexId]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1911,6 +1922,11 @@
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsAbstractGeometry.perimeter" title="qgis.core.QgsAbstractGeometry.perimeter"><code class="xref py py-func docutils literal notranslate"><span class="pre">perimeter()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1920,10 +1936,10 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>doc</strong> – DOM document</p></li>
-<li><p><strong>precision</strong> – number of decimal places for coordinates</p></li>
-<li><p><strong>ns</strong> – XML namespace</p></li>
-<li><p><strong>axisOrder</strong> – Axis order for generated GML</p></li>
+<li><p><strong>doc</strong> (<em>QDomDocument</em>) – DOM document</p></li>
+<li><p><strong>precision</strong> (<em>int = 17</em>) – number of decimal places for coordinates</p></li>
+<li><p><strong>ns</strong> (<em>str = ''</em>) – XML namespace</p></li>
+<li><p><strong>axisOrder</strong> (<em>QgsAbstractGeometry.AxisOrder = QgsAbstractGeometry.AxisOrder.XY</em>) – Axis order for generated GML</p></li>
 </ul>
 </dd>
 </dl>
@@ -1943,6 +1959,11 @@
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsAbstractGeometry.asJson" title="qgis.core.QgsAbstractGeometry.asJson"><code class="xref py py-func docutils literal notranslate"><span class="pre">asJson()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>QDomElement</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1952,10 +1973,10 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>doc</strong> – DOM document</p></li>
-<li><p><strong>precision</strong> – number of decimal places for coordinates</p></li>
-<li><p><strong>ns</strong> – XML namespace</p></li>
-<li><p><strong>axisOrder</strong> – Axis order for generated GML</p></li>
+<li><p><strong>doc</strong> (<em>QDomDocument</em>) – DOM document</p></li>
+<li><p><strong>precision</strong> (<em>int = 17</em>) – number of decimal places for coordinates</p></li>
+<li><p><strong>ns</strong> (<em>str = ''</em>) – XML namespace</p></li>
+<li><p><strong>axisOrder</strong> (<em>QgsAbstractGeometry.AxisOrder = QgsAbstractGeometry.AxisOrder.XY</em>) – Axis order for generated GML</p></li>
 </ul>
 </dd>
 </dl>
@@ -1975,6 +1996,11 @@
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsAbstractGeometry.asJson" title="qgis.core.QgsAbstractGeometry.asJson"><code class="xref py py-func docutils literal notranslate"><span class="pre">asJson()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>QDomElement</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1983,7 +2009,7 @@
 <dd><p>Returns a GeoJSON representation of the geometry as a QString.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>precision</strong> – number of decimal places for coordinates</p>
+<dd class="field-odd"><p><strong>precision</strong> (<em>int = 17</em>) – number of decimal places for coordinates</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -2006,6 +2032,11 @@
 <p class="admonition-title">See also</p>
 <p><code class="xref py py-func docutils literal notranslate"><span class="pre">asJsonObject()</span></code></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2031,6 +2062,11 @@
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>QByteArray</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2039,7 +2075,7 @@
 <dd><p>Returns a WKT representation of the geometry.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>precision</strong> – number of decimal places for coordinates</p>
+<dd class="field-odd"><p><strong>precision</strong> (<em>int = 17</em>) – number of decimal places for coordinates</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -2058,6 +2094,11 @@
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsAbstractGeometry.asJson" title="qgis.core.QgsAbstractGeometry.asJson"><code class="xref py py-func docutils literal notranslate"><span class="pre">asJson()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2066,8 +2107,11 @@
 <dd><p>Returns the closure of the combinatorial boundary of the geometry (ie the topological boundary of the geometry).
 For instance, a polygon geometry will have a boundary consisting of the linestrings for each ring in the polygon.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>boundary for geometry. May be <code class="docutils literal notranslate"><span class="pre">None</span></code> for some geometry types.</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#qgis.core.QgsAbstractGeometry" title="qgis.core.QgsAbstractGeometry">QgsAbstractGeometry</a></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>boundary for geometry. May be <code class="docutils literal notranslate"><span class="pre">None</span></code> for some geometry types.</p>
 </dd>
 </dl>
 <div class="versionadded">
@@ -2079,6 +2123,11 @@ For instance, a polygon geometry will have a boundary consisting of the linestri
 <dt id="qgis.core.QgsAbstractGeometry.boundingBox">
 <code class="sig-name descname">boundingBox</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QgsRectangle<a class="headerlink" href="#qgis.core.QgsAbstractGeometry.boundingBox" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the minimal bounding box for the geometry</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsRectangle.html#qgis.core.QgsRectangle" title="qgis.core.QgsRectangle">QgsRectangle</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2086,12 +2135,22 @@ For instance, a polygon geometry will have a boundary consisting of the linestri
 <code class="sig-name descname">calculateBoundingBox</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QgsRectangle<a class="headerlink" href="#qgis.core.QgsAbstractGeometry.calculateBoundingBox" title="Permalink to this definition">¶</a></dt>
 <dd><p>Default calculator for the minimal bounding box for the geometry. Derived classes should override this method
 if a more efficient bounding box calculation is available.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsRectangle.html#qgis.core.QgsRectangle" title="qgis.core.QgsRectangle">QgsRectangle</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsAbstractGeometry.centroid">
 <code class="sig-name descname">centroid</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QgsPoint<a class="headerlink" href="#qgis.core.QgsAbstractGeometry.centroid" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the centroid of the geometry</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint">QgsPoint</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2105,6 +2164,11 @@ if a more efficient bounding box calculation is available.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2118,6 +2182,14 @@ if a more efficient bounding box calculation is available.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>index</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#qgis.core.QgsAbstractGeometry" title="qgis.core.QgsAbstractGeometry">QgsAbstractGeometry</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2131,6 +2203,14 @@ if a more efficient bounding box calculation is available.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>index</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint">QgsPoint</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2149,6 +2229,11 @@ if a more efficient bounding box calculation is available.</p>
 <dt id="qgis.core.QgsAbstractGeometry.clone">
 <code class="sig-name descname">clone</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QgsAbstractGeometry<a class="headerlink" href="#qgis.core.QgsAbstractGeometry.clone" title="Permalink to this definition">¶</a></dt>
 <dd><p>Clones the geometry by performing a deep copy</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#qgis.core.QgsAbstractGeometry" title="qgis.core.QgsAbstractGeometry">QgsAbstractGeometry</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2158,14 +2243,17 @@ if a more efficient bounding box calculation is available.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>pt</strong> – specifies the point to find closest segment to</p></li>
+<li><p><strong>pt</strong> (<a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint"><em>QgsPoint</em></a>) – specifies the point to find closest segment to</p></li>
 <li><p><strong>segmentPt</strong> – storage for the closest point within the geometry</p></li>
 <li><p><strong>vertexAfter</strong> – storage for the ID of the vertex at the end of the closest segment</p></li>
-<li><p><strong>epsilon</strong> – epsilon for segment snapping</p></li>
+<li><p><strong>epsilon</strong> (<em>float = 4*DBL_EPSILON</em>) – epsilon for segment snapping</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><ul class="simple">
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Tuple[float, <a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsPoint</span></code></a>, <a class="reference internal" href="QgsVertexId.html#qgis.core.QgsVertexId" title="qgis.core.QgsVertexId"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsVertexId</span></code></a>, int]</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><ul class="simple">
 <li><p>squared distance to closest segment or negative value on error</p></li>
 <li><p>leftOf: indicates whether the point lies on the left side of the geometry (-1 if point is to the left of the geometry, +1 if the point is to the right of the geometry, or 0 for cases where left/right could not be determined, e.g. point exactly on a line) <code class="docutils literal notranslate"><span class="pre">False</span></code> if point is to right of segment)</p></li>
 </ul>
@@ -2179,13 +2267,21 @@ if a more efficient bounding box calculation is available.</p>
 <code class="sig-name descname">convertTo</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">type: QgsWkbTypes.Type</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsAbstractGeometry.convertTo" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts the geometry to a specified type.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if conversion was successful</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if conversion was successful</p>
 </dd>
 </dl>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 2.14.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>type</strong> (<a class="reference internal" href="QgsWkbTypes.html#qgis.core.QgsWkbTypes.Type" title="qgis.core.QgsWkbTypes.Type"><em>QgsWkbTypes.Type</em></a>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2193,8 +2289,11 @@ if a more efficient bounding box calculation is available.</p>
 <code class="sig-name descname">coordinateSequence</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; object<a class="headerlink" href="#qgis.core.QgsAbstractGeometry.coordinateSequence" title="Permalink to this definition">¶</a></dt>
 <dd><p>Retrieves the sequence of geometries, rings and nodes.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>coordinate sequence</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>object</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>coordinate sequence</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2211,6 +2310,11 @@ To create it, the geometry is default constructed and then the WKB is changed.</
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#qgis.core.QgsAbstractGeometry" title="qgis.core.QgsAbstractGeometry">QgsAbstractGeometry</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2219,10 +2323,13 @@ To create it, the geometry is default constructed and then the WKB is changed.</
 <dd><p>Deletes a vertex within the geometry</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>position</strong> – vertex id for vertex to delete</p>
+<dd class="field-odd"><p><strong>position</strong> (<a class="reference internal" href="QgsVertexId.html#qgis.core.QgsVertexId" title="qgis.core.QgsVertexId"><em>QgsVertexId</em></a>) – vertex id for vertex to delete</p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if delete was successful</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if delete was successful</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -2240,6 +2347,11 @@ To create it, the geometry is default constructed and then the WKB is changed.</
 <code class="sig-name descname">dimension</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#qgis.core.QgsAbstractGeometry.dimension" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the inherent dimension of the geometry. For example, this is 0 for a point geometry,
 1 for a linestring and 2 for a polygon.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2248,7 +2360,7 @@ To create it, the geometry is default constructed and then the WKB is changed.</
 <dd><p>Draws the geometry using the specified QPainter.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>p</strong> – destination QPainter</p>
+<dd class="field-odd"><p><strong>p</strong> (<em>QPainter</em>) – destination QPainter</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2258,8 +2370,11 @@ To create it, the geometry is default constructed and then the WKB is changed.</
 <code class="sig-name descname">dropMValue</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsAbstractGeometry.dropMValue" title="Permalink to this definition">¶</a></dt>
 <dd><p>Drops any measure values which exist in the geometry.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if m-values were present and have been removed</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if m-values were present and have been removed</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -2280,8 +2395,11 @@ To create it, the geometry is default constructed and then the WKB is changed.</
 <code class="sig-name descname">dropZValue</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsAbstractGeometry.dropZValue" title="Permalink to this definition">¶</a></dt>
 <dd><p>Drops any z-dimensions which exist in the geometry.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if Z values were present and have been removed</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if Z values were present and have been removed</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -2306,6 +2424,14 @@ After successful read the wkb argument will be at the position where the reading
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsAbstractGeometry.fromWkt" title="qgis.core.QgsAbstractGeometry.fromWkt"><code class="xref py py-func docutils literal notranslate"><span class="pre">fromWkt()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>wkb</strong> (<a class="reference internal" href="QgsConstWkbPtr.html#qgis.core.QgsConstWkbPtr" title="qgis.core.QgsConstWkbPtr"><em>QgsConstWkbPtr</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2316,6 +2442,14 @@ After successful read the wkb argument will be at the position where the reading
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsAbstractGeometry.fromWkb" title="qgis.core.QgsAbstractGeometry.fromWkb"><code class="xref py py-func docutils literal notranslate"><span class="pre">fromWkb()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>wkt</strong> (<em>str</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2330,6 +2464,11 @@ After successful read the wkb argument will be at the position where the reading
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsAbstractGeometry.wktTypeStr" title="qgis.core.QgsAbstractGeometry.wktTypeStr"><code class="xref py py-func docutils literal notranslate"><span class="pre">wktTypeStr()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2343,12 +2482,22 @@ After successful read the wkb argument will be at the position where the reading
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsAbstractGeometry.hasCurvedSegments">
 <code class="sig-name descname">hasCurvedSegments</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsAbstractGeometry.hasCurvedSegments" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the geometry contains curved segments</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2358,12 +2507,15 @@ After successful read the wkb argument will be at the position where the reading
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>position</strong> – vertex id for position of inserted vertex</p></li>
-<li><p><strong>vertex</strong> – vertex to insert</p></li>
+<li><p><strong>position</strong> (<a class="reference internal" href="QgsVertexId.html#qgis.core.QgsVertexId" title="qgis.core.QgsVertexId"><em>QgsVertexId</em></a>) – vertex id for position of inserted vertex</p></li>
+<li><p><strong>vertex</strong> (<a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint"><em>QgsPoint</em></a>) – vertex to insert</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if insert was successful</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if insert was successful</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -2384,12 +2536,22 @@ After successful read the wkb argument will be at the position where the reading
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsAbstractGeometry.isMeasure" title="qgis.core.QgsAbstractGeometry.isMeasure"><code class="xref py py-func docutils literal notranslate"><span class="pre">isMeasure()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsAbstractGeometry.isEmpty">
 <code class="sig-name descname">isEmpty</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsAbstractGeometry.isEmpty" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the geometry is empty</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2400,6 +2562,11 @@ After successful read the wkb argument will be at the position where the reading
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsAbstractGeometry.is3D" title="qgis.core.QgsAbstractGeometry.is3D"><code class="xref py py-func docutils literal notranslate"><span class="pre">is3D()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2408,11 +2575,14 @@ After successful read the wkb argument will be at the position where the reading
 <dd><p>Checks validity of the geometry, and returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the geometry is valid.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>flags</strong> – indicates optional flags which control the type of validity checking performed
+<dd class="field-odd"><p><strong>flags</strong> (<em>int = 0</em>) – indicates optional flags which control the type of validity checking performed
 (corresponding to QgsGeometry.ValidityFlags).</p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><ul class="simple">
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Tuple[bool, str]</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if geometry is valid</p></li>
 <li><p>error: will be set to the validity error message</p></li>
 </ul>
@@ -2436,6 +2606,11 @@ After successful read the wkb argument will be at the position where the reading
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsAbstractGeometry.perimeter" title="qgis.core.QgsAbstractGeometry.perimeter"><code class="xref py py-func docutils literal notranslate"><span class="pre">perimeter()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2445,12 +2620,15 @@ After successful read the wkb argument will be at the position where the reading
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>position</strong> – vertex id for vertex to move</p></li>
-<li><p><strong>newPos</strong> – new position of vertex</p></li>
+<li><p><strong>position</strong> (<a class="reference internal" href="QgsVertexId.html#qgis.core.QgsVertexId" title="qgis.core.QgsVertexId"><em>QgsVertexId</em></a>) – vertex id for vertex to move</p></li>
+<li><p><strong>newPos</strong> (<a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint"><em>QgsPoint</em></a>) – new position of vertex</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if move was successful</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if move was successful</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -2467,6 +2645,11 @@ After successful read the wkb argument will be at the position where the reading
 <dt id="qgis.core.QgsAbstractGeometry.nCoordinates">
 <code class="sig-name descname">nCoordinates</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#qgis.core.QgsAbstractGeometry.nCoordinates" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the number of nodes contained in the geometry</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2475,11 +2658,14 @@ After successful read the wkb argument will be at the position where the reading
 <dd><p>Returns next vertex id and coordinates</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>id</strong> – initial value should be the starting vertex id. The next vertex id will be stored
+<dd class="field-odd"><p><strong>id</strong> (<a class="reference internal" href="QgsVertexId.html#qgis.core.QgsVertexId" title="qgis.core.QgsVertexId"><em>QgsVertexId</em></a>) – initial value should be the starting vertex id. The next vertex id will be stored
 in this variable if found.</p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><ul class="simple">
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Tuple[bool, <a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint">QgsPoint</a>]</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">False</span></code> if at end</p></li>
 <li><p>vertex: container for found node</p></li>
 </ul>
@@ -2500,6 +2686,11 @@ in this variable if found.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsAbstractGeometry.ringCount" title="qgis.core.QgsAbstractGeometry.ringCount"><code class="xref py py-func docutils literal notranslate"><span class="pre">ringCount()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2539,6 +2730,11 @@ can safely be used to modify parts of the geometry.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.6.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsGeometryPartIterator.html#qgis.core.QgsGeometryPartIterator" title="qgis.core.QgsGeometryPartIterator">QgsGeometryPartIterator</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2553,6 +2749,11 @@ can safely be used to modify parts of the geometry.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsAbstractGeometry.length" title="qgis.core.QgsAbstractGeometry.length"><code class="xref py py-func docutils literal notranslate"><span class="pre">length()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2573,12 +2774,31 @@ were found.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>epsilon</strong> (<em>float = 4*DBL_EPSILON</em>) – </p></li>
+<li><p><strong>useZValues</strong> (<em>bool = False</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsAbstractGeometry.ringCount">
 <code class="sig-name descname">ringCount</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">part: int = 0</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#qgis.core.QgsAbstractGeometry.ringCount" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the number of rings of which this geometry is built.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>part</strong> (<em>int = 0</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2588,6 +2808,14 @@ were found.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>startVertex</strong> (<a class="reference internal" href="QgsVertexId.html#qgis.core.QgsVertexId" title="qgis.core.QgsVertexId"><em>QgsVertexId</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2598,9 +2826,12 @@ the returned geometry.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>tolerance</strong> – segmentation tolerance</p></li>
-<li><p><strong>toleranceType</strong> – maximum segmentation angle or maximum difference between approximation and curve</p></li>
+<li><p><strong>tolerance</strong> (<em>float = M_PI/180</em>) – segmentation tolerance</p></li>
+<li><p><strong>toleranceType</strong> (<em>QgsAbstractGeometry.SegmentationToleranceType = QgsAbstractGeometry.MaximumAngle</em>) – maximum segmentation angle or maximum difference between approximation and curve</p></li>
 </ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#qgis.core.QgsAbstractGeometry" title="qgis.core.QgsAbstractGeometry">QgsAbstractGeometry</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -2609,6 +2840,14 @@ the returned geometry.</p>
 <dt id="qgis.core.QgsAbstractGeometry.setZMTypeFromSubGeometry">
 <code class="sig-name descname">setZMTypeFromSubGeometry</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">subggeom: QgsAbstractGeometry</em>, <em class="sig-param">baseGeomType: QgsWkbTypes.Type</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsAbstractGeometry.setZMTypeFromSubGeometry" title="Permalink to this definition">¶</a></dt>
 <dd><p>Updates the geometry type based on whether sub geometries contain z or m values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>subggeom</strong> (<a class="reference internal" href="#qgis.core.QgsAbstractGeometry" title="qgis.core.QgsAbstractGeometry"><em>QgsAbstractGeometry</em></a>) – </p></li>
+<li><p><strong>baseGeomType</strong> (<a class="reference internal" href="QgsWkbTypes.html#qgis.core.QgsWkbTypes.Type" title="qgis.core.QgsWkbTypes.Type"><em>QgsWkbTypes.Type</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2625,16 +2864,21 @@ In this case, it can be thought like rounding the x and y of all the points/vert
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>hSpacing</strong> – Horizontal spacing of the grid (x axis). 0 to disable.</p></li>
-<li><p><strong>vSpacing</strong> – Vertical spacing of the grid (y axis). 0 to disable.</p></li>
-<li><p><strong>dSpacing</strong> – Depth spacing of the grid (z axis). 0 (default) to disable.</p></li>
-<li><p><strong>mSpacing</strong> – Custom dimension spacing of the grid (m axis). 0 (default) to disable.</p></li>
+<li><p><strong>hSpacing</strong> (<em>float</em>) – Horizontal spacing of the grid (x axis). 0 to disable.</p></li>
+<li><p><strong>vSpacing</strong> (<em>float</em>) – Vertical spacing of the grid (y axis). 0 to disable.</p></li>
+<li><p><strong>dSpacing</strong> (<em>float = 0</em>) – Depth spacing of the grid (z axis). 0 (default) to disable.</p></li>
+<li><p><strong>mSpacing</strong> (<em>float = 0</em>) – Custom dimension spacing of the grid (m axis). 0 (default) to disable.</p></li>
 </ul>
 </dd>
 </dl>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#qgis.core.QgsAbstractGeometry" title="qgis.core.QgsAbstractGeometry">QgsAbstractGeometry</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="attribute">
@@ -2657,11 +2901,14 @@ coordinates reversed.</p>
 <dt id="qgis.core.QgsAbstractGeometry.toCurveType">
 <code class="sig-name descname">toCurveType</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QgsAbstractGeometry<a class="headerlink" href="#qgis.core.QgsAbstractGeometry.toCurveType" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the geometry converted to the more generic curve type.
-E.g. <a class="reference internal" href="QgsLineString.html#module-QgsLineString" title="QgsLineString"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsLineString</span></code></a> -&gt; <a class="reference internal" href="QgsCompoundCurve.html#module-QgsCompoundCurve" title="QgsCompoundCurve"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsCompoundCurve</span></code></a>, <a class="reference internal" href="QgsPolygon.html#module-QgsPolygon" title="QgsPolygon"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsPolygon</span></code></a> -&gt; QgsCurvePolygon,
+E.g. <a class="reference internal" href="QgsLineString.html#module-QgsLineString" title="QgsLineString"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsLineString</span></code></a> -&gt; <a class="reference internal" href="QgsCompoundCurve.html#module-QgsCompoundCurve" title="QgsCompoundCurve"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsCompoundCurve</span></code></a>, <a class="reference internal" href="QgsPolygon.html#module-QgsPolygon" title="QgsPolygon"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsPolygon</span></code></a> -&gt; <a class="reference internal" href="QgsCurvePolygon.html#qgis.core.QgsCurvePolygon" title="qgis.core.QgsCurvePolygon"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsCurvePolygon</span></code></a>,
 <a class="reference internal" href="QgsMultiLineString.html#module-QgsMultiLineString" title="QgsMultiLineString"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMultiLineString</span></code></a> -&gt; <a class="reference internal" href="QgsMultiCurve.html#module-QgsMultiCurve" title="QgsMultiCurve"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMultiCurve</span></code></a>, <a class="reference internal" href="QgsMultiPolygon.html#module-QgsMultiPolygon" title="QgsMultiPolygon"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMultiPolygon</span></code></a> -&gt; <a class="reference internal" href="QgsMultiSurface.html#module-QgsMultiSurface" title="QgsMultiSurface"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMultiSurface</span></code></a></p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>the converted geometry. Caller takes ownership</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#qgis.core.QgsAbstractGeometry" title="qgis.core.QgsAbstractGeometry">QgsAbstractGeometry</a></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the converted geometry. Caller takes ownership</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2673,9 +2920,9 @@ E.g. <a class="reference internal" href="QgsLineString.html#module-QgsLineString
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>ct</strong> – coordinate transform</p></li>
-<li><p><strong>d</strong> – transformation direction</p></li>
-<li><p><strong>transformZ</strong> – set to <code class="docutils literal notranslate"><span class="pre">True</span></code> to also transform z coordinates. This requires that
+<li><p><strong>ct</strong> (<a class="reference internal" href="QgsCoordinateTransform.html#qgis.core.QgsCoordinateTransform" title="qgis.core.QgsCoordinateTransform"><em>QgsCoordinateTransform</em></a>) – coordinate transform</p></li>
+<li><p><strong>d</strong> (<em>QgsCoordinateTransform.TransformDirection = QgsCoordinateTransform.ForwardTransform</em>) – transformation direction</p></li>
+<li><p><strong>transformZ</strong> (<em>bool = False</em>) – set to <code class="docutils literal notranslate"><span class="pre">True</span></code> to also transform z coordinates. This requires that
 the z coordinates in the geometry represent height relative to the vertical datum
 of the source CRS (generally ellipsoidal heights) and are expressed in its vertical
 units (generally meters). If <code class="docutils literal notranslate"><span class="pre">False</span></code>, then z coordinates will not be changed by the
@@ -2697,10 +2944,13 @@ segments, and can be pictured as the orientation of a line following the curvatu
 geometry at the specified vertex.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>vertex</strong> – the vertex id</p>
+<dd class="field-odd"><p><strong>vertex</strong> (<a class="reference internal" href="QgsVertexId.html#qgis.core.QgsVertexId" title="qgis.core.QgsVertexId"><em>QgsVertexId</em></a>) – the vertex id</p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>rotation in radians, clockwise from north</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>float</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>rotation in radians, clockwise from north</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2709,12 +2959,31 @@ geometry at the specified vertex.</p>
 <dt id="qgis.core.QgsAbstractGeometry.vertexAt">
 <code class="sig-name descname">vertexAt</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">id: QgsVertexId</em><span class="sig-paren">)</span> &#x2192; QgsPoint<a class="headerlink" href="#qgis.core.QgsAbstractGeometry.vertexAt" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the point corresponding to a specified vertex id</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>id</strong> (<a class="reference internal" href="QgsVertexId.html#qgis.core.QgsVertexId" title="qgis.core.QgsVertexId"><em>QgsVertexId</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint">QgsPoint</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsAbstractGeometry.vertexCount">
 <code class="sig-name descname">vertexCount</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">part: int = 0</em>, <em class="sig-param">ring: int = 0</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#qgis.core.QgsAbstractGeometry.vertexCount" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the number of vertices of which this geometry is built.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>part</strong> (<em>int = 0</em>) – </p></li>
+<li><p><strong>ring</strong> (<em>int = 0</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2727,6 +2996,14 @@ to the first vertex.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>id</strong> (<a class="reference internal" href="QgsVertexId.html#qgis.core.QgsVertexId" title="qgis.core.QgsVertexId"><em>QgsVertexId</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2759,6 +3036,11 @@ modified using the iterator. See transformVertices() for a safe method to modify
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsVertexIterator.html#qgis.core.QgsVertexIterator" title="qgis.core.QgsVertexIterator">QgsVertexIterator</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2773,6 +3055,11 @@ modified using the iterator. See transformVertices() for a safe method to modify
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsAbstractGeometry.wktTypeStr" title="qgis.core.QgsAbstractGeometry.wktTypeStr"><code class="xref py py-func docutils literal notranslate"><span class="pre">wktTypeStr()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsWkbTypes.html#qgis.core.QgsWkbTypes.Type" title="qgis.core.QgsWkbTypes.Type">QgsWkbTypes.Type</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2787,6 +3074,11 @@ modified using the iterator. See transformVertices() for a safe method to modify
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsAbstractGeometry.wkbType" title="qgis.core.QgsAbstractGeometry.wkbType"><code class="xref py py-func docutils literal notranslate"><span class="pre">wkbType()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -2805,7 +3097,7 @@ modified using the iterator. See transformVertices() for a safe method to modify
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 10:58 Oct 14, 2019.
+        Last updated on 15:06 Oct 15, 2019.
       </span>
 
     </p>
@@ -2832,20 +3124,20 @@ modified using the iterator. See transformVertices() for a safe method to modify
     <div class="rst-other-versions">
       <dl>
         <dt>Versions</dt>
-      
-        <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
-      
-    </dl>
+        
+          <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
+        
+      </dl>
       
       
     </div>

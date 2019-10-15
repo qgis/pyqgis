@@ -122,7 +122,6 @@
 <li class="toctree-l2"><a class="reference internal" href="PROJECT_SCALES.html">Class: PROJECT_SCALES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PluginLayer.html">Class: PluginLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ProjectDirtyBlocker.html">Class: ProjectDirtyBlocker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="PyProviderMetadata.html">Class: PyProviderMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgis.html">Class: Qgis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs25DRenderer.html">Class: Qgs25DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs3DRendererAbstractMetadata.html">Class: Qgs3DRendererAbstractMetadata</a></li>
@@ -1546,8 +1545,6 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/core/QgsHistogram.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -1566,7 +1563,7 @@
 <em class="property">class </em><code class="sig-prename descclassname">qgis.core.</code><code class="sig-name descname">QgsHistogram</code><a class="headerlink" href="#qgis.core.QgsHistogram" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sip.wrapper</span></code></p>
 <p>Constructor for QgsHistogram.</p>
-<p>QgsHistogram(QgsHistogram)</p>
+<p>QgsHistogram(<a class="reference internal" href="#qgis.core.QgsHistogram" title="qgis.core.QgsHistogram"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsHistogram</span></code></a>)</p>
 <p>Calculator for a numeric histogram from a list of values.</p>
 <div class="versionadded">
 <table class="longtable docutils align-default">
@@ -1625,10 +1622,13 @@
 will be length bins + 1, as both the first and last value are also included.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>bins</strong> – number of bins</p>
+<dd class="field-odd"><p><strong>bins</strong> (<em>int</em>) – number of bins</p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>list of bin edges</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>List[float]</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>list of bin edges</p>
 </dd>
 </dl>
 <div class="admonition note">
@@ -1643,10 +1643,13 @@ will be length bins + 1, as both the first and last value are also included.</p>
 <dd><p>Returns the calculated list of the counts for the histogram bins.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>bins</strong> – number of histogram bins</p>
+<dd class="field-odd"><p><strong>bins</strong> (<em>int</em>) – number of histogram bins</p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>list of histogram counts</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>List[int]</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>list of histogram counts</p>
 </dd>
 </dl>
 <div class="admonition note">
@@ -1661,8 +1664,11 @@ will be length bins + 1, as both the first and last value are also included.</p>
 <dd><p>Calculates the optimal bin width using the Freedman-Diaconis rule. Bins widths are
 determined by the inter-quartile range of values and the number of values.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>optimal width for bins</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>optimal width for bins</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -1682,8 +1688,11 @@ determined by the inter-quartile range of values and the number of values.</p>
 Freedman-Diaconis rule. The number of bins are determined by the inter-quartile range
 of values and the number of values.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>optimal number of bins</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>optimal number of bins</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -1702,10 +1711,10 @@ of values and the number of values.</p>
 <dd><p>Assigns numeric source values for the histogram.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>values</strong> – list of doubles</p>
+<dd class="field-odd"><p><strong>values</strong> (<em>Iterable</em><em>[</em><em>float</em><em>]</em>) – list of doubles</p>
 </dd>
 </dl>
-<p>setValues(self, layer: QgsVectorLayer, fieldOrExpression: str, feedback: QgsFeedback = None) -&gt; bool
+<p>setValues(self, layer: <a class="reference internal" href="QgsVectorLayer.html#qgis.core.QgsVectorLayer" title="qgis.core.QgsVectorLayer"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsVectorLayer</span></code></a>, fieldOrExpression: str, feedback: <a class="reference internal" href="QgsFeedback.html#qgis.core.QgsFeedback" title="qgis.core.QgsFeedback"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsFeedback</span></code></a> = None) -&gt; bool
 Assigns numeric source values for the histogram from a vector layer’s field or as the
 result of an expression.</p>
 <dl class="field-list simple">
@@ -1738,7 +1747,7 @@ result of an expression.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 10:58 Oct 14, 2019.
+        Last updated on 15:06 Oct 15, 2019.
       </span>
 
     </p>
@@ -1765,20 +1774,20 @@ result of an expression.</p>
     <div class="rst-other-versions">
       <dl>
         <dt>Versions</dt>
-      
-        <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
-      
-    </dl>
+        
+          <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
+        
+      </dl>
       
       
     </div>

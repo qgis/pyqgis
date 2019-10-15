@@ -122,7 +122,6 @@
 <li class="toctree-l2"><a class="reference internal" href="PROJECT_SCALES.html">Class: PROJECT_SCALES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PluginLayer.html">Class: PluginLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ProjectDirtyBlocker.html">Class: ProjectDirtyBlocker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="PyProviderMetadata.html">Class: PyProviderMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgis.html">Class: Qgis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs25DRenderer.html">Class: Qgs25DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs3DRendererAbstractMetadata.html">Class: Qgs3DRendererAbstractMetadata</a></li>
@@ -1546,8 +1545,6 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/core/QgsImageOperation.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -1735,11 +1732,11 @@ on which is faster for the particular operation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>image</strong> – QImage to alter</p></li>
-<li><p><strong>brightness</strong> – brightness value, in the range -255 to 255. A brightness value of 0 indicates
+<li><p><strong>image</strong> (<em>QImage</em>) – QImage to alter</p></li>
+<li><p><strong>brightness</strong> (<em>int</em>) – brightness value, in the range -255 to 255. A brightness value of 0 indicates
 no change to brightness, a negative value will darken the image, and a positive value will brighten
 the image.</p></li>
-<li><p><strong>contrast</strong> – contrast value. Must be a positive or zero value. A value of 1.0 indicates no change
+<li><p><strong>contrast</strong> (<em>float</em>) – contrast value. Must be a positive or zero value. A value of 1.0 indicates no change
 to the contrast, a value of 0 represents an image with 0 contrast, and a value &gt; 1.0 will increase the
 contrast of the image.</p></li>
 </ul>
@@ -1754,11 +1751,11 @@ contrast of the image.</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>image</strong> – QImage to alter</p></li>
-<li><p><strong>saturation</strong> – double between 0 and 2 inclusive, where 0 = desaturate and 1.0 = no change</p></li>
-<li><p><strong>colorizeColor</strong> – color to use for colorizing image. Set to an invalid QColor to disable
+<li><p><strong>image</strong> (<em>QImage</em>) – QImage to alter</p></li>
+<li><p><strong>saturation</strong> (<em>float</em>) – double between 0 and 2 inclusive, where 0 = desaturate and 1.0 = no change</p></li>
+<li><p><strong>colorizeColor</strong> (<em>Union</em><em>[</em><em>QColor</em>) – color to use for colorizing image. Set to an invalid QColor to disable
 colorization.</p></li>
-<li><p><strong>colorizeStrength</strong> – double between 0 and 1, where 0 = no colorization and 1.0 = full colorization</p></li>
+<li><p><strong>colorizeStrength</strong> (<em>float = 1</em>) – double between 0 and 1, where 0 = no colorization and 1.0 = full colorization</p></li>
 </ul>
 </dd>
 </dl>
@@ -1771,8 +1768,8 @@ colorization.</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>image</strong> – QImage to convert</p></li>
-<li><p><strong>mode</strong> – mode to use during grayscale conversion</p></li>
+<li><p><strong>image</strong> (<em>QImage</em>) – QImage to convert</p></li>
+<li><p><strong>mode</strong> (<em>QgsImageOperation.GrayscaleMode = QgsImageOperation.GrayscaleLuminosity</em>) – mode to use during grayscale conversion</p></li>
 </ul>
 </dd>
 </dl>
@@ -1785,17 +1782,22 @@ colorization.</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>image</strong> – source image</p></li>
-<li><p><strong>minSize</strong> – minimum size for cropped image, if desired. If the
+<li><p><strong>image</strong> (<em>QImage</em>) – source image</p></li>
+<li><p><strong>minSize</strong> (<em>QSize = QSize</em><em>(</em><em>)</em>) – minimum size for cropped image, if desired. If the
 cropped image is smaller than the minimum size, it will be centered
 in the returned image.</p></li>
-<li><p><strong>center</strong> – cropped image will be centered on the center of the original image if set to <code class="docutils literal notranslate"><span class="pre">True</span></code></p></li>
+<li><p><strong>center</strong> (<em>bool = False</em>) – cropped image will be centered on the center of the original image if set to <code class="docutils literal notranslate"><span class="pre">True</span></code></p></li>
 </ul>
 </dd>
 </dl>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 2.9.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>QImage</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1806,8 +1808,8 @@ using a color ramp.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>image</strong> – QImage to alter</p></li>
-<li><p><strong>properties</strong> – DistanceTransformProperties object with parameters
+<li><p><strong>image</strong> (<em>QImage</em>) – QImage to alter</p></li>
+<li><p><strong>properties</strong> (<a class="reference internal" href="#qgis.core.QgsImageOperation.DistanceTransformProperties" title="qgis.core.QgsImageOperation.DistanceTransformProperties"><em>QgsImageOperation.DistanceTransformProperties</em></a>) – DistanceTransformProperties object with parameters
 for the distance transform operation</p></li>
 </ul>
 </dd>
@@ -1821,8 +1823,8 @@ for the distance transform operation</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>image</strong> – QImage to flip</p></li>
-<li><p><strong>type</strong> – type of flip to perform (horizontal or vertical)</p></li>
+<li><p><strong>image</strong> (<em>QImage</em>) – QImage to flip</p></li>
+<li><p><strong>type</strong> (<a class="reference internal" href="#qgis.core.QgsImageOperation.FlipType" title="qgis.core.QgsImageOperation.FlipType"><em>QgsImageOperation.FlipType</em></a>) – type of flip to perform (horizontal or vertical)</p></li>
 </ul>
 </dd>
 </dl>
@@ -1836,12 +1838,15 @@ quality blur.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>image</strong> – QImage to blur</p></li>
-<li><p><strong>radius</strong> – blur radius in pixels</p></li>
+<li><p><strong>image</strong> (<em>QImage</em>) – QImage to blur</p></li>
+<li><p><strong>radius</strong> (<em>int</em>) – blur radius in pixels</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>blurred image</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>QImage</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>blurred image</p>
 </dd>
 </dl>
 <div class="admonition note">
@@ -1857,8 +1862,8 @@ quality blur.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>image</strong> – QImage to alter</p></li>
-<li><p><strong>factor</strong> – factor to multiple pixel’s opacity by</p></li>
+<li><p><strong>image</strong> (<em>QImage</em>) – QImage to alter</p></li>
+<li><p><strong>factor</strong> (<em>float</em>) – factor to multiple pixel’s opacity by</p></li>
 </ul>
 </dd>
 </dl>
@@ -1871,11 +1876,11 @@ quality blur.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>image</strong> – source image</p></li>
-<li><p><strong>minSize</strong> – minimum size for returned region, if desired. If the
+<li><p><strong>image</strong> (<em>QImage</em>) – source image</p></li>
+<li><p><strong>minSize</strong> (<em>QSize = QSize</em><em>(</em><em>)</em>) – minimum size for returned region, if desired. If the
 non-transparent region of the image is smaller than this minimum size,
 it will be centered in the returned rectangle.</p></li>
-<li><p><strong>center</strong> – return rectangle will be centered on the center of the original image if set to <code class="docutils literal notranslate"><span class="pre">True</span></code></p></li>
+<li><p><strong>center</strong> (<em>bool = False</em>) – return rectangle will be centered on the center of the original image if set to <code class="docutils literal notranslate"><span class="pre">True</span></code></p></li>
 </ul>
 </dd>
 </dl>
@@ -1886,6 +1891,11 @@ it will be centered in the returned rectangle.</p></li>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 2.9.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>QRect</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1896,8 +1906,8 @@ original image, but replaces all image pixel colors with the specified color.</p
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>image</strong> – QImage to alter</p></li>
-<li><p><strong>color</strong> – color to overlay (any alpha component of the color is ignored)</p></li>
+<li><p><strong>image</strong> (<em>QImage</em>) – QImage to alter</p></li>
+<li><p><strong>color</strong> (<em>Union</em><em>[</em><em>QColor</em>) – color to overlay (any alpha component of the color is ignored)</p></li>
 </ul>
 </dd>
 </dl>
@@ -1911,9 +1921,9 @@ speed and blur quality.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>image</strong> – QImage to blur</p></li>
-<li><p><strong>radius</strong> – blur radius in pixels, maximum value of 16</p></li>
-<li><p><strong>alphaOnly</strong> – set to <code class="docutils literal notranslate"><span class="pre">True</span></code> to blur only the alpha component of the image</p></li>
+<li><p><strong>image</strong> (<em>QImage</em>) – QImage to blur</p></li>
+<li><p><strong>radius</strong> (<em>int</em>) – blur radius in pixels, maximum value of 16</p></li>
+<li><p><strong>alphaOnly</strong> (<em>bool = False</em>) – set to <code class="docutils literal notranslate"><span class="pre">True</span></code> to blur only the alpha component of the image</p></li>
 </ul>
 </dd>
 </dl>
@@ -1940,7 +1950,7 @@ alphaOnly is set to <code class="docutils literal notranslate"><span class="pre"
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 10:58 Oct 14, 2019.
+        Last updated on 15:06 Oct 15, 2019.
       </span>
 
     </p>
@@ -1967,20 +1977,20 @@ alphaOnly is set to <code class="docutils literal notranslate"><span class="pre"
     <div class="rst-other-versions">
       <dl>
         <dt>Versions</dt>
-      
-        <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
-      
-    </dl>
+        
+          <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
+        
+      </dl>
       
       
     </div>

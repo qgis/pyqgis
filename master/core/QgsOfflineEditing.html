@@ -122,7 +122,6 @@
 <li class="toctree-l2"><a class="reference internal" href="PROJECT_SCALES.html">Class: PROJECT_SCALES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PluginLayer.html">Class: PluginLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ProjectDirtyBlocker.html">Class: ProjectDirtyBlocker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="PyProviderMetadata.html">Class: PyProviderMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgis.html">Class: Qgis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs25DRenderer.html">Class: Qgs25DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs3DRendererAbstractMetadata.html">Class: Qgs3DRendererAbstractMetadata</a></li>
@@ -1546,8 +1545,6 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/core/QgsOfflineEditing.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -1757,12 +1754,15 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>offlineDataPath</strong> – Path to offline db file</p></li>
-<li><p><strong>offlineDbFile</strong> – Offline db file name</p></li>
-<li><p><strong>layerIds</strong> – List of layer names to convert</p></li>
-<li><p><strong>onlySelected</strong> – Only copy selected features from layers where a selection is present</p></li>
-<li><p><strong>containerType</strong> – defines the SQLite file container type like SpatiaLite or GPKG</p></li>
+<li><p><strong>offlineDataPath</strong> (<em>str</em>) – Path to offline db file</p></li>
+<li><p><strong>offlineDbFile</strong> (<em>str</em>) – Offline db file name</p></li>
+<li><p><strong>layerIds</strong> (<em>Iterable</em><em>[</em><em>str</em><em>]</em>) – List of layer names to convert</p></li>
+<li><p><strong>onlySelected</strong> (<em>bool = False</em>) – Only copy selected features from layers where a selection is present</p></li>
+<li><p><strong>containerType</strong> (<em>QgsOfflineEditing.ContainerType = QgsOfflineEditing.SpatiaLite</em>) – defines the SQLite file container type like SpatiaLite or GPKG</p></li>
 </ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1781,6 +1781,11 @@
 <dt id="qgis.core.QgsOfflineEditing.isOfflineProject">
 <code class="sig-name descname">isOfflineProject</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsOfflineEditing.isOfflineProject" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if current project is offline</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1795,6 +1800,14 @@
 It is possible to estimate the progress of the complete operation by
 comparing the index of the current <code class="docutils literal notranslate"><span class="pre">layer</span></code> to the total amount
 <code class="docutils literal notranslate"><span class="pre">numLayers</span></code>. [signal]</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>layer</strong> (<em>int</em>) – </p></li>
+<li><p><strong>numLayers</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="attribute">
@@ -1805,8 +1818,8 @@ set.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>mode</strong> – progress mode</p></li>
-<li><p><strong>maximum</strong> – total number of entities to process in the current operation [signal]</p></li>
+<li><p><strong>mode</strong> (<a class="reference internal" href="#qgis.core.QgsOfflineEditing.ProgressMode" title="qgis.core.QgsOfflineEditing.ProgressMode"><em>QgsOfflineEditing.ProgressMode</em></a>) – progress mode</p></li>
+<li><p><strong>maximum</strong> (<em>int</em>) – total number of entities to process in the current operation [signal]</p></li>
 </ul>
 </dd>
 </dl>
@@ -1830,7 +1843,7 @@ set.</p>
 <dd><p>Emitted with the progress of the current mode</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>progress</strong> – current index of processed entities [signal]</p>
+<dd class="field-odd"><p><strong>progress</strong> (<em>int</em>) – current index of processed entities [signal]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1868,8 +1881,8 @@ set.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>title</strong> – title string for message</p></li>
-<li><p><strong>message</strong> – A descriptive message for the warning [signal]</p></li>
+<li><p><strong>title</strong> (<em>str</em>) – title string for message</p></li>
+<li><p><strong>message</strong> (<em>str</em>) – A descriptive message for the warning [signal]</p></li>
 </ul>
 </dd>
 </dl>
@@ -1891,7 +1904,7 @@ set.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 10:58 Oct 14, 2019.
+        Last updated on 15:06 Oct 15, 2019.
       </span>
 
     </p>
@@ -1918,20 +1931,20 @@ set.</p>
     <div class="rst-other-versions">
       <dl>
         <dt>Versions</dt>
-      
-        <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
-      
-    </dl>
+        
+          <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
+        
+      </dl>
       
       
     </div>

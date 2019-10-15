@@ -122,7 +122,6 @@
 <li class="toctree-l2"><a class="reference internal" href="PROJECT_SCALES.html">Class: PROJECT_SCALES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PluginLayer.html">Class: PluginLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ProjectDirtyBlocker.html">Class: ProjectDirtyBlocker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="PyProviderMetadata.html">Class: PyProviderMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgis.html">Class: Qgis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs25DRenderer.html">Class: Qgs25DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs3DRendererAbstractMetadata.html">Class: Qgs3DRendererAbstractMetadata</a></li>
@@ -1546,8 +1545,6 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/core/QgsRelation.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -1566,7 +1563,7 @@
 <em class="property">class </em><code class="sig-prename descclassname">qgis.core.</code><code class="sig-name descname">QgsRelation</code><a class="headerlink" href="#qgis.core.QgsRelation" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sip.wrapper</span></code></p>
 <p>Default constructor. Creates an invalid relation.</p>
-<p>QgsRelation(other: QgsRelation)
+<p>QgsRelation(other: <a class="reference internal" href="#qgis.core.QgsRelation" title="qgis.core.QgsRelation"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsRelation</span></code></a>)
 Copies a relation.
 This makes a shallow copy, relations are implicitly shared and only duplicated when the copy is
 changed.</p>
@@ -1614,7 +1611,7 @@ changed.</p>
 <td><p>Creates a request to return all the features on the referencing (child) layer which have a foreign key pointing to the provided feature.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRelation.hasEqualDefinition" title="qgis.core.QgsRelation.hasEqualDefinition"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hasEqualDefinition</span></code></a></p></td>
-<td><p>Compares the two QgsRelation, ignoring the name and the ID.</p></td>
+<td><p>Compares the two <a class="reference internal" href="#qgis.core.QgsRelation" title="qgis.core.QgsRelation"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsRelation</span></code></a>, ignoring the name and the ID.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRelation.id" title="qgis.core.QgsRelation.id"><code class="xref py py-obj docutils literal notranslate"><span class="pre">id</span></code></a></p></td>
 <td><p>A (project-wide) unique id for this relation</p></td>
@@ -1727,8 +1724,8 @@ The second element of each pair are the field names of the matching primary key.
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>referencingField</strong> – The field name on the referencing (child) layer (FK)</p></li>
-<li><p><strong>referencedField</strong> – The field name on the referenced (parent) layer  (PK)</p></li>
+<li><p><strong>referencingField</strong> (<em>str</em>) – The field name on the referencing (child) layer (FK)</p></li>
+<li><p><strong>referencedField</strong> (<em>str</em>) – The field name on the referenced (parent) layer  (PK)</p></li>
 </ul>
 </dd>
 </dl>
@@ -1741,12 +1738,15 @@ The second element of each pair are the field names of the matching primary key.
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>node</strong> – The dom node containing the relation information</p></li>
-<li><p><strong>context</strong> – to pass project translator</p></li>
+<li><p><strong>node</strong> (<em>QDomNode</em>) – The dom node containing the relation information</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsReadWriteContext.html#qgis.core.QgsReadWriteContext" title="qgis.core.QgsReadWriteContext"><em>QgsReadWriteContext</em></a>) – to pass project translator</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>A relation</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#qgis.core.QgsRelation" title="qgis.core.QgsRelation">QgsRelation</a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A relation</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1758,8 +1758,11 @@ The second element of each pair are the field names of the matching primary key.
 The first element of each pair are the field names of the foreign key.
 The second element of each pair are the field names of the matching primary key.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>The fields forming the relation</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Dict[str, str]</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The fields forming the relation</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1780,10 +1783,13 @@ The second element of each pair are the field names of the matching primary key.
 which is referenced by the provided feature.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>feature</strong> – A feature from the referencing (child) layer</p>
+<dd class="field-odd"><p><strong>feature</strong> (<a class="reference internal" href="QgsFeature.html#qgis.core.QgsFeature" title="qgis.core.QgsFeature"><em>QgsFeature</em></a>) – A feature from the referencing (child) layer</p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>A request the referenced feature</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsFeature.html#qgis.core.QgsFeature" title="qgis.core.QgsFeature">QgsFeature</a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A request the referenced feature</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1795,21 +1801,24 @@ which is referenced by the provided feature.</p>
 which is referenced by the provided feature.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>attributes</strong> – An attribute vector containing the foreign key</p>
+<dd class="field-odd"><p><strong>attributes</strong> (<em>object</em>) – An attribute vector containing the foreign key</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>A request the referenced feature</p>
 </dd>
 </dl>
-<p>getReferencedFeatureRequest(self, feature: QgsFeature) -&gt; QgsFeatureRequest
+<p>getReferencedFeatureRequest(self, feature: <a class="reference internal" href="QgsFeature.html#qgis.core.QgsFeature" title="qgis.core.QgsFeature"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsFeature</span></code></a>) -&gt; QgsFeatureRequest
 Creates a request to return the feature on the referenced (parent) layer
 which is referenced by the provided feature.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>feature</strong> – A feature from the referencing (child) layer</p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>A request the referenced feature</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsFeatureRequest.html#qgis.core.QgsFeatureRequest" title="qgis.core.QgsFeatureRequest">QgsFeatureRequest</a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A request the referenced feature</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1821,10 +1830,13 @@ which is referenced by the provided feature.</p>
 which have a foreign key pointing to the provided feature.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>feature</strong> – A feature from the referenced (parent) layer</p>
+<dd class="field-odd"><p><strong>feature</strong> (<a class="reference internal" href="QgsFeature.html#qgis.core.QgsFeature" title="qgis.core.QgsFeature"><em>QgsFeature</em></a>) – A feature from the referenced (parent) layer</p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>An iterator with all the referenced features</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsFeatureIterator.html#qgis.core.QgsFeatureIterator" title="qgis.core.QgsFeatureIterator">QgsFeatureIterator</a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>An iterator with all the referenced features</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -1844,10 +1856,13 @@ which have a foreign key pointing to the provided feature.</p>
 which have a foreign key pointing to the provided feature.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>feature</strong> – A feature from the referenced (parent) layer</p>
+<dd class="field-odd"><p><strong>feature</strong> (<a class="reference internal" href="QgsFeature.html#qgis.core.QgsFeature" title="qgis.core.QgsFeature"><em>QgsFeature</em></a>) – A feature from the referenced (parent) layer</p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>expression filter string for all the referencing features</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>expression filter string for all the referencing features</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -1870,10 +1885,13 @@ which have a foreign key pointing to the provided feature.</p>
 which have a foreign key pointing to the provided feature.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>feature</strong> – A feature from the referenced (parent) layer</p>
+<dd class="field-odd"><p><strong>feature</strong> (<a class="reference internal" href="QgsFeature.html#qgis.core.QgsFeature" title="qgis.core.QgsFeature"><em>QgsFeature</em></a>) – A feature from the referenced (parent) layer</p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>A request for all the referencing features</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsFeatureRequest.html#qgis.core.QgsFeatureRequest" title="qgis.core.QgsFeatureRequest">QgsFeatureRequest</a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A request for all the referencing features</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -1889,13 +1907,16 @@ which have a foreign key pointing to the provided feature.</p>
 <dl class="method">
 <dt id="qgis.core.QgsRelation.hasEqualDefinition">
 <code class="sig-name descname">hasEqualDefinition</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">other: QgsRelation</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsRelation.hasEqualDefinition" title="Permalink to this definition">¶</a></dt>
-<dd><p>Compares the two QgsRelation, ignoring the name and the ID.</p>
+<dd><p>Compares the two <a class="reference internal" href="#qgis.core.QgsRelation" title="qgis.core.QgsRelation"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsRelation</span></code></a>, ignoring the name and the ID.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>other</strong> – The other relation</p>
+<dd class="field-odd"><p><strong>other</strong> (<a class="reference internal" href="#qgis.core.QgsRelation" title="qgis.core.QgsRelation"><em>QgsRelation</em></a>) – The other relation</p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if they are similar</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if they are similar</p>
 </dd>
 </dl>
 <div class="versionadded">
@@ -1908,8 +1929,11 @@ which have a foreign key pointing to the provided feature.</p>
 <code class="sig-name descname">id</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.core.QgsRelation.id" title="Permalink to this definition">¶</a></dt>
 <dd><p>A (project-wide) unique id for this relation</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>The id</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The id</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1920,8 +1944,11 @@ which have a foreign key pointing to the provided feature.</p>
 <dd><p>Returns the validity of this relation. Don’t use the information if it’s not valid.
 A relation is considered valid if both referenced and referencig layers are valid.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the relation is valid</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the relation is valid</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1935,8 +1962,11 @@ A relation is considered valid if both referenced and referencig layers are vali
 <p><a class="reference internal" href="#qgis.core.QgsRelation.id" title="qgis.core.QgsRelation.id"><code class="xref py py-func docutils literal notranslate"><span class="pre">id()</span></code></a></p>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>A name</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A name</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1947,8 +1977,11 @@ A relation is considered valid if both referenced and referencig layers are vali
 <dd><p>Returns a list of attributes used to form the referenced fields
 (most likely primary key) on the referenced (parent) layer.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>A list of attributes</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List[int]</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A list of attributes</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1958,8 +1991,11 @@ A relation is considered valid if both referenced and referencig layers are vali
 <code class="sig-name descname">referencedLayer</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QgsVectorLayer<a class="headerlink" href="#qgis.core.QgsRelation.referencedLayer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Access the referenced (parent) layer</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>referenced layer</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsVectorLayer.html#qgis.core.QgsVectorLayer" title="qgis.core.QgsVectorLayer">QgsVectorLayer</a></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>referenced layer</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1969,8 +2005,11 @@ A relation is considered valid if both referenced and referencig layers are vali
 <code class="sig-name descname">referencedLayerId</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.core.QgsRelation.referencedLayerId" title="Permalink to this definition">¶</a></dt>
 <dd><p>Access the referenced (parent) layer’s id</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>The id of the referenced layer</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The id of the referenced layer</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1981,8 +2020,11 @@ A relation is considered valid if both referenced and referencig layers are vali
 <dd><p>Returns a list of attributes used to form the referencing fields
 (foreign key) on the referencing (child) layer.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>A list of attributes</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List[int]</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A list of attributes</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1993,8 +2035,11 @@ A relation is considered valid if both referenced and referencig layers are vali
 <dd><p>Access the referencing (child) layer
 This is the layer which has the field(s) which point to another layer</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>The referencing layer</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsVectorLayer.html#qgis.core.QgsVectorLayer" title="qgis.core.QgsVectorLayer">QgsVectorLayer</a></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The referencing layer</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2005,8 +2050,11 @@ This is the layer which has the field(s) which point to another layer</p>
 <dd><p>Access the referencing (child) layer’s id
 This is the layer which has the field(s) which point to another layer</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>The id of the referencing layer</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The id of the referencing layer</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2018,6 +2066,14 @@ This is the layer which has the field(s) which point to another layer</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>referencingField</strong> (<em>str</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2027,30 +2083,58 @@ This is the layer which has the field(s) which point to another layer</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>referencedField</strong> (<em>str</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsRelation.setId">
 <code class="sig-name descname">setId</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">id: str</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsRelation.setId" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set an id for this relation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>str</em>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsRelation.setName">
 <code class="sig-name descname">setName</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">name: str</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsRelation.setName" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set a name for this relation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsRelation.setReferencedLayer">
 <code class="sig-name descname">setReferencedLayer</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">id: str</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsRelation.setReferencedLayer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the referenced (parent) layer id. This layer will be searched in the registry.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>str</em>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsRelation.setReferencingLayer">
 <code class="sig-name descname">setReferencingLayer</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">id: str</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsRelation.setReferencingLayer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the referencing (child) layer id. This layer will be searched in the registry.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>str</em>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2060,6 +2144,11 @@ This is the layer which has the field(s) which point to another layer</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>strength</strong> (<a class="reference internal" href="#qgis.core.QgsRelation.RelationStrength" title="qgis.core.QgsRelation.RelationStrength"><em>QgsRelation.RelationStrength</em></a>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="attribute">
@@ -2072,8 +2161,11 @@ This is the layer which has the field(s) which point to another layer</p>
 <code class="sig-name descname">strength</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QgsRelation.RelationStrength<a class="headerlink" href="#qgis.core.QgsRelation.strength" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the relation strength as a string</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>strength</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#qgis.core.QgsRelation.RelationStrength" title="qgis.core.QgsRelation.RelationStrength">QgsRelation.RelationStrength</a></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>strength</p>
 </dd>
 </dl>
 <div class="versionadded">
@@ -2098,8 +2190,8 @@ Will be called internally whenever a member is changed.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>node</strong> – The parent node in which the relation will be created</p></li>
-<li><p><strong>doc</strong> – The document in which the relation will be saved</p></li>
+<li><p><strong>node</strong> (<em>QDomNode</em>) – The parent node in which the relation will be created</p></li>
+<li><p><strong>doc</strong> (<em>QDomDocument</em>) – The document in which the relation will be saved</p></li>
 </ul>
 </dd>
 </dl>
@@ -2121,7 +2213,7 @@ Will be called internally whenever a member is changed.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 10:58 Oct 14, 2019.
+        Last updated on 15:06 Oct 15, 2019.
       </span>
 
     </p>
@@ -2148,20 +2240,20 @@ Will be called internally whenever a member is changed.</p>
     <div class="rst-other-versions">
       <dl>
         <dt>Versions</dt>
-      
-        <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
-      
-    </dl>
+        
+          <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
+        
+      </dl>
       
       
     </div>

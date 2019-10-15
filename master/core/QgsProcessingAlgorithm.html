@@ -122,7 +122,6 @@
 <li class="toctree-l2"><a class="reference internal" href="PROJECT_SCALES.html">Class: PROJECT_SCALES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PluginLayer.html">Class: PluginLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ProjectDirtyBlocker.html">Class: ProjectDirtyBlocker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="PyProviderMetadata.html">Class: PyProviderMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgis.html">Class: Qgis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs25DRenderer.html">Class: Qgs25DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs3DRendererAbstractMetadata.html">Class: Qgs3DRendererAbstractMetadata</a></li>
@@ -1546,8 +1545,6 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/core/QgsProcessingAlgorithm.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -1710,7 +1707,7 @@ a pre-initialized copy of the algorithm.</p>
 <td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a file/folder name.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingAlgorithm.parameterAsFileList" title="qgis.core.QgsProcessingAlgorithm.parameterAsFileList"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsFileList</span></code></a></p></td>
-<td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a list of files (for QgsProcessingParameterMultipleLayers in QgsProcessing:TypeFile mode).</p></td>
+<td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a list of files (for <a class="reference internal" href="QgsProcessingParameterMultipleLayers.html#qgis.core.QgsProcessingParameterMultipleLayers" title="qgis.core.QgsProcessingParameterMultipleLayers"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingParameterMultipleLayers</span></code></a> in QgsProcessing:TypeFile mode).</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingAlgorithm.parameterAsFileOutput" title="qgis.core.QgsProcessingAlgorithm.parameterAsFileOutput"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsFileOutput</span></code></a></p></td>
 <td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a file based output destination.</p></td>
@@ -1954,6 +1951,14 @@ See the notes in addParameter() for a description of when this occurs.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsProcessingAlgorithm.initAlgorithm" title="qgis.core.QgsProcessingAlgorithm.initAlgorithm"><code class="xref py py-func docutils literal notranslate"><span class="pre">initAlgorithm()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>outputDefinition</strong> (<a class="reference internal" href="QgsProcessingOutputDefinition.html#qgis.core.QgsProcessingOutputDefinition" title="qgis.core.QgsProcessingOutputDefinition"><em>QgsProcessingOutputDefinition</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1965,7 +1970,7 @@ as a result of a duplicate name).</p>
 <p>This should usually be called from a subclass’ initAlgorithm() implementation.</p>
 <p>If the <code class="docutils literal notranslate"><span class="pre">createOutput</span></code> argument is <code class="docutils literal notranslate"><span class="pre">True</span></code>, then a corresponding output definition will also be created
 (and added to the algorithm) where appropriate. E.g. when adding a <a class="reference internal" href="QgsProcessingParameterVectorDestination.html#module-QgsProcessingParameterVectorDestination" title="QgsProcessingParameterVectorDestination"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingParameterVectorDestination</span></code></a>
-and <code class="docutils literal notranslate"><span class="pre">createOutput</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code>, then a QgsProcessingOutputVectorLayer output will be created and
+and <code class="docutils literal notranslate"><span class="pre">createOutput</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code>, then a <a class="reference internal" href="QgsProcessingOutputVectorLayer.html#qgis.core.QgsProcessingOutputVectorLayer" title="qgis.core.QgsProcessingOutputVectorLayer"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingOutputVectorLayer</span></code></a> output will be created and
 added to the algorithm. There is no need to call addOutput() to manually add a corresponding output
 for this vector. If <code class="docutils literal notranslate"><span class="pre">createOutput</span></code> is <code class="docutils literal notranslate"><span class="pre">False</span></code> then this automatic output creation will not
 occur.</p>
@@ -1977,6 +1982,17 @@ occur.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsProcessingAlgorithm.addOutput" title="qgis.core.QgsProcessingAlgorithm.addOutput"><code class="xref py py-func docutils literal notranslate"><span class="pre">addOutput()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parameterDefinition</strong> (<a class="reference internal" href="QgsProcessingParameterDefinition.html#qgis.core.QgsProcessingParameterDefinition" title="qgis.core.QgsProcessingParameterDefinition"><em>QgsProcessingParameterDefinition</em></a>) – </p></li>
+<li><p><strong>createOutput</strong> (<em>bool = True</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1986,6 +2002,17 @@ occur.</p>
 using the specified <code class="docutils literal notranslate"><span class="pre">parameters</span></code>.</p>
 <p>Algorithms which cannot be run from a Python command should return an empty
 string.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parameters</strong> (<em>Dict</em><em>[</em><em>str</em>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsProcessingContext.html#qgis.core.QgsProcessingContext" title="qgis.core.QgsProcessingContext"><em>QgsProcessingContext</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1995,6 +2022,11 @@ string.</p>
 here to indicate that they are not able to execute, e.g. as a result of unmet
 external dependencies. If specified, the <code class="docutils literal notranslate"><span class="pre">errorMessage</span></code> argument will be filled
 with a localised error message describing why the algorithm cannot execute.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Tuple[bool, str]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2005,8 +2037,17 @@ of this algorithm in the supplied <code class="docutils literal notranslate"><sp
 filled with explanatory text if validation fails.
 Overridden implementations should also check this base class implementation.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if parameters are acceptable for the algorithm.</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Tuple[bool, str]</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if parameters are acceptable for the algorithm.</p>
+</dd>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parameters</strong> (<em>Dict</em><em>[</em><em>str</em>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsProcessingContext.html#qgis.core.QgsProcessingContext" title="qgis.core.QgsProcessingContext"><em>QgsProcessingContext</em></a>) – </p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -2016,6 +2057,11 @@ Overridden implementations should also check this base class implementation.</p>
 <code class="sig-name descname">countVisibleParameters</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#qgis.core.QgsProcessingAlgorithm.countVisibleParameters" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the number of visible (non-hidden) parameters defined by this
 algorithm.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2029,12 +2075,20 @@ to the algorithm, allowing it to dynamically adjust its initialized parameters
 and outputs according to this configuration. This is generally used only for
 algorithms in a model, allowing them to adjust their behavior at run time
 according to some user configuration.</p>
-<p>Raises a QgsProcessingException if a new algorithm instance could not be created,
+<p>Raises a <a class="reference internal" href="QgsProcessingException.html#qgis.core.QgsProcessingException" title="qgis.core.QgsProcessingException"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingException</span></code></a> if a new algorithm instance could not be created,
 e.g. if there is an issue with the subclass’ createInstance() method.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsProcessingAlgorithm.initAlgorithm" title="qgis.core.QgsProcessingAlgorithm.initAlgorithm"><code class="xref py py-func docutils literal notranslate"><span class="pre">initAlgorithm()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>configuration</strong> (<em>Dict</em><em>[</em><em>str</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#qgis.core.QgsProcessingAlgorithm" title="qgis.core.QgsProcessingAlgorithm">QgsProcessingAlgorithm</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2044,6 +2098,14 @@ e.g. if there is an issue with the subclass’ createInstance() method.</p>
 should be constructed and returned by this method.
 The base class implementation returns <code class="docutils literal notranslate"><span class="pre">None</span></code>, which indicates that an autogenerated
 parameters widget should be used.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>parent</strong> (<em>QWidget = None</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>QWidget</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2052,7 +2114,19 @@ parameters widget should be used.</p>
 <dd><p>Creates an expression context relating to the algorithm. This can be called by algorithms
 to create a new expression context ready for evaluating expressions within the algorithm.
 Optionally, a <code class="docutils literal notranslate"><span class="pre">source</span></code> can be specified which will be used to populate the context if it
-implements the QgsExpressionContextGenerator interface.</p>
+implements the <a class="reference internal" href="QgsExpressionContextGenerator.html#qgis.core.QgsExpressionContextGenerator" title="qgis.core.QgsExpressionContextGenerator"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsExpressionContextGenerator</span></code></a> interface.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parameters</strong> (<em>Dict</em><em>[</em><em>str</em>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsProcessingContext.html#qgis.core.QgsProcessingContext" title="qgis.core.QgsProcessingContext"><em>QgsProcessingContext</em></a>) – </p></li>
+<li><p><strong>source</strong> (<a class="reference internal" href="QgsProcessingFeatureSource.html#qgis.core.QgsProcessingFeatureSource" title="qgis.core.QgsProcessingFeatureSource"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingFeatureSource</span></code></a> = None) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsExpressionContext.html#qgis.core.QgsExpressionContext" title="qgis.core.QgsExpressionContext">QgsExpressionContext</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2060,6 +2134,11 @@ implements the QgsExpressionContextGenerator interface.</p>
 <code class="sig-name descname">createInstance</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QgsProcessingAlgorithm<a class="headerlink" href="#qgis.core.QgsProcessingAlgorithm.createInstance" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates a new instance of the algorithm class.</p>
 <p>This method should return a ‘pristine’ instance of the algorithm class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#qgis.core.QgsProcessingAlgorithm" title="qgis.core.QgsProcessingAlgorithm">QgsProcessingAlgorithm</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2074,6 +2153,11 @@ implements the QgsExpressionContextGenerator interface.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsProcessingAlgorithm.parameterDefinitions" title="qgis.core.QgsProcessingAlgorithm.parameterDefinitions"><code class="xref py py-func docutils literal notranslate"><span class="pre">parameterDefinitions()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List[<a class="reference internal" href="QgsProcessingParameterDefinition.html#qgis.core.QgsProcessingParameterDefinition" title="qgis.core.QgsProcessingParameterDefinition">QgsProcessingParameterDefinition</a>]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2091,6 +2175,11 @@ The name should use sentence case (e.g. “Raster layer statistics”, not “Ra
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsProcessingAlgorithm.shortDescription" title="qgis.core.QgsProcessingAlgorithm.shortDescription"><code class="xref py py-func docutils literal notranslate"><span class="pre">shortDescription()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2098,6 +2187,11 @@ The name should use sentence case (e.g. “Raster layer statistics”, not “Ra
 <code class="sig-name descname">flags</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QgsProcessingAlgorithm.Flags<a class="headerlink" href="#qgis.core.QgsProcessingAlgorithm.flags" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the flags indicating how and when the algorithm operates and should be exposed to users.
 Default flags are FlagSupportsBatch and FlagCanCancel.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#qgis.core.QgsProcessingAlgorithm.Flags" title="qgis.core.QgsProcessingAlgorithm.Flags">QgsProcessingAlgorithm.Flags</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2113,6 +2207,11 @@ should be localised.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsProcessingAlgorithm.tags" title="qgis.core.QgsProcessingAlgorithm.tags"><code class="xref py py-func docutils literal notranslate"><span class="pre">tags()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2126,12 +2225,22 @@ alphanumeric characters only and no spaces or other formatting characters.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsProcessingAlgorithm.group" title="qgis.core.QgsProcessingAlgorithm.group"><code class="xref py py-func docutils literal notranslate"><span class="pre">group()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsProcessingAlgorithm.hasHtmlOutputs">
 <code class="sig-name descname">hasHtmlOutputs</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsProcessingAlgorithm.hasHtmlOutputs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if this algorithm generates HTML outputs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2150,6 +2259,11 @@ helpString() or helpUrl().</p>
 <div class="deprecated">
 <p><span class="versionmodified deprecated">Deprecated since version Unused,: </span>will be removed in QGIS 4.0</p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2164,6 +2278,11 @@ helpString() or helpUrl().</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsProcessingAlgorithm.shortHelpString" title="qgis.core.QgsProcessingAlgorithm.shortHelpString"><code class="xref py py-func docutils literal notranslate"><span class="pre">shortHelpString()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2174,6 +2293,11 @@ helpString() or helpUrl().</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsProcessingAlgorithm.svgIconPath" title="qgis.core.QgsProcessingAlgorithm.svgIconPath"><code class="xref py py-func docutils literal notranslate"><span class="pre">svgIconPath()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>QIcon</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2189,6 +2313,11 @@ provider’s ID and the algorithms unique name (e.g. “qgis:mergelayers” ).</
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsProcessingAlgorithm.provider" title="qgis.core.QgsProcessingAlgorithm.provider"><code class="xref py py-func docutils literal notranslate"><span class="pre">provider()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2212,6 +2341,11 @@ create these outputs based on the specified <code class="docutils literal notran
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsProcessingAlgorithm.addOutput" title="qgis.core.QgsProcessingAlgorithm.addOutput"><code class="xref py py-func docutils literal notranslate"><span class="pre">addOutput()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>configuration</strong> (<em>Dict</em><em>[</em><em>str</em>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2232,6 +2366,17 @@ should correspond to the invalid source parameter name.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.2.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parameters</strong> (<em>Dict</em><em>[</em><em>str</em>) – </p></li>
+<li><p><strong>name</strong> (<em>str</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2252,6 +2397,17 @@ should correspond to the invalid source parameter name.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.2.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parameters</strong> (<em>Dict</em><em>[</em><em>str</em>) – </p></li>
+<li><p><strong>name</strong> (<em>str</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2272,6 +2428,17 @@ should correspond to the invalid source parameter name.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.2.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parameters</strong> (<em>Dict</em><em>[</em><em>str</em>) – </p></li>
+<li><p><strong>name</strong> (<em>str</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2293,6 +2460,11 @@ only and no spaces or other formatting characters.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsProcessingAlgorithm.tags" title="qgis.core.QgsProcessingAlgorithm.tags"><code class="xref py py-func docutils literal notranslate"><span class="pre">tags()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2304,6 +2476,14 @@ manner.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsProcessingAlgorithm.outputDefinitions" title="qgis.core.QgsProcessingAlgorithm.outputDefinitions"><code class="xref py py-func docutils literal notranslate"><span class="pre">outputDefinitions()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsProcessingOutputDefinition.html#qgis.core.QgsProcessingOutputDefinition" title="qgis.core.QgsProcessingOutputDefinition">QgsProcessingOutputDefinition</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2318,12 +2498,29 @@ manner.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsProcessingAlgorithm.outputDefinition" title="qgis.core.QgsProcessingAlgorithm.outputDefinition"><code class="xref py py-func docutils literal notranslate"><span class="pre">outputDefinition()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List[<a class="reference internal" href="QgsProcessingOutputDefinition.html#qgis.core.QgsProcessingOutputDefinition" title="qgis.core.QgsProcessingOutputDefinition">QgsProcessingOutputDefinition</a>]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsProcessingAlgorithm.parameterAsBool">
 <code class="sig-name descname">parameterAsBool</code><span class="sig-paren">(</span><em class="sig-param">self, parameters: Dict[str, Any], name: str, context: QgsProcessingContext</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsProcessingAlgorithm.parameterAsBool" title="Permalink to this definition">¶</a></dt>
 <dd><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a static boolean value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parameters</strong> (<em>Dict</em><em>[</em><em>str</em>) – </p></li>
+<li><p><strong>name</strong> (<em>str</em>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsProcessingContext.html#qgis.core.QgsProcessingContext" title="qgis.core.QgsProcessingContext"><em>QgsProcessingContext</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2333,6 +2530,18 @@ manner.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.8.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parameters</strong> (<em>Dict</em><em>[</em><em>str</em>) – </p></li>
+<li><p><strong>name</strong> (<em>str</em>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsProcessingContext.html#qgis.core.QgsProcessingContext" title="qgis.core.QgsProcessingContext"><em>QgsProcessingContext</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2342,6 +2551,18 @@ manner.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.10.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parameters</strong> (<em>Dict</em><em>[</em><em>str</em>) – </p></li>
+<li><p><strong>name</strong> (<em>str</em>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsProcessingContext.html#qgis.core.QgsProcessingContext" title="qgis.core.QgsProcessingContext"><em>QgsProcessingContext</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>QColor</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2354,36 +2575,111 @@ in a temporary location. The function will then return the path to that temporar
 <p><code class="docutils literal notranslate"><span class="pre">compatibleFormats</span></code> should consist entirely of lowercase file extensions, e.g. ‘shp’.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">preferredFormat</span></code> argument is used to specify to desired file extension to use when a temporary
 layer export is required.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parameters</strong> (<em>Dict</em><em>[</em><em>str</em>) – </p></li>
+<li><p><strong>name</strong> (<em>str</em>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsProcessingContext.html#qgis.core.QgsProcessingContext" title="qgis.core.QgsProcessingContext"><em>QgsProcessingContext</em></a>) – </p></li>
+<li><p><strong>compatibleFormats</strong> (<em>Iterable</em><em>[</em><em>str</em><em>]</em>) – </p></li>
+<li><p><strong>preferredFormat</strong> (<em>str = ''</em>) – </p></li>
+<li><p><strong>feedback</strong> (<a class="reference internal" href="QgsProcessingFeedback.html#qgis.core.QgsProcessingFeedback" title="qgis.core.QgsProcessingFeedback"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingFeedback</span></code></a> = None) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsProcessingAlgorithm.parameterAsCrs">
 <code class="sig-name descname">parameterAsCrs</code><span class="sig-paren">(</span><em class="sig-param">self, parameters: Dict[str, Any], name: str, context: QgsProcessingContext</em><span class="sig-paren">)</span> &#x2192; QgsCoordinateReferenceSystem<a class="headerlink" href="#qgis.core.QgsProcessingAlgorithm.parameterAsCrs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a coordinate reference system.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parameters</strong> (<em>Dict</em><em>[</em><em>str</em>) – </p></li>
+<li><p><strong>name</strong> (<em>str</em>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsProcessingContext.html#qgis.core.QgsProcessingContext" title="qgis.core.QgsProcessingContext"><em>QgsProcessingContext</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsCoordinateReferenceSystem.html#qgis.core.QgsCoordinateReferenceSystem" title="qgis.core.QgsCoordinateReferenceSystem">QgsCoordinateReferenceSystem</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsProcessingAlgorithm.parameterAsDouble">
 <code class="sig-name descname">parameterAsDouble</code><span class="sig-paren">(</span><em class="sig-param">self, parameters: Dict[str, Any], name: str, context: QgsProcessingContext</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#qgis.core.QgsProcessingAlgorithm.parameterAsDouble" title="Permalink to this definition">¶</a></dt>
 <dd><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a static double value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parameters</strong> (<em>Dict</em><em>[</em><em>str</em>) – </p></li>
+<li><p><strong>name</strong> (<em>str</em>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsProcessingContext.html#qgis.core.QgsProcessingContext" title="qgis.core.QgsProcessingContext"><em>QgsProcessingContext</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsProcessingAlgorithm.parameterAsEnum">
 <code class="sig-name descname">parameterAsEnum</code><span class="sig-paren">(</span><em class="sig-param">self, parameters: Dict[str, Any], name: str, context: QgsProcessingContext</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#qgis.core.QgsProcessingAlgorithm.parameterAsEnum" title="Permalink to this definition">¶</a></dt>
 <dd><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a enum value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parameters</strong> (<em>Dict</em><em>[</em><em>str</em>) – </p></li>
+<li><p><strong>name</strong> (<em>str</em>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsProcessingContext.html#qgis.core.QgsProcessingContext" title="qgis.core.QgsProcessingContext"><em>QgsProcessingContext</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsProcessingAlgorithm.parameterAsEnums">
 <code class="sig-name descname">parameterAsEnums</code><span class="sig-paren">(</span><em class="sig-param">self, parameters: Dict[str, Any], name: str, context: QgsProcessingContext</em><span class="sig-paren">)</span> &#x2192; List[int]<a class="headerlink" href="#qgis.core.QgsProcessingAlgorithm.parameterAsEnums" title="Permalink to this definition">¶</a></dt>
 <dd><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to list of enum values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parameters</strong> (<em>Dict</em><em>[</em><em>str</em>) – </p></li>
+<li><p><strong>name</strong> (<em>str</em>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsProcessingContext.html#qgis.core.QgsProcessingContext" title="qgis.core.QgsProcessingContext"><em>QgsProcessingContext</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>List[int]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsProcessingAlgorithm.parameterAsExpression">
 <code class="sig-name descname">parameterAsExpression</code><span class="sig-paren">(</span><em class="sig-param">self, parameters: Dict[str, Any], name: str, context: QgsProcessingContext</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.core.QgsProcessingAlgorithm.parameterAsExpression" title="Permalink to this definition">¶</a></dt>
 <dd><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to an expression.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parameters</strong> (<em>Dict</em><em>[</em><em>str</em>) – </p></li>
+<li><p><strong>name</strong> (<em>str</em>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsProcessingContext.html#qgis.core.QgsProcessingContext" title="qgis.core.QgsProcessingContext"><em>QgsProcessingContext</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2396,6 +2692,19 @@ reprojected so that it is in the specified <code class="docutils literal notrans
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsProcessingAlgorithm.parameterAsExtentGeometry" title="qgis.core.QgsProcessingAlgorithm.parameterAsExtentGeometry"><code class="xref py py-func docutils literal notranslate"><span class="pre">parameterAsExtentGeometry()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parameters</strong> (<em>Dict</em><em>[</em><em>str</em>) – </p></li>
+<li><p><strong>name</strong> (<em>str</em>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsProcessingContext.html#qgis.core.QgsProcessingContext" title="qgis.core.QgsProcessingContext"><em>QgsProcessingContext</em></a>) – </p></li>
+<li><p><strong>crs</strong> (<a class="reference internal" href="QgsCoordinateReferenceSystem.html#qgis.core.QgsCoordinateReferenceSystem" title="qgis.core.QgsCoordinateReferenceSystem"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsCoordinateReferenceSystem</span></code></a> = QgsCoordinateReferenceSystem()) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsRectangle.html#qgis.core.QgsRectangle" title="qgis.core.QgsRectangle">QgsRectangle</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2406,6 +2715,18 @@ reprojected so that it is in the specified <code class="docutils literal notrans
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsProcessingAlgorithm.parameterAsExtent" title="qgis.core.QgsProcessingAlgorithm.parameterAsExtent"><code class="xref py py-func docutils literal notranslate"><span class="pre">parameterAsExtent()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parameters</strong> (<em>Dict</em><em>[</em><em>str</em>) – </p></li>
+<li><p><strong>name</strong> (<em>str</em>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsProcessingContext.html#qgis.core.QgsProcessingContext" title="qgis.core.QgsProcessingContext"><em>QgsProcessingContext</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsCoordinateReferenceSystem.html#qgis.core.QgsCoordinateReferenceSystem" title="qgis.core.QgsCoordinateReferenceSystem">QgsCoordinateReferenceSystem</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2420,39 +2741,112 @@ just the extent of the reprojected rectangle).</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsProcessingAlgorithm.parameterAsExtent" title="qgis.core.QgsProcessingAlgorithm.parameterAsExtent"><code class="xref py py-func docutils literal notranslate"><span class="pre">parameterAsExtent()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parameters</strong> (<em>Dict</em><em>[</em><em>str</em>) – </p></li>
+<li><p><strong>name</strong> (<em>str</em>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsProcessingContext.html#qgis.core.QgsProcessingContext" title="qgis.core.QgsProcessingContext"><em>QgsProcessingContext</em></a>) – </p></li>
+<li><p><strong>crs</strong> (<a class="reference internal" href="QgsCoordinateReferenceSystem.html#qgis.core.QgsCoordinateReferenceSystem" title="qgis.core.QgsCoordinateReferenceSystem"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsCoordinateReferenceSystem</span></code></a> = QgsCoordinateReferenceSystem()) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsGeometry.html#qgis.core.QgsGeometry" title="qgis.core.QgsGeometry">QgsGeometry</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsProcessingAlgorithm.parameterAsFields">
 <code class="sig-name descname">parameterAsFields</code><span class="sig-paren">(</span><em class="sig-param">self, parameters: Dict[str, Any], name: str, context: QgsProcessingContext</em><span class="sig-paren">)</span> &#x2192; List[str]<a class="headerlink" href="#qgis.core.QgsProcessingAlgorithm.parameterAsFields" title="Permalink to this definition">¶</a></dt>
 <dd><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a list of fields.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parameters</strong> (<em>Dict</em><em>[</em><em>str</em>) – </p></li>
+<li><p><strong>name</strong> (<em>str</em>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsProcessingContext.html#qgis.core.QgsProcessingContext" title="qgis.core.QgsProcessingContext"><em>QgsProcessingContext</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>List[str]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsProcessingAlgorithm.parameterAsFile">
 <code class="sig-name descname">parameterAsFile</code><span class="sig-paren">(</span><em class="sig-param">self, parameters: Dict[str, Any], name: str, context: QgsProcessingContext</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.core.QgsProcessingAlgorithm.parameterAsFile" title="Permalink to this definition">¶</a></dt>
 <dd><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a file/folder name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parameters</strong> (<em>Dict</em><em>[</em><em>str</em>) – </p></li>
+<li><p><strong>name</strong> (<em>str</em>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsProcessingContext.html#qgis.core.QgsProcessingContext" title="qgis.core.QgsProcessingContext"><em>QgsProcessingContext</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsProcessingAlgorithm.parameterAsFileList">
 <code class="sig-name descname">parameterAsFileList</code><span class="sig-paren">(</span><em class="sig-param">self, parameters: Dict[str, Any], name: str, context: QgsProcessingContext</em><span class="sig-paren">)</span> &#x2192; List[str]<a class="headerlink" href="#qgis.core.QgsProcessingAlgorithm.parameterAsFileList" title="Permalink to this definition">¶</a></dt>
-<dd><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a list of files (for QgsProcessingParameterMultipleLayers in QgsProcessing:TypeFile mode).</p>
+<dd><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a list of files (for <a class="reference internal" href="QgsProcessingParameterMultipleLayers.html#qgis.core.QgsProcessingParameterMultipleLayers" title="qgis.core.QgsProcessingParameterMultipleLayers"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingParameterMultipleLayers</span></code></a> in QgsProcessing:TypeFile mode).</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.10.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parameters</strong> (<em>Dict</em><em>[</em><em>str</em>) – </p></li>
+<li><p><strong>name</strong> (<em>str</em>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsProcessingContext.html#qgis.core.QgsProcessingContext" title="qgis.core.QgsProcessingContext"><em>QgsProcessingContext</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>List[str]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsProcessingAlgorithm.parameterAsFileOutput">
 <code class="sig-name descname">parameterAsFileOutput</code><span class="sig-paren">(</span><em class="sig-param">self, parameters: Dict[str, Any], name: str, context: QgsProcessingContext</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.core.QgsProcessingAlgorithm.parameterAsFileOutput" title="Permalink to this definition">¶</a></dt>
 <dd><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a file based output destination.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parameters</strong> (<em>Dict</em><em>[</em><em>str</em>) – </p></li>
+<li><p><strong>name</strong> (<em>str</em>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsProcessingContext.html#qgis.core.QgsProcessingContext" title="qgis.core.QgsProcessingContext"><em>QgsProcessingContext</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsProcessingAlgorithm.parameterAsInt">
 <code class="sig-name descname">parameterAsInt</code><span class="sig-paren">(</span><em class="sig-param">self, parameters: Dict[str, Any], name: str, context: QgsProcessingContext</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#qgis.core.QgsProcessingAlgorithm.parameterAsInt" title="Permalink to this definition">¶</a></dt>
 <dd><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a static integer value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parameters</strong> (<em>Dict</em><em>[</em><em>str</em>) – </p></li>
+<li><p><strong>name</strong> (<em>str</em>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsProcessingContext.html#qgis.core.QgsProcessingContext" title="qgis.core.QgsProcessingContext"><em>QgsProcessingContext</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2462,6 +2856,18 @@ just the extent of the reprojected rectangle).</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.4.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parameters</strong> (<em>Dict</em><em>[</em><em>str</em>) – </p></li>
+<li><p><strong>name</strong> (<em>str</em>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsProcessingContext.html#qgis.core.QgsProcessingContext" title="qgis.core.QgsProcessingContext"><em>QgsProcessingContext</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>List[int]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2471,12 +2877,36 @@ just the extent of the reprojected rectangle).</p>
 <p>Layers will either be taken from <code class="docutils literal notranslate"><span class="pre">context</span></code>’s active project, or loaded from external
 sources and stored temporarily in the <code class="docutils literal notranslate"><span class="pre">context</span></code>. In either case, callers do not
 need to handle deletion of the returned layer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parameters</strong> (<em>Dict</em><em>[</em><em>str</em>) – </p></li>
+<li><p><strong>name</strong> (<em>str</em>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsProcessingContext.html#qgis.core.QgsProcessingContext" title="qgis.core.QgsProcessingContext"><em>QgsProcessingContext</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsMapLayer.html#qgis.core.QgsMapLayer" title="qgis.core.QgsMapLayer">QgsMapLayer</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsProcessingAlgorithm.parameterAsLayerList">
 <code class="sig-name descname">parameterAsLayerList</code><span class="sig-paren">(</span><em class="sig-param">self, parameters: Dict[str, Any], name: str, context: QgsProcessingContext</em><span class="sig-paren">)</span> &#x2192; List[QgsMapLayer]<a class="headerlink" href="#qgis.core.QgsProcessingAlgorithm.parameterAsLayerList" title="Permalink to this definition">¶</a></dt>
 <dd><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a list of map layers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parameters</strong> (<em>Dict</em><em>[</em><em>str</em>) – </p></li>
+<li><p><strong>name</strong> (<em>str</em>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsProcessingContext.html#qgis.core.QgsProcessingContext" title="qgis.core.QgsProcessingContext"><em>QgsProcessingContext</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>List[<a class="reference internal" href="QgsMapLayer.html#qgis.core.QgsMapLayer" title="qgis.core.QgsMapLayer">QgsMapLayer</a>]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2491,6 +2921,18 @@ implementation (which runs in the main thread), or the algorithm must return the
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.8.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parameters</strong> (<em>Dict</em><em>[</em><em>str</em>) – </p></li>
+<li><p><strong>name</strong> (<em>str</em>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsProcessingContext.html#qgis.core.QgsProcessingContext" title="qgis.core.QgsProcessingContext"><em>QgsProcessingContext</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsPrintLayout.html#qgis.core.QgsPrintLayout" title="qgis.core.QgsPrintLayout">QgsPrintLayout</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2505,6 +2947,19 @@ implementation (which runs in the main thread), or the algorithm must return the
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.8.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parameters</strong> (<em>Dict</em><em>[</em><em>str</em>) – </p></li>
+<li><p><strong>name</strong> (<em>str</em>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsProcessingContext.html#qgis.core.QgsProcessingContext" title="qgis.core.QgsProcessingContext"><em>QgsProcessingContext</em></a>) – </p></li>
+<li><p><strong>layout</strong> (<a class="reference internal" href="QgsPrintLayout.html#qgis.core.QgsPrintLayout" title="qgis.core.QgsPrintLayout"><em>QgsPrintLayout</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsLayoutItem.html#qgis.core.QgsLayoutItem" title="qgis.core.QgsLayoutItem">QgsLayoutItem</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2512,6 +2967,18 @@ implementation (which runs in the main thread), or the algorithm must return the
 <code class="sig-name descname">parameterAsMatrix</code><span class="sig-paren">(</span><em class="sig-param">self, parameters: Dict[str, Any], name: str, context: QgsProcessingContext</em><span class="sig-paren">)</span> &#x2192; List[Any]<a class="headerlink" href="#qgis.core.QgsProcessingAlgorithm.parameterAsMatrix" title="Permalink to this definition">¶</a></dt>
 <dd><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a matrix/table of values.
 Tables are collapsed to a 1 dimensional list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parameters</strong> (<em>Dict</em><em>[</em><em>str</em>) – </p></li>
+<li><p><strong>name</strong> (<em>str</em>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsProcessingContext.html#qgis.core.QgsProcessingContext" title="qgis.core.QgsProcessingContext"><em>QgsProcessingContext</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>List[Any]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2524,12 +2991,36 @@ need to handle deletion of the returned layer.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.6.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parameters</strong> (<em>Dict</em><em>[</em><em>str</em>) – </p></li>
+<li><p><strong>name</strong> (<em>str</em>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsProcessingContext.html#qgis.core.QgsProcessingContext" title="qgis.core.QgsProcessingContext"><em>QgsProcessingContext</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsMeshLayer.html#qgis.core.QgsMeshLayer" title="qgis.core.QgsMeshLayer">QgsMeshLayer</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsProcessingAlgorithm.parameterAsOutputLayer">
 <code class="sig-name descname">parameterAsOutputLayer</code><span class="sig-paren">(</span><em class="sig-param">self, parameters: Dict[str, Any], name: str, context: QgsProcessingContext</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.core.QgsProcessingAlgorithm.parameterAsOutputLayer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a output layer destination.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parameters</strong> (<em>Dict</em><em>[</em><em>str</em>) – </p></li>
+<li><p><strong>name</strong> (<em>str</em>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsProcessingContext.html#qgis.core.QgsProcessingContext" title="qgis.core.QgsProcessingContext"><em>QgsProcessingContext</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2542,6 +3033,19 @@ reprojected so that it is in the specified <code class="docutils literal notrans
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsProcessingAlgorithm.parameterAsPointCrs" title="qgis.core.QgsProcessingAlgorithm.parameterAsPointCrs"><code class="xref py py-func docutils literal notranslate"><span class="pre">parameterAsPointCrs()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parameters</strong> (<em>Dict</em><em>[</em><em>str</em>) – </p></li>
+<li><p><strong>name</strong> (<em>str</em>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsProcessingContext.html#qgis.core.QgsProcessingContext" title="qgis.core.QgsProcessingContext"><em>QgsProcessingContext</em></a>) – </p></li>
+<li><p><strong>crs</strong> (<a class="reference internal" href="QgsCoordinateReferenceSystem.html#qgis.core.QgsCoordinateReferenceSystem" title="qgis.core.QgsCoordinateReferenceSystem"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsCoordinateReferenceSystem</span></code></a> = QgsCoordinateReferenceSystem()) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsPointXY.html#qgis.core.QgsPointXY" title="qgis.core.QgsPointXY">QgsPointXY</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2552,12 +3056,36 @@ reprojected so that it is in the specified <code class="docutils literal notrans
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsProcessingAlgorithm.parameterAsPoint" title="qgis.core.QgsProcessingAlgorithm.parameterAsPoint"><code class="xref py py-func docutils literal notranslate"><span class="pre">parameterAsPoint()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parameters</strong> (<em>Dict</em><em>[</em><em>str</em>) – </p></li>
+<li><p><strong>name</strong> (<em>str</em>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsProcessingContext.html#qgis.core.QgsProcessingContext" title="qgis.core.QgsProcessingContext"><em>QgsProcessingContext</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsCoordinateReferenceSystem.html#qgis.core.QgsCoordinateReferenceSystem" title="qgis.core.QgsCoordinateReferenceSystem">QgsCoordinateReferenceSystem</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsProcessingAlgorithm.parameterAsRange">
 <code class="sig-name descname">parameterAsRange</code><span class="sig-paren">(</span><em class="sig-param">self, parameters: Dict[str, Any], name: str, context: QgsProcessingContext</em><span class="sig-paren">)</span> &#x2192; List[float]<a class="headerlink" href="#qgis.core.QgsProcessingAlgorithm.parameterAsRange" title="Permalink to this definition">¶</a></dt>
 <dd><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a range of values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parameters</strong> (<em>Dict</em><em>[</em><em>str</em>) – </p></li>
+<li><p><strong>name</strong> (<em>str</em>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsProcessingContext.html#qgis.core.QgsProcessingContext" title="qgis.core.QgsProcessingContext"><em>QgsProcessingContext</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>List[float]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2567,6 +3095,18 @@ reprojected so that it is in the specified <code class="docutils literal notrans
 <p>Layers will either be taken from <code class="docutils literal notranslate"><span class="pre">context</span></code>’s active project, or loaded from external
 sources and stored temporarily in the <code class="docutils literal notranslate"><span class="pre">context</span></code>. In either case, callers do not
 need to handle deletion of the returned layer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parameters</strong> (<em>Dict</em><em>[</em><em>str</em>) – </p></li>
+<li><p><strong>name</strong> (<em>str</em>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsProcessingContext.html#qgis.core.QgsProcessingContext" title="qgis.core.QgsProcessingContext"><em>QgsProcessingContext</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsRasterLayer.html#qgis.core.QgsRasterLayer" title="qgis.core.QgsRasterLayer">QgsRasterLayer</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2580,6 +3120,22 @@ of the resulting feature sink.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">destinationIdentifier</span></code> argument will be set to a string which can be used to retrieve the layer corresponding
 to the sink, e.g. via calling <a class="reference internal" href="QgsProcessingUtils.html#qgis.core.QgsProcessingUtils.mapLayerFromString" title="qgis.core.QgsProcessingUtils.mapLayerFromString"><code class="xref py py-func docutils literal notranslate"><span class="pre">QgsProcessingUtils.mapLayerFromString()</span></code></a></p>
 <p>This function creates a new object and the caller takes responsibility for deleting the returned object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parameters</strong> (<em>Dict</em><em>[</em><em>str</em>) – </p></li>
+<li><p><strong>name</strong> (<em>str</em>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsProcessingContext.html#qgis.core.QgsProcessingContext" title="qgis.core.QgsProcessingContext"><em>QgsProcessingContext</em></a>) – </p></li>
+<li><p><strong>fields</strong> (<a class="reference internal" href="QgsFields.html#qgis.core.QgsFields" title="qgis.core.QgsFields"><em>QgsFields</em></a>) – </p></li>
+<li><p><strong>geometryType</strong> (<em>QgsWkbTypes.Type = QgsWkbTypes.NoGeometry</em>) – </p></li>
+<li><p><strong>crs</strong> (<a class="reference internal" href="QgsCoordinateReferenceSystem.html#qgis.core.QgsCoordinateReferenceSystem" title="qgis.core.QgsCoordinateReferenceSystem"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsCoordinateReferenceSystem</span></code></a> = QgsCoordinateReferenceSystem()) – </p></li>
+<li><p><strong>sinkFlags</strong> (<em>Union</em><em>[</em><a class="reference internal" href="QgsFeatureSink.html#qgis.core.QgsFeatureSink.SinkFlags" title="qgis.core.QgsFeatureSink.SinkFlags"><em>QgsFeatureSink.SinkFlags</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Tuple[<a class="reference internal" href="QgsFeatureSink.html#qgis.core.QgsFeatureSink" title="qgis.core.QgsFeatureSink"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsFeatureSink</span></code></a>, str]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2589,12 +3145,36 @@ to the sink, e.g. via calling <a class="reference internal" href="QgsProcessingU
 <p>Sources will either be taken from <code class="docutils literal notranslate"><span class="pre">context</span></code>’s active project, or loaded from external
 sources and stored temporarily in the <code class="docutils literal notranslate"><span class="pre">context</span></code>.</p>
 <p>This function creates a new object and the caller takes responsibility for deleting the returned object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parameters</strong> (<em>Dict</em><em>[</em><em>str</em>) – </p></li>
+<li><p><strong>name</strong> (<em>str</em>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsProcessingContext.html#qgis.core.QgsProcessingContext" title="qgis.core.QgsProcessingContext"><em>QgsProcessingContext</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsProcessingFeatureSource.html#qgis.core.QgsProcessingFeatureSource" title="qgis.core.QgsProcessingFeatureSource">QgsProcessingFeatureSource</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsProcessingAlgorithm.parameterAsString">
 <code class="sig-name descname">parameterAsString</code><span class="sig-paren">(</span><em class="sig-param">self, parameters: Dict[str, Any], name: str, context: QgsProcessingContext</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.core.QgsProcessingAlgorithm.parameterAsString" title="Permalink to this definition">¶</a></dt>
 <dd><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a static string value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parameters</strong> (<em>Dict</em><em>[</em><em>str</em>) – </p></li>
+<li><p><strong>name</strong> (<em>str</em>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsProcessingContext.html#qgis.core.QgsProcessingContext" title="qgis.core.QgsProcessingContext"><em>QgsProcessingContext</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2604,6 +3184,18 @@ sources and stored temporarily in the <code class="docutils literal notranslate"
 <p>Layers will either be taken from <code class="docutils literal notranslate"><span class="pre">context</span></code>’s active project, or loaded from external
 sources and stored temporarily in the <code class="docutils literal notranslate"><span class="pre">context</span></code>. In either case, callers do not
 need to handle deletion of the returned layer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parameters</strong> (<em>Dict</em><em>[</em><em>str</em>) – </p></li>
+<li><p><strong>name</strong> (<em>str</em>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsProcessingContext.html#qgis.core.QgsProcessingContext" title="qgis.core.QgsProcessingContext"><em>QgsProcessingContext</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsVectorLayer.html#qgis.core.QgsVectorLayer" title="qgis.core.QgsVectorLayer">QgsVectorLayer</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2615,6 +3207,14 @@ manner, but exact case matches will be preferred.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsProcessingAlgorithm.parameterDefinitions" title="qgis.core.QgsProcessingAlgorithm.parameterDefinitions"><code class="xref py py-func docutils literal notranslate"><span class="pre">parameterDefinitions()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsProcessingParameterDefinition.html#qgis.core.QgsProcessingParameterDefinition" title="qgis.core.QgsProcessingParameterDefinition">QgsProcessingParameterDefinition</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2633,6 +3233,11 @@ manner, but exact case matches will be preferred.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsProcessingAlgorithm.destinationParameterDefinitions" title="qgis.core.QgsProcessingAlgorithm.destinationParameterDefinitions"><code class="xref py py-func docutils literal notranslate"><span class="pre">destinationParameterDefinitions()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List[<a class="reference internal" href="QgsProcessingParameterDefinition.html#qgis.core.QgsProcessingParameterDefinition" title="qgis.core.QgsProcessingParameterDefinition">QgsProcessingParameterDefinition</a>]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2644,9 +3249,20 @@ includes the results evaluated by the algorithm.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This method modifies the algorithm instance, so it is not safe to call
-on algorithms directly retrieved from QgsProcessingRegistry and <a class="reference internal" href="QgsProcessingProvider.html#module-QgsProcessingProvider" title="QgsProcessingProvider"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingProvider</span></code></a>. Instead, a copy
+on algorithms directly retrieved from <a class="reference internal" href="QgsProcessingRegistry.html#qgis.core.QgsProcessingRegistry" title="qgis.core.QgsProcessingRegistry"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingRegistry</span></code></a> and <a class="reference internal" href="QgsProcessingProvider.html#module-QgsProcessingProvider" title="QgsProcessingProvider"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingProvider</span></code></a>. Instead, a copy
 of the algorithm should be created with clone() and prepare()/runPrepared() called on the copy.</p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsProcessingContext.html#qgis.core.QgsProcessingContext" title="qgis.core.QgsProcessingContext"><em>QgsProcessingContext</em></a>) – </p></li>
+<li><p><strong>feedback</strong> (<a class="reference internal" href="QgsProcessingFeedback.html#qgis.core.QgsProcessingFeedback" title="qgis.core.QgsProcessingFeedback"><em>QgsProcessingFeedback</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Dict[str, Any]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2667,8 +3283,11 @@ will call postProcessAlgorithm from the same thread as that model/script it bein
 <p>postProcessAlgorithm will not be called if the prepareAlgorithm() step failed (returned <code class="docutils literal notranslate"><span class="pre">False</span></code>),
 or if an exception was raised by the processAlgorithm() step.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>A map of algorithm outputs. These may be output layer references, or calculated
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Dict[str, Any]</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A map of algorithm outputs. These may be output layer references, or calculated
 values such as statistical calculations. Implementations which return a non-empty
 map will override any results returned by processAlgorithm().</p>
 </dd>
@@ -2681,6 +3300,14 @@ map will override any results returned by processAlgorithm().</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsProcessingAlgorithm.processAlgorithm" title="qgis.core.QgsProcessingAlgorithm.processAlgorithm"><code class="xref py py-func docutils literal notranslate"><span class="pre">processAlgorithm()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsProcessingContext.html#qgis.core.QgsProcessingContext" title="qgis.core.QgsProcessingContext"><em>QgsProcessingContext</em></a>) – </p></li>
+<li><p><strong>feedback</strong> (<a class="reference internal" href="QgsProcessingFeedback.html#qgis.core.QgsProcessingFeedback" title="qgis.core.QgsProcessingFeedback"><em>QgsProcessingFeedback</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2700,9 +3327,21 @@ calling runPrepared() (which is safe to do in any thread).</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This method modifies the algorithm instance, so it is not safe to call
-on algorithms directly retrieved from QgsProcessingRegistry and <a class="reference internal" href="QgsProcessingProvider.html#module-QgsProcessingProvider" title="QgsProcessingProvider"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingProvider</span></code></a>. Instead, a copy
+on algorithms directly retrieved from <a class="reference internal" href="QgsProcessingRegistry.html#qgis.core.QgsProcessingRegistry" title="qgis.core.QgsProcessingRegistry"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingRegistry</span></code></a> and <a class="reference internal" href="QgsProcessingProvider.html#module-QgsProcessingProvider" title="QgsProcessingProvider"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingProvider</span></code></a>. Instead, a copy
 of the algorithm should be created with clone() and prepare()/runPrepared() called on the copy.</p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parameters</strong> (<em>Dict</em><em>[</em><em>str</em>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsProcessingContext.html#qgis.core.QgsProcessingContext" title="qgis.core.QgsProcessingContext"><em>QgsProcessingContext</em></a>) – </p></li>
+<li><p><strong>feedback</strong> (<a class="reference internal" href="QgsProcessingFeedback.html#qgis.core.QgsProcessingFeedback" title="qgis.core.QgsProcessingFeedback"><em>QgsProcessingFeedback</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2728,8 +3367,11 @@ algorithm should be canceled and exited early.</p>
 this indicates that the preparation could not be completed, and the algorithm execution
 will be canceled.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if preparation was successful.</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if preparation was successful.</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -2740,6 +3382,15 @@ will be canceled.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsProcessingAlgorithm.postProcessAlgorithm" title="qgis.core.QgsProcessingAlgorithm.postProcessAlgorithm"><code class="xref py py-func docutils literal notranslate"><span class="pre">postProcessAlgorithm()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parameters</strong> (<em>Dict</em><em>[</em><em>str</em>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsProcessingContext.html#qgis.core.QgsProcessingContext" title="qgis.core.QgsProcessingContext"><em>QgsProcessingContext</em></a>) – </p></li>
+<li><p><strong>feedback</strong> (<a class="reference internal" href="QgsProcessingFeedback.html#qgis.core.QgsProcessingFeedback" title="qgis.core.QgsProcessingFeedback"><em>QgsProcessingFeedback</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2749,6 +3400,14 @@ will be canceled.</p>
 values.</p>
 <p>This method is automatically called after users enter parameters, e.g. via the algorithm
 dialog. This method should NOT be called manually by algorithms.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>parameters</strong> (<em>Dict</em><em>[</em><em>str</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Dict[str, Any]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2767,12 +3426,15 @@ step.</p>
 well-behaved algorithms should periodically check <code class="docutils literal notranslate"><span class="pre">feedback</span></code> to determine whether the
 algorithm should be canceled and exited early.</p>
 <p>This method will not be called if the prepareAlgorithm() step failed (returned <code class="docutils literal notranslate"><span class="pre">False</span></code>).</p>
-<p>c++ implementations of processAlgorithm can throw the QgsProcessingException exception
+<p>c++ implementations of processAlgorithm can throw the <a class="reference internal" href="QgsProcessingException.html#qgis.core.QgsProcessingException" title="qgis.core.QgsProcessingException"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingException</span></code></a> exception
 to indicate that a fatal error occurred within the execution. Python based subclasses
 should raise GeoAlgorithmExecutionException for the same purpose.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>A map of algorithm outputs. These may be output layer references, or calculated
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Dict[str, Any]</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A map of algorithm outputs. These may be output layer references, or calculated
 values such as statistical calculations. Unless the algorithm subclass overrides
 the postProcessAlgorithm() step this returned map will be used as the output for the
 algorithm.</p>
@@ -2786,12 +3448,26 @@ algorithm.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsProcessingAlgorithm.postProcessAlgorithm" title="qgis.core.QgsProcessingAlgorithm.postProcessAlgorithm"><code class="xref py py-func docutils literal notranslate"><span class="pre">postProcessAlgorithm()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parameters</strong> (<em>Dict</em><em>[</em><em>str</em>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsProcessingContext.html#qgis.core.QgsProcessingContext" title="qgis.core.QgsProcessingContext"><em>QgsProcessingContext</em></a>) – </p></li>
+<li><p><strong>feedback</strong> (<a class="reference internal" href="QgsProcessingFeedback.html#qgis.core.QgsProcessingFeedback" title="qgis.core.QgsProcessingFeedback"><em>QgsProcessingFeedback</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsProcessingAlgorithm.provider">
 <code class="sig-name descname">provider</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QgsProcessingProvider<a class="headerlink" href="#qgis.core.QgsProcessingAlgorithm.provider" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the provider to which this algorithm belongs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsProcessingProvider.html#qgis.core.QgsProcessingProvider" title="qgis.core.QgsProcessingProvider">QgsProcessingProvider</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2799,6 +3475,11 @@ algorithm.</p>
 <code class="sig-name descname">removeParameter</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">name: str</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsProcessingAlgorithm.removeParameter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Removes the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> from the algorithm, and deletes any existing
 definition.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2806,21 +3487,34 @@ definition.</p>
 <code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">self, parameters: Dict[str, Any], context: QgsProcessingContext, feedback: QgsProcessingFeedback, configuration: Dict[str, Any] = {}</em><span class="sig-paren">)</span> &#x2192; Tuple[Dict[str, Any], bool]<a class="headerlink" href="#qgis.core.QgsProcessingAlgorithm.run" title="Permalink to this definition">¶</a></dt>
 <dd><p>Executes the algorithm using the specified <code class="docutils literal notranslate"><span class="pre">parameters</span></code>. This method internally
 creates a copy of the algorithm before running it, so it is safe to call
-on algorithms directly retrieved from QgsProcessingRegistry and <a class="reference internal" href="QgsProcessingProvider.html#module-QgsProcessingProvider" title="QgsProcessingProvider"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingProvider</span></code></a>.</p>
+on algorithms directly retrieved from <a class="reference internal" href="QgsProcessingRegistry.html#qgis.core.QgsProcessingRegistry" title="qgis.core.QgsProcessingRegistry"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingRegistry</span></code></a> and <a class="reference internal" href="QgsProcessingProvider.html#module-QgsProcessingProvider" title="QgsProcessingProvider"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingProvider</span></code></a>.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">context</span></code> argument specifies the context in which the algorithm is being run.</p>
 <p>Algorithm progress should be reported using the supplied <code class="docutils literal notranslate"><span class="pre">feedback</span></code> object.</p>
 <p>If specified, <code class="docutils literal notranslate"><span class="pre">ok</span></code> will be set to <code class="docutils literal notranslate"><span class="pre">True</span></code> if algorithm was successfully run.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>A map of algorithm outputs. These may be output layer references, or calculated
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Tuple[Dict[str, Any], bool]</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A map of algorithm outputs. These may be output layer references, or calculated
 values such as statistical calculations.</p>
 </dd>
 </dl>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>this method can only be called from the main thread. Use prepare(), runPrepared() and postProcess()
-if you need to run algorithms from a background thread, or use the QgsProcessingAlgRunnerTask class.</p>
+if you need to run algorithms from a background thread, or use the <a class="reference internal" href="QgsProcessingAlgRunnerTask.html#qgis.core.QgsProcessingAlgRunnerTask" title="qgis.core.QgsProcessingAlgRunnerTask"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingAlgRunnerTask</span></code></a> class.</p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parameters</strong> (<em>Dict</em><em>[</em><em>str</em>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsProcessingContext.html#qgis.core.QgsProcessingContext" title="qgis.core.QgsProcessingContext"><em>QgsProcessingContext</em></a>) – </p></li>
+<li><p><strong>feedback</strong> (<a class="reference internal" href="QgsProcessingFeedback.html#qgis.core.QgsProcessingFeedback" title="qgis.core.QgsProcessingFeedback"><em>QgsProcessingFeedback</em></a>) – </p></li>
+<li><p><strong>configuration</strong> (<em>Dict</em><em>[</em><em>str</em>) – </p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2841,15 +3535,32 @@ to allow the algorithm to perform any required cleanup tasks and return its fina
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This method modifies the algorithm instance, so it is not safe to call
-on algorithms directly retrieved from QgsProcessingRegistry and <a class="reference internal" href="QgsProcessingProvider.html#module-QgsProcessingProvider" title="QgsProcessingProvider"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingProvider</span></code></a>. Instead, a copy
+on algorithms directly retrieved from <a class="reference internal" href="QgsProcessingRegistry.html#qgis.core.QgsProcessingRegistry" title="qgis.core.QgsProcessingRegistry"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingRegistry</span></code></a> and <a class="reference internal" href="QgsProcessingProvider.html#module-QgsProcessingProvider" title="QgsProcessingProvider"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingProvider</span></code></a>. Instead, a copy
 of the algorithm should be created with clone() and prepare()/runPrepared() called on the copy.</p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parameters</strong> (<em>Dict</em><em>[</em><em>str</em>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsProcessingContext.html#qgis.core.QgsProcessingContext" title="qgis.core.QgsProcessingContext"><em>QgsProcessingContext</em></a>) – </p></li>
+<li><p><strong>feedback</strong> (<a class="reference internal" href="QgsProcessingFeedback.html#qgis.core.QgsProcessingFeedback" title="qgis.core.QgsProcessingFeedback"><em>QgsProcessingFeedback</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Dict[str, Any]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsProcessingAlgorithm.setProvider">
 <code class="sig-name descname">setProvider</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">provider: QgsProcessingProvider</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsProcessingAlgorithm.setProvider" title="Permalink to this definition">¶</a></dt>
 <dd><p>Associates this algorithm with its provider. No transfer of ownership is involved.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>provider</strong> (<a class="reference internal" href="QgsProcessingProvider.html#qgis.core.QgsProcessingProvider" title="qgis.core.QgsProcessingProvider"><em>QgsProcessingProvider</em></a>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2860,6 +3571,11 @@ at most a single sentence, e.g. “Converts 2D features to 3D by sampling a DEM 
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.2.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2875,6 +3591,11 @@ about what the algorithm does and the parameters and outputs associated with it.
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsProcessingAlgorithm.helpUrl" title="qgis.core.QgsProcessingAlgorithm.helpUrl"><code class="xref py py-func docutils literal notranslate"><span class="pre">helpUrl()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2883,13 +3604,21 @@ about what the algorithm does and the parameters and outputs associated with it.
 <dd><p>Checks whether this algorithm supports in-place editing on the given <code class="docutils literal notranslate"><span class="pre">layer</span></code>
 Default implementation returns <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the algorithm supports in-place editing</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the algorithm supports in-place editing</p>
 </dd>
 </dl>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.4.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>layer</strong> (<a class="reference internal" href="QgsMapLayer.html#qgis.core.QgsMapLayer" title="qgis.core.QgsMapLayer"><em>QgsMapLayer</em></a>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2900,6 +3629,11 @@ Default implementation returns <code class="docutils literal notranslate"><span 
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsProcessingAlgorithm.icon" title="qgis.core.QgsProcessingAlgorithm.icon"><code class="xref py py-func docutils literal notranslate"><span class="pre">icon()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2907,6 +3641,11 @@ Default implementation returns <code class="docutils literal notranslate"><span 
 <code class="sig-name descname">tags</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; List[str]<a class="headerlink" href="#qgis.core.QgsProcessingAlgorithm.tags" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a list of tags which relate to the algorithm, and are used to assist users in searching
 for suitable algorithms. These tags should be localised.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List[str]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2916,6 +3655,17 @@ for suitable algorithms. These tags should be localised.</p>
 are valid for the algorithm. For instance, the base implementation performs
 checks to ensure that all input CRS are equal
 Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if <code class="docutils literal notranslate"><span class="pre">parameters</span></code> have passed the CRS check.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parameters</strong> (<em>Dict</em><em>[</em><em>str</em>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsProcessingContext.html#qgis.core.QgsProcessingContext" title="qgis.core.QgsProcessingContext"><em>QgsProcessingContext</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -2934,7 +3684,7 @@ Returns <code class="docutils literal notranslate"><span class="pre">True</span>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 10:58 Oct 14, 2019.
+        Last updated on 15:06 Oct 15, 2019.
       </span>
 
     </p>
@@ -2961,20 +3711,20 @@ Returns <code class="docutils literal notranslate"><span class="pre">True</span>
     <div class="rst-other-versions">
       <dl>
         <dt>Versions</dt>
-      
-        <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
-      
-    </dl>
+        
+          <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
+        
+      </dl>
       
       
     </div>

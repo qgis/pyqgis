@@ -122,7 +122,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../core/PROJECT_SCALES.html">Class: PROJECT_SCALES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/PluginLayer.html">Class: PluginLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/ProjectDirtyBlocker.html">Class: ProjectDirtyBlocker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../core/PyProviderMetadata.html">Class: PyProviderMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/Qgis.html">Class: Qgis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/Qgs25DRenderer.html">Class: Qgs25DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/Qgs3DRendererAbstractMetadata.html">Class: Qgs3DRendererAbstractMetadata</a></li>
@@ -1546,8 +1545,6 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/gui/QgsAttributeTableDelegate.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -1568,10 +1565,10 @@
 <p>Constructor</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>parent</strong> – parent object</p>
+<dd class="field-odd"><p><strong>parent</strong> (<em>QObject = None</em>) – parent object</p>
 </dd>
 </dl>
-<p>A delegate item class for QgsAttributeTable (see Qt documentation for
+<p>A delegate item class for <code class="xref py py-class docutils literal notranslate"><span class="pre">QgsAttributeTable</span></code> (see Qt documentation for
 QItemDelegate).</p>
 <blockquote>
 <div><table class="longtable docutils align-default">
@@ -1644,7 +1641,11 @@ QItemDelegate).</p>
 <td><p>Sets data from model into the editor.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsAttributeTableDelegate.setFeatureSelectionModel" title="qgis.gui.QgsAttributeTableDelegate.setFeatureSelectionModel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setFeatureSelectionModel</span></code></a></p></td>
-<td><p></p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">param featureSelectionModel</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsAttributeTableDelegate.setModelData" title="qgis.gui.QgsAttributeTableDelegate.setModelData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setModelData</span></code></a></p></td>
 <td><p>Sets data from editor back to model.</p></td>
@@ -1686,6 +1687,11 @@ The consumer of this signal can initialize the index widget.</p>
 It is the consumers responsibility to check if initialization has already
 happened before. [signal]</p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>index</strong> (<em>QModelIndex</em>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1703,6 +1709,18 @@ happened before. [signal]</p>
 <code class="sig-name descname">createEditor</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">parent: QWidget</em>, <em class="sig-param">option: QStyleOptionViewItem</em>, <em class="sig-param">index: QModelIndex</em><span class="sig-paren">)</span> &#x2192; QWidget<a class="headerlink" href="#qgis.gui.QgsAttributeTableDelegate.createEditor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Used to create an editor for when the user tries to
 change the contents of a cell</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<em>QWidget</em>) – </p></li>
+<li><p><strong>option</strong> (<em>QStyleOptionViewItem</em>) – </p></li>
+<li><p><strong>index</strong> (<em>QModelIndex</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>QWidget</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1759,6 +1777,15 @@ change the contents of a cell</p>
 <dt id="qgis.gui.QgsAttributeTableDelegate.paint">
 <code class="sig-name descname">paint</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">painter: QPainter</em>, <em class="sig-param">option: QStyleOptionViewItem</em>, <em class="sig-param">index: QModelIndex</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsAttributeTableDelegate.paint" title="Permalink to this definition">¶</a></dt>
 <dd><p>Overloads the paint method form the QItemDelegate base class</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>painter</strong> (<em>QPainter</em>) – </p></li>
+<li><p><strong>option</strong> (<em>QStyleOptionViewItem</em>) – </p></li>
+<li><p><strong>index</strong> (<em>QModelIndex</em>) – </p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1783,8 +1810,8 @@ change the contents of a cell</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>editor</strong> – editor which was created by create editor function in this class</p></li>
-<li><p><strong>index</strong> – index of field which is to be retrieved</p></li>
+<li><p><strong>editor</strong> (<em>QWidget</em>) – editor which was created by create editor function in this class</p></li>
+<li><p><strong>index</strong> (<em>QModelIndex</em>) – index of field which is to be retrieved</p></li>
 </ul>
 </dd>
 </dl>
@@ -1793,7 +1820,12 @@ change the contents of a cell</p>
 <dl class="method">
 <dt id="qgis.gui.QgsAttributeTableDelegate.setFeatureSelectionModel">
 <code class="sig-name descname">setFeatureSelectionModel</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">featureSelectionModel: QgsFeatureSelectionModel</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsAttributeTableDelegate.setFeatureSelectionModel" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>featureSelectionModel</strong> (<a class="reference internal" href="QgsFeatureSelectionModel.html#qgis.gui.QgsFeatureSelectionModel" title="qgis.gui.QgsFeatureSelectionModel"><em>QgsFeatureSelectionModel</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="method">
 <dt id="qgis.gui.QgsAttributeTableDelegate.setModelData">
@@ -1802,9 +1834,9 @@ change the contents of a cell</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>editor</strong> – editor which was created by create editor function in this class</p></li>
-<li><p><strong>model</strong> – model where data should be updated</p></li>
-<li><p><strong>index</strong> – index of field which is to be modified</p></li>
+<li><p><strong>editor</strong> (<em>QWidget</em>) – editor which was created by create editor function in this class</p></li>
+<li><p><strong>model</strong> (<em>QAbstractItemModel</em>) – model where data should be updated</p></li>
+<li><p><strong>index</strong> (<em>QModelIndex</em>) – index of field which is to be modified</p></li>
 </ul>
 </dd>
 </dl>
@@ -1831,7 +1863,7 @@ change the contents of a cell</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 10:58 Oct 14, 2019.
+        Last updated on 15:06 Oct 15, 2019.
       </span>
 
     </p>
@@ -1858,20 +1890,20 @@ change the contents of a cell</p>
     <div class="rst-other-versions">
       <dl>
         <dt>Versions</dt>
-      
-        <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
-      
-    </dl>
+        
+          <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
+        
+      </dl>
       
       
     </div>

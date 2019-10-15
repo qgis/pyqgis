@@ -122,7 +122,6 @@
 <li class="toctree-l2"><a class="reference internal" href="PROJECT_SCALES.html">Class: PROJECT_SCALES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PluginLayer.html">Class: PluginLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ProjectDirtyBlocker.html">Class: ProjectDirtyBlocker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="PyProviderMetadata.html">Class: PyProviderMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgis.html">Class: Qgis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs25DRenderer.html">Class: Qgs25DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs3DRendererAbstractMetadata.html">Class: Qgs3DRendererAbstractMetadata</a></li>
@@ -1546,8 +1545,6 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/core/QgsValidityCheckRegistry.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -1565,9 +1562,9 @@
 <dt id="qgis.core.QgsValidityCheckRegistry">
 <em class="property">class </em><code class="sig-prename descclassname">qgis.core.</code><code class="sig-name descname">QgsValidityCheckRegistry</code><a class="headerlink" href="#qgis.core.QgsValidityCheckRegistry" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sip.wrapper</span></code></p>
-<p>This class keeps a list of QgsAbstractValidityCheck checks which can be used when
+<p>This class keeps a list of <a class="reference internal" href="QgsAbstractValidityCheck.html#qgis.core.QgsAbstractValidityCheck" title="qgis.core.QgsAbstractValidityCheck"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsAbstractValidityCheck</span></code></a> checks which can be used when
 performing validity checks.</p>
-<p>QgsValidityCheckRegistry is not usually directly created, but rather accessed through
+<p><a class="reference internal" href="#qgis.core.QgsValidityCheckRegistry" title="qgis.core.QgsValidityCheckRegistry"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsValidityCheckRegistry</span></code></a> is not usually directly created, but rather accessed through
 <a class="reference internal" href="QgsApplication.html#qgis.core.QgsApplication.validityCheckRegistry" title="qgis.core.QgsApplication.validityCheckRegistry"><code class="xref py py-func docutils literal notranslate"><span class="pre">QgsApplication.validityCheckRegistry()</span></code></a></p>
 <div class="versionadded">
 <table class="longtable docutils align-default">
@@ -1621,6 +1618,11 @@ performing validity checks.</p>
 <code class="sig-name descname">addCheck</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">check: QgsAbstractValidityCheck</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsValidityCheckRegistry.addCheck" title="Permalink to this definition">¶</a></dt>
 <dd><p>Adds a <code class="docutils literal notranslate"><span class="pre">check</span></code> to the registry. Ownership of the check
 is transferred to the registry.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>check</strong> (<a class="reference internal" href="QgsAbstractValidityCheck.html#qgis.core.QgsAbstractValidityCheck" title="qgis.core.QgsAbstractValidityCheck"><em>QgsAbstractValidityCheck</em></a>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1629,6 +1631,11 @@ is transferred to the registry.</p>
 <dd><p>Returns the list of available checks.</p>
 <p>checks(self, type: int) -&gt; List[QgsAbstractValidityCheck]
 Returns the list of all available checks of the matching <code class="docutils literal notranslate"><span class="pre">type</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List[<a class="reference internal" href="QgsAbstractValidityCheck.html#qgis.core.QgsAbstractValidityCheck" title="qgis.core.QgsAbstractValidityCheck">QgsAbstractValidityCheck</a>]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1636,6 +1643,11 @@ Returns the list of all available checks of the matching <code class="docutils l
 <code class="sig-name descname">removeCheck</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">check: QgsAbstractValidityCheck</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsValidityCheckRegistry.removeCheck" title="Permalink to this definition">¶</a></dt>
 <dd><p>Removes a <code class="docutils literal notranslate"><span class="pre">check</span></code> from the registry.
 The check object is automatically deleted.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>check</strong> (<a class="reference internal" href="QgsAbstractValidityCheck.html#qgis.core.QgsAbstractValidityCheck" title="qgis.core.QgsAbstractValidityCheck"><em>QgsAbstractValidityCheck</em></a>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1649,6 +1661,18 @@ an empty list will be returned.</p>
 cancellation of long-running checks.</p>
 <p>This is a blocking call, which will run all matching checks in the main
 thread and only return when they have all completed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>type</strong> (<em>int</em>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsValidityCheckContext.html#qgis.core.QgsValidityCheckContext" title="qgis.core.QgsValidityCheckContext"><em>QgsValidityCheckContext</em></a>) – </p></li>
+<li><p><strong>feedback</strong> (<a class="reference internal" href="QgsFeedback.html#qgis.core.QgsFeedback" title="qgis.core.QgsFeedback"><em>QgsFeedback</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>List[<a class="reference internal" href="QgsValidityCheckResult.html#qgis.core.QgsValidityCheckResult" title="qgis.core.QgsValidityCheckResult">QgsValidityCheckResult</a>]</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -1667,7 +1691,7 @@ thread and only return when they have all completed.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 10:58 Oct 14, 2019.
+        Last updated on 15:06 Oct 15, 2019.
       </span>
 
     </p>
@@ -1694,20 +1718,20 @@ thread and only return when they have all completed.</p>
     <div class="rst-other-versions">
       <dl>
         <dt>Versions</dt>
-      
-        <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
-      
-    </dl>
+        
+          <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
+        
+      </dl>
       
       
     </div>

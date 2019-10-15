@@ -122,7 +122,6 @@
 <li class="toctree-l2"><a class="reference internal" href="PROJECT_SCALES.html">Class: PROJECT_SCALES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PluginLayer.html">Class: PluginLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ProjectDirtyBlocker.html">Class: ProjectDirtyBlocker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="PyProviderMetadata.html">Class: PyProviderMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgis.html">Class: Qgis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs25DRenderer.html">Class: Qgs25DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs3DRendererAbstractMetadata.html">Class: Qgs3DRendererAbstractMetadata</a></li>
@@ -1546,8 +1545,6 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/core/QgsMeshLayer.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -1564,29 +1561,29 @@
 <dl class="class">
 <dt id="qgis.core.QgsMeshLayer">
 <em class="property">class </em><code class="sig-prename descclassname">qgis.core.</code><code class="sig-name descname">QgsMeshLayer</code><span class="sig-paren">(</span><em class="sig-param">path: str = ''</em>, <em class="sig-param">baseName: str = ''</em>, <em class="sig-param">providerLib: str = ''</em>, <em class="sig-param">options: QgsMeshLayer.LayerOptions = QgsMeshLayer.LayerOptions()</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsMeshLayer" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">qgis._core.QgsMapLayer</span></code></p>
+<dd><p>Bases: <a class="reference internal" href="QgsMapLayer.html#module-QgsMapLayer" title="QgsMapLayer"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMapLayer</span></code></a></p>
 <p>Constructor - creates a mesh layer</p>
-<p>The QgsMeshLayer is constructed by instantiating a data provider.  The provider
+<p>The <a class="reference internal" href="#qgis.core.QgsMeshLayer" title="qgis.core.QgsMeshLayer"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMeshLayer</span></code></a> is constructed by instantiating a data provider.  The provider
 interprets the supplied path (url) of the data source to connect to and access the
 data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>path</strong> – The path or url of the parameter.  Typically this encodes
+<li><p><strong>path</strong> (<em>str = ''</em>) – The path or url of the parameter.  Typically this encodes
 parameters used by the data provider as url query items.</p></li>
-<li><p><strong>baseName</strong> – The name used to represent the layer in the legend</p></li>
-<li><p><strong>providerLib</strong> – The name of the data provider, e.g., “mesh_memory”, “mdal”</p></li>
-<li><p><strong>options</strong> – general mesh layer options</p></li>
+<li><p><strong>baseName</strong> (<em>str = ''</em>) – The name used to represent the layer in the legend</p></li>
+<li><p><strong>providerLib</strong> (<em>str = ''</em>) – The name of the data provider, e.g., “mesh_memory”, “mdal”</p></li>
+<li><p><strong>options</strong> (<em>QgsMeshLayer.LayerOptions = QgsMeshLayer.LayerOptions</em><em>(</em><em>)</em>) – general mesh layer options</p></li>
 </ul>
 </dd>
 </dl>
 <p>Represents a mesh layer supporting display of data on structured or unstructured meshes</p>
-<p>The QgsMeshLayer is instantiated by specifying the name of a data provider,
+<p>The <a class="reference internal" href="#qgis.core.QgsMeshLayer" title="qgis.core.QgsMeshLayer"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMeshLayer</span></code></a> is instantiated by specifying the name of a data provider,
 such as mdal, and url defining the specific data set to connect to.
-The vector layer constructor in turn instantiates a QgsMeshDataProvider subclass
+The vector layer constructor in turn instantiates a <a class="reference internal" href="QgsMeshDataProvider.html#qgis.core.QgsMeshDataProvider" title="qgis.core.QgsMeshDataProvider"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMeshDataProvider</span></code></a> subclass
 corresponding to the provider type, and passes it the url. The data provider
 connects to the data source.</p>
-<p>The QgsMeshLayer provides a common interface to the different data types. It does not
+<p>The <a class="reference internal" href="#qgis.core.QgsMeshLayer" title="qgis.core.QgsMeshLayer"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMeshLayer</span></code></a> provides a common interface to the different data types. It does not
 yet support editing transactions.</p>
 <p>The main data providers supported by QGIS are listed below.</p>
 <p>section mesh_providers Mesh data providers</p>
@@ -1596,24 +1593,24 @@ data. There is no inherent persistent storage of the data. The data source uri i
 Data can be populated by setMesh(const QString &amp;vertices, const QString &amp;faces), where
 vertices and faces is comma separated coordinates and connections for mesh.
 E.g. to create mesh with one quad and one triangle</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">QString</span> <span class="n">uri</span><span class="p">(</span>
-    <span class="s2">&quot;1.0, 2.0 </span><span class="se">\n</span><span class="s2">&quot;</span> \
-    <span class="s2">&quot;2.0, 2.0 </span><span class="se">\n</span><span class="s2">&quot;</span> \
-    <span class="s2">&quot;3.0, 2.0 </span><span class="se">\n</span><span class="s2">&quot;</span> \
-    <span class="s2">&quot;2.0, 3.0 </span><span class="se">\n</span><span class="s2">&quot;</span> \
-    <span class="s2">&quot;1.0, 3.0 </span><span class="se">\n</span><span class="s2">&quot;</span> \
-    <span class="s2">&quot;---&quot;</span>
-    <span class="s2">&quot;0, 1, 3, 4 </span><span class="se">\n</span><span class="s2">&quot;</span> \
-    <span class="s2">&quot;1, 2, 3 </span><span class="se">\n</span><span class="s2">&quot;</span>
-  <span class="p">);</span>
-  <span class="n">QgsMeshLayer</span> <span class="o">*</span><span class="n">scratchLayer</span> <span class="o">=</span> <span class="n">new</span> <span class="n">QgsMeshLayer</span><span class="p">(</span><span class="n">uri</span><span class="p">,</span> <span class="s2">&quot;My Scratch layer&quot;</span><span class="p">,</span> <span class="s2">&quot;memory_mesh&quot;</span><span class="p">);</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>QString uri(
+    &quot;1.0, 2.0 \n&quot; \
+    &quot;2.0, 2.0 \n&quot; \
+    &quot;3.0, 2.0 \n&quot; \
+    &quot;2.0, 3.0 \n&quot; \
+    &quot;1.0, 3.0 \n&quot; \
+    &quot;---&quot;
+    &quot;0, 1, 3, 4 \n&quot; \
+    &quot;1, 2, 3 \n&quot;
+  );
+  :py:class:`.QgsMeshLayer` *scratchLayer = new QgsMeshLayer(uri, &quot;My Scratch layer&quot;, &quot;memory_mesh&quot;);
 </pre></div>
 </div>
 <p>subsection mdal MDAL data provider (mdal)</p>
 <p>Accesses data using the MDAL drivers (<a class="reference external" href="https://github.com/lutraconsulting/MDAL">https://github.com/lutraconsulting/MDAL</a>). The url
 is the MDAL connection string. QGIS must be built with MDAL support to allow this provider.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">QString</span> <span class="n">uri</span> <span class="o">=</span> <span class="s2">&quot;test/land.2dm&quot;</span><span class="p">;</span>
-<span class="n">QgsMeshLayer</span> <span class="o">*</span><span class="n">scratchLayer</span> <span class="o">=</span> <span class="n">new</span> <span class="n">QgsMeshLayer</span><span class="p">(</span><span class="n">uri</span><span class="p">,</span> <span class="s2">&quot;My Scratch Layer&quot;</span><span class="p">,</span>  <span class="s2">&quot;mdal&quot;</span><span class="p">);</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>QString uri = &quot;test/land.2dm&quot;;
+:py:class:`.QgsMeshLayer` *scratchLayer = new QgsMeshLayer(uri, &quot;My Scratch Layer&quot;,  &quot;mdal&quot;);
 </pre></div>
 </div>
 <div class="admonition note">
@@ -1643,34 +1640,56 @@ is the MDAL connection string. QGIS must be built with MDAL support to allow thi
 <td><p></p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.clone" title="qgis.core.QgsMeshLayer.clone"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clone</span></code></a></p></td>
-<td><p></p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">rtype</dt>
+<dd class="field-odd"><p>QgsMeshLayer</p>
+</dd>
+</dl>
+</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.connectNotify" title="qgis.core.QgsMeshLayer.connectNotify"><code class="xref py py-obj docutils literal notranslate"><span class="pre">connectNotify</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.createMapRenderer" title="qgis.core.QgsMeshLayer.createMapRenderer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createMapRenderer</span></code></a></p></td>
-<td><p></p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">param rendererContext</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.customEvent" title="qgis.core.QgsMeshLayer.customEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">customEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.dataProvider" title="qgis.core.QgsMeshLayer.dataProvider"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dataProvider</span></code></a></p></td>
-<td><p>QgsMeshLayer cannot be copied.</p></td>
+<td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer" title="qgis.core.QgsMeshLayer"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMeshLayer</span></code></a> cannot be copied.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.datasetValue" title="qgis.core.QgsMeshLayer.datasetValue"><code class="xref py py-obj docutils literal notranslate"><span class="pre">datasetValue</span></code></a></p></td>
 <td><p>Interpolates the value on the given point from given dataset.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.decodedSource" title="qgis.core.QgsMeshLayer.decodedSource"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decodedSource</span></code></a></p></td>
-<td><p></p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">param source</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.disconnectNotify" title="qgis.core.QgsMeshLayer.disconnectNotify"><code class="xref py py-obj docutils literal notranslate"><span class="pre">disconnectNotify</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.encodedSource" title="qgis.core.QgsMeshLayer.encodedSource"><code class="xref py py-obj docutils literal notranslate"><span class="pre">encodedSource</span></code></a></p></td>
-<td><p></p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">param source</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.extent" title="qgis.core.QgsMeshLayer.extent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">extent</span></code></a></p></td>
-<td><p></p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">rtype</dt>
+<dd class="field-odd"><p>QgsRectangle</p>
+</dd>
+</dl>
+</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.formatTime" title="qgis.core.QgsMeshLayer.formatTime"><code class="xref py py-obj docutils literal notranslate"><span class="pre">formatTime</span></code></a></p></td>
 <td><p>Returns (date) time in hours formatted to human readable form</p></td>
@@ -1694,10 +1713,18 @@ is the MDAL connection string. QGIS must be built with MDAL support to allow thi
 <td><p></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.readSymbology" title="qgis.core.QgsMeshLayer.readSymbology"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readSymbology</span></code></a></p></td>
-<td><p></p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">param node</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.readXml" title="qgis.core.QgsMeshLayer.readXml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readXml</span></code></a></p></td>
-<td><p></p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">param layer_node</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.receivers" title="qgis.core.QgsMeshLayer.receivers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">receivers</span></code></a></p></td>
 <td><p></p></td>
@@ -1751,10 +1778,18 @@ is the MDAL connection string. QGIS must be built with MDAL support to allow thi
 <td><p></p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.writeSymbology" title="qgis.core.QgsMeshLayer.writeSymbology"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeSymbology</span></code></a></p></td>
-<td><p></p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">param node</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.writeXml" title="qgis.core.QgsMeshLayer.writeXml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeXml</span></code></a></p></td>
-<td><p></p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">param layer_node</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+</p></td>
 </tr>
 </tbody>
 </table>
@@ -1795,6 +1830,11 @@ is the MDAL connection string. QGIS must be built with MDAL support to allow thi
 <p>transformContext argument was added in QGIS 3.8</p>
 </div>
 <p>QgsMeshLayer.LayerOptions(QgsMeshLayer.LayerOptions)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>transformContext</strong> (<a class="reference internal" href="QgsCoordinateTransformContext.html#qgis.core.QgsCoordinateTransformContext" title="qgis.core.QgsCoordinateTransformContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsCoordinateTransformContext</span></code></a> = QgsCoordinateTransformContext()) – </p>
+</dd>
+</dl>
 <dl class="attribute">
 <dt id="qgis.core.QgsMeshLayer.LayerOptions.transformContext">
 <code class="sig-name descname">transformContext</code><a class="headerlink" href="#qgis.core.QgsMeshLayer.LayerOptions.transformContext" title="Permalink to this definition">¶</a></dt>
@@ -1809,6 +1849,11 @@ is the MDAL connection string. QGIS must be built with MDAL support to allow thi
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.4: </span>[signal]</p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>index</strong> (<a class="reference internal" href="QgsMeshDatasetIndex.html#qgis.core.QgsMeshDatasetIndex" title="qgis.core.QgsMeshDatasetIndex"><em>QgsMeshDatasetIndex</em></a>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="attribute">
@@ -1818,6 +1863,11 @@ is the MDAL connection string. QGIS must be built with MDAL support to allow thi
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.4: </span>[signal]</p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>index</strong> (<a class="reference internal" href="QgsMeshDatasetIndex.html#qgis.core.QgsMeshDatasetIndex" title="qgis.core.QgsMeshDatasetIndex"><em>QgsMeshDatasetIndex</em></a>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1833,7 +1883,12 @@ is the MDAL connection string. QGIS must be built with MDAL support to allow thi
 <dl class="method">
 <dt id="qgis.core.QgsMeshLayer.clone">
 <code class="sig-name descname">clone</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QgsMeshLayer<a class="headerlink" href="#qgis.core.QgsMeshLayer.clone" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#qgis.core.QgsMeshLayer" title="qgis.core.QgsMeshLayer">QgsMeshLayer</a></p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsMeshLayer.connectNotify">
@@ -1843,7 +1898,15 @@ is the MDAL connection string. QGIS must be built with MDAL support to allow thi
 <dl class="method">
 <dt id="qgis.core.QgsMeshLayer.createMapRenderer">
 <code class="sig-name descname">createMapRenderer</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">rendererContext: QgsRenderContext</em><span class="sig-paren">)</span> &#x2192; QgsMapLayerRenderer<a class="headerlink" href="#qgis.core.QgsMeshLayer.createMapRenderer" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>rendererContext</strong> (<a class="reference internal" href="QgsRenderContext.html#qgis.core.QgsRenderContext" title="qgis.core.QgsRenderContext"><em>QgsRenderContext</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsMapLayerRenderer.html#qgis.core.QgsMapLayerRenderer" title="qgis.core.QgsMapLayerRenderer">QgsMapLayerRenderer</a></p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsMeshLayer.customEvent">
@@ -1853,7 +1916,12 @@ is the MDAL connection string. QGIS must be built with MDAL support to allow thi
 <dl class="method">
 <dt id="qgis.core.QgsMeshLayer.dataProvider">
 <code class="sig-name descname">dataProvider</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QgsMeshDataProvider<a class="headerlink" href="#qgis.core.QgsMeshLayer.dataProvider" title="Permalink to this definition">¶</a></dt>
-<dd><p>QgsMeshLayer cannot be copied.</p>
+<dd><p><a class="reference internal" href="#qgis.core.QgsMeshLayer" title="qgis.core.QgsMeshLayer"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMeshLayer</span></code></a> cannot be copied.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsMeshDataProvider.html#qgis.core.QgsMeshDataProvider" title="qgis.core.QgsMeshDataProvider">QgsMeshDataProvider</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1869,12 +1937,15 @@ and so if the layer has not been rendered previously
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>index</strong> – dataset index specifying group and dataset to extract value from</p></li>
-<li><p><strong>point</strong> – point to query in map coordinates</p></li>
+<li><p><strong>index</strong> (<a class="reference internal" href="QgsMeshDatasetIndex.html#qgis.core.QgsMeshDatasetIndex" title="qgis.core.QgsMeshDatasetIndex"><em>QgsMeshDatasetIndex</em></a>) – dataset index specifying group and dataset to extract value from</p></li>
+<li><p><strong>point</strong> (<a class="reference internal" href="QgsPointXY.html#qgis.core.QgsPointXY" title="qgis.core.QgsPointXY"><em>QgsPointXY</em></a>) – point to query in map coordinates</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>interpolated value at the point. Returns NaN values for values
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsMeshDatasetValue.html#qgis.core.QgsMeshDatasetValue" title="qgis.core.QgsMeshDatasetValue">QgsMeshDatasetValue</a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>interpolated value at the point. Returns NaN values for values
 outside the mesh layer, nodata values and in case triangular mesh was not
 previously used for rendering</p>
 </dd>
@@ -1887,7 +1958,19 @@ previously used for rendering</p>
 <dl class="method">
 <dt id="qgis.core.QgsMeshLayer.decodedSource">
 <code class="sig-name descname">decodedSource</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">source: str</em>, <em class="sig-param">provider: str</em>, <em class="sig-param">context: QgsReadWriteContext</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.core.QgsMeshLayer.decodedSource" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>source</strong> (<em>str</em>) – </p></li>
+<li><p><strong>provider</strong> (<em>str</em>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsReadWriteContext.html#qgis.core.QgsReadWriteContext" title="qgis.core.QgsReadWriteContext"><em>QgsReadWriteContext</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsMeshLayer.disconnectNotify">
@@ -1897,12 +1980,28 @@ previously used for rendering</p>
 <dl class="method">
 <dt id="qgis.core.QgsMeshLayer.encodedSource">
 <code class="sig-name descname">encodedSource</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">source: str</em>, <em class="sig-param">context: QgsReadWriteContext</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.core.QgsMeshLayer.encodedSource" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>source</strong> (<em>str</em>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsReadWriteContext.html#qgis.core.QgsReadWriteContext" title="qgis.core.QgsReadWriteContext"><em>QgsReadWriteContext</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsMeshLayer.extent">
 <code class="sig-name descname">extent</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QgsRectangle<a class="headerlink" href="#qgis.core.QgsMeshLayer.extent" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsRectangle.html#qgis.core.QgsRectangle" title="qgis.core.QgsRectangle">QgsRectangle</a></p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsMeshLayer.formatTime">
@@ -1910,10 +2009,13 @@ previously used for rendering</p>
 <dd><p>Returns (date) time in hours formatted to human readable form</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>hours</strong> – time in double in hours</p>
+<dd class="field-odd"><p><strong>hours</strong> (<em>float</em>) – time in double in hours</p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>formatted time string</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>formatted time string</p>
 </dd>
 </dl>
 <div class="versionadded">
@@ -1935,6 +2037,11 @@ previously used for rendering</p>
 <dt id="qgis.core.QgsMeshLayer.providerType">
 <code class="sig-name descname">providerType</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.core.QgsMeshLayer.providerType" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the provider type for this layer</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1955,12 +2062,36 @@ previously used for rendering</p>
 <dl class="method">
 <dt id="qgis.core.QgsMeshLayer.readSymbology">
 <code class="sig-name descname">readSymbology</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">node: QDomNode</em>, <em class="sig-param">errorMessage: str</em>, <em class="sig-param">context: QgsReadWriteContext</em>, <em class="sig-param">categories: Union[QgsMapLayer.StyleCategories</em>, <em class="sig-param">QgsMapLayer.StyleCategory] = QgsMapLayer.AllStyleCategories</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsMeshLayer.readSymbology" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>node</strong> (<em>QDomNode</em>) – </p></li>
+<li><p><strong>errorMessage</strong> (<em>str</em>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsReadWriteContext.html#qgis.core.QgsReadWriteContext" title="qgis.core.QgsReadWriteContext"><em>QgsReadWriteContext</em></a>) – </p></li>
+<li><p><strong>categories</strong> (<em>Union</em><em>[</em><a class="reference internal" href="QgsMapLayer.html#qgis.core.QgsMapLayer.StyleCategories" title="qgis.core.QgsMapLayer.StyleCategories"><em>QgsMapLayer.StyleCategories</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsMeshLayer.readXml">
 <code class="sig-name descname">readXml</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">layer_node: QDomNode</em>, <em class="sig-param">context: QgsReadWriteContext</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsMeshLayer.readXml" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>layer_node</strong> (<em>QDomNode</em>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsReadWriteContext.html#qgis.core.QgsReadWriteContext" title="qgis.core.QgsReadWriteContext"><em>QgsReadWriteContext</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsMeshLayer.receivers">
@@ -1976,6 +2107,11 @@ previously used for rendering</p>
 <dt id="qgis.core.QgsMeshLayer.rendererSettings">
 <code class="sig-name descname">rendererSettings</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QgsMeshRendererSettings<a class="headerlink" href="#qgis.core.QgsMeshLayer.rendererSettings" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns renderer settings</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsMeshRendererSettings.html#qgis.core.QgsMeshRendererSettings" title="qgis.core.QgsMeshRendererSettings">QgsMeshRendererSettings</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2007,6 +2143,11 @@ previously used for rendering</p>
 <dt id="qgis.core.QgsMeshLayer.setRendererSettings">
 <code class="sig-name descname">setRendererSettings</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">settings: QgsMeshRendererSettings</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsMeshLayer.setRendererSettings" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets new renderer settings</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>settings</strong> (<a class="reference internal" href="QgsMeshRendererSettings.html#qgis.core.QgsMeshRendererSettings" title="qgis.core.QgsMeshRendererSettings"><em>QgsMeshRendererSettings</em></a>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2016,6 +2157,11 @@ previously used for rendering</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.8.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>settings</strong> (<a class="reference internal" href="QgsMeshTimeSettings.html#qgis.core.QgsMeshTimeSettings" title="qgis.core.QgsMeshTimeSettings"><em>QgsMeshTimeSettings</em></a>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2025,6 +2171,11 @@ previously used for rendering</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.8.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>transformContext</strong> (<a class="reference internal" href="QgsCoordinateTransformContext.html#qgis.core.QgsCoordinateTransformContext" title="qgis.core.QgsCoordinateTransformContext"><em>QgsCoordinateTransformContext</em></a>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2039,6 +2190,11 @@ previously used for rendering</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.8.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsMeshTimeSettings.html#qgis.core.QgsMeshTimeSettings" title="qgis.core.QgsMeshTimeSettings">QgsMeshTimeSettings</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="attribute">
@@ -2073,12 +2229,38 @@ previously used for rendering</p>
 <dl class="method">
 <dt id="qgis.core.QgsMeshLayer.writeSymbology">
 <code class="sig-name descname">writeSymbology</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">node: QDomNode</em>, <em class="sig-param">doc: QDomDocument</em>, <em class="sig-param">errorMessage: str</em>, <em class="sig-param">context: QgsReadWriteContext</em>, <em class="sig-param">categories: Union[QgsMapLayer.StyleCategories</em>, <em class="sig-param">QgsMapLayer.StyleCategory] = QgsMapLayer.AllStyleCategories</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsMeshLayer.writeSymbology" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>node</strong> (<em>QDomNode</em>) – </p></li>
+<li><p><strong>doc</strong> (<em>QDomDocument</em>) – </p></li>
+<li><p><strong>errorMessage</strong> (<em>str</em>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsReadWriteContext.html#qgis.core.QgsReadWriteContext" title="qgis.core.QgsReadWriteContext"><em>QgsReadWriteContext</em></a>) – </p></li>
+<li><p><strong>categories</strong> (<em>Union</em><em>[</em><a class="reference internal" href="QgsMapLayer.html#qgis.core.QgsMapLayer.StyleCategories" title="qgis.core.QgsMapLayer.StyleCategories"><em>QgsMapLayer.StyleCategories</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsMeshLayer.writeXml">
 <code class="sig-name descname">writeXml</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">layer_node: QDomNode</em>, <em class="sig-param">doc: QDomDocument</em>, <em class="sig-param">context: QgsReadWriteContext</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsMeshLayer.writeXml" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>layer_node</strong> (<em>QDomNode</em>) – </p></li>
+<li><p><strong>doc</strong> (<em>QDomDocument</em>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsReadWriteContext.html#qgis.core.QgsReadWriteContext" title="qgis.core.QgsReadWriteContext"><em>QgsReadWriteContext</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 
@@ -2096,7 +2278,7 @@ previously used for rendering</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 10:58 Oct 14, 2019.
+        Last updated on 15:06 Oct 15, 2019.
       </span>
 
     </p>
@@ -2123,20 +2305,20 @@ previously used for rendering</p>
     <div class="rst-other-versions">
       <dl>
         <dt>Versions</dt>
-      
-        <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
-      
-    </dl>
+        
+          <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
+        
+      </dl>
       
       
     </div>

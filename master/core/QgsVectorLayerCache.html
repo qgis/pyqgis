@@ -122,7 +122,6 @@
 <li class="toctree-l2"><a class="reference internal" href="PROJECT_SCALES.html">Class: PROJECT_SCALES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PluginLayer.html">Class: PluginLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ProjectDirtyBlocker.html">Class: ProjectDirtyBlocker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="PyProviderMetadata.html">Class: PyProviderMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgis.html">Class: Qgis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs25DRenderer.html">Class: Qgs25DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs3DRendererAbstractMetadata.html">Class: Qgs3DRendererAbstractMetadata</a></li>
@@ -1546,8 +1545,6 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/core/QgsVectorLayerCache.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -1585,7 +1582,7 @@
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayerCache.addCacheIndex" title="qgis.core.QgsVectorLayerCache.addCacheIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">addCacheIndex</span></code></a></p></td>
-<td><p>Adds a QgsAbstractCacheIndex to this cache.</p></td>
+<td><p>Adds a <a class="reference internal" href="QgsAbstractCacheIndex.html#qgis.core.QgsAbstractCacheIndex" title="qgis.core.QgsAbstractCacheIndex"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsAbstractCacheIndex</span></code></a> to this cache.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayerCache.cacheGeometry" title="qgis.core.QgsVectorLayerCache.cacheGeometry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cacheGeometry</span></code></a></p></td>
 <td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the cache will fetch and cache feature geometries.</p></td>
@@ -1718,12 +1715,12 @@
 <dl class="method">
 <dt id="qgis.core.QgsVectorLayerCache.addCacheIndex">
 <code class="sig-name descname">addCacheIndex</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">cacheIndex: QgsAbstractCacheIndex</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsVectorLayerCache.addCacheIndex" title="Permalink to this definition">¶</a></dt>
-<dd><p>Adds a QgsAbstractCacheIndex to this cache. Cache indices know about features present
+<dd><p>Adds a <a class="reference internal" href="QgsAbstractCacheIndex.html#qgis.core.QgsAbstractCacheIndex" title="qgis.core.QgsAbstractCacheIndex"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsAbstractCacheIndex</span></code></a> to this cache. Cache indices know about features present
 in this cache and decide, if enough information is present in the cache to respond to a <a class="reference internal" href="QgsFeatureRequest.html#module-QgsFeatureRequest" title="QgsFeatureRequest"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsFeatureRequest</span></code></a>.
 The layer cache will take ownership of the index.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>cacheIndex</strong> – The cache index to add.</p>
+<dd class="field-odd"><p><strong>cacheIndex</strong> (<a class="reference internal" href="QgsAbstractCacheIndex.html#qgis.core.QgsAbstractCacheIndex" title="qgis.core.QgsAbstractCacheIndex"><em>QgsAbstractCacheIndex</em></a>) – The cache index to add.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1733,6 +1730,15 @@ The layer cache will take ownership of the index.</p>
 <code class="sig-name descname">attributeValueChanged</code><a class="headerlink" href="#qgis.core.QgsVectorLayerCache.attributeValueChanged" title="Permalink to this definition">¶</a></dt>
 <dd><p>Emitted when an attribute is changed. Is re-emitted after the layer itself emits this signal.
 You should connect to this signal, to be sure, to not get a cached value if querying the cache. [signal]</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fid</strong> (<em>int</em>) – </p></li>
+<li><p><strong>field</strong> (<em>int</em>) – </p></li>
+<li><p><strong>value</strong> (<em>Any</em>) – </p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1746,6 +1752,11 @@ You should connect to this signal, to be sure, to not get a cached value if quer
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1754,8 +1765,11 @@ You should connect to this signal, to be sure, to not get a cached value if quer
 <dd><p>Returns the maximum number of features this cache will hold.
 In case full caching is enabled, this number can change, as new features get added.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>int</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>int</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1771,6 +1785,11 @@ In case full caching is enabled, this number can change, as new features get add
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>object</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="attribute">
@@ -1789,10 +1808,13 @@ i.e. If all attributes required and the geometry is held in the cache.
 Please note, that this does not check, if the requested features are cached.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>featureRequest</strong> – The QgsFeatureRequest to be answered</p>
+<dd class="field-odd"><p><strong>featureRequest</strong> (<a class="reference internal" href="QgsFeatureRequest.html#qgis.core.QgsFeatureRequest" title="qgis.core.QgsFeatureRequest"><em>QgsFeatureRequest</em></a>) – The <a class="reference internal" href="QgsFeatureRequest.html#qgis.core.QgsFeatureRequest" title="qgis.core.QgsFeatureRequest"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsFeatureRequest</span></code></a> to be answered</p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the information is being cached, <code class="docutils literal notranslate"><span class="pre">False</span></code> if not</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the information is being cached, <code class="docutils literal notranslate"><span class="pre">False</span></code> if not</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1825,7 +1847,7 @@ You should connect to this signal instead of the layers’, if you want to be su
 that this cache has updated information for the new feature</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>fid</strong> – The featureid of the changed feature [signal]</p>
+<dd class="field-odd"><p><strong>fid</strong> (<em>int</em>) – The featureid of the changed feature [signal]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1837,13 +1859,16 @@ that this cache has updated information for the new feature</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>featureId</strong> – The id of the feature to query</p></li>
-<li><p><strong>feature</strong> – The result of the operation will be written to this feature</p></li>
-<li><p><strong>skipCache</strong> – Will query the layer regardless if the feature is in the cache already</p></li>
+<li><p><strong>featureId</strong> (<em>int</em>) – The id of the feature to query</p></li>
+<li><p><strong>feature</strong> (<a class="reference internal" href="QgsFeature.html#qgis.core.QgsFeature" title="qgis.core.QgsFeature"><em>QgsFeature</em></a>) – The result of the operation will be written to this feature</p></li>
+<li><p><strong>skipCache</strong> (<em>bool = False</em>) – Will query the layer regardless if the feature is in the cache already</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> in case of success</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> in case of success</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1853,6 +1878,11 @@ that this cache has updated information for the new feature</p>
 <code class="sig-name descname">featureCount</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#qgis.core.QgsVectorLayerCache.featureCount" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the number of features contained in the source, or -1
 if the feature count is unknown.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1862,7 +1892,7 @@ if the feature count is unknown.</p>
 Broadcasts this information to indices, so they can invalidate their cache if required.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>fid</strong> – The feature id of the removed feature.</p>
+<dd class="field-odd"><p><strong>fid</strong> (<em>int</em>) – The feature id of the removed feature.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1871,6 +1901,11 @@ Broadcasts this information to indices, so they can invalidate their cache if re
 <dt id="qgis.core.QgsVectorLayerCache.fields">
 <code class="sig-name descname">fields</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QgsFields<a class="headerlink" href="#qgis.core.QgsVectorLayerCache.fields" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the fields associated with features in the cache.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsFields.html#qgis.core.QgsFields" title="qgis.core.QgsFields">QgsFields</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="attribute">
@@ -1884,6 +1919,14 @@ Broadcasts this information to indices, so they can invalidate their cache if re
 <code class="sig-name descname">getFeature</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">fid: int</em><span class="sig-paren">)</span> &#x2192; QgsFeature<a class="headerlink" href="#qgis.core.QgsVectorLayerCache.getFeature" title="Permalink to this definition">¶</a></dt>
 <dd><p>Query the layer for the feature with the given id.
 If there is no such feature, the returned feature will be invalid.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>fid</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsFeature.html#qgis.core.QgsFeature" title="qgis.core.QgsFeature">QgsFeature</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1891,22 +1934,25 @@ If there is no such feature, the returned feature will be invalid.</p>
 <code class="sig-name descname">getFeatures</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">featureRequest: QgsFeatureRequest = QgsFeatureRequest()</em><span class="sig-paren">)</span> &#x2192; QgsFeatureIterator<a class="headerlink" href="#qgis.core.QgsVectorLayerCache.getFeatures" title="Permalink to this definition">¶</a></dt>
 <dd><p>Query this VectorLayerCache for features.
 If the VectorLayerCache (and moreover any of its indices) is able to satisfy
-the request, the returned QgsFeatureIterator will iterate over cached features.
+the request, the returned <a class="reference internal" href="QgsFeatureIterator.html#qgis.core.QgsFeatureIterator" title="qgis.core.QgsFeatureIterator"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsFeatureIterator</span></code></a> will iterate over cached features.
 If it’s not possible to fully satisfy the request from the cache, part or all of the features
 will be requested from the data provider.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>featureRequest</strong> – The request specifying filter and required data.</p>
+<dd class="field-odd"><p><strong>featureRequest</strong> (<a class="reference internal" href="QgsFeatureRequest.html#qgis.core.QgsFeatureRequest" title="qgis.core.QgsFeatureRequest"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsFeatureRequest</span></code></a> = QgsFeatureRequest()) – The request specifying filter and required data.</p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>An iterator over the requested data.</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsFeatureIterator.html#qgis.core.QgsFeatureIterator" title="qgis.core.QgsFeatureIterator">QgsFeatureIterator</a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>An iterator over the requested data.</p>
 </dd>
 </dl>
 <p>getFeatures(self, expression: str) -&gt; QgsFeatureIterator
 Query the layer for features matching a given expression.</p>
 <p>getFeatures(self, fids: object) -&gt; QgsFeatureIterator
 Query the layer for the features with the given ids.</p>
-<p>getFeatures(self, rectangle: QgsRectangle) -&gt; QgsFeatureIterator
+<p>getFeatures(self, rectangle: <a class="reference internal" href="QgsRectangle.html#qgis.core.QgsRectangle" title="qgis.core.QgsRectangle"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsRectangle</span></code></a>) -&gt; QgsFeatureIterator
 Query the layer for the features which intersect the specified rectangle.</p>
 </dd></dl>
 
@@ -1923,6 +1969,11 @@ all available features being cached.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="attribute">
@@ -1939,10 +1990,13 @@ will need to be performed. [signal]</p>
 <dd><p>Check if a certain feature id is cached.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>fid</strong> – The feature id to look for</p>
+<dd class="field-odd"><p><strong>fid</strong> (<em>int</em>) – The feature id to look for</p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if this id is in the cache</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if this id is in the cache</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -1960,6 +2014,11 @@ will need to be performed. [signal]</p>
 <dt id="qgis.core.QgsVectorLayerCache.layer">
 <code class="sig-name descname">layer</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QgsVectorLayer<a class="headerlink" href="#qgis.core.QgsVectorLayerCache.layer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the layer to which this cache belongs</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsVectorLayer.html#qgis.core.QgsVectorLayer" title="qgis.core.QgsVectorLayer">QgsVectorLayer</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1973,10 +2032,13 @@ will need to be performed. [signal]</p>
 <dd><p>Removes the feature identified by fid from the cache if present.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>fid</strong> – The id of the feature to delete</p>
+<dd class="field-odd"><p><strong>fid</strong> (<em>int</em>) – The id of the feature to delete</p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the feature was removed, <code class="docutils literal notranslate"><span class="pre">False</span></code> if the feature id was not found in the cache</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the feature was removed, <code class="docutils literal notranslate"><span class="pre">False</span></code> if the feature id was not found in the cache</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1989,8 +2051,8 @@ Broadcasts this information to indices, so they can update their tables.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>featureRequest</strong> – The feature request that was answered</p></li>
-<li><p><strong>fids</strong> – The feature ids that have been returned</p></li>
+<li><p><strong>featureRequest</strong> (<a class="reference internal" href="QgsFeatureRequest.html#qgis.core.QgsFeatureRequest" title="qgis.core.QgsFeatureRequest"><em>QgsFeatureRequest</em></a>) – The feature request that was answered</p></li>
+<li><p><strong>fids</strong> (<em>object</em>) – The feature ids that have been returned</p></li>
 </ul>
 </dd>
 </dl>
@@ -2013,7 +2075,7 @@ Broadcasts this information to indices, so they can update their tables.</p>
 to also include newly added attributes.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>cacheAddedAttributes</strong> – Automatically cache new attributes</p>
+<dd class="field-odd"><p><strong>cacheAddedAttributes</strong> (<em>bool</em>) – Automatically cache new attributes</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2024,7 +2086,7 @@ to also include newly added attributes.</p>
 <dd><p>Enable or disable the caching of geometries</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>cacheGeometry</strong> – Enable or disable the caching of geometries</p>
+<dd class="field-odd"><p><strong>cacheGeometry</strong> (<em>bool</em>) – Enable or disable the caching of geometries</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -2040,7 +2102,7 @@ to also include newly added attributes.</p>
 the cache if the number is smaller than the previous size of the cache.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>cacheSize</strong> – indicates the maximum number of features to keep in the cache</p>
+<dd class="field-odd"><p><strong>cacheSize</strong> (<em>int</em>) – indicates the maximum number of features to keep in the cache</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2051,7 +2113,7 @@ the cache if the number is smaller than the previous size of the cache.</p>
 <dd><p>Set the subset of attributes to be cached</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>attributes</strong> – The attributes to be cached</p>
+<dd class="field-odd"><p><strong>attributes</strong> (<em>Iterable</em><em>[</em><em>int</em><em>]</em>) – The attributes to be cached</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2066,7 +2128,7 @@ When enabled, all features will be read into cache. As this feature will most li
 be used for slow data sources, be aware, that the call to this method might take a long time.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>fullCache</strong> – <code class="docutils literal notranslate"><span class="pre">True</span></code>: enable full caching, <code class="docutils literal notranslate"><span class="pre">False</span></code>: disable full caching</p>
+<dd class="field-odd"><p><strong>fullCache</strong> (<em>bool</em>) – <code class="docutils literal notranslate"><span class="pre">True</span></code>: enable full caching, <code class="docutils literal notranslate"><span class="pre">False</span></code>: disable full caching</p>
 </dd>
 </dl>
 <div class="admonition note">
@@ -2084,6 +2146,11 @@ is reset. A full cache rebuild must be performed by calling setFullCache( <code 
 <dt id="qgis.core.QgsVectorLayerCache.sourceCrs">
 <code class="sig-name descname">sourceCrs</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QgsCoordinateReferenceSystem<a class="headerlink" href="#qgis.core.QgsVectorLayerCache.sourceCrs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the coordinate reference system for features in the cache.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsCoordinateReferenceSystem.html#qgis.core.QgsCoordinateReferenceSystem" title="qgis.core.QgsCoordinateReferenceSystem">QgsCoordinateReferenceSystem</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2095,6 +2162,11 @@ is reset. A full cache rebuild must be performed by calling setFullCache( <code 
 <dt id="qgis.core.QgsVectorLayerCache.wkbType">
 <code class="sig-name descname">wkbType</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QgsWkbTypes.Type<a class="headerlink" href="#qgis.core.QgsVectorLayerCache.wkbType" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the geometry type for features in the cache.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsWkbTypes.html#qgis.core.QgsWkbTypes.Type" title="qgis.core.QgsWkbTypes.Type">QgsWkbTypes.Type</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -2113,7 +2185,7 @@ is reset. A full cache rebuild must be performed by calling setFullCache( <code 
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 10:58 Oct 14, 2019.
+        Last updated on 15:06 Oct 15, 2019.
       </span>
 
     </p>
@@ -2140,20 +2212,20 @@ is reset. A full cache rebuild must be performed by calling setFullCache( <code 
     <div class="rst-other-versions">
       <dl>
         <dt>Versions</dt>
-      
-        <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
-      
-    </dl>
+        
+          <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
+        
+      </dl>
       
       
     </div>

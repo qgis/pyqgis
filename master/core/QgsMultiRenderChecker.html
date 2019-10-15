@@ -122,7 +122,6 @@
 <li class="toctree-l2"><a class="reference internal" href="PROJECT_SCALES.html">Class: PROJECT_SCALES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PluginLayer.html">Class: PluginLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ProjectDirtyBlocker.html">Class: ProjectDirtyBlocker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="PyProviderMetadata.html">Class: PyProviderMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgis.html">Class: Qgis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs25DRenderer.html">Class: Qgs25DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs3DRendererAbstractMetadata.html">Class: Qgs3DRendererAbstractMetadata</a></li>
@@ -1546,8 +1545,6 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/core/QgsMultiRenderChecker.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -1566,7 +1563,7 @@
 <em class="property">class </em><code class="sig-prename descclassname">qgis.core.</code><code class="sig-name descname">QgsMultiRenderChecker</code><a class="headerlink" href="#qgis.core.QgsMultiRenderChecker" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sip.wrapper</span></code></p>
 <p>Constructor for QgsMultiRenderChecker.</p>
-<p>QgsMultiRenderChecker(QgsMultiRenderChecker)</p>
+<p>QgsMultiRenderChecker(<a class="reference internal" href="#qgis.core.QgsMultiRenderChecker" title="qgis.core.QgsMultiRenderChecker"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMultiRenderChecker</span></code></a>)</p>
 <p>This class allows checking rendered images against comparison images.
 Its main purpose is for the unit testing framework.</p>
 <p>It will either
@@ -1622,7 +1619,11 @@ individually.</p>
 <td><p>Base directory name for the control image (with control image path suffixed) the path to the image will be constructed like this: controlImagePath + ‘/’ + mControlName + ‘/’ + mControlName + ‘.png’</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMultiRenderChecker.setControlPathPrefix" title="qgis.core.QgsMultiRenderChecker.setControlPathPrefix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setControlPathPrefix</span></code></a></p></td>
-<td><p></p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">param prefix</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMultiRenderChecker.setMapSettings" title="qgis.core.QgsMultiRenderChecker.setMapSettings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setMapSettings</span></code></a></p></td>
 <td><p>Set the map settings to use to render the image</p></td>
@@ -1656,6 +1657,11 @@ individually.</p>
 <dt id="qgis.core.QgsMultiRenderChecker.controlImagePath">
 <code class="sig-name descname">controlImagePath</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.core.QgsMultiRenderChecker.controlImagePath" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the path to the control images.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1663,12 +1669,22 @@ individually.</p>
 <code class="sig-name descname">drawBackground</code><span class="sig-paren">(</span><em class="sig-param">image: QImage</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsMultiRenderChecker.drawBackground" title="Permalink to this definition">¶</a></dt>
 <dd><p>Draws a checkboard pattern for image backgrounds, so that opacity is visible
 without requiring a transparent background for the image</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>image</strong> (<em>QImage</em>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsMultiRenderChecker.report">
 <code class="sig-name descname">report</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.core.QgsMultiRenderChecker.report" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a report for this test</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1678,12 +1694,12 @@ without requiring a transparent background for the image</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>testName</strong> – <ul>
+<li><p><strong>testName</strong> (<em>str</em>) – <ul>
 <li><p>to be used as the basis for writing a file to</p></li>
 </ul>
 <p>e.g. /tmp/theTestName.png</p>
 </p></li>
-<li><p><strong>mismatchCount</strong> – <ul>
+<li><p><strong>mismatchCount</strong> (<em>int = 0</em>) – <ul>
 <li><p>defaults to 0 - the number of pixels that</p></li>
 </ul>
 <p>are allowed to be different from the control image. In some cases
@@ -1697,6 +1713,11 @@ for that by providing a tolerance.</p>
 <p class="admonition-title">Note</p>
 <p>make sure to call setExpectedImage and setMapSettings first</p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1706,7 +1727,7 @@ for that by providing a tolerance.</p>
 Default value is 0.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>colorTolerance</strong> – The maximum difference for each color component
+<dd class="field-odd"><p><strong>colorTolerance</strong> (<em>int</em>) – The maximum difference for each color component
 including alpha to be considered correct.</p>
 </dd>
 </dl>
@@ -1718,12 +1739,22 @@ including alpha to be considered correct.</p>
 <dd><p>Base directory name for the control image (with control image path
 suffixed) the path to the image will be constructed like this:
 controlImagePath + ‘/’ + mControlName + ‘/’ + mControlName + ‘.png’</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsMultiRenderChecker.setControlPathPrefix">
 <code class="sig-name descname">setControlPathPrefix</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">prefix: str</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsMultiRenderChecker.setControlPathPrefix" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>prefix</strong> (<em>str</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsMultiRenderChecker.setMapSettings">
@@ -1731,7 +1762,7 @@ controlImagePath + ‘/’ + mControlName + ‘/’ + mControlName + ‘.png’<
 <dd><p>Set the map settings to use to render the image</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>mapSettings</strong> – The map settings</p>
+<dd class="field-odd"><p><strong>mapSettings</strong> (<a class="reference internal" href="QgsMapSettings.html#qgis.core.QgsMapSettings" title="qgis.core.QgsMapSettings"><em>QgsMapSettings</em></a>) – The map settings</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1743,7 +1774,7 @@ controlImagePath + ‘/’ + mControlName + ‘/’ + mControlName + ‘.png’<
 will be rendered based on the provided mapsettings</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>renderedImagePath</strong> – A path to the rendered image with which control images will be compared</p>
+<dd class="field-odd"><p><strong>renderedImagePath</strong> (<em>str</em>) – A path to the rendered image with which control images will be compared</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1755,8 +1786,8 @@ will be rendered based on the provided mapsettings</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>xTolerance</strong> – x tolerance in pixels</p></li>
-<li><p><strong>yTolerance</strong> – y tolerance in pixels</p></li>
+<li><p><strong>xTolerance</strong> (<em>int</em>) – x tolerance in pixels</p></li>
+<li><p><strong>yTolerance</strong> (<em>int</em>) – y tolerance in pixels</p></li>
 </ul>
 </dd>
 </dl>
@@ -1781,7 +1812,7 @@ will be rendered based on the provided mapsettings</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 10:58 Oct 14, 2019.
+        Last updated on 15:06 Oct 15, 2019.
       </span>
 
     </p>
@@ -1808,20 +1839,20 @@ will be rendered based on the provided mapsettings</p>
     <div class="rst-other-versions">
       <dl>
         <dt>Versions</dt>
-      
-        <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
-      
-    </dl>
+        
+          <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
+        
+      </dl>
       
       
     </div>

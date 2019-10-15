@@ -122,7 +122,6 @@
 <li class="toctree-l2"><a class="reference internal" href="PROJECT_SCALES.html">Class: PROJECT_SCALES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PluginLayer.html">Class: PluginLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ProjectDirtyBlocker.html">Class: ProjectDirtyBlocker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="PyProviderMetadata.html">Class: PyProviderMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgis.html">Class: Qgis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs25DRenderer.html">Class: Qgs25DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs3DRendererAbstractMetadata.html">Class: Qgs3DRendererAbstractMetadata</a></li>
@@ -1546,8 +1545,6 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/core/QgsLayerDefinition.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -1565,7 +1562,7 @@
 <dt id="qgis.core.QgsLayerDefinition">
 <em class="property">class </em><code class="sig-prename descclassname">qgis.core.</code><code class="sig-name descname">QgsLayerDefinition</code><a class="headerlink" href="#qgis.core.QgsLayerDefinition" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sip.wrapper</span></code></p>
-<p>The QgsLayerDefinition class holds generic methods for loading/exporting QLR files.</p>
+<p>The <a class="reference internal" href="#qgis.core.QgsLayerDefinition" title="qgis.core.QgsLayerDefinition"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsLayerDefinition</span></code></a> class holds generic methods for loading/exporting QLR files.</p>
 <p>QLR files are an export of the layer xml including the style and datasource location.  There is no link
 to the QLR file once loaded.  Consider the QLR file a mini project file for layers and styles.  QLR
 files also store the layer tree info for the exported layers, including group information.</p>
@@ -1623,7 +1620,7 @@ files also store the layer tree info for the exported layers, including group in
 <p>Constructor</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>doc</strong> – The XML document containing maplayer elements</p>
+<dd class="field-odd"><p><strong>doc</strong> (<em>QDomDocument</em>) – The XML document containing maplayer elements</p>
 </dd>
 </dl>
 <p>QgsLayerDefinition.DependencySorter(fileName: str)
@@ -1639,24 +1636,44 @@ Constructor</p>
 <dt id="qgis.core.QgsLayerDefinition.DependencySorter.hasCycle">
 <code class="sig-name descname">hasCycle</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsLayerDefinition.DependencySorter.hasCycle" title="Permalink to this definition">¶</a></dt>
 <dd><p>Whether some cyclic dependency has been detected</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsLayerDefinition.DependencySorter.hasMissingDependency">
 <code class="sig-name descname">hasMissingDependency</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsLayerDefinition.DependencySorter.hasMissingDependency" title="Permalink to this definition">¶</a></dt>
 <dd><p>Whether some dependency is missing</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsLayerDefinition.DependencySorter.sortedLayerIds">
 <code class="sig-name descname">sortedLayerIds</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; List[str]<a class="headerlink" href="#qgis.core.QgsLayerDefinition.DependencySorter.sortedLayerIds" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets the layer IDs in an order where they can be loaded incrementally without dependency break</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List[str]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsLayerDefinition.DependencySorter.sortedLayerNodes">
 <code class="sig-name descname">sortedLayerNodes</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; List[QDomNode]<a class="headerlink" href="#qgis.core.QgsLayerDefinition.DependencySorter.sortedLayerNodes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets the layer nodes in an order where they can be loaded incrementally without dependency break</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List[QDomNode]</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -1665,8 +1682,19 @@ Constructor</p>
 <dt id="qgis.core.QgsLayerDefinition.exportLayerDefinition">
 <code class="sig-name descname">exportLayerDefinition</code><span class="sig-paren">(</span><em class="sig-param">path: str, selectedTreeNodes: Iterable[QgsLayerTreeNode]</em><span class="sig-paren">)</span> &#x2192; Tuple[bool, str]<a class="headerlink" href="#qgis.core.QgsLayerDefinition.exportLayerDefinition" title="Permalink to this definition">¶</a></dt>
 <dd><p>Export the selected layer tree nodes to a QLR file</p>
-<p>exportLayerDefinition(doc: QDomDocument, selectedTreeNodes: Iterable[QgsLayerTreeNode], context: QgsReadWriteContext) -&gt; Tuple[bool, str]
+<p>exportLayerDefinition(doc: QDomDocument, selectedTreeNodes: Iterable[QgsLayerTreeNode], context: <a class="reference internal" href="QgsReadWriteContext.html#qgis.core.QgsReadWriteContext" title="qgis.core.QgsReadWriteContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsReadWriteContext</span></code></a>) -&gt; Tuple[bool, str]
 Export the selected layer tree nodes to a QLR-XML document</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>str</em>) – </p></li>
+<li><p><strong>selectedTreeNodes</strong> (<em>Iterable</em><em>[</em><a class="reference internal" href="QgsLayerTreeNode.html#qgis.core.QgsLayerTreeNode" title="qgis.core.QgsLayerTreeNode"><em>QgsLayerTreeNode</em></a><em>]</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Tuple[bool, str]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1680,14 +1708,37 @@ Layer definitions store the data source as well as styling and custom properties
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsLayerDefinition.exportLayerDefinition" title="qgis.core.QgsLayerDefinition.exportLayerDefinition"><code class="xref py py-func docutils literal notranslate"><span class="pre">exportLayerDefinition()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>layers</strong> (<em>Iterable</em><em>[</em><a class="reference internal" href="QgsMapLayer.html#qgis.core.QgsMapLayer" title="qgis.core.QgsMapLayer"><em>QgsMapLayer</em></a><em>]</em>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsReadWriteContext.html#qgis.core.QgsReadWriteContext" title="qgis.core.QgsReadWriteContext"><em>QgsReadWriteContext</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>QDomDocument</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsLayerDefinition.loadLayerDefinition">
 <code class="sig-name descname">loadLayerDefinition</code><span class="sig-paren">(</span><em class="sig-param">path: str</em>, <em class="sig-param">project: QgsProject</em>, <em class="sig-param">rootGroup: QgsLayerTreeGroup</em><span class="sig-paren">)</span> &#x2192; Tuple[bool, str]<a class="headerlink" href="#qgis.core.QgsLayerDefinition.loadLayerDefinition" title="Permalink to this definition">¶</a></dt>
 <dd><p>Loads the QLR at path into QGIS.  New layers are added to given project into layer tree specified by rootGroup</p>
-<p>loadLayerDefinition(doc: QDomDocument, project: QgsProject, rootGroup: QgsLayerTreeGroup, context: QgsReadWriteContext) -&gt; Tuple[bool, str]
+<p>loadLayerDefinition(doc: QDomDocument, project: <a class="reference internal" href="QgsProject.html#qgis.core.QgsProject" title="qgis.core.QgsProject"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProject</span></code></a>, rootGroup: <a class="reference internal" href="QgsLayerTreeGroup.html#qgis.core.QgsLayerTreeGroup" title="qgis.core.QgsLayerTreeGroup"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsLayerTreeGroup</span></code></a>, context: <a class="reference internal" href="QgsReadWriteContext.html#qgis.core.QgsReadWriteContext" title="qgis.core.QgsReadWriteContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsReadWriteContext</span></code></a>) -&gt; Tuple[bool, str]
 Loads the QLR from the XML document.  New layers are added to given project into layer tree specified by rootGroup</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>str</em>) – </p></li>
+<li><p><strong>project</strong> (<a class="reference internal" href="QgsProject.html#qgis.core.QgsProject" title="qgis.core.QgsProject"><em>QgsProject</em></a>) – </p></li>
+<li><p><strong>rootGroup</strong> (<a class="reference internal" href="QgsLayerTreeGroup.html#qgis.core.QgsLayerTreeGroup" title="qgis.core.QgsLayerTreeGroup"><em>QgsLayerTreeGroup</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Tuple[bool, str]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1706,6 +1757,17 @@ This is a low-level routine that does not resolve layer ID conflicts, dependenci
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsLayerDefinition.loadLayerDefinition" title="qgis.core.QgsLayerDefinition.loadLayerDefinition"><code class="xref py py-func docutils literal notranslate"><span class="pre">loadLayerDefinition()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>document</strong> (<em>QDomDocument</em>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsReadWriteContext.html#qgis.core.QgsReadWriteContext" title="qgis.core.QgsReadWriteContext"><em>QgsReadWriteContext</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>List[<a class="reference internal" href="QgsMapLayer.html#qgis.core.QgsMapLayer" title="qgis.core.QgsMapLayer">QgsMapLayer</a>]</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -1724,7 +1786,7 @@ This is a low-level routine that does not resolve layer ID conflicts, dependenci
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 10:58 Oct 14, 2019.
+        Last updated on 15:06 Oct 15, 2019.
       </span>
 
     </p>
@@ -1751,20 +1813,20 @@ This is a low-level routine that does not resolve layer ID conflicts, dependenci
     <div class="rst-other-versions">
       <dl>
         <dt>Versions</dt>
-      
-        <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
-      
-    </dl>
+        
+          <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
+        
+      </dl>
       
       
     </div>

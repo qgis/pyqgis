@@ -122,7 +122,6 @@
 <li class="toctree-l2"><a class="reference internal" href="PROJECT_SCALES.html">Class: PROJECT_SCALES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PluginLayer.html">Class: PluginLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ProjectDirtyBlocker.html">Class: ProjectDirtyBlocker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="PyProviderMetadata.html">Class: PyProviderMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgis.html">Class: Qgis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs25DRenderer.html">Class: Qgs25DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs3DRendererAbstractMetadata.html">Class: Qgs3DRendererAbstractMetadata</a></li>
@@ -1546,8 +1545,6 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/core/QgsFeatureSink.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -1664,8 +1661,17 @@ QgsFeatureSink.SinkFlags(QgsFeatureSink.SinkFlags)</p>
 <p><a class="reference internal" href="#qgis.core.QgsFeatureSink.addFeatures" title="qgis.core.QgsFeatureSink.addFeatures"><code class="xref py py-func docutils literal notranslate"><span class="pre">addFeatures()</span></code></a></p>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> in case of success and <code class="docutils literal notranslate"><span class="pre">False</span></code> in case of failure</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> in case of success and <code class="docutils literal notranslate"><span class="pre">False</span></code> in case of failure</p>
+</dd>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>feature</strong> (<a class="reference internal" href="QgsFeature.html#qgis.core.QgsFeature" title="qgis.core.QgsFeature"><em>QgsFeature</em></a>) – </p></li>
+<li><p><strong>flags</strong> (<em>Union</em><em>[</em><a class="reference internal" href="#qgis.core.QgsFeatureSink.Flags" title="qgis.core.QgsFeatureSink.Flags"><em>QgsFeatureSink.Flags</em></a>) – </p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -1683,11 +1689,20 @@ QgsFeatureSink.SinkFlags(QgsFeatureSink.SinkFlags)</p>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> in case of success and <code class="docutils literal notranslate"><span class="pre">False</span></code> in case of failure</p>
 </dd>
 </dl>
-<p>addFeatures(self, iterator: QgsFeatureIterator, flags: Union[QgsFeatureSink.Flags, QgsFeatureSink.Flag] = 0) -&gt; bool
+<p>addFeatures(self, iterator: <a class="reference internal" href="QgsFeatureIterator.html#qgis.core.QgsFeatureIterator" title="qgis.core.QgsFeatureIterator"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsFeatureIterator</span></code></a>, flags: Union[QgsFeatureSink.Flags, QgsFeatureSink.Flag] = 0) -&gt; bool
 Adds all features from the specified <code class="docutils literal notranslate"><span class="pre">iterator</span></code> to the sink. Feature addition behavior is controlled by the specified <code class="docutils literal notranslate"><span class="pre">flags</span></code>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if all features were added successfully, or <code class="docutils literal notranslate"><span class="pre">False</span></code> if any feature could not be added</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if all features were added successfully, or <code class="docutils literal notranslate"><span class="pre">False</span></code> if any feature could not be added</p>
+</dd>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>features</strong> (<em>Iterable</em><em>[</em><a class="reference internal" href="QgsFeature.html#qgis.core.QgsFeature" title="qgis.core.QgsFeature"><em>QgsFeature</em></a><em>]</em>) – </p></li>
+<li><p><strong>flags</strong> (<em>Union</em><em>[</em><a class="reference internal" href="#qgis.core.QgsFeatureSink.Flags" title="qgis.core.QgsFeatureSink.Flags"><em>QgsFeatureSink.Flags</em></a>) – </p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -1697,8 +1712,11 @@ Adds all features from the specified <code class="docutils literal notranslate">
 <code class="sig-name descname">flushBuffer</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsFeatureSink.flushBuffer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Flushes any internal buffer which may exist in the sink, causing any buffered features to be added to the sink’s destination.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">False</span></code> if any buffered features could not be added to the sink.</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">False</span></code> if any buffered features could not be added to the sink.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1719,7 +1737,7 @@ Adds all features from the specified <code class="docutils literal notranslate">
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 10:58 Oct 14, 2019.
+        Last updated on 15:06 Oct 15, 2019.
       </span>
 
     </p>
@@ -1746,20 +1764,20 @@ Adds all features from the specified <code class="docutils literal notranslate">
     <div class="rst-other-versions">
       <dl>
         <dt>Versions</dt>
-      
-        <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
-      
-    </dl>
+        
+          <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
+        
+      </dl>
       
       
     </div>

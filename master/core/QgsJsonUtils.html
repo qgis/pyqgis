@@ -122,7 +122,6 @@
 <li class="toctree-l2"><a class="reference internal" href="PROJECT_SCALES.html">Class: PROJECT_SCALES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PluginLayer.html">Class: PluginLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ProjectDirtyBlocker.html">Class: ProjectDirtyBlocker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="PyProviderMetadata.html">Class: PyProviderMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgis.html">Class: Qgis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs25DRenderer.html">Class: Qgs25DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs3DRendererAbstractMetadata.html">Class: Qgs3DRendererAbstractMetadata</a></li>
@@ -1546,8 +1545,6 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/core/QgsJsonUtils.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -1586,7 +1583,7 @@
 <td><p>Encodes a value to a JSON string representation, adding appropriate quotations and escaping where required.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsJsonUtils.exportAttributes" title="qgis.core.QgsJsonUtils.exportAttributes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">exportAttributes</span></code></a></p></td>
-<td><p>Exports all attributes from a QgsFeature as a JSON map type.</p></td>
+<td><p>Exports all attributes from a <a class="reference internal" href="QgsFeature.html#qgis.core.QgsFeature" title="qgis.core.QgsFeature"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsFeature</span></code></a> as a JSON map type.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsJsonUtils.parseArray" title="qgis.core.QgsJsonUtils.parseArray"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parseArray</span></code></a></p></td>
 <td><p>Parse a simple array (depth=1)</p></td>
@@ -1623,10 +1620,13 @@
 where required.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>value</strong> – value to encode</p>
+<dd class="field-odd"><p><strong>value</strong> (<em>Any</em>) – value to encode</p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>encoded value</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>encoded value</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1634,16 +1634,19 @@ where required.</p>
 <dl class="method">
 <dt id="qgis.core.QgsJsonUtils.exportAttributes">
 <code class="sig-name descname">exportAttributes</code><span class="sig-paren">(</span><em class="sig-param">feature: QgsFeature</em>, <em class="sig-param">layer: QgsVectorLayer = None</em>, <em class="sig-param">attributeWidgetCaches: Iterable[Any] = []</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.core.QgsJsonUtils.exportAttributes" title="Permalink to this definition">¶</a></dt>
-<dd><p>Exports all attributes from a QgsFeature as a JSON map type.</p>
+<dd><p>Exports all attributes from a <a class="reference internal" href="QgsFeature.html#qgis.core.QgsFeature" title="qgis.core.QgsFeature"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsFeature</span></code></a> as a JSON map type.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>feature</strong> – feature to export</p></li>
-<li><p><strong>layer</strong> – optional associated vector layer. If specified, this allows
+<li><p><strong>feature</strong> (<a class="reference internal" href="QgsFeature.html#qgis.core.QgsFeature" title="qgis.core.QgsFeature"><em>QgsFeature</em></a>) – feature to export</p></li>
+<li><p><strong>layer</strong> (<a class="reference internal" href="QgsVectorLayer.html#qgis.core.QgsVectorLayer" title="qgis.core.QgsVectorLayer"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsVectorLayer</span></code></a> = None) – optional associated vector layer. If specified, this allows
 richer export utilising settings like the layer’s fields widget configuration.</p></li>
-<li><p><strong>attributeWidgetCaches</strong> – optional widget configuration cache. Can be used
+<li><p><strong>attributeWidgetCaches</strong> (<em>Iterable</em><em>[</em><em>Any</em><em>] </em><em>=</em><em> [</em><em>]</em>) – optional widget configuration cache. Can be used
 to speed up exporting the attributes for multiple features from the same layer.</p></li>
 </ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1655,8 +1658,8 @@ to speed up exporting the attributes for multiple features from the same layer.<
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>json</strong> – the JSON to parse</p></li>
-<li><p><strong>type</strong> – optional variant type of the elements, if specified (and not Invalid),
+<li><p><strong>json</strong> (<em>str</em>) – the JSON to parse</p></li>
+<li><p><strong>type</strong> (<em>QVariant.Type = QVariant.Invalid</em>) – optional variant type of the elements, if specified (and not Invalid),
 the array items will be converted to the type, and discarded if
 the conversion is not possible.</p></li>
 </ul>
@@ -1665,6 +1668,11 @@ the conversion is not possible.</p></li>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List[Any]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1674,13 +1682,16 @@ the conversion is not possible.</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>string</strong> – GeoJSON string to parse</p></li>
-<li><p><strong>fields</strong> – fields collection to use for parsed features</p></li>
-<li><p><strong>encoding</strong> – text encoding</p></li>
+<li><p><strong>string</strong> (<em>str</em>) – GeoJSON string to parse</p></li>
+<li><p><strong>fields</strong> (<a class="reference internal" href="QgsFields.html#qgis.core.QgsFields" title="qgis.core.QgsFields"><em>QgsFields</em></a>) – fields collection to use for parsed features</p></li>
+<li><p><strong>encoding</strong> (<em>QTextCodec</em>) – text encoding</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>list of parsed features, or an empty list if no features could be parsed</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>List[<a class="reference internal" href="QgsFeature.html#qgis.core.QgsFeature" title="qgis.core.QgsFeature">QgsFeature</a>]</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>list of parsed features, or an empty list if no features could be parsed</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -1700,12 +1711,15 @@ the conversion is not possible.</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>string</strong> – GeoJSON string to parse</p></li>
-<li><p><strong>encoding</strong> – text encoding</p></li>
+<li><p><strong>string</strong> (<em>str</em>) – GeoJSON string to parse</p></li>
+<li><p><strong>encoding</strong> (<em>QTextCodec</em>) – text encoding</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>retrieved fields collection, or an empty list if no fields could be determined from the string</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsFields.html#qgis.core.QgsFields" title="qgis.core.QgsFields">QgsFields</a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>retrieved fields collection, or an empty list if no fields could be determined from the string</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -1734,7 +1748,7 @@ the conversion is not possible.</p></li>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 10:58 Oct 14, 2019.
+        Last updated on 15:06 Oct 15, 2019.
       </span>
 
     </p>
@@ -1761,20 +1775,20 @@ the conversion is not possible.</p></li>
     <div class="rst-other-versions">
       <dl>
         <dt>Versions</dt>
-      
-        <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
-      
-    </dl>
+        
+          <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
+        
+      </dl>
       
       
     </div>

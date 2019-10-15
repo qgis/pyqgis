@@ -122,7 +122,6 @@
 <li class="toctree-l2"><a class="reference internal" href="PROJECT_SCALES.html">Class: PROJECT_SCALES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PluginLayer.html">Class: PluginLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ProjectDirtyBlocker.html">Class: ProjectDirtyBlocker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="PyProviderMetadata.html">Class: PyProviderMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgis.html">Class: Qgis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs25DRenderer.html">Class: Qgs25DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs3DRendererAbstractMetadata.html">Class: Qgs3DRendererAbstractMetadata</a></li>
@@ -1546,8 +1545,6 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/core/QgsAuthMethodConfig.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -1569,12 +1566,12 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>method</strong> – Textual key of the authentication method</p></li>
-<li><p><strong>version</strong> – Version of the configuration (for updating previously saved configs later on)</p></li>
+<li><p><strong>method</strong> (<em>str = ''</em>) – Textual key of the authentication method</p></li>
+<li><p><strong>version</strong> (<em>int = 0</em>) – Version of the configuration (for updating previously saved configs later on)</p></li>
 </ul>
 </dd>
 </dl>
-<p>QgsAuthMethodConfig(QgsAuthMethodConfig)</p>
+<p>QgsAuthMethodConfig(<a class="reference internal" href="#qgis.core.QgsAuthMethodConfig" title="qgis.core.QgsAuthMethodConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsAuthMethodConfig</span></code></a>)</p>
 <p>Configuration storage class for authentication method configurations</p>
 <blockquote>
 <div><table class="longtable docutils align-default">
@@ -1641,13 +1638,21 @@
 <td><p>Sets auth config ID</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAuthMethodConfig.setMethod" title="qgis.core.QgsAuthMethodConfig.setMethod"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setMethod</span></code></a></p></td>
-<td><p></p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">param method</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAuthMethodConfig.setName" title="qgis.core.QgsAuthMethodConfig.setName"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setName</span></code></a></p></td>
 <td><p>Sets name of configuration</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAuthMethodConfig.setUri" title="qgis.core.QgsAuthMethodConfig.setUri"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setUri</span></code></a></p></td>
-<td><p></p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">param uri</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAuthMethodConfig.setVersion" title="qgis.core.QgsAuthMethodConfig.setVersion"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setVersion</span></code></a></p></td>
 <td><p>Sets version of the configuration</p></td>
@@ -1693,9 +1698,12 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>key</strong> – Config key</p></li>
-<li><p><strong>defaultvalue</strong> – Default value, if key not found</p></li>
+<li><p><strong>key</strong> (<em>str</em>) – Config key</p></li>
+<li><p><strong>defaultvalue</strong> (<em>str = ''</em>) – Default value, if key not found</p></li>
 </ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1706,7 +1714,10 @@
 <dd><p>Returns a config’s list of values</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>key</strong> – </p>
+<dd class="field-odd"><p><strong>key</strong> (<em>str</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>List[str]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1715,6 +1726,11 @@
 <dt id="qgis.core.QgsAuthMethodConfig.configMap">
 <code class="sig-name descname">configMap</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; Dict[str, str]<a class="headerlink" href="#qgis.core.QgsAuthMethodConfig.configMap" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets extended configuration, mapped to key/value pairs of QStrings</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Dict[str, str]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1723,8 +1739,13 @@
 <dd><p>The extended configuration, as stored and retrieved from the authentication database</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This is an internal construct used by QgsAuthManager that should generally not be set by client code</p>
+<p>This is an internal construct used by <a class="reference internal" href="QgsAuthManager.html#qgis.core.QgsAuthManager" title="qgis.core.QgsAuthManager"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsAuthManager</span></code></a> that should generally not be set by client code</p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1733,7 +1754,10 @@
 <dd><p>Whether a config key exists in config map</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>key</strong> – </p>
+<dd class="field-odd"><p><strong>key</strong> (<em>str</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1744,8 +1768,13 @@
 <dd><p>Gets ‘authcfg’ 7-character alphanumeric ID of the config</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This is set by QgsAuthManager when the config is initially stored</p>
+<p>This is set by <a class="reference internal" href="QgsAuthManager.html#qgis.core.QgsAuthManager" title="qgis.core.QgsAuthManager"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsAuthManager</span></code></a> when the config is initially stored</p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1754,7 +1783,10 @@
 <dd><p>Whether the configuration is valid</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>validateid</strong> – Additionally verify the auth config ID is not empty</p>
+<dd class="field-odd"><p><strong>validateid</strong> (<em>bool = False</em>) – Additionally verify the auth config ID is not empty</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1765,7 +1797,7 @@
 <dd><p>Load existing extended configuration</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>configstr</strong> – Configuration string to load</p>
+<dd class="field-odd"><p><strong>configstr</strong> (<em>str</em>) – Configuration string to load</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1774,12 +1806,22 @@
 <dt id="qgis.core.QgsAuthMethodConfig.method">
 <code class="sig-name descname">method</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.core.QgsAuthMethodConfig.method" title="Permalink to this definition">¶</a></dt>
 <dd><p>Textual key of the associated authentication method</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsAuthMethodConfig.name">
 <code class="sig-name descname">name</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.core.QgsAuthMethodConfig.name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets name of configuration</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1788,10 +1830,13 @@
 <dd><p>Remove a config from map</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>key</strong> – Config to remove</p>
+<dd class="field-odd"><p><strong>key</strong> (<em>str</em>) – Config to remove</p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Number of keys removed (should always be 1 or 0)</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Number of keys removed (should always be 1 or 0)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1807,8 +1852,8 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>key</strong> – Config key</p></li>
-<li><p><strong>value</strong> – Config value</p></li>
+<li><p><strong>key</strong> (<em>str</em>) – Config key</p></li>
+<li><p><strong>value</strong> (<em>str</em>) – Config value</p></li>
 </ul>
 </dd>
 </dl>
@@ -1825,8 +1870,8 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>key</strong> – Config key</p></li>
-<li><p><strong>value</strong> – Config value</p></li>
+<li><p><strong>key</strong> (<em>str</em>) – Config key</p></li>
+<li><p><strong>value</strong> (<em>Iterable</em><em>[</em><em>str</em><em>]</em>) – Config value</p></li>
 </ul>
 </dd>
 </dl>
@@ -1838,7 +1883,7 @@
 <dd><p>Set extended configuration map</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>map</strong> – Map to set</p>
+<dd class="field-odd"><p><strong>map</strong> (<em>Dict</em><em>[</em><em>str</em>) – Map to set</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1847,34 +1892,64 @@
 <dt id="qgis.core.QgsAuthMethodConfig.setId">
 <code class="sig-name descname">setId</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">id: str</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsAuthMethodConfig.setId" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets auth config ID</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>str</em>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsAuthMethodConfig.setMethod">
 <code class="sig-name descname">setMethod</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">method: str</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsAuthMethodConfig.setMethod" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>method</strong> (<em>str</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsAuthMethodConfig.setName">
 <code class="sig-name descname">setName</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">name: str</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsAuthMethodConfig.setName" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets name of configuration</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsAuthMethodConfig.setUri">
 <code class="sig-name descname">setUri</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">uri: str</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsAuthMethodConfig.setUri" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>uri</strong> (<em>str</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsAuthMethodConfig.setVersion">
 <code class="sig-name descname">setVersion</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">version: int</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsAuthMethodConfig.setVersion" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets version of the configuration</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>version</strong> (<em>int</em>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsAuthMethodConfig.uri">
 <code class="sig-name descname">uri</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.core.QgsAuthMethodConfig.uri" title="Permalink to this definition">¶</a></dt>
 <dd><p>A URI to auto-select a config when connecting to a resource</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1889,10 +1964,13 @@ against the config’s uri() for auto-selecting authentication configs to use</p
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>accessurl</strong> – A URL to process</p></li>
-<li><p><strong>resource</strong> – Output variable for result</p></li>
-<li><p><strong>withpath</strong> – Whether to include the URI’s path in output</p></li>
+<li><p><strong>accessurl</strong> (<em>str</em>) – A URL to process</p></li>
+<li><p><strong>resource</strong> (<em>str</em>) – Output variable for result</p></li>
+<li><p><strong>withpath</strong> (<em>bool = False</em>) – Whether to include the URI’s path in output</p></li>
 </ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1901,6 +1979,11 @@ against the config’s uri() for auto-selecting authentication configs to use</p
 <dt id="qgis.core.QgsAuthMethodConfig.version">
 <code class="sig-name descname">version</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#qgis.core.QgsAuthMethodConfig.version" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets version of the configuration</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -1919,7 +2002,7 @@ against the config’s uri() for auto-selecting authentication configs to use</p
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 10:58 Oct 14, 2019.
+        Last updated on 15:06 Oct 15, 2019.
       </span>
 
     </p>
@@ -1946,20 +2029,20 @@ against the config’s uri() for auto-selecting authentication configs to use</p
     <div class="rst-other-versions">
       <dl>
         <dt>Versions</dt>
-      
-        <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
-      
-    </dl>
+        
+          <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
+        
+      </dl>
       
       
     </div>

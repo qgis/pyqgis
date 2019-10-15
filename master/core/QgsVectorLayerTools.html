@@ -122,7 +122,6 @@
 <li class="toctree-l2"><a class="reference internal" href="PROJECT_SCALES.html">Class: PROJECT_SCALES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PluginLayer.html">Class: PluginLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ProjectDirtyBlocker.html">Class: ProjectDirtyBlocker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="PyProviderMetadata.html">Class: PyProviderMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgis.html">Class: Qgis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs25DRenderer.html">Class: Qgs25DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs3DRendererAbstractMetadata.html">Class: Qgs3DRendererAbstractMetadata</a></li>
@@ -1546,8 +1545,6 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/core/QgsVectorLayerTools.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -1654,13 +1651,16 @@ in your application.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>layer</strong> – The layer to which the feature should be added</p></li>
-<li><p><strong>defaultValues</strong> – Default values for the feature to add</p></li>
-<li><p><strong>defaultGeometry</strong> – A default geometry to add to the feature</p></li>
+<li><p><strong>layer</strong> (<a class="reference internal" href="QgsVectorLayer.html#qgis.core.QgsVectorLayer" title="qgis.core.QgsVectorLayer"><em>QgsVectorLayer</em></a>) – The layer to which the feature should be added</p></li>
+<li><p><strong>defaultValues</strong> (<em>Dict</em><em>[</em><em>int</em>) – Default values for the feature to add</p></li>
+<li><p><strong>defaultGeometry</strong> (<a class="reference internal" href="QgsGeometry.html#qgis.core.QgsGeometry" title="qgis.core.QgsGeometry"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsGeometry</span></code></a> = QgsGeometry()) – A default geometry to add to the feature</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><ul class="simple">
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Tuple[bool, <a class="reference internal" href="QgsFeature.html#qgis.core.QgsFeature" title="qgis.core.QgsFeature">QgsFeature</a>]</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">True</span></code> in case of success, <code class="docutils literal notranslate"><span class="pre">False</span></code> if the operation failed/was aborted</p></li>
 <li><p>feature: Updated feature after adding will be written back to this</p></li>
 </ul>
@@ -1686,17 +1686,20 @@ in your application.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>layer</strong> – The layer</p></li>
-<li><p><strong>request</strong> – The request for the features to be moved. It will be assigned to a new feature request with the newly copied features.</p></li>
-<li><p><strong>dx</strong> – The translation on x</p></li>
-<li><p><strong>dy</strong> – The translation on y</p></li>
-<li><p><strong>topologicalEditing</strong> – If true, the function will perform topological
+<li><p><strong>layer</strong> (<a class="reference internal" href="QgsVectorLayer.html#qgis.core.QgsVectorLayer" title="qgis.core.QgsVectorLayer"><em>QgsVectorLayer</em></a>) – The layer</p></li>
+<li><p><strong>request</strong> (<a class="reference internal" href="QgsFeatureRequest.html#qgis.core.QgsFeatureRequest" title="qgis.core.QgsFeatureRequest"><em>QgsFeatureRequest</em></a>) – The request for the features to be moved. It will be assigned to a new feature request with the newly copied features.</p></li>
+<li><p><strong>dx</strong> (<em>float = 0</em>) – The translation on x</p></li>
+<li><p><strong>dy</strong> (<em>float = 0</em>) – The translation on y</p></li>
+<li><p><strong>topologicalEditing</strong> (<em>bool = False</em>) – If true, the function will perform topological
 editing of the vertices of <code class="docutils literal notranslate"><span class="pre">layer</span></code> on <code class="docutils literal notranslate"><span class="pre">layer</span></code> and <code class="docutils literal notranslate"><span class="pre">topologicalLayer</span></code></p></li>
-<li><p><strong>topologicalLayer</strong> – The layer where vertices from the moved features of <code class="docutils literal notranslate"><span class="pre">layer</span></code> will be added</p></li>
+<li><p><strong>topologicalLayer</strong> (<a class="reference internal" href="QgsVectorLayer.html#qgis.core.QgsVectorLayer" title="qgis.core.QgsVectorLayer"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsVectorLayer</span></code></a> = None) – The layer where vertices from the moved features of <code class="docutils literal notranslate"><span class="pre">layer</span></code> will be added</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><ul class="simple">
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Tuple[bool, <a class="reference internal" href="QgsFeatureRequest.html#qgis.core.QgsFeatureRequest" title="qgis.core.QgsFeatureRequest"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsFeatureRequest</span></code></a>, str]</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if all features could be copied.</p></li>
 <li><p>errorMsg: If given, it will contain the error message</p></li>
 </ul>
@@ -1731,10 +1734,13 @@ editing of the vertices of <code class="docutils literal notranslate"><span clas
 <dd><p>Should be called, when the features should be committed but the editing session is not ended.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>layer</strong> – The layer to commit</p>
+<dd class="field-odd"><p><strong>layer</strong> (<a class="reference internal" href="QgsVectorLayer.html#qgis.core.QgsVectorLayer" title="qgis.core.QgsVectorLayer"><em>QgsVectorLayer</em></a>) – The layer to commit</p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if successful</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if successful</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1757,10 +1763,13 @@ capability to edit in here.
 If successful layer-&gt;startEditing() will be called and <code class="docutils literal notranslate"><span class="pre">True</span></code> returned.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>layer</strong> – The layer on which to start an edit session</p>
+<dd class="field-odd"><p><strong>layer</strong> (<a class="reference internal" href="QgsVectorLayer.html#qgis.core.QgsVectorLayer" title="qgis.core.QgsVectorLayer"><em>QgsVectorLayer</em></a>) – The layer on which to start an edit session</p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code>, if the editing session was started</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code>, if the editing session was started</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1773,12 +1782,15 @@ Appropriate dialogs should be shown like</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>layer</strong> – The layer to commit</p></li>
-<li><p><strong>allowCancel</strong> – <code class="docutils literal notranslate"><span class="pre">True</span></code> if a cancel button should be offered</p></li>
+<li><p><strong>layer</strong> (<a class="reference internal" href="QgsVectorLayer.html#qgis.core.QgsVectorLayer" title="qgis.core.QgsVectorLayer"><em>QgsVectorLayer</em></a>) – The layer to commit</p></li>
+<li><p><strong>allowCancel</strong> (<em>bool = True</em>) – <code class="docutils literal notranslate"><span class="pre">True</span></code> if a cancel button should be offered</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if successful</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if successful</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1804,7 +1816,7 @@ Appropriate dialogs should be shown like</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 10:58 Oct 14, 2019.
+        Last updated on 15:06 Oct 15, 2019.
       </span>
 
     </p>
@@ -1831,20 +1843,20 @@ Appropriate dialogs should be shown like</p>
     <div class="rst-other-versions">
       <dl>
         <dt>Versions</dt>
-      
-        <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
-      
-    </dl>
+        
+          <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
+        
+      </dl>
       
       
     </div>

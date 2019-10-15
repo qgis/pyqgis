@@ -122,7 +122,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../core/PROJECT_SCALES.html">Class: PROJECT_SCALES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/PluginLayer.html">Class: PluginLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/ProjectDirtyBlocker.html">Class: ProjectDirtyBlocker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../core/PyProviderMetadata.html">Class: PyProviderMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/Qgis.html">Class: Qgis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/Qgs25DRenderer.html">Class: Qgs25DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/Qgs3DRendererAbstractMetadata.html">Class: Qgs3DRendererAbstractMetadata</a></li>
@@ -1546,8 +1545,6 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/server/QgsServerApi.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -1565,8 +1562,8 @@
 <dt id="qgis.server.QgsServerApi">
 <em class="property">class </em><code class="sig-prename descclassname">qgis.server.</code><code class="sig-name descname">QgsServerApi</code><span class="sig-paren">(</span><em class="sig-param">serverIface: QgsServerInterface</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.server.QgsServerApi" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sip.wrapper</span></code></p>
-<p>Creates a QgsServerApi object</p>
-<p>QgsServerApi(QgsServerApi)</p>
+<p>Creates a <a class="reference internal" href="#qgis.server.QgsServerApi" title="qgis.server.QgsServerApi"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsServerApi</span></code></a> object</p>
+<p>QgsServerApi(<a class="reference internal" href="#qgis.server.QgsServerApi" title="qgis.server.QgsServerApi"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsServerApi</span></code></a>)</p>
 <p>Server generic API endpoint abstract base class.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -1584,7 +1581,7 @@ APIs developers are encouraged to implement a more robust accept(url) logic by
 making sure that their APIs accept only URLs they can actually handle, if they do,
 the APIs registration order becomes irrelevant.</p>
 <p>After the API has been registered to the server API registry:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">API</span><span class="p">(</span><span class="n">QgsServerApi</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">API</span><span class="p">(:</span><span class="n">py</span><span class="p">:</span><span class="n">class</span><span class="p">:</span><span class="sb">`.QgsServerApi`</span><span class="p">):</span>
 
   <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="k">return</span> <span class="s2">&quot;Test API&quot;</span>
@@ -1604,104 +1601,91 @@ the APIs registration order becomes irrelevant.</p>
 will be routed to the first matching API and executeRequest() method
 of the API will be invoked.</p>
 <div class="versionadded">
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
-<tbody>
-</tbody>
-</table>
-<p class="rubric">Methods</p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.server.QgsServerApi.accept" title="qgis.server.QgsServerApi.accept"><code class="xref py py-obj docutils literal notranslate"><span class="pre">accept</span></code></a></p></td>
-<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the given <code class="docutils literal notranslate"><span class="pre">url</span></code> is handled by the API, default implementation checks for the presence of rootPath inside the <code class="docutils literal notranslate"><span class="pre">url</span></code> path.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.server.QgsServerApi.allowMethod" title="qgis.server.QgsServerApi.allowMethod"><code class="xref py py-obj docutils literal notranslate"><span class="pre">allowMethod</span></code></a></p></td>
-<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the given method is supported by the API, default implementation supports all methods.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.server.QgsServerApi.description" title="qgis.server.QgsServerApi.description"><code class="xref py py-obj docutils literal notranslate"><span class="pre">description</span></code></a></p></td>
-<td><p>Returns the API description</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.server.QgsServerApi.executeRequest" title="qgis.server.QgsServerApi.executeRequest"><code class="xref py py-obj docutils literal notranslate"><span class="pre">executeRequest</span></code></a></p></td>
-<td><p>Executes a request by passing the given <code class="docutils literal notranslate"><span class="pre">context</span></code> to the API handlers.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.server.QgsServerApi.name" title="qgis.server.QgsServerApi.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code></a></p></td>
-<td><p>Returns the API name</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.server.QgsServerApi.rootPath" title="qgis.server.QgsServerApi.rootPath"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rootPath</span></code></a></p></td>
-<td><p>Returns the root path for the API</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.server.QgsServerApi.serverIface" title="qgis.server.QgsServerApi.serverIface"><code class="xref py py-obj docutils literal notranslate"><span class="pre">serverIface</span></code></a></p></td>
-<td><p>Returns the server interface</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.server.QgsServerApi.version" title="qgis.server.QgsServerApi.version"><code class="xref py py-obj docutils literal notranslate"><span class="pre">version</span></code></a></p></td>
-<td><p>Returns the version of the service</p></td>
-</tr>
-</tbody>
-</table>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
-<tbody>
-</tbody>
-</table>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
-<tbody>
-</tbody>
-</table>
+<p><span class="versionmodified added">New in version 3.10.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>serverIface</strong> – </p>
+</dd>
+</dl>
 <dl class="method">
 <dt id="qgis.server.QgsServerApi.accept">
 <code class="sig-name descname">accept</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">url: QUrl</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.server.QgsServerApi.accept" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the given <code class="docutils literal notranslate"><span class="pre">url</span></code> is handled by the API, default implementation checks for the presence of rootPath inside the <code class="docutils literal notranslate"><span class="pre">url</span></code> path.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>url</strong> (<em>QUrl</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.server.QgsServerApi.allowMethod">
 <code class="sig-name descname">allowMethod</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">QgsServerRequest.Method</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.server.QgsServerApi.allowMethod" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the given method is supported by the API, default implementation supports all methods.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.server.QgsServerApi.description">
 <code class="sig-name descname">description</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.server.QgsServerApi.description" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the API description</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.server.QgsServerApi.executeRequest">
 <code class="sig-name descname">executeRequest</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">context: QgsServerApiContext</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.server.QgsServerApi.executeRequest" title="Permalink to this definition">¶</a></dt>
 <dd><p>Executes a request by passing the given <code class="docutils literal notranslate"><span class="pre">context</span></code> to the API handlers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>context</strong> (<a class="reference internal" href="QgsServerApiContext.html#qgis.server.QgsServerApiContext" title="qgis.server.QgsServerApiContext"><em>QgsServerApiContext</em></a>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.server.QgsServerApi.name">
 <code class="sig-name descname">name</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.server.QgsServerApi.name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the API name</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.server.QgsServerApi.rootPath">
 <code class="sig-name descname">rootPath</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.server.QgsServerApi.rootPath" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the root path for the API</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.server.QgsServerApi.serverIface">
 <code class="sig-name descname">serverIface</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QgsServerInterface<a class="headerlink" href="#qgis.server.QgsServerApi.serverIface" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the server interface</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsServerInterface.html#qgis.server.QgsServerInterface" title="qgis.server.QgsServerInterface">QgsServerInterface</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1712,6 +1696,11 @@ of the API will be invoked.</p>
 <p class="admonition-title">Note</p>
 <p>the default implementation returns an empty string</p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -1730,7 +1719,7 @@ of the API will be invoked.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 10:58 Oct 14, 2019.
+        Last updated on 15:06 Oct 15, 2019.
       </span>
 
     </p>
@@ -1757,20 +1746,20 @@ of the API will be invoked.</p>
     <div class="rst-other-versions">
       <dl>
         <dt>Versions</dt>
-      
-        <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
-      
-    </dl>
+        
+          <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
+        
+      </dl>
       
       
     </div>

@@ -122,7 +122,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../core/PROJECT_SCALES.html">Class: PROJECT_SCALES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/PluginLayer.html">Class: PluginLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/ProjectDirtyBlocker.html">Class: ProjectDirtyBlocker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../core/PyProviderMetadata.html">Class: PyProviderMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/Qgis.html">Class: Qgis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/Qgs25DRenderer.html">Class: Qgs25DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/Qgs3DRendererAbstractMetadata.html">Class: Qgs3DRendererAbstractMetadata</a></li>
@@ -1546,8 +1545,6 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/server/QgsServerRequest.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -1588,7 +1585,7 @@ Constructor</p>
 </ul>
 </dd>
 </dl>
-<p>QgsServerRequest(QgsServerRequest)</p>
+<p>QgsServerRequest(<a class="reference internal" href="#qgis.server.QgsServerRequest" title="qgis.server.QgsServerRequest"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsServerRequest</span></code></a>)</p>
 <blockquote>
 <div><table class="longtable docutils align-default">
 <colgroup>
@@ -1616,8 +1613,8 @@ Constructor</p>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.server.QgsServerRequest.method" title="qgis.server.QgsServerRequest.method"><code class="xref py py-obj docutils literal notranslate"><span class="pre">method</span></code></a></p></td>
 <td><p><dl class="field-list simple">
-<dt class="field-odd">return</dt>
-<dd class="field-odd"><p>the request method</p>
+<dt class="field-odd">rtype</dt>
+<dd class="field-odd"><p>QgsServerRequest.Method</p>
 </dd>
 </dl>
 </p></td>
@@ -1660,8 +1657,8 @@ Constructor</p>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.server.QgsServerRequest.url" title="qgis.server.QgsServerRequest.url"><code class="xref py py-obj docutils literal notranslate"><span class="pre">url</span></code></a></p></td>
 <td><p><dl class="field-list simple">
-<dt class="field-odd">return</dt>
-<dd class="field-odd"><p>the request url as seen by QGIS server</p>
+<dt class="field-odd">rtype</dt>
+<dd class="field-odd"><p>QUrl</p>
 </dd>
 </dl>
 </p></td>
@@ -1738,6 +1735,11 @@ Constructor</p>
 <dd><p>Returns post/put data
 Check for QByteArray.isNull() to check if data
 is available.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>QByteArray</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1746,10 +1748,13 @@ is available.</p>
 <dd><p>Returns the header value</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>name</strong> – of the header</p>
+<dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – of the header</p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>the header value or an empty string</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the header value or an empty string</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1759,8 +1764,11 @@ is available.</p>
 <code class="sig-name descname">headers</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; Dict[str, str]<a class="headerlink" href="#qgis.server.QgsServerRequest.headers" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the header map</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>the headers map</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Dict[str, str]</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the headers map</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1769,8 +1777,11 @@ is available.</p>
 <dt id="qgis.server.QgsServerRequest.method">
 <code class="sig-name descname">method</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QgsServerRequest.Method<a class="headerlink" href="#qgis.server.QgsServerRequest.method" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>the request method</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#qgis.server.QgsServerRequest.Method" title="qgis.server.QgsServerRequest.Method">QgsServerRequest.Method</a></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the request method</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1787,12 +1798,28 @@ by default this is equal to the url seen by QGIS server</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.6.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>QUrl</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.server.QgsServerRequest.parameter">
 <code class="sig-name descname">parameter</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">key: str</em>, <em class="sig-param">defaultValue: str = ''</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.server.QgsServerRequest.parameter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets a parameter value</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> (<em>str</em>) – </p></li>
+<li><p><strong>defaultValue</strong> (<em>str = ''</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1800,6 +1827,11 @@ by default this is equal to the url seen by QGIS server</p>
 <code class="sig-name descname">parameters</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; Dict[str, str]<a class="headerlink" href="#qgis.server.QgsServerRequest.parameters" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a map of query parameters with keys converted
 to uppercase</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Dict[str, str]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1809,6 +1841,17 @@ to uppercase</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.10.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – </p></li>
+<li><p><strong>defaultValue</strong> (<em>str = ''</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1817,7 +1860,7 @@ to uppercase</p>
 <dd><p>Remove an header</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>name</strong> – </p>
+<dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – </p>
 </dd>
 </dl>
 </dd></dl>
@@ -1826,12 +1869,22 @@ to uppercase</p>
 <dt id="qgis.server.QgsServerRequest.removeParameter">
 <code class="sig-name descname">removeParameter</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">key: str</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.server.QgsServerRequest.removeParameter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Remove a parameter</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>key</strong> (<em>str</em>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.server.QgsServerRequest.serverParameters">
 <code class="sig-name descname">serverParameters</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QgsServerParameters<a class="headerlink" href="#qgis.server.QgsServerRequest.serverParameters" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns parameters</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsServerParameters.html#qgis.server.QgsServerParameters" title="qgis.server.QgsServerParameters">QgsServerParameters</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1841,8 +1894,8 @@ to uppercase</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>name</strong> – </p></li>
-<li><p><strong>value</strong> – </p></li>
+<li><p><strong>name</strong> (<em>str</em>) – </p></li>
+<li><p><strong>value</strong> (<em>str</em>) – </p></li>
 </ul>
 </dd>
 </dl>
@@ -1852,6 +1905,11 @@ to uppercase</p>
 <dt id="qgis.server.QgsServerRequest.setMethod">
 <code class="sig-name descname">setMethod</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">method: QgsServerRequest.Method</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.server.QgsServerRequest.setMethod" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the request method</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>method</strong> (<a class="reference internal" href="#qgis.server.QgsServerRequest.Method" title="qgis.server.QgsServerRequest.Method"><em>QgsServerRequest.Method</em></a>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1865,26 +1923,47 @@ to uppercase</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.6.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>url</strong> (<em>QUrl</em>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.server.QgsServerRequest.setParameter">
 <code class="sig-name descname">setParameter</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">key: str</em>, <em class="sig-param">value: str</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.server.QgsServerRequest.setParameter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set a parameter</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> (<em>str</em>) – </p></li>
+<li><p><strong>value</strong> (<em>str</em>) – </p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.server.QgsServerRequest.setUrl">
 <code class="sig-name descname">setUrl</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">url: QUrl</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.server.QgsServerRequest.setUrl" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the request url</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>url</strong> (<em>QUrl</em>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.server.QgsServerRequest.url">
 <code class="sig-name descname">url</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QUrl<a class="headerlink" href="#qgis.server.QgsServerRequest.url" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>the request url as seen by QGIS server</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>QUrl</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the request url as seen by QGIS server</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -1910,7 +1989,7 @@ to uppercase</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 10:58 Oct 14, 2019.
+        Last updated on 15:06 Oct 15, 2019.
       </span>
 
     </p>
@@ -1937,20 +2016,20 @@ to uppercase</p>
     <div class="rst-other-versions">
       <dl>
         <dt>Versions</dt>
-      
-        <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
-      
-    </dl>
+        
+          <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
+        
+      </dl>
       
       
     </div>

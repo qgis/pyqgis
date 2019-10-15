@@ -122,7 +122,6 @@
 <li class="toctree-l2"><a class="reference internal" href="PROJECT_SCALES.html">Class: PROJECT_SCALES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PluginLayer.html">Class: PluginLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ProjectDirtyBlocker.html">Class: ProjectDirtyBlocker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="PyProviderMetadata.html">Class: PyProviderMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgis.html">Class: Qgis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs25DRenderer.html">Class: Qgs25DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs3DRendererAbstractMetadata.html">Class: Qgs3DRendererAbstractMetadata</a></li>
@@ -1546,8 +1545,6 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/core/QgsTaskManager.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -1568,10 +1565,10 @@
 <p>Constructor for QgsTaskManager.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>parent</strong> – parent QObject</p>
+<dd class="field-odd"><p><strong>parent</strong> (<em>QObject = None</em>) – parent QObject</p>
 </dd>
 </dl>
-<p>Task manager for managing a set of long-running QgsTask tasks. This class can be created directly,
+<p>Task manager for managing a set of long-running <a class="reference internal" href="QgsTask.html#qgis.core.QgsTask" title="qgis.core.QgsTask"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsTask</span></code></a> tasks. This class can be created directly,
 or accessed via <a class="reference internal" href="QgsApplication.html#qgis.core.QgsApplication.taskManager" title="qgis.core.QgsApplication.taskManager"><code class="xref py py-func docutils literal notranslate"><span class="pre">QgsApplication.taskManager()</span></code></a></p>
 <div class="versionadded">
 <table class="longtable docutils align-default">
@@ -1703,6 +1700,14 @@ or accessed via <a class="reference internal" href="QgsApplication.html#qgis.cor
 <p>Constructor for TaskDefinition. Ownership of the task is not transferred to the definition,
 but will be transferred to a QgsTaskManager.</p>
 <p>QgsTaskManager.TaskDefinition(QgsTaskManager.TaskDefinition)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>task</strong> (<a class="reference internal" href="QgsTask.html#qgis.core.QgsTask" title="qgis.core.QgsTask"><em>QgsTask</em></a>) – </p></li>
+<li><p><strong>dependentTasks</strong> (<em>Iterable</em><em>[</em><a class="reference internal" href="QgsTask.html#qgis.core.QgsTask" title="qgis.core.QgsTask"><em>QgsTask</em></a><em>] </em><em>=</em><em> [</em><em>]</em>) – </p></li>
+</ul>
+</dd>
+</dl>
 <dl class="attribute">
 <dt id="qgis.core.QgsTaskManager.TaskDefinition.dependentTasks">
 <code class="sig-name descname">dependentTasks</code><a class="headerlink" href="#qgis.core.QgsTaskManager.TaskDefinition.dependentTasks" title="Permalink to this definition">¶</a></dt>
@@ -1723,6 +1728,11 @@ but will be transferred to a QgsTaskManager.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsTaskManager.countActiveTasks" title="qgis.core.QgsTaskManager.countActiveTasks"><code class="xref py py-func docutils literal notranslate"><span class="pre">countActiveTasks()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List[<a class="reference internal" href="QgsTask.html#qgis.core.QgsTask" title="qgis.core.QgsTask">QgsTask</a>]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1745,8 +1755,17 @@ manager will be responsible for starting the task. The priority argument can
 be used to control the run queue’s order of execution, with larger numbers
 taking precedence over lower priority numbers.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>unique task ID, or 0 if task could not be added</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>unique task ID, or 0 if task could not be added</p>
+</dd>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>task</strong> (<a class="reference internal" href="QgsTask.html#qgis.core.QgsTask" title="qgis.core.QgsTask"><em>QgsTask</em></a>) – </p></li>
+<li><p><strong>priority</strong> (<em>int = 0</em>) – </p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -1783,6 +1802,11 @@ but will instead signal the tasks to cancel and then return immediately.</p>
 <dt id="qgis.core.QgsTaskManager.count">
 <code class="sig-name descname">count</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#qgis.core.QgsTaskManager.count" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the number of tasks tracked by the manager.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1797,6 +1821,11 @@ but will instead signal the tasks to cancel and then return immediately.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsTaskManager.countActiveTasksChanged" title="qgis.core.QgsTaskManager.countActiveTasksChanged"><code class="xref py py-func docutils literal notranslate"><span class="pre">countActiveTasksChanged()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="attribute">
@@ -1807,6 +1836,11 @@ but will instead signal the tasks to cancel and then return immediately.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsTaskManager.countActiveTasks" title="qgis.core.QgsTaskManager.countActiveTasks"><code class="xref py py-func docutils literal notranslate"><span class="pre">countActiveTasks()</span></code></a> [signal]</p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>count</strong> (<em>int</em>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1818,6 +1852,14 @@ but will instead signal the tasks to cancel and then return immediately.</p>
 <dt id="qgis.core.QgsTaskManager.dependenciesSatisfied">
 <code class="sig-name descname">dependenciesSatisfied</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">taskId: int</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsTaskManager.dependenciesSatisfied" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if all dependencies for the specified task are satisfied</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>taskId</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1827,10 +1869,13 @@ but will instead signal the tasks to cancel and then return immediately.</p>
 be canceled if any of these layers are about to be removed.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>taskId</strong> – task ID</p>
+<dd class="field-odd"><p><strong>taskId</strong> (<em>int</em>) – task ID</p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>list of layers</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>List[<a class="reference internal" href="QgsMapLayer.html#qgis.core.QgsMapLayer" title="qgis.core.QgsMapLayer">QgsMapLayer</a>]</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>list of layers</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -1851,7 +1896,7 @@ be canceled if any of these layers are about to be removed.</p>
 and that task has reported a progress change</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>progress</strong> – percent of progress, from 0.0 - 100.0 [signal]</p>
+<dd class="field-odd"><p><strong>progress</strong> (<em>float</em>) – percent of progress, from 0.0 - 100.0 [signal]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1868,8 +1913,8 @@ and that task has reported a progress change</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>taskId</strong> – ID of task</p></li>
-<li><p><strong>progress</strong> – percent of progress, from 0.0 - 100.0 [signal]</p></li>
+<li><p><strong>taskId</strong> (<em>int</em>) – ID of task</p></li>
+<li><p><strong>progress</strong> (<em>float</em>) – percent of progress, from 0.0 - 100.0 [signal]</p></li>
 </ul>
 </dd>
 </dl>
@@ -1897,8 +1942,8 @@ and that task has reported a progress change</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>taskId</strong> – ID of task</p></li>
-<li><p><strong>status</strong> – new task status [signal]</p></li>
+<li><p><strong>taskId</strong> (<em>int</em>) – ID of task</p></li>
+<li><p><strong>status</strong> (<em>int</em>) – new task status [signal]</p></li>
 </ul>
 </dd>
 </dl>
@@ -1910,10 +1955,13 @@ and that task has reported a progress change</p>
 <dd><p>Returns the task with matching ID.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>id</strong> – task ID</p>
+<dd class="field-odd"><p><strong>id</strong> (<em>int</em>) – task ID</p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>task if found, or <code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsTask.html#qgis.core.QgsTask" title="qgis.core.QgsTask">QgsTask</a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>task if found, or <code class="docutils literal notranslate"><span class="pre">None</span></code></p>
 </dd>
 </dl>
 </dd></dl>
@@ -1924,7 +1972,7 @@ and that task has reported a progress change</p>
 <dd><p>Emitted when a task is about to be deleted</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>taskId</strong> – ID of task [signal]</p>
+<dd class="field-odd"><p><strong>taskId</strong> (<em>int</em>) – ID of task [signal]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1935,7 +1983,7 @@ and that task has reported a progress change</p>
 <dd><p>Emitted when a new task has been added to the manager</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>taskId</strong> – ID of task [signal]</p>
+<dd class="field-odd"><p><strong>taskId</strong> (<em>int</em>) – ID of task [signal]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1946,10 +1994,13 @@ and that task has reported a progress change</p>
 <dd><p>Returns the unique task ID corresponding to a task managed by the class.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>task</strong> – task to find</p>
+<dd class="field-odd"><p><strong>task</strong> (<a class="reference internal" href="QgsTask.html#qgis.core.QgsTask" title="qgis.core.QgsTask"><em>QgsTask</em></a>) – task to find</p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>task ID, or -1 if task not found</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>task ID, or -1 if task not found</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1964,12 +2015,22 @@ reports or re-open a related dialog.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsTaskManager.triggerTask" title="qgis.core.QgsTaskManager.triggerTask"><code class="xref py py-func docutils literal notranslate"><span class="pre">triggerTask()</span></code></a> [signal]</p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>task</strong> (<a class="reference internal" href="QgsTask.html#qgis.core.QgsTask" title="qgis.core.QgsTask"><em>QgsTask</em></a>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsTaskManager.tasks">
 <code class="sig-name descname">tasks</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; List[QgsTask]<a class="headerlink" href="#qgis.core.QgsTaskManager.tasks" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns all tasks tracked by the manager.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List[<a class="reference internal" href="QgsTask.html#qgis.core.QgsTask" title="qgis.core.QgsTask">QgsTask</a>]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1980,6 +2041,14 @@ reports or re-open a related dialog.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsTaskManager.dependentLayers" title="qgis.core.QgsTaskManager.dependentLayers"><code class="xref py py-func docutils literal notranslate"><span class="pre">dependentLayers()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>layer</strong> (<a class="reference internal" href="QgsMapLayer.html#qgis.core.QgsMapLayer" title="qgis.core.QgsMapLayer"><em>QgsMapLayer</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>List[<a class="reference internal" href="QgsTask.html#qgis.core.QgsTask" title="qgis.core.QgsTask">QgsTask</a>]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1995,6 +2064,11 @@ reports or re-open a related dialog.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsTaskManager.taskTriggered" title="qgis.core.QgsTaskManager.taskTriggered"><code class="xref py py-func docutils literal notranslate"><span class="pre">taskTriggered()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>task</strong> (<a class="reference internal" href="QgsTask.html#qgis.core.QgsTask" title="qgis.core.QgsTask"><em>QgsTask</em></a>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -2013,7 +2087,7 @@ reports or re-open a related dialog.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 10:58 Oct 14, 2019.
+        Last updated on 15:06 Oct 15, 2019.
       </span>
 
     </p>
@@ -2040,20 +2114,20 @@ reports or re-open a related dialog.</p>
     <div class="rst-other-versions">
       <dl>
         <dt>Versions</dt>
-      
-        <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
-      
-    </dl>
+        
+          <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
+        
+      </dl>
       
       
     </div>

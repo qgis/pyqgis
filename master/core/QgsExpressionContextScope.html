@@ -122,7 +122,6 @@
 <li class="toctree-l2"><a class="reference internal" href="PROJECT_SCALES.html">Class: PROJECT_SCALES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PluginLayer.html">Class: PluginLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ProjectDirtyBlocker.html">Class: ProjectDirtyBlocker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="PyProviderMetadata.html">Class: PyProviderMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgis.html">Class: Qgis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs25DRenderer.html">Class: Qgs25DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs3DRendererAbstractMetadata.html">Class: Qgs3DRendererAbstractMetadata</a></li>
@@ -1546,8 +1545,6 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/core/QgsExpressionContextScope.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -1568,16 +1565,16 @@
 <p>Constructor for QgsExpressionContextScope</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>name</strong> – friendly display name for the context scope</p>
+<dd class="field-odd"><p><strong>name</strong> (<em>str = ''</em>) – friendly display name for the context scope</p>
 </dd>
 </dl>
-<p>QgsExpressionContextScope(other: QgsExpressionContextScope)
+<p>QgsExpressionContextScope(other: <a class="reference internal" href="#qgis.core.QgsExpressionContextScope" title="qgis.core.QgsExpressionContextScope"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsExpressionContextScope</span></code></a>)
 Copy constructor</p>
 <p>Single scope for storing variables and functions for use within a <a class="reference internal" href="QgsExpressionContext.html#module-QgsExpressionContext" title="QgsExpressionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsExpressionContext</span></code></a>.
 Examples include a project’s scope, which could contain information about the current project such as
-the project file’s location. QgsExpressionContextScope can encapsulate both variables (static values)
+the project file’s location. <a class="reference internal" href="#qgis.core.QgsExpressionContextScope" title="qgis.core.QgsExpressionContextScope"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsExpressionContextScope</span></code></a> can encapsulate both variables (static values)
 and functions(which are calculated only when an expression is evaluated).</p>
-<p>See QgsExpressionContextUtils for helper methods for working with QgsExpressionContextScope objects.</p>
+<p>See <a class="reference internal" href="QgsExpressionContextUtils.html#qgis.core.QgsExpressionContextUtils" title="qgis.core.QgsExpressionContextUtils"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsExpressionContextUtils</span></code></a> for helper methods for working with <a class="reference internal" href="#qgis.core.QgsExpressionContextScope" title="qgis.core.QgsExpressionContextScope"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsExpressionContextScope</span></code></a> objects.</p>
 <div class="versionadded">
 <table class="longtable docutils align-default">
 <colgroup>
@@ -1690,11 +1687,11 @@ and functions(which are calculated only when an expression is evaluated).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>name</strong> – variable name (should be unique within the QgsExpressionContextScope)</p></li>
-<li><p><strong>value</strong> – initial variable value</p></li>
-<li><p><strong>readOnly</strong> – <code class="docutils literal notranslate"><span class="pre">True</span></code> if variable should not be editable by users</p></li>
-<li><p><strong>isStatic</strong> – <code class="docutils literal notranslate"><span class="pre">True</span></code> if the variable will not change during the lifteime of an iterator.</p></li>
-<li><p><strong>description</strong> – optional translated description of variable, for use in expression builder widgets</p></li>
+<li><p><strong>name</strong> (<em>str = ''</em>) – variable name (should be unique within the <a class="reference internal" href="#qgis.core.QgsExpressionContextScope" title="qgis.core.QgsExpressionContextScope"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsExpressionContextScope</span></code></a>)</p></li>
+<li><p><strong>value</strong> (<em>Any = None</em>) – initial variable value</p></li>
+<li><p><strong>readOnly</strong> (<em>bool = False</em>) – <code class="docutils literal notranslate"><span class="pre">True</span></code> if variable should not be editable by users</p></li>
+<li><p><strong>isStatic</strong> (<em>bool = False</em>) – <code class="docutils literal notranslate"><span class="pre">True</span></code> if the variable will not change during the lifteime of an iterator.</p></li>
+<li><p><strong>description</strong> (<em>str = ''</em>) – optional translated description of variable, for use in expression builder widgets</p></li>
 </ul>
 </dd>
 </dl>
@@ -1733,8 +1730,8 @@ and functions(which are calculated only when an expression is evaluated).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>name</strong> – function name</p></li>
-<li><p><strong>function</strong> – function to insert. Ownership is transferred to the scope.</p></li>
+<li><p><strong>name</strong> (<em>str</em>) – function name</p></li>
+<li><p><strong>function</strong> (<a class="reference internal" href="QgsScopedExpressionFunction.html#qgis.core.QgsScopedExpressionFunction" title="qgis.core.QgsScopedExpressionFunction"><em>QgsScopedExpressionFunction</em></a>) – function to insert. Ownership is transferred to the scope.</p></li>
 </ul>
 </dd>
 </dl>
@@ -1751,7 +1748,7 @@ and functions(which are calculated only when an expression is evaluated).</p>
 value is overwritten, otherwise a new variable is added to the scope.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>variable</strong> – definition of variable to insert</p>
+<dd class="field-odd"><p><strong>variable</strong> (<a class="reference internal" href="#qgis.core.QgsExpressionContextScope.StaticVariable" title="qgis.core.QgsExpressionContextScope.StaticVariable"><em>QgsExpressionContextScope.StaticVariable</em></a>) – definition of variable to insert</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -1772,6 +1769,14 @@ value is overwritten, otherwise a new variable is added to the scope.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1789,6 +1794,11 @@ value is overwritten, otherwise a new variable is added to the scope.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsFeature.html#qgis.core.QgsFeature" title="qgis.core.QgsFeature">QgsFeature</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1801,6 +1811,11 @@ read only variables are listed first.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsExpressionContextScope.variableNames" title="qgis.core.QgsExpressionContextScope.variableNames"><code class="xref py py-func docutils literal notranslate"><span class="pre">variableNames()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List[str]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1809,10 +1824,13 @@ read only variables are listed first.</p>
 <dd><p>Retrieves a function from the scope.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>name</strong> – function name</p>
+<dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – function name</p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>function, or <code class="docutils literal notranslate"><span class="pre">None</span></code> if matching function could not be found</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsExpressionFunction.html#qgis.core.QgsExpressionFunction" title="qgis.core.QgsExpressionFunction">QgsExpressionFunction</a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>function, or <code class="docutils literal notranslate"><span class="pre">None</span></code> if matching function could not be found</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -1841,6 +1859,11 @@ read only variables are listed first.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsExpressionContextScope.variableNames" title="qgis.core.QgsExpressionContextScope.variableNames"><code class="xref py py-func docutils literal notranslate"><span class="pre">variableNames()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List[str]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1854,6 +1877,11 @@ read only variables are listed first.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1862,10 +1890,13 @@ read only variables are listed first.</p>
 <dd><p>Tests whether a function with the specified name exists in the scope.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>name</strong> – function name</p>
+<dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – function name</p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if matching function was found in the scope</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if matching function was found in the scope</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -1884,10 +1915,13 @@ read only variables are listed first.</p>
 <dd><p>Tests whether a variable with the specified name exists in the scope.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>name</strong> – variable name</p>
+<dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – variable name</p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if matching variable was found in the scope</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if matching variable was found in the scope</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -1907,10 +1941,13 @@ read only variables are listed first.</p>
 by users.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>name</strong> – variable name</p>
+<dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – variable name</p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if variable is read only</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if variable is read only</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1923,12 +1960,25 @@ be cached.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsExpressionContextScope.name">
 <code class="sig-name descname">name</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.core.QgsExpressionContextScope.name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the friendly display name of the context scope.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1942,6 +1992,14 @@ be cached.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.6.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>element</strong> (<em>QDomElement</em>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsReadWriteContext.html#qgis.core.QgsReadWriteContext" title="qgis.core.QgsReadWriteContext"><em>QgsReadWriteContext</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1967,10 +2025,13 @@ be cached.</p>
 <dd><p>Removes a variable from the context scope, if found.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>name</strong> – name of variable to remove</p>
+<dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – name of variable to remove</p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if variable was removed from the scope, <code class="docutils literal notranslate"><span class="pre">False</span></code> if matching variable was not
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if variable was removed from the scope, <code class="docutils literal notranslate"><span class="pre">False</span></code> if matching variable was not
 found within the scope</p>
 </dd>
 </dl>
@@ -1983,7 +2044,7 @@ found within the scope</p>
 feature set by the scope will be overwritten.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>feature</strong> – feature for scope</p>
+<dd class="field-odd"><p><strong>feature</strong> (<a class="reference internal" href="QgsFeature.html#qgis.core.QgsFeature" title="qgis.core.QgsFeature"><em>QgsFeature</em></a>) – feature for scope</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -2003,7 +2064,7 @@ feature set by the scope will be overwritten.</p>
 fields set by the scope will be overwritten.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>fields</strong> – fields for scope</p>
+<dd class="field-odd"><p><strong>fields</strong> (<a class="reference internal" href="QgsFields.html#qgis.core.QgsFields" title="qgis.core.QgsFields"><em>QgsFields</em></a>) – fields for scope</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2019,6 +2080,15 @@ of <a class="reference internal" href="QgsExpression.html#qgis.core.QgsExpressio
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsExpressionContextScope.addVariable" title="qgis.core.QgsExpressionContextScope.addVariable"><code class="xref py py-func docutils literal notranslate"><span class="pre">addVariable()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – </p></li>
+<li><p><strong>value</strong> (<em>Any</em>) – </p></li>
+<li><p><strong>isStatic</strong> (<em>bool = False</em>) – </p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2027,10 +2097,13 @@ of <a class="reference internal" href="QgsExpression.html#qgis.core.QgsExpressio
 <dd><p>Retrieves a variable’s value from the scope.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>name</strong> – variable name</p>
+<dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – variable name</p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>variable value, or invalid QVariant if matching variable could not be found</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Any</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>variable value, or invalid QVariant if matching variable could not be found</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -2047,6 +2120,11 @@ of <a class="reference internal" href="QgsExpression.html#qgis.core.QgsExpressio
 <dt id="qgis.core.QgsExpressionContextScope.variableCount">
 <code class="sig-name descname">variableCount</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#qgis.core.QgsExpressionContextScope.variableCount" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the count of variables contained within the scope.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2061,6 +2139,11 @@ of <a class="reference internal" href="QgsExpression.html#qgis.core.QgsExpressio
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsExpressionContextScope.filteredVariableNames" title="qgis.core.QgsExpressionContextScope.filteredVariableNames"><code class="xref py py-func docutils literal notranslate"><span class="pre">filteredVariableNames()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List[str]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2074,6 +2157,18 @@ of <a class="reference internal" href="QgsExpression.html#qgis.core.QgsExpressio
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.6.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>element</strong> (<em>QDomElement</em>) – </p></li>
+<li><p><strong>document</strong> (<em>QDomDocument</em>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsReadWriteContext.html#qgis.core.QgsReadWriteContext" title="qgis.core.QgsReadWriteContext"><em>QgsReadWriteContext</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -2092,7 +2187,7 @@ of <a class="reference internal" href="QgsExpression.html#qgis.core.QgsExpressio
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 10:58 Oct 14, 2019.
+        Last updated on 15:06 Oct 15, 2019.
       </span>
 
     </p>
@@ -2119,20 +2214,20 @@ of <a class="reference internal" href="QgsExpression.html#qgis.core.QgsExpressio
     <div class="rst-other-versions">
       <dl>
         <dt>Versions</dt>
-      
-        <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
-      
-    </dl>
+        
+          <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
+        
+      </dl>
       
       
     </div>

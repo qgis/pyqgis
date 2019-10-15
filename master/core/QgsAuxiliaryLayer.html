@@ -122,7 +122,6 @@
 <li class="toctree-l2"><a class="reference internal" href="PROJECT_SCALES.html">Class: PROJECT_SCALES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PluginLayer.html">Class: PluginLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ProjectDirtyBlocker.html">Class: ProjectDirtyBlocker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="PyProviderMetadata.html">Class: PyProviderMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgis.html">Class: Qgis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs25DRenderer.html">Class: Qgs25DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs3DRendererAbstractMetadata.html">Class: Qgs3DRendererAbstractMetadata</a></li>
@@ -1546,8 +1545,6 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/core/QgsAuxiliaryLayer.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -1564,15 +1561,15 @@
 <dl class="class">
 <dt id="qgis.core.QgsAuxiliaryLayer">
 <em class="property">class </em><code class="sig-prename descclassname">qgis.core.</code><code class="sig-name descname">QgsAuxiliaryLayer</code><span class="sig-paren">(</span><em class="sig-param">pkField: str</em>, <em class="sig-param">filename: str</em>, <em class="sig-param">table: str</em>, <em class="sig-param">vlayer: QgsVectorLayer</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsAuxiliaryLayer" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">qgis._core.QgsVectorLayer</span></code></p>
+<dd><p>Bases: <a class="reference internal" href="QgsVectorLayer.html#module-QgsVectorLayer" title="QgsVectorLayer"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsVectorLayer</span></code></a></p>
 <p>Constructor</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>pkField</strong> – The primary key to use for joining</p></li>
-<li><p><strong>filename</strong> – The database path</p></li>
-<li><p><strong>table</strong> – The table name</p></li>
-<li><p><strong>vlayer</strong> – The target vector layer in join definition</p></li>
+<li><p><strong>pkField</strong> (<em>str</em>) – The primary key to use for joining</p></li>
+<li><p><strong>filename</strong> (<em>str</em>) – The database path</p></li>
+<li><p><strong>table</strong> (<em>str</em>) – The table name</p></li>
+<li><p><strong>vlayer</strong> (<a class="reference internal" href="QgsVectorLayer.html#qgis.core.QgsVectorLayer" title="qgis.core.QgsVectorLayer"><em>QgsVectorLayer</em></a>) – The target vector layer in join definition</p></li>
 </ul>
 </dd>
 </dl>
@@ -1587,7 +1584,7 @@ being “data-defined”, meaning that values come from a column (or an
 expression). But setting this up on an existing layer requires either to
 add new columns to the source layer, while it is not always possible or
 desirable.</p>
-<p>This QgsAuxiliaryLayer provides the solution to this limitation. Actually
+<p>This <a class="reference internal" href="#qgis.core.QgsAuxiliaryLayer" title="qgis.core.QgsAuxiliaryLayer"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsAuxiliaryLayer</span></code></a> provides the solution to this limitation. Actually
 it’s an editable join to the original vector layer with some
 synchronisation mechanisms activated such as “Upsert On Edit” or “Delete
 Cascade”. Thus, auxiliary fields are editable even if the
@@ -1749,10 +1746,13 @@ editors are updated in the target layer as well as the attribute
 table config to hide auxiliary fields by default.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>definition</strong> – The definition of the property to add</p>
+<dd class="field-odd"><p><strong>definition</strong> (<a class="reference internal" href="QgsPropertyDefinition.html#qgis.core.QgsPropertyDefinition" title="qgis.core.QgsPropertyDefinition"><em>QgsPropertyDefinition</em></a>) – The definition of the property to add</p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the auxiliary field is well added, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the auxiliary field is well added, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1766,6 +1766,11 @@ table config to hide auxiliary fields by default.</p>
 <dt id="qgis.core.QgsAuxiliaryLayer.auxiliaryFields">
 <code class="sig-name descname">auxiliaryFields</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QgsFields<a class="headerlink" href="#qgis.core.QgsAuxiliaryLayer.auxiliaryFields" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a list of all auxiliary fields currently managed by the layer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsFields.html#qgis.core.QgsFields" title="qgis.core.QgsFields">QgsFields</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1779,8 +1784,11 @@ table config to hide auxiliary fields by default.</p>
 <dd><p>Deletes all features from the layer. Changes are automatically committed
 and the layer remains editable.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if changes are committed without error, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if changes are committed without error, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1793,7 +1801,10 @@ is duplicate for the layer given in parameter. Note that the current
 auxiliary layer should be saved to have a proper duplicated table.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>layer</strong> – The layer for which the clone is made</p>
+<dd class="field-odd"><p><strong>layer</strong> (<a class="reference internal" href="QgsVectorLayer.html#qgis.core.QgsVectorLayer" title="qgis.core.QgsVectorLayer"><em>QgsVectorLayer</em></a>) – The layer for which the clone is made</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#qgis.core.QgsAuxiliaryLayer" title="qgis.core.QgsAuxiliaryLayer">QgsAuxiliaryLayer</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -1809,14 +1820,17 @@ auxiliary layer should be saved to have a proper duplicated table.</p>
 <dd><p>Creates a new auxiliary field from a property definition.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>definition</strong> – The property definition of the auxiliary field to create</p>
+<dd class="field-odd"><p><strong>definition</strong> (<a class="reference internal" href="QgsPropertyDefinition.html#qgis.core.QgsPropertyDefinition" title="qgis.core.QgsPropertyDefinition"><em>QgsPropertyDefinition</em></a>) – The property definition of the auxiliary field to create</p>
 </dd>
 </dl>
-<p>createAuxiliaryField(field: QgsField) -&gt; QgsField
+<p>createAuxiliaryField(field: <a class="reference internal" href="QgsField.html#qgis.core.QgsField" title="qgis.core.QgsField"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsField</span></code></a>) -&gt; QgsField
 Creates a new auxiliary field from a field.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>field</strong> – The field to use to create the auxiliary field</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsField.html#qgis.core.QgsField" title="qgis.core.QgsField">QgsField</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -1829,15 +1843,15 @@ activates this property in settings.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>property</strong> – The property to create</p></li>
-<li><p><strong>vlayer</strong> – The vector layer</p></li>
+<li><p><strong>property</strong> (<a class="reference internal" href="QgsPalLayerSettings.html#qgis.core.QgsPalLayerSettings.Property" title="qgis.core.QgsPalLayerSettings.Property"><em>QgsPalLayerSettings.Property</em></a>) – The property to create</p></li>
+<li><p><strong>vlayer</strong> (<a class="reference internal" href="QgsVectorLayer.html#qgis.core.QgsVectorLayer" title="qgis.core.QgsVectorLayer"><em>QgsVectorLayer</em></a>) – The vector layer</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>The index of the auxiliary field or -1</p>
 </dd>
 </dl>
-<p>createProperty(property: QgsDiagramLayerSettings.Property, vlayer: QgsVectorLayer) -&gt; int
+<p>createProperty(property: QgsDiagramLayerSettings.Property, vlayer: <a class="reference internal" href="QgsVectorLayer.html#qgis.core.QgsVectorLayer" title="qgis.core.QgsVectorLayer"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsVectorLayer</span></code></a>) -&gt; int
 Creates if necessary a new auxiliary field for a diagram’s property and
 activates this property in settings.</p>
 <dl class="field-list simple">
@@ -1847,8 +1861,11 @@ activates this property in settings.</p>
 <li><p><strong>vlayer</strong> – The vector layer</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>The index of the auxiliary field or -1</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The index of the auxiliary field or -1</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1865,10 +1882,13 @@ activates this property in settings.</p>
 editable.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>attr</strong> – The index of the attribute to remove</p>
+<dd class="field-odd"><p><strong>attr</strong> (<em>int</em>) – The index of the attribute to remove</p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the attribute is well deleted, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the attribute is well deleted, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1885,10 +1905,13 @@ editable.</p>
 otherwise.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>definition</strong> – The property definition to check</p>
+<dd class="field-odd"><p><strong>definition</strong> (<a class="reference internal" href="QgsPropertyDefinition.html#qgis.core.QgsPropertyDefinition" title="qgis.core.QgsPropertyDefinition"><em>QgsPropertyDefinition</em></a>) – The property definition to check</p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the property is stored, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the property is stored, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1905,10 +1928,13 @@ otherwise.</p>
 definition.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>definition</strong> – The property definition</p>
+<dd class="field-odd"><p><strong>definition</strong> (<a class="reference internal" href="QgsPropertyDefinition.html#qgis.core.QgsPropertyDefinition" title="qgis.core.QgsPropertyDefinition"><em>QgsPropertyDefinition</em></a>) – The property definition</p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>The index of the field corresponding to the property or -1</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The index of the field corresponding to the property or -1</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1920,7 +1946,10 @@ definition.</p>
 tools like attribute table, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>index</strong> – The index of the field for which visibility is checked</p>
+<dd class="field-odd"><p><strong>index</strong> (<em>int</em>) – The index of the field for which visibility is checked</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1934,6 +1963,11 @@ tools like attribute table, <code class="docutils literal notranslate"><span cla
 <dt id="qgis.core.QgsAuxiliaryLayer.joinInfo">
 <code class="sig-name descname">joinInfo</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QgsVectorLayerJoinInfo<a class="headerlink" href="#qgis.core.QgsAuxiliaryLayer.joinInfo" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns information to use for joining with primary key and so on.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsVectorLayerJoinInfo.html#qgis.core.QgsVectorLayerJoinInfo" title="qgis.core.QgsVectorLayerJoinInfo">QgsVectorLayerJoinInfo</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1943,9 +1977,13 @@ tools like attribute table, <code class="docutils literal notranslate"><span cla
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>def</strong> – The property definition</p></li>
-<li><p><strong>joined</strong> – The join prefix is taken into account if <code class="docutils literal notranslate"><span class="pre">True</span></code></p></li>
+<li><p><strong>def</strong> (<a class="reference internal" href="QgsPropertyDefinition.html#qgis.core.QgsPropertyDefinition" title="qgis.core.QgsPropertyDefinition"><em>QgsPropertyDefinition</em></a>) – The property definition</p></li>
+<li><p><strong>joined</strong> (<em>bool = False</em>) – The join prefix is taken into account if <code class="docutils literal notranslate"><span class="pre">True</span></code></p></li>
+<li><p><strong>def</strong> – </p></li>
 </ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1956,7 +1994,10 @@ tools like attribute table, <code class="docutils literal notranslate"><span cla
 <dd><p>Returns the property definition from an auxiliary field.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>field</strong> – The auxiliary field</p>
+<dd class="field-odd"><p><strong>field</strong> (<a class="reference internal" href="QgsField.html#qgis.core.QgsField" title="qgis.core.QgsField"><em>QgsField</em></a>) – The auxiliary field</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsPropertyDefinition.html#qgis.core.QgsPropertyDefinition" title="qgis.core.QgsPropertyDefinition">QgsPropertyDefinition</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -1967,7 +2008,10 @@ tools like attribute table, <code class="docutils literal notranslate"><span cla
 <dd><p>Returns the property definition for the underlying field index.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>index</strong> – The index of the field</p>
+<dd class="field-odd"><p><strong>index</strong> (<em>int</em>) – The index of the field</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsPropertyDefinition.html#qgis.core.QgsPropertyDefinition" title="qgis.core.QgsPropertyDefinition">QgsPropertyDefinition</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -1981,7 +2025,10 @@ property definition of the field. The key -1 is returned if an error
 happened.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>index</strong> – The index of the field</p>
+<dd class="field-odd"><p><strong>index</strong> (<em>int</em>) – The index of the field</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2011,8 +2058,11 @@ happened.</p>
 <code class="sig-name descname">save</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsAuxiliaryLayer.save" title="Permalink to this definition">¶</a></dt>
 <dd><p>Commits changes and starts editing then.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if commit step passed, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if commit step passed, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2058,8 +2108,11 @@ happened.</p>
 <dd><p>An auxiliary layer is not spatial. This method returns a spatial
 representation of auxiliary data.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>A new spatial vector layer</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsVectorLayer.html#qgis.core.QgsVectorLayer" title="qgis.core.QgsVectorLayer">QgsVectorLayer</a></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A new spatial vector layer</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2095,7 +2148,7 @@ representation of auxiliary data.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 10:58 Oct 14, 2019.
+        Last updated on 15:06 Oct 15, 2019.
       </span>
 
     </p>
@@ -2122,20 +2175,20 @@ representation of auxiliary data.</p>
     <div class="rst-other-versions">
       <dl>
         <dt>Versions</dt>
-      
-        <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
-      
-    </dl>
+        
+          <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
+        
+      </dl>
       
       
     </div>

@@ -122,7 +122,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../core/PROJECT_SCALES.html">Class: PROJECT_SCALES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/PluginLayer.html">Class: PluginLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/ProjectDirtyBlocker.html">Class: ProjectDirtyBlocker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../core/PyProviderMetadata.html">Class: PyProviderMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/Qgis.html">Class: Qgis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/Qgs25DRenderer.html">Class: Qgs25DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/Qgs3DRendererAbstractMetadata.html">Class: Qgs3DRendererAbstractMetadata</a></li>
@@ -1546,8 +1545,6 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/gui/QgsSourceSelectProviderRegistry.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -1567,7 +1564,7 @@
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sip.wrapper</span></code></p>
 <p>This class keeps a list of source select providers that may add items to the QgsDataSourceManagerDialog
 When created, it automatically adds providers from data provider plugins (e.g. PostGIS, WMS, …)</p>
-<p>QgsSourceSelectProviderRegistry is not usually directly created, but rather accessed through
+<p><a class="reference internal" href="#qgis.gui.QgsSourceSelectProviderRegistry" title="qgis.gui.QgsSourceSelectProviderRegistry"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsSourceSelectProviderRegistry</span></code></a> is not usually directly created, but rather accessed through
 <a class="reference internal" href="QgsGui.html#qgis.gui.QgsGui.sourceSelectProviderRegistry" title="qgis.gui.QgsGui.sourceSelectProviderRegistry"><code class="xref py py-func docutils literal notranslate"><span class="pre">QgsGui.sourceSelectProviderRegistry()</span></code></a></p>
 <div class="versionadded">
 <table class="longtable docutils align-default">
@@ -1629,6 +1626,11 @@ When created, it automatically adds providers from data provider plugins (e.g. P
 <dt id="qgis.gui.QgsSourceSelectProviderRegistry.addProvider">
 <code class="sig-name descname">addProvider</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">provider: QgsSourceSelectProvider</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsSourceSelectProviderRegistry.addProvider" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add a <code class="docutils literal notranslate"><span class="pre">provider</span></code> implementation. Takes ownership of the object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>provider</strong> (<a class="reference internal" href="QgsSourceSelectProvider.html#qgis.gui.QgsSourceSelectProvider" title="qgis.gui.QgsSourceSelectProvider"><em>QgsSourceSelectProvider</em></a>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1639,34 +1641,73 @@ When created, it automatically adds providers from data provider plugins (e.g. P
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.10.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – </p></li>
+<li><p><strong>parent</strong> (<em>QWidget</em>) – </p></li>
+<li><p><strong>fl</strong> (<em>Union</em><em>[</em><em>Qt.WindowFlags</em>) – </p></li>
+<li><p><strong>widgetMode</strong> (<a class="reference internal" href="../core/QgsProviderRegistry.html#qgis.core.QgsProviderRegistry.WidgetMode" title="qgis.core.QgsProviderRegistry.WidgetMode"><em>QgsProviderRegistry.WidgetMode</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsAbstractDataSourceWidget.html#qgis.gui.QgsAbstractDataSourceWidget" title="qgis.gui.QgsAbstractDataSourceWidget">QgsAbstractDataSourceWidget</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.gui.QgsSourceSelectProviderRegistry.initializeFromProviderGuiRegistry">
 <code class="sig-name descname">initializeFromProviderGuiRegistry</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">providerGuiRegistry: QgsProviderGuiRegistry</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsSourceSelectProviderRegistry.initializeFromProviderGuiRegistry" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initializes the registry. The registry needs to be passed explicitly
-(instead of using singleton) because this gets called from QgsGui constructor.</p>
+(instead of using singleton) because this gets called from <a class="reference internal" href="QgsGui.html#qgis.gui.QgsGui" title="qgis.gui.QgsGui"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsGui</span></code></a> constructor.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.10.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>providerGuiRegistry</strong> (<a class="reference internal" href="QgsProviderGuiRegistry.html#qgis.gui.QgsProviderGuiRegistry" title="qgis.gui.QgsProviderGuiRegistry"><em>QgsProviderGuiRegistry</em></a>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.gui.QgsSourceSelectProviderRegistry.providerByName">
 <code class="sig-name descname">providerByName</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">name: str</em><span class="sig-paren">)</span> &#x2192; QgsSourceSelectProvider<a class="headerlink" href="#qgis.gui.QgsSourceSelectProviderRegistry.providerByName" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a provider by <code class="docutils literal notranslate"><span class="pre">name</span></code> or <code class="docutils literal notranslate"><span class="pre">None</span></code> if not found</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsSourceSelectProvider.html#qgis.gui.QgsSourceSelectProvider" title="qgis.gui.QgsSourceSelectProvider">QgsSourceSelectProvider</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.gui.QgsSourceSelectProviderRegistry.providers">
 <code class="sig-name descname">providers</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; List[QgsSourceSelectProvider]<a class="headerlink" href="#qgis.gui.QgsSourceSelectProviderRegistry.providers" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets list of available providers</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List[<a class="reference internal" href="QgsSourceSelectProvider.html#qgis.gui.QgsSourceSelectProvider" title="qgis.gui.QgsSourceSelectProvider">QgsSourceSelectProvider</a>]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.gui.QgsSourceSelectProviderRegistry.providersByKey">
 <code class="sig-name descname">providersByKey</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">providerKey: str</em><span class="sig-paren">)</span> &#x2192; List[QgsSourceSelectProvider]<a class="headerlink" href="#qgis.gui.QgsSourceSelectProviderRegistry.providersByKey" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a (possibly empty) list of providers by data <code class="docutils literal notranslate"><span class="pre">providerkey</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>providerKey</strong> (<em>str</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>List[<a class="reference internal" href="QgsSourceSelectProvider.html#qgis.gui.QgsSourceSelectProvider" title="qgis.gui.QgsSourceSelectProvider">QgsSourceSelectProvider</a>]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1674,8 +1715,14 @@ When created, it automatically adds providers from data provider plugins (e.g. P
 <code class="sig-name descname">removeProvider</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">provider: QgsSourceSelectProvider</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.gui.QgsSourceSelectProviderRegistry.removeProvider" title="Permalink to this definition">¶</a></dt>
 <dd><p>Remove <code class="docutils literal notranslate"><span class="pre">provider</span></code> implementation from the list (<code class="docutils literal notranslate"><span class="pre">provider</span></code> object is deleted)</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the provider was actually removed and deleted</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the provider was actually removed and deleted</p>
+</dd>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>provider</strong> (<a class="reference internal" href="QgsSourceSelectProvider.html#qgis.gui.QgsSourceSelectProvider" title="qgis.gui.QgsSourceSelectProvider"><em>QgsSourceSelectProvider</em></a>) – </p>
 </dd>
 </dl>
 </dd></dl>
@@ -1696,7 +1743,7 @@ When created, it automatically adds providers from data provider plugins (e.g. P
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 10:58 Oct 14, 2019.
+        Last updated on 15:06 Oct 15, 2019.
       </span>
 
     </p>
@@ -1723,20 +1770,20 @@ When created, it automatically adds providers from data provider plugins (e.g. P
     <div class="rst-other-versions">
       <dl>
         <dt>Versions</dt>
-      
-        <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
-      
-    </dl>
+        
+          <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
+        
+      </dl>
       
       
     </div>

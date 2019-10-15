@@ -122,7 +122,6 @@
 <li class="toctree-l2"><a class="reference internal" href="PROJECT_SCALES.html">Class: PROJECT_SCALES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PluginLayer.html">Class: PluginLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ProjectDirtyBlocker.html">Class: ProjectDirtyBlocker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="PyProviderMetadata.html">Class: PyProviderMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgis.html">Class: Qgis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs25DRenderer.html">Class: Qgs25DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs3DRendererAbstractMetadata.html">Class: Qgs3DRendererAbstractMetadata</a></li>
@@ -1546,8 +1545,6 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/core/QgsLayerTreeUtils.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -1601,7 +1598,7 @@
 <td><p>Test if one of the layers in a group has an expression filter</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeUtils.insertLayerBelow" title="qgis.core.QgsLayerTreeUtils.insertLayerBelow"><code class="xref py py-obj docutils literal notranslate"><span class="pre">insertLayerBelow</span></code></a></p></td>
-<td><p>Insert a QgsMapLayer just below another one</p></td>
+<td><p>Insert a <a class="reference internal" href="QgsMapLayer.html#qgis.core.QgsMapLayer" title="qgis.core.QgsMapLayer"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMapLayer</span></code></a> just below another one</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeUtils.invisibleLayerList" title="qgis.core.QgsLayerTreeUtils.invisibleLayerList"><code class="xref py py-obj docutils literal notranslate"><span class="pre">invisibleLayerList</span></code></a></p></td>
 <td><p>Gets invisible layers</p></td>
@@ -1662,12 +1659,28 @@
 <dt id="qgis.core.QgsLayerTreeUtils.checkStateFromXml">
 <code class="sig-name descname">checkStateFromXml</code><span class="sig-paren">(</span><em class="sig-param">txt: str</em><span class="sig-paren">)</span> &#x2192; Qt.CheckState<a class="headerlink" href="#qgis.core.QgsLayerTreeUtils.checkStateFromXml" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert QString to Qt.CheckState</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>txt</strong> (<em>str</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Qt.CheckState</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsLayerTreeUtils.checkStateToXml">
 <code class="sig-name descname">checkStateToXml</code><span class="sig-paren">(</span><em class="sig-param">state: Qt.CheckState</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.core.QgsLayerTreeUtils.checkStateToXml" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert Qt.CheckState to QString</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>state</strong> (<em>Qt.CheckState</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1678,6 +1691,14 @@ child nodes of groups.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.4.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>nodes</strong> (<em>Iterable</em><em>[</em><a class="reference internal" href="QgsLayerTreeNode.html#qgis.core.QgsLayerTreeNode" title="qgis.core.QgsLayerTreeNode"><em>QgsLayerTreeNode</em></a><em>]</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Set[<a class="reference internal" href="QgsMapLayer.html#qgis.core.QgsMapLayer" title="qgis.core.QgsMapLayer">QgsMapLayer</a>]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1694,6 +1715,17 @@ there is only one occurrence of that layer.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.4.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tree</strong> (<a class="reference internal" href="QgsLayerTreeNode.html#qgis.core.QgsLayerTreeNode" title="qgis.core.QgsLayerTreeNode"><em>QgsLayerTreeNode</em></a>) – </p></li>
+<li><p><strong>layer</strong> (<a class="reference internal" href="QgsMapLayer.html#qgis.core.QgsMapLayer" title="qgis.core.QgsMapLayer"><em>QgsMapLayer</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1704,36 +1736,52 @@ or the group itself if it doesn’t hold the property</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>group</strong> – the layer tree group</p></li>
-<li><p><strong>property</strong> – the property</p></li>
+<li><p><strong>group</strong> (<a class="reference internal" href="QgsLayerTreeGroup.html#qgis.core.QgsLayerTreeGroup" title="qgis.core.QgsLayerTreeGroup"><em>QgsLayerTreeGroup</em></a>) – the layer tree group</p></li>
+<li><p><strong>property</strong> (<em>str</em>) – the property</p></li>
 </ul>
 </dd>
 </dl>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.8.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsLayerTreeGroup.html#qgis.core.QgsLayerTreeGroup" title="qgis.core.QgsLayerTreeGroup">QgsLayerTreeGroup</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsLayerTreeUtils.hasLegendFilterExpression">
 <code class="sig-name descname">hasLegendFilterExpression</code><span class="sig-paren">(</span><em class="sig-param">group: QgsLayerTreeGroup</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsLayerTreeUtils.hasLegendFilterExpression" title="Permalink to this definition">¶</a></dt>
 <dd><p>Test if one of the layers in a group has an expression filter</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>group</strong> (<a class="reference internal" href="QgsLayerTreeGroup.html#qgis.core.QgsLayerTreeGroup" title="qgis.core.QgsLayerTreeGroup"><em>QgsLayerTreeGroup</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsLayerTreeUtils.insertLayerBelow">
 <code class="sig-name descname">insertLayerBelow</code><span class="sig-paren">(</span><em class="sig-param">group: QgsLayerTreeGroup</em>, <em class="sig-param">refLayer: QgsMapLayer</em>, <em class="sig-param">layerToInsert: QgsMapLayer</em><span class="sig-paren">)</span> &#x2192; QgsLayerTreeLayer<a class="headerlink" href="#qgis.core.QgsLayerTreeUtils.insertLayerBelow" title="Permalink to this definition">¶</a></dt>
-<dd><p>Insert a QgsMapLayer just below another one</p>
+<dd><p>Insert a <a class="reference internal" href="QgsMapLayer.html#qgis.core.QgsMapLayer" title="qgis.core.QgsMapLayer"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMapLayer</span></code></a> just below another one</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>group</strong> – the tree group where layers are (can be the root group)</p></li>
-<li><p><strong>refLayer</strong> – the reference layer</p></li>
-<li><p><strong>layerToInsert</strong> – the new layer to insert just below the reference layer</p></li>
+<li><p><strong>group</strong> (<a class="reference internal" href="QgsLayerTreeGroup.html#qgis.core.QgsLayerTreeGroup" title="qgis.core.QgsLayerTreeGroup"><em>QgsLayerTreeGroup</em></a>) – the tree group where layers are (can be the root group)</p></li>
+<li><p><strong>refLayer</strong> (<a class="reference internal" href="QgsMapLayer.html#qgis.core.QgsMapLayer" title="qgis.core.QgsMapLayer"><em>QgsMapLayer</em></a>) – the reference layer</p></li>
+<li><p><strong>layerToInsert</strong> (<a class="reference internal" href="QgsMapLayer.html#qgis.core.QgsMapLayer" title="qgis.core.QgsMapLayer"><em>QgsMapLayer</em></a>) – the new layer to insert just below the reference layer</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>the new tree layer</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsLayerTreeLayer.html#qgis.core.QgsLayerTreeLayer" title="qgis.core.QgsLayerTreeLayer">QgsLayerTreeLayer</a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the new tree layer</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1742,54 +1790,127 @@ or the group itself if it doesn’t hold the property</p>
 <dt id="qgis.core.QgsLayerTreeUtils.invisibleLayerList">
 <code class="sig-name descname">invisibleLayerList</code><span class="sig-paren">(</span><em class="sig-param">node: QgsLayerTreeNode</em><span class="sig-paren">)</span> &#x2192; List[str]<a class="headerlink" href="#qgis.core.QgsLayerTreeUtils.invisibleLayerList" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets invisible layers</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>node</strong> (<a class="reference internal" href="QgsLayerTreeNode.html#qgis.core.QgsLayerTreeNode" title="qgis.core.QgsLayerTreeNode"><em>QgsLayerTreeNode</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>List[str]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsLayerTreeUtils.layersEditable">
 <code class="sig-name descname">layersEditable</code><span class="sig-paren">(</span><em class="sig-param">layerNodes: Iterable[QgsLayerTreeLayer]</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsLayerTreeUtils.layersEditable" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if any of the layers is editable</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>layerNodes</strong> (<em>Iterable</em><em>[</em><a class="reference internal" href="QgsLayerTreeLayer.html#qgis.core.QgsLayerTreeLayer" title="qgis.core.QgsLayerTreeLayer"><em>QgsLayerTreeLayer</em></a><em>]</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsLayerTreeUtils.layersModified">
 <code class="sig-name descname">layersModified</code><span class="sig-paren">(</span><em class="sig-param">layerNodes: Iterable[QgsLayerTreeLayer]</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsLayerTreeUtils.layersModified" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if any of the layers is modified</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>layerNodes</strong> (<em>Iterable</em><em>[</em><a class="reference internal" href="QgsLayerTreeLayer.html#qgis.core.QgsLayerTreeLayer" title="qgis.core.QgsLayerTreeLayer"><em>QgsLayerTreeLayer</em></a><em>]</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsLayerTreeUtils.legendFilterByExpression">
 <code class="sig-name descname">legendFilterByExpression</code><span class="sig-paren">(</span><em class="sig-param">layer: QgsLayerTreeLayer</em><span class="sig-paren">)</span> &#x2192; Tuple[str, bool]<a class="headerlink" href="#qgis.core.QgsLayerTreeUtils.legendFilterByExpression" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the expression filter of a legend layer</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>layer</strong> (<a class="reference internal" href="QgsLayerTreeLayer.html#qgis.core.QgsLayerTreeLayer" title="qgis.core.QgsLayerTreeLayer"><em>QgsLayerTreeLayer</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Tuple[str, bool]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsLayerTreeUtils.readOldLegend">
 <code class="sig-name descname">readOldLegend</code><span class="sig-paren">(</span><em class="sig-param">root: QgsLayerTreeGroup</em>, <em class="sig-param">legendElem: QDomElement</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsLayerTreeUtils.readOldLegend" title="Permalink to this definition">¶</a></dt>
 <dd><p>Try to load layer tree from verbatim &lt;legend&gt; endverbatim tag from project files from QGIS 2.2 and below</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>root</strong> (<a class="reference internal" href="QgsLayerTreeGroup.html#qgis.core.QgsLayerTreeGroup" title="qgis.core.QgsLayerTreeGroup"><em>QgsLayerTreeGroup</em></a>) – </p></li>
+<li><p><strong>legendElem</strong> (<em>QDomElement</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsLayerTreeUtils.readOldLegendLayerOrder">
 <code class="sig-name descname">readOldLegendLayerOrder</code><span class="sig-paren">(</span><em class="sig-param">legendElem: QDomElement, order: Iterable[str]</em><span class="sig-paren">)</span> &#x2192; Tuple[bool, bool]<a class="headerlink" href="#qgis.core.QgsLayerTreeUtils.readOldLegendLayerOrder" title="Permalink to this definition">¶</a></dt>
 <dd><p>Try to load custom layer order from verbatim &lt;legend&gt; endverbatim tag from project files from QGIS 2.2 and below</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>legendElem</strong> (<em>QDomElement</em>) – </p></li>
+<li><p><strong>order</strong> (<em>Iterable</em><em>[</em><em>str</em><em>]</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Tuple[bool, bool]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsLayerTreeUtils.removeInvalidLayers">
 <code class="sig-name descname">removeInvalidLayers</code><span class="sig-paren">(</span><em class="sig-param">group: QgsLayerTreeGroup</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsLayerTreeUtils.removeInvalidLayers" title="Permalink to this definition">¶</a></dt>
 <dd><p>Removes layer nodes that refer to invalid layers</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>group</strong> (<a class="reference internal" href="QgsLayerTreeGroup.html#qgis.core.QgsLayerTreeGroup" title="qgis.core.QgsLayerTreeGroup"><em>QgsLayerTreeGroup</em></a>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsLayerTreeUtils.replaceChildrenOfEmbeddedGroups">
 <code class="sig-name descname">replaceChildrenOfEmbeddedGroups</code><span class="sig-paren">(</span><em class="sig-param">group: QgsLayerTreeGroup</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsLayerTreeUtils.replaceChildrenOfEmbeddedGroups" title="Permalink to this definition">¶</a></dt>
 <dd><p>Remove subtree of embedded groups and replaces it with a custom property embedded-visible-layers</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>group</strong> (<a class="reference internal" href="QgsLayerTreeGroup.html#qgis.core.QgsLayerTreeGroup" title="qgis.core.QgsLayerTreeGroup"><em>QgsLayerTreeGroup</em></a>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsLayerTreeUtils.setLegendFilterByExpression">
 <code class="sig-name descname">setLegendFilterByExpression</code><span class="sig-paren">(</span><em class="sig-param">layer: QgsLayerTreeLayer</em>, <em class="sig-param">expr: str</em>, <em class="sig-param">enabled: bool = True</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsLayerTreeUtils.setLegendFilterByExpression" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets the expression filter of a legend layer</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>layer</strong> (<a class="reference internal" href="QgsLayerTreeLayer.html#qgis.core.QgsLayerTreeLayer" title="qgis.core.QgsLayerTreeLayer"><em>QgsLayerTreeLayer</em></a>) – </p></li>
+<li><p><strong>expr</strong> (<em>str</em>) – </p></li>
+<li><p><strong>enabled</strong> (<em>bool = True</em>) – </p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1799,18 +1920,47 @@ or the group itself if it doesn’t hold the property</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.6.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>group</strong> (<a class="reference internal" href="QgsLayerTreeGroup.html#qgis.core.QgsLayerTreeGroup" title="qgis.core.QgsLayerTreeGroup"><em>QgsLayerTreeGroup</em></a>) – </p></li>
+<li><p><strong>doc</strong> (<em>QDomDocument</em>) – </p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsLayerTreeUtils.updateEmbeddedGroupsProjectPath">
 <code class="sig-name descname">updateEmbeddedGroupsProjectPath</code><span class="sig-paren">(</span><em class="sig-param">group: QgsLayerTreeGroup</em>, <em class="sig-param">project: QgsProject</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsLayerTreeUtils.updateEmbeddedGroupsProjectPath" title="Permalink to this definition">¶</a></dt>
 <dd><p>Updates an embedded <code class="docutils literal notranslate"><span class="pre">group</span></code> from a <code class="docutils literal notranslate"><span class="pre">project</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>group</strong> (<a class="reference internal" href="QgsLayerTreeGroup.html#qgis.core.QgsLayerTreeGroup" title="qgis.core.QgsLayerTreeGroup"><em>QgsLayerTreeGroup</em></a>) – </p></li>
+<li><p><strong>project</strong> (<a class="reference internal" href="QgsProject.html#qgis.core.QgsProject" title="qgis.core.QgsProject"><em>QgsProject</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsLayerTreeUtils.writeOldLegend">
 <code class="sig-name descname">writeOldLegend</code><span class="sig-paren">(</span><em class="sig-param">doc: QDomDocument, root: QgsLayerTreeGroup, hasCustomOrder: bool, order: Iterable[QgsMapLayer]</em><span class="sig-paren">)</span> &#x2192; QDomElement<a class="headerlink" href="#qgis.core.QgsLayerTreeUtils.writeOldLegend" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns verbatim &lt;legend&gt; endverbatim tag used in QGIS 2.2 and below</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>doc</strong> (<em>QDomDocument</em>) – </p></li>
+<li><p><strong>root</strong> (<a class="reference internal" href="QgsLayerTreeGroup.html#qgis.core.QgsLayerTreeGroup" title="qgis.core.QgsLayerTreeGroup"><em>QgsLayerTreeGroup</em></a>) – </p></li>
+<li><p><strong>hasCustomOrder</strong> (<em>bool</em>) – </p></li>
+<li><p><strong>order</strong> (<em>Iterable</em><em>[</em><a class="reference internal" href="QgsMapLayer.html#qgis.core.QgsMapLayer" title="qgis.core.QgsMapLayer"><em>QgsMapLayer</em></a><em>]</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>QDomElement</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -1829,7 +1979,7 @@ or the group itself if it doesn’t hold the property</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 10:58 Oct 14, 2019.
+        Last updated on 15:06 Oct 15, 2019.
       </span>
 
     </p>
@@ -1856,20 +2006,20 @@ or the group itself if it doesn’t hold the property</p>
     <div class="rst-other-versions">
       <dl>
         <dt>Versions</dt>
-      
-        <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
-      
-    </dl>
+        
+          <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
+        
+      </dl>
       
       
     </div>

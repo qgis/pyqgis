@@ -122,7 +122,6 @@
 <li class="toctree-l2"><a class="reference internal" href="PROJECT_SCALES.html">Class: PROJECT_SCALES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PluginLayer.html">Class: PluginLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ProjectDirtyBlocker.html">Class: ProjectDirtyBlocker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="PyProviderMetadata.html">Class: PyProviderMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgis.html">Class: Qgis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs25DRenderer.html">Class: Qgs25DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs3DRendererAbstractMetadata.html">Class: Qgs3DRendererAbstractMetadata</a></li>
@@ -1546,8 +1545,6 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/core/QgsMapRendererJob.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -1571,16 +1568,16 @@ the caller is not blocked while the rendering is in progress. Non-blocking
 operation is quite important because the rendering can take considerable
 amount of time.</p>
 <p>Common use case:
-0. prepare QgsMapSettings with rendering configuration (extent, layer, map size, …)
-1. create QgsMapRendererJob subclass with QgsMapSettings instance
+0. prepare <a class="reference internal" href="QgsMapSettings.html#qgis.core.QgsMapSettings" title="qgis.core.QgsMapSettings"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMapSettings</span></code></a> with rendering configuration (extent, layer, map size, …)
+1. create <a class="reference internal" href="#qgis.core.QgsMapRendererJob" title="qgis.core.QgsMapRendererJob"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMapRendererJob</span></code></a> subclass with <a class="reference internal" href="QgsMapSettings.html#qgis.core.QgsMapSettings" title="qgis.core.QgsMapSettings"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMapSettings</span></code></a> instance
 2. connect to job’s finished() signal
 3. call start(). Map rendering will start in background, the function immediately returns
 4. at some point, slot connected to finished() signal is called, map rendering is done</p>
 <p>It is possible to cancel the rendering job while it is active by calling cancel() function.</p>
 <p>The following subclasses are available:
-- QgsMapRendererSequentialJob - renders map in one background thread to an image
-- QgsMapRendererParallelJob - renders map in multiple background threads to an image
-- QgsMapRendererCustomPainterJob - renders map with given QPainter in one background thread</p>
+- <a class="reference internal" href="QgsMapRendererSequentialJob.html#qgis.core.QgsMapRendererSequentialJob" title="qgis.core.QgsMapRendererSequentialJob"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMapRendererSequentialJob</span></code></a> - renders map in one background thread to an image
+- <a class="reference internal" href="QgsMapRendererParallelJob.html#qgis.core.QgsMapRendererParallelJob" title="qgis.core.QgsMapRendererParallelJob"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMapRendererParallelJob</span></code></a> - renders map in multiple background threads to an image
+- <a class="reference internal" href="QgsMapRendererCustomPainterJob.html#qgis.core.QgsMapRendererCustomPainterJob" title="qgis.core.QgsMapRendererCustomPainterJob"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMapRendererCustomPainterJob</span></code></a> - renders map with given QPainter in one background thread</p>
 <div class="versionadded">
 <table class="longtable docutils align-default">
 <colgroup>
@@ -1619,7 +1616,7 @@ amount of time.</p>
 <td><p>List of errors that happened during the rendering job - available when the rendering has been finished</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMapRendererJob.featureFilterProvider" title="qgis.core.QgsMapRendererJob.featureFilterProvider"><code class="xref py py-obj docutils literal notranslate"><span class="pre">featureFilterProvider</span></code></a></p></td>
-<td><p>Returns the feature filter provider used by the QgsRenderContext of each LayerRenderJob.</p></td>
+<td><p>Returns the feature filter provider used by the <a class="reference internal" href="QgsRenderContext.html#qgis.core.QgsRenderContext" title="qgis.core.QgsRenderContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsRenderContext</span></code></a> of each LayerRenderJob.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMapRendererJob.isActive" title="qgis.core.QgsMapRendererJob.isActive"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isActive</span></code></a></p></td>
 <td><p>Tell whether the rendering job is currently running in background.</p></td>
@@ -1646,7 +1643,7 @@ amount of time.</p>
 <td><p>Assign a cache to be used for reading and storing rendered images of individual layers.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMapRendererJob.setFeatureFilterProvider" title="qgis.core.QgsMapRendererJob.setFeatureFilterProvider"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setFeatureFilterProvider</span></code></a></p></td>
-<td><p>Set the feature filter provider used by the QgsRenderContext of each LayerRenderJob.</p></td>
+<td><p>Set the feature filter provider used by the <a class="reference internal" href="QgsRenderContext.html#qgis.core.QgsRenderContext" title="qgis.core.QgsRenderContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsRenderContext</span></code></a> of each LayerRenderJob.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMapRendererJob.start" title="qgis.core.QgsMapRendererJob.start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">start</span></code></a></p></td>
 <td><p>Start the rendering job and immediately return.</p></td>
@@ -1694,6 +1691,14 @@ amount of time.</p>
 <em class="property">class </em><code class="sig-name descname">Error</code><span class="sig-paren">(</span><em class="sig-param">lid: str</em>, <em class="sig-param">msg: str</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsMapRendererJob.Error" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sip.wrapper</span></code></p>
 <p>QgsMapRendererJob.Error(QgsMapRendererJob.Error)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lid</strong> (<em>str</em>) – </p></li>
+<li><p><strong>msg</strong> (<em>str</em>) – </p></li>
+</ul>
+</dd>
+</dl>
 <dl class="attribute">
 <dt id="qgis.core.QgsMapRendererJob.Error.layerID">
 <code class="sig-name descname">layerID</code><a class="headerlink" href="#qgis.core.QgsMapRendererJob.Error.layerID" title="Permalink to this definition">¶</a></dt>
@@ -1745,16 +1750,26 @@ Does nothing if the rendering is not active.</p>
 <dt id="qgis.core.QgsMapRendererJob.errors">
 <code class="sig-name descname">errors</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; List[QgsMapRendererJob.Error]<a class="headerlink" href="#qgis.core.QgsMapRendererJob.errors" title="Permalink to this definition">¶</a></dt>
 <dd><p>List of errors that happened during the rendering job - available when the rendering has been finished</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List[<a class="reference internal" href="#qgis.core.QgsMapRendererJob.Error" title="qgis.core.QgsMapRendererJob.Error">QgsMapRendererJob.Error</a>]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsMapRendererJob.featureFilterProvider">
 <code class="sig-name descname">featureFilterProvider</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QgsFeatureFilterProvider<a class="headerlink" href="#qgis.core.QgsMapRendererJob.featureFilterProvider" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the feature filter provider used by the QgsRenderContext of
+<dd><p>Returns the feature filter provider used by the <a class="reference internal" href="QgsRenderContext.html#qgis.core.QgsRenderContext" title="qgis.core.QgsRenderContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsRenderContext</span></code></a> of
 each LayerRenderJob.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsFeatureFilterProvider.html#qgis.core.QgsFeatureFilterProvider" title="qgis.core.QgsFeatureFilterProvider">QgsFeatureFilterProvider</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="attribute">
@@ -1767,6 +1782,11 @@ each LayerRenderJob.</p>
 <dt id="qgis.core.QgsMapRendererJob.isActive">
 <code class="sig-name descname">isActive</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsMapRendererJob.isActive" title="Permalink to this definition">¶</a></dt>
 <dd><p>Tell whether the rendering job is currently running in background.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1779,8 +1799,11 @@ each LayerRenderJob.</p>
 <code class="sig-name descname">mapSettings</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QgsMapSettings<a class="headerlink" href="#qgis.core.QgsMapRendererJob.mapSettings" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns map settings with which this job was started.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>A QgsMapSettings instance with render settings</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsMapSettings.html#qgis.core.QgsMapSettings" title="qgis.core.QgsMapSettings">QgsMapSettings</a></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A <a class="reference internal" href="QgsMapSettings.html#qgis.core.QgsMapSettings" title="qgis.core.QgsMapSettings"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMapSettings</span></code></a> instance with render settings</p>
 </dd>
 </dl>
 <div class="versionadded">
@@ -1812,6 +1835,11 @@ finished() instead.</p>
 <p class="admonition-title">See also</p>
 <p><code class="xref py py-func docutils literal notranslate"><span class="pre">perLayerRenderingTime()</span></code></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1829,18 +1857,28 @@ finished() instead.</p>
 <code class="sig-name descname">setCache</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">cache: QgsMapRendererCache</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsMapRendererJob.setCache" title="Permalink to this definition">¶</a></dt>
 <dd><p>Assign a cache to be used for reading and storing rendered images of individual layers.
 Does not take ownership of the object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>cache</strong> (<a class="reference internal" href="QgsMapRendererCache.html#qgis.core.QgsMapRendererCache" title="qgis.core.QgsMapRendererCache"><em>QgsMapRendererCache</em></a>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsMapRendererJob.setFeatureFilterProvider">
 <code class="sig-name descname">setFeatureFilterProvider</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">f: QgsFeatureFilterProvider</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsMapRendererJob.setFeatureFilterProvider" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set the feature filter provider used by the QgsRenderContext of
+<dd><p>Set the feature filter provider used by the <a class="reference internal" href="QgsRenderContext.html#qgis.core.QgsRenderContext" title="qgis.core.QgsRenderContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsRenderContext</span></code></a> of
 each LayerRenderJob.
 Ownership is not transferred and the provider must not be deleted
 before the render job.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>f</strong> (<a class="reference internal" href="QgsFeatureFilterProvider.html#qgis.core.QgsFeatureFilterProvider" title="qgis.core.QgsFeatureFilterProvider"><em>QgsFeatureFilterProvider</em></a>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1859,6 +1897,11 @@ This should not be used if cached labeling was redrawn - see usedCachedLabels().
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsMapRendererJob.usedCachedLabels" title="qgis.core.QgsMapRendererJob.usedCachedLabels"><code class="xref py py-func docutils literal notranslate"><span class="pre">usedCachedLabels()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsLabelingResults.html#qgis.core.QgsLabelingResults" title="qgis.core.QgsLabelingResults">QgsLabelingResults</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1879,6 +1922,11 @@ should be retained.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1903,7 +1951,7 @@ should be retained.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 10:58 Oct 14, 2019.
+        Last updated on 15:06 Oct 15, 2019.
       </span>
 
     </p>
@@ -1930,20 +1978,20 @@ should be retained.</p>
     <div class="rst-other-versions">
       <dl>
         <dt>Versions</dt>
-      
-        <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
-      
-    </dl>
+        
+          <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
+        
+      </dl>
       
       
     </div>

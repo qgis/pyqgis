@@ -122,7 +122,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../core/PROJECT_SCALES.html">Class: PROJECT_SCALES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/PluginLayer.html">Class: PluginLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/ProjectDirtyBlocker.html">Class: ProjectDirtyBlocker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../core/PyProviderMetadata.html">Class: PyProviderMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/Qgis.html">Class: Qgis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/Qgs25DRenderer.html">Class: Qgs25DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/Qgs3DRendererAbstractMetadata.html">Class: Qgs3DRendererAbstractMetadata</a></li>
@@ -1546,8 +1545,6 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/analysis/QgsGraphBuilderInterface.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -1569,16 +1566,16 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>crs</strong> – Coordinate reference system for new graph vertex</p></li>
-<li><p><strong>ctfEnabled</strong> – enable coordinate transform from source graph CRS to CRS graph</p></li>
-<li><p><strong>topologyTolerance</strong> – sqrt distance between source point as one graph vertex</p></li>
-<li><p><strong>ellipsoidID</strong> – ellipsoid for edge measurement</p></li>
+<li><p><strong>crs</strong> (<a class="reference internal" href="../core/QgsCoordinateReferenceSystem.html#qgis.core.QgsCoordinateReferenceSystem" title="qgis.core.QgsCoordinateReferenceSystem"><em>QgsCoordinateReferenceSystem</em></a>) – Coordinate reference system for new graph vertex</p></li>
+<li><p><strong>ctfEnabled</strong> (<em>bool = True</em>) – enable coordinate transform from source graph CRS to CRS graph</p></li>
+<li><p><strong>topologyTolerance</strong> (<em>float = 0</em>) – sqrt distance between source point as one graph vertex</p></li>
+<li><p><strong>ellipsoidID</strong> (<em>str = ''</em>) – ellipsoid for edge measurement</p></li>
 </ul>
 </dd>
 </dl>
-<p>QgsGraphBuilderInterface(QgsGraphBuilderInterface)</p>
+<p>QgsGraphBuilderInterface(<a class="reference internal" href="#qgis.analysis.QgsGraphBuilderInterface" title="qgis.analysis.QgsGraphBuilderInterface"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsGraphBuilderInterface</span></code></a>)</p>
 <p>Determine interface for creating a graph. Contains the settings of the graph.
-QgsGraphBuilder and QgsGraphDirector both use a “builder” design pattern</p>
+<a class="reference internal" href="QgsGraphBuilder.html#qgis.analysis.QgsGraphBuilder" title="qgis.analysis.QgsGraphBuilder"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsGraphBuilder</span></code></a> and <a class="reference internal" href="QgsGraphDirector.html#qgis.analysis.QgsGraphDirector" title="qgis.analysis.QgsGraphDirector"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsGraphDirector</span></code></a> both use a “builder” design pattern</p>
 <blockquote>
 <div><table class="longtable docutils align-default">
 <colgroup>
@@ -1639,11 +1636,11 @@ QgsGraphBuilder and QgsGraphDirector both use a “builder” design pattern</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>pt1id</strong> – first vertex identificator</p></li>
-<li><p><strong>pt1</strong> – first vertex coordinates</p></li>
-<li><p><strong>pt2id</strong> – second vertex identificator</p></li>
-<li><p><strong>pt2</strong> – second vertex coordinates</p></li>
-<li><p><strong>strategies</strong> – optimization strategies</p></li>
+<li><p><strong>pt1id</strong> (<em>int</em>) – first vertex identificator</p></li>
+<li><p><strong>pt1</strong> (<a class="reference internal" href="../core/QgsPointXY.html#qgis.core.QgsPointXY" title="qgis.core.QgsPointXY"><em>QgsPointXY</em></a>) – first vertex coordinates</p></li>
+<li><p><strong>pt2id</strong> (<em>int</em>) – second vertex identificator</p></li>
+<li><p><strong>pt2</strong> (<a class="reference internal" href="../core/QgsPointXY.html#qgis.core.QgsPointXY" title="qgis.core.QgsPointXY"><em>QgsPointXY</em></a>) – second vertex coordinates</p></li>
+<li><p><strong>strategies</strong> (<em>Iterable</em><em>[</em><em>Any</em><em>]</em>) – optimization strategies</p></li>
 </ul>
 </dd>
 </dl>
@@ -1660,8 +1657,8 @@ QgsGraphBuilder and QgsGraphDirector both use a “builder” design pattern</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>id</strong> – vertex identifier</p></li>
-<li><p><strong>pt</strong> – vertex coordinates</p></li>
+<li><p><strong>id</strong> (<em>int</em>) – vertex identifier</p></li>
+<li><p><strong>pt</strong> (<a class="reference internal" href="../core/QgsPointXY.html#qgis.core.QgsPointXY" title="qgis.core.QgsPointXY"><em>QgsPointXY</em></a>) – vertex coordinates</p></li>
 </ul>
 </dd>
 </dl>
@@ -1675,24 +1672,44 @@ QgsGraphBuilder and QgsGraphDirector both use a “builder” design pattern</p>
 <dt id="qgis.analysis.QgsGraphBuilderInterface.coordinateTransformationEnabled">
 <code class="sig-name descname">coordinateTransformationEnabled</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.analysis.QgsGraphBuilderInterface.coordinateTransformationEnabled" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns coordinate transformation enabled</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.analysis.QgsGraphBuilderInterface.destinationCrs">
 <code class="sig-name descname">destinationCrs</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QgsCoordinateReferenceSystem<a class="headerlink" href="#qgis.analysis.QgsGraphBuilderInterface.destinationCrs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns destinaltion CRS</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="../core/QgsCoordinateReferenceSystem.html#qgis.core.QgsCoordinateReferenceSystem" title="qgis.core.QgsCoordinateReferenceSystem">QgsCoordinateReferenceSystem</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.analysis.QgsGraphBuilderInterface.distanceArea">
 <code class="sig-name descname">distanceArea</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QgsDistanceArea<a class="headerlink" href="#qgis.analysis.QgsGraphBuilderInterface.distanceArea" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns measurement tool</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="../core/QgsDistanceArea.html#qgis.core.QgsDistanceArea" title="qgis.core.QgsDistanceArea">QgsDistanceArea</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.analysis.QgsGraphBuilderInterface.topologyTolerance">
 <code class="sig-name descname">topologyTolerance</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#qgis.analysis.QgsGraphBuilderInterface.topologyTolerance" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns topology tolerance</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -1711,7 +1728,7 @@ QgsGraphBuilder and QgsGraphDirector both use a “builder” design pattern</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 10:58 Oct 14, 2019.
+        Last updated on 15:06 Oct 15, 2019.
       </span>
 
     </p>
@@ -1738,20 +1755,20 @@ QgsGraphBuilder and QgsGraphDirector both use a “builder” design pattern</p>
     <div class="rst-other-versions">
       <dl>
         <dt>Versions</dt>
-      
-        <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
-      
-    </dl>
+        
+          <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
+        
+      </dl>
       
       
     </div>

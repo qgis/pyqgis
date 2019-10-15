@@ -122,7 +122,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../core/PROJECT_SCALES.html">Class: PROJECT_SCALES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/PluginLayer.html">Class: PluginLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/ProjectDirtyBlocker.html">Class: ProjectDirtyBlocker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../core/PyProviderMetadata.html">Class: PyProviderMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/Qgis.html">Class: Qgis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/Qgs25DRenderer.html">Class: Qgs25DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/Qgs3DRendererAbstractMetadata.html">Class: Qgs3DRendererAbstractMetadata</a></li>
@@ -1546,8 +1545,6 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/gui/QgsEditorWidgetFactory.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -1568,10 +1565,10 @@
 <p>Constructor</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>name</strong> – A human readable name for this widget type</p>
+<dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – A human readable name for this widget type</p>
 </dd>
 </dl>
-<p>QgsEditorWidgetFactory(QgsEditorWidgetFactory)</p>
+<p>QgsEditorWidgetFactory(<a class="reference internal" href="#qgis.gui.QgsEditorWidgetFactory" title="qgis.gui.QgsEditorWidgetFactory"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsEditorWidgetFactory</span></code></a>)</p>
 <p>Every attribute editor widget needs a factory, which inherits this class</p>
 <p>It provides metadata for the widgets such as the name (human readable), it serializes
 the configuration to an xml structure and loads the configuration from there.</p>
@@ -1600,7 +1597,11 @@ and another factory method to create a configuration dialog.</p>
 <td><p>Override this in your implementation.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsEditorWidgetFactory.createSearchWidget" title="qgis.gui.QgsEditorWidgetFactory.createSearchWidget"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createSearchWidget</span></code></a></p></td>
-<td><p></p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">param vl</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsEditorWidgetFactory.fieldScore" title="qgis.gui.QgsEditorWidgetFactory.fieldScore"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fieldScore</span></code></a></p></td>
 <td><p>This method allows disabling this editor widget type for a certain field.</p></td>
@@ -1638,13 +1639,16 @@ Create a new configuration widget for this widget type.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>vl</strong> – The layer for which the widget will be created</p></li>
-<li><p><strong>fieldIdx</strong> – The field index for which the widget will be created</p></li>
-<li><p><strong>parent</strong> – The parent widget of the created config widget</p></li>
+<li><p><strong>vl</strong> (<a class="reference internal" href="../core/QgsVectorLayer.html#qgis.core.QgsVectorLayer" title="qgis.core.QgsVectorLayer"><em>QgsVectorLayer</em></a>) – The layer for which the widget will be created</p></li>
+<li><p><strong>fieldIdx</strong> (<em>int</em>) – The field index for which the widget will be created</p></li>
+<li><p><strong>parent</strong> (<em>QWidget</em>) – The parent widget of the created config widget</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>A configuration widget</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsEditorConfigWidget.html#qgis.gui.QgsEditorConfigWidget" title="qgis.gui.QgsEditorConfigWidget">QgsEditorConfigWidget</a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A configuration widget</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1658,14 +1662,17 @@ instead of calling this method directly.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>vl</strong> – The vector layer on which this widget will act</p></li>
-<li><p><strong>fieldIdx</strong> – The field index on which this widget will act</p></li>
-<li><p><strong>editor</strong> – An editor widget if already existent. If <code class="docutils literal notranslate"><span class="pre">None</span></code> is provided, a new widget will be created.</p></li>
-<li><p><strong>parent</strong> – The parent for the wrapper class and any created widget.</p></li>
+<li><p><strong>vl</strong> (<a class="reference internal" href="../core/QgsVectorLayer.html#qgis.core.QgsVectorLayer" title="qgis.core.QgsVectorLayer"><em>QgsVectorLayer</em></a>) – The vector layer on which this widget will act</p></li>
+<li><p><strong>fieldIdx</strong> (<em>int</em>) – The field index on which this widget will act</p></li>
+<li><p><strong>editor</strong> (<em>QWidget</em>) – An editor widget if already existent. If <code class="docutils literal notranslate"><span class="pre">None</span></code> is provided, a new widget will be created.</p></li>
+<li><p><strong>parent</strong> (<em>QWidget</em>) – The parent for the wrapper class and any created widget.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>A new widget wrapper</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsEditorWidgetWrapper.html#qgis.gui.QgsEditorWidgetWrapper" title="qgis.gui.QgsEditorWidgetWrapper">QgsEditorWidgetWrapper</a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A new widget wrapper</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1673,7 +1680,19 @@ instead of calling this method directly.</p>
 <dl class="method">
 <dt id="qgis.gui.QgsEditorWidgetFactory.createSearchWidget">
 <code class="sig-name descname">createSearchWidget</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">vl: QgsVectorLayer</em>, <em class="sig-param">fieldIdx: int</em>, <em class="sig-param">parent: QWidget</em><span class="sig-paren">)</span> &#x2192; QgsSearchWidgetWrapper<a class="headerlink" href="#qgis.gui.QgsEditorWidgetFactory.createSearchWidget" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>vl</strong> (<a class="reference internal" href="../core/QgsVectorLayer.html#qgis.core.QgsVectorLayer" title="qgis.core.QgsVectorLayer"><em>QgsVectorLayer</em></a>) – </p></li>
+<li><p><strong>fieldIdx</strong> (<em>int</em>) – </p></li>
+<li><p><strong>parent</strong> (<em>QWidget</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsSearchWidgetWrapper.html#qgis.gui.QgsSearchWidgetWrapper" title="qgis.gui.QgsSearchWidgetWrapper">QgsSearchWidgetWrapper</a></p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="method">
 <dt id="qgis.gui.QgsEditorWidgetFactory.fieldScore">
@@ -1689,12 +1708,15 @@ Reimplement this if you only support certain fields.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>vl</strong> – </p></li>
-<li><p><strong>fieldIdx</strong> – </p></li>
+<li><p><strong>vl</strong> (<a class="reference internal" href="../core/QgsVectorLayer.html#qgis.core.QgsVectorLayer" title="qgis.core.QgsVectorLayer"><em>QgsVectorLayer</em></a>) – </p></li>
+<li><p><strong>fieldIdx</strong> (<em>int</em>) – </p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>0 if the field is not supported or a bigger number if it can (the widget with the biggest number will be
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>0 if the field is not supported or a bigger number if it can (the widget with the biggest number will be
 taken by default). The default implementation returns 5..</p>
 </dd>
 </dl>
@@ -1709,8 +1731,11 @@ taken by default). The default implementation returns 5..</p>
 <code class="sig-name descname">name</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.gui.QgsEditorWidgetFactory.name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns The human readable identifier name of this widget type</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>a name</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a name</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1722,12 +1747,15 @@ taken by default). The default implementation returns 5..</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>vl</strong> – The layer</p></li>
-<li><p><strong>fieldIdx</strong> – The field index</p></li>
+<li><p><strong>vl</strong> (<a class="reference internal" href="../core/QgsVectorLayer.html#qgis.core.QgsVectorLayer" title="qgis.core.QgsVectorLayer"><em>QgsVectorLayer</em></a>) – The layer</p></li>
+<li><p><strong>fieldIdx</strong> (<em>int</em>) – The field index</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the type is supported for this field</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the type is supported for this field</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -1752,7 +1780,7 @@ taken by default). The default implementation returns 5..</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 10:58 Oct 14, 2019.
+        Last updated on 15:06 Oct 15, 2019.
       </span>
 
     </p>
@@ -1779,20 +1807,20 @@ taken by default). The default implementation returns 5..</p>
     <div class="rst-other-versions">
       <dl>
         <dt>Versions</dt>
-      
-        <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
-      
-    </dl>
+        
+          <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
+        
+      </dl>
       
       
     </div>

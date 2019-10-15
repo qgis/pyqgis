@@ -122,7 +122,6 @@
 <li class="toctree-l2"><a class="reference internal" href="PROJECT_SCALES.html">Class: PROJECT_SCALES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PluginLayer.html">Class: PluginLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ProjectDirtyBlocker.html">Class: ProjectDirtyBlocker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="PyProviderMetadata.html">Class: PyProviderMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgis.html">Class: Qgis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs25DRenderer.html">Class: Qgs25DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs3DRendererAbstractMetadata.html">Class: Qgs3DRendererAbstractMetadata</a></li>
@@ -1546,8 +1545,6 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/core/QgsAuthCertUtils.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -1900,6 +1897,14 @@
 <dt id="qgis.core.QgsAuthCertUtils.casFromFile">
 <code class="sig-name descname">casFromFile</code><span class="sig-paren">(</span><em class="sig-param">certspath: str</em><span class="sig-paren">)</span> &#x2192; List[QSslCertificate]<a class="headerlink" href="#qgis.core.QgsAuthCertUtils.casFromFile" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a list of concatenated CAs from a PEM or DER formatted file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>certspath</strong> (<em>str</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>List[QSslCertificate]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1910,12 +1915,15 @@ from the <code class="docutils literal notranslate"><span class="pre">bundle2</s
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>bundle1</strong> – first bundle</p></li>
-<li><p><strong>bundle2</strong> – second bundle</p></li>
+<li><p><strong>bundle1</strong> (<em>Iterable</em><em>[</em><em>QSslCertificate</em><em>]</em>) – first bundle</p></li>
+<li><p><strong>bundle2</strong> (<em>Iterable</em><em>[</em><em>QSslCertificate</em><em>]</em>) – second bundle</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>a list of unique certificates</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>List[QSslCertificate]</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a list of unique certificates</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1926,10 +1934,13 @@ from the <code class="docutils literal notranslate"><span class="pre">bundle2</s
 <dd><p>casRemoveSelfSigned remove self-signed CA certificates from <code class="docutils literal notranslate"><span class="pre">caList</span></code></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>caList</strong> – list of CA certificates</p>
+<dd class="field-odd"><p><strong>caList</strong> (<em>Iterable</em><em>[</em><em>QSslCertificate</em><em>]</em>) – list of CA certificates</p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>a list of non self-signed certificates</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>List[QSslCertificate]</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a list of non self-signed certificates</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1938,6 +1949,14 @@ from the <code class="docutils literal notranslate"><span class="pre">bundle2</s
 <dt id="qgis.core.QgsAuthCertUtils.certFromFile">
 <code class="sig-name descname">certFromFile</code><span class="sig-paren">(</span><em class="sig-param">certpath: str</em><span class="sig-paren">)</span> &#x2192; QSslCertificate<a class="headerlink" href="#qgis.core.QgsAuthCertUtils.certFromFile" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the first cert from a PEM or DER formatted file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>certpath</strong> (<em>str</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>QSslCertificate</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1946,7 +1965,10 @@ from the <code class="docutils literal notranslate"><span class="pre">bundle2</s
 <dd><p>certIsCurrent checks if <code class="docutils literal notranslate"><span class="pre">cert</span></code> is viable for its not before and not after dates</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>cert</strong> – certificate to be checked</p>
+<dd class="field-odd"><p><strong>cert</strong> (<em>QSslCertificate</em>) – certificate to be checked</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1957,10 +1979,13 @@ from the <code class="docutils literal notranslate"><span class="pre">bundle2</s
 <dd><p>certIsViable checks for viability errors of <code class="docutils literal notranslate"><span class="pre">cert</span></code> and whether it is NULL</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>cert</strong> – certificate to be checked</p>
+<dd class="field-odd"><p><strong>cert</strong> (<em>QSslCertificate</em>) – certificate to be checked</p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">False</span></code> if cert is NULL or has viability errors</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">False</span></code> if cert is NULL or has viability errors</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1972,14 +1997,17 @@ from the <code class="docutils literal notranslate"><span class="pre">bundle2</s
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>certpath</strong> – File path to certificate</p></li>
-<li><p><strong>keypath</strong> – File path to private key</p></li>
-<li><p><strong>keypass</strong> – Passphrase for private key</p></li>
-<li><p><strong>reencrypt</strong> – Whether to re-encrypt the private key with the passphrase</p></li>
+<li><p><strong>certpath</strong> (<em>str</em>) – File path to certificate</p></li>
+<li><p><strong>keypath</strong> (<em>str</em>) – File path to private key</p></li>
+<li><p><strong>keypass</strong> (<em>str = ''</em>) – Passphrase for private key</p></li>
+<li><p><strong>reencrypt</strong> (<em>bool = True</em>) – Whether to re-encrypt the private key with the passphrase</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>certificate, private key, key’s algorithm type</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>List[str]</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>certificate, private key, key’s algorithm type</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1990,10 +2018,13 @@ from the <code class="docutils literal notranslate"><span class="pre">bundle2</s
 <dd><p>certViabilityErrors checks basic characteristics (validity dates, blacklisting, etc.) of given <code class="docutils literal notranslate"><span class="pre">cert</span></code></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>cert</strong> – certificate to be checked</p>
+<dd class="field-odd"><p><strong>cert</strong> (<em>QSslCertificate</em>) – certificate to be checked</p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>list of QSslError (will return NO ERRORS if a null QSslCertificate is passed)</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>List[QSslError]</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>list of QSslError (will return NO ERRORS if a null QSslCertificate is passed)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2002,48 +2033,112 @@ from the <code class="docutils literal notranslate"><span class="pre">bundle2</s
 <dt id="qgis.core.QgsAuthCertUtils.certificateIsAuthority">
 <code class="sig-name descname">certificateIsAuthority</code><span class="sig-paren">(</span><em class="sig-param">cert: QSslCertificate</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsAuthCertUtils.certificateIsAuthority" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets whether a certificate is an Authority</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>cert</strong> (<em>QSslCertificate</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsAuthCertUtils.certificateIsAuthorityOrIssuer">
 <code class="sig-name descname">certificateIsAuthorityOrIssuer</code><span class="sig-paren">(</span><em class="sig-param">cert: QSslCertificate</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsAuthCertUtils.certificateIsAuthorityOrIssuer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets whether a certificate is an Authority or can at least sign other certificates</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>cert</strong> (<em>QSslCertificate</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsAuthCertUtils.certificateIsIssuer">
 <code class="sig-name descname">certificateIsIssuer</code><span class="sig-paren">(</span><em class="sig-param">cert: QSslCertificate</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsAuthCertUtils.certificateIsIssuer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets whether a certificate can sign other certificates</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>cert</strong> (<em>QSslCertificate</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsAuthCertUtils.certificateIsSslClient">
 <code class="sig-name descname">certificateIsSslClient</code><span class="sig-paren">(</span><em class="sig-param">cert: QSslCertificate</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsAuthCertUtils.certificateIsSslClient" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets whether a certificate is probably used for a client identity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>cert</strong> (<em>QSslCertificate</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsAuthCertUtils.certificateIsSslServer">
 <code class="sig-name descname">certificateIsSslServer</code><span class="sig-paren">(</span><em class="sig-param">cert: QSslCertificate</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsAuthCertUtils.certificateIsSslServer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets whether a certificate is probably used for a SSL server</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>cert</strong> (<em>QSslCertificate</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsAuthCertUtils.certificateUsageTypes">
 <code class="sig-name descname">certificateUsageTypes</code><span class="sig-paren">(</span><em class="sig-param">cert: QSslCertificate</em><span class="sig-paren">)</span> &#x2192; List[QgsAuthCertUtils.CertUsageType]<a class="headerlink" href="#qgis.core.QgsAuthCertUtils.certificateUsageTypes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Try to determine the certificates usage types</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>cert</strong> (<em>QSslCertificate</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>List[<a class="reference internal" href="#qgis.core.QgsAuthCertUtils.CertUsageType" title="qgis.core.QgsAuthCertUtils.CertUsageType">QgsAuthCertUtils.CertUsageType</a>]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsAuthCertUtils.certsFromFile">
 <code class="sig-name descname">certsFromFile</code><span class="sig-paren">(</span><em class="sig-param">certspath: str</em><span class="sig-paren">)</span> &#x2192; List[QSslCertificate]<a class="headerlink" href="#qgis.core.QgsAuthCertUtils.certsFromFile" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a list of concatenated certs from a PEM or DER formatted file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>certspath</strong> (<em>str</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>List[QSslCertificate]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsAuthCertUtils.certsFromString">
 <code class="sig-name descname">certsFromString</code><span class="sig-paren">(</span><em class="sig-param">pemtext: str</em><span class="sig-paren">)</span> &#x2192; List[QSslCertificate]<a class="headerlink" href="#qgis.core.QgsAuthCertUtils.certsFromString" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a list of concatenated certs from a PEM Base64 text block</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pemtext</strong> (<em>str</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>List[QSslCertificate]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2052,10 +2147,13 @@ from the <code class="docutils literal notranslate"><span class="pre">bundle2</s
 <dd><p>certsToPemText dump a list of QSslCertificates to PEM text</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>certs</strong> – list of certs</p>
+<dd class="field-odd"><p><strong>certs</strong> (<em>Iterable</em><em>[</em><em>QSslCertificate</em><em>]</em>) – list of certs</p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>a byte array of concatenated certificates as PEM text</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>QByteArray</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a byte array of concatenated certificates as PEM text</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2066,10 +2164,13 @@ from the <code class="docutils literal notranslate"><span class="pre">bundle2</s
 <dd><p>Returns data from a local file via a read-only operation</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>path</strong> – Path to file to read</p>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – Path to file to read</p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>All data contained in file or empty contents if file does not exist</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>QByteArray</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>All data contained in file or empty contents if file does not exist</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2081,9 +2182,12 @@ from the <code class="docutils literal notranslate"><span class="pre">bundle2</s
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>source</strong> – The enum source type for the CA</p></li>
-<li><p><strong>single</strong> – Whether to return singular or plural description</p></li>
+<li><p><strong>source</strong> (<a class="reference internal" href="#qgis.core.QgsAuthCertUtils.CaCertSource" title="qgis.core.QgsAuthCertUtils.CaCertSource"><em>QgsAuthCertUtils.CaCertSource</em></a>) – The enum source type for the CA</p></li>
+<li><p><strong>single</strong> (<em>bool = False</em>) – Whether to return singular or plural description</p></li>
 </ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2092,18 +2196,42 @@ from the <code class="docutils literal notranslate"><span class="pre">bundle2</s
 <dt id="qgis.core.QgsAuthCertUtils.getCertTrustName">
 <code class="sig-name descname">getCertTrustName</code><span class="sig-paren">(</span><em class="sig-param">trust: QgsAuthCertUtils.CertTrustPolicy</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.core.QgsAuthCertUtils.getCertTrustName" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets the general name for certificate trust</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>trust</strong> (<a class="reference internal" href="#qgis.core.QgsAuthCertUtils.CertTrustPolicy" title="qgis.core.QgsAuthCertUtils.CertTrustPolicy"><em>QgsAuthCertUtils.CertTrustPolicy</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsAuthCertUtils.getColonDelimited">
 <code class="sig-name descname">getColonDelimited</code><span class="sig-paren">(</span><em class="sig-param">txt: str</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.core.QgsAuthCertUtils.getColonDelimited" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets string with colon delimiters every 2 characters</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>txt</strong> (<em>str</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsAuthCertUtils.getSslProtocolName">
 <code class="sig-name descname">getSslProtocolName</code><span class="sig-paren">(</span><em class="sig-param">protocol: QSsl.SslProtocol</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.core.QgsAuthCertUtils.getSslProtocolName" title="Permalink to this definition">¶</a></dt>
 <dd><p>SSL Protocol name strings per enum</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>protocol</strong> (<em>QSsl.SslProtocol</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2113,10 +2241,13 @@ from the <code class="docutils literal notranslate"><span class="pre">bundle2</s
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>keypath</strong> – File path to private key</p></li>
-<li><p><strong>keypass</strong> – Passphrase for private key</p></li>
-<li><p><strong>algtype</strong> – QString to set with resolved algorithm type</p></li>
+<li><p><strong>keypath</strong> (<em>str</em>) – File path to private key</p></li>
+<li><p><strong>keypass</strong> (<em>str = ''</em>) – Passphrase for private key</p></li>
+<li><p><strong>algtype</strong> (<em>str = ''</em>) – QString to set with resolved algorithm type</p></li>
 </ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>QSslKey</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2125,12 +2256,28 @@ from the <code class="docutils literal notranslate"><span class="pre">bundle2</s
 <dt id="qgis.core.QgsAuthCertUtils.mapDigestToCerts">
 <code class="sig-name descname">mapDigestToCerts</code><span class="sig-paren">(</span><em class="sig-param">certs: Iterable[QSslCertificate]</em><span class="sig-paren">)</span> &#x2192; Dict[str, QSslCertificate]<a class="headerlink" href="#qgis.core.QgsAuthCertUtils.mapDigestToCerts" title="Permalink to this definition">¶</a></dt>
 <dd><p>Map certificate sha1 to certificate as simple cache</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>certs</strong> (<em>Iterable</em><em>[</em><em>QSslCertificate</em><em>]</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Dict[str, QSslCertificate]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsAuthCertUtils.mapDigestToSslConfigs">
 <code class="sig-name descname">mapDigestToSslConfigs</code><span class="sig-paren">(</span><em class="sig-param">configs: Iterable[QgsAuthConfigSslServer]</em><span class="sig-paren">)</span> &#x2192; Dict[str, QgsAuthConfigSslServer]<a class="headerlink" href="#qgis.core.QgsAuthCertUtils.mapDigestToSslConfigs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Map SSL custom configs’ certificate sha1 to custom config as simple cache</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>configs</strong> (<em>Iterable</em><em>[</em><a class="reference internal" href="QgsAuthConfigSslServer.html#qgis.core.QgsAuthConfigSslServer" title="qgis.core.QgsAuthConfigSslServer"><em>QgsAuthConfigSslServer</em></a><em>]</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Dict[str, <a class="reference internal" href="QgsAuthConfigSslServer.html#qgis.core.QgsAuthConfigSslServer" title="qgis.core.QgsAuthConfigSslServer">QgsAuthConfigSslServer</a>]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2139,10 +2286,13 @@ from the <code class="docutils literal notranslate"><span class="pre">bundle2</s
 <dd><p>Determine if the PEM-encoded text of a key is PKCS#8 format</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>keyPemTxt</strong> – PEM-encoded text</p>
+<dd class="field-odd"><p><strong>keyPemTxt</strong> (<em>str</em>) – PEM-encoded text</p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if PKCS#8, otherwise <code class="docutils literal notranslate"><span class="pre">False</span></code></p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if PKCS#8, otherwise <code class="docutils literal notranslate"><span class="pre">False</span></code></p>
 </dd>
 </dl>
 </dd></dl>
@@ -2154,12 +2304,15 @@ from the <code class="docutils literal notranslate"><span class="pre">bundle2</s
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>pemtext</strong> – Component content as PEM text</p></li>
-<li><p><strong>name</strong> – Name of file</p></li>
+<li><p><strong>pemtext</strong> (<em>Union</em><em>[</em><em>QByteArray</em>) – Component content as PEM text</p></li>
+<li><p><strong>name</strong> (<em>str</em>) – Name of file</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>File path to temporary file</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>File path to temporary file</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2171,12 +2324,15 @@ from the <code class="docutils literal notranslate"><span class="pre">bundle2</s
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>bundlepath</strong> – File path to the PKCS bundle</p></li>
-<li><p><strong>bundlepass</strong> – Passphrase for bundle</p></li>
+<li><p><strong>bundlepath</strong> (<em>str</em>) – File path to the PKCS bundle</p></li>
+<li><p><strong>bundlepass</strong> (<em>str = ''</em>) – Passphrase for bundle</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>list of certificate</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>List[QSslCertificate]</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>list of certificate</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2188,13 +2344,16 @@ from the <code class="docutils literal notranslate"><span class="pre">bundle2</s
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>bundlepath</strong> – File path to the PKCS bundle</p></li>
-<li><p><strong>bundlepass</strong> – Passphrase for bundle</p></li>
-<li><p><strong>reencrypt</strong> – Whether to re-encrypt the private key with the passphrase</p></li>
+<li><p><strong>bundlepath</strong> (<em>str</em>) – File path to the PKCS bundle</p></li>
+<li><p><strong>bundlepass</strong> (<em>str = ''</em>) – Passphrase for bundle</p></li>
+<li><p><strong>reencrypt</strong> (<em>bool = True</em>) – Whether to re-encrypt the private key with the passphrase</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>certificate, private key, key’s algorithm type</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>List[str]</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>certificate, private key, key’s algorithm type</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2203,6 +2362,17 @@ from the <code class="docutils literal notranslate"><span class="pre">bundle2</s
 <dt id="qgis.core.QgsAuthCertUtils.resolvedCertName">
 <code class="sig-name descname">resolvedCertName</code><span class="sig-paren">(</span><em class="sig-param">cert: QSslCertificate</em>, <em class="sig-param">issuer: bool = False</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.core.QgsAuthCertUtils.resolvedCertName" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets the general name via RFC 5280 resolution</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cert</strong> (<em>QSslCertificate</em>) – </p></li>
+<li><p><strong>issuer</strong> (<em>bool = False</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2212,9 +2382,12 @@ from the <code class="docutils literal notranslate"><span class="pre">bundle2</s
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>cert</strong> – Qt SSL certificate to generate hash from</p></li>
-<li><p><strong>formatted</strong> – Whether to colon-delimit the hash</p></li>
+<li><p><strong>cert</strong> (<em>QSslCertificate</em>) – Qt SSL certificate to generate hash from</p></li>
+<li><p><strong>formatted</strong> (<em>bool = False</em>) – Whether to colon-delimit the hash</p></li>
 </ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2223,6 +2396,14 @@ from the <code class="docutils literal notranslate"><span class="pre">bundle2</s
 <dt id="qgis.core.QgsAuthCertUtils.sslErrorEnumString">
 <code class="sig-name descname">sslErrorEnumString</code><span class="sig-paren">(</span><em class="sig-param">errenum: QSslError.SslError</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.core.QgsAuthCertUtils.sslErrorEnumString" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets short strings describing an SSL error</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>errenum</strong> (<em>QSslError.SslError</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2232,13 +2413,16 @@ from the <code class="docutils literal notranslate"><span class="pre">bundle2</s
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>certificateChain</strong> – list of certificates to be checked, with leaf first and with optional root CA last</p></li>
-<li><p><strong>hostName</strong> – (optional) name of the host to be verified</p></li>
-<li><p><strong>trustRootCa</strong> – if <code class="docutils literal notranslate"><span class="pre">True</span></code> the CA will be added to the trusted CAs for this validation check</p></li>
+<li><p><strong>certificateChain</strong> (<em>Iterable</em><em>[</em><em>QSslCertificate</em><em>]</em>) – list of certificates to be checked, with leaf first and with optional root CA last</p></li>
+<li><p><strong>hostName</strong> (<em>str = ''</em>) – (optional) name of the host to be verified</p></li>
+<li><p><strong>trustRootCa</strong> (<em>bool = False</em>) – if <code class="docutils literal notranslate"><span class="pre">True</span></code> the CA will be added to the trusted CAs for this validation check</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>list of QSslError, if the list is empty then the cert chain is valid</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>List[QSslError]</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>list of QSslError, if the list is empty then the cert chain is valid</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2251,14 +2435,17 @@ expiration and effective dates, optionally trusts the root CA</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>bundle</strong> – </p></li>
-<li><p><strong>useIntermediates</strong> – if <code class="docutils literal notranslate"><span class="pre">True</span></code> the intermediate certs are also checked</p></li>
-<li><p><strong>trustRootCa</strong> – if <code class="docutils literal notranslate"><span class="pre">True</span></code> the CA will be added to the trusted CAs for this validation check (if useIntermediates is <code class="docutils literal notranslate"><span class="pre">False</span></code>)
+<li><p><strong>bundle</strong> (<a class="reference internal" href="QgsPkiBundle.html#qgis.core.QgsPkiBundle" title="qgis.core.QgsPkiBundle"><em>QgsPkiBundle</em></a>) – </p></li>
+<li><p><strong>useIntermediates</strong> (<em>bool = True</em>) – if <code class="docutils literal notranslate"><span class="pre">True</span></code> the intermediate certs are also checked</p></li>
+<li><p><strong>trustRootCa</strong> (<em>bool = False</em>) – if <code class="docutils literal notranslate"><span class="pre">True</span></code> the CA will be added to the trusted CAs for this validation check (if useIntermediates is <code class="docutils literal notranslate"><span class="pre">False</span></code>)
 this option is ignored and set to <code class="docutils literal notranslate"><span class="pre">False</span></code></p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>a list of error strings, if the list is empty then the PKI bundle is valid</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>List[str]</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a list of error strings, if the list is empty then the PKI bundle is valid</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2279,7 +2466,7 @@ this option is ignored and set to <code class="docutils literal notranslate"><sp
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 10:58 Oct 14, 2019.
+        Last updated on 15:06 Oct 15, 2019.
       </span>
 
     </p>
@@ -2306,20 +2493,20 @@ this option is ignored and set to <code class="docutils literal notranslate"><sp
     <div class="rst-other-versions">
       <dl>
         <dt>Versions</dt>
-      
-        <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
-      
-    </dl>
+        
+          <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
+        
+      </dl>
       
       
     </div>

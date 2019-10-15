@@ -122,7 +122,6 @@
 <li class="toctree-l2"><a class="reference internal" href="PROJECT_SCALES.html">Class: PROJECT_SCALES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PluginLayer.html">Class: PluginLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ProjectDirtyBlocker.html">Class: ProjectDirtyBlocker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="PyProviderMetadata.html">Class: PyProviderMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgis.html">Class: Qgis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs25DRenderer.html">Class: Qgs25DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs3DRendererAbstractMetadata.html">Class: Qgs3DRendererAbstractMetadata</a></li>
@@ -1546,8 +1545,6 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/core/QgsTextRenderer.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -1726,23 +1723,23 @@ and background shapes.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>rect</strong> – destination rectangle for text</p></li>
-<li><p><strong>rotation</strong> – text rotation</p></li>
-<li><p><strong>alignment</strong> – horizontal alignment</p></li>
-<li><p><strong>textLines</strong> – list of lines of text to draw</p></li>
-<li><p><strong>context</strong> – render context</p></li>
-<li><p><strong>format</strong> – text format</p></li>
-<li><p><strong>part</strong> – component of text to draw. Note that Shadow parts cannot be drawn
+<li><p><strong>rect</strong> (<em>QRectF</em>) – destination rectangle for text</p></li>
+<li><p><strong>rotation</strong> (<em>float</em>) – text rotation</p></li>
+<li><p><strong>alignment</strong> (<a class="reference internal" href="#qgis.core.QgsTextRenderer.HAlignment" title="qgis.core.QgsTextRenderer.HAlignment"><em>QgsTextRenderer.HAlignment</em></a>) – horizontal alignment</p></li>
+<li><p><strong>textLines</strong> (<em>Iterable</em><em>[</em><em>str</em><em>]</em>) – list of lines of text to draw</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsRenderContext.html#qgis.core.QgsRenderContext" title="qgis.core.QgsRenderContext"><em>QgsRenderContext</em></a>) – render context</p></li>
+<li><p><strong>format</strong> (<a class="reference internal" href="QgsTextFormat.html#qgis.core.QgsTextFormat" title="qgis.core.QgsTextFormat"><em>QgsTextFormat</em></a>) – text format</p></li>
+<li><p><strong>part</strong> (<a class="reference internal" href="#qgis.core.QgsTextRenderer.TextPart" title="qgis.core.QgsTextRenderer.TextPart"><em>QgsTextRenderer.TextPart</em></a>) – component of text to draw. Note that Shadow parts cannot be drawn
 individually and instead are drawn with their associated part (e.g., drawn together
 with the text or background parts)</p></li>
-<li><p><strong>drawAsOutlines</strong> – set to <code class="docutils literal notranslate"><span class="pre">False</span></code> to render text as text. This allows outputs to
+<li><p><strong>drawAsOutlines</strong> (<em>bool = True</em>) – set to <code class="docutils literal notranslate"><span class="pre">False</span></code> to render text as text. This allows outputs to
 formats like SVG to maintain text as text objects, but at the cost of degraded
 rendering and may result in side effects like misaligned text buffers. This setting is deprecated and has no effect
 as of QGIS 3.4.3 and the text format should be set using QgsRenderContext.setTextRenderFormat() instead.</p></li>
 </ul>
 </dd>
 </dl>
-<p>drawPart(origin: Union[QPointF, QPoint], rotation: float, alignment: QgsTextRenderer.HAlignment, textLines: Iterable[str], context: QgsRenderContext, format: QgsTextFormat, part: QgsTextRenderer.TextPart, drawAsOutlines: bool = True)
+<p>drawPart(origin: Union[QPointF, QPoint], rotation: float, alignment: QgsTextRenderer.HAlignment, textLines: Iterable[str], context: <a class="reference internal" href="QgsRenderContext.html#qgis.core.QgsRenderContext" title="qgis.core.QgsRenderContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsRenderContext</span></code></a>, format: <a class="reference internal" href="QgsTextFormat.html#qgis.core.QgsTextFormat" title="qgis.core.QgsTextFormat"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsTextFormat</span></code></a>, part: QgsTextRenderer.TextPart, drawAsOutlines: bool = True)
 Draws a single component of rendered text using the specified settings.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1772,20 +1769,20 @@ as of QGIS 3.4.3 and the text format should be set using QgsRenderContext.setTex
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>rect</strong> – destination rectangle for text</p></li>
-<li><p><strong>rotation</strong> – text rotation</p></li>
-<li><p><strong>alignment</strong> – horizontal alignment</p></li>
-<li><p><strong>textLines</strong> – list of lines of text to draw</p></li>
-<li><p><strong>context</strong> – render context</p></li>
-<li><p><strong>format</strong> – text format</p></li>
-<li><p><strong>drawAsOutlines</strong> – set to <code class="docutils literal notranslate"><span class="pre">False</span></code> to render text as text. This allows outputs to
+<li><p><strong>rect</strong> (<em>QRectF</em>) – destination rectangle for text</p></li>
+<li><p><strong>rotation</strong> (<em>float</em>) – text rotation</p></li>
+<li><p><strong>alignment</strong> (<a class="reference internal" href="#qgis.core.QgsTextRenderer.HAlignment" title="qgis.core.QgsTextRenderer.HAlignment"><em>QgsTextRenderer.HAlignment</em></a>) – horizontal alignment</p></li>
+<li><p><strong>textLines</strong> (<em>Iterable</em><em>[</em><em>str</em><em>]</em>) – list of lines of text to draw</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsRenderContext.html#qgis.core.QgsRenderContext" title="qgis.core.QgsRenderContext"><em>QgsRenderContext</em></a>) – render context</p></li>
+<li><p><strong>format</strong> (<a class="reference internal" href="QgsTextFormat.html#qgis.core.QgsTextFormat" title="qgis.core.QgsTextFormat"><em>QgsTextFormat</em></a>) – text format</p></li>
+<li><p><strong>drawAsOutlines</strong> (<em>bool = True</em>) – set to <code class="docutils literal notranslate"><span class="pre">False</span></code> to render text as text. This allows outputs to
 formats like SVG to maintain text as text objects, but at the cost of degraded
 rendering and may result in side effects like misaligned text buffers. This setting is deprecated and has no effect
 as of QGIS 3.4.3 and the text format should be set using QgsRenderContext.setTextRenderFormat() instead.</p></li>
 </ul>
 </dd>
 </dl>
-<p>drawText(point: Union[QPointF, QPoint], rotation: float, alignment: QgsTextRenderer.HAlignment, textLines: Iterable[str], context: QgsRenderContext, format: QgsTextFormat, drawAsOutlines: bool = True)
+<p>drawText(point: Union[QPointF, QPoint], rotation: float, alignment: QgsTextRenderer.HAlignment, textLines: Iterable[str], context: <a class="reference internal" href="QgsRenderContext.html#qgis.core.QgsRenderContext" title="qgis.core.QgsRenderContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsRenderContext</span></code></a>, format: <a class="reference internal" href="QgsTextFormat.html#qgis.core.QgsTextFormat" title="qgis.core.QgsTextFormat"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsTextFormat</span></code></a>, drawAsOutlines: bool = True)
 Draws text at a point origin using the specified settings.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1814,6 +1811,17 @@ all scaling required by the render context.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.2.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsRenderContext.html#qgis.core.QgsRenderContext" title="qgis.core.QgsRenderContext"><em>QgsRenderContext</em></a>) – </p></li>
+<li><p><strong>format</strong> (<a class="reference internal" href="QgsTextFormat.html#qgis.core.QgsTextFormat" title="qgis.core.QgsTextFormat"><em>QgsTextFormat</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>QFontMetricsF</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1823,14 +1831,17 @@ all scaling required by the render context.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>size</strong> – size to convert</p></li>
-<li><p><strong>c</strong> – rendercontext</p></li>
-<li><p><strong>unit</strong> – size units</p></li>
-<li><p><strong>mapUnitScale</strong> – a mapUnitScale clamper</p></li>
+<li><p><strong>size</strong> (<em>float</em>) – size to convert</p></li>
+<li><p><strong>c</strong> (<a class="reference internal" href="QgsRenderContext.html#qgis.core.QgsRenderContext" title="qgis.core.QgsRenderContext"><em>QgsRenderContext</em></a>) – rendercontext</p></li>
+<li><p><strong>unit</strong> (<a class="reference internal" href="QgsUnitTypes.html#qgis.core.QgsUnitTypes.RenderUnit" title="qgis.core.QgsUnitTypes.RenderUnit"><em>QgsUnitTypes.RenderUnit</em></a>) – size units</p></li>
+<li><p><strong>mapUnitScale</strong> (<a class="reference internal" href="QgsMapUnitScale.html#qgis.core.QgsMapUnitScale" title="qgis.core.QgsMapUnitScale"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMapUnitScale</span></code></a> = QgsMapUnitScale()) – a mapUnitScale clamper</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>font pixel size</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>font pixel size</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1842,12 +1853,15 @@ all scaling required by the render context.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>context</strong> – render context</p></li>
-<li><p><strong>format</strong> – text format</p></li>
-<li><p><strong>textLines</strong> – list of lines of text to calculate width from</p></li>
-<li><p><strong>mode</strong> – draw mode</p></li>
-<li><p><strong>fontMetrics</strong> – font metrics</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsRenderContext.html#qgis.core.QgsRenderContext" title="qgis.core.QgsRenderContext"><em>QgsRenderContext</em></a>) – render context</p></li>
+<li><p><strong>format</strong> (<a class="reference internal" href="QgsTextFormat.html#qgis.core.QgsTextFormat" title="qgis.core.QgsTextFormat"><em>QgsTextFormat</em></a>) – text format</p></li>
+<li><p><strong>textLines</strong> (<em>Iterable</em><em>[</em><em>str</em><em>]</em>) – list of lines of text to calculate width from</p></li>
+<li><p><strong>mode</strong> (<a class="reference internal" href="#qgis.core.QgsTextRenderer.DrawMode" title="qgis.core.QgsTextRenderer.DrawMode"><em>QgsTextRenderer.DrawMode</em></a>) – draw mode</p></li>
+<li><p><strong>fontMetrics</strong> (<em>QFontMetricsF = None</em>) – font metrics</p></li>
 </ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>float</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1859,11 +1873,14 @@ all scaling required by the render context.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>context</strong> – render context</p></li>
-<li><p><strong>format</strong> – text format</p></li>
-<li><p><strong>textLines</strong> – list of lines of text to calculate width from</p></li>
-<li><p><strong>fontMetrics</strong> – font metrics</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsRenderContext.html#qgis.core.QgsRenderContext" title="qgis.core.QgsRenderContext"><em>QgsRenderContext</em></a>) – render context</p></li>
+<li><p><strong>format</strong> (<a class="reference internal" href="QgsTextFormat.html#qgis.core.QgsTextFormat" title="qgis.core.QgsTextFormat"><em>QgsTextFormat</em></a>) – text format</p></li>
+<li><p><strong>textLines</strong> (<em>Iterable</em><em>[</em><em>str</em><em>]</em>) – list of lines of text to calculate width from</p></li>
+<li><p><strong>fontMetrics</strong> (<em>QFontMetricsF = None</em>) – font metrics</p></li>
 </ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>float</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1884,7 +1901,7 @@ all scaling required by the render context.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 10:58 Oct 14, 2019.
+        Last updated on 15:06 Oct 15, 2019.
       </span>
 
     </p>
@@ -1911,20 +1928,20 @@ all scaling required by the render context.</p>
     <div class="rst-other-versions">
       <dl>
         <dt>Versions</dt>
-      
-        <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
-      
-    </dl>
+        
+          <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
+        
+      </dl>
       
       
     </div>

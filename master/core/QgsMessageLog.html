@@ -122,7 +122,6 @@
 <li class="toctree-l2"><a class="reference internal" href="PROJECT_SCALES.html">Class: PROJECT_SCALES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PluginLayer.html">Class: PluginLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ProjectDirtyBlocker.html">Class: ProjectDirtyBlocker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="PyProviderMetadata.html">Class: PyProviderMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgis.html">Class: Qgis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs25DRenderer.html">Class: Qgs25DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs3DRendererAbstractMetadata.html">Class: Qgs3DRendererAbstractMetadata</a></li>
@@ -1546,8 +1545,6 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/core/QgsMessageLog.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -1568,11 +1565,11 @@
 <p>Constructor for QgsMessageLog.</p>
 <p>Interface for logging messages from QGIS in GUI independent way.
 This class provides abstraction of a tabbed window for showing messages to the user.
-By default QgsMessageLogOutput will be used if not overridden with another
+By default <code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMessageLogOutput</span></code> will be used if not overridden with another
 message log creator function.</p>
-<p>QGIS application uses QgsMessageLog class for logging messages in a dockable
+<p>QGIS application uses <a class="reference internal" href="#qgis.core.QgsMessageLog" title="qgis.core.QgsMessageLog"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMessageLog</span></code></a> class for logging messages in a dockable
 window for the user.</p>
-<p>QgsMessageLog is not usually directly created, but rather accessed through
+<p><a class="reference internal" href="#qgis.core.QgsMessageLog" title="qgis.core.QgsMessageLog"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMessageLog</span></code></a> is not usually directly created, but rather accessed through
 <a class="reference internal" href="QgsApplication.html#qgis.core.QgsApplication.messageLog" title="qgis.core.QgsApplication.messageLog"><code class="xref py py-func docutils literal notranslate"><span class="pre">QgsApplication.messageLog()</span></code></a></p>
 <blockquote>
 <div><table class="longtable docutils align-default">
@@ -1675,6 +1672,16 @@ window for the user.</p>
 <p>If <code class="docutils literal notranslate"><span class="pre">notifyUser</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code>, then the message should be brought to the user’s attention by various UI hints.
 If it is <code class="docutils literal notranslate"><span class="pre">False</span></code>, the message should appear in logs silently. Note that log viewer implementations may
 only respect notification hints for certain message levels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>message</strong> (<em>str</em>) – </p></li>
+<li><p><strong>tag</strong> (<em>str = ''</em>) – </p></li>
+<li><p><strong>level</strong> (<em>Qgis.MessageLevel = Qgis.Warning</em>) – </p></li>
+<li><p><strong>notifyUser</strong> (<em>bool = True</em>) – </p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="attribute">
@@ -1686,12 +1693,21 @@ value for the message. [signal]
 messageReceived(self, received: bool)
 Emitted whenever the log receives a message which is not a Qgis.Info level message
 and which has the <code class="docutils literal notranslate"><span class="pre">notifyUser</span></code> flag as <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
-<p>If QgsMessageLogNotifyBlocker objects have been created then this signal may be
+<p>If <a class="reference internal" href="QgsMessageLogNotifyBlocker.html#qgis.core.QgsMessageLogNotifyBlocker" title="qgis.core.QgsMessageLogNotifyBlocker"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMessageLogNotifyBlocker</span></code></a> objects have been created then this signal may be
 temporarily suppressed.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="QgsMessageLogNotifyBlocker.html#module-QgsMessageLogNotifyBlocker" title="QgsMessageLogNotifyBlocker"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMessageLogNotifyBlocker</span></code></a> [signal]</p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>message</strong> (<em>str</em>) – </p></li>
+<li><p><strong>tag</strong> (<em>str</em>) – </p></li>
+<li><p><strong>level</strong> (<a class="reference internal" href="Qgis.html#qgis.core.Qgis.MessageLevel" title="qgis.core.Qgis.MessageLevel"><em>Qgis.MessageLevel</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1730,7 +1746,7 @@ temporarily suppressed.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 10:58 Oct 14, 2019.
+        Last updated on 15:06 Oct 15, 2019.
       </span>
 
     </p>
@@ -1757,20 +1773,20 @@ temporarily suppressed.</p>
     <div class="rst-other-versions">
       <dl>
         <dt>Versions</dt>
-      
-        <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
-      
-    </dl>
+        
+          <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
+        
+      </dl>
       
       
     </div>

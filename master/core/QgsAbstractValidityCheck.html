@@ -122,7 +122,6 @@
 <li class="toctree-l2"><a class="reference internal" href="PROJECT_SCALES.html">Class: PROJECT_SCALES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PluginLayer.html">Class: PluginLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ProjectDirtyBlocker.html">Class: ProjectDirtyBlocker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="PyProviderMetadata.html">Class: PyProviderMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgis.html">Class: Qgis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs25DRenderer.html">Class: Qgs25DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs3DRendererAbstractMetadata.html">Class: Qgs3DRendererAbstractMetadata</a></li>
@@ -1546,8 +1545,6 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/core/QgsAbstractValidityCheck.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -1567,13 +1564,13 @@
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sip.wrapper</span></code></p>
 <p>Abstract base class for individual validity checks.</p>
 <p>Validity checks represent objects which can run a test using a <a class="reference internal" href="QgsValidityCheckContext.html#module-QgsValidityCheckContext" title="QgsValidityCheckContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsValidityCheckContext</span></code></a>, and return
-the results of the check via QgsValidityCheckResult objects.</p>
+the results of the check via <a class="reference internal" href="QgsValidityCheckResult.html#qgis.core.QgsValidityCheckResult" title="qgis.core.QgsValidityCheckResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsValidityCheckResult</span></code></a> objects.</p>
 <p>Checks can be used for many different use cases, e.g. validating a layout’s contents before allowing
 an export to occur, or validating the contents of a Processing model (and warning if required plugin based
 providers are not available or if compulsory algorithm parameters have not been populated).</p>
 <p>Subclasses must indicate the type of check they represent via the checkType() method. When checks are performed,
 all the registered checks with a matching check type are performed sequentially. The check type also
-dictates the subclass of the QgsValidityCheckContext which is given to the subclass’ runCheck method.</p>
+dictates the subclass of the <a class="reference internal" href="QgsValidityCheckContext.html#qgis.core.QgsValidityCheckContext" title="qgis.core.QgsValidityCheckContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsValidityCheckContext</span></code></a> which is given to the subclass’ runCheck method.</p>
 <p>Checks must be registered in the application’s <a class="reference internal" href="QgsValidityCheckRegistry.html#module-QgsValidityCheckRegistry" title="QgsValidityCheckRegistry"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsValidityCheckRegistry</span></code></a>, which is accessible via
 <a class="reference internal" href="QgsApplication.html#qgis.core.QgsApplication.validityCheckRegistry" title="qgis.core.QgsApplication.validityCheckRegistry"><code class="xref py py-func docutils literal notranslate"><span class="pre">QgsApplication.validityCheckRegistry()</span></code></a></p>
 <div class="admonition seealso">
@@ -1657,12 +1654,22 @@ dictates the subclass of the QgsValidityCheckContext which is given to the subcl
 <dt id="qgis.core.QgsAbstractValidityCheck.checkType">
 <code class="sig-name descname">checkType</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#qgis.core.QgsAbstractValidityCheck.checkType" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the type of the check.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsAbstractValidityCheck.create">
 <code class="sig-name descname">create</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QgsAbstractValidityCheck<a class="headerlink" href="#qgis.core.QgsAbstractValidityCheck.create" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates a new instance of the check and returns it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#qgis.core.QgsAbstractValidityCheck" title="qgis.core.QgsAbstractValidityCheck">QgsAbstractValidityCheck</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1670,6 +1677,11 @@ dictates the subclass of the QgsValidityCheckContext which is given to the subcl
 <code class="sig-name descname">id</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.core.QgsAbstractValidityCheck.id" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the unique ID of the check.</p>
 <p>This is a non-translated, non-user visible string identifying the check.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1684,6 +1696,17 @@ may be performed in a background thread.</p>
 check (see create()), so subclasses can safely store state from the prepareCheck() method
 ready for the subsequent runCheck() method.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">context</span></code> argument gives the wider in which the check is being run.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsValidityCheckContext.html#qgis.core.QgsValidityCheckContext" title="qgis.core.QgsValidityCheckContext"><em>QgsValidityCheckContext</em></a>) – </p></li>
+<li><p><strong>feedback</strong> (<a class="reference internal" href="QgsFeedback.html#qgis.core.QgsFeedback" title="qgis.core.QgsFeedback"><em>QgsFeedback</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1696,6 +1719,17 @@ only thread-safe methods are used. It is always preceded by a call to prepareChe
 <p>If a check needs to perform non-thread-safe tests, these should be implemented within prepareCheck()
 and stored in the subclass instance to be returned by this method.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">context</span></code> argument gives the wider in which the check is being run.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsValidityCheckContext.html#qgis.core.QgsValidityCheckContext" title="qgis.core.QgsValidityCheckContext"><em>QgsValidityCheckContext</em></a>) – </p></li>
+<li><p><strong>feedback</strong> (<a class="reference internal" href="QgsFeedback.html#qgis.core.QgsFeedback" title="qgis.core.QgsFeedback"><em>QgsFeedback</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>List[<a class="reference internal" href="QgsValidityCheckResult.html#qgis.core.QgsValidityCheckResult" title="qgis.core.QgsValidityCheckResult">QgsValidityCheckResult</a>]</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -1714,7 +1748,7 @@ and stored in the subclass instance to be returned by this method.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 10:58 Oct 14, 2019.
+        Last updated on 15:06 Oct 15, 2019.
       </span>
 
     </p>
@@ -1741,20 +1775,20 @@ and stored in the subclass instance to be returned by this method.</p>
     <div class="rst-other-versions">
       <dl>
         <dt>Versions</dt>
-      
-        <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
-      
-    </dl>
+        
+          <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
+        
+      </dl>
       
       
     </div>

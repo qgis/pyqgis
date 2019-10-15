@@ -122,7 +122,6 @@
 <li class="toctree-l2"><a class="reference internal" href="PROJECT_SCALES.html">Class: PROJECT_SCALES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PluginLayer.html">Class: PluginLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ProjectDirtyBlocker.html">Class: ProjectDirtyBlocker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="PyProviderMetadata.html">Class: PyProviderMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgis.html">Class: Qgis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs25DRenderer.html">Class: Qgs25DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs3DRendererAbstractMetadata.html">Class: Qgs3DRendererAbstractMetadata</a></li>
@@ -1546,8 +1545,6 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/core/QgsFileDownloader.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -1569,17 +1566,17 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>url</strong> – the download url</p></li>
-<li><p><strong>outputFileName</strong> – file name where the downloaded content will be stored</p></li>
-<li><p><strong>authcfg</strong> – optionally apply this authentication configuration</p></li>
-<li><p><strong>delayStart</strong> – if <code class="docutils literal notranslate"><span class="pre">True</span></code>, the download will not be commenced immediately and must
+<li><p><strong>url</strong> (<em>QUrl</em>) – the download url</p></li>
+<li><p><strong>outputFileName</strong> (<em>str</em>) – file name where the downloaded content will be stored</p></li>
+<li><p><strong>authcfg</strong> (<em>str = ''</em>) – optionally apply this authentication configuration</p></li>
+<li><p><strong>delayStart</strong> (<em>bool = False</em>) – if <code class="docutils literal notranslate"><span class="pre">True</span></code>, the download will not be commenced immediately and must
 be triggered by a later call to startDownload(). This can be useful if connections need
 to be made to the downloader and there’s a chance the download will emit
 signals before these connections have been made.</p></li>
 </ul>
 </dd>
 </dl>
-<p>QgsFileDownloader is a utility class for downloading files.</p>
+<p><a class="reference internal" href="#qgis.core.QgsFileDownloader" title="qgis.core.QgsFileDownloader"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsFileDownloader</span></code></a> is a utility class for downloading files.</p>
 <p>To use this class, it is necessary to pass the URL and an output file name as
 arguments to the constructor, the download will start immediately.</p>
 <p>The download is asynchronous.</p>
@@ -1724,6 +1721,11 @@ has been processed.</p>
 <dt id="qgis.core.QgsFileDownloader.downloadError">
 <code class="sig-name descname">downloadError</code><a class="headerlink" href="#qgis.core.QgsFileDownloader.downloadError" title="Permalink to this definition">¶</a></dt>
 <dd><p>Emitted when an error makes the download fail [signal]</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>errorMessages</strong> (<em>Iterable</em><em>[</em><em>str</em><em>]</em>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="attribute">
@@ -1736,6 +1738,14 @@ has been processed.</p>
 <dt id="qgis.core.QgsFileDownloader.downloadProgress">
 <code class="sig-name descname">downloadProgress</code><a class="headerlink" href="#qgis.core.QgsFileDownloader.downloadProgress" title="Permalink to this definition">¶</a></dt>
 <dd><p>Emitted when data are ready to be processed [signal]</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>bytesReceived</strong> (<em>int</em>) – </p></li>
+<li><p><strong>bytesTotal</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1785,7 +1795,7 @@ has been processed.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 10:58 Oct 14, 2019.
+        Last updated on 15:06 Oct 15, 2019.
       </span>
 
     </p>
@@ -1812,20 +1822,20 @@ has been processed.</p>
     <div class="rst-other-versions">
       <dl>
         <dt>Versions</dt>
-      
-        <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
-      
-    </dl>
+        
+          <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
+        
+      </dl>
       
       
     </div>

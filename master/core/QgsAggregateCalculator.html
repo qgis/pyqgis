@@ -122,7 +122,6 @@
 <li class="toctree-l2"><a class="reference internal" href="PROJECT_SCALES.html">Class: PROJECT_SCALES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PluginLayer.html">Class: PluginLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ProjectDirtyBlocker.html">Class: ProjectDirtyBlocker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="PyProviderMetadata.html">Class: PyProviderMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgis.html">Class: Qgis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs25DRenderer.html">Class: Qgs25DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs3DRendererAbstractMetadata.html">Class: Qgs3DRendererAbstractMetadata</a></li>
@@ -1546,8 +1545,6 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/core/QgsAggregateCalculator.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -1568,13 +1565,13 @@
 <p>Constructor for QgsAggregateCalculator.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>layer</strong> – vector layer to calculate aggregate from</p>
+<dd class="field-odd"><p><strong>layer</strong> (<a class="reference internal" href="QgsVectorLayer.html#qgis.core.QgsVectorLayer" title="qgis.core.QgsVectorLayer"><em>QgsVectorLayer</em></a>) – vector layer to calculate aggregate from</p>
 </dd>
 </dl>
-<p>QgsAggregateCalculator(QgsAggregateCalculator)</p>
+<p>QgsAggregateCalculator(<a class="reference internal" href="#qgis.core.QgsAggregateCalculator" title="qgis.core.QgsAggregateCalculator"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsAggregateCalculator</span></code></a>)</p>
 <p>Utility class for calculating aggregates for a field (or expression) over the features
 from a vector layer. It is recommended that QgsVectorLayer.aggregate() is used rather then
-directly using this class, as the QgsVectorLayer method can handle delegating aggregate calculation
+directly using this class, as the <a class="reference internal" href="QgsVectorLayer.html#qgis.core.QgsVectorLayer" title="qgis.core.QgsVectorLayer"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsVectorLayer</span></code></a> method can handle delegating aggregate calculation
 to a data provider for remote calculation.</p>
 <div class="versionadded">
 <table class="longtable docutils align-default">
@@ -1875,6 +1872,11 @@ to a data provider for remote calculation.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.2.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List[<a class="reference internal" href="#qgis.core.QgsAggregateCalculator.AggregateInfo" title="qgis.core.QgsAggregateCalculator.AggregateInfo">QgsAggregateCalculator.AggregateInfo</a>]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1884,15 +1886,18 @@ to a data provider for remote calculation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>aggregate</strong> – aggregate to calculate</p></li>
-<li><p><strong>fieldOrExpression</strong> – source field or expression to use as basis for aggregated values.
+<li><p><strong>aggregate</strong> (<a class="reference internal" href="#qgis.core.QgsAggregateCalculator.Aggregate" title="qgis.core.QgsAggregateCalculator.Aggregate"><em>QgsAggregateCalculator.Aggregate</em></a>) – aggregate to calculate</p></li>
+<li><p><strong>fieldOrExpression</strong> (<em>str</em>) – source field or expression to use as basis for aggregated values.
 If an expression is used, then the context parameter must be set.</p></li>
-<li><p><strong>context</strong> – expression context for evaluating expressions</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsExpressionContext.html#qgis.core.QgsExpressionContext" title="qgis.core.QgsExpressionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsExpressionContext</span></code></a> = None) – expression context for evaluating expressions</p></li>
 <li><p><strong>ok</strong> – if specified, will be set to <code class="docutils literal notranslate"><span class="pre">True</span></code> if aggregate calculation was successful</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>calculated aggregate value</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Tuple[Any, bool]</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>calculated aggregate value</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1905,6 +1910,11 @@ If an expression is used, then the context parameter must be set.</p></li>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsAggregateCalculator.setDelimiter" title="qgis.core.QgsAggregateCalculator.setDelimiter"><code class="xref py py-func docutils literal notranslate"><span class="pre">setDelimiter()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1915,12 +1925,22 @@ If an expression is used, then the context parameter must be set.</p></li>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsAggregateCalculator.setFilter" title="qgis.core.QgsAggregateCalculator.setFilter"><code class="xref py py-func docutils literal notranslate"><span class="pre">setFilter()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsAggregateCalculator.layer">
 <code class="sig-name descname">layer</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QgsVectorLayer<a class="headerlink" href="#qgis.core.QgsAggregateCalculator.layer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the associated vector layer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsVectorLayer.html#qgis.core.QgsVectorLayer" title="qgis.core.QgsVectorLayer">QgsVectorLayer</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1929,7 +1949,7 @@ If an expression is used, then the context parameter must be set.</p></li>
 <dd><p>Sets the delimiter to use for joining values with the StringConcatenate aggregate.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>delimiter</strong> – string delimiter</p>
+<dd class="field-odd"><p><strong>delimiter</strong> (<em>str</em>) – string delimiter</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -1945,7 +1965,7 @@ If an expression is used, then the context parameter must be set.</p></li>
 If an expression filter is set, it will override this filter.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>fids</strong> – feature ids for feature filtering, and empty list will return no features.</p>
+<dd class="field-odd"><p><strong>fids</strong> (<em>object</em>) – feature ids for feature filtering, and empty list will return no features.</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -1960,7 +1980,7 @@ If an expression filter is set, it will override this filter.</p>
 <dd><p>Sets a filter to limit the features used during the aggregate calculation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>filterExpression</strong> – expression for filtering features, or empty string to remove filter</p>
+<dd class="field-odd"><p><strong>filterExpression</strong> (<em>str</em>) – expression for filtering features, or empty string to remove filter</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -1975,7 +1995,7 @@ If an expression filter is set, it will override this filter.</p>
 <dd><p>Sets all aggregate parameters from a parameter bundle.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>parameters</strong> – aggregate parameters</p>
+<dd class="field-odd"><p><strong>parameters</strong> (<a class="reference internal" href="#qgis.core.QgsAggregateCalculator.AggregateParameters" title="qgis.core.QgsAggregateCalculator.AggregateParameters"><em>QgsAggregateCalculator.AggregateParameters</em></a>) – aggregate parameters</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1987,12 +2007,15 @@ If an expression filter is set, it will override this filter.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>string</strong> – string to convert</p></li>
+<li><p><strong>string</strong> (<em>str</em>) – string to convert</p></li>
 <li><p><strong>ok</strong> – if specified, will be set to <code class="docutils literal notranslate"><span class="pre">True</span></code> if conversion was successful</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>aggregate type</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Tuple[<a class="reference internal" href="#qgis.core.QgsAggregateCalculator.Aggregate" title="qgis.core.QgsAggregateCalculator.Aggregate">QgsAggregateCalculator.Aggregate</a>, bool]</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>aggregate type</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2013,7 +2036,7 @@ If an expression filter is set, it will override this filter.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 10:58 Oct 14, 2019.
+        Last updated on 15:06 Oct 15, 2019.
       </span>
 
     </p>
@@ -2040,20 +2063,20 @@ If an expression filter is set, it will override this filter.</p>
     <div class="rst-other-versions">
       <dl>
         <dt>Versions</dt>
-      
-        <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
-      
-    </dl>
+        
+          <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
+        
+      </dl>
       
       
     </div>

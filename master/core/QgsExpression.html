@@ -122,7 +122,6 @@
 <li class="toctree-l2"><a class="reference internal" href="PROJECT_SCALES.html">Class: PROJECT_SCALES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PluginLayer.html">Class: PluginLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ProjectDirtyBlocker.html">Class: ProjectDirtyBlocker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="PyProviderMetadata.html">Class: PyProviderMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgis.html">Class: Qgis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs25DRenderer.html">Class: Qgs25DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs3DRendererAbstractMetadata.html">Class: Qgs3DRendererAbstractMetadata</a></li>
@@ -1546,8 +1545,6 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/core/QgsExpression.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -1569,7 +1566,7 @@
 The string will immediately be parsed. For optimization
 prepare() should always be called before every
 loop in which this expression is used.</p>
-<p>QgsExpression(other: QgsExpression)
+<p>QgsExpression(other: <a class="reference internal" href="#qgis.core.QgsExpression" title="qgis.core.QgsExpression"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsExpression</span></code></a>)
 Create a copy of this expression. This is preferred
 over recreating an expression from a string since
 it does not need to be re-parsed.</p>
@@ -1600,217 +1597,34 @@ or they can be converted to numeric types.</p>
 It is normally preferable to call <cite>QgsExpression( otherExpression )</cite> instead of
 <cite>QgsExpression( otherExpression.expression() )</cite>. A deep copy will only be made
 when prepare() is called. For usage this means mainly, that you should
-normally keep an unprepared master copy of a QgsExpression and whenever using it
-with a particular QgsFeatureIterator copy it just before and prepare it using the
+normally keep an unprepared master copy of a <a class="reference internal" href="#qgis.core.QgsExpression" title="qgis.core.QgsExpression"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsExpression</span></code></a> and whenever using it
+with a particular <a class="reference internal" href="QgsFeatureIterator.html#qgis.core.QgsFeatureIterator" title="qgis.core.QgsFeatureIterator"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsFeatureIterator</span></code></a> copy it just before and prepare it using the
 same context as the iterator.</p>
 <p>Implicit sharing was added in 2.14</p>
-<blockquote>
-<div><table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
-<tbody>
-</tbody>
-</table>
-<p class="rubric">Methods</p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.BuiltinFunctions" title="qgis.core.QgsExpression.BuiltinFunctions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BuiltinFunctions</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.Functions" title="qgis.core.QgsExpression.Functions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Functions</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.areaUnits" title="qgis.core.QgsExpression.areaUnits"><code class="xref py py-obj docutils literal notranslate"><span class="pre">areaUnits</span></code></a></p></td>
-<td><p>Returns the desired areal units for calculations involving geomCalculator(), e.g., “$area”.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.checkExpression" title="qgis.core.QgsExpression.checkExpression"><code class="xref py py-obj docutils literal notranslate"><span class="pre">checkExpression</span></code></a></p></td>
-<td><p>Tests whether a string is a valid expression.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.cleanRegisteredFunctions" title="qgis.core.QgsExpression.cleanRegisteredFunctions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cleanRegisteredFunctions</span></code></a></p></td>
-<td><p>Deletes all registered functions whose ownership have been transferred to the expression engine.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.createFieldEqualityExpression" title="qgis.core.QgsExpression.createFieldEqualityExpression"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createFieldEqualityExpression</span></code></a></p></td>
-<td><p>Create an expression allowing to evaluate if a field is equal to a value.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.distanceUnits" title="qgis.core.QgsExpression.distanceUnits"><code class="xref py py-obj docutils literal notranslate"><span class="pre">distanceUnits</span></code></a></p></td>
-<td><p>Returns the desired distance units for calculations involving geomCalculator(), e.g., “$length” and “$perimeter”.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.dump" title="qgis.core.QgsExpression.dump"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dump</span></code></a></p></td>
-<td><p>Returns an expression string, constructed from the internal abstract syntax tree.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.evalErrorString" title="qgis.core.QgsExpression.evalErrorString"><code class="xref py py-obj docutils literal notranslate"><span class="pre">evalErrorString</span></code></a></p></td>
-<td><p>Returns evaluation error</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.evaluate" title="qgis.core.QgsExpression.evaluate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">evaluate</span></code></a></p></td>
-<td><p>Evaluate the feature and return the result.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.evaluateToDouble" title="qgis.core.QgsExpression.evaluateToDouble"><code class="xref py py-obj docutils literal notranslate"><span class="pre">evaluateToDouble</span></code></a></p></td>
-<td><p>Attempts to evaluate a text string as an expression to a resultant double value.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.expression" title="qgis.core.QgsExpression.expression"><code class="xref py py-obj docutils literal notranslate"><span class="pre">expression</span></code></a></p></td>
-<td><p>Returns the original, unmodified expression string.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.formatPreviewString" title="qgis.core.QgsExpression.formatPreviewString"><code class="xref py py-obj docutils literal notranslate"><span class="pre">formatPreviewString</span></code></a></p></td>
-<td><p>Formats an expression result for friendly display to the user.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.formatVariableHelp" title="qgis.core.QgsExpression.formatVariableHelp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">formatVariableHelp</span></code></a></p></td>
-<td><p>Returns formatted help text for a variable.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.functionCount" title="qgis.core.QgsExpression.functionCount"><code class="xref py py-obj docutils literal notranslate"><span class="pre">functionCount</span></code></a></p></td>
-<td><p>Returns the number of functions defined in the parser</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.functionIndex" title="qgis.core.QgsExpression.functionIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">functionIndex</span></code></a></p></td>
-<td><p>Returns index of the function in Functions array</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.geomCalculator" title="qgis.core.QgsExpression.geomCalculator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geomCalculator</span></code></a></p></td>
-<td><p>Returns calculator used for distance and area calculations (used by $length, $area and $perimeter functions only)</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.group" title="qgis.core.QgsExpression.group"><code class="xref py py-obj docutils literal notranslate"><span class="pre">group</span></code></a></p></td>
-<td><p>Returns the translated name for a function group.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.hasEvalError" title="qgis.core.QgsExpression.hasEvalError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hasEvalError</span></code></a></p></td>
-<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if an error occurred when evaluating last input</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.hasParserError" title="qgis.core.QgsExpression.hasParserError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hasParserError</span></code></a></p></td>
-<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if an error occurred when parsing the input expression</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.helpText" title="qgis.core.QgsExpression.helpText"><code class="xref py py-obj docutils literal notranslate"><span class="pre">helpText</span></code></a></p></td>
-<td><p>Returns the help text for a specified function.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.isField" title="qgis.core.QgsExpression.isField"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isField</span></code></a></p></td>
-<td><p>Checks whether an expression consists only of a single field reference</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.isFunctionName" title="qgis.core.QgsExpression.isFunctionName"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isFunctionName</span></code></a></p></td>
-<td><p>tells whether the identifier is a name of existing function</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.isValid" title="qgis.core.QgsExpression.isValid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isValid</span></code></a></p></td>
-<td><p>Checks if this expression is valid.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.needsGeometry" title="qgis.core.QgsExpression.needsGeometry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">needsGeometry</span></code></a></p></td>
-<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the expression uses feature geometry for some computation</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.parserErrorString" title="qgis.core.QgsExpression.parserErrorString"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parserErrorString</span></code></a></p></td>
-<td><p>Returns parser error</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.parserErrors" title="qgis.core.QgsExpression.parserErrors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parserErrors</span></code></a></p></td>
-<td><p>Returns parser error details including location of error.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.prepare" title="qgis.core.QgsExpression.prepare"><code class="xref py py-obj docutils literal notranslate"><span class="pre">prepare</span></code></a></p></td>
-<td><p>Gets the expression ready for evaluation - find out column indexes.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.quotedColumnRef" title="qgis.core.QgsExpression.quotedColumnRef"><code class="xref py py-obj docutils literal notranslate"><span class="pre">quotedColumnRef</span></code></a></p></td>
-<td><p>Returns a quoted column reference (in double quotes)</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.quotedString" title="qgis.core.QgsExpression.quotedString"><code class="xref py py-obj docutils literal notranslate"><span class="pre">quotedString</span></code></a></p></td>
-<td><p>Returns a quoted version of a string (in single quotes)</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.quotedValue" title="qgis.core.QgsExpression.quotedValue"><code class="xref py py-obj docutils literal notranslate"><span class="pre">quotedValue</span></code></a></p></td>
-<td><p>Returns a string representation of a literal value, including appropriate quotations where required.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.referencedAttributeIndexes" title="qgis.core.QgsExpression.referencedAttributeIndexes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">referencedAttributeIndexes</span></code></a></p></td>
-<td><p>Returns a list of field name indexes obtained from the provided fields.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.referencedColumns" title="qgis.core.QgsExpression.referencedColumns"><code class="xref py py-obj docutils literal notranslate"><span class="pre">referencedColumns</span></code></a></p></td>
-<td><p>Gets list of columns referenced by the expression.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.referencedFunctions" title="qgis.core.QgsExpression.referencedFunctions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">referencedFunctions</span></code></a></p></td>
-<td><p>Returns a list of the names of all functions which are used in this expression.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.referencedVariables" title="qgis.core.QgsExpression.referencedVariables"><code class="xref py py-obj docutils literal notranslate"><span class="pre">referencedVariables</span></code></a></p></td>
-<td><p>Returns a list of all variables which are used in this expression.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.registerFunction" title="qgis.core.QgsExpression.registerFunction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">registerFunction</span></code></a></p></td>
-<td><p>Registers a function to the expression engine.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.replaceExpressionText" title="qgis.core.QgsExpression.replaceExpressionText"><code class="xref py py-obj docutils literal notranslate"><span class="pre">replaceExpressionText</span></code></a></p></td>
-<td><p>This function replaces each expression between [% and %] in the string with the result of its evaluation with the specified context</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.rootNode" title="qgis.core.QgsExpression.rootNode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rootNode</span></code></a></p></td>
-<td><p>Returns the root node of the expression.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.setAreaUnits" title="qgis.core.QgsExpression.setAreaUnits"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setAreaUnits</span></code></a></p></td>
-<td><p>Sets the desired areal units for calculations involving geomCalculator(), e.g., “$area”.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.setDistanceUnits" title="qgis.core.QgsExpression.setDistanceUnits"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setDistanceUnits</span></code></a></p></td>
-<td><p>Sets the desired distance units for calculations involving geomCalculator(), e.g., “$length” and “$perimeter”.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.setEvalErrorString" title="qgis.core.QgsExpression.setEvalErrorString"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setEvalErrorString</span></code></a></p></td>
-<td><p>Sets evaluation error (used internally by evaluation functions)</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.setExpression" title="qgis.core.QgsExpression.setExpression"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setExpression</span></code></a></p></td>
-<td><p>Set the expression string, will reset the whole internal structure.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.setGeomCalculator" title="qgis.core.QgsExpression.setGeomCalculator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setGeomCalculator</span></code></a></p></td>
-<td><p>Sets the geometry calculator used for distance and area calculations in expressions.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.unregisterFunction" title="qgis.core.QgsExpression.unregisterFunction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">unregisterFunction</span></code></a></p></td>
-<td><p>Unregisters a function from the expression engine.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.variableHelpText" title="qgis.core.QgsExpression.variableHelpText"><code class="xref py py-obj docutils literal notranslate"><span class="pre">variableHelpText</span></code></a></p></td>
-<td><p>Returns the help text for a specified variable.</p></td>
-</tr>
-</tbody>
-</table>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
-<tbody>
-</tbody>
-</table>
-<p class="rubric">Attributes</p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.soBbox" title="qgis.core.QgsExpression.soBbox"><code class="xref py py-obj docutils literal notranslate"><span class="pre">soBbox</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.soContains" title="qgis.core.QgsExpression.soContains"><code class="xref py py-obj docutils literal notranslate"><span class="pre">soContains</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.soCrosses" title="qgis.core.QgsExpression.soCrosses"><code class="xref py py-obj docutils literal notranslate"><span class="pre">soCrosses</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.soDisjoint" title="qgis.core.QgsExpression.soDisjoint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">soDisjoint</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.soEquals" title="qgis.core.QgsExpression.soEquals"><code class="xref py py-obj docutils literal notranslate"><span class="pre">soEquals</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.soIntersects" title="qgis.core.QgsExpression.soIntersects"><code class="xref py py-obj docutils literal notranslate"><span class="pre">soIntersects</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.soOverlaps" title="qgis.core.QgsExpression.soOverlaps"><code class="xref py py-obj docutils literal notranslate"><span class="pre">soOverlaps</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.soTouches" title="qgis.core.QgsExpression.soTouches"><code class="xref py py-obj docutils literal notranslate"><span class="pre">soTouches</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.soWithin" title="qgis.core.QgsExpression.soWithin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">soWithin</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>expr</strong> – </p>
+</dd>
+</dl>
 <dl class="method">
 <dt id="qgis.core.QgsExpression.BuiltinFunctions">
 <code class="sig-name descname">BuiltinFunctions</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List[str]<a class="headerlink" href="#qgis.core.QgsExpression.BuiltinFunctions" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List[str]</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsExpression.Functions">
 <code class="sig-name descname">Functions</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List[QgsExpressionFunction]<a class="headerlink" href="#qgis.core.QgsExpression.Functions" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List[<a class="reference internal" href="QgsExpressionFunction.html#qgis.core.QgsExpressionFunction" title="qgis.core.QgsExpressionFunction">QgsExpressionFunction</a>]</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="class">
 <dt id="qgis.core.QgsExpression.ParserError">
@@ -1905,6 +1719,11 @@ same context as the iterator.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 2.14.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsUnitTypes.html#qgis.core.QgsUnitTypes.AreaUnit" title="qgis.core.QgsUnitTypes.AreaUnit">QgsUnitTypes.AreaUnit</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1914,12 +1733,15 @@ same context as the iterator.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>text</strong> – string to test</p></li>
-<li><p><strong>context</strong> – optional expression context</p></li>
+<li><p><strong>text</strong> (<em>str</em>) – string to test</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsExpressionContext.html#qgis.core.QgsExpressionContext" title="qgis.core.QgsExpressionContext"><em>QgsExpressionContext</em></a>) – optional expression context</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><ul class="simple">
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Tuple[bool, str]</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if string is a valid expression</p></li>
 <li><p>errorMessage: will be filled with any error message from the validation</p></li>
 </ul>
@@ -1948,12 +1770,15 @@ value. The value may be null.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>fieldName</strong> – the name of the field</p></li>
-<li><p><strong>value</strong> – the value of the field</p></li>
+<li><p><strong>fieldName</strong> (<em>str</em>) – the name of the field</p></li>
+<li><p><strong>value</strong> (<em>Any</em>) – the value of the field</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>the expression to evaluate field equality</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the expression to evaluate field equality</p>
 </dd>
 </dl>
 <div class="versionadded">
@@ -1980,6 +1805,11 @@ value. The value may be null.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 2.14.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsUnitTypes.html#qgis.core.QgsUnitTypes.DistanceUnit" title="qgis.core.QgsUnitTypes.DistanceUnit">QgsUnitTypes.DistanceUnit</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1989,12 +1819,22 @@ value. The value may be null.</p>
 abstract syntax tree. This does not contain any nice whitespace
 formatting or comments. In general it is preferable to use
 expression() instead.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsExpression.evalErrorString">
 <code class="sig-name descname">evalErrorString</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.core.QgsExpression.evalErrorString" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns evaluation error</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2008,7 +1848,7 @@ expression() instead.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 2.12.</span></p>
 </div>
-<p>evaluate(self, context: QgsExpressionContext) -&gt; Any
+<p>evaluate(self, context: <a class="reference internal" href="QgsExpressionContext.html#qgis.core.QgsExpressionContext" title="qgis.core.QgsExpressionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsExpressionContext</span></code></a>) -&gt; Any
 Evaluate the expression against the specified context and return the result.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2022,6 +1862,11 @@ Evaluate the expression against the specified context and return the result.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 2.12.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Any</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2032,12 +1877,15 @@ value.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>text</strong> – text to evaluate as expression</p></li>
-<li><p><strong>fallbackValue</strong> – value to return if text can not be evaluated as a double</p></li>
+<li><p><strong>text</strong> (<em>str</em>) – text to evaluate as expression</p></li>
+<li><p><strong>fallbackValue</strong> (<em>float</em>) – value to return if text can not be evaluated as a double</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>evaluated double value, or fallback value</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>float</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>evaluated double value, or fallback value</p>
 </dd>
 </dl>
 <div class="admonition note">
@@ -2056,6 +1904,11 @@ for one-off evaluations only.</p>
 <dd><p>Returns the original, unmodified expression string.
 If there was none supplied because it was constructed by sole
 API calls, dump() will be used to create one instead.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2066,12 +1919,15 @@ length, and presents text representations of non numeric/text types (e.g., geome
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>value</strong> – expression result to format</p></li>
-<li><p><strong>htmlOutput</strong> – set to <code class="docutils literal notranslate"><span class="pre">True</span></code> to allow HTML formatting, or <code class="docutils literal notranslate"><span class="pre">False</span></code> for plain text output</p></li>
+<li><p><strong>value</strong> (<em>Any</em>) – expression result to format</p></li>
+<li><p><strong>htmlOutput</strong> (<em>bool = True</em>) – set to <code class="docutils literal notranslate"><span class="pre">True</span></code> to allow HTML formatting, or <code class="docutils literal notranslate"><span class="pre">False</span></code> for plain text output</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>formatted string, may contain HTML formatting characters if <code class="docutils literal notranslate"><span class="pre">htmlOutput</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code></p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>formatted string, may contain HTML formatting characters if <code class="docutils literal notranslate"><span class="pre">htmlOutput</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code></p>
 </dd>
 </dl>
 <div class="versionadded">
@@ -2086,9 +1942,9 @@ length, and presents text representations of non numeric/text types (e.g., geome
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>description</strong> – translated description of variable</p></li>
-<li><p><strong>showValue</strong> – set to <code class="docutils literal notranslate"><span class="pre">True</span></code> to include current value of variable in help text</p></li>
-<li><p><strong>value</strong> – current value of variable to show in help text</p></li>
+<li><p><strong>description</strong> (<em>str</em>) – translated description of variable</p></li>
+<li><p><strong>showValue</strong> (<em>bool = True</em>) – set to <code class="docutils literal notranslate"><span class="pre">True</span></code> to include current value of variable in help text</p></li>
+<li><p><strong>value</strong> (<em>Any = None</em>) – current value of variable to show in help text</p></li>
 </ul>
 </dd>
 </dl>
@@ -2103,6 +1959,11 @@ length, and presents text representations of non numeric/text types (e.g., geome
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2110,8 +1971,11 @@ length, and presents text representations of non numeric/text types (e.g., geome
 <code class="sig-name descname">functionCount</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#qgis.core.QgsExpression.functionCount" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the number of functions defined in the parser</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>The number of function defined in the parser.</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The number of function defined in the parser.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2120,6 +1984,14 @@ length, and presents text representations of non numeric/text types (e.g., geome
 <dt id="qgis.core.QgsExpression.functionIndex">
 <code class="sig-name descname">functionIndex</code><span class="sig-paren">(</span><em class="sig-param">name: str</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#qgis.core.QgsExpression.functionIndex" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns index of the function in Functions array</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2139,6 +2011,11 @@ length, and presents text representations of non numeric/text types (e.g., geome
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsExpression.areaUnits" title="qgis.core.QgsExpression.areaUnits"><code class="xref py py-func docutils literal notranslate"><span class="pre">areaUnits()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsDistanceArea.html#qgis.core.QgsDistanceArea" title="qgis.core.QgsDistanceArea">QgsDistanceArea</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2147,7 +2024,10 @@ length, and presents text representations of non numeric/text types (e.g., geome
 <dd><p>Returns the translated name for a function group.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>group</strong> – untranslated group name</p>
+<dd class="field-odd"><p><strong>group</strong> (<em>str</em>) – untranslated group name</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2156,12 +2036,22 @@ length, and presents text representations of non numeric/text types (e.g., geome
 <dt id="qgis.core.QgsExpression.hasEvalError">
 <code class="sig-name descname">hasEvalError</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsExpression.hasEvalError" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if an error occurred when evaluating last input</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsExpression.hasParserError">
 <code class="sig-name descname">hasParserError</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsExpression.hasParserError" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if an error occurred when parsing the input expression</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2170,7 +2060,7 @@ length, and presents text representations of non numeric/text types (e.g., geome
 <dd><p>Returns the help text for a specified function.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>name</strong> – function name</p>
+<dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – function name</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -2181,6 +2071,11 @@ length, and presents text representations of non numeric/text types (e.g., geome
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsExpression.formatVariableHelp" title="qgis.core.QgsExpression.formatVariableHelp"><code class="xref py py-func docutils literal notranslate"><span class="pre">formatVariableHelp()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2190,12 +2085,25 @@ length, and presents text representations of non numeric/text types (e.g., geome
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 2.9.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsExpression.isFunctionName">
 <code class="sig-name descname">isFunctionName</code><span class="sig-paren">(</span><em class="sig-param">name: str</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsExpression.isFunctionName" title="Permalink to this definition">¶</a></dt>
 <dd><p>tells whether the identifier is a name of existing function</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2206,18 +2114,33 @@ A valid expression could be parsed but does not necessarily evaluate properly.</
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsExpression.needsGeometry">
 <code class="sig-name descname">needsGeometry</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsExpression.needsGeometry" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the expression uses feature geometry for some computation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsExpression.parserErrorString">
 <code class="sig-name descname">parserErrorString</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.core.QgsExpression.parserErrorString" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns parser error</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2227,6 +2150,11 @@ A valid expression could be parsed but does not necessarily evaluate properly.</
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List[<a class="reference internal" href="#qgis.core.QgsExpression.ParserError" title="qgis.core.QgsExpression.ParserError">QgsExpression.ParserError</a>]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2235,12 +2163,17 @@ A valid expression could be parsed but does not necessarily evaluate properly.</
 <dd><p>Gets the expression ready for evaluation - find out column indexes.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>context</strong> – context for preparing expression</p>
+<dd class="field-odd"><p><strong>context</strong> (<a class="reference internal" href="QgsExpressionContext.html#qgis.core.QgsExpressionContext" title="qgis.core.QgsExpressionContext"><em>QgsExpressionContext</em></a>) – context for preparing expression</p>
 </dd>
 </dl>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 2.12.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2255,6 +2188,14 @@ A valid expression could be parsed but does not necessarily evaluate properly.</
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsExpression.quotedValue" title="qgis.core.QgsExpression.quotedValue"><code class="xref py py-func docutils literal notranslate"><span class="pre">quotedValue()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2269,6 +2210,14 @@ A valid expression could be parsed but does not necessarily evaluate properly.</
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsExpression.quotedColumnRef" title="qgis.core.QgsExpression.quotedColumnRef"><code class="xref py py-func docutils literal notranslate"><span class="pre">quotedColumnRef()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>text</strong> (<em>str</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2278,7 +2227,7 @@ A valid expression could be parsed but does not necessarily evaluate properly.</
 quotations where required.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>value</strong> – value to convert to a string representation</p>
+<dd class="field-odd"><p><strong>value</strong> (<em>Any</em>) – value to convert to a string representation</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -2314,6 +2263,11 @@ quotations where required.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 2.14.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2323,6 +2277,14 @@ quotations where required.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>fields</strong> (<a class="reference internal" href="QgsFields.html#qgis.core.QgsFields" title="qgis.core.QgsFields"><em>QgsFields</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>object</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2339,6 +2301,11 @@ QgsFeatureRequest.setSubsetOfAttributes automatically handles this case.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsExpression.referencedAttributeIndexes" title="qgis.core.QgsExpression.referencedAttributeIndexes"><code class="xref py py-func docutils literal notranslate"><span class="pre">referencedAttributeIndexes()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Set[str]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2348,6 +2315,11 @@ QgsFeatureRequest.setSubsetOfAttributes automatically handles this case.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.2.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Set[str]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2369,6 +2341,11 @@ This function returns variables in each expression between [% and %].</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.2.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Set[str]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2378,12 +2355,15 @@ This function returns variables in each expression between [% and %].</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>function</strong> – function to register</p></li>
-<li><p><strong>transferOwnership</strong> – set to <code class="docutils literal notranslate"><span class="pre">True</span></code> to transfer ownership of function to expression engine</p></li>
+<li><p><strong>function</strong> (<a class="reference internal" href="QgsExpressionFunction.html#qgis.core.QgsExpressionFunction" title="qgis.core.QgsExpressionFunction"><em>QgsExpressionFunction</em></a>) – function to register</p></li>
+<li><p><strong>transferOwnership</strong> (<em>bool = False</em>) – set to <code class="docutils literal notranslate"><span class="pre">True</span></code> to transfer ownership of function to expression engine</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> on successful registration</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> on successful registration</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -2401,9 +2381,9 @@ in the string with the result of its evaluation with the specified context</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>action</strong> – The source string in which placeholders should be replaced.</p></li>
-<li><p><strong>context</strong> – Expression context</p></li>
-<li><p><strong>distanceArea</strong> – Optional <a class="reference internal" href="QgsDistanceArea.html#module-QgsDistanceArea" title="QgsDistanceArea"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsDistanceArea</span></code></a>. If specified, the QgsDistanceArea is used for distance
+<li><p><strong>action</strong> (<em>str</em>) – The source string in which placeholders should be replaced.</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsExpressionContext.html#qgis.core.QgsExpressionContext" title="qgis.core.QgsExpressionContext"><em>QgsExpressionContext</em></a>) – Expression context</p></li>
+<li><p><strong>distanceArea</strong> (<a class="reference internal" href="QgsDistanceArea.html#qgis.core.QgsDistanceArea" title="qgis.core.QgsDistanceArea"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsDistanceArea</span></code></a> = None) – Optional <a class="reference internal" href="QgsDistanceArea.html#module-QgsDistanceArea" title="QgsDistanceArea"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsDistanceArea</span></code></a>. If specified, the <a class="reference internal" href="QgsDistanceArea.html#qgis.core.QgsDistanceArea" title="qgis.core.QgsDistanceArea"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsDistanceArea</span></code></a> is used for distance
 and area conversion</p></li>
 </ul>
 </dd>
@@ -2411,6 +2391,11 @@ and area conversion</p></li>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 2.12.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2418,6 +2403,11 @@ and area conversion</p></li>
 <code class="sig-name descname">rootNode</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QgsExpressionNode<a class="headerlink" href="#qgis.core.QgsExpression.rootNode" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the root node of the expression.</p>
 <p>The root node is <code class="docutils literal notranslate"><span class="pre">None</span></code> if parsing has failed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsExpressionNode.html#qgis.core.QgsExpressionNode" title="qgis.core.QgsExpressionNode">QgsExpressionNode</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2441,6 +2431,11 @@ variables from the expression context (“project_distance_units”) to determin
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 2.14.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>unit</strong> (<a class="reference internal" href="QgsUnitTypes.html#qgis.core.QgsUnitTypes.AreaUnit" title="qgis.core.QgsUnitTypes.AreaUnit"><em>QgsUnitTypes.AreaUnit</em></a>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2464,12 +2459,22 @@ variables from the expression context (“project_distance_units”) to determin
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 2.14.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>unit</strong> (<a class="reference internal" href="QgsUnitTypes.html#qgis.core.QgsUnitTypes.DistanceUnit" title="qgis.core.QgsUnitTypes.DistanceUnit"><em>QgsUnitTypes.DistanceUnit</em></a>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsExpression.setEvalErrorString">
 <code class="sig-name descname">setEvalErrorString</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">str: str</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsExpression.setEvalErrorString" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets evaluation error (used internally by evaluation functions)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>str</strong> (<em>str</em>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2479,6 +2484,11 @@ variables from the expression context (“project_distance_units”) to determin
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>expression</strong> (<em>str</em>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2494,7 +2504,7 @@ all distance and area calculations are performed using simple
 Cartesian methods (ie no ellipsoidal calculations).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>calc</strong> – geometry calculator. Ownership is not transferred. Set to <code class="docutils literal notranslate"><span class="pre">None</span></code> to force
+<dd class="field-odd"><p><strong>calc</strong> (<a class="reference internal" href="QgsDistanceArea.html#qgis.core.QgsDistanceArea" title="qgis.core.QgsDistanceArea"><em>QgsDistanceArea</em></a>) – geometry calculator. Ownership is not transferred. Set to <code class="docutils literal notranslate"><span class="pre">None</span></code> to force
 Cartesian calculations.</p>
 </dd>
 </dl>
@@ -2555,13 +2565,18 @@ Cartesian calculations.</p>
 <dd><p>Unregisters a function from the expression engine. The function will no longer be usable in expressions.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>name</strong> – function name</p>
+<dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – function name</p>
 </dd>
 </dl>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsExpression.registerFunction" title="qgis.core.QgsExpression.registerFunction"><code class="xref py py-func docutils literal notranslate"><span class="pre">registerFunction()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2570,7 +2585,7 @@ Cartesian calculations.</p>
 <dd><p>Returns the help text for a specified variable.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>variableName</strong> – name of variable</p>
+<dd class="field-odd"><p><strong>variableName</strong> (<em>str</em>) – name of variable</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -2580,6 +2595,11 @@ Cartesian calculations.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 2.12.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -2598,7 +2618,7 @@ Cartesian calculations.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 10:58 Oct 14, 2019.
+        Last updated on 15:06 Oct 15, 2019.
       </span>
 
     </p>
@@ -2625,20 +2645,20 @@ Cartesian calculations.</p>
     <div class="rst-other-versions">
       <dl>
         <dt>Versions</dt>
-      
-        <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
-      
-    </dl>
+        
+          <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
+        
+      </dl>
       
       
     </div>

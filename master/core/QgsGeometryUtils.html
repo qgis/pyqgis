@@ -122,7 +122,6 @@
 <li class="toctree-l2"><a class="reference internal" href="PROJECT_SCALES.html">Class: PROJECT_SCALES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PluginLayer.html">Class: PluginLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ProjectDirtyBlocker.html">Class: ProjectDirtyBlocker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="PyProviderMetadata.html">Class: PyProviderMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgis.html">Class: Qgis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs25DRenderer.html">Class: Qgs25DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs3DRendererAbstractMetadata.html">Class: Qgs3DRendererAbstractMetadata</a></li>
@@ -1546,8 +1545,6 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/core/QgsGeometryUtils.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -1747,16 +1744,19 @@ by points a, b and b, c.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>x1</strong> – x-coordinate of point a</p></li>
-<li><p><strong>y1</strong> – y-coordinate of point a</p></li>
-<li><p><strong>x2</strong> – x-coordinate of point b</p></li>
-<li><p><strong>y2</strong> – y-coordinate of point b</p></li>
-<li><p><strong>x3</strong> – x-coordinate of point c</p></li>
-<li><p><strong>y3</strong> – y-coordinate of point c</p></li>
+<li><p><strong>x1</strong> (<em>float</em>) – x-coordinate of point a</p></li>
+<li><p><strong>y1</strong> (<em>float</em>) – y-coordinate of point a</p></li>
+<li><p><strong>x2</strong> (<em>float</em>) – x-coordinate of point b</p></li>
+<li><p><strong>y2</strong> (<em>float</em>) – y-coordinate of point b</p></li>
+<li><p><strong>x3</strong> (<em>float</em>) – x-coordinate of point c</p></li>
+<li><p><strong>y3</strong> (<em>float</em>) – y-coordinate of point c</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>angle between lines in radians. Returned value is undefined if two or more points are equal.</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>float</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>angle between lines in radians. Returned value is undefined if two or more points are equal.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1766,6 +1766,19 @@ by points a, b and b, c.</p>
 <code class="sig-name descname">angleOnCircle</code><span class="sig-paren">(</span><em class="sig-param">angle: float</em>, <em class="sig-param">angle1: float</em>, <em class="sig-param">angle2: float</em>, <em class="sig-param">angle3: float</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsGeometryUtils.angleOnCircle" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if an angle is between angle1 and angle3 on a circle described by
 angle1, angle2 and angle3.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>angle</strong> (<em>float</em>) – </p></li>
+<li><p><strong>angle1</strong> (<em>float</em>) – </p></li>
+<li><p><strong>angle2</strong> (<em>float</em>) – </p></li>
+<li><p><strong>angle3</strong> (<em>float</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1780,10 +1793,19 @@ Averages two angles, correctly handling negative angles and ensuring the result 
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>a1</strong> – first angle (in radians)</p></li>
 <li><p><strong>a2</strong> – second angle (in radians)</p></li>
+<li><p><strong>x1</strong> (<em>float</em>) – </p></li>
+<li><p><strong>y1</strong> (<em>float</em>) – </p></li>
+<li><p><strong>x2</strong> (<em>float</em>) – </p></li>
+<li><p><strong>y2</strong> (<em>float</em>) – </p></li>
+<li><p><strong>x3</strong> (<em>float</em>) – </p></li>
+<li><p><strong>y3</strong> (<em>float</em>) – </p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>average angle (in radians)</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>float</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>average angle (in radians)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1792,18 +1814,54 @@ Averages two angles, correctly handling negative angles and ensuring the result 
 <dt id="qgis.core.QgsGeometryUtils.ccwAngle">
 <code class="sig-name descname">ccwAngle</code><span class="sig-paren">(</span><em class="sig-param">dy: float</em>, <em class="sig-param">dx: float</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#qgis.core.QgsGeometryUtils.ccwAngle" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the counter clockwise angle between a line with components dx, dy and the line with dx &gt; 0 and dy = 0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dy</strong> (<em>float</em>) – </p></li>
+<li><p><strong>dx</strong> (<em>float</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsGeometryUtils.circleAngleBetween">
 <code class="sig-name descname">circleAngleBetween</code><span class="sig-paren">(</span><em class="sig-param">angle: float</em>, <em class="sig-param">angle1: float</em>, <em class="sig-param">angle2: float</em>, <em class="sig-param">clockwise: bool</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsGeometryUtils.circleAngleBetween" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if, in a circle, angle is between angle1 and angle2</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>angle</strong> (<em>float</em>) – </p></li>
+<li><p><strong>angle1</strong> (<em>float</em>) – </p></li>
+<li><p><strong>angle2</strong> (<em>float</em>) – </p></li>
+<li><p><strong>clockwise</strong> (<em>bool</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsGeometryUtils.circleCenterRadius">
 <code class="sig-name descname">circleCenterRadius</code><span class="sig-paren">(</span><em class="sig-param">pt1: QgsPoint</em>, <em class="sig-param">pt2: QgsPoint</em>, <em class="sig-param">pt3: QgsPoint</em><span class="sig-paren">)</span> &#x2192; Tuple[float, float, float]<a class="headerlink" href="#qgis.core.QgsGeometryUtils.circleCenterRadius" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns radius and center of the circle through pt1, pt2, pt3</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pt1</strong> (<a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint"><em>QgsPoint</em></a>) – </p></li>
+<li><p><strong>pt2</strong> (<a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint"><em>QgsPoint</em></a>) – </p></li>
+<li><p><strong>pt3</strong> (<a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint"><em>QgsPoint</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Tuple[float, float, float]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1823,6 +1881,19 @@ and <code class="docutils literal notranslate"><span class="pre">line2P2</span><
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.6.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>center1</strong> (<a class="reference internal" href="QgsPointXY.html#qgis.core.QgsPointXY" title="qgis.core.QgsPointXY"><em>QgsPointXY</em></a>) – </p></li>
+<li><p><strong>radius1</strong> (<em>float</em>) – </p></li>
+<li><p><strong>center2</strong> (<a class="reference internal" href="QgsPointXY.html#qgis.core.QgsPointXY" title="qgis.core.QgsPointXY"><em>QgsPointXY</em></a>) – </p></li>
+<li><p><strong>radius2</strong> (<em>float</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Tuple[int, <a class="reference internal" href="QgsPointXY.html#qgis.core.QgsPointXY" title="qgis.core.QgsPointXY"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsPointXY</span></code></a>, <a class="reference internal" href="QgsPointXY.html#qgis.core.QgsPointXY" title="qgis.core.QgsPointXY"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsPointXY</span></code></a>, <a class="reference internal" href="QgsPointXY.html#qgis.core.QgsPointXY" title="qgis.core.QgsPointXY"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsPointXY</span></code></a>, QgsPointXY]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1832,13 +1903,26 @@ and <code class="docutils literal notranslate"><span class="pre">line2P2</span><
 radius <code class="docutils literal notranslate"><span class="pre">radius1</span></code> and the circle with center <code class="docutils literal notranslate"><span class="pre">center2</span></code> and radius <code class="docutils literal notranslate"><span class="pre">radius2</span></code>.</p>
 <p>If found, the intersection points will be stored in <code class="docutils literal notranslate"><span class="pre">intersection1</span></code> and <code class="docutils literal notranslate"><span class="pre">intersection2</span></code>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>number of intersection points found.</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Tuple[int, <a class="reference internal" href="QgsPointXY.html#qgis.core.QgsPointXY" title="qgis.core.QgsPointXY"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsPointXY</span></code></a>, QgsPointXY]</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>number of intersection points found.</p>
 </dd>
 </dl>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.2.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>center1</strong> (<a class="reference internal" href="QgsPointXY.html#qgis.core.QgsPointXY" title="qgis.core.QgsPointXY"><em>QgsPointXY</em></a>) – </p></li>
+<li><p><strong>radius1</strong> (<em>float</em>) – </p></li>
+<li><p><strong>center2</strong> (<a class="reference internal" href="QgsPointXY.html#qgis.core.QgsPointXY" title="qgis.core.QgsPointXY"><em>QgsPointXY</em></a>) – </p></li>
+<li><p><strong>radius2</strong> (<em>float</em>) – </p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1857,6 +1941,19 @@ and <code class="docutils literal notranslate"><span class="pre">line2P2</span><
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.2.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>center1</strong> (<a class="reference internal" href="QgsPointXY.html#qgis.core.QgsPointXY" title="qgis.core.QgsPointXY"><em>QgsPointXY</em></a>) – </p></li>
+<li><p><strong>radius1</strong> (<em>float</em>) – </p></li>
+<li><p><strong>center2</strong> (<a class="reference internal" href="QgsPointXY.html#qgis.core.QgsPointXY" title="qgis.core.QgsPointXY"><em>QgsPointXY</em></a>) – </p></li>
+<li><p><strong>radius2</strong> (<em>float</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Tuple[int, <a class="reference internal" href="QgsPointXY.html#qgis.core.QgsPointXY" title="qgis.core.QgsPointXY"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsPointXY</span></code></a>, <a class="reference internal" href="QgsPointXY.html#qgis.core.QgsPointXY" title="qgis.core.QgsPointXY"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsPointXY</span></code></a>, <a class="reference internal" href="QgsPointXY.html#qgis.core.QgsPointXY" title="qgis.core.QgsPointXY"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsPointXY</span></code></a>, QgsPointXY]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1865,18 +1962,58 @@ and <code class="docutils literal notranslate"><span class="pre">line2P2</span><
 <dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the circle defined by three angles is ordered clockwise.</p>
 <p>The angles are defined counter-clockwise from the origin, i.e. using
 Euclidean angles as opposed to geographic “North up” angles.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>angle1</strong> (<em>float</em>) – </p></li>
+<li><p><strong>angle2</strong> (<em>float</em>) – </p></li>
+<li><p><strong>angle3</strong> (<em>float</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsGeometryUtils.circleLength">
 <code class="sig-name descname">circleLength</code><span class="sig-paren">(</span><em class="sig-param">x1: float</em>, <em class="sig-param">y1: float</em>, <em class="sig-param">x2: float</em>, <em class="sig-param">y2: float</em>, <em class="sig-param">x3: float</em>, <em class="sig-param">y3: float</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#qgis.core.QgsGeometryUtils.circleLength" title="Permalink to this definition">¶</a></dt>
 <dd><p>Length of a circular string segment defined by pt1, pt2, pt3</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x1</strong> (<em>float</em>) – </p></li>
+<li><p><strong>y1</strong> (<em>float</em>) – </p></li>
+<li><p><strong>x2</strong> (<em>float</em>) – </p></li>
+<li><p><strong>y2</strong> (<em>float</em>) – </p></li>
+<li><p><strong>x3</strong> (<em>float</em>) – </p></li>
+<li><p><strong>y3</strong> (<em>float</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsGeometryUtils.circleTangentDirection">
 <code class="sig-name descname">circleTangentDirection</code><span class="sig-paren">(</span><em class="sig-param">tangentPoint: QgsPoint</em>, <em class="sig-param">cp1: QgsPoint</em>, <em class="sig-param">cp2: QgsPoint</em>, <em class="sig-param">cp3: QgsPoint</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#qgis.core.QgsGeometryUtils.circleTangentDirection" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculates the direction angle of a circle tangent (clockwise from north in radians)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tangentPoint</strong> (<a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint"><em>QgsPoint</em></a>) – </p></li>
+<li><p><strong>cp1</strong> (<a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint"><em>QgsPoint</em></a>) – </p></li>
+<li><p><strong>cp2</strong> (<a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint"><em>QgsPoint</em></a>) – </p></li>
+<li><p><strong>cp3</strong> (<a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint"><em>QgsPoint</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1885,6 +2022,17 @@ Euclidean angles as opposed to geographic “North up” angles.</p>
 <dd><p>Returns the nearest point on a segment of a <code class="docutils literal notranslate"><span class="pre">geometry</span></code>
 for the specified <code class="docutils literal notranslate"><span class="pre">point</span></code>. The z and m values will be linearly interpolated between
 the two neighbouring vertices.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>geometry</strong> (<a class="reference internal" href="QgsAbstractGeometry.html#qgis.core.QgsAbstractGeometry" title="qgis.core.QgsAbstractGeometry"><em>QgsAbstractGeometry</em></a>) – </p></li>
+<li><p><strong>point</strong> (<a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint"><em>QgsPoint</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint">QgsPoint</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1892,6 +2040,17 @@ the two neighbouring vertices.</p>
 <code class="sig-name descname">closestVertex</code><span class="sig-paren">(</span><em class="sig-param">geom: QgsAbstractGeometry</em>, <em class="sig-param">pt: QgsPoint</em><span class="sig-paren">)</span> &#x2192; Tuple[QgsPoint, QgsVertexId]<a class="headerlink" href="#qgis.core.QgsGeometryUtils.closestVertex" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the closest vertex to a geometry for a specified point.
 On error null point will be returned and “id” argument will be invalid.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>geom</strong> (<a class="reference internal" href="QgsAbstractGeometry.html#qgis.core.QgsAbstractGeometry" title="qgis.core.QgsAbstractGeometry"><em>QgsAbstractGeometry</em></a>) – </p></li>
+<li><p><strong>pt</strong> (<a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint"><em>QgsPoint</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Tuple[<a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsPoint</span></code></a>, QgsVertexId]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1901,8 +2060,8 @@ On error null point will be returned and “id” argument will be invalid.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>pt1</strong> – first point.</p></li>
-<li><p><strong>pt2</strong> – second point.</p></li>
+<li><p><strong>pt1</strong> (<a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint"><em>QgsPoint</em></a>) – first point.</p></li>
+<li><p><strong>pt2</strong> (<a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint"><em>QgsPoint</em></a>) – second point.</p></li>
 <li><p><strong>b</strong> – Output parameter, b coefficient of the equation.</p></li>
 <li><p><strong>c</strong> – Output parameter, c coefficient of the equation.</p></li>
 </ul>
@@ -1911,6 +2070,11 @@ On error null point will be returned and “id” argument will be invalid.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Tuple[float, float, float]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1920,12 +2084,15 @@ On error null point will be returned and “id” argument will be invalid.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>geom</strong> – geometry</p></li>
-<li><p><strong>id</strong> – vertex id to find distance to</p></li>
+<li><p><strong>geom</strong> (<a class="reference internal" href="QgsAbstractGeometry.html#qgis.core.QgsAbstractGeometry" title="qgis.core.QgsAbstractGeometry"><em>QgsAbstractGeometry</em></a>) – geometry</p></li>
+<li><p><strong>id</strong> (<a class="reference internal" href="QgsVertexId.html#qgis.core.QgsVertexId" title="qgis.core.QgsVertexId"><em>QgsVertexId</em></a>) – vertex id to find distance to</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>distance to vertex (following geometry)</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>float</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>distance to vertex (following geometry)</p>
 </dd>
 </dl>
 <div class="versionadded">
@@ -1938,6 +2105,14 @@ On error null point will be returned and “id” argument will be invalid.</p>
 <code class="sig-name descname">extractLineStrings</code><span class="sig-paren">(</span><em class="sig-param">geom: QgsAbstractGeometry</em><span class="sig-paren">)</span> &#x2192; object<a class="headerlink" href="#qgis.core.QgsGeometryUtils.extractLineStrings" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns list of linestrings extracted from the passed geometry. The returned objects
 have to be deleted by the caller.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>geom</strong> (<a class="reference internal" href="QgsAbstractGeometry.html#qgis.core.QgsAbstractGeometry" title="qgis.core.QgsAbstractGeometry"><em>QgsAbstractGeometry</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>object</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1947,12 +2122,15 @@ have to be deleted by the caller.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>pt1</strong> – first point.</p></li>
-<li><p><strong>pt2</strong> – second point.</p></li>
+<li><p><strong>pt1</strong> (<a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint"><em>QgsPoint</em></a>) – first point.</p></li>
+<li><p><strong>pt2</strong> (<a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint"><em>QgsPoint</em></a>) – second point.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>The gradient of this linear entity, or infinity if vertical</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>float</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The gradient of this linear entity, or infinity if vertical</p>
 </dd>
 </dl>
 <div class="versionadded">
@@ -1967,6 +2145,22 @@ have to be deleted by the caller.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>angle</strong> (<em>float</em>) – </p></li>
+<li><p><strong>a1</strong> (<em>float</em>) – </p></li>
+<li><p><strong>a2</strong> (<em>float</em>) – </p></li>
+<li><p><strong>a3</strong> (<em>float</em>) – </p></li>
+<li><p><strong>zm1</strong> (<em>float</em>) – </p></li>
+<li><p><strong>zm2</strong> (<em>float</em>) – </p></li>
+<li><p><strong>zm3</strong> (<em>float</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1978,6 +2172,19 @@ interpolated by the specified <code class="docutils literal notranslate"><span c
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.4.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pt1</strong> (<a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint"><em>QgsPoint</em></a>) – </p></li>
+<li><p><strong>pt2</strong> (<a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint"><em>QgsPoint</em></a>) – </p></li>
+<li><p><strong>pt3</strong> (<a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint"><em>QgsPoint</em></a>) – </p></li>
+<li><p><strong>distance</strong> (<em>float</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint">QgsPoint</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1997,7 +2204,7 @@ is extrapolated from the supplied line.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0.2.</span></p>
 </div>
-<p>interpolatePointOnLine(p1: QgsPoint, p2: QgsPoint, fraction: float) -&gt; QgsPoint
+<p>interpolatePointOnLine(p1: <a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsPoint</span></code></a>, p2: <a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsPoint</span></code></a>, fraction: float) -&gt; QgsPoint
 Interpolates the position of a point a <code class="docutils literal notranslate"><span class="pre">fraction</span></code> of the way along
 the line from <code class="docutils literal notranslate"><span class="pre">p1</span></code> to <code class="docutils literal notranslate"><span class="pre">p2</span></code>.</p>
 <p>Usually the <code class="docutils literal notranslate"><span class="pre">fraction</span></code> should be between 0 and 1, where 0 represents the
@@ -2014,6 +2221,20 @@ and present in the returned point.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0.2.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x1</strong> (<em>float</em>) – </p></li>
+<li><p><strong>y1</strong> (<em>float</em>) – </p></li>
+<li><p><strong>x2</strong> (<em>float</em>) – </p></li>
+<li><p><strong>y2</strong> (<em>float</em>) – </p></li>
+<li><p><strong>fraction</strong> (<em>float</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsPointXY.html#qgis.core.QgsPointXY" title="qgis.core.QgsPointXY">QgsPointXY</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2032,6 +2253,22 @@ the target <code class="docutils literal notranslate"><span class="pre">value</s
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0.2.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x1</strong> (<em>float</em>) – </p></li>
+<li><p><strong>y1</strong> (<em>float</em>) – </p></li>
+<li><p><strong>v1</strong> (<em>float</em>) – </p></li>
+<li><p><strong>x2</strong> (<em>float</em>) – </p></li>
+<li><p><strong>y2</strong> (<em>float</em>) – </p></li>
+<li><p><strong>v2</strong> (<em>float</em>) – </p></li>
+<li><p><strong>value</strong> (<em>float</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsPointXY.html#qgis.core.QgsPointXY" title="qgis.core.QgsPointXY">QgsPointXY</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2041,7 +2278,7 @@ the target <code class="docutils literal notranslate"><span class="pre">value</s
 A positive return value indicates the point is to the right of the line.</p>
 <p>If the return value is 0, then the test was unsuccessful (e.g. due to testing a point exactly
 on the line, or exactly in line with the segment) and the result is undefined.</p>
-<p>leftOfLine(point: QgsPoint, p1: QgsPoint, p2: QgsPoint) -&gt; int
+<p>leftOfLine(point: <a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsPoint</span></code></a>, p1: <a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsPoint</span></code></a>, p2: <a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsPoint</span></code></a>) -&gt; int
 Returns a value &lt; 0 if the point <code class="docutils literal notranslate"><span class="pre">point</span></code> is left of the line from <code class="docutils literal notranslate"><span class="pre">p1</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">p2</span></code>.
 A positive return value indicates the point is to the right of the line.</p>
 <p>If the return value is 0, then the test was unsuccessful (e.g. due to testing a point exactly
@@ -2049,6 +2286,21 @@ on the line, or exactly in line with the segment) and the result is undefined.</
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.6.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>float</em>) – </p></li>
+<li><p><strong>y</strong> (<em>float</em>) – </p></li>
+<li><p><strong>x1</strong> (<em>float</em>) – </p></li>
+<li><p><strong>y1</strong> (<em>float</em>) – </p></li>
+<li><p><strong>x2</strong> (<em>float</em>) – </p></li>
+<li><p><strong>y2</strong> (<em>float</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2058,14 +2310,17 @@ on the line, or exactly in line with the segment) and the result is undefined.</
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>x1</strong> – x-coordinate of line start</p></li>
-<li><p><strong>y1</strong> – y-coordinate of line start</p></li>
-<li><p><strong>x2</strong> – x-coordinate of line end</p></li>
-<li><p><strong>y2</strong> – y-coordinate of line end</p></li>
+<li><p><strong>x1</strong> (<em>float</em>) – x-coordinate of line start</p></li>
+<li><p><strong>y1</strong> (<em>float</em>) – y-coordinate of line start</p></li>
+<li><p><strong>x2</strong> (<em>float</em>) – x-coordinate of line end</p></li>
+<li><p><strong>y2</strong> (<em>float</em>) – y-coordinate of line end</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>angle in radians. Returned value is undefined if start and end point are the same.</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>float</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>angle in radians. Returned value is undefined if start and end point are the same.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2079,15 +2334,18 @@ the closest point to the initial <code class="docutils literal notranslate"><spa
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>center</strong> – the center of the circle</p></li>
-<li><p><strong>radius</strong> – the radius of the circle</p></li>
-<li><p><strong>linePoint1</strong> – a first point on the line</p></li>
-<li><p><strong>linePoint2</strong> – a second point on the line</p></li>
-<li><p><strong>intersection</strong> – the initial point and the returned intersection point</p></li>
+<li><p><strong>center</strong> (<a class="reference internal" href="QgsPointXY.html#qgis.core.QgsPointXY" title="qgis.core.QgsPointXY"><em>QgsPointXY</em></a>) – the center of the circle</p></li>
+<li><p><strong>radius</strong> (<em>float</em>) – the radius of the circle</p></li>
+<li><p><strong>linePoint1</strong> (<a class="reference internal" href="QgsPointXY.html#qgis.core.QgsPointXY" title="qgis.core.QgsPointXY"><em>QgsPointXY</em></a>) – a first point on the line</p></li>
+<li><p><strong>linePoint2</strong> (<a class="reference internal" href="QgsPointXY.html#qgis.core.QgsPointXY" title="qgis.core.QgsPointXY"><em>QgsPointXY</em></a>) – a second point on the line</p></li>
+<li><p><strong>intersection</strong> (<a class="reference internal" href="QgsPointXY.html#qgis.core.QgsPointXY" title="qgis.core.QgsPointXY"><em>QgsPointXY</em></a>) – the initial point and the returned intersection point</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if an intersection has been found</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Tuple[bool, <a class="reference internal" href="QgsPointXY.html#qgis.core.QgsPointXY" title="qgis.core.QgsPointXY">QgsPointXY</a>]</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if an intersection has been found</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2101,14 +2359,17 @@ supported and is retrieved from the first 3D point amongst <code class="docutils
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>p1</strong> – Point on the first line</p></li>
-<li><p><strong>v1</strong> – Direction vector of the first line</p></li>
-<li><p><strong>p2</strong> – Point on the second line</p></li>
-<li><p><strong>v2</strong> – Direction vector of the second line</p></li>
+<li><p><strong>p1</strong> (<a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint"><em>QgsPoint</em></a>) – Point on the first line</p></li>
+<li><p><strong>v1</strong> (<a class="reference internal" href="QgsVector.html#qgis.core.QgsVector" title="qgis.core.QgsVector"><em>QgsVector</em></a>) – Direction vector of the first line</p></li>
+<li><p><strong>p2</strong> (<a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint"><em>QgsPoint</em></a>) – Point on the second line</p></li>
+<li><p><strong>v2</strong> (<a class="reference internal" href="QgsVector.html#qgis.core.QgsVector" title="qgis.core.QgsVector"><em>QgsVector</em></a>) – Direction vector of the second line</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><ul class="simple">
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Tuple[bool, <a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint">QgsPoint</a>]</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><ul class="simple">
 <li><p>Whether the lines intersect</p></li>
 <li><p>intersection: Output parameter, the intersection point</p></li>
 </ul>
@@ -2125,14 +2386,17 @@ clockwise from the north direction.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>x1</strong> – x-coordinate of line start</p></li>
-<li><p><strong>y1</strong> – y-coordinate of line start</p></li>
-<li><p><strong>x2</strong> – x-coordinate of line end</p></li>
-<li><p><strong>y2</strong> – y-coordinate of line end</p></li>
+<li><p><strong>x1</strong> (<em>float</em>) – x-coordinate of line start</p></li>
+<li><p><strong>y1</strong> (<em>float</em>) – y-coordinate of line start</p></li>
+<li><p><strong>x2</strong> (<em>float</em>) – x-coordinate of line end</p></li>
+<li><p><strong>y2</strong> (<em>float</em>) – y-coordinate of line end</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>angle in radians. Returned value is undefined if start and end point are the same.</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>float</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>angle in radians. Returned value is undefined if start and end point are the same.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2144,14 +2408,17 @@ clockwise from the north direction.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>La1</strong> – is the first point on the first line,</p></li>
-<li><p><strong>La2</strong> – is the second point on the first line,</p></li>
-<li><p><strong>Lb1</strong> – is the first point on the second line,</p></li>
-<li><p><strong>Lb2</strong> – is the second point on the second line,</p></li>
+<li><p><strong>La1</strong> (<a class="reference internal" href="QgsVector3D.html#qgis.core.QgsVector3D" title="qgis.core.QgsVector3D"><em>QgsVector3D</em></a>) – is the first point on the first line,</p></li>
+<li><p><strong>La2</strong> (<a class="reference internal" href="QgsVector3D.html#qgis.core.QgsVector3D" title="qgis.core.QgsVector3D"><em>QgsVector3D</em></a>) – is the second point on the first line,</p></li>
+<li><p><strong>Lb1</strong> (<a class="reference internal" href="QgsVector3D.html#qgis.core.QgsVector3D" title="qgis.core.QgsVector3D"><em>QgsVector3D</em></a>) – is the first point on the second line,</p></li>
+<li><p><strong>Lb2</strong> (<a class="reference internal" href="QgsVector3D.html#qgis.core.QgsVector3D" title="qgis.core.QgsVector3D"><em>QgsVector3D</em></a>) – is the second point on the second line,</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><ul class="simple">
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Tuple[bool, <a class="reference internal" href="QgsVector3D.html#qgis.core.QgsVector3D" title="qgis.core.QgsVector3D">QgsVector3D</a>]</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the intersection can be found, <code class="docutils literal notranslate"><span class="pre">False</span></code> - otherwise.</p></li>
 <li><p>intersection: is the result intersection, of it can be found.</p></li>
 </ul>
@@ -2194,12 +2461,15 @@ M value is computed if one of this point have M.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>pt1</strong> – first point.</p></li>
-<li><p><strong>pt2</strong> – second point.</p></li>
+<li><p><strong>pt1</strong> (<a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint"><em>QgsPoint</em></a>) – first point.</p></li>
+<li><p><strong>pt2</strong> (<a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint"><em>QgsPoint</em></a>) – second point.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>New point at middle between points pt1 and pt2.
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint">QgsPoint</a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>New point at middle between points pt1 and pt2.
 * Example:</p>
 </dd>
 </dl>
@@ -2225,10 +2495,13 @@ M value is computed if one of this point have M.</p>
 <dd><p>Ensures that an angle is in the range 0 &lt;= angle &lt; 2 pi.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>angle</strong> – angle in radians</p>
+<dd class="field-odd"><p><strong>angle</strong> (<em>float</em>) – angle in radians</p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>equivalent angle within the range [0, 2 pi)</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>float</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>equivalent angle within the range [0, 2 pi)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2240,13 +2513,16 @@ M value is computed if one of this point have M.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>p</strong> – The point</p></li>
-<li><p><strong>s1</strong> – The segment start point</p></li>
-<li><p><strong>s2</strong> – The segment end point</p></li>
+<li><p><strong>p</strong> (<a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint"><em>QgsPoint</em></a>) – The point</p></li>
+<li><p><strong>s1</strong> (<a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint"><em>QgsPoint</em></a>) – The segment start point</p></li>
+<li><p><strong>s2</strong> (<a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint"><em>QgsPoint</em></a>) – The segment end point</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>A line (segment) from p to perpendicular point on segment [s1, s2]</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsLineString.html#qgis.core.QgsLineString" title="qgis.core.QgsLineString">QgsLineString</a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A line (segment) from p to perpendicular point on segment [s1, s2]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2255,6 +2531,18 @@ M value is computed if one of this point have M.</p>
 <dt id="qgis.core.QgsGeometryUtils.pointOnLineWithDistance">
 <code class="sig-name descname">pointOnLineWithDistance</code><span class="sig-paren">(</span><em class="sig-param">startPoint: QgsPoint</em>, <em class="sig-param">directionPoint: QgsPoint</em>, <em class="sig-param">distance: float</em><span class="sig-paren">)</span> &#x2192; QgsPoint<a class="headerlink" href="#qgis.core.QgsGeometryUtils.pointOnLineWithDistance" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a point a specified <code class="docutils literal notranslate"><span class="pre">distance</span></code> toward a second point.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>startPoint</strong> (<a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint"><em>QgsPoint</em></a>) – </p></li>
+<li><p><strong>directionPoint</strong> (<a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint"><em>QgsPoint</em></a>) – </p></li>
+<li><p><strong>distance</strong> (<em>float</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint">QgsPoint</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2264,13 +2552,16 @@ M value is computed if one of this point have M.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>p</strong> – The point</p></li>
-<li><p><strong>s1</strong> – The segment start point</p></li>
-<li><p><strong>s2</strong> – The segment end point</p></li>
+<li><p><strong>p</strong> (<a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint"><em>QgsPoint</em></a>) – The point</p></li>
+<li><p><strong>s1</strong> (<a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint"><em>QgsPoint</em></a>) – The segment start point</p></li>
+<li><p><strong>s2</strong> (<a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint"><em>QgsPoint</em></a>) – The segment end point</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>The projection of the point on the segment</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint">QgsPoint</a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The projection of the point on the segment</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2282,17 +2573,20 @@ M value is computed if one of this point have M.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>p1</strong> – First segment start point</p></li>
-<li><p><strong>p2</strong> – First segment end point</p></li>
-<li><p><strong>q1</strong> – Second segment start point</p></li>
-<li><p><strong>q2</strong> – Second segment end point</p></li>
+<li><p><strong>p1</strong> (<a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint"><em>QgsPoint</em></a>) – First segment start point</p></li>
+<li><p><strong>p2</strong> (<a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint"><em>QgsPoint</em></a>) – First segment end point</p></li>
+<li><p><strong>q1</strong> (<a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint"><em>QgsPoint</em></a>) – Second segment start point</p></li>
+<li><p><strong>q2</strong> (<a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint"><em>QgsPoint</em></a>) – Second segment end point</p></li>
 <li><p><strong>isIntersection</strong> – Output parameter, return <code class="docutils literal notranslate"><span class="pre">True</span></code> if an intersection is found</p></li>
-<li><p><strong>tolerance</strong> – The tolerance to use</p></li>
-<li><p><strong>acceptImproperIntersection</strong> – By default, this method returns true only if segments have proper intersection. If set true, returns also <code class="docutils literal notranslate"><span class="pre">True</span></code> if segments have improper intersection (end of one segment on other segment ; continuous segments).</p></li>
+<li><p><strong>tolerance</strong> (<em>float = 1e-08</em>) – The tolerance to use</p></li>
+<li><p><strong>acceptImproperIntersection</strong> (<em>bool = False</em>) – By default, this method returns true only if segments have proper intersection. If set true, returns also <code class="docutils literal notranslate"><span class="pre">True</span></code> if segments have improper intersection (end of one segment on other segment ; continuous segments).</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><ul class="simple">
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Tuple[bool, <a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsPoint</span></code></a>, bool]</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><ul class="simple">
 <li><p>Whether the segments intersect</p></li>
 <li><p>intersectionPoint: Output parameter, the intersection point</p></li>
 </ul>
@@ -2335,6 +2629,19 @@ first 3D point amongst <code class="docutils literal notranslate"><span class="p
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsGeometryUtils.segmentMidPointFromCenter" title="qgis.core.QgsGeometryUtils.segmentMidPointFromCenter"><code class="xref py py-func docutils literal notranslate"><span class="pre">segmentMidPointFromCenter()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p1</strong> (<a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint"><em>QgsPoint</em></a>) – </p></li>
+<li><p><strong>p2</strong> (<a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint"><em>QgsPoint</em></a>) – </p></li>
+<li><p><strong>radius</strong> (<em>float</em>) – </p></li>
+<li><p><strong>mousePos</strong> (<a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint"><em>QgsPoint</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Tuple[bool, <a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint">QgsPoint</a>]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2352,6 +2659,19 @@ to <code class="docutils literal notranslate"><span class="pre">p2</span></code>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.2.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p1</strong> (<a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint"><em>QgsPoint</em></a>) – </p></li>
+<li><p><strong>p2</strong> (<a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint"><em>QgsPoint</em></a>) – </p></li>
+<li><p><strong>center</strong> (<a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint"><em>QgsPoint</em></a>) – </p></li>
+<li><p><strong>useShortestArc</strong> (<em>bool = True</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint">QgsPoint</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2362,6 +2682,18 @@ Returns -1 if pt3 on the left side, 1 if pt3 is on the right side or 0 if pt3 li
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pt1</strong> (<a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint"><em>QgsPoint</em></a>) – </p></li>
+<li><p><strong>pt3</strong> (<a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint"><em>QgsPoint</em></a>) – </p></li>
+<li><p><strong>pt2</strong> (<a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint"><em>QgsPoint</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2371,6 +2703,22 @@ Returns -1 if pt3 on the left side, 1 if pt3 is on the right side or 0 if pt3 li
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p1</strong> (<a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint"><em>QgsPoint</em></a>) – </p></li>
+<li><p><strong>p2</strong> (<a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint"><em>QgsPoint</em></a>) – </p></li>
+<li><p><strong>p3</strong> (<a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint"><em>QgsPoint</em></a>) – </p></li>
+<li><p><strong>tolerance</strong> (<em>float = M_PI_2/90</em>) – </p></li>
+<li><p><strong>toleranceType</strong> (<em>QgsAbstractGeometry.SegmentationToleranceType = QgsAbstractGeometry.MaximumAngle</em>) – </p></li>
+<li><p><strong>hasZ</strong> (<em>bool = False</em>) – </p></li>
+<li><p><strong>hasM</strong> (<em>bool = False</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>List[<a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint">QgsPoint</a>]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2381,12 +2729,15 @@ Returns -1 if pt3 on the left side, 1 if pt3 is on the right side or 0 if pt3 li
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>points</strong> – List of points in which a 3D point is searched.</p></li>
-<li><p><strong>point</strong> – The point to update with Z dimension and value.</p></li>
+<li><p><strong>points</strong> (<em>Iterable</em><em>[</em><a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint"><em>QgsPoint</em></a><em>]</em>) – List of points in which a 3D point is searched.</p></li>
+<li><p><strong>point</strong> (<a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint"><em>QgsPoint</em></a>) – The point to update with Z dimension and value.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the point is updated, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the point is updated, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise</p>
 </dd>
 </dl>
 <div class="versionadded">
@@ -2401,14 +2752,17 @@ Returns -1 if pt3 on the left side, 1 if pt3 is on the right side or 0 if pt3 li
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>P1</strong> – is the first point of the first line,</p></li>
-<li><p><strong>P12</strong> – is the second point on the first line,</p></li>
-<li><p><strong>P2</strong> – is the first point on the second line,</p></li>
-<li><p><strong>P22</strong> – is the second point on the second line.</p></li>
+<li><p><strong>P1</strong> (<a class="reference internal" href="QgsVector3D.html#qgis.core.QgsVector3D" title="qgis.core.QgsVector3D"><em>QgsVector3D</em></a>) – is the first point of the first line,</p></li>
+<li><p><strong>P12</strong> (<a class="reference internal" href="QgsVector3D.html#qgis.core.QgsVector3D" title="qgis.core.QgsVector3D"><em>QgsVector3D</em></a>) – is the second point on the first line,</p></li>
+<li><p><strong>P2</strong> (<a class="reference internal" href="QgsVector3D.html#qgis.core.QgsVector3D" title="qgis.core.QgsVector3D"><em>QgsVector3D</em></a>) – is the first point on the second line,</p></li>
+<li><p><strong>P22</strong> (<a class="reference internal" href="QgsVector3D.html#qgis.core.QgsVector3D" title="qgis.core.QgsVector3D"><em>QgsVector3D</em></a>) – is the second point on the second line.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>the shortest distance</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>float</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the shortest distance</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2420,16 +2774,19 @@ Returns -1 if pt3 on the left side, 1 if pt3 is on the right side or 0 if pt3 li
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>P1</strong> – is a first point that belonds to first skew line,</p></li>
-<li><p><strong>P12</strong> – is the second point that belongs to first skew line,</p></li>
-<li><p><strong>P2</strong> – is the first point that belongs to second skew line,</p></li>
-<li><p><strong>P22</strong> – is the second point that belongs to second skew line,</p></li>
+<li><p><strong>P1</strong> (<a class="reference internal" href="QgsVector3D.html#qgis.core.QgsVector3D" title="qgis.core.QgsVector3D"><em>QgsVector3D</em></a>) – is a first point that belonds to first skew line,</p></li>
+<li><p><strong>P12</strong> (<a class="reference internal" href="QgsVector3D.html#qgis.core.QgsVector3D" title="qgis.core.QgsVector3D"><em>QgsVector3D</em></a>) – is the second point that belongs to first skew line,</p></li>
+<li><p><strong>P2</strong> (<a class="reference internal" href="QgsVector3D.html#qgis.core.QgsVector3D" title="qgis.core.QgsVector3D"><em>QgsVector3D</em></a>) – is the first point that belongs to second skew line,</p></li>
+<li><p><strong>P22</strong> (<a class="reference internal" href="QgsVector3D.html#qgis.core.QgsVector3D" title="qgis.core.QgsVector3D"><em>QgsVector3D</em></a>) – is the second point that belongs to second skew line,</p></li>
 <li><p><strong>X1</strong> – is the result projection point of line P2P22 onto line P1P12,</p></li>
-<li><p><strong>epsilon</strong> – the tolerance to use.</p></li>
+<li><p><strong>epsilon</strong> (<em>float = 0.0001</em>) – the tolerance to use.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if such point exists, <code class="docutils literal notranslate"><span class="pre">False</span></code> - otherwise.</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Tuple[bool, <a class="reference internal" href="QgsVector3D.html#qgis.core.QgsVector3D" title="qgis.core.QgsVector3D">QgsVector3D</a>]</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if such point exists, <code class="docutils literal notranslate"><span class="pre">False</span></code> - otherwise.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2438,18 +2795,62 @@ Returns -1 if pt3 on the left side, 1 if pt3 is on the right side or 0 if pt3 li
 <dt id="qgis.core.QgsGeometryUtils.sqrDistToLine">
 <code class="sig-name descname">sqrDistToLine</code><span class="sig-paren">(</span><em class="sig-param">ptX: float</em>, <em class="sig-param">ptY: float</em>, <em class="sig-param">x1: float</em>, <em class="sig-param">y1: float</em>, <em class="sig-param">x2: float</em>, <em class="sig-param">y2: float</em>, <em class="sig-param">epsilon: float</em><span class="sig-paren">)</span> &#x2192; Tuple[float, float, float]<a class="headerlink" href="#qgis.core.QgsGeometryUtils.sqrDistToLine" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the squared distance between a point and a line.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ptX</strong> (<em>float</em>) – </p></li>
+<li><p><strong>ptY</strong> (<em>float</em>) – </p></li>
+<li><p><strong>x1</strong> (<em>float</em>) – </p></li>
+<li><p><strong>y1</strong> (<em>float</em>) – </p></li>
+<li><p><strong>x2</strong> (<em>float</em>) – </p></li>
+<li><p><strong>y2</strong> (<em>float</em>) – </p></li>
+<li><p><strong>epsilon</strong> (<em>float</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Tuple[float, float, float]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsGeometryUtils.sqrDistance2D">
 <code class="sig-name descname">sqrDistance2D</code><span class="sig-paren">(</span><em class="sig-param">pt1: QgsPoint</em>, <em class="sig-param">pt2: QgsPoint</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#qgis.core.QgsGeometryUtils.sqrDistance2D" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the squared 2D distance between two points.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pt1</strong> (<a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint"><em>QgsPoint</em></a>) – </p></li>
+<li><p><strong>pt2</strong> (<a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint"><em>QgsPoint</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsGeometryUtils.sweepAngle">
 <code class="sig-name descname">sweepAngle</code><span class="sig-paren">(</span><em class="sig-param">centerX: float</em>, <em class="sig-param">centerY: float</em>, <em class="sig-param">x1: float</em>, <em class="sig-param">y1: float</em>, <em class="sig-param">x2: float</em>, <em class="sig-param">y2: float</em>, <em class="sig-param">x3: float</em>, <em class="sig-param">y3: float</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#qgis.core.QgsGeometryUtils.sweepAngle" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculates angle of a circular string part defined by pt1, pt2, pt3</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>centerX</strong> (<em>float</em>) – </p></li>
+<li><p><strong>centerY</strong> (<em>float</em>) – </p></li>
+<li><p><strong>x1</strong> (<em>float</em>) – </p></li>
+<li><p><strong>y1</strong> (<em>float</em>) – </p></li>
+<li><p><strong>x2</strong> (<em>float</em>) – </p></li>
+<li><p><strong>y2</strong> (<em>float</em>) – </p></li>
+<li><p><strong>x3</strong> (<em>float</em>) – </p></li>
+<li><p><strong>y3</strong> (<em>float</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2461,6 +2862,18 @@ and the point <code class="docutils literal notranslate"><span class="pre">p</sp
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.2.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>center</strong> (<a class="reference internal" href="QgsPointXY.html#qgis.core.QgsPointXY" title="qgis.core.QgsPointXY"><em>QgsPointXY</em></a>) – </p></li>
+<li><p><strong>radius</strong> (<em>float</em>) – </p></li>
+<li><p><strong>p</strong> (<a class="reference internal" href="QgsPointXY.html#qgis.core.QgsPointXY" title="qgis.core.QgsPointXY"><em>QgsPointXY</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Tuple[bool, <a class="reference internal" href="QgsPointXY.html#qgis.core.QgsPointXY" title="qgis.core.QgsPointXY"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsPointXY</span></code></a>, QgsPointXY]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2471,13 +2884,16 @@ and the point <code class="docutils literal notranslate"><span class="pre">p</sp
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>geometry</strong> – line or polygon geometry</p></li>
-<li><p><strong>distance</strong> – distance to traverse along geometry</p></li>
+<li><p><strong>geometry</strong> (<a class="reference internal" href="QgsAbstractGeometry.html#qgis.core.QgsAbstractGeometry" title="qgis.core.QgsAbstractGeometry"><em>QgsAbstractGeometry</em></a>) – line or polygon geometry</p></li>
+<li><p><strong>distance</strong> (<em>float</em>) – distance to traverse along geometry</p></li>
 <li><p><strong>previousVertex</strong> – will be set to previous vertex ID</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><ul class="simple">
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Tuple[bool, <a class="reference internal" href="QgsVertexId.html#qgis.core.QgsVertexId" title="qgis.core.QgsVertexId"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsVertexId</span></code></a>, QgsVertexId]</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if vertices were successfully retrieved</p></li>
 <li><p>nextVertex: will be set to next vertex ID</p></li>
 </ul>
@@ -2509,7 +2925,7 @@ and the point <code class="docutils literal notranslate"><span class="pre">p</sp
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 10:58 Oct 14, 2019.
+        Last updated on 15:06 Oct 15, 2019.
       </span>
 
     </p>
@@ -2536,20 +2952,20 @@ and the point <code class="docutils literal notranslate"><span class="pre">p</sp
     <div class="rst-other-versions">
       <dl>
         <dt>Versions</dt>
-      
-        <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
-      
-    </dl>
+        
+          <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
+        
+      </dl>
       
       
     </div>

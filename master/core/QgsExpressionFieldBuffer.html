@@ -122,7 +122,6 @@
 <li class="toctree-l2"><a class="reference internal" href="PROJECT_SCALES.html">Class: PROJECT_SCALES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PluginLayer.html">Class: PluginLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ProjectDirtyBlocker.html">Class: ProjectDirtyBlocker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="PyProviderMetadata.html">Class: PyProviderMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgis.html">Class: Qgis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs25DRenderer.html">Class: Qgs25DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs3DRendererAbstractMetadata.html">Class: Qgs3DRendererAbstractMetadata</a></li>
@@ -1546,8 +1545,6 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/core/QgsExpressionFieldBuffer.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -1566,7 +1563,7 @@
 <em class="property">class </em><code class="sig-prename descclassname">qgis.core.</code><code class="sig-name descname">QgsExpressionFieldBuffer</code><a class="headerlink" href="#qgis.core.QgsExpressionFieldBuffer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sip.wrapper</span></code></p>
 <p>Constructor for QgsExpressionFieldBuffer.</p>
-<p>QgsExpressionFieldBuffer(QgsExpressionFieldBuffer)</p>
+<p>QgsExpressionFieldBuffer(<a class="reference internal" href="#qgis.core.QgsExpressionFieldBuffer" title="qgis.core.QgsExpressionFieldBuffer"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsExpressionFieldBuffer</span></code></a>)</p>
 <p>Buffers information about expression fields for a vector layer.</p>
 <div class="versionadded">
 <table class="longtable docutils align-default">
@@ -1588,7 +1585,12 @@
 <td><p>Add an expression to the buffer</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionFieldBuffer.expressions" title="qgis.core.QgsExpressionFieldBuffer.expressions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">expressions</span></code></a></p></td>
-<td><p></p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">rtype</dt>
+<dd class="field-odd"><p>List[QgsExpressionFieldBuffer.ExpressionField]</p>
+</dd>
+</dl>
+</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionFieldBuffer.readXml" title="qgis.core.QgsExpressionFieldBuffer.readXml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readXml</span></code></a></p></td>
 <td><p>Reads expressions from project file</p></td>
@@ -1603,7 +1605,7 @@
 <td><p>Changes the expression at a given index</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionFieldBuffer.updateFields" title="qgis.core.QgsExpressionFieldBuffer.updateFields"><code class="xref py py-obj docutils literal notranslate"><span class="pre">updateFields</span></code></a></p></td>
-<td><p>Adds fields with the expressions buffered in this object to a QgsFields object</p></td>
+<td><p>Adds fields with the expressions buffered in this object to a <a class="reference internal" href="QgsFields.html#qgis.core.QgsFields" title="qgis.core.QgsFields"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsFields</span></code></a> object</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionFieldBuffer.writeXml" title="qgis.core.QgsExpressionFieldBuffer.writeXml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeXml</span></code></a></p></td>
 <td><p>Saves expressions to xml under the layer node</p></td>
@@ -1632,6 +1634,14 @@
 <em class="property">class </em><code class="sig-name descname">ExpressionField</code><span class="sig-paren">(</span><em class="sig-param">exp: str</em>, <em class="sig-param">fld: QgsField</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsExpressionFieldBuffer.ExpressionField" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sip.wrapper</span></code></p>
 <p>QgsExpressionFieldBuffer.ExpressionField(QgsExpressionFieldBuffer.ExpressionField)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>exp</strong> (<em>str</em>) – </p></li>
+<li><p><strong>fld</strong> (<a class="reference internal" href="QgsField.html#qgis.core.QgsField" title="qgis.core.QgsField"><em>QgsField</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
 <dl class="attribute">
 <dt id="qgis.core.QgsExpressionFieldBuffer.ExpressionField.cachedExpression">
 <code class="sig-name descname">cachedExpression</code><a class="headerlink" href="#qgis.core.QgsExpressionFieldBuffer.ExpressionField.cachedExpression" title="Permalink to this definition">¶</a></dt>
@@ -1651,8 +1661,8 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>exp</strong> – expression to add</p></li>
-<li><p><strong>fld</strong> – field to add</p></li>
+<li><p><strong>exp</strong> (<em>str</em>) – expression to add</p></li>
+<li><p><strong>fld</strong> (<a class="reference internal" href="QgsField.html#qgis.core.QgsField" title="qgis.core.QgsField"><em>QgsField</em></a>) – field to add</p></li>
 </ul>
 </dd>
 </dl>
@@ -1661,12 +1671,22 @@
 <dl class="method">
 <dt id="qgis.core.QgsExpressionFieldBuffer.expressions">
 <code class="sig-name descname">expressions</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; List[QgsExpressionFieldBuffer.ExpressionField]<a class="headerlink" href="#qgis.core.QgsExpressionFieldBuffer.expressions" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List[<a class="reference internal" href="#qgis.core.QgsExpressionFieldBuffer.ExpressionField" title="qgis.core.QgsExpressionFieldBuffer.ExpressionField">QgsExpressionFieldBuffer.ExpressionField</a>]</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsExpressionFieldBuffer.readXml">
 <code class="sig-name descname">readXml</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">layer_node: QDomNode</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsExpressionFieldBuffer.readXml" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reads expressions from project file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>layer_node</strong> (<em>QDomNode</em>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1675,7 +1695,7 @@
 <dd><p>Remove an expression from the buffer</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>index</strong> – index of expression to remove</p>
+<dd class="field-odd"><p><strong>index</strong> (<em>int</em>) – index of expression to remove</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1687,8 +1707,8 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>index</strong> – The index of the expression to change</p></li>
-<li><p><strong>name</strong> – New name for field</p></li>
+<li><p><strong>index</strong> (<em>int</em>) – The index of the expression to change</p></li>
+<li><p><strong>name</strong> (<em>str</em>) – New name for field</p></li>
 </ul>
 </dd>
 </dl>
@@ -1704,8 +1724,8 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>index</strong> – The index of the expression to change</p></li>
-<li><p><strong>exp</strong> – The new expression to set</p></li>
+<li><p><strong>index</strong> (<em>int</em>) – The index of the expression to change</p></li>
+<li><p><strong>exp</strong> (<em>str</em>) – The new expression to set</p></li>
 </ul>
 </dd>
 </dl>
@@ -1717,10 +1737,10 @@
 <dl class="method">
 <dt id="qgis.core.QgsExpressionFieldBuffer.updateFields">
 <code class="sig-name descname">updateFields</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">flds: QgsFields</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsExpressionFieldBuffer.updateFields" title="Permalink to this definition">¶</a></dt>
-<dd><p>Adds fields with the expressions buffered in this object to a QgsFields object</p>
+<dd><p>Adds fields with the expressions buffered in this object to a <a class="reference internal" href="QgsFields.html#qgis.core.QgsFields" title="qgis.core.QgsFields"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsFields</span></code></a> object</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>flds</strong> – The fields to be updated</p>
+<dd class="field-odd"><p><strong>flds</strong> (<a class="reference internal" href="QgsFields.html#qgis.core.QgsFields" title="qgis.core.QgsFields"><em>QgsFields</em></a>) – The fields to be updated</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1729,6 +1749,14 @@
 <dt id="qgis.core.QgsExpressionFieldBuffer.writeXml">
 <code class="sig-name descname">writeXml</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">layer_node: QDomNode</em>, <em class="sig-param">document: QDomDocument</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsExpressionFieldBuffer.writeXml" title="Permalink to this definition">¶</a></dt>
 <dd><p>Saves expressions to xml under the layer node</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>layer_node</strong> (<em>QDomNode</em>) – </p></li>
+<li><p><strong>document</strong> (<em>QDomDocument</em>) – </p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -1747,7 +1775,7 @@
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 10:58 Oct 14, 2019.
+        Last updated on 15:06 Oct 15, 2019.
       </span>
 
     </p>
@@ -1774,20 +1802,20 @@
     <div class="rst-other-versions">
       <dl>
         <dt>Versions</dt>
-      
-        <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
-      
-    </dl>
+        
+          <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
+        
+      </dl>
       
       
     </div>

@@ -122,7 +122,6 @@
 <li class="toctree-l2"><a class="reference internal" href="PROJECT_SCALES.html">Class: PROJECT_SCALES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PluginLayer.html">Class: PluginLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ProjectDirtyBlocker.html">Class: ProjectDirtyBlocker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="PyProviderMetadata.html">Class: PyProviderMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgis.html">Class: Qgis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs25DRenderer.html">Class: Qgs25DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs3DRendererAbstractMetadata.html">Class: Qgs3DRendererAbstractMetadata</a></li>
@@ -1546,8 +1545,6 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/core/QgsLayout.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -1564,354 +1561,25 @@
 <dl class="class">
 <dt id="qgis.core.QgsLayout">
 <em class="property">class </em><code class="sig-prename descclassname">qgis.core.</code><code class="sig-name descname">QgsLayout</code><span class="sig-paren">(</span><em class="sig-param">project: QgsProject</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsLayout" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">PyQt5.QtWidgets.QGraphicsScene</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">qgis._core.QgsExpressionContextGenerator</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">qgis._core.QgsLayoutUndoObjectInterface</span></code></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">PyQt5.QtWidgets.QGraphicsScene</span></code>, <a class="reference internal" href="QgsExpressionContextGenerator.html#module-QgsExpressionContextGenerator" title="QgsExpressionContextGenerator"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsExpressionContextGenerator</span></code></a>, <a class="reference internal" href="QgsLayoutUndoObjectInterface.html#module-QgsLayoutUndoObjectInterface" title="QgsLayoutUndoObjectInterface"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsLayoutUndoObjectInterface</span></code></a></p>
 <p>Construct a new layout linked to the specified <code class="docutils literal notranslate"><span class="pre">project</span></code>.</p>
 <p>If the layout is a “new” layout (as opposed to a layout which will
 restore a previous state from XML) then initializeDefaults() should be
 called on the new layout.</p>
 <p>Base class for layouts, which can contain items such as maps, labels, scalebars, etc.</p>
 <p>While the raw QGraphicsScene API can be used to render the contents of a QgsLayout
-to a QPainter, it is recommended to instead use a QgsLayoutExporter to handle rendering
-layouts instead. QgsLayoutExporter automatically takes care of the intracacies of
+to a QPainter, it is recommended to instead use a <a class="reference internal" href="QgsLayoutExporter.html#qgis.core.QgsLayoutExporter" title="qgis.core.QgsLayoutExporter"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsLayoutExporter</span></code></a> to handle rendering
+layouts instead. <a class="reference internal" href="QgsLayoutExporter.html#qgis.core.QgsLayoutExporter" title="qgis.core.QgsLayoutExporter"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsLayoutExporter</span></code></a> automatically takes care of the intracacies of
 preparing the layout and paint devices for correct exports, respecting various
 user settings such as the layout context DPI.</p>
 <div class="versionadded">
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
-<tbody>
-</tbody>
-</table>
-<p class="rubric">Methods</p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.accept" title="qgis.core.QgsLayout.accept"><code class="xref py py-obj docutils literal notranslate"><span class="pre">accept</span></code></a></p></td>
-<td><p>Accepts the specified style entity <code class="docutils literal notranslate"><span class="pre">visitor</span></code>, causing it to visit all style entities associated with the layout.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.addItemsFromXml" title="qgis.core.QgsLayout.addItemsFromXml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">addItemsFromXml</span></code></a></p></td>
-<td><p>Add items from an XML representation to the layout.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.addLayoutItem" title="qgis.core.QgsLayout.addLayoutItem"><code class="xref py py-obj docutils literal notranslate"><span class="pre">addLayoutItem</span></code></a></p></td>
-<td><p>Adds an <code class="docutils literal notranslate"><span class="pre">item</span></code> to the layout.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.addMultiFrame" title="qgis.core.QgsLayout.addMultiFrame"><code class="xref py py-obj docutils literal notranslate"><span class="pre">addMultiFrame</span></code></a></p></td>
-<td><p>Adds a <code class="docutils literal notranslate"><span class="pre">multiFrame</span></code> to the layout.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.childEvent" title="qgis.core.QgsLayout.childEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">childEvent</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.clear" title="qgis.core.QgsLayout.clear"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clear</span></code></a></p></td>
-<td><p>Clears the layout.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.clone" title="qgis.core.QgsLayout.clone"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clone</span></code></a></p></td>
-<td><p>Creates a clone of the layout.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.connectNotify" title="qgis.core.QgsLayout.connectNotify"><code class="xref py py-obj docutils literal notranslate"><span class="pre">connectNotify</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.contextMenuEvent" title="qgis.core.QgsLayout.contextMenuEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">contextMenuEvent</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.convertFromLayoutUnits" title="qgis.core.QgsLayout.convertFromLayoutUnits"><code class="xref py py-obj docutils literal notranslate"><span class="pre">convertFromLayoutUnits</span></code></a></p></td>
-<td><p>Converts a <code class="docutils literal notranslate"><span class="pre">length</span></code> measurement from the layout’s native units to a specified target <code class="docutils literal notranslate"><span class="pre">unit</span></code>.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.convertToLayoutUnits" title="qgis.core.QgsLayout.convertToLayoutUnits"><code class="xref py py-obj docutils literal notranslate"><span class="pre">convertToLayoutUnits</span></code></a></p></td>
-<td><p>Converts a measurement into the layout’s native units.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.createCommand" title="qgis.core.QgsLayout.createCommand"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createCommand</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.createExpressionContext" title="qgis.core.QgsLayout.createExpressionContext"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createExpressionContext</span></code></a></p></td>
-<td><p>Creates an expression context relating to the layout’s current state.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.customEvent" title="qgis.core.QgsLayout.customEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">customEvent</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.customProperties" title="qgis.core.QgsLayout.customProperties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">customProperties</span></code></a></p></td>
-<td><p>Returns list of keys stored in custom properties for the layout.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.customProperty" title="qgis.core.QgsLayout.customProperty"><code class="xref py py-obj docutils literal notranslate"><span class="pre">customProperty</span></code></a></p></td>
-<td><p>Read a custom property from the layout.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.deselectAll" title="qgis.core.QgsLayout.deselectAll"><code class="xref py py-obj docutils literal notranslate"><span class="pre">deselectAll</span></code></a></p></td>
-<td><p>Clears any selected items in the layout.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.disconnectNotify" title="qgis.core.QgsLayout.disconnectNotify"><code class="xref py py-obj docutils literal notranslate"><span class="pre">disconnectNotify</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.dragEnterEvent" title="qgis.core.QgsLayout.dragEnterEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dragEnterEvent</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.dragLeaveEvent" title="qgis.core.QgsLayout.dragLeaveEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dragLeaveEvent</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.dragMoveEvent" title="qgis.core.QgsLayout.dragMoveEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dragMoveEvent</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.drawBackground" title="qgis.core.QgsLayout.drawBackground"><code class="xref py py-obj docutils literal notranslate"><span class="pre">drawBackground</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.drawForeground" title="qgis.core.QgsLayout.drawForeground"><code class="xref py py-obj docutils literal notranslate"><span class="pre">drawForeground</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.dropEvent" title="qgis.core.QgsLayout.dropEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dropEvent</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.event" title="qgis.core.QgsLayout.event"><code class="xref py py-obj docutils literal notranslate"><span class="pre">event</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.eventFilter" title="qgis.core.QgsLayout.eventFilter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">eventFilter</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.focusInEvent" title="qgis.core.QgsLayout.focusInEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">focusInEvent</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.focusNextPrevChild" title="qgis.core.QgsLayout.focusNextPrevChild"><code class="xref py py-obj docutils literal notranslate"><span class="pre">focusNextPrevChild</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.focusOutEvent" title="qgis.core.QgsLayout.focusOutEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">focusOutEvent</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.gridSettings" title="qgis.core.QgsLayout.gridSettings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gridSettings</span></code></a></p></td>
-<td><p>Returns a reference to the layout’s grid settings, which stores settings relating to grid appearance, spacing and offsets.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.groupItems" title="qgis.core.QgsLayout.groupItems"><code class="xref py py-obj docutils literal notranslate"><span class="pre">groupItems</span></code></a></p></td>
-<td><p>Creates a new group from a list of layout <code class="docutils literal notranslate"><span class="pre">items</span></code> and adds the group to the layout.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.guides" title="qgis.core.QgsLayout.guides"><code class="xref py py-obj docutils literal notranslate"><span class="pre">guides</span></code></a></p></td>
-<td><p>Returns a reference to the layout’s guide collection, which manages page snap guides.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.helpEvent" title="qgis.core.QgsLayout.helpEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">helpEvent</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.initializeDefaults" title="qgis.core.QgsLayout.initializeDefaults"><code class="xref py py-obj docutils literal notranslate"><span class="pre">initializeDefaults</span></code></a></p></td>
-<td><p>Initializes an empty layout, e.g.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.inputMethodEvent" title="qgis.core.QgsLayout.inputMethodEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">inputMethodEvent</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.isSignalConnected" title="qgis.core.QgsLayout.isSignalConnected"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isSignalConnected</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.itemById" title="qgis.core.QgsLayout.itemById"><code class="xref py py-obj docutils literal notranslate"><span class="pre">itemById</span></code></a></p></td>
-<td><p>Returns a layout item given its <code class="docutils literal notranslate"><span class="pre">id</span></code>.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.itemByTemplateUuid" title="qgis.core.QgsLayout.itemByTemplateUuid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">itemByTemplateUuid</span></code></a></p></td>
-<td><p>Returns the layout item with matching template <code class="docutils literal notranslate"><span class="pre">uuid</span></code> unique identifier, or <code class="docutils literal notranslate"><span class="pre">None</span></code> if a matching item could not be found.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.itemByUuid" title="qgis.core.QgsLayout.itemByUuid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">itemByUuid</span></code></a></p></td>
-<td><p>Returns the layout item with matching <code class="docutils literal notranslate"><span class="pre">uuid</span></code> unique identifier, or <code class="docutils literal notranslate"><span class="pre">None</span></code> if a matching item could not be found.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.itemsModel" title="qgis.core.QgsLayout.itemsModel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">itemsModel</span></code></a></p></td>
-<td><p>Returns the items model attached to the layout.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.keyPressEvent" title="qgis.core.QgsLayout.keyPressEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">keyPressEvent</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.keyReleaseEvent" title="qgis.core.QgsLayout.keyReleaseEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">keyReleaseEvent</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.layoutBounds" title="qgis.core.QgsLayout.layoutBounds"><code class="xref py py-obj docutils literal notranslate"><span class="pre">layoutBounds</span></code></a></p></td>
-<td><p>Calculates the bounds of all non-gui items in the layout.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.layoutItemAt" title="qgis.core.QgsLayout.layoutItemAt"><code class="xref py py-obj docutils literal notranslate"><span class="pre">layoutItemAt</span></code></a></p></td>
-<td><p>Returns the topmost layout item at a specified <code class="docutils literal notranslate"><span class="pre">position</span></code>.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.loadFromTemplate" title="qgis.core.QgsLayout.loadFromTemplate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">loadFromTemplate</span></code></a></p></td>
-<td><p>Load a layout template <code class="docutils literal notranslate"><span class="pre">document</span></code>.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.lowerItem" title="qgis.core.QgsLayout.lowerItem"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lowerItem</span></code></a></p></td>
-<td><p>Lowers an <code class="docutils literal notranslate"><span class="pre">item</span></code> down the z-order.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.mouseDoubleClickEvent" title="qgis.core.QgsLayout.mouseDoubleClickEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mouseDoubleClickEvent</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.mouseMoveEvent" title="qgis.core.QgsLayout.mouseMoveEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mouseMoveEvent</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.mousePressEvent" title="qgis.core.QgsLayout.mousePressEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mousePressEvent</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.mouseReleaseEvent" title="qgis.core.QgsLayout.mouseReleaseEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mouseReleaseEvent</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.moveItemToBottom" title="qgis.core.QgsLayout.moveItemToBottom"><code class="xref py py-obj docutils literal notranslate"><span class="pre">moveItemToBottom</span></code></a></p></td>
-<td><p>Lowers an <code class="docutils literal notranslate"><span class="pre">item</span></code> down to the bottom of the z-order.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.moveItemToTop" title="qgis.core.QgsLayout.moveItemToTop"><code class="xref py py-obj docutils literal notranslate"><span class="pre">moveItemToTop</span></code></a></p></td>
-<td><p>Raises an <code class="docutils literal notranslate"><span class="pre">item</span></code> up to the top of the z-order.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.multiFrameByUuid" title="qgis.core.QgsLayout.multiFrameByUuid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">multiFrameByUuid</span></code></a></p></td>
-<td><p>Returns the layout multiframe with matching <code class="docutils literal notranslate"><span class="pre">uuid</span></code> unique identifier, or <code class="docutils literal notranslate"><span class="pre">None</span></code> if a matching multiframe could not be found.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.multiFrames" title="qgis.core.QgsLayout.multiFrames"><code class="xref py py-obj docutils literal notranslate"><span class="pre">multiFrames</span></code></a></p></td>
-<td><p>Returns a list of multi frames contained in the layout.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.pageCollection" title="qgis.core.QgsLayout.pageCollection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pageCollection</span></code></a></p></td>
-<td><p>Returns a pointer to the layout’s page collection, which stores and manages page items in the layout.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.pageItemBounds" title="qgis.core.QgsLayout.pageItemBounds"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pageItemBounds</span></code></a></p></td>
-<td><p>Returns the bounding box of the items contained on a specified <code class="docutils literal notranslate"><span class="pre">page</span></code>.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.project" title="qgis.core.QgsLayout.project"><code class="xref py py-obj docutils literal notranslate"><span class="pre">project</span></code></a></p></td>
-<td><p>The project associated with the layout.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.raiseItem" title="qgis.core.QgsLayout.raiseItem"><code class="xref py py-obj docutils literal notranslate"><span class="pre">raiseItem</span></code></a></p></td>
-<td><p>Raises an <code class="docutils literal notranslate"><span class="pre">item</span></code> up the z-order.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.readXml" title="qgis.core.QgsLayout.readXml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readXml</span></code></a></p></td>
-<td><p>Sets the collection’s state from a DOM element.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.receivers" title="qgis.core.QgsLayout.receivers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">receivers</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.referenceMap" title="qgis.core.QgsLayout.referenceMap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">referenceMap</span></code></a></p></td>
-<td><p>Returns the map item which will be used to generate corresponding world files when the layout is exported.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.refresh" title="qgis.core.QgsLayout.refresh"><code class="xref py py-obj docutils literal notranslate"><span class="pre">refresh</span></code></a></p></td>
-<td><p>Forces the layout, and all items contained within it, to refresh.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.reloadSettings" title="qgis.core.QgsLayout.reloadSettings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reloadSettings</span></code></a></p></td>
-<td><p>Refreshes the layout when global layout related options change.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.removeCustomProperty" title="qgis.core.QgsLayout.removeCustomProperty"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeCustomProperty</span></code></a></p></td>
-<td><p>Remove a custom property from the layout.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.removeLayoutItem" title="qgis.core.QgsLayout.removeLayoutItem"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeLayoutItem</span></code></a></p></td>
-<td><p>Removes an <code class="docutils literal notranslate"><span class="pre">item</span></code> from the layout.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.removeMultiFrame" title="qgis.core.QgsLayout.removeMultiFrame"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeMultiFrame</span></code></a></p></td>
-<td><p>Removes a <code class="docutils literal notranslate"><span class="pre">multiFrame</span></code> from the layout (but does not delete it).</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.renderContext" title="qgis.core.QgsLayout.renderContext"><code class="xref py py-obj docutils literal notranslate"><span class="pre">renderContext</span></code></a></p></td>
-<td><p>Returns a reference to the layout’s render context, which stores information relating to the current rendering settings for the layout.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.reportContext" title="qgis.core.QgsLayout.reportContext"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reportContext</span></code></a></p></td>
-<td><p>Returns a reference to the layout’s report context, which stores information relating to the current reporting context for the layout.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.saveAsTemplate" title="qgis.core.QgsLayout.saveAsTemplate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">saveAsTemplate</span></code></a></p></td>
-<td><p>Saves the layout as a template at the given file <code class="docutils literal notranslate"><span class="pre">path</span></code>.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.selectedLayoutItems" title="qgis.core.QgsLayout.selectedLayoutItems"><code class="xref py py-obj docutils literal notranslate"><span class="pre">selectedLayoutItems</span></code></a></p></td>
-<td><p>Returns list of selected layout items.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.sender" title="qgis.core.QgsLayout.sender"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sender</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.senderSignalIndex" title="qgis.core.QgsLayout.senderSignalIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">senderSignalIndex</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.setCustomProperty" title="qgis.core.QgsLayout.setCustomProperty"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setCustomProperty</span></code></a></p></td>
-<td><p>Set a custom property for the layout.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.setReferenceMap" title="qgis.core.QgsLayout.setReferenceMap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setReferenceMap</span></code></a></p></td>
-<td><p>Sets the <code class="docutils literal notranslate"><span class="pre">map</span></code> item which will be used to generate corresponding world files when the layout is exported.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.setSelectedItem" title="qgis.core.QgsLayout.setSelectedItem"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setSelectedItem</span></code></a></p></td>
-<td><p>Clears any selected items and sets <code class="docutils literal notranslate"><span class="pre">item</span></code> as the current selection.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.setUnits" title="qgis.core.QgsLayout.setUnits"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setUnits</span></code></a></p></td>
-<td><p>Sets the native measurement <code class="docutils literal notranslate"><span class="pre">units</span></code> for the layout.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.snapper" title="qgis.core.QgsLayout.snapper"><code class="xref py py-obj docutils literal notranslate"><span class="pre">snapper</span></code></a></p></td>
-<td><p>Returns a reference to the layout’s snapper, which stores handles layout snap grids and lines and snapping points to the nearest matching point.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.timerEvent" title="qgis.core.QgsLayout.timerEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">timerEvent</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.undoStack" title="qgis.core.QgsLayout.undoStack"><code class="xref py py-obj docutils literal notranslate"><span class="pre">undoStack</span></code></a></p></td>
-<td><p>Returns a pointer to the layout’s undo stack, which manages undo/redo states for the layout and it’s associated objects.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.ungroupItems" title="qgis.core.QgsLayout.ungroupItems"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ungroupItems</span></code></a></p></td>
-<td><p>Ungroups items by removing them from an item <code class="docutils literal notranslate"><span class="pre">group</span></code> and removing the group from the layout.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.units" title="qgis.core.QgsLayout.units"><code class="xref py py-obj docutils literal notranslate"><span class="pre">units</span></code></a></p></td>
-<td><p>Returns the native units for the layout.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.updateBounds" title="qgis.core.QgsLayout.updateBounds"><code class="xref py py-obj docutils literal notranslate"><span class="pre">updateBounds</span></code></a></p></td>
-<td><p>Updates the scene bounds of the layout.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.updateZValues" title="qgis.core.QgsLayout.updateZValues"><code class="xref py py-obj docutils literal notranslate"><span class="pre">updateZValues</span></code></a></p></td>
-<td><p>Resets the z-values of items based on their position in the internal z order list.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.wheelEvent" title="qgis.core.QgsLayout.wheelEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wheelEvent</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.writeXml" title="qgis.core.QgsLayout.writeXml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeXml</span></code></a></p></td>
-<td><p>Returns the layout’s state encapsulated in a DOM element.</p></td>
-</tr>
-</tbody>
-</table>
-<p class="rubric">Signals</p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.backgroundTaskCountChanged" title="qgis.core.QgsLayout.backgroundTaskCountChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">backgroundTaskCountChanged</span></code></a></p></td>
-<td><p>Emitted whenever the <code class="docutils literal notranslate"><span class="pre">total</span></code> number of background tasks running in items from the layout changes.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.changed" title="qgis.core.QgsLayout.changed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">changed</span></code></a></p></td>
-<td><p>Emitted when properties of the layout change.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.refreshed" title="qgis.core.QgsLayout.refreshed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">refreshed</span></code></a></p></td>
-<td><p>Emitted when the layout has been refreshed and items should also be refreshed and updated.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.selectedItemChanged" title="qgis.core.QgsLayout.selectedItemChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">selectedItemChanged</span></code></a></p></td>
-<td><p>Emitted whenever the selected item changes.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.variablesChanged" title="qgis.core.QgsLayout.variablesChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">variablesChanged</span></code></a></p></td>
-<td><p>Emitted whenever the expression variables stored in the layout have been changed.</p></td>
-</tr>
-</tbody>
-</table>
-<p class="rubric">Attributes</p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.UndoLayoutDpi" title="qgis.core.QgsLayout.UndoLayoutDpi"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UndoLayoutDpi</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.UndoNone" title="qgis.core.QgsLayout.UndoNone"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UndoNone</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.ZGrid" title="qgis.core.QgsLayout.ZGrid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ZGrid</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.ZGuide" title="qgis.core.QgsLayout.ZGuide"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ZGuide</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.ZItem" title="qgis.core.QgsLayout.ZItem"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ZItem</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.ZMouseHandles" title="qgis.core.QgsLayout.ZMouseHandles"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ZMouseHandles</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.ZPage" title="qgis.core.QgsLayout.ZPage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ZPage</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.ZSmartGuide" title="qgis.core.QgsLayout.ZSmartGuide"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ZSmartGuide</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.ZSnapIndicator" title="qgis.core.QgsLayout.ZSnapIndicator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ZSnapIndicator</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayout.ZViewTool" title="qgis.core.QgsLayout.ZViewTool"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ZViewTool</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-</tbody>
-</table>
+<p><span class="versionmodified added">New in version 3.0.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>project</strong> – </p>
+</dd>
+</dl>
 <dl class="class">
 <dt id="qgis.core.QgsLayout.UndoCommand">
 <em class="property">class </em><code class="sig-name descname">UndoCommand</code><a class="headerlink" href="#qgis.core.QgsLayout.UndoCommand" title="Permalink to this definition">¶</a></dt>
@@ -1984,6 +1652,14 @@ should be canceled.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.10.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>visitor</strong> (<a class="reference internal" href="QgsStyleEntityVisitorInterface.html#qgis.core.QgsStyleEntityVisitorInterface" title="qgis.core.QgsStyleEntityVisitorInterface"><em>QgsStyleEntityVisitorInterface</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1996,6 +1672,20 @@ bounds of all added items is located at this <code class="docutils literal notra
 <p>The <code class="docutils literal notranslate"><span class="pre">pasteInPlace</span></code> argument determines whether the serialized position should be respected, but remapped to the
 origin of the page corresponding to the page at <code class="docutils literal notranslate"><span class="pre">position</span></code>.</p>
 <p>A list of the newly added items is returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parentElement</strong> (<em>QDomElement</em>) – </p></li>
+<li><p><strong>document</strong> (<em>QDomDocument</em>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsReadWriteContext.html#qgis.core.QgsReadWriteContext" title="qgis.core.QgsReadWriteContext"><em>QgsReadWriteContext</em></a>) – </p></li>
+<li><p><strong>position</strong> (<em>Union</em><em>[</em><em>QPointF</em>) – </p></li>
+<li><p><strong>pasteInPlace</strong> (<em>bool = False</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>List[<a class="reference internal" href="QgsLayoutItem.html#qgis.core.QgsLayoutItem" title="qgis.core.QgsLayoutItem">QgsLayoutItem</a>]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2003,6 +1693,11 @@ origin of the page corresponding to the page at <code class="docutils literal no
 <code class="sig-name descname">addLayoutItem</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item: QgsLayoutItem</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsLayout.addLayoutItem" title="Permalink to this definition">¶</a></dt>
 <dd><p>Adds an <code class="docutils literal notranslate"><span class="pre">item</span></code> to the layout. This should be called instead of the base class addItem()
 method. Ownership of the item is transferred to the layout.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>item</strong> (<a class="reference internal" href="QgsLayoutItem.html#qgis.core.QgsLayoutItem" title="qgis.core.QgsLayoutItem"><em>QgsLayoutItem</em></a>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2017,6 +1712,11 @@ method. Ownership of the item is transferred to the layout.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsLayout.multiFrames" title="qgis.core.QgsLayout.multiFrames"><code class="xref py py-func docutils literal notranslate"><span class="pre">multiFrames()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>multiFrame</strong> (<a class="reference internal" href="QgsLayoutMultiFrame.html#qgis.core.QgsLayoutMultiFrame" title="qgis.core.QgsLayoutMultiFrame"><em>QgsLayoutMultiFrame</em></a>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="attribute">
@@ -2026,6 +1726,11 @@ method. Ownership of the item is transferred to the layout.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.10: </span>[signal]</p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>total</strong> (<em>int</em>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="attribute">
@@ -2053,6 +1758,11 @@ when child items change. [signal]</p>
 <code class="sig-name descname">clone</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QgsLayout<a class="headerlink" href="#qgis.core.QgsLayout.clone" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates a clone of the layout. Ownership of the return layout
 is transferred to the caller.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#qgis.core.QgsLayout" title="qgis.core.QgsLayout">QgsLayout</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2100,8 +1810,11 @@ Converts a <code class="docutils literal notranslate"><span class="pre">size</sp
 <p>convertFromLayoutUnits(self, point: Union[QPointF, QPoint], unit: QgsUnitTypes.LayoutUnit) -&gt; QgsLayoutPoint
 Converts a <code class="docutils literal notranslate"><span class="pre">point</span></code> from the layout’s native units to a specified target <code class="docutils literal notranslate"><span class="pre">unit</span></code>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>point in specified units</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsLayoutMeasurement.html#qgis.core.QgsLayoutMeasurement" title="qgis.core.QgsLayoutMeasurement">QgsLayoutMeasurement</a></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>point in specified units</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -2112,6 +1825,14 @@ Converts a <code class="docutils literal notranslate"><span class="pre">point</s
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsLayout.units" title="qgis.core.QgsLayout.units"><code class="xref py py-func docutils literal notranslate"><span class="pre">units()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>length</strong> (<em>float</em>) – </p></li>
+<li><p><strong>unit</strong> (<a class="reference internal" href="QgsUnitTypes.html#qgis.core.QgsUnitTypes.LayoutUnit" title="qgis.core.QgsUnitTypes.LayoutUnit"><em>QgsUnitTypes.LayoutUnit</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2131,7 +1852,7 @@ Converts a <code class="docutils literal notranslate"><span class="pre">point</s
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsLayout.units" title="qgis.core.QgsLayout.units"><code class="xref py py-func docutils literal notranslate"><span class="pre">units()</span></code></a></p>
 </div>
-<p>convertToLayoutUnits(self, size: QgsLayoutSize) -&gt; QSizeF
+<p>convertToLayoutUnits(self, size: <a class="reference internal" href="QgsLayoutSize.html#qgis.core.QgsLayoutSize" title="qgis.core.QgsLayoutSize"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsLayoutSize</span></code></a>) -&gt; QSizeF
 Converts a size into the layout’s native units.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -2146,11 +1867,14 @@ Converts a size into the layout’s native units.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsLayout.units" title="qgis.core.QgsLayout.units"><code class="xref py py-func docutils literal notranslate"><span class="pre">units()</span></code></a></p>
 </div>
-<p>convertToLayoutUnits(self, point: QgsLayoutPoint) -&gt; QPointF
+<p>convertToLayoutUnits(self, point: <a class="reference internal" href="QgsLayoutPoint.html#qgis.core.QgsLayoutPoint" title="qgis.core.QgsLayoutPoint"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsLayoutPoint</span></code></a>) -&gt; QPointF
 Converts a <code class="docutils literal notranslate"><span class="pre">point</span></code> into the layout’s native units.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>point in layout units</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>point in layout units</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -2161,18 +1885,40 @@ Converts a <code class="docutils literal notranslate"><span class="pre">point</s
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsLayout.units" title="qgis.core.QgsLayout.units"><code class="xref py py-func docutils literal notranslate"><span class="pre">units()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>measurement</strong> (<a class="reference internal" href="QgsLayoutMeasurement.html#qgis.core.QgsLayoutMeasurement" title="qgis.core.QgsLayoutMeasurement"><em>QgsLayoutMeasurement</em></a>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsLayout.createCommand">
 <code class="sig-name descname">createCommand</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">text: str</em>, <em class="sig-param">id: int = 0</em>, <em class="sig-param">parent: QUndoCommand = None</em><span class="sig-paren">)</span> &#x2192; QgsAbstractLayoutUndoCommand<a class="headerlink" href="#qgis.core.QgsLayout.createCommand" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>text</strong> (<em>str</em>) – </p></li>
+<li><p><strong>id</strong> (<em>int = 0</em>) – </p></li>
+<li><p><strong>parent</strong> (<em>QUndoCommand = None</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsAbstractLayoutUndoCommand.html#qgis.core.QgsAbstractLayoutUndoCommand" title="qgis.core.QgsAbstractLayoutUndoCommand">QgsAbstractLayoutUndoCommand</a></p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsLayout.createExpressionContext">
 <code class="sig-name descname">createExpressionContext</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QgsExpressionContext<a class="headerlink" href="#qgis.core.QgsLayout.createExpressionContext" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates an expression context relating to the layout’s current state. The context includes
 scopes for global, project, layout and layout context properties.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsExpressionContext.html#qgis.core.QgsExpressionContext" title="qgis.core.QgsExpressionContext">QgsExpressionContext</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2196,6 +1942,11 @@ scopes for global, project, layout and layout context properties.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsLayout.removeCustomProperty" title="qgis.core.QgsLayout.removeCustomProperty"><code class="xref py py-func docutils literal notranslate"><span class="pre">removeCustomProperty()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List[str]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2205,12 +1956,15 @@ scopes for global, project, layout and layout context properties.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>key</strong> – property key</p></li>
-<li><p><strong>defaultValue</strong> – default value to return if property with matching key does not exist</p></li>
+<li><p><strong>key</strong> (<em>str</em>) – property key</p></li>
+<li><p><strong>defaultValue</strong> (<em>Any = None</em>) – default value to return if property with matching key does not exist</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>value of matching property</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Any</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>value of matching property</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -2300,6 +2054,11 @@ not correctly emit signals to allow the layout’s model to update.</p>
 <code class="sig-name descname">gridSettings</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QgsLayoutGridSettings<a class="headerlink" href="#qgis.core.QgsLayout.gridSettings" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a reference to the layout’s grid settings, which stores settings relating
 to grid appearance, spacing and offsets.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsLayoutGridSettings.html#qgis.core.QgsLayoutGridSettings" title="qgis.core.QgsLayoutGridSettings">QgsLayoutGridSettings</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2311,12 +2070,25 @@ If grouping was not possible, <code class="docutils literal notranslate"><span c
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsLayout.ungroupItems" title="qgis.core.QgsLayout.ungroupItems"><code class="xref py py-func docutils literal notranslate"><span class="pre">ungroupItems()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>items</strong> (<em>Iterable</em><em>[</em><a class="reference internal" href="QgsLayoutItem.html#qgis.core.QgsLayoutItem" title="qgis.core.QgsLayoutItem"><em>QgsLayoutItem</em></a><em>]</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsLayoutItemGroup.html#qgis.core.QgsLayoutItemGroup" title="qgis.core.QgsLayoutItemGroup">QgsLayoutItemGroup</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsLayout.guides">
 <code class="sig-name descname">guides</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QgsLayoutGuideCollection<a class="headerlink" href="#qgis.core.QgsLayout.guides" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a reference to the layout’s guide collection, which manages page snap guides.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsLayoutGuideCollection.html#qgis.core.QgsLayoutGuideCollection" title="qgis.core.QgsLayoutGuideCollection">QgsLayoutGuideCollection</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2351,6 +2123,14 @@ item found.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsLayout.itemByUuid" title="qgis.core.QgsLayout.itemByUuid"><code class="xref py py-func docutils literal notranslate"><span class="pre">itemByUuid()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>str</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsLayoutItem.html#qgis.core.QgsLayoutItem" title="qgis.core.QgsLayoutItem">QgsLayoutItem</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2375,6 +2155,14 @@ vs the item’s uuid() which returns the current instance of the item’s unique
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsLayout.itemById" title="qgis.core.QgsLayout.itemById"><code class="xref py py-func docutils literal notranslate"><span class="pre">itemById()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>uuid</strong> (<em>str</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsLayoutItem.html#qgis.core.QgsLayoutItem" title="qgis.core.QgsLayoutItem">QgsLayoutItem</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2400,12 +2188,28 @@ Note that template UUIDs are only available while a layout is being restored fro
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsLayout.itemById" title="qgis.core.QgsLayout.itemById"><code class="xref py py-func docutils literal notranslate"><span class="pre">itemById()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>uuid</strong> (<em>str</em>) – </p></li>
+<li><p><strong>includeTemplateUuids</strong> (<em>bool = False</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsLayoutItem.html#qgis.core.QgsLayoutItem" title="qgis.core.QgsLayoutItem">QgsLayoutItem</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsLayout.itemsModel">
 <code class="sig-name descname">itemsModel</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QgsLayoutModel<a class="headerlink" href="#qgis.core.QgsLayout.itemsModel" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the items model attached to the layout.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsLayoutModel.html#qgis.core.QgsLayoutModel" title="qgis.core.QgsLayoutModel">QgsLayoutModel</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2426,12 +2230,15 @@ and other cosmetic items.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>ignorePages</strong> – set to <code class="docutils literal notranslate"><span class="pre">True</span></code> to ignore page items</p></li>
-<li><p><strong>margin</strong> – optional marginal (in percent, e.g., 0.05 = 5% ) to add around items</p></li>
+<li><p><strong>ignorePages</strong> (<em>bool = False</em>) – set to <code class="docutils literal notranslate"><span class="pre">True</span></code> to ignore page items</p></li>
+<li><p><strong>margin</strong> (<em>float = 0</em>) – optional marginal (in percent, e.g., 0.05 = 5% ) to add around items</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>layout bounds, in layout units.</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>QRectF</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>layout bounds, in layout units.</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -2445,9 +2252,20 @@ and other cosmetic items.</p>
 <code class="sig-name descname">layoutItemAt</code><span class="sig-paren">(</span><em class="sig-param">self, position: Union[QPointF, QPoint], ignoreLocked: bool = False</em><span class="sig-paren">)</span> &#x2192; QgsLayoutItem<a class="headerlink" href="#qgis.core.QgsLayout.layoutItemAt" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the topmost layout item at a specified <code class="docutils literal notranslate"><span class="pre">position</span></code>. Ignores paper items.
 If <code class="docutils literal notranslate"><span class="pre">ignoreLocked</span></code> is set to <code class="docutils literal notranslate"><span class="pre">True</span></code> any locked items will be ignored.</p>
-<p>layoutItemAt(self, position: Union[QPointF, QPoint], belowItem: QgsLayoutItem, ignoreLocked: bool = False) -&gt; QgsLayoutItem
+<p>layoutItemAt(self, position: Union[QPointF, QPoint], belowItem: <a class="reference internal" href="QgsLayoutItem.html#qgis.core.QgsLayoutItem" title="qgis.core.QgsLayoutItem"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsLayoutItem</span></code></a>, ignoreLocked: bool = False) -&gt; QgsLayoutItem
 Returns the topmost layout item at a specified <code class="docutils literal notranslate"><span class="pre">position</span></code> which is below a specified <code class="docutils literal notranslate"><span class="pre">item</span></code>. Ignores paper items.
 If <code class="docutils literal notranslate"><span class="pre">ignoreLocked</span></code> is set to <code class="docutils literal notranslate"><span class="pre">True</span></code> any locked items will be ignored.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>position</strong> (<em>Union</em><em>[</em><em>QPointF</em>) – </p></li>
+<li><p><strong>ignoreLocked</strong> (<em>bool = False</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsLayoutItem.html#qgis.core.QgsLayoutItem" title="qgis.core.QgsLayoutItem">QgsLayoutItem</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2459,6 +2277,18 @@ settings from the template. Setting <code class="docutils literal notranslate"><
 from the template, without overwriting the existing items or layout settings.</p>
 <p>If <code class="docutils literal notranslate"><span class="pre">ok</span></code> is specified, it will be set to <code class="docutils literal notranslate"><span class="pre">True</span></code> if the load was successful.</p>
 <p>Returns a list of loaded items.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>document</strong> (<em>QDomDocument</em>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsReadWriteContext.html#qgis.core.QgsReadWriteContext" title="qgis.core.QgsReadWriteContext"><em>QgsReadWriteContext</em></a>) – </p></li>
+<li><p><strong>clearExisting</strong> (<em>bool = True</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Tuple[List[<a class="reference internal" href="QgsLayoutItem.html#qgis.core.QgsLayoutItem" title="qgis.core.QgsLayoutItem">QgsLayoutItem</a>], bool]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2478,6 +2308,17 @@ updating the scene for each one.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsLayout.updateZValues" title="qgis.core.QgsLayout.updateZValues"><code class="xref py py-func docutils literal notranslate"><span class="pre">updateZValues()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item</strong> (<a class="reference internal" href="QgsLayoutItem.html#qgis.core.QgsLayoutItem" title="qgis.core.QgsLayoutItem"><em>QgsLayoutItem</em></a>) – </p></li>
+<li><p><strong>deferUpdate</strong> (<em>bool = False</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2517,6 +2358,17 @@ updating the scene for each one.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsLayout.updateZValues" title="qgis.core.QgsLayout.updateZValues"><code class="xref py py-func docutils literal notranslate"><span class="pre">updateZValues()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item</strong> (<a class="reference internal" href="QgsLayoutItem.html#qgis.core.QgsLayoutItem" title="qgis.core.QgsLayoutItem"><em>QgsLayoutItem</em></a>) – </p></li>
+<li><p><strong>deferUpdate</strong> (<em>bool = False</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2536,6 +2388,17 @@ updating the scene for each one.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsLayout.updateZValues" title="qgis.core.QgsLayout.updateZValues"><code class="xref py py-func docutils literal notranslate"><span class="pre">updateZValues()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item</strong> (<a class="reference internal" href="QgsLayoutItem.html#qgis.core.QgsLayoutItem" title="qgis.core.QgsLayoutItem"><em>QgsLayoutItem</em></a>) – </p></li>
+<li><p><strong>deferUpdate</strong> (<em>bool = False</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2553,6 +2416,17 @@ Note that template UUIDs are only available while a layout is being restored fro
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsLayout.itemByUuid" title="qgis.core.QgsLayout.itemByUuid"><code class="xref py py-func docutils literal notranslate"><span class="pre">itemByUuid()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>uuid</strong> (<em>str</em>) – </p></li>
+<li><p><strong>includeTemplateUuids</strong> (<em>bool = False</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsLayoutMultiFrame.html#qgis.core.QgsLayoutMultiFrame" title="qgis.core.QgsLayoutMultiFrame">QgsLayoutMultiFrame</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2567,6 +2441,11 @@ Note that template UUIDs are only available while a layout is being restored fro
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsLayout.removeMultiFrame" title="qgis.core.QgsLayout.removeMultiFrame"><code class="xref py py-func docutils literal notranslate"><span class="pre">removeMultiFrame()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List[<a class="reference internal" href="QgsLayoutMultiFrame.html#qgis.core.QgsLayoutMultiFrame" title="qgis.core.QgsLayoutMultiFrame">QgsLayoutMultiFrame</a>]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2574,6 +2453,11 @@ Note that template UUIDs are only available while a layout is being restored fro
 <code class="sig-name descname">pageCollection</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QgsLayoutPageCollection<a class="headerlink" href="#qgis.core.QgsLayout.pageCollection" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a pointer to the layout’s page collection, which stores and manages
 page items in the layout.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsLayoutPageCollection.html#qgis.core.QgsLayoutPageCollection" title="qgis.core.QgsLayoutPageCollection">QgsLayoutPageCollection</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2587,6 +2471,17 @@ A page number of 0 represents the first page in the layout.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsLayout.layoutBounds" title="qgis.core.QgsLayout.layoutBounds"><code class="xref py py-func docutils literal notranslate"><span class="pre">layoutBounds()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>page</strong> (<em>int</em>) – </p></li>
+<li><p><strong>visibleOnly</strong> (<em>bool = False</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>QRectF</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2594,6 +2489,11 @@ A page number of 0 represents the first page in the layout.</p>
 <code class="sig-name descname">project</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QgsProject<a class="headerlink" href="#qgis.core.QgsLayout.project" title="Permalink to this definition">¶</a></dt>
 <dd><p>The project associated with the layout. Used to get access to layers, map themes,
 relations and various other bits. It is never <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsProject.html#qgis.core.QgsProject" title="qgis.core.QgsProject">QgsProject</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2613,6 +2513,17 @@ updating the scene for each one.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsLayout.updateZValues" title="qgis.core.QgsLayout.updateZValues"><code class="xref py py-func docutils literal notranslate"><span class="pre">updateZValues()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item</strong> (<a class="reference internal" href="QgsLayoutItem.html#qgis.core.QgsLayoutItem" title="qgis.core.QgsLayoutItem"><em>QgsLayoutItem</em></a>) – </p></li>
+<li><p><strong>deferUpdate</strong> (<em>bool = False</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2623,6 +2534,18 @@ updating the scene for each one.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsLayout.writeXml" title="qgis.core.QgsLayout.writeXml"><code class="xref py py-func docutils literal notranslate"><span class="pre">writeXml()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>layoutElement</strong> (<em>QDomElement</em>) – </p></li>
+<li><p><strong>document</strong> (<em>QDomDocument</em>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsReadWriteContext.html#qgis.core.QgsReadWriteContext" title="qgis.core.QgsReadWriteContext"><em>QgsReadWriteContext</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2640,6 +2563,11 @@ map in the layout will be returned (or <code class="docutils literal notranslate
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsLayout.setReferenceMap" title="qgis.core.QgsLayout.setReferenceMap"><code class="xref py py-func docutils literal notranslate"><span class="pre">setReferenceMap()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsLayoutItemMap.html#qgis.core.QgsLayoutItemMap" title="qgis.core.QgsLayoutItemMap">QgsLayoutItemMap</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2674,7 +2602,7 @@ and updated. [signal]</p>
 <dd><p>Remove a custom property from the layout.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>key</strong> – property key</p>
+<dd class="field-odd"><p><strong>key</strong> (<em>str</em>) – property key</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -2697,6 +2625,11 @@ and updated. [signal]</p>
 <dd><p>Removes an <code class="docutils literal notranslate"><span class="pre">item</span></code> from the layout. This should be called instead of the base class removeItem()
 method.
 The item will also be deleted.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>item</strong> (<a class="reference internal" href="QgsLayoutItem.html#qgis.core.QgsLayoutItem" title="qgis.core.QgsLayoutItem"><em>QgsLayoutItem</em></a>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2711,6 +2644,11 @@ The item will also be deleted.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsLayout.multiFrames" title="qgis.core.QgsLayout.multiFrames"><code class="xref py py-func docutils literal notranslate"><span class="pre">multiFrames()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>multiFrame</strong> (<a class="reference internal" href="QgsLayoutMultiFrame.html#qgis.core.QgsLayoutMultiFrame" title="qgis.core.QgsLayoutMultiFrame"><em>QgsLayoutMultiFrame</em></a>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2718,6 +2656,11 @@ The item will also be deleted.</p>
 <code class="sig-name descname">renderContext</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QgsLayoutRenderContext<a class="headerlink" href="#qgis.core.QgsLayout.renderContext" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a reference to the layout’s render context, which stores information relating to the
 current rendering settings for the layout.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsLayoutRenderContext.html#qgis.core.QgsLayoutRenderContext" title="qgis.core.QgsLayoutRenderContext">QgsLayoutRenderContext</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2725,6 +2668,11 @@ current rendering settings for the layout.</p>
 <code class="sig-name descname">reportContext</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QgsLayoutReportContext<a class="headerlink" href="#qgis.core.QgsLayout.reportContext" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a reference to the layout’s report context, which stores information relating to the
 current reporting context for the layout.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsLayoutReportContext.html#qgis.core.QgsLayoutReportContext" title="qgis.core.QgsLayoutReportContext">QgsLayoutReportContext</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2736,6 +2684,17 @@ Returns <code class="docutils literal notranslate"><span class="pre">True</span>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsLayout.loadFromTemplate" title="qgis.core.QgsLayout.loadFromTemplate"><code class="xref py py-func docutils literal notranslate"><span class="pre">loadFromTemplate()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>str</em>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsReadWriteContext.html#qgis.core.QgsReadWriteContext" title="qgis.core.QgsReadWriteContext"><em>QgsReadWriteContext</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="attribute">
@@ -2743,6 +2702,11 @@ Returns <code class="docutils literal notranslate"><span class="pre">True</span>
 <code class="sig-name descname">selectedItemChanged</code><a class="headerlink" href="#qgis.core.QgsLayout.selectedItemChanged" title="Permalink to this definition">¶</a></dt>
 <dd><p>Emitted whenever the selected item changes.
 If <code class="docutils literal notranslate"><span class="pre">None</span></code>, no item is selected. [signal]</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>selected</strong> (<a class="reference internal" href="QgsLayoutItem.html#qgis.core.QgsLayoutItem" title="qgis.core.QgsLayoutItem"><em>QgsLayoutItem</em></a>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2751,6 +2715,14 @@ If <code class="docutils literal notranslate"><span class="pre">None</span></cod
 <dd><p>Returns list of selected layout items.</p>
 <p>If <code class="docutils literal notranslate"><span class="pre">includeLockedItems</span></code> is set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, then locked items will also be included
 in the returned list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>includeLockedItems</strong> (<em>bool = True</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>List[<a class="reference internal" href="QgsLayoutItem.html#qgis.core.QgsLayoutItem" title="qgis.core.QgsLayoutItem">QgsLayoutItem</a>]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2770,8 +2742,8 @@ in the returned list.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>key</strong> – property key. If a property with the same key already exists it will be overwritten.</p></li>
-<li><p><strong>value</strong> – property value</p></li>
+<li><p><strong>key</strong> (<em>str</em>) – property key. If a property with the same key already exists it will be overwritten.</p></li>
+<li><p><strong>value</strong> (<em>Any</em>) – property value</p></li>
 </ul>
 </dd>
 </dl>
@@ -2798,12 +2770,22 @@ layout is exported.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsLayout.referenceMap" title="qgis.core.QgsLayout.referenceMap"><code class="xref py py-func docutils literal notranslate"><span class="pre">referenceMap()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>map</strong> (<a class="reference internal" href="QgsLayoutItemMap.html#qgis.core.QgsLayoutItemMap" title="qgis.core.QgsLayoutItemMap"><em>QgsLayoutItemMap</em></a>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsLayout.setSelectedItem">
 <code class="sig-name descname">setSelectedItem</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item: QgsLayoutItem</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsLayout.setSelectedItem" title="Permalink to this definition">¶</a></dt>
 <dd><p>Clears any selected items and sets <code class="docutils literal notranslate"><span class="pre">item</span></code> as the current selection.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>item</strong> (<a class="reference internal" href="QgsLayoutItem.html#qgis.core.QgsLayoutItem" title="qgis.core.QgsLayoutItem"><em>QgsLayoutItem</em></a>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2819,6 +2801,11 @@ for measurements for the layout.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsLayout.convertToLayoutUnits" title="qgis.core.QgsLayout.convertToLayoutUnits"><code class="xref py py-func docutils literal notranslate"><span class="pre">convertToLayoutUnits()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>units</strong> (<a class="reference internal" href="QgsUnitTypes.html#qgis.core.QgsUnitTypes.LayoutUnit" title="qgis.core.QgsUnitTypes.LayoutUnit"><em>QgsUnitTypes.LayoutUnit</em></a>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2826,6 +2813,11 @@ for measurements for the layout.</p>
 <code class="sig-name descname">snapper</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QgsLayoutSnapper<a class="headerlink" href="#qgis.core.QgsLayout.snapper" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a reference to the layout’s snapper, which stores handles layout snap grids and lines
 and snapping points to the nearest matching point.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsLayoutSnapper.html#qgis.core.QgsLayoutSnapper" title="qgis.core.QgsLayoutSnapper">QgsLayoutSnapper</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2838,6 +2830,11 @@ and snapping points to the nearest matching point.</p>
 <code class="sig-name descname">undoStack</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QgsLayoutUndoStack<a class="headerlink" href="#qgis.core.QgsLayout.undoStack" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a pointer to the layout’s undo stack, which manages undo/redo states for the layout
 and it’s associated objects.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsLayoutUndoStack.html#qgis.core.QgsLayoutUndoStack" title="qgis.core.QgsLayoutUndoStack">QgsLayoutUndoStack</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2851,6 +2848,14 @@ was not successful.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsLayout.groupItems" title="qgis.core.QgsLayout.groupItems"><code class="xref py py-func docutils literal notranslate"><span class="pre">groupItems()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>group</strong> (<a class="reference internal" href="QgsLayoutItemGroup.html#qgis.core.QgsLayoutItemGroup" title="qgis.core.QgsLayoutItemGroup"><em>QgsLayoutItemGroup</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>List[<a class="reference internal" href="QgsLayoutItem.html#qgis.core.QgsLayoutItem" title="qgis.core.QgsLayoutItem">QgsLayoutItem</a>]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2865,6 +2870,11 @@ was not successful.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsLayout.convertToLayoutUnits" title="qgis.core.QgsLayout.convertToLayoutUnits"><code class="xref py py-func docutils literal notranslate"><span class="pre">convertToLayoutUnits()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsUnitTypes.html#qgis.core.QgsUnitTypes.LayoutUnit" title="qgis.core.QgsUnitTypes.LayoutUnit">QgsUnitTypes.LayoutUnit</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2879,6 +2889,11 @@ was not successful.</p>
 <dd><p>Resets the z-values of items based on their position in the internal
 z order list. This should be called after any stacking changes
 which deferred z-order updates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>addUndoCommands</strong> (<em>bool = True</em>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="attribute">
@@ -2900,6 +2915,17 @@ which deferred z-order updates.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsLayout.readXml" title="qgis.core.QgsLayout.readXml"><code class="xref py py-func docutils literal notranslate"><span class="pre">readXml()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>document</strong> (<em>QDomDocument</em>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsReadWriteContext.html#qgis.core.QgsReadWriteContext" title="qgis.core.QgsReadWriteContext"><em>QgsReadWriteContext</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>QDomElement</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -2918,7 +2944,7 @@ which deferred z-order updates.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 10:58 Oct 14, 2019.
+        Last updated on 15:06 Oct 15, 2019.
       </span>
 
     </p>
@@ -2945,20 +2971,20 @@ which deferred z-order updates.</p>
     <div class="rst-other-versions">
       <dl>
         <dt>Versions</dt>
-      
-        <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
-      
-    </dl>
+        
+          <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
+        
+      </dl>
       
       
     </div>

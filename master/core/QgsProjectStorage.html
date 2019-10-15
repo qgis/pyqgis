@@ -122,7 +122,6 @@
 <li class="toctree-l2"><a class="reference internal" href="PROJECT_SCALES.html">Class: PROJECT_SCALES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PluginLayer.html">Class: PluginLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ProjectDirtyBlocker.html">Class: ProjectDirtyBlocker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="PyProviderMetadata.html">Class: PyProviderMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgis.html">Class: Qgis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs25DRenderer.html">Class: Qgs25DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs3DRendererAbstractMetadata.html">Class: Qgs3DRendererAbstractMetadata</a></li>
@@ -1546,8 +1545,6 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/core/QgsProjectStorage.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -1664,12 +1661,28 @@ The default implementation returns an empty string.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.8.1.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>uri</strong> (<em>str</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsProjectStorage.listProjects">
 <code class="sig-name descname">listProjects</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">uri: str</em><span class="sig-paren">)</span> &#x2192; List[str]<a class="headerlink" href="#qgis.core.QgsProjectStorage.listProjects" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns list of all projects for given URI (specific to each storage backend)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>uri</strong> (<em>str</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>List[str]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1679,6 +1692,18 @@ The default implementation returns an empty string.</p>
 (could be e.g. a temporary file or a memory buffer). The device is expected to be empty
 when passed to readProject() so that the method can write all data to it and then rewind
 it using seek(0) to make it ready for reading in <a class="reference internal" href="QgsProject.html#module-QgsProject" title="QgsProject"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProject</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>uri</strong> (<em>str</em>) – </p></li>
+<li><p><strong>device</strong> (<em>QIODevice</em>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsReadWriteContext.html#qgis.core.QgsReadWriteContext" title="qgis.core.QgsReadWriteContext"><em>QgsReadWriteContext</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1686,6 +1711,14 @@ it using seek(0) to make it ready for reading in <a class="reference internal" h
 <code class="sig-name descname">readProjectStorageMetadata</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">uri: str</em><span class="sig-paren">)</span> &#x2192; Tuple[bool, QgsProjectStorage.Metadata]<a class="headerlink" href="#qgis.core.QgsProjectStorage.readProjectStorageMetadata" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reads project metadata (e.g. last modified time) if this is supported by the storage implementation.
 Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the metadata were read with success.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>uri</strong> (<em>str</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Tuple[bool, <a class="reference internal" href="#qgis.core.QgsProjectStorage.Metadata" title="qgis.core.QgsProjectStorage.Metadata">QgsProjectStorage.Metadata</a>]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1693,6 +1726,14 @@ Returns <code class="docutils literal notranslate"><span class="pre">True</span>
 <code class="sig-name descname">removeProject</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">uri: str</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsProjectStorage.removeProject" title="Permalink to this definition">¶</a></dt>
 <dd><p>Removes an existing project at the given URI. Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the removal
 was successful.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>uri</strong> (<em>str</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1700,6 +1741,17 @@ was successful.</p>
 <code class="sig-name descname">renameProject</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">uri: str</em>, <em class="sig-param">uriNew: str</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsProjectStorage.renameProject" title="Permalink to this definition">¶</a></dt>
 <dd><p>Rename an existing project at the given URI to a different URI. Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if renaming
 was successful.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>uri</strong> (<em>str</em>) – </p></li>
+<li><p><strong>uriNew</strong> (<em>str</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1708,8 +1760,13 @@ was successful.</p>
 <dd><p>Opens GUI to allow user to select a project to be loaded (GUI specific to this storage type).
 Returns project URI if user has picked a project or empty string if the GUI was canceled.</p>
 <div class="deprecated">
-<p><span class="versionmodified deprecated">Deprecated since version since: </span>QGIS 3.10 - use QgsProjectStorageGuiProvider for GUI-related project storage functionality</p>
+<p><span class="versionmodified deprecated">Deprecated since version since: </span>QGIS 3.10 - use <a class="reference internal" href="../gui/QgsProjectStorageGuiProvider.html#qgis.gui.QgsProjectStorageGuiProvider" title="qgis.gui.QgsProjectStorageGuiProvider"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProjectStorageGuiProvider</span></code></a> for GUI-related project storage functionality</p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1718,8 +1775,13 @@ Returns project URI if user has picked a project or empty string if the GUI was 
 <dd><p>Opens GUI to allow user to select where a project should be saved (GUI specific to this storage type).
 Returns project URI if user has picked a destination or empty string if the GUI was canceled.</p>
 <div class="deprecated">
-<p><span class="versionmodified deprecated">Deprecated since version since: </span>QGIS 3.10 - use QgsProjectStorageGuiProvider for GUI-related project storage functionality</p>
+<p><span class="versionmodified deprecated">Deprecated since version since: </span>QGIS 3.10 - use <a class="reference internal" href="../gui/QgsProjectStorageGuiProvider.html#qgis.gui.QgsProjectStorageGuiProvider" title="qgis.gui.QgsProjectStorageGuiProvider"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProjectStorageGuiProvider</span></code></a> for GUI-related project storage functionality</p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1727,6 +1789,11 @@ Returns project URI if user has picked a destination or empty string if the GUI 
 <code class="sig-name descname">type</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.core.QgsProjectStorage.type" title="Permalink to this definition">¶</a></dt>
 <dd><p>Unique identifier of the project storage type. If type() returns “memory”, all project file names
 starting with “memory:” will have read/write redirected through that storage implementation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1736,8 +1803,13 @@ starting with “memory:” will have read/write redirected through that storage
 indicates that the storage does not implement GUI support (showLoadGui() and showSaveGui()).
 The name may be translatable and ideally unique as well.</p>
 <div class="deprecated">
-<p><span class="versionmodified deprecated">Deprecated since version since: </span>QGIS 3.10 - use QgsProjectStorageGuiProvider for GUI-related project storage functionality</p>
+<p><span class="versionmodified deprecated">Deprecated since version since: </span>QGIS 3.10 - use <a class="reference internal" href="../gui/QgsProjectStorageGuiProvider.html#qgis.gui.QgsProjectStorageGuiProvider" title="qgis.gui.QgsProjectStorageGuiProvider"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProjectStorageGuiProvider</span></code></a> for GUI-related project storage functionality</p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1747,6 +1819,18 @@ The name may be translatable and ideally unique as well.</p>
 using the backend to the specified URI. The device is expected to contain all project file data
 and having position at the start of the content when passed to writeProject() so that the method
 can read all data from it until it reaches its end.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>uri</strong> (<em>str</em>) – </p></li>
+<li><p><strong>device</strong> (<em>QIODevice</em>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsReadWriteContext.html#qgis.core.QgsReadWriteContext" title="qgis.core.QgsReadWriteContext"><em>QgsReadWriteContext</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -1765,7 +1849,7 @@ can read all data from it until it reaches its end.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 10:58 Oct 14, 2019.
+        Last updated on 15:06 Oct 15, 2019.
       </span>
 
     </p>
@@ -1792,20 +1876,20 @@ can read all data from it until it reaches its end.</p>
     <div class="rst-other-versions">
       <dl>
         <dt>Versions</dt>
-      
-        <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
-      
-    </dl>
+        
+          <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
+        
+      </dl>
       
       
     </div>

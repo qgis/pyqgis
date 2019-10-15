@@ -122,7 +122,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../core/PROJECT_SCALES.html">Class: PROJECT_SCALES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/PluginLayer.html">Class: PluginLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/ProjectDirtyBlocker.html">Class: ProjectDirtyBlocker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../core/PyProviderMetadata.html">Class: PyProviderMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/Qgis.html">Class: Qgis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/Qgs25DRenderer.html">Class: Qgs25DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/Qgs3DRendererAbstractMetadata.html">Class: Qgs3DRendererAbstractMetadata</a></li>
@@ -1546,8 +1545,6 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/server/QgsService.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -1566,7 +1563,7 @@
 <em class="property">class </em><code class="sig-prename descclassname">qgis.server.</code><code class="sig-name descname">QgsService</code><a class="headerlink" href="#qgis.server.QgsService" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sip.wrapper</span></code></p>
 <p>Constructor</p>
-<p>QgsService(QgsService)</p>
+<p>QgsService(<a class="reference internal" href="#qgis.server.QgsService" title="qgis.server.QgsService"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsService</span></code></a>)</p>
 <p>QgsService
 Class defining interfaces for QGIS server services</p>
 <p>This class provides methods for executing server requests
@@ -1595,16 +1592,16 @@ They are registered at runtime for a given service name.</p>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.server.QgsService.name" title="qgis.server.QgsService.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code></a></p></td>
 <td><p><dl class="field-list simple">
-<dt class="field-odd">return</dt>
-<dd class="field-odd"><p>the name of the service</p>
+<dt class="field-odd">rtype</dt>
+<dd class="field-odd"><p>str</p>
 </dd>
 </dl>
 </p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.server.QgsService.version" title="qgis.server.QgsService.version"><code class="xref py py-obj docutils literal notranslate"><span class="pre">version</span></code></a></p></td>
 <td><p><dl class="field-list simple">
-<dt class="field-odd">return</dt>
-<dd class="field-odd"><p>the version of the service</p>
+<dt class="field-odd">rtype</dt>
+<dd class="field-odd"><p>str</p>
 </dd>
 </dl>
 </p></td>
@@ -1633,20 +1630,37 @@ They are registered at runtime for a given service name.</p>
 <code class="sig-name descname">allowMethod</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">QgsServerRequest.Method</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.server.QgsService.allowMethod" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the given method is supported for that
 service.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.server.QgsService.executeRequest">
 <code class="sig-name descname">executeRequest</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">request: QgsServerRequest</em>, <em class="sig-param">response: QgsServerResponse</em>, <em class="sig-param">project: QgsProject</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.server.QgsService.executeRequest" title="Permalink to this definition">¶</a></dt>
 <dd><p>Execute the requests and set result in <a class="reference internal" href="QgsServerRequest.html#module-QgsServerRequest" title="QgsServerRequest"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsServerRequest</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> (<a class="reference internal" href="QgsServerRequest.html#qgis.server.QgsServerRequest" title="qgis.server.QgsServerRequest"><em>QgsServerRequest</em></a>) – </p></li>
+<li><p><strong>response</strong> (<a class="reference internal" href="QgsServerResponse.html#qgis.server.QgsServerResponse" title="qgis.server.QgsServerResponse"><em>QgsServerResponse</em></a>) – </p></li>
+<li><p><strong>project</strong> (<a class="reference internal" href="../core/QgsProject.html#qgis.core.QgsProject" title="qgis.core.QgsProject"><em>QgsProject</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.server.QgsService.name">
 <code class="sig-name descname">name</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.server.QgsService.name" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>the name of the service</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the name of the service</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1655,8 +1669,11 @@ service.</p>
 <dt id="qgis.server.QgsService.version">
 <code class="sig-name descname">version</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.server.QgsService.version" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>the version of the service</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the version of the service</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1677,7 +1694,7 @@ service.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 10:58 Oct 14, 2019.
+        Last updated on 15:06 Oct 15, 2019.
       </span>
 
     </p>
@@ -1704,20 +1721,20 @@ service.</p>
     <div class="rst-other-versions">
       <dl>
         <dt>Versions</dt>
-      
-        <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
-      
-    </dl>
+        
+          <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
+        
+      </dl>
       
       
     </div>

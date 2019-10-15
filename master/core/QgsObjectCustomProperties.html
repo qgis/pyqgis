@@ -122,7 +122,6 @@
 <li class="toctree-l2"><a class="reference internal" href="PROJECT_SCALES.html">Class: PROJECT_SCALES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PluginLayer.html">Class: PluginLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ProjectDirtyBlocker.html">Class: ProjectDirtyBlocker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="PyProviderMetadata.html">Class: PyProviderMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgis.html">Class: Qgis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs25DRenderer.html">Class: Qgs25DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs3DRendererAbstractMetadata.html">Class: Qgs3DRendererAbstractMetadata</a></li>
@@ -1546,8 +1545,6 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/core/QgsObjectCustomProperties.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -1566,7 +1563,7 @@
 <em class="property">class </em><code class="sig-prename descclassname">qgis.core.</code><code class="sig-name descname">QgsObjectCustomProperties</code><a class="headerlink" href="#qgis.core.QgsObjectCustomProperties" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sip.wrapper</span></code></p>
 <p>Constructor for QgsObjectCustomProperties.</p>
-<p>QgsObjectCustomProperties(QgsObjectCustomProperties)</p>
+<p>QgsObjectCustomProperties(<a class="reference internal" href="#qgis.core.QgsObjectCustomProperties" title="qgis.core.QgsObjectCustomProperties"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsObjectCustomProperties</span></code></a>)</p>
 <p>Simple key-value store (keys = strings, values = variants) that supports loading/saving to/from XML
 in verbatim &lt;customproperties&gt; endverbatim element.</p>
 <div class="versionadded">
@@ -1626,6 +1623,11 @@ in verbatim &lt;customproperties&gt; endverbatim element.</p>
 <dt id="qgis.core.QgsObjectCustomProperties.keys">
 <code class="sig-name descname">keys</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; List[str]<a class="headerlink" href="#qgis.core.QgsObjectCustomProperties.keys" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns list of stored keys</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List[str]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1635,8 +1637,8 @@ in verbatim &lt;customproperties&gt; endverbatim element.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>parentNode</strong> – node to read from</p></li>
-<li><p><strong>keyStartsWith</strong> – reads only properties starting with the specified string (or all if the string is empty)</p></li>
+<li><p><strong>parentNode</strong> (<em>QDomNode</em>) – node to read from</p></li>
+<li><p><strong>keyStartsWith</strong> (<em>str = ''</em>) – reads only properties starting with the specified string (or all if the string is empty)</p></li>
 </ul>
 </dd>
 </dl>
@@ -1646,24 +1648,56 @@ in verbatim &lt;customproperties&gt; endverbatim element.</p>
 <dt id="qgis.core.QgsObjectCustomProperties.remove">
 <code class="sig-name descname">remove</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">key: str</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsObjectCustomProperties.remove" title="Permalink to this definition">¶</a></dt>
 <dd><p>Remove a key (entry) from the store</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>key</strong> (<em>str</em>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsObjectCustomProperties.setValue">
 <code class="sig-name descname">setValue</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">key: str</em>, <em class="sig-param">value: Any</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsObjectCustomProperties.setValue" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add an entry to the store. If the entry with the keys exists already, it will be overwritten</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> (<em>str</em>) – </p></li>
+<li><p><strong>value</strong> (<em>Any</em>) – </p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsObjectCustomProperties.value">
 <code class="sig-name descname">value</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">key: str</em>, <em class="sig-param">defaultValue: Any = None</em><span class="sig-paren">)</span> &#x2192; Any<a class="headerlink" href="#qgis.core.QgsObjectCustomProperties.value" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns value for the given key. If the key is not stored, default value will be used</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> (<em>str</em>) – </p></li>
+<li><p><strong>defaultValue</strong> (<em>Any = None</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Any</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsObjectCustomProperties.writeXml">
 <code class="sig-name descname">writeXml</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">parentNode: QDomNode</em>, <em class="sig-param">doc: QDomDocument</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsObjectCustomProperties.writeXml" title="Permalink to this definition">¶</a></dt>
 <dd><p>Write store contents to XML</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parentNode</strong> (<em>QDomNode</em>) – </p></li>
+<li><p><strong>doc</strong> (<em>QDomDocument</em>) – </p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -1682,7 +1716,7 @@ in verbatim &lt;customproperties&gt; endverbatim element.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 10:58 Oct 14, 2019.
+        Last updated on 15:06 Oct 15, 2019.
       </span>
 
     </p>
@@ -1709,20 +1743,20 @@ in verbatim &lt;customproperties&gt; endverbatim element.</p>
     <div class="rst-other-versions">
       <dl>
         <dt>Versions</dt>
-      
-        <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
-      
-    </dl>
+        
+          <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
+        
+      </dl>
       
       
     </div>

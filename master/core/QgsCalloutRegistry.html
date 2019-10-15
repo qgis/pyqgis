@@ -122,7 +122,6 @@
 <li class="toctree-l2"><a class="reference internal" href="PROJECT_SCALES.html">Class: PROJECT_SCALES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PluginLayer.html">Class: PluginLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ProjectDirtyBlocker.html">Class: ProjectDirtyBlocker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="PyProviderMetadata.html">Class: PyProviderMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgis.html">Class: Qgis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs25DRenderer.html">Class: Qgs25DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs3DRendererAbstractMetadata.html">Class: Qgs3DRendererAbstractMetadata</a></li>
@@ -1546,8 +1545,6 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/core/QgsCalloutRegistry.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -1566,7 +1563,7 @@
 <em class="property">class </em><code class="sig-prename descclassname">qgis.core.</code><code class="sig-name descname">QgsCalloutRegistry</code><a class="headerlink" href="#qgis.core.QgsCalloutRegistry" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sip.wrapper</span></code></p>
 <p>Registry of available callout classes.</p>
-<p>QgsCalloutRegistry is not usually directly created, but rather accessed through
+<p><a class="reference internal" href="#qgis.core.QgsCalloutRegistry" title="qgis.core.QgsCalloutRegistry"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsCalloutRegistry</span></code></a> is not usually directly created, but rather accessed through
 <a class="reference internal" href="QgsApplication.html#qgis.core.QgsApplication.calloutRegistry" title="qgis.core.QgsApplication.calloutRegistry"><code class="xref py py-func docutils literal notranslate"><span class="pre">QgsApplication.calloutRegistry()</span></code></a></p>
 <div class="versionadded">
 <table class="longtable docutils align-default">
@@ -1623,18 +1620,39 @@
 <code class="sig-name descname">addCalloutType</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">metadata: QgsCalloutAbstractMetadata</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsCalloutRegistry.addCalloutType" title="Permalink to this definition">¶</a></dt>
 <dd><p>Registers a new callout type.</p>
 <p>Ownership of <code class="docutils literal notranslate"><span class="pre">metadata</span></code> is transferred to the registry.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>metadata</strong> (<a class="reference internal" href="QgsCalloutAbstractMetadata.html#qgis.core.QgsCalloutAbstractMetadata" title="qgis.core.QgsCalloutAbstractMetadata"><em>QgsCalloutAbstractMetadata</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsCalloutRegistry.calloutMetadata">
 <code class="sig-name descname">calloutMetadata</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">type: str</em><span class="sig-paren">)</span> &#x2192; QgsCalloutAbstractMetadata<a class="headerlink" href="#qgis.core.QgsCalloutRegistry.calloutMetadata" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the metadata for specified the specified callout <code class="docutils literal notranslate"><span class="pre">type</span></code>. Returns <code class="docutils literal notranslate"><span class="pre">None</span></code> if no matching callout style was found.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>type</strong> (<em>str</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsCalloutAbstractMetadata.html#qgis.core.QgsCalloutAbstractMetadata" title="qgis.core.QgsCalloutAbstractMetadata">QgsCalloutAbstractMetadata</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsCalloutRegistry.calloutTypes">
 <code class="sig-name descname">calloutTypes</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; List[str]<a class="headerlink" href="#qgis.core.QgsCalloutRegistry.calloutTypes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a list of all available callout types.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List[str]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1642,9 +1660,21 @@
 <code class="sig-name descname">createCallout</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">type: str</em>, <em class="sig-param">properties: Dict[str</em>, <em class="sig-param">Any] = {}</em>, <em class="sig-param">context: QgsReadWriteContext = QgsReadWriteContext()</em><span class="sig-paren">)</span> &#x2192; QgsCallout<a class="headerlink" href="#qgis.core.QgsCalloutRegistry.createCallout" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates a new instance of a callout, given the callout <code class="docutils literal notranslate"><span class="pre">type</span></code> and <code class="docutils literal notranslate"><span class="pre">properties</span></code>.</p>
 <p>The caller takes ownership of the callout.</p>
-<p>createCallout(self, type: str, element: QDomElement, context: QgsReadWriteContext) -&gt; QgsCallout
+<p>createCallout(self, type: str, element: QDomElement, context: <a class="reference internal" href="QgsReadWriteContext.html#qgis.core.QgsReadWriteContext" title="qgis.core.QgsReadWriteContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsReadWriteContext</span></code></a>) -&gt; QgsCallout
 Creates a new instance of a callout of the specified <code class="docutils literal notranslate"><span class="pre">type</span></code>, using the properties from a DOM <code class="docutils literal notranslate"><span class="pre">element</span></code>.</p>
 <p>The caller takes ownership of the callout.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>type</strong> (<em>str</em>) – </p></li>
+<li><p><strong>properties</strong> (<em>Dict</em><em>[</em><em>str</em>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsReadWriteContext.html#qgis.core.QgsReadWriteContext" title="qgis.core.QgsReadWriteContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsReadWriteContext</span></code></a> = QgsReadWriteContext()) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsCallout.html#qgis.core.QgsCallout" title="qgis.core.QgsCallout">QgsCallout</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1652,6 +1682,11 @@ Creates a new instance of a callout of the specified <code class="docutils liter
 <code class="sig-name descname">defaultCallout</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; QgsCallout<a class="headerlink" href="#qgis.core.QgsCalloutRegistry.defaultCallout" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a new instance of a callout with default settings.</p>
 <p>The caller takes ownership of the callout.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsCallout.html#qgis.core.QgsCallout" title="qgis.core.QgsCallout">QgsCallout</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -1670,7 +1705,7 @@ Creates a new instance of a callout of the specified <code class="docutils liter
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 10:58 Oct 14, 2019.
+        Last updated on 15:06 Oct 15, 2019.
       </span>
 
     </p>
@@ -1697,20 +1732,20 @@ Creates a new instance of a callout of the specified <code class="docutils liter
     <div class="rst-other-versions">
       <dl>
         <dt>Versions</dt>
-      
-        <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
-      
-    </dl>
+        
+          <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
+        
+      </dl>
       
       
     </div>

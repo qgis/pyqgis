@@ -122,7 +122,6 @@
 <li class="toctree-l2"><a class="reference internal" href="PROJECT_SCALES.html">Class: PROJECT_SCALES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PluginLayer.html">Class: PluginLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ProjectDirtyBlocker.html">Class: ProjectDirtyBlocker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="PyProviderMetadata.html">Class: PyProviderMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgis.html">Class: Qgis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs25DRenderer.html">Class: Qgs25DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs3DRendererAbstractMetadata.html">Class: Qgs3DRendererAbstractMetadata</a></li>
@@ -1546,8 +1545,6 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/core/QgsRenderedFeatureHandlerInterface.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -1567,7 +1564,7 @@
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sip.wrapper</span></code></p>
 <p>An interface for classes which provider custom handlers for features rendered
 as part of a map render job.</p>
-<p>QgsRenderedFeatureHandlerInterface objects are registered in the QgsMapSettings
+<p><a class="reference internal" href="#qgis.core.QgsRenderedFeatureHandlerInterface" title="qgis.core.QgsRenderedFeatureHandlerInterface"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsRenderedFeatureHandlerInterface</span></code></a> objects are registered in the QgsMapSettings
 objects used to construct map render jobs. During the rendering operation,
 the handleRenderedFeature() method will be called once for every rendered feature,
 allowing the handler to perform some custom task based on the provided information.</p>
@@ -1622,7 +1619,7 @@ of all features rendered on a map.</p>
 <p>Constructor for RenderedFeatureContext.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>renderContext</strong> – The render context which was used while rendering feature.</p>
+<dd class="field-odd"><p><strong>renderContext</strong> (<a class="reference internal" href="QgsRenderContext.html#qgis.core.QgsRenderContext" title="qgis.core.QgsRenderContext"><em>QgsRenderContext</em></a>) – The render context which was used while rendering feature.</p>
 </dd>
 </dl>
 <p>QgsRenderedFeatureHandlerInterface.RenderedFeatureContext(QgsRenderedFeatureHandlerInterface.RenderedFeatureContext)</p>
@@ -1649,6 +1646,15 @@ and accordingly care must be taken to ensure that handleRenderedFeature() implem
 appropriately thread safe.</p>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">context</span></code> argument is used to provide additional context relating to the rendering of a feature.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>feature</strong> (<a class="reference internal" href="QgsFeature.html#qgis.core.QgsFeature" title="qgis.core.QgsFeature"><em>QgsFeature</em></a>) – </p></li>
+<li><p><strong>renderedBounds</strong> (<a class="reference internal" href="QgsGeometry.html#qgis.core.QgsGeometry" title="qgis.core.QgsGeometry"><em>QgsGeometry</em></a>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="#qgis.core.QgsRenderedFeatureHandlerInterface.RenderedFeatureContext" title="qgis.core.QgsRenderedFeatureHandlerInterface.RenderedFeatureContext"><em>QgsRenderedFeatureHandlerInterface.RenderedFeatureContext</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1656,6 +1662,17 @@ appropriately thread safe.</p>
 <code class="sig-name descname">usedAttributes</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">layer: QgsVectorLayer</em>, <em class="sig-param">context: QgsRenderContext</em><span class="sig-paren">)</span> &#x2192; Set[str]<a class="headerlink" href="#qgis.core.QgsRenderedFeatureHandlerInterface.usedAttributes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a list of attributes required by this handler, for the specified <code class="docutils literal notranslate"><span class="pre">layer</span></code>. Attributes not listed in here may
 not be requested from the provider at rendering time.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>layer</strong> (<a class="reference internal" href="QgsVectorLayer.html#qgis.core.QgsVectorLayer" title="qgis.core.QgsVectorLayer"><em>QgsVectorLayer</em></a>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsRenderContext.html#qgis.core.QgsRenderContext" title="qgis.core.QgsRenderContext"><em>QgsRenderContext</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Set[str]</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -1674,7 +1691,7 @@ not be requested from the provider at rendering time.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 10:58 Oct 14, 2019.
+        Last updated on 15:06 Oct 15, 2019.
       </span>
 
     </p>
@@ -1701,20 +1718,20 @@ not be requested from the provider at rendering time.</p>
     <div class="rst-other-versions">
       <dl>
         <dt>Versions</dt>
-      
-        <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
-      
-    </dl>
+        
+          <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
+        
+      </dl>
       
       
     </div>

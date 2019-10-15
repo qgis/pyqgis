@@ -122,7 +122,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../core/PROJECT_SCALES.html">Class: PROJECT_SCALES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/PluginLayer.html">Class: PluginLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/ProjectDirtyBlocker.html">Class: ProjectDirtyBlocker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../core/PyProviderMetadata.html">Class: PyProviderMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/Qgis.html">Class: Qgis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/Qgs25DRenderer.html">Class: Qgs25DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/Qgs3DRendererAbstractMetadata.html">Class: Qgs3DRendererAbstractMetadata</a></li>
@@ -1546,8 +1545,6 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/analysis/QgsMeshCalculator.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -1569,16 +1566,16 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>formulaString</strong> – formula/expression to evaluate. Consists of dataset group names, operators and numbers</p></li>
-<li><p><strong>outputFile</strong> – file to store the resulting dataset group data</p></li>
-<li><p><strong>outputExtent</strong> – spatial filter defined by rectangle</p></li>
-<li><p><strong>startTime</strong> – time filter defining the starting dataset</p></li>
-<li><p><strong>endTime</strong> – time filter defining the ending dataset</p></li>
-<li><p><strong>layer</strong> – mesh layer with dataset groups references in formulaString</p></li>
+<li><p><strong>formulaString</strong> (<em>str</em>) – formula/expression to evaluate. Consists of dataset group names, operators and numbers</p></li>
+<li><p><strong>outputFile</strong> (<em>str</em>) – file to store the resulting dataset group data</p></li>
+<li><p><strong>outputExtent</strong> (<a class="reference internal" href="../core/QgsRectangle.html#qgis.core.QgsRectangle" title="qgis.core.QgsRectangle"><em>QgsRectangle</em></a>) – spatial filter defined by rectangle</p></li>
+<li><p><strong>startTime</strong> (<em>float</em>) – time filter defining the starting dataset</p></li>
+<li><p><strong>endTime</strong> (<em>float</em>) – time filter defining the ending dataset</p></li>
+<li><p><strong>layer</strong> (<a class="reference internal" href="../core/QgsMeshLayer.html#qgis.core.QgsMeshLayer" title="qgis.core.QgsMeshLayer"><em>QgsMeshLayer</em></a>) – mesh layer with dataset groups references in formulaString</p></li>
 </ul>
 </dd>
 </dl>
-<p>QgsMeshCalculator(formulaString: str, outputFile: str, outputMask: QgsGeometry, startTime: float, endTime: float, layer: QgsMeshLayer)
+<p>QgsMeshCalculator(formulaString: str, outputFile: str, outputMask: <a class="reference internal" href="../core/QgsGeometry.html#qgis.core.QgsGeometry" title="qgis.core.QgsGeometry"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsGeometry</span></code></a>, startTime: float, endTime: float, layer: <a class="reference internal" href="../core/QgsMeshLayer.html#qgis.core.QgsMeshLayer" title="qgis.core.QgsMeshLayer"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMeshLayer</span></code></a>)
 Creates calculator with geometry mask</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1592,7 +1589,7 @@ Creates calculator with geometry mask</p>
 </ul>
 </dd>
 </dl>
-<p>QgsMeshCalculator(QgsMeshCalculator)</p>
+<p>QgsMeshCalculator(<a class="reference internal" href="#qgis.analysis.QgsMeshCalculator" title="qgis.analysis.QgsMeshCalculator"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMeshCalculator</span></code></a>)</p>
 <p>Performs mesh layer calculations.</p>
 <p>Mesh calculator can do various mathematical operations
 between dataset groups from a single mesh layer.
@@ -1720,12 +1717,15 @@ implemented and supported</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>formulaString</strong> – formula/expression to evaluate. Consists of dataset group names, operators and numbers</p></li>
-<li><p><strong>layer</strong> – mesh layer with dataset groups references in formulaString</p></li>
+<li><p><strong>formulaString</strong> (<em>str</em>) – formula/expression to evaluate. Consists of dataset group names, operators and numbers</p></li>
+<li><p><strong>layer</strong> (<a class="reference internal" href="../core/QgsMeshLayer.html#qgis.core.QgsMeshLayer" title="qgis.core.QgsMeshLayer"><em>QgsMeshLayer</em></a>) – mesh layer with dataset groups references in formulaString</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>QgsMeshCalculator.Success in case of success</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#qgis.analysis.QgsMeshCalculator.Result" title="qgis.analysis.QgsMeshCalculator.Result">QgsMeshCalculator.Result</a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>QgsMeshCalculator.Success in case of success</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1736,10 +1736,13 @@ implemented and supported</p>
 <dd><p>Starts the calculation, writes new dataset group to file and adds it to the mesh layer</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>feedback</strong> – The optional feedback argument for progress reporting and cancellation support</p>
+<dd class="field-odd"><p><strong>feedback</strong> (<a class="reference internal" href="../core/QgsFeedback.html#qgis.core.QgsFeedback" title="qgis.core.QgsFeedback"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsFeedback</span></code></a> = None) – The optional feedback argument for progress reporting and cancellation support</p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>QgsMeshCalculator.Success in case of success</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#qgis.analysis.QgsMeshCalculator.Result" title="qgis.analysis.QgsMeshCalculator.Result">QgsMeshCalculator.Result</a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>QgsMeshCalculator.Success in case of success</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1760,7 +1763,7 @@ implemented and supported</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 10:58 Oct 14, 2019.
+        Last updated on 15:06 Oct 15, 2019.
       </span>
 
     </p>
@@ -1787,20 +1790,20 @@ implemented and supported</p>
     <div class="rst-other-versions">
       <dl>
         <dt>Versions</dt>
-      
-        <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
-      
-    </dl>
+        
+          <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
+        
+      </dl>
       
       
     </div>

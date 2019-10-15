@@ -122,7 +122,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../core/PROJECT_SCALES.html">Class: PROJECT_SCALES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/PluginLayer.html">Class: PluginLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/ProjectDirtyBlocker.html">Class: ProjectDirtyBlocker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../core/PyProviderMetadata.html">Class: PyProviderMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/Qgis.html">Class: Qgis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/Qgs25DRenderer.html">Class: Qgs25DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/Qgs3DRendererAbstractMetadata.html">Class: Qgs3DRendererAbstractMetadata</a></li>
@@ -1546,8 +1545,6 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/analysis/QgsVectorLayerDirector.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -1564,17 +1561,17 @@
 <dl class="class">
 <dt id="qgis.analysis.QgsVectorLayerDirector">
 <em class="property">class </em><code class="sig-prename descclassname">qgis.analysis.</code><code class="sig-name descname">QgsVectorLayerDirector</code><span class="sig-paren">(</span><em class="sig-param">source: QgsFeatureSource</em>, <em class="sig-param">directionFieldId: int</em>, <em class="sig-param">directDirectionValue: str</em>, <em class="sig-param">reverseDirectionValue: str</em>, <em class="sig-param">bothDirectionValue: str</em>, <em class="sig-param">defaultDirection: QgsVectorLayerDirector.Direction</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.analysis.QgsVectorLayerDirector" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">qgis._analysis.QgsGraphDirector</span></code></p>
+<dd><p>Bases: <a class="reference internal" href="QgsGraphDirector.html#module-QgsGraphDirector" title="QgsGraphDirector"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsGraphDirector</span></code></a></p>
 <p>Default constructor</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>source</strong> – feature source representing network</p></li>
-<li><p><strong>directionFieldId</strong> – field containing direction value</p></li>
-<li><p><strong>directDirectionValue</strong> – value for direct one-way road</p></li>
-<li><p><strong>reverseDirectionValue</strong> – value for reversed one-way road</p></li>
-<li><p><strong>bothDirectionValue</strong> – value for two-way (bidirectional) road</p></li>
-<li><p><strong>defaultDirection</strong> – default direction. Will be used if corresponding
+<li><p><strong>source</strong> (<a class="reference internal" href="../core/QgsFeatureSource.html#qgis.core.QgsFeatureSource" title="qgis.core.QgsFeatureSource"><em>QgsFeatureSource</em></a>) – feature source representing network</p></li>
+<li><p><strong>directionFieldId</strong> (<em>int</em>) – field containing direction value</p></li>
+<li><p><strong>directDirectionValue</strong> (<em>str</em>) – value for direct one-way road</p></li>
+<li><p><strong>reverseDirectionValue</strong> (<em>str</em>) – value for reversed one-way road</p></li>
+<li><p><strong>bothDirectionValue</strong> (<em>str</em>) – value for two-way (bidirectional) road</p></li>
+<li><p><strong>defaultDirection</strong> (<a class="reference internal" href="#qgis.analysis.QgsVectorLayerDirector.Direction" title="qgis.analysis.QgsVectorLayerDirector.Direction"><em>QgsVectorLayerDirector.Direction</em></a>) – default direction. Will be used if corresponding
 attribute value is not set or does not equal to the given values</p></li>
 </ul>
 </dd>
@@ -1615,7 +1612,12 @@ attribute value is not set or does not equal to the given values</p></li>
 <td><p>MANDATORY DIRECTOR PROPERTY DECLARATION</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.analysis.QgsVectorLayerDirector.name" title="qgis.analysis.QgsVectorLayerDirector.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code></a></p></td>
-<td><p></p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">rtype</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.analysis.QgsVectorLayerDirector.receivers" title="qgis.analysis.QgsVectorLayerDirector.receivers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">receivers</span></code></a></p></td>
 <td><p></p></td>
@@ -1708,12 +1710,29 @@ attribute value is not set or does not equal to the given values</p></li>
 <dt id="qgis.analysis.QgsVectorLayerDirector.makeGraph">
 <code class="sig-name descname">makeGraph</code><span class="sig-paren">(</span><em class="sig-param">self, builder: QgsGraphBuilderInterface, additionalPoints: Iterable[QgsPointXY], feedback: QgsFeedback = None</em><span class="sig-paren">)</span> &#x2192; List[QgsPointXY]<a class="headerlink" href="#qgis.analysis.QgsVectorLayerDirector.makeGraph" title="Permalink to this definition">¶</a></dt>
 <dd><p>MANDATORY DIRECTOR PROPERTY DECLARATION</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>builder</strong> (<a class="reference internal" href="QgsGraphBuilderInterface.html#qgis.analysis.QgsGraphBuilderInterface" title="qgis.analysis.QgsGraphBuilderInterface"><em>QgsGraphBuilderInterface</em></a>) – </p></li>
+<li><p><strong>additionalPoints</strong> (<em>Iterable</em><em>[</em><a class="reference internal" href="../core/QgsPointXY.html#qgis.core.QgsPointXY" title="qgis.core.QgsPointXY"><em>QgsPointXY</em></a><em>]</em>) – </p></li>
+<li><p><strong>feedback</strong> (<a class="reference internal" href="../core/QgsFeedback.html#qgis.core.QgsFeedback" title="qgis.core.QgsFeedback"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsFeedback</span></code></a> = None) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>List[<a class="reference internal" href="../core/QgsPointXY.html#qgis.core.QgsPointXY" title="qgis.core.QgsPointXY">QgsPointXY</a>]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.analysis.QgsVectorLayerDirector.name">
 <code class="sig-name descname">name</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.analysis.QgsVectorLayerDirector.name" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="method">
 <dt id="qgis.analysis.QgsVectorLayerDirector.receivers">
@@ -1751,7 +1770,7 @@ attribute value is not set or does not equal to the given values</p></li>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 10:58 Oct 14, 2019.
+        Last updated on 15:06 Oct 15, 2019.
       </span>
 
     </p>
@@ -1778,20 +1797,20 @@ attribute value is not set or does not equal to the given values</p></li>
     <div class="rst-other-versions">
       <dl>
         <dt>Versions</dt>
-      
-        <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
-      
-    </dl>
+        
+          <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
+        
+      </dl>
       
       
     </div>

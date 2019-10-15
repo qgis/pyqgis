@@ -122,7 +122,6 @@
 <li class="toctree-l2"><a class="reference internal" href="PROJECT_SCALES.html">Class: PROJECT_SCALES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PluginLayer.html">Class: PluginLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ProjectDirtyBlocker.html">Class: ProjectDirtyBlocker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="PyProviderMetadata.html">Class: PyProviderMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgis.html">Class: Qgis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs25DRenderer.html">Class: Qgs25DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs3DRendererAbstractMetadata.html">Class: Qgs3DRendererAbstractMetadata</a></li>
@@ -1546,8 +1545,6 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/core/QgsMapToPixel.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -1569,12 +1566,12 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>mapUnitsPerPixel</strong> – Map units per pixel</p></li>
-<li><p><strong>centerX</strong> – X coordinate of map center, in geographical units</p></li>
-<li><p><strong>centerY</strong> – Y coordinate of map center, in geographical units</p></li>
-<li><p><strong>widthPixels</strong> – Output width, in pixels</p></li>
-<li><p><strong>heightPixels</strong> – Output height, in pixels</p></li>
-<li><p><strong>rotation</strong> – clockwise rotation in degrees</p></li>
+<li><p><strong>mapUnitsPerPixel</strong> (<em>float</em>) – Map units per pixel</p></li>
+<li><p><strong>centerX</strong> (<em>float</em>) – X coordinate of map center, in geographical units</p></li>
+<li><p><strong>centerY</strong> (<em>float</em>) – Y coordinate of map center, in geographical units</p></li>
+<li><p><strong>widthPixels</strong> (<em>int</em>) – Output width, in pixels</p></li>
+<li><p><strong>heightPixels</strong> (<em>int</em>) – Output height, in pixels</p></li>
+<li><p><strong>rotation</strong> (<em>float</em>) – clockwise rotation in degrees</p></li>
 </ul>
 </dd>
 </dl>
@@ -1591,7 +1588,7 @@ Constructor</p>
 <p>QgsMapToPixel()
 Constructor</p>
 <p>Use setParameters to fill</p>
-<p>QgsMapToPixel(QgsMapToPixel)</p>
+<p>QgsMapToPixel(<a class="reference internal" href="#qgis.core.QgsMapToPixel" title="qgis.core.QgsMapToPixel"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMapToPixel</span></code></a>)</p>
 <p>Perform transforms between map coordinates and device coordinates.</p>
 <p>This class can convert device coordinates to map coordinates and vice versa.</p>
 <blockquote>
@@ -1611,7 +1608,7 @@ Constructor</p>
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMapToPixel.fromScale" title="qgis.core.QgsMapToPixel.fromScale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fromScale</span></code></a></p></td>
-<td><p>Returns a new QgsMapToPixel created using a specified <code class="docutils literal notranslate"><span class="pre">scale</span></code> and distance unit.</p></td>
+<td><p>Returns a new <a class="reference internal" href="#qgis.core.QgsMapToPixel" title="qgis.core.QgsMapToPixel"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMapToPixel</span></code></a> created using a specified <code class="docutils literal notranslate"><span class="pre">scale</span></code> and distance unit.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMapToPixel.mapHeight" title="qgis.core.QgsMapToPixel.mapHeight"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mapHeight</span></code></a></p></td>
 <td><p>Returns current map height in pixels</p></td>
@@ -1680,17 +1677,20 @@ Constructor</p>
 <dl class="method">
 <dt id="qgis.core.QgsMapToPixel.fromScale">
 <code class="sig-name descname">fromScale</code><span class="sig-paren">(</span><em class="sig-param">scale: float</em>, <em class="sig-param">mapUnits: QgsUnitTypes.DistanceUnit</em>, <em class="sig-param">dpi: float = 96</em><span class="sig-paren">)</span> &#x2192; QgsMapToPixel<a class="headerlink" href="#qgis.core.QgsMapToPixel.fromScale" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns a new QgsMapToPixel created using a specified <code class="docutils literal notranslate"><span class="pre">scale</span></code> and distance unit.</p>
+<dd><p>Returns a new <a class="reference internal" href="#qgis.core.QgsMapToPixel" title="qgis.core.QgsMapToPixel"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMapToPixel</span></code></a> created using a specified <code class="docutils literal notranslate"><span class="pre">scale</span></code> and distance unit.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>scale</strong> – map scale denominator, e.g. 1000.0 for a 1:1000 map.</p></li>
-<li><p><strong>dpi</strong> – screen DPI</p></li>
-<li><p><strong>mapUnits</strong> – map units</p></li>
+<li><p><strong>scale</strong> (<em>float</em>) – map scale denominator, e.g. 1000.0 for a 1:1000 map.</p></li>
+<li><p><strong>dpi</strong> (<em>float = 96</em>) – screen DPI</p></li>
+<li><p><strong>mapUnits</strong> (<a class="reference internal" href="QgsUnitTypes.html#qgis.core.QgsUnitTypes.DistanceUnit" title="qgis.core.QgsUnitTypes.DistanceUnit"><em>QgsUnitTypes.DistanceUnit</em></a>) – map units</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>matching QgsMapToPixel</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#qgis.core.QgsMapToPixel" title="qgis.core.QgsMapToPixel">QgsMapToPixel</a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>matching QgsMapToPixel</p>
 </dd>
 </dl>
 <div class="versionadded">
@@ -1705,6 +1705,11 @@ Constructor</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 2.8.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1714,12 +1719,22 @@ Constructor</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 2.8.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsMapToPixel.mapUnitsPerPixel">
 <code class="sig-name descname">mapUnitsPerPixel</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#qgis.core.QgsMapToPixel.mapUnitsPerPixel" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns current map units per pixel</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1730,6 +1745,11 @@ The information is only known if setRotation was used</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 2.8.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1739,9 +1759,9 @@ The information is only known if setRotation was used</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>degrees</strong> – clockwise rotation in degrees</p></li>
-<li><p><strong>cx</strong> – X ordinate of map center in geographical units</p></li>
-<li><p><strong>cy</strong> – Y ordinate of map center in geographical units</p></li>
+<li><p><strong>degrees</strong> (<em>float</em>) – clockwise rotation in degrees</p></li>
+<li><p><strong>cx</strong> (<em>float</em>) – X ordinate of map center in geographical units</p></li>
+<li><p><strong>cy</strong> (<em>float</em>) – Y ordinate of map center in geographical units</p></li>
 </ul>
 </dd>
 </dl>
@@ -1756,7 +1776,7 @@ The information is only known if setRotation was used</p>
 <dd><p>Set map units per pixel</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>mapUnitsPerPixel</strong> – Map units per pixel</p>
+<dd class="field-odd"><p><strong>mapUnitsPerPixel</strong> (<em>float</em>) – Map units per pixel</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1768,12 +1788,12 @@ The information is only known if setRotation was used</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>mapUnitsPerPixel</strong> – Map units per pixel</p></li>
-<li><p><strong>centerX</strong> – X coordinate of map center, in geographical units</p></li>
-<li><p><strong>centerY</strong> – Y coordinate of map center, in geographical units</p></li>
-<li><p><strong>widthPixels</strong> – Output width, in pixels</p></li>
-<li><p><strong>heightPixels</strong> – Output height, in pixels</p></li>
-<li><p><strong>rotation</strong> – clockwise rotation in degrees</p></li>
+<li><p><strong>mapUnitsPerPixel</strong> (<em>float</em>) – Map units per pixel</p></li>
+<li><p><strong>centerX</strong> (<em>float</em>) – X coordinate of map center, in geographical units</p></li>
+<li><p><strong>centerY</strong> (<em>float</em>) – Y coordinate of map center, in geographical units</p></li>
+<li><p><strong>widthPixels</strong> (<em>int</em>) – Output width, in pixels</p></li>
+<li><p><strong>heightPixels</strong> (<em>int</em>) – Output height, in pixels</p></li>
+<li><p><strong>rotation</strong> (<em>float</em>) – clockwise rotation in degrees</p></li>
 </ul>
 </dd>
 </dl>
@@ -1786,6 +1806,11 @@ The information is only known if setRotation was used</p>
 <dt id="qgis.core.QgsMapToPixel.showParameters">
 <code class="sig-name descname">showParameters</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.core.QgsMapToPixel.showParameters" title="Permalink to this definition">¶</a></dt>
 <dd><p>String representation of the parameters used in the transform</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1796,10 +1821,17 @@ The information is only known if setRotation was used</p>
 Transform device coordinates to map (world) coordinates</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>p</strong> – Point to be converted to map cooordinates</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p</strong> – Point to be converted to map cooordinates</p></li>
+<li><p><strong>x</strong> (<em>int</em>) – </p></li>
+<li><p><strong>y</strong> (<em>int</em>) – </p></li>
+</ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>QgsPointXY in map coorndiates</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsPointXY.html#qgis.core.QgsPointXY" title="qgis.core.QgsPointXY">QgsPointXY</a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsPointXY.html#qgis.core.QgsPointXY" title="qgis.core.QgsPointXY"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsPointXY</span></code></a> in map coorndiates</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1808,6 +1840,17 @@ Transform device coordinates to map (world) coordinates</p>
 <dt id="qgis.core.QgsMapToPixel.toMapCoordinatesF">
 <code class="sig-name descname">toMapCoordinatesF</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">x: float</em>, <em class="sig-param">y: float</em><span class="sig-paren">)</span> &#x2192; QgsPointXY<a class="headerlink" href="#qgis.core.QgsMapToPixel.toMapCoordinatesF" title="Permalink to this definition">¶</a></dt>
 <dd><p>Transform device coordinates to map (world) coordinates</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>float</em>) – </p></li>
+<li><p><strong>y</strong> (<em>float</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsPointXY.html#qgis.core.QgsPointXY" title="qgis.core.QgsPointXY">QgsPointXY</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1817,6 +1860,17 @@ Transform device coordinates to map (world) coordinates</p>
 <div class="deprecated">
 <p><span class="versionmodified deprecated">Deprecated since version since: </span>QGIS 3.4 use toMapCoordinates instead</p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>float</em>) – </p></li>
+<li><p><strong>y</strong> (<em>float</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsPointXY.html#qgis.core.QgsPointXY" title="qgis.core.QgsPointXY">QgsPointXY</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1825,13 +1879,13 @@ Transform device coordinates to map (world) coordinates</p>
 <dd><p>Transform the point from map (world) coordinates to device coordinates</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>p</strong> – Point to transform</p>
+<dd class="field-odd"><p><strong>p</strong> (<a class="reference internal" href="QgsPointXY.html#qgis.core.QgsPointXY" title="qgis.core.QgsPointXY"><em>QgsPointXY</em></a>) – Point to transform</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>QgsPointXY in device coordinates</p>
+<dd class="field-even"><p><a class="reference internal" href="QgsPointXY.html#qgis.core.QgsPointXY" title="qgis.core.QgsPointXY"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsPointXY</span></code></a> in device coordinates</p>
 </dd>
 </dl>
-<p>transform(self, p: QgsPointXY)</p>
+<p>transform(self, p: <a class="reference internal" href="QgsPointXY.html#qgis.core.QgsPointXY" title="qgis.core.QgsPointXY"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsPointXY</span></code></a>)</p>
 <p>transform(self, x: float, y: float) -&gt; QgsPointXY
 Transform the point specified by x,y from map (world)
 coordinates to device coordinates</p>
@@ -1842,8 +1896,11 @@ coordinates to device coordinates</p>
 <li><p><strong>y</strong> – y coordinate of point to transform</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>QgsPointXY in device coordinates</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsPointXY.html#qgis.core.QgsPointXY" title="qgis.core.QgsPointXY">QgsPointXY</a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsPointXY.html#qgis.core.QgsPointXY" title="qgis.core.QgsPointXY"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsPointXY</span></code></a> in device coordinates</p>
 </dd>
 </dl>
 <p>transform(self) -&gt; QTransform</p>
@@ -1855,6 +1912,11 @@ coordinates to device coordinates</p>
 <dd><p>Transform device coordinates to map coordinates. Modifies the
 given coordinates in place. Intended as a fast way to do the
 transform.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Tuple[float, float]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1868,6 +1930,11 @@ transform.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1881,6 +1948,11 @@ transform.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -1899,7 +1971,7 @@ transform.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 10:58 Oct 14, 2019.
+        Last updated on 15:06 Oct 15, 2019.
       </span>
 
     </p>
@@ -1926,20 +1998,20 @@ transform.</p>
     <div class="rst-other-versions">
       <dl>
         <dt>Versions</dt>
-      
-        <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
-      
-    </dl>
+        
+          <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
+        
+      </dl>
       
       
     </div>

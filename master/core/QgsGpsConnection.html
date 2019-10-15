@@ -122,7 +122,6 @@
 <li class="toctree-l2"><a class="reference internal" href="PROJECT_SCALES.html">Class: PROJECT_SCALES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PluginLayer.html">Class: PluginLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ProjectDirtyBlocker.html">Class: ProjectDirtyBlocker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="PyProviderMetadata.html">Class: PyProviderMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgis.html">Class: Qgis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs25DRenderer.html">Class: Qgs25DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs3DRendererAbstractMetadata.html">Class: Qgs3DRendererAbstractMetadata</a></li>
@@ -1546,8 +1545,6 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/core/QgsGpsConnection.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -1568,7 +1565,7 @@
 <p>Constructor</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>dev</strong> – input device for the connection (e.g. serial device). The class takes ownership of the object</p>
+<dd class="field-odd"><p><strong>dev</strong> (<em>QIODevice</em>) – input device for the connection (e.g. serial device). The class takes ownership of the object</p>
 </dd>
 </dl>
 <p>Abstract base class for connection to a GPS device*</p>
@@ -1646,7 +1643,7 @@
 <td><p>nmeaSentenceReceived(self, substring: str) [signal]</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsGpsConnection.stateChanged" title="qgis.core.QgsGpsConnection.stateChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stateChanged</span></code></a></p></td>
-<td><p>stateChanged(self, info: QgsGpsInformation) [signal]</p></td>
+<td><p>stateChanged(self, info: <a class="reference internal" href="QgsGpsInformation.html#qgis.core.QgsGpsInformation" title="qgis.core.QgsGpsInformation"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsGpsInformation</span></code></a>) [signal]</p></td>
 </tr>
 </tbody>
 </table>
@@ -1707,12 +1704,22 @@
 <dt id="qgis.core.QgsGpsConnection.close">
 <code class="sig-name descname">close</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsGpsConnection.close" title="Permalink to this definition">¶</a></dt>
 <dd><p>Closes connection to device</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsGpsConnection.connect">
 <code class="sig-name descname">connect</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsGpsConnection.connect" title="Permalink to this definition">¶</a></dt>
 <dd><p>Opens connection to device</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1724,6 +1731,11 @@
 <dt id="qgis.core.QgsGpsConnection.currentGPSInformation">
 <code class="sig-name descname">currentGPSInformation</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QgsGpsInformation<a class="headerlink" href="#qgis.core.QgsGpsConnection.currentGPSInformation" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the current gps information (lat, lon, etc.)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsGpsInformation.html#qgis.core.QgsGpsInformation" title="qgis.core.QgsGpsInformation">QgsGpsInformation</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1745,6 +1757,11 @@
 <dt id="qgis.core.QgsGpsConnection.nmeaSentenceReceived">
 <code class="sig-name descname">nmeaSentenceReceived</code><a class="headerlink" href="#qgis.core.QgsGpsConnection.nmeaSentenceReceived" title="Permalink to this definition">¶</a></dt>
 <dd><p>nmeaSentenceReceived(self, substring: str) [signal]</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>substring</strong> (<em>str</em>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1772,18 +1789,33 @@
 <dt id="qgis.core.QgsGpsConnection.setSource">
 <code class="sig-name descname">setSource</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">source: QIODevice</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsGpsConnection.setSource" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets the GPS source. The class takes ownership of the device class</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>source</strong> (<em>QIODevice</em>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="qgis.core.QgsGpsConnection.stateChanged">
 <code class="sig-name descname">stateChanged</code><a class="headerlink" href="#qgis.core.QgsGpsConnection.stateChanged" title="Permalink to this definition">¶</a></dt>
-<dd><p>stateChanged(self, info: QgsGpsInformation) [signal]</p>
+<dd><p>stateChanged(self, info: <a class="reference internal" href="QgsGpsInformation.html#qgis.core.QgsGpsInformation" title="qgis.core.QgsGpsInformation"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsGpsInformation</span></code></a>) [signal]</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>info</strong> (<a class="reference internal" href="QgsGpsInformation.html#qgis.core.QgsGpsInformation" title="qgis.core.QgsGpsInformation"><em>QgsGpsInformation</em></a>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsGpsConnection.status">
 <code class="sig-name descname">status</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QgsGpsConnection.Status<a class="headerlink" href="#qgis.core.QgsGpsConnection.status" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the status. Possible state are not connected, connected, data received</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#qgis.core.QgsGpsConnection.Status" title="qgis.core.QgsGpsConnection.Status">QgsGpsConnection.Status</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1807,7 +1839,7 @@
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 10:58 Oct 14, 2019.
+        Last updated on 15:06 Oct 15, 2019.
       </span>
 
     </p>
@@ -1834,20 +1866,20 @@
     <div class="rst-other-versions">
       <dl>
         <dt>Versions</dt>
-      
-        <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
-      
-    </dl>
+        
+          <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
+        
+      </dl>
       
       
     </div>

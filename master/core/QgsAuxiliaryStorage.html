@@ -122,7 +122,6 @@
 <li class="toctree-l2"><a class="reference internal" href="PROJECT_SCALES.html">Class: PROJECT_SCALES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PluginLayer.html">Class: PluginLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ProjectDirtyBlocker.html">Class: ProjectDirtyBlocker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="PyProviderMetadata.html">Class: PyProviderMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgis.html">Class: Qgis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs25DRenderer.html">Class: Qgs25DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs3DRendererAbstractMetadata.html">Class: Qgs3DRendererAbstractMetadata</a></li>
@@ -1546,8 +1545,6 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/core/QgsAuxiliaryStorage.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -1572,8 +1569,8 @@ described for :py:class:<a href="#id1"><span class="problematic" id="id2">`</spa
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>project</strong> – The project for which the auxiliary storage has to be used</p></li>
-<li><p><strong>copy</strong> – Parameter indicating if a copy of the database has to be used</p></li>
+<li><p><strong>project</strong> (<a class="reference internal" href="QgsProject.html#qgis.core.QgsProject" title="qgis.core.QgsProject"><em>QgsProject</em></a>) – The project for which the auxiliary storage has to be used</p></li>
+<li><p><strong>copy</strong> (<em>bool = True</em>) – Parameter indicating if a copy of the database has to be used</p></li>
 </ul>
 </dd>
 </dl>
@@ -1599,7 +1596,7 @@ the original location given in parameter.</p>
 </ul>
 </dd>
 </dl>
-<p>QgsAuxiliaryStorage(QgsAuxiliaryStorage)</p>
+<p>QgsAuxiliaryStorage(<a class="reference internal" href="#qgis.core.QgsAuxiliaryStorage" title="qgis.core.QgsAuxiliaryStorage"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsAuxiliaryStorage</span></code></a>)</p>
 <p>Class providing some utility methods to manage auxiliary storage.</p>
 <div class="versionadded">
 <table class="longtable docutils align-default">
@@ -1678,12 +1675,15 @@ given in parameter.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>field</strong> – The primary key to join</p></li>
-<li><p><strong>layer</strong> – The vector layer for which the auxiliary layer has to be created</p></li>
+<li><p><strong>field</strong> (<a class="reference internal" href="QgsField.html#qgis.core.QgsField" title="qgis.core.QgsField"><em>QgsField</em></a>) – The primary key to join</p></li>
+<li><p><strong>layer</strong> (<a class="reference internal" href="QgsVectorLayer.html#qgis.core.QgsVectorLayer" title="qgis.core.QgsVectorLayer"><em>QgsVectorLayer</em></a>) – The vector layer for which the auxiliary layer has to be created</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>A new auxiliary layer or <code class="docutils literal notranslate"><span class="pre">None</span></code> if an error happened.</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsAuxiliaryLayer.html#qgis.core.QgsAuxiliaryLayer" title="qgis.core.QgsAuxiliaryLayer">QgsAuxiliaryLayer</a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A new auxiliary layer or <code class="docutils literal notranslate"><span class="pre">None</span></code> if an error happened.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1693,6 +1693,11 @@ given in parameter.</p>
 <code class="sig-name descname">currentFileName</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.core.QgsAuxiliaryStorage.currentFileName" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the path of the current database used. It may be different from
 the target filename if the auxiliary storage is opened in copy mode.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1701,10 +1706,13 @@ the target filename if the auxiliary storage is opened in copy mode.</p>
 <dd><p>Removes a table from the auxiliary storage.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>uri</strong> – The uri of the table to remove</p>
+<dd class="field-odd"><p><strong>uri</strong> (<a class="reference internal" href="QgsDataSourceUri.html#qgis.core.QgsDataSourceUri" title="qgis.core.QgsDataSourceUri"><em>QgsDataSourceUri</em></a>) – The uri of the table to remove</p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the table is well deleted, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the table is well deleted, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1716,12 +1724,15 @@ the target filename if the auxiliary storage is opened in copy mode.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>uri</strong> – The uri of the table to duplicate</p></li>
-<li><p><strong>newTable</strong> – The name of the new table</p></li>
+<li><p><strong>uri</strong> (<a class="reference internal" href="QgsDataSourceUri.html#qgis.core.QgsDataSourceUri" title="qgis.core.QgsDataSourceUri"><em>QgsDataSourceUri</em></a>) – The uri of the table to duplicate</p></li>
+<li><p><strong>newTable</strong> (<em>str</em>) – The name of the new table</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the table is well duplicated, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the table is well duplicated, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1734,6 +1745,11 @@ happening in saveAs(). Empty by default.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.4.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1742,24 +1758,39 @@ happening in saveAs(). Empty by default.</p>
 <dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the auxiliary database yet exists for a project, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>project</strong> – The project for which the database is checked</p>
+<dd class="field-odd"><p><strong>project</strong> (<a class="reference internal" href="QgsProject.html#qgis.core.QgsProject" title="qgis.core.QgsProject"><em>QgsProject</em></a>) – The project for which the database is checked</p>
 </dd>
 </dl>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.2.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsAuxiliaryStorage.extension">
 <code class="sig-name descname">extension</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.core.QgsAuxiliaryStorage.extension" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the extension used for auxiliary databases.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsAuxiliaryStorage.fileName">
 <code class="sig-name descname">fileName</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.core.QgsAuxiliaryStorage.fileName" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the target filename of the database.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1767,8 +1798,11 @@ happening in saveAs(). Empty by default.</p>
 <code class="sig-name descname">isValid</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsAuxiliaryStorage.isValid" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the status of the auxiliary storage currently defined.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the auxiliary storage is valid, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the auxiliary storage is valid, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1778,8 +1812,11 @@ happening in saveAs(). Empty by default.</p>
 <code class="sig-name descname">save</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsAuxiliaryStorage.save" title="Permalink to this definition">¶</a></dt>
 <dd><p>Saves the current database.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if everything is saved, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if everything is saved, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1793,13 +1830,19 @@ happening in saveAs(). Empty by default.</p>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if everything is saved, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise</p>
 </dd>
 </dl>
-<p>saveAs(self, project: QgsProject) -&gt; bool
+<p>saveAs(self, project: <a class="reference internal" href="QgsProject.html#qgis.core.QgsProject" title="qgis.core.QgsProject"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProject</span></code></a>) -&gt; bool
 Saves the current database to a new path for a specific project.
 Actually, the current filename of the project is used to deduce the
 path of the database to save.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if everything is saved, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if everything is saved, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise</p>
+</dd>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filename</strong> (<em>str</em>) – </p>
 </dd>
 </dl>
 </dd></dl>
@@ -1820,7 +1863,7 @@ path of the database to save.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 10:58 Oct 14, 2019.
+        Last updated on 15:06 Oct 15, 2019.
       </span>
 
     </p>
@@ -1847,20 +1890,20 @@ path of the database to save.</p>
     <div class="rst-other-versions">
       <dl>
         <dt>Versions</dt>
-      
-        <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
-      
-    </dl>
+        
+          <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
+        
+      </dl>
       
       
     </div>

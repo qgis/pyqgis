@@ -122,7 +122,6 @@
 <li class="toctree-l2"><a class="reference internal" href="PROJECT_SCALES.html">Class: PROJECT_SCALES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PluginLayer.html">Class: PluginLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ProjectDirtyBlocker.html">Class: ProjectDirtyBlocker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="PyProviderMetadata.html">Class: PyProviderMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgis.html">Class: Qgis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs25DRenderer.html">Class: Qgs25DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs3DRendererAbstractMetadata.html">Class: Qgs3DRendererAbstractMetadata</a></li>
@@ -1546,8 +1545,6 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/core/QgsRenderContext.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -1622,7 +1619,7 @@ to be rendered etc.</p>
 <td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if rendering operations should use vector operations instead of any faster raster shortcuts.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.fromMapSettings" title="qgis.core.QgsRenderContext.fromMapSettings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fromMapSettings</span></code></a></p></td>
-<td><p>create initialized QgsRenderContext instance from given <a class="reference internal" href="QgsMapSettings.html#module-QgsMapSettings" title="QgsMapSettings"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMapSettings</span></code></a></p></td>
+<td><p>create initialized <a class="reference internal" href="#qgis.core.QgsRenderContext" title="qgis.core.QgsRenderContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsRenderContext</span></code></a> instance from given <a class="reference internal" href="QgsMapSettings.html#module-QgsMapSettings" title="QgsMapSettings"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMapSettings</span></code></a></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.fromQPainter" title="qgis.core.QgsRenderContext.fromQPainter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fromQPainter</span></code></a></p></td>
 <td><p>Creates a default render context given a pixel based QPainter destination.</p></td>
@@ -1739,7 +1736,11 @@ to be rendered etc.</p>
 <td><p>Used to enable or disable advanced effects such as blend modes</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.setUseRenderingOptimization" title="qgis.core.QgsRenderContext.setUseRenderingOptimization"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setUseRenderingOptimization</span></code></a></p></td>
-<td><p></p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">param enabled</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.setVectorSimplifyMethod" title="qgis.core.QgsRenderContext.setVectorSimplifyMethod"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setVectorSimplifyMethod</span></code></a></p></td>
 <td><p>Sets the simplification setting to use when rendering vector layers.</p></td>
@@ -1912,6 +1913,17 @@ QgsRenderContext.Flags(QgsRenderContext.Flags)</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sizeInMapUnits</strong> (<em>float</em>) – </p></li>
+<li><p><strong>outputUnit</strong> (<a class="reference internal" href="QgsUnitTypes.html#qgis.core.QgsUnitTypes.RenderUnit" title="qgis.core.QgsUnitTypes.RenderUnit"><em>QgsUnitTypes.RenderUnit</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1923,6 +1935,14 @@ When the sourceCrs() is geographic, the center of the Extent will be used</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>meters</strong> (<em>float</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1937,6 +1957,18 @@ specified by the optional scale parameter.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>size</strong> (<em>float</em>) – </p></li>
+<li><p><strong>unit</strong> (<a class="reference internal" href="QgsUnitTypes.html#qgis.core.QgsUnitTypes.RenderUnit" title="qgis.core.QgsUnitTypes.RenderUnit"><em>QgsUnitTypes.RenderUnit</em></a>) – </p></li>
+<li><p><strong>scale</strong> (<a class="reference internal" href="QgsMapUnitScale.html#qgis.core.QgsMapUnitScale" title="qgis.core.QgsMapUnitScale"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMapUnitScale</span></code></a> = QgsMapUnitScale()) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1951,6 +1983,18 @@ specified by the optional scale parameter.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>size</strong> (<em>float</em>) – </p></li>
+<li><p><strong>unit</strong> (<a class="reference internal" href="QgsUnitTypes.html#qgis.core.QgsUnitTypes.RenderUnit" title="qgis.core.QgsUnitTypes.RenderUnit"><em>QgsUnitTypes.RenderUnit</em></a>) – </p></li>
+<li><p><strong>scale</strong> (<a class="reference internal" href="QgsMapUnitScale.html#qgis.core.QgsMapUnitScale" title="qgis.core.QgsMapUnitScale"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMapUnitScale</span></code></a> = QgsMapUnitScale()) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1965,6 +2009,11 @@ a map layer render, then an invalid coordinate transformation is returned.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsRenderContext.setCoordinateTransform" title="qgis.core.QgsRenderContext.setCoordinateTransform"><code class="xref py py-func docutils literal notranslate"><span class="pre">setCoordinateTransform()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsCoordinateTransform.html#qgis.core.QgsCoordinateTransform" title="qgis.core.QgsCoordinateTransform">QgsCoordinateTransform</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1974,6 +2023,11 @@ a map layer render, then an invalid coordinate transformation is returned.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsDistanceArea.html#qgis.core.QgsDistanceArea" title="qgis.core.QgsDistanceArea">QgsDistanceArea</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1984,6 +2038,11 @@ a map layer render, then an invalid coordinate transformation is returned.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsRenderContext.setDrawEditingInformation" title="qgis.core.QgsRenderContext.setDrawEditingInformation"><code class="xref py py-func docutils literal notranslate"><span class="pre">setDrawEditingInformation()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1998,6 +2057,11 @@ associated with this render context.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 2.12.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsExpressionContext.html#qgis.core.QgsExpressionContext" title="qgis.core.QgsExpressionContext">QgsExpressionContext</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2022,6 +2086,11 @@ should never be used to determine the actual visible extent of a map render.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsRenderContext.mapExtent" title="qgis.core.QgsRenderContext.mapExtent"><code class="xref py py-func docutils literal notranslate"><span class="pre">mapExtent()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsRectangle.html#qgis.core.QgsRectangle" title="qgis.core.QgsRectangle">QgsRectangle</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2029,8 +2098,11 @@ should never be used to determine the actual visible extent of a map render.</p>
 <code class="sig-name descname">featureFilterProvider</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QgsFeatureFilterProvider<a class="headerlink" href="#qgis.core.QgsRenderContext.featureFilterProvider" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets the filter feature provider used for additional filtering of rendered features.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>the filter feature provider</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsFeatureFilterProvider.html#qgis.core.QgsFeatureFilterProvider" title="qgis.core.QgsFeatureFilterProvider">QgsFeatureFilterProvider</a></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the filter feature provider</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -2049,6 +2121,11 @@ should never be used to determine the actual visible extent of a map render.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 2.14.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#qgis.core.QgsRenderContext.Flags" title="qgis.core.QgsRenderContext.Flags">QgsRenderContext.Flags</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2060,15 +2137,28 @@ of any faster raster shortcuts.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsRenderContext.setForceVectorOutput" title="qgis.core.QgsRenderContext.setForceVectorOutput"><code class="xref py py-func docutils literal notranslate"><span class="pre">setForceVectorOutput()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsRenderContext.fromMapSettings">
 <code class="sig-name descname">fromMapSettings</code><span class="sig-paren">(</span><em class="sig-param">mapSettings: QgsMapSettings</em><span class="sig-paren">)</span> &#x2192; QgsRenderContext<a class="headerlink" href="#qgis.core.QgsRenderContext.fromMapSettings" title="Permalink to this definition">¶</a></dt>
-<dd><p>create initialized QgsRenderContext instance from given <a class="reference internal" href="QgsMapSettings.html#module-QgsMapSettings" title="QgsMapSettings"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMapSettings</span></code></a></p>
+<dd><p>create initialized <a class="reference internal" href="#qgis.core.QgsRenderContext" title="qgis.core.QgsRenderContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsRenderContext</span></code></a> instance from given <a class="reference internal" href="QgsMapSettings.html#module-QgsMapSettings" title="QgsMapSettings"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMapSettings</span></code></a></p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 2.4.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>mapSettings</strong> (<a class="reference internal" href="QgsMapSettings.html#qgis.core.QgsMapSettings" title="qgis.core.QgsMapSettings"><em>QgsMapSettings</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#qgis.core.QgsRenderContext" title="qgis.core.QgsRenderContext">QgsRenderContext</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2080,12 +2170,25 @@ DPI of 88 will be assumed.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>painter</strong> (<em>QPainter</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#qgis.core.QgsRenderContext" title="qgis.core.QgsRenderContext">QgsRenderContext</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsRenderContext.geometry">
 <code class="sig-name descname">geometry</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QgsAbstractGeometry<a class="headerlink" href="#qgis.core.QgsRenderContext.geometry" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns pointer to the unsegmentized geometry</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsAbstractGeometry.html#qgis.core.QgsAbstractGeometry" title="qgis.core.QgsAbstractGeometry">QgsAbstractGeometry</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2099,6 +2202,11 @@ DPI of 88 will be assumed.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.10.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2118,6 +2226,11 @@ render and represents the exact bounds of the map being rendered.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.4.8.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsRectangle.html#qgis.core.QgsRectangle" title="qgis.core.QgsRectangle">QgsRectangle</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2128,6 +2241,11 @@ render and represents the exact bounds of the map being rendered.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsRenderContext.setMapToPixel" title="qgis.core.QgsRenderContext.setMapToPixel"><code class="xref py py-func docutils literal notranslate"><span class="pre">setMapToPixel()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsMapToPixel.html#qgis.core.QgsMapToPixel" title="qgis.core.QgsMapToPixel">QgsMapToPixel</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2138,6 +2256,11 @@ render and represents the exact bounds of the map being rendered.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsRenderContext.setPainter" title="qgis.core.QgsRenderContext.setPainter"><code class="xref py py-func docutils literal notranslate"><span class="pre">setPainter()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>QPainter</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2152,6 +2275,11 @@ during rendering operations, e.g. for resolving relative symbol paths.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsPathResolver.html#qgis.core.QgsPathResolver" title="qgis.core.QgsPathResolver">QgsPathResolver</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2165,6 +2293,11 @@ during rendering operations, e.g. for resolving relative symbol paths.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.10.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List[<a class="reference internal" href="QgsRenderedFeatureHandlerInterface.html#qgis.core.QgsRenderedFeatureHandlerInterface" title="qgis.core.QgsRenderedFeatureHandlerInterface">QgsRenderedFeatureHandlerInterface</a>]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2176,6 +2309,11 @@ for the rendered map, eg 1000.0 for a 1:1000 map render.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsRenderContext.setRendererScale" title="qgis.core.QgsRenderContext.setRendererScale"><code class="xref py py-func docutils literal notranslate"><span class="pre">setRendererScale()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2187,6 +2325,11 @@ rendering should be canceled immediately.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsRenderContext.setRenderingStopped" title="qgis.core.QgsRenderContext.setRenderingStopped"><code class="xref py py-func docutils literal notranslate"><span class="pre">setRenderingStopped()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2199,18 +2342,33 @@ per millimeter.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsRenderContext.setScaleFactor" title="qgis.core.QgsRenderContext.setScaleFactor"><code class="xref py py-func docutils literal notranslate"><span class="pre">setScaleFactor()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsRenderContext.segmentationTolerance">
 <code class="sig-name descname">segmentationTolerance</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#qgis.core.QgsRenderContext.segmentationTolerance" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets the segmentation tolerance applied when rendering curved geometries</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsRenderContext.segmentationToleranceType">
 <code class="sig-name descname">segmentationToleranceType</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QgsAbstractGeometry.SegmentationToleranceType<a class="headerlink" href="#qgis.core.QgsRenderContext.segmentationToleranceType" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets segmentation tolerance type (maximum angle or maximum difference between curve and approximation)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsAbstractGeometry.html#qgis.core.QgsAbstractGeometry.SegmentationToleranceType" title="qgis.core.QgsAbstractGeometry.SegmentationToleranceType">QgsAbstractGeometry.SegmentationToleranceType</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2221,6 +2379,11 @@ per millimeter.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsRenderContext.setSelectionColor" title="qgis.core.QgsRenderContext.setSelectionColor"><code class="xref py py-func docutils literal notranslate"><span class="pre">setSelectionColor()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>QColor</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2229,11 +2392,16 @@ per millimeter.</p>
 <dd><p>Sets the current coordinate transform for the context.</p>
 <p>This represents the coordinate transform required to transform the layer
 which is being rendered back to the CRS of the rendered map.</p>
-<p>Set to an invalid QgsCoordinateTransform to indicate that no transformation is required.</p>
+<p>Set to an invalid <a class="reference internal" href="QgsCoordinateTransform.html#qgis.core.QgsCoordinateTransform" title="qgis.core.QgsCoordinateTransform"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsCoordinateTransform</span></code></a> to indicate that no transformation is required.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsRenderContext.coordinateTransform" title="qgis.core.QgsRenderContext.coordinateTransform"><code class="xref py py-func docutils literal notranslate"><span class="pre">coordinateTransform()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>t</strong> (<a class="reference internal" href="QgsCoordinateTransform.html#qgis.core.QgsCoordinateTransform" title="qgis.core.QgsCoordinateTransform"><em>QgsCoordinateTransform</em></a>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2244,6 +2412,11 @@ Will be used to convert meter distances to active MapUnit values for QgsUnitType
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>distanceArea</strong> (<a class="reference internal" href="QgsDistanceArea.html#qgis.core.QgsDistanceArea" title="qgis.core.QgsDistanceArea"><em>QgsDistanceArea</em></a>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2254,6 +2427,11 @@ Will be used to convert meter distances to active MapUnit values for QgsUnitType
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsRenderContext.drawEditingInformation" title="qgis.core.QgsRenderContext.drawEditingInformation"><code class="xref py py-func docutils literal notranslate"><span class="pre">drawEditingInformation()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>b</strong> (<em>bool</em>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2268,6 +2446,11 @@ associated with this render context.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 2.12.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>context</strong> (<a class="reference internal" href="QgsExpressionContext.html#qgis.core.QgsExpressionContext" title="qgis.core.QgsExpressionContext"><em>QgsExpressionContext</em></a>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2287,6 +2470,11 @@ entire visible area.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsRenderContext.setMapExtent" title="qgis.core.QgsRenderContext.setMapExtent"><code class="xref py py-func docutils literal notranslate"><span class="pre">setMapExtent()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>extent</strong> (<a class="reference internal" href="QgsRectangle.html#qgis.core.QgsRectangle" title="qgis.core.QgsRectangle"><em>QgsRectangle</em></a>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2295,7 +2483,7 @@ entire visible area.</p>
 <dd><p>Set a filter feature provider used for additional filtering of rendered features.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>ffp</strong> – the filter feature provider</p>
+<dd class="field-odd"><p><strong>ffp</strong> (<a class="reference internal" href="QgsFeatureFilterProvider.html#qgis.core.QgsFeatureFilterProvider" title="qgis.core.QgsFeatureFilterProvider"><em>QgsFeatureFilterProvider</em></a>) – the filter feature provider</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -2314,6 +2502,14 @@ entire visible area.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 2.14.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>flag</strong> (<a class="reference internal" href="#qgis.core.QgsRenderContext.Flag" title="qgis.core.QgsRenderContext.Flag"><em>QgsRenderContext.Flag</em></a>) – </p></li>
+<li><p><strong>on</strong> (<em>bool = True</em>) – </p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2323,6 +2519,11 @@ entire visible area.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 2.14.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>flags</strong> (<em>Union</em><em>[</em><a class="reference internal" href="#qgis.core.QgsRenderContext.Flags" title="qgis.core.QgsRenderContext.Flags"><em>QgsRenderContext.Flags</em></a>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2334,12 +2535,22 @@ of any faster raster shortcuts.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsRenderContext.forceVectorOutput" title="qgis.core.QgsRenderContext.forceVectorOutput"><code class="xref py py-func docutils literal notranslate"><span class="pre">forceVectorOutput()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>force</strong> (<em>bool</em>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsRenderContext.setGeometry">
 <code class="sig-name descname">setGeometry</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">geometry: QgsAbstractGeometry</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsRenderContext.setGeometry" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets pointer to original (unsegmentized) geometry</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>geometry</strong> (<a class="reference internal" href="QgsAbstractGeometry.html#qgis.core.QgsAbstractGeometry" title="qgis.core.QgsAbstractGeometry"><em>QgsAbstractGeometry</em></a>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2359,6 +2570,11 @@ render and represents the exact bounds of the map being rendered.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.4.8.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>extent</strong> (<a class="reference internal" href="QgsRectangle.html#qgis.core.QgsRectangle" title="qgis.core.QgsRectangle"><em>QgsRectangle</em></a>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2369,6 +2585,11 @@ render and represents the exact bounds of the map being rendered.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsRenderContext.mapToPixel" title="qgis.core.QgsRenderContext.mapToPixel"><code class="xref py py-func docutils literal notranslate"><span class="pre">mapToPixel()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>mtp</strong> (<a class="reference internal" href="QgsMapToPixel.html#qgis.core.QgsMapToPixel" title="qgis.core.QgsMapToPixel"><em>QgsMapToPixel</em></a>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2381,6 +2602,11 @@ of any rendering operations.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsRenderContext.painter" title="qgis.core.QgsRenderContext.painter"><code class="xref py py-func docutils literal notranslate"><span class="pre">painter()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>p</strong> (<em>QPainter</em>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2395,6 +2621,11 @@ during rendering operations, e.g. for resolving relative symbol paths.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>resolver</strong> (<a class="reference internal" href="QgsPathResolver.html#qgis.core.QgsPathResolver" title="qgis.core.QgsPathResolver"><em>QgsPathResolver</em></a>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2406,6 +2637,11 @@ for the rendered map, eg 1000.0 for a 1:1000 map render.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsRenderContext.rendererScale" title="qgis.core.QgsRenderContext.rendererScale"><code class="xref py py-func docutils literal notranslate"><span class="pre">rendererScale()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>scale</strong> (<em>float</em>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2417,6 +2653,11 @@ rendering should be canceled immediately.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsRenderContext.renderingStopped" title="qgis.core.QgsRenderContext.renderingStopped"><code class="xref py py-func docutils literal notranslate"><span class="pre">renderingStopped()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>stopped</strong> (<em>bool</em>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2429,6 +2670,11 @@ per millimeter.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsRenderContext.scaleFactor" title="qgis.core.QgsRenderContext.scaleFactor"><code class="xref py py-func docutils literal notranslate"><span class="pre">scaleFactor()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>factor</strong> (<em>float</em>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2437,7 +2683,7 @@ per millimeter.</p>
 <dd><p>Sets the segmentation tolerance applied when rendering curved geometries</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>tolerance</strong> – the segmentation tolerance*</p>
+<dd class="field-odd"><p><strong>tolerance</strong> (<em>float</em>) – the segmentation tolerance*</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2448,7 +2694,7 @@ per millimeter.</p>
 <dd><p>Sets segmentation tolerance type (maximum angle or maximum difference between curve and approximation)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>type</strong> – the segmentation tolerance typename*</p>
+<dd class="field-odd"><p><strong>type</strong> (<a class="reference internal" href="QgsAbstractGeometry.html#qgis.core.QgsAbstractGeometry.SegmentationToleranceType" title="qgis.core.QgsAbstractGeometry.SegmentationToleranceType"><em>QgsAbstractGeometry.SegmentationToleranceType</em></a>) – the segmentation tolerance typename*</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2461,6 +2707,11 @@ per millimeter.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsRenderContext.selectionColor" title="qgis.core.QgsRenderContext.selectionColor"><code class="xref py py-func docutils literal notranslate"><span class="pre">selectionColor()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>color</strong> (<em>Union</em><em>[</em><em>QColor</em>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2469,7 +2720,7 @@ per millimeter.</p>
 <dd><p>Sets whether vector selections should be shown in the rendered map</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>showSelection</strong> – set to <code class="docutils literal notranslate"><span class="pre">True</span></code> if selections should be shown</p>
+<dd class="field-odd"><p><strong>showSelection</strong> (<em>bool</em>) – set to <code class="docutils literal notranslate"><span class="pre">True</span></code> if selections should be shown</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -2496,6 +2747,11 @@ per millimeter.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.4.3.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>format</strong> (<a class="reference internal" href="#qgis.core.QgsRenderContext.TextRenderFormat" title="qgis.core.QgsRenderContext.TextRenderFormat"><em>QgsRenderContext.TextRenderFormat</em></a>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2511,18 +2767,33 @@ from a source to destination coordinate reference system.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>context</strong> (<a class="reference internal" href="QgsCoordinateTransformContext.html#qgis.core.QgsCoordinateTransformContext" title="qgis.core.QgsCoordinateTransformContext"><em>QgsCoordinateTransformContext</em></a>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsRenderContext.setUseAdvancedEffects">
 <code class="sig-name descname">setUseAdvancedEffects</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">enabled: bool</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsRenderContext.setUseAdvancedEffects" title="Permalink to this definition">¶</a></dt>
 <dd><p>Used to enable or disable advanced effects such as blend modes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>enabled</strong> (<em>bool</em>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsRenderContext.setUseRenderingOptimization">
 <code class="sig-name descname">setUseRenderingOptimization</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">enabled: bool</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsRenderContext.setUseRenderingOptimization" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>enabled</strong> (<em>bool</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsRenderContext.setVectorSimplifyMethod">
@@ -2539,6 +2810,11 @@ during PDF exports or to speed up layer rendering</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 2.4.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>simplifyMethod</strong> (<a class="reference internal" href="QgsVectorSimplifyMethod.html#qgis.core.QgsVectorSimplifyMethod" title="qgis.core.QgsVectorSimplifyMethod"><em>QgsVectorSimplifyMethod</em></a>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2546,8 +2822,11 @@ during PDF exports or to speed up layer rendering</p>
 <code class="sig-name descname">showSelection</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsRenderContext.showSelection" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if vector selections should be shown in the rendered map</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if selections should be shown</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if selections should be shown</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -2570,6 +2849,14 @@ during PDF exports or to speed up layer rendering</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 2.14.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>flag</strong> (<a class="reference internal" href="#qgis.core.QgsRenderContext.Flag" title="qgis.core.QgsRenderContext.Flag"><em>QgsRenderContext.Flag</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2583,6 +2870,11 @@ during PDF exports or to speed up layer rendering</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.4.3.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#qgis.core.QgsRenderContext.TextRenderFormat" title="qgis.core.QgsRenderContext.TextRenderFormat">QgsRenderContext.TextRenderFormat</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2598,18 +2890,33 @@ from a source to destination coordinate reference system.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsCoordinateTransformContext.html#qgis.core.QgsCoordinateTransformContext" title="qgis.core.QgsCoordinateTransformContext">QgsCoordinateTransformContext</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsRenderContext.useAdvancedEffects">
 <code class="sig-name descname">useAdvancedEffects</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsRenderContext.useAdvancedEffects" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if advanced effects such as blend modes such be used</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsRenderContext.useRenderingOptimization">
 <code class="sig-name descname">useRenderingOptimization</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsRenderContext.useRenderingOptimization" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the rendering optimization (geometry simplification) can be executed</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2624,6 +2931,11 @@ from a source to destination coordinate reference system.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 2.4.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsVectorSimplifyMethod.html#qgis.core.QgsVectorSimplifyMethod" title="qgis.core.QgsVectorSimplifyMethod">QgsVectorSimplifyMethod</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -2642,7 +2954,7 @@ from a source to destination coordinate reference system.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 10:58 Oct 14, 2019.
+        Last updated on 15:06 Oct 15, 2019.
       </span>
 
     </p>
@@ -2669,20 +2981,20 @@ from a source to destination coordinate reference system.</p>
     <div class="rst-other-versions">
       <dl>
         <dt>Versions</dt>
-      
-        <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
-      
-    </dl>
+        
+          <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
+        
+      </dl>
       
       
     </div>

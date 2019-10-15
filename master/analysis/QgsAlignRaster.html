@@ -122,7 +122,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../core/PROJECT_SCALES.html">Class: PROJECT_SCALES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/PluginLayer.html">Class: PluginLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/ProjectDirtyBlocker.html">Class: ProjectDirtyBlocker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../core/PyProviderMetadata.html">Class: PyProviderMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/Qgis.html">Class: Qgis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/Qgs25DRenderer.html">Class: Qgs25DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/Qgs3DRendererAbstractMetadata.html">Class: Qgs3DRendererAbstractMetadata</a></li>
@@ -1546,8 +1545,6 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/analysis/QgsAlignRaster.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -1565,7 +1562,7 @@
 <dt id="qgis.analysis.QgsAlignRaster">
 <em class="property">class </em><code class="sig-prename descclassname">qgis.analysis.</code><code class="sig-name descname">QgsAlignRaster</code><a class="headerlink" href="#qgis.analysis.QgsAlignRaster" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sip.wrapper</span></code></p>
-<p>QgsAlignRaster takes one or more raster layers and warps (resamples) them
+<p><a class="reference internal" href="#qgis.analysis.QgsAlignRaster" title="qgis.analysis.QgsAlignRaster"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsAlignRaster</span></code></a> takes one or more raster layers and warps (resamples) them
 so they have the same:
 - coordinate reference system
 - cell size and raster size
@@ -1614,7 +1611,12 @@ so they have the same:
 <td><p>Returns the error from a previous run() call.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.analysis.QgsAlignRaster.gridOffset" title="qgis.analysis.QgsAlignRaster.gridOffset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gridOffset</span></code></a></p></td>
-<td><p></p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">rtype</dt>
+<dd class="field-odd"><p>QPointF</p>
+</dd>
+</dl>
+</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.analysis.QgsAlignRaster.progressHandler" title="qgis.analysis.QgsAlignRaster.progressHandler"><code class="xref py py-obj docutils literal notranslate"><span class="pre">progressHandler</span></code></a></p></td>
 <td><p>Gets associated progress handler.</p></td>
@@ -1635,7 +1637,11 @@ so they have the same:
 <td><p>Sets the output CRS in WKT format</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.analysis.QgsAlignRaster.setGridOffset" title="qgis.analysis.QgsAlignRaster.setGridOffset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setGridOffset</span></code></a></p></td>
-<td><p></p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">param offset</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.analysis.QgsAlignRaster.setParametersFromRaster" title="qgis.analysis.QgsAlignRaster.setParametersFromRaster"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setParametersFromRaster</span></code></a></p></td>
 <td><p>Set destination CRS, cell size and grid offset from a raster file.</p></td>
@@ -1713,6 +1719,14 @@ so they have the same:
 <em class="property">class </em><code class="sig-name descname">Item</code><span class="sig-paren">(</span><em class="sig-param">input: str</em>, <em class="sig-param">output: str</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.analysis.QgsAlignRaster.Item" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sip.wrapper</span></code></p>
 <p>QgsAlignRaster.Item(QgsAlignRaster.Item)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input</strong> (<em>str</em>) – </p></li>
+<li><p><strong>output</strong> (<em>str</em>) – </p></li>
+</ul>
+</dd>
+</dl>
 <dl class="attribute">
 <dt id="qgis.analysis.QgsAlignRaster.Item.inputFilename">
 <code class="sig-name descname">inputFilename</code><a class="headerlink" href="#qgis.analysis.QgsAlignRaster.Item.inputFilename" title="Permalink to this definition">¶</a></dt>
@@ -1751,10 +1765,13 @@ so they have the same:
 <dd><p>Method to be overridden for progress reporting.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>complete</strong> – Overall progress of the alignment operation</p>
+<dd class="field-odd"><p><strong>complete</strong> (<em>float</em>) – Overall progress of the alignment operation</p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">False</span></code> if the execution should be canceled, <code class="docutils literal notranslate"><span class="pre">True</span></code> otherwise</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">False</span></code> if the execution should be canceled, <code class="docutils literal notranslate"><span class="pre">True</span></code> otherwise</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1826,22 +1843,42 @@ so they have the same:
 <em class="property">class </em><code class="sig-name descname">RasterInfo</code><span class="sig-paren">(</span><em class="sig-param">layerpath: str</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.analysis.QgsAlignRaster.RasterInfo" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sip.wrapper</span></code></p>
 <p>Construct raster info with a path to a raster file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>layerpath</strong> (<em>str</em>) – </p>
+</dd>
+</dl>
 <dl class="method">
 <dt id="qgis.analysis.QgsAlignRaster.RasterInfo.bandCount">
 <code class="sig-name descname">bandCount</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#qgis.analysis.QgsAlignRaster.RasterInfo.bandCount" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the number of raster bands in the file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.analysis.QgsAlignRaster.RasterInfo.cellSize">
 <code class="sig-name descname">cellSize</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QSizeF<a class="headerlink" href="#qgis.analysis.QgsAlignRaster.RasterInfo.cellSize" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the cell size in map units</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>QSizeF</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.analysis.QgsAlignRaster.RasterInfo.crs">
 <code class="sig-name descname">crs</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.analysis.QgsAlignRaster.RasterInfo.crs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the CRS in WKT format</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1854,36 +1891,72 @@ so they have the same:
 <dt id="qgis.analysis.QgsAlignRaster.RasterInfo.extent">
 <code class="sig-name descname">extent</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QgsRectangle<a class="headerlink" href="#qgis.analysis.QgsAlignRaster.RasterInfo.extent" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the extent of the raster</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="../core/QgsRectangle.html#qgis.core.QgsRectangle" title="qgis.core.QgsRectangle">QgsRectangle</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.analysis.QgsAlignRaster.RasterInfo.gridOffset">
 <code class="sig-name descname">gridOffset</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QPointF<a class="headerlink" href="#qgis.analysis.QgsAlignRaster.RasterInfo.gridOffset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the grid offset</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>QPointF</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.analysis.QgsAlignRaster.RasterInfo.identify">
 <code class="sig-name descname">identify</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">mx: float</em>, <em class="sig-param">my: float</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#qgis.analysis.QgsAlignRaster.RasterInfo.identify" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets raster value at the given coordinates (from the first band)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mx</strong> (<em>float</em>) – </p></li>
+<li><p><strong>my</strong> (<em>float</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.analysis.QgsAlignRaster.RasterInfo.isValid">
 <code class="sig-name descname">isValid</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.analysis.QgsAlignRaster.RasterInfo.isValid" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check whether the given path is a valid raster</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.analysis.QgsAlignRaster.RasterInfo.origin">
 <code class="sig-name descname">origin</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QPointF<a class="headerlink" href="#qgis.analysis.QgsAlignRaster.RasterInfo.origin" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the origin of the raster</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>QPointF</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.analysis.QgsAlignRaster.RasterInfo.rasterSize">
 <code class="sig-name descname">rasterSize</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QSize<a class="headerlink" href="#qgis.analysis.QgsAlignRaster.RasterInfo.rasterSize" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the size of the raster grid in pixels</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>QSize</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -1902,6 +1975,11 @@ so they have the same:
 <p class="admonition-title">Note</p>
 <p>first need to run checkInputParameters() which returns with success</p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="../core/QgsRectangle.html#qgis.core.QgsRectangle" title="qgis.core.QgsRectangle">QgsRectangle</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1912,12 +1990,22 @@ so they have the same:
 <p class="admonition-title">Note</p>
 <p>first need to run checkInputParameters() which returns with success</p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>QSize</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.analysis.QgsAlignRaster.cellSize">
 <code class="sig-name descname">cellSize</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QSizeF<a class="headerlink" href="#qgis.analysis.QgsAlignRaster.cellSize" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets output cell size</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>QSizeF</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1925,8 +2013,11 @@ so they have the same:
 <code class="sig-name descname">checkInputParameters</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.analysis.QgsAlignRaster.checkInputParameters" title="Permalink to this definition">¶</a></dt>
 <dd><p>Determine destination extent from the input rasters and calculate derived values</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> on success, sets error on error (see errorMessage())</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> on success, sets error on error (see errorMessage())</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1936,18 +2027,36 @@ so they have the same:
 <code class="sig-name descname">clipExtent</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QgsRectangle<a class="headerlink" href="#qgis.analysis.QgsAlignRaster.clipExtent" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets clipping extent (region of interest).
 No extra clipping is done if the rectangle is null</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="../core/QgsRectangle.html#qgis.core.QgsRectangle" title="qgis.core.QgsRectangle">QgsRectangle</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.analysis.QgsAlignRaster.createAndWarp">
 <code class="sig-name descname">createAndWarp</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">raster: QgsAlignRaster.Item</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.analysis.QgsAlignRaster.createAndWarp" title="Permalink to this definition">¶</a></dt>
 <dd><p>Internal function for processing of one raster (1. create output, 2. do the alignment)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>raster</strong> (<a class="reference internal" href="#qgis.analysis.QgsAlignRaster.Item" title="qgis.analysis.QgsAlignRaster.Item"><em>QgsAlignRaster.Item</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.analysis.QgsAlignRaster.destinationCrs">
 <code class="sig-name descname">destinationCrs</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.analysis.QgsAlignRaster.destinationCrs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets the output CRS in WKT format</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1961,23 +2070,43 @@ No extra clipping is done if the rectangle is null</p>
 <code class="sig-name descname">errorMessage</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.analysis.QgsAlignRaster.errorMessage" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the error from a previous run() call.
 Error message is empty if run() succeeded (returned <code class="docutils literal notranslate"><span class="pre">True</span></code>)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.analysis.QgsAlignRaster.gridOffset">
 <code class="sig-name descname">gridOffset</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QPointF<a class="headerlink" href="#qgis.analysis.QgsAlignRaster.gridOffset" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>QPointF</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="method">
 <dt id="qgis.analysis.QgsAlignRaster.progressHandler">
 <code class="sig-name descname">progressHandler</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QgsAlignRaster.ProgressHandler<a class="headerlink" href="#qgis.analysis.QgsAlignRaster.progressHandler" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets associated progress handler. May be <code class="docutils literal notranslate"><span class="pre">None</span></code> (default)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#qgis.analysis.QgsAlignRaster.ProgressHandler" title="qgis.analysis.QgsAlignRaster.ProgressHandler">QgsAlignRaster.ProgressHandler</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.analysis.QgsAlignRaster.rasters">
 <code class="sig-name descname">rasters</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; List[QgsAlignRaster.Item]<a class="headerlink" href="#qgis.analysis.QgsAlignRaster.rasters" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets list of rasters that will be aligned</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List[<a class="reference internal" href="#qgis.analysis.QgsAlignRaster.Item" title="qgis.analysis.QgsAlignRaster.Item">QgsAlignRaster.Item</a>]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1985,8 +2114,11 @@ Error message is empty if run() succeeded (returned <code class="docutils litera
 <code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.analysis.QgsAlignRaster.run" title="Permalink to this definition">¶</a></dt>
 <dd><p>Run the alignment process</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> on success, sets error on error (see errorMessage())</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> on success, sets error on error (see errorMessage())</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1997,6 +2129,14 @@ Error message is empty if run() succeeded (returned <code class="docutils litera
 <dd><p>Sets output cell size</p>
 <p>setCellSize(self, size: QSizeF)
 Sets output cell size</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>float</em>) – </p></li>
+<li><p><strong>y</strong> (<em>float</em>) – </p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -2004,21 +2144,41 @@ Sets output cell size</p>
 <code class="sig-name descname">setClipExtent</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">xmin: float</em>, <em class="sig-param">ymin: float</em>, <em class="sig-param">xmax: float</em>, <em class="sig-param">ymax: float</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.analysis.QgsAlignRaster.setClipExtent" title="Permalink to this definition">¶</a></dt>
 <dd><p>Configure clipping extent (region of interest).
 No extra clipping is done if the rectangle is null</p>
-<p>setClipExtent(self, extent: QgsRectangle)
+<p>setClipExtent(self, extent: <a class="reference internal" href="../core/QgsRectangle.html#qgis.core.QgsRectangle" title="qgis.core.QgsRectangle"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsRectangle</span></code></a>)
 Configure clipping extent (region of interest).
 No extra clipping is done if the rectangle is null</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>xmin</strong> (<em>float</em>) – </p></li>
+<li><p><strong>ymin</strong> (<em>float</em>) – </p></li>
+<li><p><strong>xmax</strong> (<em>float</em>) – </p></li>
+<li><p><strong>ymax</strong> (<em>float</em>) – </p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.analysis.QgsAlignRaster.setDestinationCrs">
 <code class="sig-name descname">setDestinationCrs</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">crsWkt: str</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.analysis.QgsAlignRaster.setDestinationCrs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets the output CRS in WKT format</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>crsWkt</strong> (<em>str</em>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.analysis.QgsAlignRaster.setGridOffset">
 <code class="sig-name descname">setGridOffset</code><span class="sig-paren">(</span><em class="sig-param">self, offset: Union[QPointF, QPoint]</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.analysis.QgsAlignRaster.setGridOffset" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>offset</strong> (<em>Union</em><em>[</em><em>QPointF</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="method">
 <dt id="qgis.analysis.QgsAlignRaster.setParametersFromRaster">
@@ -2030,37 +2190,79 @@ only the remaining parameters are calculated.</p>
 If a custom CRS is provided, suggested reprojection is calculated first (using GDAL) in order
 to determine suitable defaults for cell size and grid offset.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> on success (may fail if it is not possible to reproject raster to given CRS)</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> on success (may fail if it is not possible to reproject raster to given CRS)</p>
 </dd>
 </dl>
 <p>setParametersFromRaster(self, filename: str, customCRSWkt: str = ‘’, customCellSize: QSizeF = QSizeF(), customGridOffset: Union[QPointF, QPoint] = QPointF(-1,-1)) -&gt; bool
 Overridden variant for convenience, taking filename instead RasterInfo object.
 See the other variant for details.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rasterInfo</strong> (<a class="reference internal" href="#qgis.analysis.QgsAlignRaster.RasterInfo" title="qgis.analysis.QgsAlignRaster.RasterInfo"><em>QgsAlignRaster.RasterInfo</em></a>) – </p></li>
+<li><p><strong>customCRSWkt</strong> (<em>str = ''</em>) – </p></li>
+<li><p><strong>customCellSize</strong> (<em>QSizeF = QSizeF</em><em>(</em><em>)</em>) – </p></li>
+<li><p><strong>customGridOffset</strong> (<em>Union</em><em>[</em><em>QPointF</em>) – </p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.analysis.QgsAlignRaster.setProgressHandler">
 <code class="sig-name descname">setProgressHandler</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">progressHandler: QgsAlignRaster.ProgressHandler</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.analysis.QgsAlignRaster.setProgressHandler" title="Permalink to this definition">¶</a></dt>
 <dd><p>Assign a progress handler instance. Does not take ownership. <code class="docutils literal notranslate"><span class="pre">None</span></code> can be passed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>progressHandler</strong> (<a class="reference internal" href="#qgis.analysis.QgsAlignRaster.ProgressHandler" title="qgis.analysis.QgsAlignRaster.ProgressHandler"><em>QgsAlignRaster.ProgressHandler</em></a>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.analysis.QgsAlignRaster.setRasters">
 <code class="sig-name descname">setRasters</code><span class="sig-paren">(</span><em class="sig-param">self, list: Iterable[QgsAlignRaster.Item]</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.analysis.QgsAlignRaster.setRasters" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets list of rasters that will be aligned</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>list</strong> (<em>Iterable</em><em>[</em><a class="reference internal" href="#qgis.analysis.QgsAlignRaster.Item" title="qgis.analysis.QgsAlignRaster.Item"><em>QgsAlignRaster.Item</em></a><em>]</em>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.analysis.QgsAlignRaster.suggestedReferenceLayer">
 <code class="sig-name descname">suggestedReferenceLayer</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#qgis.analysis.QgsAlignRaster.suggestedReferenceLayer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the index of the layer which has smallest cell size (returns -1 on error)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.analysis.QgsAlignRaster.suggestedWarpOutput">
 <code class="sig-name descname">suggestedWarpOutput</code><span class="sig-paren">(</span><em class="sig-param">info: QgsAlignRaster.RasterInfo</em>, <em class="sig-param">destWkt: str</em>, <em class="sig-param">cellSize: QSizeF = None</em>, <em class="sig-param">gridOffset: Union[QPointF</em>, <em class="sig-param">QPoint] = None</em>, <em class="sig-param">rect: QgsRectangle = None</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.analysis.QgsAlignRaster.suggestedWarpOutput" title="Permalink to this definition">¶</a></dt>
 <dd><p>Determine suggested output of raster warp to a different CRS. Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> on success</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>info</strong> (<a class="reference internal" href="#qgis.analysis.QgsAlignRaster.RasterInfo" title="qgis.analysis.QgsAlignRaster.RasterInfo"><em>QgsAlignRaster.RasterInfo</em></a>) – </p></li>
+<li><p><strong>destWkt</strong> (<em>str</em>) – </p></li>
+<li><p><strong>cellSize</strong> (<em>QSizeF = None</em>) – </p></li>
+<li><p><strong>gridOffset</strong> (<em>Union</em><em>[</em><em>QPointF</em>) – </p></li>
+<li><p><strong>rect</strong> (<a class="reference internal" href="../core/QgsRectangle.html#qgis.core.QgsRectangle" title="qgis.core.QgsRectangle"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsRectangle</span></code></a> = None) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -2079,7 +2281,7 @@ See the other variant for details.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 10:58 Oct 14, 2019.
+        Last updated on 15:06 Oct 15, 2019.
       </span>
 
     </p>
@@ -2106,20 +2308,20 @@ See the other variant for details.</p>
     <div class="rst-other-versions">
       <dl>
         <dt>Versions</dt>
-      
-        <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
-      
-    </dl>
+        
+          <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
+        
+      </dl>
       
       
     </div>

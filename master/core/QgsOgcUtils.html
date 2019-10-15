@@ -122,7 +122,6 @@
 <li class="toctree-l2"><a class="reference internal" href="PROJECT_SCALES.html">Class: PROJECT_SCALES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PluginLayer.html">Class: PluginLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ProjectDirtyBlocker.html">Class: ProjectDirtyBlocker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="PyProviderMetadata.html">Class: PyProviderMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgis.html">Class: Qgis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs25DRenderer.html">Class: Qgs25DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs3DRendererAbstractMetadata.html">Class: Qgs3DRendererAbstractMetadata</a></li>
@@ -1546,8 +1545,6 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/core/QgsOgcUtils.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -1565,7 +1562,7 @@
 <dt id="qgis.core.QgsOgcUtils">
 <em class="property">class </em><code class="sig-prename descclassname">qgis.core.</code><code class="sig-name descname">QgsOgcUtils</code><a class="headerlink" href="#qgis.core.QgsOgcUtils" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sip.wrapper</span></code></p>
-<p>The QgsOgcUtils class provides various utility functions for conversion between
+<p>The <a class="reference internal" href="#qgis.core.QgsOgcUtils" title="qgis.core.QgsOgcUtils"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsOgcUtils</span></code></a> class provides various utility functions for conversion between
 OGC (Open Geospatial Consortium) standards and QGIS internal representations.</p>
 <p>Currently supported standards:
 - GML2 - Geography Markup Language (import, export)</p>
@@ -1699,26 +1696,39 @@ OGC (Open Geospatial Consortium) standards and QGIS internal representations.</p
 <dt id="qgis.core.QgsOgcUtils.colorFromOgcFill">
 <code class="sig-name descname">colorFromOgcFill</code><span class="sig-paren">(</span><em class="sig-param">fillElement: QDomElement</em><span class="sig-paren">)</span> &#x2192; QColor<a class="headerlink" href="#qgis.core.QgsOgcUtils.colorFromOgcFill" title="Permalink to this definition">¶</a></dt>
 <dd><p>Parse XML with OGC fill into QColor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>fillElement</strong> (<em>QDomElement</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>QColor</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsOgcUtils.expressionFromOgcFilter">
 <code class="sig-name descname">expressionFromOgcFilter</code><span class="sig-paren">(</span><em class="sig-param">element: QDomElement</em>, <em class="sig-param">layer: QgsVectorLayer = None</em><span class="sig-paren">)</span> &#x2192; QgsExpression<a class="headerlink" href="#qgis.core.QgsOgcUtils.expressionFromOgcFilter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Parse XML with OGC filter into QGIS expression</p>
-<p>expressionFromOgcFilter(element: QDomElement, version: QgsOgcUtils.FilterVersion, layer: QgsVectorLayer = None) -&gt; QgsExpression
+<p>expressionFromOgcFilter(element: QDomElement, version: QgsOgcUtils.FilterVersion, layer: <a class="reference internal" href="QgsVectorLayer.html#qgis.core.QgsVectorLayer" title="qgis.core.QgsVectorLayer"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsVectorLayer</span></code></a> = None) -&gt; QgsExpression
 Returns an expression from a WFS filter embedded in a document.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>element</strong> – The WFS Filter</p></li>
+<li><p><strong>element</strong> (<em>QDomElement</em>) – The WFS Filter</p></li>
 <li><p><strong>version</strong> – The WFS version</p></li>
-<li><p><strong>layer</strong> – Layer to use to retrieve field values from literal filters</p></li>
+<li><p><strong>layer</strong> (<a class="reference internal" href="QgsVectorLayer.html#qgis.core.QgsVectorLayer" title="qgis.core.QgsVectorLayer"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsVectorLayer</span></code></a> = None) – Layer to use to retrieve field values from literal filters</p></li>
 </ul>
 </dd>
 </dl>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.4.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsExpression.html#qgis.core.QgsExpression" title="qgis.core.QgsExpression">QgsExpression</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1731,12 +1741,22 @@ Returns an expression from a WFS filter embedded in a document.</p>
 otherwise null QDomElement</p>
 </dd>
 </dl>
-<p>expressionToOgcExpression(exp: QgsExpression, doc: QDomDocument, gmlVersion: QgsOgcUtils.GMLVersion, filterVersion: QgsOgcUtils.FilterVersion, geometryName: str, srsName: str, honourAxisOrientation: bool, invertAxisOrientation: bool, errorMessage: str = ‘’) -&gt; QDomElement
+<p>expressionToOgcExpression(exp: <a class="reference internal" href="QgsExpression.html#qgis.core.QgsExpression" title="qgis.core.QgsExpression"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsExpression</span></code></a>, doc: QDomDocument, gmlVersion: QgsOgcUtils.GMLVersion, filterVersion: QgsOgcUtils.FilterVersion, geometryName: str, srsName: str, honourAxisOrientation: bool, invertAxisOrientation: bool, errorMessage: str = ‘’) -&gt; QDomElement
 Creates an OGC expression XML element.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>valid OGC expression QDomElement on success,
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>QDomElement</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>valid OGC expression QDomElement on success,
 otherwise null QDomElement</p>
+</dd>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>exp</strong> (<a class="reference internal" href="QgsExpression.html#qgis.core.QgsExpression" title="qgis.core.QgsExpression"><em>QgsExpression</em></a>) – </p></li>
+<li><p><strong>doc</strong> (<em>QDomDocument</em>) – </p></li>
+<li><p><strong>errorMessage</strong> (<em>str = ''</em>) – </p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -1747,9 +1767,19 @@ otherwise null QDomElement</p>
 <dd><p>Creates OGC filter XML element. Supports minimum standard filter
 according to the OGC filter specs (=,!=,&lt;,&gt;,&lt;=,&gt;=,AND,OR,NOT)</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>valid verbatim &lt;Filter&gt; endverbatim QDomElement on success,
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>QDomElement</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>valid verbatim &lt;Filter&gt; endverbatim QDomElement on success,
 otherwise null QDomElement</p>
+</dd>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>exp</strong> (<a class="reference internal" href="QgsExpression.html#qgis.core.QgsExpression" title="qgis.core.QgsExpression"><em>QgsExpression</em></a>) – </p></li>
+<li><p><strong>doc</strong> (<em>QDomDocument</em>) – </p></li>
+<li><p><strong>errorMessage</strong> (<em>str = ''</em>) – </p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -1760,13 +1790,18 @@ otherwise null QDomElement</p>
 <dd><p>Static method that creates geometry from GML</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>xmlString</strong> – xml representation of the geometry. GML elements are expected to be
+<dd class="field-odd"><p><strong>xmlString</strong> (<em>str</em>) – xml representation of the geometry. GML elements are expected to be
 in default namespace (verbatim {&lt;Point&gt;…&lt;/Point&gt; endverbatim) or in
 “gml” namespace (verbatim &lt;gml:Point&gt;…&lt;/gml:Point&gt; endverbatim)</p>
 </dd>
 </dl>
 <p>geometryFromGML(geometryNode: QDomNode) -&gt; QgsGeometry
 Static method that creates geometry from GML</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsGeometry.html#qgis.core.QgsGeometry" title="qgis.core.QgsGeometry">QgsGeometry</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1781,18 +1816,32 @@ Static method that creates geometry from GML</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 2.16.</span></p>
 </div>
-<p>geometryToGML(geometry: QgsGeometry, doc: QDomDocument, format: str, precision: int = 17) -&gt; QDomElement
+<p>geometryToGML(geometry: <a class="reference internal" href="QgsGeometry.html#qgis.core.QgsGeometry" title="qgis.core.QgsGeometry"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsGeometry</span></code></a>, doc: QDomDocument, format: str, precision: int = 17) -&gt; QDomElement
 Exports the geometry to GML2 or GML3</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>QDomElement</p>
 </dd>
 </dl>
-<p>geometryToGML(geometry: QgsGeometry, doc: QDomDocument, precision: int = 17) -&gt; QDomElement
+<p>geometryToGML(geometry: <a class="reference internal" href="QgsGeometry.html#qgis.core.QgsGeometry" title="qgis.core.QgsGeometry"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsGeometry</span></code></a>, doc: QDomDocument, precision: int = 17) -&gt; QDomElement
 Exports the geometry to GML2</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>QDomElement</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>QDomElement</p>
+</dd>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>geometry</strong> (<a class="reference internal" href="QgsGeometry.html#qgis.core.QgsGeometry" title="qgis.core.QgsGeometry"><em>QgsGeometry</em></a>) – </p></li>
+<li><p><strong>doc</strong> (<em>QDomDocument</em>) – </p></li>
+<li><p><strong>gmlVersion</strong> (<a class="reference internal" href="#qgis.core.QgsOgcUtils.GMLVersion" title="qgis.core.QgsOgcUtils.GMLVersion"><em>QgsOgcUtils.GMLVersion</em></a>) – </p></li>
+<li><p><strong>srsName</strong> (<em>str</em>) – </p></li>
+<li><p><strong>invertAxisOrientation</strong> (<em>bool</em>) – </p></li>
+<li><p><strong>gmlIdBase</strong> (<em>str</em>) – </p></li>
+<li><p><strong>precision</strong> (<em>int = 17</em>) – </p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -1801,12 +1850,28 @@ Exports the geometry to GML2</p>
 <dt id="qgis.core.QgsOgcUtils.rectangleFromGMLBox">
 <code class="sig-name descname">rectangleFromGMLBox</code><span class="sig-paren">(</span><em class="sig-param">boxNode: QDomNode</em><span class="sig-paren">)</span> &#x2192; QgsRectangle<a class="headerlink" href="#qgis.core.QgsOgcUtils.rectangleFromGMLBox" title="Permalink to this definition">¶</a></dt>
 <dd><p>Read rectangle from GML2 Box</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>boxNode</strong> (<em>QDomNode</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsRectangle.html#qgis.core.QgsRectangle" title="qgis.core.QgsRectangle">QgsRectangle</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsOgcUtils.rectangleFromGMLEnvelope">
 <code class="sig-name descname">rectangleFromGMLEnvelope</code><span class="sig-paren">(</span><em class="sig-param">envelopeNode: QDomNode</em><span class="sig-paren">)</span> &#x2192; QgsRectangle<a class="headerlink" href="#qgis.core.QgsOgcUtils.rectangleFromGMLEnvelope" title="Permalink to this definition">¶</a></dt>
 <dd><p>Read rectangle from GML3 Envelope</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>envelopeNode</strong> (<em>QDomNode</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsRectangle.html#qgis.core.QgsRectangle" title="qgis.core.QgsRectangle">QgsRectangle</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1818,16 +1883,28 @@ Exports the geometry to GML2</p>
 <dd class="field-odd"><p>QDomElement</p>
 </dd>
 </dl>
-<p>rectangleToGMLBox(box: QgsRectangle, doc: QDomDocument, srsName: str, invertAxisOrientation: bool, precision: int = 17) -&gt; QDomElement
+<p>rectangleToGMLBox(box: <a class="reference internal" href="QgsRectangle.html#qgis.core.QgsRectangle" title="qgis.core.QgsRectangle"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsRectangle</span></code></a>, doc: QDomDocument, srsName: str, invertAxisOrientation: bool, precision: int = 17) -&gt; QDomElement
 Exports the rectangle to GML2 Box</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>QDomElement</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>QDomElement</p>
 </dd>
 </dl>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 2.16.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>box</strong> (<a class="reference internal" href="QgsRectangle.html#qgis.core.QgsRectangle" title="qgis.core.QgsRectangle"><em>QgsRectangle</em></a>) – </p></li>
+<li><p><strong>doc</strong> (<em>QDomDocument</em>) – </p></li>
+<li><p><strong>precision</strong> (<em>int = 17</em>) – </p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1839,16 +1916,28 @@ Exports the rectangle to GML2 Box</p>
 <dd class="field-odd"><p>QDomElement</p>
 </dd>
 </dl>
-<p>rectangleToGMLEnvelope(env: QgsRectangle, doc: QDomDocument, srsName: str, invertAxisOrientation: bool, precision: int = 17) -&gt; QDomElement
+<p>rectangleToGMLEnvelope(env: <a class="reference internal" href="QgsRectangle.html#qgis.core.QgsRectangle" title="qgis.core.QgsRectangle"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsRectangle</span></code></a>, doc: QDomDocument, srsName: str, invertAxisOrientation: bool, precision: int = 17) -&gt; QDomElement
 Exports the rectangle to GML3 Envelope</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>QDomElement</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>QDomElement</p>
 </dd>
 </dl>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 2.16.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>env</strong> (<a class="reference internal" href="QgsRectangle.html#qgis.core.QgsRectangle" title="qgis.core.QgsRectangle"><em>QgsRectangle</em></a>) – </p></li>
+<li><p><strong>doc</strong> (<em>QDomDocument</em>) – </p></li>
+<li><p><strong>precision</strong> (<em>int = 17</em>) – </p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -1867,7 +1956,7 @@ Exports the rectangle to GML3 Envelope</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 10:58 Oct 14, 2019.
+        Last updated on 15:06 Oct 15, 2019.
       </span>
 
     </p>
@@ -1894,20 +1983,20 @@ Exports the rectangle to GML3 Envelope</p>
     <div class="rst-other-versions">
       <dl>
         <dt>Versions</dt>
-      
-        <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
-      
-    </dl>
+        
+          <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
+        
+      </dl>
       
       
     </div>

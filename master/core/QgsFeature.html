@@ -122,7 +122,6 @@
 <li class="toctree-l2"><a class="reference internal" href="PROJECT_SCALES.html">Class: PROJECT_SCALES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PluginLayer.html">Class: PluginLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ProjectDirtyBlocker.html">Class: ProjectDirtyBlocker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="PyProviderMetadata.html">Class: PyProviderMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgis.html">Class: Qgis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs25DRenderer.html">Class: Qgs25DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs3DRendererAbstractMetadata.html">Class: Qgs3DRendererAbstractMetadata</a></li>
@@ -1546,8 +1545,6 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/core/QgsFeature.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -1568,10 +1565,10 @@
 <p>Constructor for QgsFeature</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>id</strong> – feature id</p>
+<dd class="field-odd"><p><strong>id</strong> (<em>int = 0</em>) – feature id</p>
 </dd>
 </dl>
-<p>QgsFeature(fields: QgsFields, id: int = 0)
+<p>QgsFeature(fields: <a class="reference internal" href="QgsFields.html#qgis.core.QgsFields" title="qgis.core.QgsFields"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsFields</span></code></a>, id: int = 0)
 Constructor for QgsFeature</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1581,14 +1578,14 @@ Constructor for QgsFeature</p>
 </ul>
 </dd>
 </dl>
-<p>QgsFeature(rhs: QgsFeature)
+<p>QgsFeature(rhs: <a class="reference internal" href="#qgis.core.QgsFeature" title="qgis.core.QgsFeature"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsFeature</span></code></a>)
 Copy constructor</p>
 <p>The feature class encapsulates a single feature including its id,
 geometry and a list of field/values attributes.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <blockquote>
-<div><p>QgsFeature objects are implicitly shared.</p>
+<div><p><a class="reference internal" href="#qgis.core.QgsFeature" title="qgis.core.QgsFeature"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsFeature</span></code></a> objects are implicitly shared.</p>
 </div></blockquote>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -1686,7 +1683,7 @@ geometry and a list of field/values attributes.</p>
 before this method can be used.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>name</strong> – The name of the attribute to get</p>
+<dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – The name of the attribute to get</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>The value of the attribute (C++: Invalid variant if no such name exists )</p>
@@ -1711,8 +1708,11 @@ before this method can be used.</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>fieldIdx</strong> – The index of the attribute to get</p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>The value of the attribute (C++: Invalid variant if no such index exists )</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>object</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The value of the attribute (C++: Invalid variant if no such index exists )</p>
 </dd>
 </dl>
 <div class="admonition note">
@@ -1734,8 +1734,11 @@ before this method can be used.</p>
 <code class="sig-name descname">attributes</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; object<a class="headerlink" href="#qgis.core.QgsFeature.attributes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the feature’s attributes.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>list of feature’s attributes</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>object</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>list of feature’s attributes</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -1774,7 +1777,7 @@ before this method can be used.</p>
 <dd><p>Deletes an attribute and its value.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>field</strong> – the index of the field</p>
+<dd class="field-odd"><p><strong>field</strong> (<em>int</em>) – the index of the field</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -1821,10 +1824,13 @@ before this method can be used.</p>
 before this method can be used.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>fieldName</strong> – name of field to get attribute index of</p>
+<dd class="field-odd"><p><strong>fieldName</strong> (<em>str</em>) – name of field to get attribute index of</p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>-1 if field does not exist or field map is not associated.</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>-1 if field does not exist or field map is not associated.</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -1841,13 +1847,18 @@ before this method can be used.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsFeature.setFields" title="qgis.core.QgsFeature.setFields"><code class="xref py py-func docutils literal notranslate"><span class="pre">setFields()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsFields.html#qgis.core.QgsFields" title="qgis.core.QgsFields">QgsFields</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsFeature.geometry">
 <code class="sig-name descname">geometry</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QgsGeometry<a class="headerlink" href="#qgis.core.QgsFeature.geometry" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the geometry associated with this feature. If the feature has no geometry,
-an empty QgsGeometry object will be returned.</p>
+an empty <a class="reference internal" href="QgsGeometry.html#qgis.core.QgsGeometry" title="qgis.core.QgsGeometry"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsGeometry</span></code></a> object will be returned.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsFeature.hasGeometry" title="qgis.core.QgsFeature.hasGeometry"><code class="xref py py-func docutils literal notranslate"><span class="pre">hasGeometry()</span></code></a></p>
@@ -1856,6 +1867,11 @@ an empty QgsGeometry object will be returned.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsFeature.setGeometry" title="qgis.core.QgsFeature.setGeometry"><code class="xref py py-func docutils literal notranslate"><span class="pre">setGeometry()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsGeometry.html#qgis.core.QgsGeometry" title="qgis.core.QgsGeometry">QgsGeometry</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1869,6 +1885,11 @@ an empty QgsGeometry object will be returned.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0..</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1876,8 +1897,11 @@ an empty QgsGeometry object will be returned.</p>
 <code class="sig-name descname">id</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#qgis.core.QgsFeature.id" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets the feature ID for this feature.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>feature ID</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>feature ID</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -1892,7 +1916,7 @@ an empty QgsGeometry object will be returned.</p>
 <dd><p>Initialize this feature with the given number of fields. Discard any previously set attribute data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>fieldCount</strong> – Number of fields to initialize</p>
+<dd class="field-odd"><p><strong>fieldCount</strong> (<em>int</em>) – Number of fields to initialize</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1907,6 +1931,11 @@ invalid or to indicate a null feature.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsFeature.setValid" title="qgis.core.QgsFeature.setValid"><code class="xref py py-func docutils literal notranslate"><span class="pre">setValid()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1917,8 +1946,8 @@ The feature will be valid if it was successful.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>field</strong> – the index of the field to set</p></li>
-<li><p><strong>attr</strong> – the value of the attribute</p></li>
+<li><p><strong>field</strong> (<em>int</em>) – the index of the field to set</p></li>
+<li><p><strong>attr</strong> (<em>Any</em>) – the value of the attribute</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -1948,8 +1977,11 @@ The feature will be valid if it was successful</p>
 <li><p><strong>value</strong> – The value to set</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">False</span></code> if attribute name could not be converted to index (C++ only)</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">False</span></code> if attribute name could not be converted to index (C++ only)</p>
 </dd>
 </dl>
 <div class="admonition note">
@@ -1973,7 +2005,7 @@ The feature will be valid if it was successful</p>
 The feature will be valid after.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>attrs</strong> – attribute list</p>
+<dd class="field-odd"><p><strong>attrs</strong> (<em>object</em>) – attribute list</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -1993,8 +2025,8 @@ The feature will be valid after.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>fields</strong> – The attribute fields which this feature holds</p></li>
-<li><p><strong>initAttributes</strong> – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, attributes are initialized. Clears any data previously assigned.
+<li><p><strong>fields</strong> (<a class="reference internal" href="QgsFields.html#qgis.core.QgsFields" title="qgis.core.QgsFields"><em>QgsFields</em></a>) – The attribute fields which this feature holds</p></li>
+<li><p><strong>initAttributes</strong> (<em>bool = True</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, attributes are initialized. Clears any data previously assigned.
 C++: Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>
 Python: Defaults to <code class="docutils literal notranslate"><span class="pre">True</span></code></p></li>
 </ul>
@@ -2015,7 +2047,7 @@ Python: Defaults to <code class="docutils literal notranslate"><span class="pre"
 <dd><p>Set the feature’s geometry. The feature will be valid after.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>geometry</strong> – new feature geometry</p>
+<dd class="field-odd"><p><strong>geometry</strong> (<a class="reference internal" href="QgsGeometry.html#qgis.core.QgsGeometry" title="qgis.core.QgsGeometry"><em>QgsGeometry</em></a>) – new feature geometry</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -2026,7 +2058,7 @@ Python: Defaults to <code class="docutils literal notranslate"><span class="pre"
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsFeature.clearGeometry" title="qgis.core.QgsFeature.clearGeometry"><code class="xref py py-func docutils literal notranslate"><span class="pre">clearGeometry()</span></code></a></p>
 </div>
-<p>setGeometry(self, geometry: QgsAbstractGeometry)
+<p>setGeometry(self, geometry: <a class="reference internal" href="QgsAbstractGeometry.html#qgis.core.QgsAbstractGeometry" title="qgis.core.QgsAbstractGeometry"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsAbstractGeometry</span></code></a>)
 Set the feature’s <code class="docutils literal notranslate"><span class="pre">geometry</span></code>. Ownership of the geometry is transferred to the feature.
 The feature will be made valid after calling this method.</p>
 <p>This method is a shortcut for calling:
@@ -2067,7 +2099,7 @@ The feature will be made valid after calling this method.</p>
 <dd><p>Sets the feature ID for this feature.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>id</strong> – feature id</p>
+<dd class="field-odd"><p><strong>id</strong> (<em>int</em>) – feature id</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -2082,7 +2114,7 @@ The feature will be made valid after calling this method.</p>
 <dd><p>Sets the validity of the feature.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>validity</strong> – set to <code class="docutils literal notranslate"><span class="pre">True</span></code> if feature is valid</p>
+<dd class="field-odd"><p><strong>validity</strong> (<em>bool</em>) – set to <code class="docutils literal notranslate"><span class="pre">True</span></code> if feature is valid</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -2112,7 +2144,7 @@ The feature will be made valid after calling this method.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 10:58 Oct 14, 2019.
+        Last updated on 15:06 Oct 15, 2019.
       </span>
 
     </p>
@@ -2139,20 +2171,20 @@ The feature will be made valid after calling this method.</p>
     <div class="rst-other-versions">
       <dl>
         <dt>Versions</dt>
-      
-        <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
-      
-    </dl>
+        
+          <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
+        
+      </dl>
       
       
     </div>

@@ -122,7 +122,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../core/PROJECT_SCALES.html">Class: PROJECT_SCALES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/PluginLayer.html">Class: PluginLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/ProjectDirtyBlocker.html">Class: ProjectDirtyBlocker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../core/PyProviderMetadata.html">Class: PyProviderMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/Qgis.html">Class: Qgis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/Qgs25DRenderer.html">Class: Qgs25DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/Qgs3DRendererAbstractMetadata.html">Class: Qgs3DRendererAbstractMetadata</a></li>
@@ -1546,8 +1545,6 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/server/QgsServerOgcApiHandler.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -1565,8 +1562,8 @@
 <dt id="qgis.server.QgsServerOgcApiHandler">
 <em class="property">class </em><code class="sig-prename descclassname">qgis.server.</code><code class="sig-name descname">QgsServerOgcApiHandler</code><a class="headerlink" href="#qgis.server.QgsServerOgcApiHandler" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sip.wrapper</span></code></p>
-<p>The QgsServerOgcApiHandler abstract class represents a OGC API handler to be registered
-in QgsServerOgcApi class.</p>
+<p>The <a class="reference internal" href="#qgis.server.QgsServerOgcApiHandler" title="qgis.server.QgsServerOgcApiHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsServerOgcApiHandler</span></code></a> abstract class represents a OGC API handler to be registered
+in <a class="reference internal" href="QgsServerOgcApi.html#qgis.server.QgsServerOgcApi" title="qgis.server.QgsServerOgcApi"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsServerOgcApi</span></code></a> class.</p>
 <p>Subclasses must override operational and informative methods and define
 the core functionality in handleRequest() method.</p>
 <p>The following methods MUST be implemented:
@@ -1653,7 +1650,7 @@ the core functionality in handleRequest() method.</p>
 <td><p>Returns the HTML template path for the handler in the given <code class="docutils literal notranslate"><span class="pre">context</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.server.QgsServerOgcApiHandler.values" title="qgis.server.QgsServerOgcApiHandler.values"><code class="xref py py-obj docutils literal notranslate"><span class="pre">values</span></code></a></p></td>
-<td><p>Analyzes the incoming request <code class="docutils literal notranslate"><span class="pre">context</span></code> and returns the validated parameter map, throws QgsServerApiBadRequestError in case of errors.</p></td>
+<td><p>Analyzes the incoming request <code class="docutils literal notranslate"><span class="pre">context</span></code> and returns the validated parameter map, throws <code class="xref py py-class docutils literal notranslate"><span class="pre">QgsServerApiBadRequestError</span></code> in case of errors.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.server.QgsServerOgcApiHandler.write" title="qgis.server.QgsServerOgcApiHandler.write"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write</span></code></a></p></td>
 <td><p>Writes <code class="docutils literal notranslate"><span class="pre">data</span></code> to the <code class="docutils literal notranslate"><span class="pre">context</span></code> response stream, content-type is calculated from the <code class="docutils literal notranslate"><span class="pre">context</span></code> request, optional <code class="docutils literal notranslate"><span class="pre">htmlMetadata</span></code> for the HTML templates can be specified and will be added as “metadata” to the HTML template variables.</p></td>
@@ -1682,6 +1679,14 @@ the core functionality in handleRequest() method.</p>
 <code class="sig-name descname">contentTypeForAccept</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">accept: str</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.server.QgsServerOgcApiHandler.contentTypeForAccept" title="Permalink to this definition">¶</a></dt>
 <dd><p>Looks for the first ContentType match in the accept header and returns its mime type,
 returns an empty string if there are not matches.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>accept</strong> (<em>str</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1695,6 +1700,12 @@ Fallback to the default content type of the handler if none of the above matches
 <dt class="field-odd">Raises</dt>
 <dd class="field-odd"><p><strong>QgsServerApiBadRequestError</strong> – if the content type of the request is not compatible with the handler (<a class="reference internal" href="#qgis.server.QgsServerOgcApiHandler.contentTypes" title="qgis.server.QgsServerOgcApiHandler.contentTypes"><code class="xref py py-func docutils literal notranslate"><span class="pre">contentTypes()</span></code></a> member)</p>
 </dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>request</strong> (<a class="reference internal" href="QgsServerRequest.html#qgis.server.QgsServerRequest" title="qgis.server.QgsServerRequest"><em>QgsServerRequest</em></a>) – </p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsServerOgcApi.html#qgis.server.QgsServerOgcApi.ContentType" title="qgis.server.QgsServerOgcApi.ContentType">QgsServerOgcApi.ContentType</a></p>
+</dd>
 </dl>
 </dd></dl>
 
@@ -1704,6 +1715,11 @@ Fallback to the default content type of the handler if none of the above matches
 <dd><p>Returns the list of content types this handler can serve, default to JSON and HTML.
 In case a specialized type (such as GEOJSON) is supported,
 the generic type (such as JSON) should not be listed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List[<a class="reference internal" href="QgsServerOgcApi.html#qgis.server.QgsServerOgcApi.ContentType" title="qgis.server.QgsServerOgcApi.ContentType">QgsServerOgcApi.ContentType</a>]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1711,12 +1727,22 @@ the generic type (such as JSON) should not be listed.</p>
 <code class="sig-name descname">defaultContentType</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QgsServerOgcApi.ContentType<a class="headerlink" href="#qgis.server.QgsServerOgcApiHandler.defaultContentType" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the default response content type in case the client did not specifically
 ask for any particular content type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsServerOgcApi.html#qgis.server.QgsServerOgcApi.ContentType" title="qgis.server.QgsServerOgcApi.ContentType">QgsServerOgcApi.ContentType</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.server.QgsServerOgcApiHandler.description">
 <code class="sig-name descname">description</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; object<a class="headerlink" href="#qgis.server.QgsServerOgcApiHandler.description" title="Permalink to this definition">¶</a></dt>
 <dd><p>Description</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>object</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1729,6 +1755,9 @@ extract validated parameters from the request.</p>
 <dt class="field-odd">Raises</dt>
 <dd class="field-odd"><p><strong>QgsServerApiBadRequestError</strong> – if the method encounters any error</p>
 </dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>context</strong> (<a class="reference internal" href="QgsServerApiContext.html#qgis.server.QgsServerApiContext" title="qgis.server.QgsServerApiContext"><em>QgsServerApiContext</em></a>) – </p>
+</dd>
 </dl>
 </dd></dl>
 
@@ -1739,10 +1768,13 @@ extract validated parameters from the request.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>context</strong> – the current request context</p></li>
-<li><p><strong>extraPath</strong> – an optional extra path that will be appended to the calculated URL</p></li>
-<li><p><strong>extension</strong> – optional file extension to add (the dot will be added automatically).</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsServerApiContext.html#qgis.server.QgsServerApiContext" title="qgis.server.QgsServerApiContext"><em>QgsServerApiContext</em></a>) – the current request context</p></li>
+<li><p><strong>extraPath</strong> (<em>str = ''</em>) – an optional extra path that will be appended to the calculated URL</p></li>
+<li><p><strong>extension</strong> (<em>str = ''</em>) – optional file extension to add (the dot will be added automatically).</p></li>
 </ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>object</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1751,24 +1783,50 @@ extract validated parameters from the request.</p>
 <dt id="qgis.server.QgsServerOgcApiHandler.layerFromCollection">
 <code class="sig-name descname">layerFromCollection</code><span class="sig-paren">(</span><em class="sig-param">context: QgsServerApiContext</em>, <em class="sig-param">collectionId: str</em><span class="sig-paren">)</span> &#x2192; QgsVectorLayer<a class="headerlink" href="#qgis.server.QgsServerOgcApiHandler.layerFromCollection" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a vector layer from the <code class="docutils literal notranslate"><span class="pre">collectionId</span></code> in the given <code class="docutils literal notranslate"><span class="pre">context</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsServerApiContext.html#qgis.server.QgsServerApiContext" title="qgis.server.QgsServerApiContext"><em>QgsServerApiContext</em></a>) – </p></li>
+<li><p><strong>collectionId</strong> (<em>str</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="../core/QgsVectorLayer.html#qgis.core.QgsVectorLayer" title="qgis.core.QgsVectorLayer">QgsVectorLayer</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.server.QgsServerOgcApiHandler.linkTitle">
 <code class="sig-name descname">linkTitle</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; object<a class="headerlink" href="#qgis.server.QgsServerOgcApiHandler.linkTitle" title="Permalink to this definition">¶</a></dt>
 <dd><p>Title for the handler link</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>object</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.server.QgsServerOgcApiHandler.linkType">
 <code class="sig-name descname">linkType</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QgsServerOgcApi.Rel<a class="headerlink" href="#qgis.server.QgsServerOgcApiHandler.linkType" title="Permalink to this definition">¶</a></dt>
 <dd><p>Main role for the resource link</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsServerOgcApi.html#qgis.server.QgsServerOgcApi.Rel" title="qgis.server.QgsServerOgcApi.Rel">QgsServerOgcApi.Rel</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.server.QgsServerOgcApiHandler.operationId">
 <code class="sig-name descname">operationId</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; object<a class="headerlink" href="#qgis.server.QgsServerOgcApiHandler.operationId" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the operation id for template file names and other internal references</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>object</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1778,7 +1836,10 @@ extract validated parameters from the request.</p>
 <p>Depending on the handler, it may be dynamic (per-request) or static.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>context</strong> – the request context</p>
+<dd class="field-odd"><p><strong>context</strong> (<a class="reference internal" href="QgsServerApiContext.html#qgis.server.QgsServerApiContext" title="qgis.server.QgsServerApiContext"><em>QgsServerApiContext</em></a>) – the request context</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>List[<a class="reference internal" href="QgsServerQueryStringParameter.html#qgis.server.QgsServerQueryStringParameter" title="qgis.server.QgsServerQueryStringParameter">QgsServerQueryStringParameter</a>]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1787,6 +1848,17 @@ extract validated parameters from the request.</p>
 <dt id="qgis.server.QgsServerOgcApiHandler.parentLink">
 <code class="sig-name descname">parentLink</code><span class="sig-paren">(</span><em class="sig-param">url: QUrl</em>, <em class="sig-param">levels: int = 1</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.server.QgsServerOgcApiHandler.parentLink" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a link to the parent page up to <code class="docutils literal notranslate"><span class="pre">levels</span></code> in the HTML hierarchy from the given <code class="docutils literal notranslate"><span class="pre">url</span></code>, MAP query argument is preserved</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>url</strong> (<em>QUrl</em>) – </p></li>
+<li><p><strong>levels</strong> (<em>int = 1</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1800,6 +1872,11 @@ named parameter.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.server.QgsServerOgcApiHandler.values" title="qgis.server.QgsServerOgcApiHandler.values"><code class="xref py py-func docutils literal notranslate"><span class="pre">values()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>QRegularExpression</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1807,18 +1884,36 @@ named parameter.</p>
 <code class="sig-name descname">staticPath</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">context: QgsServerApiContext</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.server.QgsServerOgcApiHandler.staticPath" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the absolute path to the base directory where static resources for
 this handler are stored in the given <code class="docutils literal notranslate"><span class="pre">context</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>context</strong> (<a class="reference internal" href="QgsServerApiContext.html#qgis.server.QgsServerApiContext" title="qgis.server.QgsServerApiContext"><em>QgsServerApiContext</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.server.QgsServerOgcApiHandler.summary">
 <code class="sig-name descname">summary</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; object<a class="headerlink" href="#qgis.server.QgsServerOgcApiHandler.summary" title="Permalink to this definition">¶</a></dt>
 <dd><p>Summary</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>object</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.server.QgsServerOgcApiHandler.tags">
 <code class="sig-name descname">tags</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; List[str]<a class="headerlink" href="#qgis.server.QgsServerOgcApiHandler.tags" title="Permalink to this definition">¶</a></dt>
 <dd><p>Tags</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List[str]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1829,20 +1924,31 @@ this handler are stored in the given <code class="docutils literal notranslate">
 apiResourcesDirectory() + “/ogc/templates/” + context.apiRootPath + operationId + “.html”
 e.g. for an API with root path “/wfs3” and an handler with operationId “collectionItems”, the path
 will be apiResourcesDirectory() + “/ogc/templates/wfs3/collectionItems.html”</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>context</strong> (<a class="reference internal" href="QgsServerApiContext.html#qgis.server.QgsServerApiContext" title="qgis.server.QgsServerApiContext"><em>QgsServerApiContext</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.server.QgsServerOgcApiHandler.values">
 <code class="sig-name descname">values</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">context: QgsServerApiContext</em><span class="sig-paren">)</span> &#x2192; Dict[str, Any]<a class="headerlink" href="#qgis.server.QgsServerOgcApiHandler.values" title="Permalink to this definition">¶</a></dt>
 <dd><p>Analyzes the incoming request <code class="docutils literal notranslate"><span class="pre">context</span></code> and returns the validated
-parameter map, throws QgsServerApiBadRequestError in case of errors.</p>
+parameter map, throws <code class="xref py py-class docutils literal notranslate"><span class="pre">QgsServerApiBadRequestError</span></code> in case of errors.</p>
 <p>Path fragments from the named groups in the path() regular expression
 are also added to the map.</p>
 <p>Your handleRequest method should call this function to retrieve
 the parameters map.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>the validated parameters map by extracting captured
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Dict[str, Any]</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the validated parameters map by extracting captured
 named parameters from the path (no validation is performed on
 the type because the regular expression can do it),
 and the query string parameters.</p>
@@ -1859,6 +1965,9 @@ and the query string parameters.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Raises</dt>
 <dd class="field-odd"><p><strong>QgsServerApiBadRequestError</strong> – if validation fails</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>context</strong> (<a class="reference internal" href="QgsServerApiContext.html#qgis.server.QgsServerApiContext" title="qgis.server.QgsServerApiContext"><em>QgsServerApiContext</em></a>) – </p>
 </dd>
 </dl>
 </dd></dl>
@@ -1880,6 +1989,15 @@ See: <a class="reference external" href="https://github.com/pantor/inja#tutorial
 static(“/style/black.css”) will return something like “/wfs3/static/style/black.css”.
 - links_filter( links, key, value ): returns filtered links from a link list
 - content_type_name( content_type ): returns a short name from a content type for example “text/html” will return “HTML”</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>Any</em>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsServerApiContext.html#qgis.server.QgsServerApiContext" title="qgis.server.QgsServerApiContext"><em>QgsServerApiContext</em></a>) – </p></li>
+<li><p><strong>htmlMetadata</strong> (<em>Dict</em><em>[</em><em>str</em>) – </p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -1898,7 +2016,7 @@ static(“/style/black.css”) will return something like “/wfs3/static/style/
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 10:58 Oct 14, 2019.
+        Last updated on 15:06 Oct 15, 2019.
       </span>
 
     </p>
@@ -1925,20 +2043,20 @@ static(“/style/black.css”) will return something like “/wfs3/static/style/
     <div class="rst-other-versions">
       <dl>
         <dt>Versions</dt>
-      
-        <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
-      
-    </dl>
+        
+          <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
+        
+      </dl>
       
       
     </div>

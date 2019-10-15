@@ -122,7 +122,6 @@
 <li class="toctree-l2"><a class="reference internal" href="PROJECT_SCALES.html">Class: PROJECT_SCALES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PluginLayer.html">Class: PluginLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ProjectDirtyBlocker.html">Class: ProjectDirtyBlocker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="PyProviderMetadata.html">Class: PyProviderMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgis.html">Class: Qgis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs25DRenderer.html">Class: Qgs25DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs3DRendererAbstractMetadata.html">Class: Qgs3DRendererAbstractMetadata</a></li>
@@ -1546,8 +1545,6 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/core/QgsRelationManager.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -1568,7 +1565,7 @@
 <p>Constructor for QgsRelationManager.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>project</strong> – associated project (used to notify project of changes)</p>
+<dd class="field-odd"><p><strong>project</strong> (<a class="reference internal" href="QgsProject.html#qgis.core.QgsProject" title="qgis.core.QgsProject"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProject</span></code></a> = None) – associated project (used to notify project of changes)</p>
 </dd>
 </dl>
 <p>This class manages a set of relations between layers.</p>
@@ -1682,7 +1679,7 @@ Invalid relations are added only if both referencing layer and referenced
 layer exist.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>relation</strong> – The relation to add.</p>
+<dd class="field-odd"><p><strong>relation</strong> (<a class="reference internal" href="QgsRelation.html#qgis.core.QgsRelation" title="qgis.core.QgsRelation"><em>QgsRelation</em></a>) – The relation to add.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1729,12 +1726,15 @@ layer exist.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>existingRelations</strong> – the existing relations to filter them out</p></li>
-<li><p><strong>layers</strong> – the current layers</p></li>
+<li><p><strong>existingRelations</strong> (<em>Iterable</em><em>[</em><a class="reference internal" href="QgsRelation.html#qgis.core.QgsRelation" title="qgis.core.QgsRelation"><em>QgsRelation</em></a><em>]</em>) – the existing relations to filter them out</p></li>
+<li><p><strong>layers</strong> (<em>Iterable</em><em>[</em><a class="reference internal" href="QgsVectorLayer.html#qgis.core.QgsVectorLayer" title="qgis.core.QgsVectorLayer"><em>QgsVectorLayer</em></a><em>]</em>) – the current layers</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>the list of discovered relations</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>List[<a class="reference internal" href="QgsRelation.html#qgis.core.QgsRelation" title="qgis.core.QgsRelation">QgsRelation</a>]</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the list of discovered relations</p>
 </dd>
 </dl>
 <div class="versionadded">
@@ -1758,10 +1758,13 @@ layer exist.</p>
 <dd><p>Gets all relations where this layer is the referenced part (i.e. the parent table with the primary key being referenced from another layer).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>layer</strong> – The layer which should be searched for.</p>
+<dd class="field-odd"><p><strong>layer</strong> (<a class="reference internal" href="QgsVectorLayer.html#qgis.core.QgsVectorLayer" title="qgis.core.QgsVectorLayer"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsVectorLayer</span></code></a> = None) – The layer which should be searched for.</p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>A list of relations where the specified layer is the referenced part.</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>List[<a class="reference internal" href="QgsRelation.html#qgis.core.QgsRelation" title="qgis.core.QgsRelation">QgsRelation</a>]</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A list of relations where the specified layer is the referenced part.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1773,12 +1776,15 @@ layer exist.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>layer</strong> – The layer which should be searched for.</p></li>
-<li><p><strong>fieldIdx</strong> – The field which should be part of the foreign key. If not set will return all relations.</p></li>
+<li><p><strong>layer</strong> (<a class="reference internal" href="QgsVectorLayer.html#qgis.core.QgsVectorLayer" title="qgis.core.QgsVectorLayer"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsVectorLayer</span></code></a> = None) – The layer which should be searched for.</p></li>
+<li><p><strong>fieldIdx</strong> (<em>int = -2</em>) – The field which should be part of the foreign key. If not set will return all relations.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>A list of relations matching the given layer and fieldIdx.</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>List[<a class="reference internal" href="QgsRelation.html#qgis.core.QgsRelation" title="qgis.core.QgsRelation">QgsRelation</a>]</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A list of relations matching the given layer and fieldIdx.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1789,10 +1795,13 @@ layer exist.</p>
 <dd><p>Gets access to a relation by its id.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>id</strong> – The id to search for</p>
+<dd class="field-odd"><p><strong>id</strong> (<em>str</em>) – The id to search for</p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>A relation. Invalid if not found.</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsRelation.html#qgis.core.QgsRelation" title="qgis.core.QgsRelation">QgsRelation</a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A relation. Invalid if not found.</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -1806,8 +1815,11 @@ layer exist.</p>
 <code class="sig-name descname">relations</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; Dict[str, QgsRelation]<a class="headerlink" href="#qgis.core.QgsRelationManager.relations" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets access to the relations managed by this class.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>A QMap where the key is the relation id, the value the relation object.</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Dict[str, <a class="reference internal" href="QgsRelation.html#qgis.core.QgsRelation" title="qgis.core.QgsRelation">QgsRelation</a>]</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A QMap where the key is the relation id, the value the relation object.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1818,10 +1830,13 @@ layer exist.</p>
 <dd><p>Returns a list of relations with matching names.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>name</strong> – relation name to search for. Searching is case insensitive.</p>
+<dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – relation name to search for. Searching is case insensitive.</p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>a list of matching relations</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>List[<a class="reference internal" href="QgsRelation.html#qgis.core.QgsRelation" title="qgis.core.QgsRelation">QgsRelation</a>]</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a list of matching relations</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -1845,10 +1860,10 @@ layer exist.</p>
 <dd><p>Remove a relation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>id</strong> – The id of the relation to remove.</p>
+<dd class="field-odd"><p><strong>id</strong> (<em>str</em>) – The id of the relation to remove.</p>
 </dd>
 </dl>
-<p>removeRelation(self, relation: QgsRelation)
+<p>removeRelation(self, relation: <a class="reference internal" href="QgsRelation.html#qgis.core.QgsRelation" title="qgis.core.QgsRelation"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsRelation</span></code></a>)
 Remove a relation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1873,7 +1888,7 @@ Remove a relation.</p>
 <dd><p>Will set the specified relations and remove any relation currently set.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>relations</strong> – A list of relations to set.</p>
+<dd class="field-odd"><p><strong>relations</strong> (<em>Iterable</em><em>[</em><a class="reference internal" href="QgsRelation.html#qgis.core.QgsRelation" title="qgis.core.QgsRelation"><em>QgsRelation</em></a><em>]</em>) – A list of relations to set.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1905,7 +1920,7 @@ Remove a relation.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 10:58 Oct 14, 2019.
+        Last updated on 15:06 Oct 15, 2019.
       </span>
 
     </p>
@@ -1932,20 +1947,20 @@ Remove a relation.</p>
     <div class="rst-other-versions">
       <dl>
         <dt>Versions</dt>
-      
-        <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
-      
-    </dl>
+        
+          <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
+        
+      </dl>
       
       
     </div>

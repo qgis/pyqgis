@@ -122,7 +122,6 @@
 <li class="toctree-l2"><a class="reference internal" href="PROJECT_SCALES.html">Class: PROJECT_SCALES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PluginLayer.html">Class: PluginLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ProjectDirtyBlocker.html">Class: ProjectDirtyBlocker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="PyProviderMetadata.html">Class: PyProviderMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgis.html">Class: Qgis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs25DRenderer.html">Class: Qgs25DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs3DRendererAbstractMetadata.html">Class: Qgs3DRendererAbstractMetadata</a></li>
@@ -1546,8 +1545,6 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/core/QgsRasterInterface.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -1607,7 +1604,11 @@
 <td><p>Returns data type for the band specified by number</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterInterface.dataTypeSize" title="qgis.core.QgsRasterInterface.dataTypeSize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dataTypeSize</span></code></a></p></td>
-<td><p></p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">param bandNo</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterInterface.extent" title="qgis.core.QgsRasterInterface.extent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">extent</span></code></a></p></td>
 <td><p>Gets the extent of the interface.</p></td>
@@ -1661,10 +1662,20 @@
 <td><p>Gets raster size</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterInterface.yBlockSize" title="qgis.core.QgsRasterInterface.yBlockSize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">yBlockSize</span></code></a></p></td>
-<td><p></p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">rtype</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterInterface.ySize" title="qgis.core.QgsRasterInterface.ySize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ySize</span></code></a></p></td>
-<td><p></p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">rtype</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</p></td>
 </tr>
 </tbody>
 </table>
@@ -1776,6 +1787,11 @@
 <dt id="qgis.core.QgsRasterInterface.bandCount">
 <code class="sig-name descname">bandCount</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#qgis.core.QgsRasterInterface.bandCount" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets number of bands</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1785,12 +1801,15 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>bandNo</strong> – The band (number).</p></li>
-<li><p><strong>stats</strong> – Requested statistics</p></li>
-<li><p><strong>extent</strong> – Extent used to calc statistics, if empty, whole raster extent is used.</p></li>
-<li><p><strong>sampleSize</strong> – Approximate number of cells in sample. If 0, all cells (whole raster will be used). If raster does not have exact size (WCS without exact size for example), provider decides size of sample.</p></li>
-<li><p><strong>feedback</strong> – optional feedback object</p></li>
+<li><p><strong>bandNo</strong> (<em>int</em>) – The band (number).</p></li>
+<li><p><strong>stats</strong> (<em>int = QgsRasterBandStats.All</em>) – Requested statistics</p></li>
+<li><p><strong>extent</strong> (<a class="reference internal" href="QgsRectangle.html#qgis.core.QgsRectangle" title="qgis.core.QgsRectangle"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsRectangle</span></code></a> = QgsRectangle()) – Extent used to calc statistics, if empty, whole raster extent is used.</p></li>
+<li><p><strong>sampleSize</strong> (<em>int = 0</em>) – Approximate number of cells in sample. If 0, all cells (whole raster will be used). If raster does not have exact size (WCS without exact size for example), provider decides size of sample.</p></li>
+<li><p><strong>feedback</strong> (<a class="reference internal" href="QgsRasterBlockFeedback.html#qgis.core.QgsRasterBlockFeedback" title="qgis.core.QgsRasterBlockFeedback"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsRasterBlockFeedback</span></code></a> = None) – optional feedback object</p></li>
 </ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsRasterBandStats.html#qgis.core.QgsRasterBandStats" title="qgis.core.QgsRasterBandStats">QgsRasterBandStats</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -1804,12 +1823,15 @@ Caller is responsible to free the memory returned.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>bandNo</strong> – band number</p></li>
-<li><p><strong>extent</strong> – extent of block</p></li>
-<li><p><strong>width</strong> – pixel width of block</p></li>
-<li><p><strong>height</strong> – pixel height of block</p></li>
-<li><p><strong>feedback</strong> – optional raster feedback object for cancellation/preview. Added in QGIS 3.0.</p></li>
+<li><p><strong>bandNo</strong> (<em>int</em>) – band number</p></li>
+<li><p><strong>extent</strong> (<a class="reference internal" href="QgsRectangle.html#qgis.core.QgsRectangle" title="qgis.core.QgsRectangle"><em>QgsRectangle</em></a>) – extent of block</p></li>
+<li><p><strong>width</strong> (<em>int</em>) – pixel width of block</p></li>
+<li><p><strong>height</strong> (<em>int</em>) – pixel height of block</p></li>
+<li><p><strong>feedback</strong> (<a class="reference internal" href="QgsRasterBlockFeedback.html#qgis.core.QgsRasterBlockFeedback" title="qgis.core.QgsRasterBlockFeedback"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsRasterBlockFeedback</span></code></a> = None) – optional raster feedback object for cancellation/preview. Added in QGIS 3.0.</p></li>
 </ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsRasterBlock.html#qgis.core.QgsRasterBlock" title="qgis.core.QgsRasterBlock">QgsRasterBlock</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -1818,18 +1840,33 @@ Caller is responsible to free the memory returned.</p>
 <dt id="qgis.core.QgsRasterInterface.capabilities">
 <code class="sig-name descname">capabilities</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#qgis.core.QgsRasterInterface.capabilities" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a bitmask containing the supported capabilities</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsRasterInterface.capabilitiesString">
 <code class="sig-name descname">capabilitiesString</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.core.QgsRasterInterface.capabilitiesString" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the above in friendly format.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsRasterInterface.clone">
 <code class="sig-name descname">clone</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QgsRasterInterface<a class="headerlink" href="#qgis.core.QgsRasterInterface.clone" title="Permalink to this definition">¶</a></dt>
 <dd><p>Clone itself, create deep copy</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#qgis.core.QgsRasterInterface" title="qgis.core.QgsRasterInterface">QgsRasterInterface</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1839,14 +1876,17 @@ Caller is responsible to free the memory returned.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>bandNo</strong> – The band (number).</p></li>
-<li><p><strong>lowerCount</strong> – The lower count as fraction of 1, e.g. 0.02 = 2%</p></li>
-<li><p><strong>upperCount</strong> – The upper count as fraction of 1, e.g. 0.98 = 98%</p></li>
+<li><p><strong>bandNo</strong> (<em>int</em>) – The band (number).</p></li>
+<li><p><strong>lowerCount</strong> (<em>float</em>) – The lower count as fraction of 1, e.g. 0.02 = 2%</p></li>
+<li><p><strong>upperCount</strong> (<em>float</em>) – The upper count as fraction of 1, e.g. 0.98 = 98%</p></li>
 <li><p><strong>lowerValue</strong> – Location into which the lower value will be set.</p></li>
 <li><p><strong>upperValue</strong> – Location into which the upper value will be set.</p></li>
-<li><p><strong>extent</strong> – Extent used to calc histogram, if empty, whole raster extent is used.</p></li>
-<li><p><strong>sampleSize</strong> – Approximate number of cells in sample. If 0, all cells (whole raster will be used). If raster does not have exact size (WCS without exact size for example), provider decides size of sample.</p></li>
+<li><p><strong>extent</strong> (<a class="reference internal" href="QgsRectangle.html#qgis.core.QgsRectangle" title="qgis.core.QgsRectangle"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsRectangle</span></code></a> = QgsRectangle()) – Extent used to calc histogram, if empty, whole raster extent is used.</p></li>
+<li><p><strong>sampleSize</strong> (<em>int = 0</em>) – Approximate number of cells in sample. If 0, all cells (whole raster will be used). If raster does not have exact size (WCS without exact size for example), provider decides size of sample.</p></li>
 </ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Tuple[float, float]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1855,20 +1895,39 @@ Caller is responsible to free the memory returned.</p>
 <dt id="qgis.core.QgsRasterInterface.dataType">
 <code class="sig-name descname">dataType</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">bandNo: int</em><span class="sig-paren">)</span> &#x2192; Qgis.DataType<a class="headerlink" href="#qgis.core.QgsRasterInterface.dataType" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns data type for the band specified by number</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>bandNo</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="Qgis.html#qgis.core.Qgis.DataType" title="qgis.core.Qgis.DataType">Qgis.DataType</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsRasterInterface.dataTypeSize">
 <code class="sig-name descname">dataTypeSize</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">bandNo: int</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#qgis.core.QgsRasterInterface.dataTypeSize" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>bandNo</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsRasterInterface.extent">
 <code class="sig-name descname">extent</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QgsRectangle<a class="headerlink" href="#qgis.core.QgsRasterInterface.extent" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets the extent of the interface.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>QgsRectangle containing the extent of the layer</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsRectangle.html#qgis.core.QgsRectangle" title="qgis.core.QgsRectangle">QgsRectangle</a></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsRectangle.html#qgis.core.QgsRectangle" title="qgis.core.QgsRectangle"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsRectangle</span></code></a> containing the extent of the layer</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1877,6 +1936,14 @@ Caller is responsible to free the memory returned.</p>
 <dt id="qgis.core.QgsRasterInterface.generateBandName">
 <code class="sig-name descname">generateBandName</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">bandNumber: int</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.core.QgsRasterInterface.generateBandName" title="Permalink to this definition">¶</a></dt>
 <dd><p>helper function to create zero padded band names</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>bandNumber</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1887,6 +1954,22 @@ Caller is responsible to free the memory returned.</p>
 <p class="admonition-title">Note</p>
 <p>the parameters are the same as in <a class="reference internal" href="#qgis.core.QgsRasterInterface.histogram" title="qgis.core.QgsRasterInterface.histogram"><code class="xref py py-func docutils literal notranslate"><span class="pre">histogram()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>bandNo</strong> (<em>int</em>) – </p></li>
+<li><p><strong>binCount</strong> (<em>int</em>) – </p></li>
+<li><p><strong>minimum</strong> (<em>object = Py_None</em>) – </p></li>
+<li><p><strong>maximum</strong> (<em>object = Py_None</em>) – </p></li>
+<li><p><strong>extent</strong> (<a class="reference internal" href="QgsRectangle.html#qgis.core.QgsRectangle" title="qgis.core.QgsRectangle"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsRectangle</span></code></a> = QgsRectangle()) – </p></li>
+<li><p><strong>sampleSize</strong> (<em>int = 0</em>) – </p></li>
+<li><p><strong>includeOutOfRange</strong> (<em>bool = False</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1894,8 +1977,19 @@ Caller is responsible to free the memory returned.</p>
 <code class="sig-name descname">hasStatistics</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">bandNo: int</em>, <em class="sig-param">stats: int = QgsRasterBandStats.All</em>, <em class="sig-param">extent: QgsRectangle = QgsRectangle()</em>, <em class="sig-param">sampleSize: int = 0</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsRasterInterface.hasStatistics" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if histogram is available (cached, already calculated).     *   The parameters are the same as in bandStatistics()</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if statistics are available (ready to use)</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if statistics are available (ready to use)</p>
+</dd>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>bandNo</strong> (<em>int</em>) – </p></li>
+<li><p><strong>stats</strong> (<em>int = QgsRasterBandStats.All</em>) – </p></li>
+<li><p><strong>extent</strong> (<a class="reference internal" href="QgsRectangle.html#qgis.core.QgsRectangle" title="qgis.core.QgsRectangle"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsRectangle</span></code></a> = QgsRectangle()) – </p></li>
+<li><p><strong>sampleSize</strong> (<em>int = 0</em>) – </p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -1907,18 +2001,21 @@ Caller is responsible to free the memory returned.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>bandNo</strong> – The band (number).</p></li>
-<li><p><strong>binCount</strong> – Number of bins (intervals,buckets). If 0, the number of bins is decided automatically according to data type, raster size etc.</p></li>
-<li><p><strong>minimum</strong> – Minimum value, if NaN (None for Python), raster minimum value will be used.</p></li>
-<li><p><strong>maximum</strong> – Maximum value, if NaN (None for Python), raster maximum value will be used.</p></li>
-<li><p><strong>extent</strong> – Extent used to calc histogram, if empty, whole raster extent is used.</p></li>
-<li><p><strong>sampleSize</strong> – Approximate number of cells in sample. If 0, all cells (whole raster will be used). If raster does not have exact size (WCS without exact size for example), provider decides size of sample.</p></li>
-<li><p><strong>includeOutOfRange</strong> – include out of range values</p></li>
-<li><p><strong>feedback</strong> – optional feedback object</p></li>
+<li><p><strong>bandNo</strong> (<em>int</em>) – The band (number).</p></li>
+<li><p><strong>binCount</strong> (<em>int = 0</em>) – Number of bins (intervals,buckets). If 0, the number of bins is decided automatically according to data type, raster size etc.</p></li>
+<li><p><strong>minimum</strong> (<em>object = Py_None</em>) – Minimum value, if NaN (None for Python), raster minimum value will be used.</p></li>
+<li><p><strong>maximum</strong> (<em>object = Py_None</em>) – Maximum value, if NaN (None for Python), raster maximum value will be used.</p></li>
+<li><p><strong>extent</strong> (<a class="reference internal" href="QgsRectangle.html#qgis.core.QgsRectangle" title="qgis.core.QgsRectangle"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsRectangle</span></code></a> = QgsRectangle()) – Extent used to calc histogram, if empty, whole raster extent is used.</p></li>
+<li><p><strong>sampleSize</strong> (<em>int = 0</em>) – Approximate number of cells in sample. If 0, all cells (whole raster will be used). If raster does not have exact size (WCS without exact size for example), provider decides size of sample.</p></li>
+<li><p><strong>includeOutOfRange</strong> (<em>bool = False</em>) – include out of range values</p></li>
+<li><p><strong>feedback</strong> (<a class="reference internal" href="QgsRasterBlockFeedback.html#qgis.core.QgsRasterBlockFeedback" title="qgis.core.QgsRasterBlockFeedback"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsRasterBlockFeedback</span></code></a> = None) – optional feedback object</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Vector of non NULL cell counts for each bin.</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsRasterHistogram.html#qgis.core.QgsRasterHistogram" title="qgis.core.QgsRasterHistogram">QgsRasterHistogram</a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Vector of non NULL cell counts for each bin.</p>
 </dd>
 </dl>
 <div class="admonition note">
@@ -1935,30 +2032,70 @@ Caller is responsible to free the memory returned.</p>
 <p class="admonition-title">Note</p>
 <p>the parameters are the same as in <a class="reference internal" href="#qgis.core.QgsRasterInterface.histogram" title="qgis.core.QgsRasterInterface.histogram"><code class="xref py py-func docutils literal notranslate"><span class="pre">histogram()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>histogram</strong> (<a class="reference internal" href="QgsRasterHistogram.html#qgis.core.QgsRasterHistogram" title="qgis.core.QgsRasterHistogram"><em>QgsRasterHistogram</em></a>) – </p></li>
+<li><p><strong>bandNo</strong> (<em>int</em>) – </p></li>
+<li><p><strong>binCount</strong> (<em>int</em>) – </p></li>
+<li><p><strong>minimum</strong> (<em>object = Py_None</em>) – </p></li>
+<li><p><strong>maximum</strong> (<em>object = Py_None</em>) – </p></li>
+<li><p><strong>boundingBox</strong> (<a class="reference internal" href="QgsRectangle.html#qgis.core.QgsRectangle" title="qgis.core.QgsRectangle"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsRectangle</span></code></a> = QgsRectangle()) – </p></li>
+<li><p><strong>sampleSize</strong> (<em>int = 0</em>) – </p></li>
+<li><p><strong>includeOutOfRange</strong> (<em>bool = False</em>) – </p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsRasterInterface.initStatistics">
 <code class="sig-name descname">initStatistics</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">statistics: QgsRasterBandStats</em>, <em class="sig-param">bandNo: int</em>, <em class="sig-param">stats: int = QgsRasterBandStats.All</em>, <em class="sig-param">boundingBox: QgsRectangle = QgsRectangle()</em>, <em class="sig-param">binCount: int = 0</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsRasterInterface.initStatistics" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fill in statistics defaults if not specified</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>statistics</strong> (<a class="reference internal" href="QgsRasterBandStats.html#qgis.core.QgsRasterBandStats" title="qgis.core.QgsRasterBandStats"><em>QgsRasterBandStats</em></a>) – </p></li>
+<li><p><strong>bandNo</strong> (<em>int</em>) – </p></li>
+<li><p><strong>stats</strong> (<em>int = QgsRasterBandStats.All</em>) – </p></li>
+<li><p><strong>boundingBox</strong> (<a class="reference internal" href="QgsRectangle.html#qgis.core.QgsRectangle" title="qgis.core.QgsRectangle"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsRectangle</span></code></a> = QgsRectangle()) – </p></li>
+<li><p><strong>binCount</strong> (<em>int = 0</em>) – </p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsRasterInterface.input">
 <code class="sig-name descname">input</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QgsRasterInterface<a class="headerlink" href="#qgis.core.QgsRasterInterface.input" title="Permalink to this definition">¶</a></dt>
 <dd><p>Current input</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#qgis.core.QgsRasterInterface" title="qgis.core.QgsRasterInterface">QgsRasterInterface</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsRasterInterface.on">
 <code class="sig-name descname">on</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsRasterInterface.on" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns whether the interface is on or off</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsRasterInterface.readXml">
 <code class="sig-name descname">readXml</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">filterElem: QDomElement</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsRasterInterface.readXml" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets base class members from xml. Usually called from create() methods of subclasses</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filterElem</strong> (<em>QDomElement</em>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1966,12 +2103,25 @@ Caller is responsible to free the memory returned.</p>
 <code class="sig-name descname">setInput</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">input: QgsRasterInterface</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsRasterInterface.setInput" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set input.
 Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if set correctly, <code class="docutils literal notranslate"><span class="pre">False</span></code> if cannot use that input</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>input</strong> (<a class="reference internal" href="#qgis.core.QgsRasterInterface" title="qgis.core.QgsRasterInterface"><em>QgsRasterInterface</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsRasterInterface.setOn">
 <code class="sig-name descname">setOn</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">on: bool</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsRasterInterface.setOn" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets whether the interface is on or off</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>on</strong> (<em>bool</em>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1979,6 +2129,14 @@ Returns <code class="docutils literal notranslate"><span class="pre">True</span>
 <code class="sig-name descname">sourceDataType</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">bandNo: int</em><span class="sig-paren">)</span> &#x2192; Qgis.DataType<a class="headerlink" href="#qgis.core.QgsRasterInterface.sourceDataType" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns source data type for the band specified by number,
 source data type may be shorter than dataType</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>bandNo</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="Qgis.html#qgis.core.Qgis.DataType" title="qgis.core.Qgis.DataType">Qgis.DataType</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1987,35 +2145,68 @@ source data type may be shorter than dataType</p>
 <dd><p>Gets source / raw input, the first in pipe, usually provider.
 It may be used to get info about original data, e.g. resolution to decide
 resampling etc.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#qgis.core.QgsRasterInterface" title="qgis.core.QgsRasterInterface">QgsRasterInterface</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsRasterInterface.writeXml">
 <code class="sig-name descname">writeXml</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">doc: QDomDocument</em>, <em class="sig-param">parentElem: QDomElement</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsRasterInterface.writeXml" title="Permalink to this definition">¶</a></dt>
 <dd><p>Write base class members to xml.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>doc</strong> (<em>QDomDocument</em>) – </p></li>
+<li><p><strong>parentElem</strong> (<em>QDomElement</em>) – </p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsRasterInterface.xBlockSize">
 <code class="sig-name descname">xBlockSize</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#qgis.core.QgsRasterInterface.xBlockSize" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets block size</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsRasterInterface.xSize">
 <code class="sig-name descname">xSize</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#qgis.core.QgsRasterInterface.xSize" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets raster size</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsRasterInterface.yBlockSize">
 <code class="sig-name descname">yBlockSize</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#qgis.core.QgsRasterInterface.yBlockSize" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsRasterInterface.ySize">
 <code class="sig-name descname">ySize</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#qgis.core.QgsRasterInterface.ySize" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 
@@ -2033,7 +2224,7 @@ resampling etc.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 10:58 Oct 14, 2019.
+        Last updated on 15:06 Oct 15, 2019.
       </span>
 
     </p>
@@ -2060,20 +2251,20 @@ resampling etc.</p>
     <div class="rst-other-versions">
       <dl>
         <dt>Versions</dt>
-      
-        <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
-      
-    </dl>
+        
+          <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
+        
+      </dl>
       
       
     </div>

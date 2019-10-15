@@ -122,7 +122,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../core/PROJECT_SCALES.html">Class: PROJECT_SCALES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/PluginLayer.html">Class: PluginLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/ProjectDirtyBlocker.html">Class: ProjectDirtyBlocker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../core/PyProviderMetadata.html">Class: PyProviderMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/Qgis.html">Class: Qgis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/Qgs25DRenderer.html">Class: Qgs25DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/Qgs3DRendererAbstractMetadata.html">Class: Qgs3DRendererAbstractMetadata</a></li>
@@ -1546,8 +1545,6 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/gui/QgsColorDialog.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -1569,9 +1566,9 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>parent</strong> – parent widget</p></li>
-<li><p><strong>fl</strong> – window flags</p></li>
-<li><p><strong>color</strong> – initial color for dialog</p></li>
+<li><p><strong>parent</strong> (<em>QWidget = None</em>) – parent widget</p></li>
+<li><p><strong>fl</strong> (<em>Union</em><em>[</em><em>Qt.WindowFlags</em>) – window flags</p></li>
+<li><p><strong>color</strong> (<em>Union</em><em>[</em><em>QColor</em>) – initial color for dialog</p></li>
 </ul>
 </dd>
 </dl>
@@ -1603,7 +1600,11 @@ hue wheel supports, color swatches, and a color sampler.</p>
 <td><p></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsColorDialog.closeEvent" title="qgis.gui.QgsColorDialog.closeEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">closeEvent</span></code></a></p></td>
-<td><p></p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">param e</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsColorDialog.color" title="qgis.gui.QgsColorDialog.color"><code class="xref py py-obj docutils literal notranslate"><span class="pre">color</span></code></a></p></td>
 <td><p>Returns the current color for the dialog</p></td>
@@ -1790,15 +1791,23 @@ hue wheel supports, color swatches, and a color sampler.</p>
 <dl class="method">
 <dt id="qgis.gui.QgsColorDialog.closeEvent">
 <code class="sig-name descname">closeEvent</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">e: QCloseEvent</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorDialog.closeEvent" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>e</strong> (<em>QCloseEvent</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="method">
 <dt id="qgis.gui.QgsColorDialog.color">
 <code class="sig-name descname">color</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QColor<a class="headerlink" href="#qgis.gui.QgsColorDialog.color" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the current color for the dialog</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>dialog color</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>QColor</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>dialog color</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1824,7 +1833,7 @@ hue wheel supports, color swatches, and a color sampler.</p>
 <dd><p>Emitted when the dialog’s color changes</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>color</strong> – current color [signal]</p>
+<dd class="field-odd"><p><strong>color</strong> (<em>Union</em><em>[</em><em>QColor</em>) – current color [signal]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1911,14 +1920,17 @@ hue wheel supports, color swatches, and a color sampler.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>initialColor</strong> – the initial color of the selection dialog.</p></li>
-<li><p><strong>parent</strong> – parent widget</p></li>
-<li><p><strong>title</strong> – the title of the dialog.</p></li>
-<li><p><strong>allowOpacity</strong> – set to <code class="docutils literal notranslate"><span class="pre">True</span></code> to allow modification of color opacity value (transparency)</p></li>
+<li><p><strong>initialColor</strong> (<em>Union</em><em>[</em><em>QColor</em>) – the initial color of the selection dialog.</p></li>
+<li><p><strong>parent</strong> (<em>QWidget</em>) – parent widget</p></li>
+<li><p><strong>title</strong> (<em>str = ''</em>) – the title of the dialog.</p></li>
+<li><p><strong>allowOpacity</strong> (<em>bool = False</em>) – set to <code class="docutils literal notranslate"><span class="pre">True</span></code> to allow modification of color opacity value (transparency)</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Selected color on accepted() or initialColor on rejected().</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>QColor</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Selected color on accepted() or initialColor on rejected().</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2025,7 +2037,7 @@ hue wheel supports, color swatches, and a color sampler.</p>
 for the color dialog. Defaults to <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>allowOpacity</strong> – set to <code class="docutils literal notranslate"><span class="pre">False</span></code> to disable opacity modification</p>
+<dd class="field-odd"><p><strong>allowOpacity</strong> (<em>bool</em>) – set to <code class="docutils literal notranslate"><span class="pre">False</span></code> to disable opacity modification</p>
 </dd>
 </dl>
 <div class="versionadded">
@@ -2039,7 +2051,7 @@ for the color dialog. Defaults to <code class="docutils literal notranslate"><sp
 <dd><p>Sets the current color for the dialog</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>color</strong> – desired color</p>
+<dd class="field-odd"><p><strong>color</strong> (<em>Union</em><em>[</em><em>QColor</em>) – desired color</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2050,7 +2062,7 @@ for the color dialog. Defaults to <code class="docutils literal notranslate"><sp
 <dd><p>Sets the title for the color dialog</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>title</strong> – title for dialog box</p>
+<dd class="field-odd"><p><strong>title</strong> (<em>str</em>) – title for dialog box</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2101,7 +2113,7 @@ for the color dialog. Defaults to <code class="docutils literal notranslate"><sp
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 10:58 Oct 14, 2019.
+        Last updated on 15:06 Oct 15, 2019.
       </span>
 
     </p>
@@ -2128,20 +2140,20 @@ for the color dialog. Defaults to <code class="docutils literal notranslate"><sp
     <div class="rst-other-versions">
       <dl>
         <dt>Versions</dt>
-      
-        <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
-      
-    </dl>
+        
+          <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
+        
+      </dl>
       
       
     </div>

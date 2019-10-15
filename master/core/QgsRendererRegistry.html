@@ -122,7 +122,6 @@
 <li class="toctree-l2"><a class="reference internal" href="PROJECT_SCALES.html">Class: PROJECT_SCALES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PluginLayer.html">Class: PluginLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ProjectDirtyBlocker.html">Class: ProjectDirtyBlocker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="PyProviderMetadata.html">Class: PyProviderMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgis.html">Class: Qgis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs25DRenderer.html">Class: Qgs25DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs3DRendererAbstractMetadata.html">Class: Qgs3DRendererAbstractMetadata</a></li>
@@ -1546,8 +1545,6 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/core/QgsRendererRegistry.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -1566,7 +1563,7 @@
 <em class="property">class </em><code class="sig-prename descclassname">qgis.core.</code><code class="sig-name descname">QgsRendererRegistry</code><a class="headerlink" href="#qgis.core.QgsRendererRegistry" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sip.wrapper</span></code></p>
 <p>Registry of renderers.</p>
-<p>QgsRendererRegistry is not usually directly created, but rather accessed through
+<p><a class="reference internal" href="#qgis.core.QgsRendererRegistry" title="qgis.core.QgsRendererRegistry"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsRendererRegistry</span></code></a> is not usually directly created, but rather accessed through
 <a class="reference internal" href="QgsApplication.html#qgis.core.QgsApplication.rendererRegistry" title="qgis.core.QgsApplication.rendererRegistry"><code class="xref py py-func docutils literal notranslate"><span class="pre">QgsApplication.rendererRegistry()</span></code></a></p>
 <blockquote>
 <div><table class="longtable docutils align-default">
@@ -1621,10 +1618,13 @@
 <dd><p>Adds a renderer to the registry. Takes ownership of the metadata object.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>metadata</strong> – renderer metadata</p>
+<dd class="field-odd"><p><strong>metadata</strong> (<a class="reference internal" href="QgsRendererAbstractMetadata.html#qgis.core.QgsRendererAbstractMetadata" title="qgis.core.QgsRendererAbstractMetadata"><em>QgsRendererAbstractMetadata</em></a>) – renderer metadata</p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if renderer was added successfully, or <code class="docutils literal notranslate"><span class="pre">False</span></code> if renderer could not
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if renderer was added successfully, or <code class="docutils literal notranslate"><span class="pre">False</span></code> if renderer could not
 be added (e.g., a renderer with a duplicate name already exists)</p>
 </dd>
 </dl>
@@ -1636,10 +1636,13 @@ be added (e.g., a renderer with a duplicate name already exists)</p>
 <dd><p>Removes a renderer from registry.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>rendererName</strong> – name of renderer to remove from registry</p>
+<dd class="field-odd"><p><strong>rendererName</strong> (<em>str</em>) – name of renderer to remove from registry</p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if renderer was successfully removed, or <code class="docutils literal notranslate"><span class="pre">False</span></code> if matching
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if renderer was successfully removed, or <code class="docutils literal notranslate"><span class="pre">False</span></code> if matching
 renderer could not be found</p>
 </dd>
 </dl>
@@ -1650,6 +1653,14 @@ renderer could not be found</p>
 <code class="sig-name descname">rendererMetadata</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">rendererName: str</em><span class="sig-paren">)</span> &#x2192; QgsRendererAbstractMetadata<a class="headerlink" href="#qgis.core.QgsRendererRegistry.rendererMetadata" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the metadata for a specified renderer. Returns <code class="docutils literal notranslate"><span class="pre">None</span></code> if a matching
 renderer was not found in the registry.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>rendererName</strong> (<em>str</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsRendererAbstractMetadata.html#qgis.core.QgsRendererAbstractMetadata" title="qgis.core.QgsRendererAbstractMetadata">QgsRendererAbstractMetadata</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1658,10 +1669,10 @@ renderer was not found in the registry.</p>
 <dd><p>Returns a list of available renderers.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>layerTypes</strong> – flags to filter the renderers by compatible layer types</p>
+<dd class="field-odd"><p><strong>layerTypes</strong> (<em>Union</em><em>[</em><a class="reference internal" href="QgsRendererAbstractMetadata.html#qgis.core.QgsRendererAbstractMetadata.LayerTypes" title="qgis.core.QgsRendererAbstractMetadata.LayerTypes"><em>QgsRendererAbstractMetadata.LayerTypes</em></a>) – flags to filter the renderers by compatible layer types</p>
 </dd>
 </dl>
-<p>renderersList(self, layer: QgsVectorLayer) -&gt; List[str]
+<p>renderersList(self, layer: <a class="reference internal" href="QgsVectorLayer.html#qgis.core.QgsVectorLayer" title="qgis.core.QgsVectorLayer"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsVectorLayer</span></code></a>) -&gt; List[str]
 Returns a list of available renderers which are compatible with a specified layer.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1671,6 +1682,11 @@ Returns a list of available renderers which are compatible with a specified laye
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 2.16.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List[str]</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -1689,7 +1705,7 @@ Returns a list of available renderers which are compatible with a specified laye
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 10:58 Oct 14, 2019.
+        Last updated on 15:06 Oct 15, 2019.
       </span>
 
     </p>
@@ -1716,20 +1732,20 @@ Returns a list of available renderers which are compatible with a specified laye
     <div class="rst-other-versions">
       <dl>
         <dt>Versions</dt>
-      
-        <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
-      
-    </dl>
+        
+          <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
+        
+      </dl>
       
       
     </div>

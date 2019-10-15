@@ -122,7 +122,6 @@
 <li class="toctree-l2"><a class="reference internal" href="PROJECT_SCALES.html">Class: PROJECT_SCALES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PluginLayer.html">Class: PluginLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ProjectDirtyBlocker.html">Class: ProjectDirtyBlocker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="PyProviderMetadata.html">Class: PyProviderMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgis.html">Class: Qgis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs25DRenderer.html">Class: Qgs25DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs3DRendererAbstractMetadata.html">Class: Qgs3DRendererAbstractMetadata</a></li>
@@ -1546,8 +1545,6 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/core/QgsLayoutPoint.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -1572,10 +1569,10 @@ Constructor for QgsLayoutPoint.</p>
 Constructor for an empty point, where both x and y are set to 0.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>units</strong> – units for measurement</p>
+<dd class="field-odd"><p><strong>units</strong> (<em>QgsUnitTypes.LayoutUnit = QgsUnitTypes.LayoutMillimeters</em>) – units for measurement</p>
 </dd>
 </dl>
-<p>QgsLayoutPoint(QgsLayoutPoint)</p>
+<p>QgsLayoutPoint(<a class="reference internal" href="#qgis.core.QgsLayoutPoint" title="qgis.core.QgsLayoutPoint"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsLayoutPoint</span></code></a>)</p>
 <p>This class provides a method of storing points, consisting of an x and y coordinate,
 for use in QGIS layouts. Measurement units are stored alongside the position.</p>
 <div class="admonition seealso">
@@ -1586,78 +1583,21 @@ for use in QGIS layouts. Measurement units are stored alongside the position.</p
 <p class="admonition-title">Note</p>
 <p>This class does not inherit from QPointF since QPointF includes methods which should not apply
 to positions with with units. For instance, the + and - operators would mislead users of this class
-to believe that addition of two QgsLayoutPoints with different unit types would automatically convert
-units. Instead, all unit conversion must be handled by a QgsLayoutMeasurementConverter so that
+to believe that addition of two <code class="xref py py-class docutils literal notranslate"><span class="pre">QgsLayoutPoints</span></code> with different unit types would automatically convert
+units. Instead, all unit conversion must be handled by a <a class="reference internal" href="QgsLayoutMeasurementConverter.html#qgis.core.QgsLayoutMeasurementConverter" title="qgis.core.QgsLayoutMeasurementConverter"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsLayoutMeasurementConverter</span></code></a> so that
 conversion between paper and screen units can be correctly performed.</p>
 </div>
 <div class="versionadded">
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
-<tbody>
-</tbody>
-</table>
-<p class="rubric">Methods</p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutPoint.decodePoint" title="qgis.core.QgsLayoutPoint.decodePoint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decodePoint</span></code></a></p></td>
-<td><p>Decodes a point from a <code class="docutils literal notranslate"><span class="pre">string</span></code>.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutPoint.encodePoint" title="qgis.core.QgsLayoutPoint.encodePoint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">encodePoint</span></code></a></p></td>
-<td><p>Encodes the layout point to a string</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutPoint.isNull" title="qgis.core.QgsLayoutPoint.isNull"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isNull</span></code></a></p></td>
-<td><p>Tests whether the position is null, ie both its x and y coordinates are zero.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutPoint.setPoint" title="qgis.core.QgsLayoutPoint.setPoint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setPoint</span></code></a></p></td>
-<td><p>Sets new x and y coordinates for the point.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutPoint.setUnits" title="qgis.core.QgsLayoutPoint.setUnits"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setUnits</span></code></a></p></td>
-<td><p>Sets the <code class="docutils literal notranslate"><span class="pre">units</span></code> for the point.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutPoint.setX" title="qgis.core.QgsLayoutPoint.setX"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setX</span></code></a></p></td>
-<td><p>Sets the x coordinate of point.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutPoint.setY" title="qgis.core.QgsLayoutPoint.setY"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setY</span></code></a></p></td>
-<td><p>Sets y coordinate of point.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutPoint.toQPointF" title="qgis.core.QgsLayoutPoint.toQPointF"><code class="xref py py-obj docutils literal notranslate"><span class="pre">toQPointF</span></code></a></p></td>
-<td><p>Converts the layout point to a QPointF.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutPoint.units" title="qgis.core.QgsLayoutPoint.units"><code class="xref py py-obj docutils literal notranslate"><span class="pre">units</span></code></a></p></td>
-<td><p>Returns the units for the point.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutPoint.x" title="qgis.core.QgsLayoutPoint.x"><code class="xref py py-obj docutils literal notranslate"><span class="pre">x</span></code></a></p></td>
-<td><p>Returns x coordinate of point.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutPoint.y" title="qgis.core.QgsLayoutPoint.y"><code class="xref py py-obj docutils literal notranslate"><span class="pre">y</span></code></a></p></td>
-<td><p>Returns y coordinate of point.</p></td>
-</tr>
-</tbody>
-</table>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
-<tbody>
-</tbody>
-</table>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
-<tbody>
-</tbody>
-</table>
+<p><span class="versionmodified added">New in version 3.0.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>float</em>) – </p></li>
+<li><p><strong>y</strong> – </p></li>
+</ul>
+</dd>
+</dl>
 <dl class="method">
 <dt id="qgis.core.QgsLayoutPoint.decodePoint">
 <code class="sig-name descname">decodePoint</code><span class="sig-paren">(</span><em class="sig-param">string: str</em><span class="sig-paren">)</span> &#x2192; QgsLayoutPoint<a class="headerlink" href="#qgis.core.QgsLayoutPoint.decodePoint" title="Permalink to this definition">¶</a></dt>
@@ -1666,6 +1606,14 @@ conversion between paper and screen units can be correctly performed.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsLayoutPoint.encodePoint" title="qgis.core.QgsLayoutPoint.encodePoint"><code class="xref py py-func docutils literal notranslate"><span class="pre">encodePoint()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>string</strong> (<em>str</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#qgis.core.QgsLayoutPoint" title="qgis.core.QgsLayoutPoint">QgsLayoutPoint</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1676,6 +1624,11 @@ conversion between paper and screen units can be correctly performed.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsLayoutPoint.decodePoint" title="qgis.core.QgsLayoutPoint.decodePoint"><code class="xref py py-func docutils literal notranslate"><span class="pre">decodePoint()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1684,8 +1637,11 @@ conversion between paper and screen units can be correctly performed.</p>
 <dd><p>Tests whether the position is null, ie both its x and y coordinates
 are zero.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if point is null</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if point is null</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1706,6 +1662,14 @@ are zero.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsLayoutPoint.setUnits" title="qgis.core.QgsLayoutPoint.setUnits"><code class="xref py py-func docutils literal notranslate"><span class="pre">setUnits()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>float</em>) – </p></li>
+<li><p><strong>y</strong> (<em>float</em>) – </p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1717,6 +1681,11 @@ ie. no conversion is done.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsLayoutPoint.units" title="qgis.core.QgsLayoutPoint.units"><code class="xref py py-func docutils literal notranslate"><span class="pre">units()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>units</strong> (<a class="reference internal" href="QgsUnitTypes.html#qgis.core.QgsUnitTypes.LayoutUnit" title="qgis.core.QgsUnitTypes.LayoutUnit"><em>QgsUnitTypes.LayoutUnit</em></a>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1731,6 +1700,11 @@ ie. no conversion is done.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsLayoutPoint.setY" title="qgis.core.QgsLayoutPoint.setY"><code class="xref py py-func docutils literal notranslate"><span class="pre">setY()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> (<em>float</em>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1745,6 +1719,11 @@ ie. no conversion is done.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsLayoutPoint.setX" title="qgis.core.QgsLayoutPoint.setX"><code class="xref py py-func docutils literal notranslate"><span class="pre">setX()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>y</strong> (<em>float</em>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1753,8 +1732,11 @@ ie. no conversion is done.</p>
 <dd><p>Converts the layout point to a QPointF. The unit information is discarded
 during this operation.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>QPointF with same x and y coordinates as layout point</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>QPointF</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>QPointF with same x and y coordinates as layout point</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1767,6 +1749,11 @@ during this operation.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsLayoutPoint.setUnits" title="qgis.core.QgsLayoutPoint.setUnits"><code class="xref py py-func docutils literal notranslate"><span class="pre">setUnits()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsUnitTypes.html#qgis.core.QgsUnitTypes.LayoutUnit" title="qgis.core.QgsUnitTypes.LayoutUnit">QgsUnitTypes.LayoutUnit</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1781,6 +1768,11 @@ during this operation.</p>
 <p class="admonition-title">See also</p>
 <p>y</p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1795,6 +1787,11 @@ during this operation.</p>
 <p class="admonition-title">See also</p>
 <p>x</p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -1813,7 +1810,7 @@ during this operation.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 10:58 Oct 14, 2019.
+        Last updated on 15:06 Oct 15, 2019.
       </span>
 
     </p>
@@ -1840,20 +1837,20 @@ during this operation.</p>
     <div class="rst-other-versions">
       <dl>
         <dt>Versions</dt>
-      
-        <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
-      
-    </dl>
+        
+          <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
+        
+      </dl>
       
       
     </div>

@@ -122,7 +122,6 @@
 <li class="toctree-l2"><a class="reference internal" href="PROJECT_SCALES.html">Class: PROJECT_SCALES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PluginLayer.html">Class: PluginLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ProjectDirtyBlocker.html">Class: ProjectDirtyBlocker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="PyProviderMetadata.html">Class: PyProviderMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgis.html">Class: Qgis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs25DRenderer.html">Class: Qgs25DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs3DRendererAbstractMetadata.html">Class: Qgs3DRendererAbstractMetadata</a></li>
@@ -1546,8 +1545,6 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/core/QgsJsonExporter.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -1569,14 +1566,14 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>vectorLayer</strong> – associated vector layer (required for related attribute export)</p></li>
-<li><p><strong>precision</strong> – maximum number of decimal places to use for geometry coordinates,
+<li><p><strong>vectorLayer</strong> (<a class="reference internal" href="QgsVectorLayer.html#qgis.core.QgsVectorLayer" title="qgis.core.QgsVectorLayer"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsVectorLayer</span></code></a> = None) – associated vector layer (required for related attribute export)</p></li>
+<li><p><strong>precision</strong> (<em>int = 6</em>) – maximum number of decimal places to use for geometry coordinates,
 the RFC 7946 GeoJSON specification recommends limiting coordinate precision to 6</p></li>
 </ul>
 </dd>
 </dl>
-<p>QgsJsonExporter(QgsJsonExporter)</p>
-<p>Handles exporting QgsFeature features to GeoJSON features.</p>
+<p>QgsJsonExporter(<a class="reference internal" href="#qgis.core.QgsJsonExporter" title="qgis.core.QgsJsonExporter"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsJsonExporter</span></code></a>)</p>
+<p>Handles exporting <a class="reference internal" href="QgsFeature.html#qgis.core.QgsFeature" title="qgis.core.QgsFeature"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsFeature</span></code></a> features to GeoJSON features.</p>
 <p>Note that geometries will be automatically reprojected to WGS84 to match GeoJSON spec
 if either the source vector layer or source CRS is set.</p>
 <div class="versionadded">
@@ -1681,6 +1678,11 @@ if either the source vector layer or source CRS is set.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.6.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1701,6 +1703,11 @@ an empty list if all attributes will be included.</p>
 <p>Attributes excluded via excludedAttributes() take precedence over
 attributes returned by this method.</p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List[int]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1716,6 +1723,11 @@ take precedence over attributes included via attributes().</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsJsonExporter.attributes" title="qgis.core.QgsJsonExporter.attributes"><code class="xref py py-func docutils literal notranslate"><span class="pre">attributes()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List[int]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1725,15 +1737,18 @@ take precedence over attributes included via attributes().</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>feature</strong> – feature to convert</p></li>
-<li><p><strong>extraProperties</strong> – map of extra attributes to include in feature’s properties</p></li>
-<li><p><strong>id</strong> – optional ID to use as GeoJSON feature’s ID instead of input feature’s ID. If omitted, feature’s
+<li><p><strong>feature</strong> (<a class="reference internal" href="QgsFeature.html#qgis.core.QgsFeature" title="qgis.core.QgsFeature"><em>QgsFeature</em></a>) – feature to convert</p></li>
+<li><p><strong>extraProperties</strong> (<em>Dict</em><em>[</em><em>str</em>) – map of extra attributes to include in feature’s properties</p></li>
+<li><p><strong>id</strong> (<em>Any = None</em>) – optional ID to use as GeoJSON feature’s ID instead of input feature’s ID. If omitted, feature’s
 ID is used.</p></li>
-<li><p><strong>indent</strong> – number of indentation spaces for generated JSON (defaults to none)</p></li>
+<li><p><strong>indent</strong> (<em>int = -1</em>) – number of indentation spaces for generated JSON (defaults to none)</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>GeoJSON string</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>GeoJSON string</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -1753,12 +1768,15 @@ ID is used.</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>features</strong> – features to convert</p></li>
-<li><p><strong>indent</strong> – number of indentation spaces for generated JSON (defaults to none)</p></li>
+<li><p><strong>features</strong> (<em>Iterable</em><em>[</em><a class="reference internal" href="QgsFeature.html#qgis.core.QgsFeature" title="qgis.core.QgsFeature"><em>QgsFeature</em></a><em>]</em>) – features to convert</p></li>
+<li><p><strong>indent</strong> (<em>int = -1</em>) – number of indentation spaces for generated JSON (defaults to none)</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>GeoJSON string</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>GeoJSON string</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -1775,6 +1793,11 @@ ID is used.</p></li>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsJsonExporter.setIncludeAttributes" title="qgis.core.QgsJsonExporter.setIncludeAttributes"><code class="xref py py-func docutils literal notranslate"><span class="pre">setIncludeAttributes()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1785,6 +1808,11 @@ ID is used.</p></li>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsJsonExporter.setIncludeGeometry" title="qgis.core.QgsJsonExporter.setIncludeGeometry"><code class="xref py py-func docutils literal notranslate"><span class="pre">setIncludeGeometry()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1795,6 +1823,11 @@ ID is used.</p></li>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsJsonExporter.setIncludeRelated" title="qgis.core.QgsJsonExporter.setIncludeRelated"><code class="xref py py-func docutils literal notranslate"><span class="pre">setIncludeRelated()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1805,6 +1838,11 @@ ID is used.</p></li>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsJsonExporter.setPrecision" title="qgis.core.QgsJsonExporter.setPrecision"><code class="xref py py-func docutils literal notranslate"><span class="pre">setPrecision()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1815,6 +1853,11 @@ defined.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.6.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>displayName</strong> (<em>bool</em>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1823,7 +1866,7 @@ defined.</p>
 <dd><p>Sets the list of attributes to include in the JSON exports.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>attributes</strong> – list of attribute indexes, or an empty list to include all
+<dd class="field-odd"><p><strong>attributes</strong> (<em>Iterable</em><em>[</em><em>int</em><em>]</em>) – list of attribute indexes, or an empty list to include all
 attributes</p>
 </dd>
 </dl>
@@ -1849,7 +1892,7 @@ attributes specified by this method.</p>
 take precedence over attributes included via setAttributes().</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>attributes</strong> – list of attribute indexes to exclude</p>
+<dd class="field-odd"><p><strong>attributes</strong> (<em>Iterable</em><em>[</em><em>int</em><em>]</em>) – list of attribute indexes to exclude</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -1868,7 +1911,7 @@ take precedence over attributes included via setAttributes().</p>
 <dd><p>Sets whether to include attributes in the JSON exports.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>includeAttributes</strong> – set to <code class="docutils literal notranslate"><span class="pre">False</span></code> to prevent attribute inclusion</p>
+<dd class="field-odd"><p><strong>includeAttributes</strong> (<em>bool</em>) – set to <code class="docutils literal notranslate"><span class="pre">False</span></code> to prevent attribute inclusion</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -1883,7 +1926,7 @@ take precedence over attributes included via setAttributes().</p>
 <dd><p>Sets whether to include geometry in the JSON exports.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>includeGeometry</strong> – set to <code class="docutils literal notranslate"><span class="pre">False</span></code> to prevent geometry inclusion</p>
+<dd class="field-odd"><p><strong>includeGeometry</strong> (<em>bool</em>) – set to <code class="docutils literal notranslate"><span class="pre">False</span></code> to prevent geometry inclusion</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -1898,7 +1941,7 @@ take precedence over attributes included via setAttributes().</p>
 <dd><p>Sets whether to include attributes of features linked via references in the JSON exports.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>includeRelated</strong> – set to <code class="docutils literal notranslate"><span class="pre">True</span></code> to include attributes for any related child features
+<dd class="field-odd"><p><strong>includeRelated</strong> (<em>bool</em>) – set to <code class="docutils literal notranslate"><span class="pre">True</span></code> to include attributes for any related child features
 within the exported properties element.</p>
 </dd>
 </dl>
@@ -1919,7 +1962,7 @@ within the exported properties element.</p>
 The RFC 7946 GeoJSON specification recommends limiting coordinate precision to 6</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>precision</strong> – number of decimal places</p>
+<dd class="field-odd"><p><strong>precision</strong> (<em>int</em>) – number of decimal places</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -1935,7 +1978,7 @@ The RFC 7946 GeoJSON specification recommends limiting coordinate precision to 6
 correctly automatically reprojected to WGS 84, to match GeoJSON specifications.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>crs</strong> – source CRS for input feature geometries</p>
+<dd class="field-odd"><p><strong>crs</strong> (<a class="reference internal" href="QgsCoordinateReferenceSystem.html#qgis.core.QgsCoordinateReferenceSystem" title="qgis.core.QgsCoordinateReferenceSystem"><em>QgsCoordinateReferenceSystem</em></a>) – source CRS for input feature geometries</p>
 </dd>
 </dl>
 <div class="admonition note">
@@ -1955,7 +1998,7 @@ correctly automatically reprojected to WGS 84, to match GeoJSON specifications.<
 update the sourceCrs() to match.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>vectorLayer</strong> – vector layer</p>
+<dd class="field-odd"><p><strong>vectorLayer</strong> (<a class="reference internal" href="QgsVectorLayer.html#qgis.core.QgsVectorLayer" title="qgis.core.QgsVectorLayer"><em>QgsVectorLayer</em></a>) – vector layer</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -1973,6 +2016,11 @@ correctly automatically reprojected to WGS 84, to match GeoJSON specifications.<
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsJsonExporter.setSourceCrs" title="qgis.core.QgsJsonExporter.setSourceCrs"><code class="xref py py-func docutils literal notranslate"><span class="pre">setSourceCrs()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsCoordinateReferenceSystem.html#qgis.core.QgsCoordinateReferenceSystem" title="qgis.core.QgsCoordinateReferenceSystem">QgsCoordinateReferenceSystem</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1983,6 +2031,11 @@ correctly automatically reprojected to WGS 84, to match GeoJSON specifications.<
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsJsonExporter.setVectorLayer" title="qgis.core.QgsJsonExporter.setVectorLayer"><code class="xref py py-func docutils literal notranslate"><span class="pre">setVectorLayer()</span></code></a></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsVectorLayer.html#qgis.core.QgsVectorLayer" title="qgis.core.QgsVectorLayer">QgsVectorLayer</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -2001,7 +2054,7 @@ correctly automatically reprojected to WGS 84, to match GeoJSON specifications.<
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 10:58 Oct 14, 2019.
+        Last updated on 15:06 Oct 15, 2019.
       </span>
 
     </p>
@@ -2028,20 +2081,20 @@ correctly automatically reprojected to WGS 84, to match GeoJSON specifications.<
     <div class="rst-other-versions">
       <dl>
         <dt>Versions</dt>
-      
-        <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
-      
-        <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
-      
-    </dl>
+        
+          <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
+        
+          <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
+        
+      </dl>
       
       
     </div>
