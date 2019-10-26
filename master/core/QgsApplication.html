@@ -1851,7 +1851,7 @@ to change due to centralization.</p>
 <td><p>Returns the application’s renderer registry, used for managing vector layer renderers.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsApplication.reportStyleSheet" title="qgis.core.QgsApplication.reportStyleSheet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reportStyleSheet</span></code></a></p></td>
-<td><p>Returns a standard css style sheet for reports.</p></td>
+<td><p>Returns a css style sheet for reports, the <code class="docutils literal notranslate"><span class="pre">styleSheetType</span></code> argument determines what type of stylesheet is supported by the widget.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsApplication.resolvePkgPath" title="qgis.core.QgsApplication.resolvePkgPath"><code class="xref py py-obj docutils literal notranslate"><span class="pre">resolvePkgPath</span></code></a></p></td>
 <td><p>Calculate the application pkg path</p></td>
@@ -2021,10 +2021,16 @@ to change due to centralization.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsApplication.QGIS_ORGANIZATION_NAME" title="qgis.core.QgsApplication.QGIS_ORGANIZATION_NAME"><code class="xref py py-obj docutils literal notranslate"><span class="pre">QGIS_ORGANIZATION_NAME</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsApplication.Sampler" title="qgis.core.QgsApplication.Sampler"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Sampler</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsApplication.Qt" title="qgis.core.QgsApplication.Qt"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Qt</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsApplication.Select" title="qgis.core.QgsApplication.Select"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Select</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsApplication.Sampler" title="qgis.core.QgsApplication.Sampler"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Sampler</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsApplication.Select" title="qgis.core.QgsApplication.Select"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Select</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsApplication.WebBrowser" title="qgis.core.QgsApplication.WebBrowser"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WebBrowser</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsApplication.XDR" title="qgis.core.QgsApplication.XDR"><code class="xref py py-obj docutils literal notranslate"><span class="pre">XDR</span></code></a></p></td>
@@ -2081,6 +2087,11 @@ to change due to centralization.</p>
 <dd></dd></dl>
 
 <dl class="attribute">
+<dt id="qgis.core.QgsApplication.Qt">
+<code class="sig-name descname">Qt</code><em class="property"> = 0</em><a class="headerlink" href="#qgis.core.QgsApplication.Qt" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
 <dt id="qgis.core.QgsApplication.Sampler">
 <code class="sig-name descname">Sampler</code><em class="property"> = 6</em><a class="headerlink" href="#qgis.core.QgsApplication.Sampler" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -2088,6 +2099,17 @@ to change due to centralization.</p>
 <dl class="attribute">
 <dt id="qgis.core.QgsApplication.Select">
 <code class="sig-name descname">Select</code><em class="property"> = 5</em><a class="headerlink" href="#qgis.core.QgsApplication.Select" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="qgis.core.QgsApplication.StyleSheetType">
+<em class="property">class </em><code class="sig-name descname">StyleSheetType</code><a class="headerlink" href="#qgis.core.QgsApplication.StyleSheetType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="qgis.core.QgsApplication.WebBrowser">
+<code class="sig-name descname">WebBrowser</code><em class="property"> = 1</em><a class="headerlink" href="#qgis.core.QgsApplication.WebBrowser" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -3165,24 +3187,32 @@ times.</p>
 
 <dl class="method">
 <dt id="qgis.core.QgsApplication.reportStyleSheet">
-<code class="sig-name descname">reportStyleSheet</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.core.QgsApplication.reportStyleSheet" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns a standard css style sheet for reports.</p>
+<code class="sig-name descname">reportStyleSheet</code><span class="sig-paren">(</span><em class="sig-param">styleSheetType: QgsApplication.StyleSheetType = QgsApplication.StyleSheetType.Qt</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.core.QgsApplication.reportStyleSheet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a css style sheet for reports, the <code class="docutils literal notranslate"><span class="pre">styleSheetType</span></code> argument
+determines what type of stylesheet is supported by the widget.</p>
 <p>Typically you will use this method by doing:
 QString myStyle = QgsApplication.reportStyleSheet();
-textBrowserReport-&gt;document()-&gt;setDefaultStyleSheet(myStyle);</p>
+textBrowserReport-&gt;document()-&gt;setDefaultStyleSheet(myStyle);
+if you are using a <code class="xref py py-class docutils literal notranslate"><span class="pre">QgsWebView</span></code> you will need to manually inject
+the CSS into a head -&gt; script tag instead.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>str</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>QString containing the CSS 2.1 compliant stylesheet.</p>
+<dd class="field-even"><p>the stylesheet CSS rules.</p>
 </dd>
 </dl>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>you can use the special Qt extensions too, for example
-the gradient fills for backgrounds.</p>
+<p>if styleSheetType equals StyleSheetType.Qt you can use the special Qt extensions too,
+for example the gradient fills for backgrounds.</p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>styleSheetType</strong> (<em>QgsApplication.StyleSheetType = QgsApplication.StyleSheetType.Qt</em>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="attribute">
@@ -3742,7 +3772,7 @@ The path is to the root folder for the theme</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 19:24 Oct 25, 2019.
+        Last updated on 11:32 Oct 26, 2019.
       </span>
 
     </p>

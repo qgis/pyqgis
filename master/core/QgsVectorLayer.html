@@ -1674,7 +1674,8 @@ starting with QGIS 2.16, a URI constructed using the <a class="reference interna
 - filter=string: QGIS expression or OGC/FES filter
 - restrictToRequestBBOX=1: to download only features in the view extent (or more generally
 in the bounding box of the feature iterator)
-- maxNumFeatures=number
+- pageSize=number: number of features to retrieve in a single request (WFS 2)
+- maxNumFeatures=number: maximum number of features to retrieve (possibly across several multiple paging requests)
 - IgnoreAxisOrientation=1: to ignore EPSG axis order for WFS 1.1 or 2.0
 - InvertAxisOrientation=1: to invert axis order
 - hideDownloadProgressDialog=1: to hide the download progress dialog</p>
@@ -1686,6 +1687,20 @@ QGIS expression filter only supports” =, !=, &lt;, &gt;, &lt;=, &gt;=, AND, OR
 attribute operators, “BBOX, Disjoint, Intersects, Touches, Crosses, Contains, Overlaps, Within”
 spatial binary operators and the QGIS local “geomFromWKT, geomFromGML”
 geometry constructor functions.</p>
+<p>subsection oapif OGC API - Features data provider (oapif)</p>
+<p>Used to access data provided by a OGC API - Features server.</p>
+<p>The URI should be constructed using the <a class="reference internal" href="QgsDataSourceUri.html#qgis.core.QgsDataSourceUri" title="qgis.core.QgsDataSourceUri"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsDataSourceUri</span></code></a> class with the following parameters:
+- url=string (mandatory): HTTP url to a OGC API - Features landing page.
+- typename=string (mandatory): Collection id
+- username=string
+- password=string
+- authcfg=string
+- filter=string: QGIS expression (only datetime filtering is forwarded to the server)
+- restrictToRequestBBOX=1: to download only features in the view extent (or more generally
+in the bounding box of the feature iterator)
+- pageSize=number: number of features to retrieve in a single request
+- maxNumFeatures=number: maximum number of features to retrieve (possibly across several multiple paging requests)
+- hideDownloadProgressDialog=1: to hide the download progress dialog.</p>
 <p>Also note:</p>
 <ul class="simple">
 <li><p>You can use various functions available in the QGIS Expression list,</p></li>
@@ -7212,7 +7227,7 @@ to this signal and update the element accordingly.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 19:24 Oct 25, 2019.
+        Last updated on 11:32 Oct 26, 2019.
       </span>
 
     </p>
