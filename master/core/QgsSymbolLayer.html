@@ -692,6 +692,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsPythonRunner.html">Class: QgsPythonRunner</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsQuadrilateral.html">Class: QgsQuadrilateral</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsRandomColorRamp.html">Class: QgsRandomColorRamp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsRandomMarkerFillSymbolLayer.html">Class: QgsRandomMarkerFillSymbolLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsRangeFieldFormatter.html">Class: QgsRangeFieldFormatter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsRaster.html">Class: QgsRaster</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsRasterBandStats.html">Class: QgsRasterBandStats</a></li>
@@ -1310,6 +1311,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsProxyStyle.html">Class: QgsProxyStyle</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsQmlWidgetWrapper.html">Class: QgsQmlWidgetWrapper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsQueryBuilder.html">Class: QgsQueryBuilder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui/QgsRandomMarkerFillSymbolLayerWidget.html">Class: QgsRandomMarkerFillSymbolLayerWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsRasterBandComboBox.html">Class: QgsRasterBandComboBox</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsRasterFillSymbolLayerWidget.html">Class: QgsRasterFillSymbolLayerWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsRasterFormatSaveOptionsWidget.html">Class: QgsRasterFormatSaveOptionsWidget</a></li>
@@ -1652,6 +1654,11 @@
 <dd></dd></dl>
 
 <dl class="attribute">
+<dt id="qgis.core.QgsSymbolLayer.PropertyClipPoints">
+<code class="sig-name descname">PropertyClipPoints</code><em class="property"> = 55</em><a class="headerlink" href="#qgis.core.QgsSymbolLayer.PropertyClipPoints" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
 <dt id="qgis.core.QgsSymbolLayer.PropertyCoordinateMode">
 <code class="sig-name descname">PropertyCoordinateMode</code><em class="property"> = 18</em><a class="headerlink" href="#qgis.core.QgsSymbolLayer.PropertyCoordinateMode" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -1807,8 +1814,18 @@
 <dd></dd></dl>
 
 <dl class="attribute">
+<dt id="qgis.core.QgsSymbolLayer.PropertyPointCount">
+<code class="sig-name descname">PropertyPointCount</code><em class="property"> = 53</em><a class="headerlink" href="#qgis.core.QgsSymbolLayer.PropertyPointCount" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
 <dt id="qgis.core.QgsSymbolLayer.PropertyPreserveAspectRatio">
 <code class="sig-name descname">PropertyPreserveAspectRatio</code><em class="property"> = 11</em><a class="headerlink" href="#qgis.core.QgsSymbolLayer.PropertyPreserveAspectRatio" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qgis.core.QgsSymbolLayer.PropertyRandomSeed">
+<code class="sig-name descname">PropertyRandomSeed</code><em class="property"> = 54</em><a class="headerlink" href="#qgis.core.QgsSymbolLayer.PropertyRandomSeed" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -2478,9 +2495,57 @@ Defaults to 0</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="qgis.core.QgsSymbolLayer.startFeatureRender">
+<code class="sig-name descname">startFeatureRender</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">feature: QgsFeature</em>, <em class="sig-param">context: QgsRenderContext</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsSymbolLayer.startFeatureRender" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called before the layer will be rendered for a particular <code class="docutils literal notranslate"><span class="pre">feature</span></code>.</p>
+<p>This is always followed by a call to stopFeatureRender() after the feature
+has been completely rendered (i.e. all parts have been rendered).</p>
+<p>The default implementation does nothing.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In some circumstances, startFeatureRender() and stopFeatureRender() may not be called
+before a symbol layer is rendered. E.g., when a symbol layer is being rendered in isolation
+and not as a result of rendering a feature (for instance, when rendering a legend patch or other
+non-feature based shape).</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.stopFeatureRender" title="qgis.core.QgsSymbolLayer.stopFeatureRender"><code class="xref py py-func docutils literal notranslate"><span class="pre">stopFeatureRender()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.startRender" title="qgis.core.QgsSymbolLayer.startRender"><code class="xref py py-func docutils literal notranslate"><span class="pre">startRender()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.12.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>feature</strong> (<a class="reference internal" href="QgsFeature.html#qgis.core.QgsFeature" title="qgis.core.QgsFeature"><em>QgsFeature</em></a>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsRenderContext.html#qgis.core.QgsRenderContext" title="qgis.core.QgsRenderContext"><em>QgsRenderContext</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
 <dt id="qgis.core.QgsSymbolLayer.startRender">
 <code class="sig-name descname">startRender</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">context: QgsSymbolRenderContext</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsSymbolLayer.startRender" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>Called before a set of rendering operations commences on the supplied render <code class="docutils literal notranslate"><span class="pre">context</span></code>.</p>
+<p>This is always followed by a call to stopRender() after all rendering operations
+have been completed.</p>
+<p>Subclasses can use this method to prepare for a set of rendering operations, e.g. by
+pre-evaluating paths or images to render, and performing other one-time optimisations.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.startFeatureRender" title="qgis.core.QgsSymbolLayer.startFeatureRender"><code class="xref py py-func docutils literal notranslate"><span class="pre">startFeatureRender()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.stopRender" title="qgis.core.QgsSymbolLayer.stopRender"><code class="xref py py-func docutils literal notranslate"><span class="pre">stopRender()</span></code></a></p>
+</div>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>context</strong> (<a class="reference internal" href="QgsSymbolRenderContext.html#qgis.core.QgsSymbolRenderContext" title="qgis.core.QgsSymbolRenderContext"><em>QgsSymbolRenderContext</em></a>) – </p>
 </dd>
@@ -2488,9 +2553,56 @@ Defaults to 0</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="qgis.core.QgsSymbolLayer.stopFeatureRender">
+<code class="sig-name descname">stopFeatureRender</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">feature: QgsFeature</em>, <em class="sig-param">context: QgsRenderContext</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsSymbolLayer.stopFeatureRender" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called after the layer has been rendered for a particular <code class="docutils literal notranslate"><span class="pre">feature</span></code>.</p>
+<p>This is always preceded by a call to startFeatureRender() just before the feature
+will be rendered.</p>
+<p>The default implementation does nothing.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In some circumstances, startFeatureRender() and stopFeatureRender() may not be called
+before a symbol layer is rendered. E.g., when a symbol layer is being rendered in isolation
+and not as a result of rendering a feature (for instance, when rendering a legend patch or other
+non-feature based shape).</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.startFeatureRender" title="qgis.core.QgsSymbolLayer.startFeatureRender"><code class="xref py py-func docutils literal notranslate"><span class="pre">startFeatureRender()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.stopRender" title="qgis.core.QgsSymbolLayer.stopRender"><code class="xref py py-func docutils literal notranslate"><span class="pre">stopRender()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.12.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>feature</strong> (<a class="reference internal" href="QgsFeature.html#qgis.core.QgsFeature" title="qgis.core.QgsFeature"><em>QgsFeature</em></a>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsRenderContext.html#qgis.core.QgsRenderContext" title="qgis.core.QgsRenderContext"><em>QgsRenderContext</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
 <dt id="qgis.core.QgsSymbolLayer.stopRender">
 <code class="sig-name descname">stopRender</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">context: QgsSymbolRenderContext</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsSymbolLayer.stopRender" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>Called after a set of rendering operations has finished on the supplied render <code class="docutils literal notranslate"><span class="pre">context</span></code>.</p>
+<p>This is always preceded by a call to startRender() before all rendering operations
+are commenced.</p>
+<p>Subclasses can use this method to cleanup after a set of rendering operations.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.startRender" title="qgis.core.QgsSymbolLayer.startRender"><code class="xref py py-func docutils literal notranslate"><span class="pre">startRender()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.stopFeatureRender" title="qgis.core.QgsSymbolLayer.stopFeatureRender"><code class="xref py py-func docutils literal notranslate"><span class="pre">stopFeatureRender()</span></code></a></p>
+</div>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>context</strong> (<a class="reference internal" href="QgsSymbolRenderContext.html#qgis.core.QgsSymbolRenderContext" title="qgis.core.QgsSymbolRenderContext"><em>QgsSymbolRenderContext</em></a>) – </p>
 </dd>
@@ -2597,7 +2709,7 @@ required by any data defined properties associated with the layer.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 10:11 Oct 27, 2019.
+        Last updated on 13:35 Oct 28, 2019.
       </span>
 
     </p>
