@@ -1611,10 +1611,10 @@
 <td><p>Parse a simple array (depth=1)</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsJsonUtils.stringToFeatureList" title="qgis.core.QgsJsonUtils.stringToFeatureList"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stringToFeatureList</span></code></a></p></td>
-<td><p>Attempts to parse a GeoJSON string to a collection of features.</p></td>
+<td><p>Attempts to parse a GeoJSON <code class="docutils literal notranslate"><span class="pre">string</span></code> to a collection of features.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsJsonUtils.stringToFields" title="qgis.core.QgsJsonUtils.stringToFields"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stringToFields</span></code></a></p></td>
-<td><p>Attempts to retrieve the fields from a GeoJSON string representing a collection of features.</p></td>
+<td><p>Attempts to retrieve the fields from a GeoJSON  <code class="docutils literal notranslate"><span class="pre">string</span></code> representing a collection of features.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1699,21 +1699,16 @@ the conversion is not possible.</p></li>
 
 <dl class="method">
 <dt id="qgis.core.QgsJsonUtils.stringToFeatureList">
-<code class="sig-name descname">stringToFeatureList</code><span class="sig-paren">(</span><em class="sig-param">string: str</em>, <em class="sig-param">fields: QgsFields</em>, <em class="sig-param">encoding: QTextCodec</em><span class="sig-paren">)</span> &#x2192; List[QgsFeature]<a class="headerlink" href="#qgis.core.QgsJsonUtils.stringToFeatureList" title="Permalink to this definition">¶</a></dt>
-<dd><p>Attempts to parse a GeoJSON string to a collection of features.</p>
+<code class="sig-name descname">stringToFeatureList</code><span class="sig-paren">(</span><em class="sig-param">string: str</em>, <em class="sig-param">fields: QgsFields = QgsFields()</em>, <em class="sig-param">encoding: QTextCodec = None</em><span class="sig-paren">)</span> &#x2192; List[QgsFeature]<a class="headerlink" href="#qgis.core.QgsJsonUtils.stringToFeatureList" title="Permalink to this definition">¶</a></dt>
+<dd><p>Attempts to parse a GeoJSON <code class="docutils literal notranslate"><span class="pre">string</span></code> to a collection of features.
+It is possible to specify <code class="docutils literal notranslate"><span class="pre">fields</span></code> to parse specific fields, if not provided, no fields will be included.
+An <code class="docutils literal notranslate"><span class="pre">encoding</span></code> can be specified which defaults to UTF-8 if it is <cite>None</cite>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>string</strong> (<em>str</em>) – GeoJSON string to parse</p></li>
-<li><p><strong>fields</strong> (<a class="reference internal" href="QgsFields.html#qgis.core.QgsFields" title="qgis.core.QgsFields"><em>QgsFields</em></a>) – fields collection to use for parsed features</p></li>
-<li><p><strong>encoding</strong> (<em>QTextCodec</em>) – text encoding</p></li>
-</ul>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List[<a class="reference internal" href="QgsFeature.html#qgis.core.QgsFeature" title="qgis.core.QgsFeature">QgsFeature</a>]</p>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>List[<a class="reference internal" href="QgsFeature.html#qgis.core.QgsFeature" title="qgis.core.QgsFeature">QgsFeature</a>]</p>
-</dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>list of parsed features, or an empty list if no features could be parsed</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a list of parsed features, or an empty list if no features could be parsed</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -1724,24 +1719,28 @@ the conversion is not possible.</p></li>
 <p class="admonition-title">Note</p>
 <p>this function is a wrapper around <code class="xref py py-func docutils literal notranslate"><span class="pre">QgsOgrUtils.stringToFeatureList()</span></code></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> (<em>str</em>) – </p></li>
+<li><p><strong>fields</strong> (<a class="reference internal" href="QgsFields.html#qgis.core.QgsFields" title="qgis.core.QgsFields"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsFields</span></code></a> = QgsFields()) – </p></li>
+<li><p><strong>encoding</strong> (<em>QTextCodec = None</em>) – </p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="qgis.core.QgsJsonUtils.stringToFields">
-<code class="sig-name descname">stringToFields</code><span class="sig-paren">(</span><em class="sig-param">string: str</em>, <em class="sig-param">encoding: QTextCodec</em><span class="sig-paren">)</span> &#x2192; QgsFields<a class="headerlink" href="#qgis.core.QgsJsonUtils.stringToFields" title="Permalink to this definition">¶</a></dt>
-<dd><p>Attempts to retrieve the fields from a GeoJSON string representing a collection of features.</p>
+<code class="sig-name descname">stringToFields</code><span class="sig-paren">(</span><em class="sig-param">string: str</em>, <em class="sig-param">encoding: QTextCodec = None</em><span class="sig-paren">)</span> &#x2192; QgsFields<a class="headerlink" href="#qgis.core.QgsJsonUtils.stringToFields" title="Permalink to this definition">¶</a></dt>
+<dd><p>Attempts to retrieve the fields from a GeoJSON  <code class="docutils literal notranslate"><span class="pre">string</span></code> representing a collection of features.
+An <code class="docutils literal notranslate"><span class="pre">encoding</span></code> can be specified which defaults to UTF-8 if it is <cite>None</cite>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>string</strong> (<em>str</em>) – GeoJSON string to parse</p></li>
-<li><p><strong>encoding</strong> (<em>QTextCodec</em>) – text encoding</p></li>
-</ul>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsFields.html#qgis.core.QgsFields" title="qgis.core.QgsFields">QgsFields</a></p>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference internal" href="QgsFields.html#qgis.core.QgsFields" title="qgis.core.QgsFields">QgsFields</a></p>
-</dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>retrieved fields collection, or an empty list if no fields could be determined from the string</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>retrieved fields collection, or an empty list if no fields could be determined from the string</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -1752,6 +1751,14 @@ the conversion is not possible.</p></li>
 <p class="admonition-title">Note</p>
 <p>this function is a wrapper around <code class="xref py py-func docutils literal notranslate"><span class="pre">QgsOgrUtils.stringToFields()</span></code></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> (<em>str</em>) – </p></li>
+<li><p><strong>encoding</strong> (<em>QTextCodec = None</em>) – </p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -1770,7 +1777,7 @@ the conversion is not possible.</p></li>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 13:35 Oct 28, 2019.
+        Last updated on 11:52 Oct 29, 2019.
       </span>
 
     </p>
