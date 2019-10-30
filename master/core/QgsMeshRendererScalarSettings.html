@@ -1445,6 +1445,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../analysis/QgsInterpolatorVertexData.html">Class: QgsInterpolatorVertexData</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../analysis/QgsKernelDensityEstimation.html">Class: QgsKernelDensityEstimation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../analysis/QgsMeshCalculator.html">Class: QgsMeshCalculator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../analysis/QgsMeshContours.html">Class: QgsMeshContours</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../analysis/QgsNativeAlgorithms.html">Class: QgsNativeAlgorithms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../analysis/QgsNetworkDistanceStrategy.html">Class: QgsNetworkDistanceStrategy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../analysis/QgsNetworkSpeedStrategy.html">Class: QgsNetworkSpeedStrategy</a></li>
@@ -1614,17 +1615,23 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMeshRendererScalarSettings.colorRampShader" title="qgis.core.QgsMeshRendererScalarSettings.colorRampShader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">colorRampShader</span></code></a></p></td>
 <td><p>Returns color ramp shader function</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMeshRendererScalarSettings.opacity" title="qgis.core.QgsMeshRendererScalarSettings.opacity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">opacity</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMeshRendererScalarSettings.dataInterpolationMethod" title="qgis.core.QgsMeshRendererScalarSettings.dataInterpolationMethod"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dataInterpolationMethod</span></code></a></p></td>
+<td><p>Returns the type of interpolation to use to convert face defined datasets to values on vertices</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMeshRendererScalarSettings.opacity" title="qgis.core.QgsMeshRendererScalarSettings.opacity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">opacity</span></code></a></p></td>
 <td><p>Returns opacity</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMeshRendererScalarSettings.readXml" title="qgis.core.QgsMeshRendererScalarSettings.readXml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readXml</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMeshRendererScalarSettings.readXml" title="qgis.core.QgsMeshRendererScalarSettings.readXml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readXml</span></code></a></p></td>
 <td><p>Reads configuration from the given DOM element</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMeshRendererScalarSettings.setClassificationMinimumMaximum" title="qgis.core.QgsMeshRendererScalarSettings.setClassificationMinimumMaximum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setClassificationMinimumMaximum</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMeshRendererScalarSettings.setClassificationMinimumMaximum" title="qgis.core.QgsMeshRendererScalarSettings.setClassificationMinimumMaximum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setClassificationMinimumMaximum</span></code></a></p></td>
 <td><p>Sets min/max values used for creation of the color ramp shader</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMeshRendererScalarSettings.setColorRampShader" title="qgis.core.QgsMeshRendererScalarSettings.setColorRampShader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setColorRampShader</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMeshRendererScalarSettings.setColorRampShader" title="qgis.core.QgsMeshRendererScalarSettings.setColorRampShader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setColorRampShader</span></code></a></p></td>
 <td><p>Sets color ramp shader function</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMeshRendererScalarSettings.setDataInterpolationMethod" title="qgis.core.QgsMeshRendererScalarSettings.setDataInterpolationMethod"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setDataInterpolationMethod</span></code></a></p></td>
+<td><p>Sets data interpolation method</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMeshRendererScalarSettings.setOpacity" title="qgis.core.QgsMeshRendererScalarSettings.setOpacity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setOpacity</span></code></a></p></td>
 <td><p>Sets opacity</p></td>
@@ -1642,15 +1649,38 @@
 <tbody>
 </tbody>
 </table>
+<p class="rubric">Attributes</p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
 <col style="width: 90%" />
 </colgroup>
 <tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMeshRendererScalarSettings.NeighbourAverage" title="qgis.core.QgsMeshRendererScalarSettings.NeighbourAverage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NeighbourAverage</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMeshRendererScalarSettings.None" title="qgis.core.QgsMeshRendererScalarSettings.None"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a></p></td>
+<td><p></p></td>
+</tr>
 </tbody>
 </table>
 </div>
+<dl class="class">
+<dt id="qgis.core.QgsMeshRendererScalarSettings.DataInterpolationMethod">
+<em class="property">class </em><code class="sig-name descname">DataInterpolationMethod</code><a class="headerlink" href="#qgis.core.QgsMeshRendererScalarSettings.DataInterpolationMethod" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="qgis.core.QgsMeshRendererScalarSettings.NeighbourAverage">
+<code class="sig-name descname">NeighbourAverage</code><em class="property"> = 1</em><a class="headerlink" href="#qgis.core.QgsMeshRendererScalarSettings.NeighbourAverage" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qgis.core.QgsMeshRendererScalarSettings.None">
+<code class="sig-name descname">None</code><em class="property"> = 0</em><a class="headerlink" href="#qgis.core.QgsMeshRendererScalarSettings.None" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="method">
 <dt id="qgis.core.QgsMeshRendererScalarSettings.classificationMaximum">
 <code class="sig-name descname">classificationMaximum</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#qgis.core.QgsMeshRendererScalarSettings.classificationMaximum" title="Permalink to this definition">¶</a></dt>
@@ -1680,6 +1710,22 @@
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><a class="reference internal" href="QgsColorRampShader.html#qgis.core.QgsColorRampShader" title="qgis.core.QgsColorRampShader">QgsColorRampShader</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="qgis.core.QgsMeshRendererScalarSettings.dataInterpolationMethod">
+<code class="sig-name descname">dataInterpolationMethod</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QgsMeshRendererScalarSettings.DataInterpolationMethod<a class="headerlink" href="#qgis.core.QgsMeshRendererScalarSettings.dataInterpolationMethod" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the type of interpolation to use to
+convert face defined datasets to
+values on vertices</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.12.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#qgis.core.QgsMeshRendererScalarSettings.DataInterpolationMethod" title="qgis.core.QgsMeshRendererScalarSettings.DataInterpolationMethod">QgsMeshRendererScalarSettings.DataInterpolationMethod</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -1732,6 +1778,20 @@
 </dd></dl>
 
 <dl class="method">
+<dt id="qgis.core.QgsMeshRendererScalarSettings.setDataInterpolationMethod">
+<code class="sig-name descname">setDataInterpolationMethod</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">dataInterpolationMethod: QgsMeshRendererScalarSettings.DataInterpolationMethod</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsMeshRendererScalarSettings.setDataInterpolationMethod" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets data interpolation method</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.12.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>dataInterpolationMethod</strong> (<a class="reference internal" href="#qgis.core.QgsMeshRendererScalarSettings.DataInterpolationMethod" title="qgis.core.QgsMeshRendererScalarSettings.DataInterpolationMethod"><em>QgsMeshRendererScalarSettings.DataInterpolationMethod</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
 <dt id="qgis.core.QgsMeshRendererScalarSettings.setOpacity">
 <code class="sig-name descname">setOpacity</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">opacity: float</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsMeshRendererScalarSettings.setOpacity" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets opacity</p>
@@ -1772,7 +1832,7 @@
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 11:52 Oct 29, 2019.
+        Last updated on 11:23 Oct 30, 2019.
       </span>
 
     </p>

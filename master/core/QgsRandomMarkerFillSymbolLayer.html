@@ -1445,6 +1445,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../analysis/QgsInterpolatorVertexData.html">Class: QgsInterpolatorVertexData</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../analysis/QgsKernelDensityEstimation.html">Class: QgsKernelDensityEstimation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../analysis/QgsMeshCalculator.html">Class: QgsMeshCalculator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../analysis/QgsMeshContours.html">Class: QgsMeshContours</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../analysis/QgsNativeAlgorithms.html">Class: QgsNativeAlgorithms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../analysis/QgsNetworkDistanceStrategy.html">Class: QgsNetworkDistanceStrategy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../analysis/QgsNetworkSpeedStrategy.html">Class: QgsNetworkSpeedStrategy</a></li>
@@ -1582,7 +1583,7 @@
 <span id="class-qgsrandommarkerfillsymbollayer"></span><h1>Class: QgsRandomMarkerFillSymbolLayer<a class="headerlink" href="#module-QgsRandomMarkerFillSymbolLayer" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="qgis.core.QgsRandomMarkerFillSymbolLayer">
-<em class="property">class </em><code class="sig-prename descclassname">qgis.core.</code><code class="sig-name descname">QgsRandomMarkerFillSymbolLayer</code><span class="sig-paren">(</span><em class="sig-param">pointCount: int = 10</em>, <em class="sig-param">seed: int = 0</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsRandomMarkerFillSymbolLayer" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">qgis.core.</code><code class="sig-name descname">QgsRandomMarkerFillSymbolLayer</code><span class="sig-paren">(</span><em class="sig-param">pointCount: int = 10</em>, <em class="sig-param">method: QgsRandomMarkerFillSymbolLayer.CountMethod = QgsRandomMarkerFillSymbolLayer.AbsoluteCount</em>, <em class="sig-param">densityArea: float = 250</em>, <em class="sig-param">seed: int = 0</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsRandomMarkerFillSymbolLayer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="QgsFillSymbolLayer.html#module-QgsFillSymbolLayer" title="QgsFillSymbolLayer"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsFillSymbolLayer</span></code></a></p>
 <p>Constructor for <a class="reference internal" href="#qgis.core.QgsRandomMarkerFillSymbolLayer" title="qgis.core.QgsRandomMarkerFillSymbolLayer"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsRandomMarkerFillSymbolLayer</span></code></a>, with the specified <code class="docutils literal notranslate"><span class="pre">pointCount</span></code>.</p>
 <p>Optionally a specific random number <code class="docutils literal notranslate"><span class="pre">seed</span></code> can be used when generating points. A <code class="docutils literal notranslate"><span class="pre">seed</span></code> of 0 indicates that
@@ -1595,10 +1596,28 @@ a truly random sequence will be used on every rendering, causing points to appea
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>pointCount</strong> (<em>int = 10</em>) – </p></li>
+<li><p><strong>method</strong> (<em>QgsRandomMarkerFillSymbolLayer.CountMethod = QgsRandomMarkerFillSymbolLayer.AbsoluteCount</em>) – </p></li>
+<li><p><strong>densityArea</strong> (<em>float = 250</em>) – </p></li>
 <li><p><strong>seed</strong> – </p></li>
 </ul>
 </dd>
 </dl>
+<dl class="attribute">
+<dt id="qgis.core.QgsRandomMarkerFillSymbolLayer.AbsoluteCount">
+<code class="sig-name descname">AbsoluteCount</code><em class="property"> = 0</em><a class="headerlink" href="#qgis.core.QgsRandomMarkerFillSymbolLayer.AbsoluteCount" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="qgis.core.QgsRandomMarkerFillSymbolLayer.CountMethod">
+<em class="property">class </em><code class="sig-name descname">CountMethod</code><a class="headerlink" href="#qgis.core.QgsRandomMarkerFillSymbolLayer.CountMethod" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="qgis.core.QgsRandomMarkerFillSymbolLayer.DensityBasedCount">
+<code class="sig-name descname">DensityBasedCount</code><em class="property"> = 1</em><a class="headerlink" href="#qgis.core.QgsRandomMarkerFillSymbolLayer.DensityBasedCount" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="method">
 <dt id="qgis.core.QgsRandomMarkerFillSymbolLayer.clipPoints">
 <code class="sig-name descname">clipPoints</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsRandomMarkerFillSymbolLayer.clipPoints" title="Permalink to this definition">¶</a></dt>
@@ -1645,6 +1664,21 @@ a truly random sequence will be used on every rendering, causing points to appea
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="qgis.core.QgsRandomMarkerFillSymbolLayer.countMethod">
+<code class="sig-name descname">countMethod</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QgsRandomMarkerFillSymbolLayer.CountMethod<a class="headerlink" href="#qgis.core.QgsRandomMarkerFillSymbolLayer.countMethod" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the count method used to randomly fill the polygon.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsRandomMarkerFillSymbolLayer.setCountMethod" title="qgis.core.QgsRandomMarkerFillSymbolLayer.setCountMethod"><code class="xref py py-func docutils literal notranslate"><span class="pre">setCountMethod()</span></code></a></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#qgis.core.QgsRandomMarkerFillSymbolLayer.CountMethod" title="qgis.core.QgsRandomMarkerFillSymbolLayer.CountMethod">QgsRandomMarkerFillSymbolLayer.CountMethod</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
 <dt id="qgis.core.QgsRandomMarkerFillSymbolLayer.create">
 <code class="sig-name descname">create</code><span class="sig-paren">(</span><em class="sig-param">properties: Dict[str</em>, <em class="sig-param">str] = {}</em><span class="sig-paren">)</span> &#x2192; QgsSymbolLayer<a class="headerlink" href="#qgis.core.QgsRandomMarkerFillSymbolLayer.create" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates a new <a class="reference internal" href="#qgis.core.QgsRandomMarkerFillSymbolLayer" title="qgis.core.QgsRandomMarkerFillSymbolLayer"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsRandomMarkerFillSymbolLayer</span></code></a> using the specified <code class="docutils literal notranslate"><span class="pre">properties</span></code> map containing symbol properties (see properties()).</p>
@@ -1655,6 +1689,61 @@ a truly random sequence will be used on every rendering, causing points to appea
 </dd>
 <dt class="field-even">Return type</dt>
 <dd class="field-even"><p><a class="reference internal" href="QgsSymbolLayer.html#qgis.core.QgsSymbolLayer" title="qgis.core.QgsSymbolLayer">QgsSymbolLayer</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="qgis.core.QgsRandomMarkerFillSymbolLayer.densityArea">
+<code class="sig-name descname">densityArea</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#qgis.core.QgsRandomMarkerFillSymbolLayer.densityArea" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the density area used to count the number of points to randomly fill the polygon.</p>
+<p>Only used when the count method is set to QgsRandomMarkerFillSymbolLayer.DensityBasedCount.</p>
+<p>Units are specified by setDensityAreaUnit().</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsRandomMarkerFillSymbolLayer.setDensityArea" title="qgis.core.QgsRandomMarkerFillSymbolLayer.setDensityArea"><code class="xref py py-func docutils literal notranslate"><span class="pre">setDensityArea()</span></code></a></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="qgis.core.QgsRandomMarkerFillSymbolLayer.densityAreaUnit">
+<code class="sig-name descname">densityAreaUnit</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QgsUnitTypes.RenderUnit<a class="headerlink" href="#qgis.core.QgsRandomMarkerFillSymbolLayer.densityAreaUnit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the units for the density area.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsRandomMarkerFillSymbolLayer.setDensityAreaUnit" title="qgis.core.QgsRandomMarkerFillSymbolLayer.setDensityAreaUnit"><code class="xref py py-func docutils literal notranslate"><span class="pre">setDensityAreaUnit()</span></code></a></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsUnitTypes.html#qgis.core.QgsUnitTypes.RenderUnit" title="qgis.core.QgsUnitTypes.RenderUnit">QgsUnitTypes.RenderUnit</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="qgis.core.QgsRandomMarkerFillSymbolLayer.densityAreaUnitScale">
+<code class="sig-name descname">densityAreaUnitScale</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QgsMapUnitScale<a class="headerlink" href="#qgis.core.QgsRandomMarkerFillSymbolLayer.densityAreaUnitScale" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the map scale for the density area.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsRandomMarkerFillSymbolLayer.setDensityAreaUnitScale" title="qgis.core.QgsRandomMarkerFillSymbolLayer.setDensityAreaUnitScale"><code class="xref py py-func docutils literal notranslate"><span class="pre">setDensityAreaUnitScale()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsRandomMarkerFillSymbolLayer.densityArea" title="qgis.core.QgsRandomMarkerFillSymbolLayer.densityArea"><code class="xref py py-func docutils literal notranslate"><span class="pre">densityArea()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsRandomMarkerFillSymbolLayer.densityAreaUnit" title="qgis.core.QgsRandomMarkerFillSymbolLayer.densityAreaUnit"><code class="xref py py-func docutils literal notranslate"><span class="pre">densityAreaUnit()</span></code></a></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsMapUnitScale.html#qgis.core.QgsMapUnitScale" title="qgis.core.QgsMapUnitScale">QgsMapUnitScale</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -1782,6 +1871,74 @@ a truly random sequence will be used (causing points to appear in different loca
 <dd class="field-odd"><p><strong>color</strong> (<em>Union</em><em>[</em><em>QColor</em>) – </p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="qgis.core.QgsRandomMarkerFillSymbolLayer.setCountMethod">
+<code class="sig-name descname">setCountMethod</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">method: QgsRandomMarkerFillSymbolLayer.CountMethod</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsRandomMarkerFillSymbolLayer.setCountMethod" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the count <code class="docutils literal notranslate"><span class="pre">method</span></code> used to randomly fill the polygon.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsRandomMarkerFillSymbolLayer.countMethod" title="qgis.core.QgsRandomMarkerFillSymbolLayer.countMethod"><code class="xref py py-func docutils literal notranslate"><span class="pre">countMethod()</span></code></a></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>method</strong> (<a class="reference internal" href="#qgis.core.QgsRandomMarkerFillSymbolLayer.CountMethod" title="qgis.core.QgsRandomMarkerFillSymbolLayer.CountMethod"><em>QgsRandomMarkerFillSymbolLayer.CountMethod</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="qgis.core.QgsRandomMarkerFillSymbolLayer.setDensityArea">
+<code class="sig-name descname">setDensityArea</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">area: float</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsRandomMarkerFillSymbolLayer.setDensityArea" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the density <code class="docutils literal notranslate"><span class="pre">area</span></code> used to count the number of points to randomly fill the polygon.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsRandomMarkerFillSymbolLayer.densityArea" title="qgis.core.QgsRandomMarkerFillSymbolLayer.densityArea"><code class="xref py py-func docutils literal notranslate"><span class="pre">densityArea()</span></code></a></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>area</strong> (<em>float</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="qgis.core.QgsRandomMarkerFillSymbolLayer.setDensityAreaUnit">
+<code class="sig-name descname">setDensityAreaUnit</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">unit: QgsUnitTypes.RenderUnit</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsRandomMarkerFillSymbolLayer.setDensityAreaUnit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the units for the density area.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>unit</strong> (<a class="reference internal" href="QgsUnitTypes.html#qgis.core.QgsUnitTypes.RenderUnit" title="qgis.core.QgsUnitTypes.RenderUnit"><em>QgsUnitTypes.RenderUnit</em></a>) – width units</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsRandomMarkerFillSymbolLayer.densityAreaUnit" title="qgis.core.QgsRandomMarkerFillSymbolLayer.densityAreaUnit"><code class="xref py py-func docutils literal notranslate"><span class="pre">densityAreaUnit()</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="qgis.core.QgsRandomMarkerFillSymbolLayer.setDensityAreaUnitScale">
+<code class="sig-name descname">setDensityAreaUnitScale</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">scale: QgsMapUnitScale</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsRandomMarkerFillSymbolLayer.setDensityAreaUnitScale" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the map scale for the density area.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>scale</strong> (<a class="reference internal" href="QgsMapUnitScale.html#qgis.core.QgsMapUnitScale" title="qgis.core.QgsMapUnitScale"><em>QgsMapUnitScale</em></a>) – density area map unit scale</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsRandomMarkerFillSymbolLayer.densityAreaUnitScale" title="qgis.core.QgsRandomMarkerFillSymbolLayer.densityAreaUnitScale"><code class="xref py py-func docutils literal notranslate"><span class="pre">densityAreaUnitScale()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsRandomMarkerFillSymbolLayer.setDensityArea" title="qgis.core.QgsRandomMarkerFillSymbolLayer.setDensityArea"><code class="xref py py-func docutils literal notranslate"><span class="pre">setDensityArea()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsRandomMarkerFillSymbolLayer.setDensityAreaUnit" title="qgis.core.QgsRandomMarkerFillSymbolLayer.setDensityAreaUnit"><code class="xref py py-func docutils literal notranslate"><span class="pre">setDensityAreaUnit()</span></code></a></p>
+</div>
 </dd></dl>
 
 <dl class="method">
@@ -1934,7 +2091,7 @@ in different locations with every map refresh).</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 11:52 Oct 29, 2019.
+        Last updated on 11:23 Oct 30, 2019.
       </span>
 
     </p>
