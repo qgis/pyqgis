@@ -679,6 +679,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsProjectStorageRegistry.html">Class: QgsProjectStorageRegistry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsProjectTranslator.html">Class: QgsProjectTranslator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsProjectVersion.html">Class: QgsProjectVersion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../core/QgsProjectViewSettings.html">Class: QgsProjectViewSettings</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsProperty.html">Class: QgsProperty</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsPropertyCollection.html">Class: QgsPropertyCollection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsPropertyCollectionStack.html">Class: QgsPropertyCollectionStack</a></li>
@@ -719,6 +720,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsRasterRenderer.html">Class: QgsRasterRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsRasterResampleFilter.html">Class: QgsRasterResampleFilter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsRasterResampler.html">Class: QgsRasterResampler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../core/QgsRasterResamplerV2.html">Class: QgsRasterResamplerV2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsRasterShader.html">Class: QgsRasterShader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsRasterShaderFunction.html">Class: QgsRasterShaderFunction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsRasterSymbolLegendNode.html">Class: QgsRasterSymbolLegendNode</a></li>
@@ -1614,6 +1616,12 @@
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.server.QgsServerApiUtils.parseCrs" title="qgis.server.QgsServerApiUtils.parseCrs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parseCrs</span></code></a></p></td>
 <td><p>Parses the CRS URI <code class="docutils literal notranslate"><span class="pre">bboxCrs</span></code> (example: “<a class="reference external" href="http://www.opengis.net/def/crs/OGC/1.3/CRS84">http://www.opengis.net/def/crs/OGC/1.3/CRS84</a>”) into a QGIS CRS object</p></td>
 </tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.server.QgsServerApiUtils.parseTemporalDateInterval" title="qgis.server.QgsServerApiUtils.parseTemporalDateInterval"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parseTemporalDateInterval</span></code></a></p></td>
+<td><p>Parses a date <code class="docutils literal notranslate"><span class="pre">interval</span></code> and returns a <a class="reference internal" href="../core/QgsDateRange.html#module-QgsDateRange" title="QgsDateRange"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsDateRange</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.server.QgsServerApiUtils.parseTemporalDateTimeInterval" title="qgis.server.QgsServerApiUtils.parseTemporalDateTimeInterval"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parseTemporalDateTimeInterval</span></code></a></p></td>
+<td><p>Parses a datetime <code class="docutils literal notranslate"><span class="pre">interval</span></code> and returns a <a class="reference internal" href="../core/QgsDateTimeRange.html#module-QgsDateTimeRange" title="QgsDateTimeRange"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsDateTimeRange</span></code></a></p></td>
+</tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.server.QgsServerApiUtils.publishedCrsList" title="qgis.server.QgsServerApiUtils.publishedCrsList"><code class="xref py py-obj docutils literal notranslate"><span class="pre">publishedCrsList</span></code></a></p></td>
 <td><p>Returns the list of CRSs (format: <a class="reference external" href="http://www.opengis.net/def/crs/OGC/1.3/CRS84">http://www.opengis.net/def/crs/OGC/1.3/CRS84</a>) available for this <code class="docutils literal notranslate"><span class="pre">project</span></code>.</p></td>
 </tr>
@@ -1622,6 +1630,15 @@
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.server.QgsServerApiUtils.sanitizedFieldValue" title="qgis.server.QgsServerApiUtils.sanitizedFieldValue"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sanitizedFieldValue</span></code></a></p></td>
 <td><p>Sanitizes the input <code class="docutils literal notranslate"><span class="pre">value</span></code> by removing URL encoding and checking for malicious content.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.server.QgsServerApiUtils.temporalDimensions" title="qgis.server.QgsServerApiUtils.temporalDimensions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">temporalDimensions</span></code></a></p></td>
+<td><p>Returns a list of temporal dimensions information for the given <code class="docutils literal notranslate"><span class="pre">layer</span></code> (either configured in wmsDimensions or the first date/datetime field)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.server.QgsServerApiUtils.temporalExtent" title="qgis.server.QgsServerApiUtils.temporalExtent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">temporalExtent</span></code></a></p></td>
+<td><p>temporalExtent returns a json array with an array of [min, max] temporal extent for the given <code class="docutils literal notranslate"><span class="pre">layer</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.server.QgsServerApiUtils.temporalFilterExpression" title="qgis.server.QgsServerApiUtils.temporalFilterExpression"><code class="xref py py-obj docutils literal notranslate"><span class="pre">temporalFilterExpression</span></code></a></p></td>
+<td><p>Parses the <code class="docutils literal notranslate"><span class="pre">interval</span></code> and constructs a (possibly invalid) temporal filter expression for the given <code class="docutils literal notranslate"><span class="pre">layer</span></code></p></td>
 </tr>
 </tbody>
 </table>
@@ -1707,6 +1724,50 @@ Returns an empty string on failure.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="qgis.server.QgsServerApiUtils.parseTemporalDateInterval">
+<code class="sig-name descname">parseTemporalDateInterval</code><span class="sig-paren">(</span><em class="sig-param">interval: str</em><span class="sig-paren">)</span> &#x2192; QgsDateRange<a class="headerlink" href="#qgis.server.QgsServerApiUtils.parseTemporalDateInterval" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parses a date <code class="docutils literal notranslate"><span class="pre">interval</span></code> and returns a <a class="reference internal" href="../core/QgsDateRange.html#module-QgsDateRange" title="QgsDateRange"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsDateRange</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsServerApiBadRequestException.html#qgis.server.QgsServerApiBadRequestException" title="qgis.server.QgsServerApiBadRequestException"><strong>QgsServerApiBadRequestException</strong></a> – if interval cannot be parsed</p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.12.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>interval</strong> (<em>str</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="../core/QgsDateRange.html#qgis.core.QgsDateRange" title="qgis.core.QgsDateRange">QgsDateRange</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="qgis.server.QgsServerApiUtils.parseTemporalDateTimeInterval">
+<code class="sig-name descname">parseTemporalDateTimeInterval</code><span class="sig-paren">(</span><em class="sig-param">interval: str</em><span class="sig-paren">)</span> &#x2192; QgsDateTimeRange<a class="headerlink" href="#qgis.server.QgsServerApiUtils.parseTemporalDateTimeInterval" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parses a datetime <code class="docutils literal notranslate"><span class="pre">interval</span></code> and returns a <a class="reference internal" href="../core/QgsDateTimeRange.html#module-QgsDateTimeRange" title="QgsDateTimeRange"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsDateTimeRange</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsServerApiBadRequestException.html#qgis.server.QgsServerApiBadRequestException" title="qgis.server.QgsServerApiBadRequestException"><strong>QgsServerApiBadRequestException</strong></a> – if interval cannot be parsed</p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.12.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>interval</strong> (<em>str</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="../core/QgsDateTimeRange.html#qgis.core.QgsDateTimeRange" title="qgis.core.QgsDateTimeRange">QgsDateTimeRange</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
 <dt id="qgis.server.QgsServerApiUtils.publishedCrsList">
 <code class="sig-name descname">publishedCrsList</code><span class="sig-paren">(</span><em class="sig-param">project: QgsProject</em><span class="sig-paren">)</span> &#x2192; List[str]<a class="headerlink" href="#qgis.server.QgsServerApiUtils.publishedCrsList" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the list of CRSs (format: <a class="reference external" href="http://www.opengis.net/def/crs/OGC/1.3/CRS84">http://www.opengis.net/def/crs/OGC/1.3/CRS84</a>) available for this <code class="docutils literal notranslate"><span class="pre">project</span></code>.
@@ -1755,6 +1816,78 @@ In case of failure returns an empty string.</p>
 </dl>
 </dd></dl>
 
+<dl class="method">
+<dt id="qgis.server.QgsServerApiUtils.temporalDimensions">
+<code class="sig-name descname">temporalDimensions</code><span class="sig-paren">(</span><em class="sig-param">layer: QgsVectorLayer</em><span class="sig-paren">)</span> &#x2192; List[QgsVectorLayerServerProperties.WmsDimensionInfo]<a class="headerlink" href="#qgis.server.QgsServerApiUtils.temporalDimensions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of temporal dimensions information for the given <code class="docutils literal notranslate"><span class="pre">layer</span></code> (either configured in wmsDimensions or the first date/datetime field)</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.12.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>layer</strong> (<a class="reference internal" href="../core/QgsVectorLayer.html#qgis.core.QgsVectorLayer" title="qgis.core.QgsVectorLayer"><em>QgsVectorLayer</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>List[<a class="reference internal" href="../core/QgsVectorLayerServerProperties.html#qgis.core.QgsVectorLayerServerProperties.WmsDimensionInfo" title="qgis.core.QgsVectorLayerServerProperties.WmsDimensionInfo">QgsVectorLayerServerProperties.WmsDimensionInfo</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="qgis.server.QgsServerApiUtils.temporalExtent">
+<code class="sig-name descname">temporalExtent</code><span class="sig-paren">(</span><em class="sig-param">layer: QgsVectorLayer</em><span class="sig-paren">)</span> &#x2192; List[Any]<a class="headerlink" href="#qgis.server.QgsServerApiUtils.temporalExtent" title="Permalink to this definition">¶</a></dt>
+<dd><p>temporalExtent returns a json array with an array of [min, max] temporal extent for the given <code class="docutils literal notranslate"><span class="pre">layer</span></code>.
+In case multiple temporal dimensions are available in the layer, a union of all dimensions is returned.</p>
+<p>From specifications: <a class="reference external" href="http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/schemas/extent.yaml">http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/schemas/extent.yaml</a></p>
+<p>One or more time intervals that describe the temporal extent of the dataset.
+The value <cite>null</cite> is supported and indicates an open time interval.</p>
+<p>In the Core only a single time interval is supported. Extensions may support
+multiple intervals. If multiple intervals are provided, the union of the
+intervals describes the temporal extent.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List[Any]</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>An array of intervals</p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.12.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>layer</strong> (<a class="reference internal" href="../core/QgsVectorLayer.html#qgis.core.QgsVectorLayer" title="qgis.core.QgsVectorLayer"><em>QgsVectorLayer</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="qgis.server.QgsServerApiUtils.temporalFilterExpression">
+<code class="sig-name descname">temporalFilterExpression</code><span class="sig-paren">(</span><em class="sig-param">layer: QgsVectorLayer</em>, <em class="sig-param">interval: str</em><span class="sig-paren">)</span> &#x2192; QgsExpression<a class="headerlink" href="#qgis.server.QgsServerApiUtils.temporalFilterExpression" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parses the <code class="docutils literal notranslate"><span class="pre">interval</span></code> and constructs a (possibly invalid) temporal filter expression for the given <code class="docutils literal notranslate"><span class="pre">layer</span></code></p>
+<p>Interval syntax:</p>
+<p>interval-closed     = date-time “/” date-time
+interval-open-start = [“..”] “/” date-time
+interval-open-end   = date-time “/” [“..”]
+interval            = interval-closed / interval-open-start / interval-open-end
+datetime            = date-time / interval</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.12.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>layer</strong> (<a class="reference internal" href="../core/QgsVectorLayer.html#qgis.core.QgsVectorLayer" title="qgis.core.QgsVectorLayer"><em>QgsVectorLayer</em></a>) – </p></li>
+<li><p><strong>interval</strong> (<em>str</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="../core/QgsExpression.html#qgis.core.QgsExpression" title="qgis.core.QgsExpression">QgsExpression</a></p>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 </div>
@@ -1771,7 +1904,7 @@ In case of failure returns an empty string.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 11:23 Oct 30, 2019.
+        Last updated on 13:42 Oct 31, 2019.
       </span>
 
     </p>
