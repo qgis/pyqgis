@@ -514,6 +514,8 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsMarkerLineSymbolLayer.html">Class: QgsMarkerLineSymbolLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsMarkerSymbol.html">Class: QgsMarkerSymbol</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsMarkerSymbolLayer.html">Class: QgsMarkerSymbolLayer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsMaskIdProvider.html">Class: QgsMaskIdProvider</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsMaskMarkerSymbolLayer.html">Class: QgsMaskMarkerSymbolLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsMasterLayoutInterface.html">Class: QgsMasterLayoutInterface</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsMemoryProviderUtils.html">Class: QgsMemoryProviderUtils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsMesh.html">Class: QgsMesh</a></li>
@@ -811,7 +813,9 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsSymbol.html">Class: QgsSymbol</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsSymbolLayer.html">Class: QgsSymbolLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsSymbolLayerAbstractMetadata.html">Class: QgsSymbolLayerAbstractMetadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsSymbolLayerId.html">Class: QgsSymbolLayerId</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsSymbolLayerMetadata.html">Class: QgsSymbolLayerMetadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsSymbolLayerReference.html">Class: QgsSymbolLayerReference</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsSymbolLayerRegistry.html">Class: QgsSymbolLayerRegistry</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Class: QgsSymbolLayerUtils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsSymbolLegendNode.html">Class: QgsSymbolLegendNode</a></li>
@@ -828,6 +832,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsTextBufferSettings.html">Class: QgsTextBufferSettings</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsTextDiagram.html">Class: QgsTextDiagram</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsTextFormat.html">Class: QgsTextFormat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsTextMaskSettings.html">Class: QgsTextMaskSettings</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsTextRenderer.html">Class: QgsTextRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsTextRendererUtils.html">Class: QgsTextRendererUtils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsTextShadowSettings.html">Class: QgsTextShadowSettings</a></li>
@@ -960,6 +965,8 @@
 <li class="toctree-l2"><a class="reference internal" href="qgsVsiPrefix.html">Class: qgsVsiPrefix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="qgsfunction.html">Class: qgsfunction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="register_function.html">Class: register_function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stringToSymbolLayerReferenceList.html">Class: stringToSymbolLayerReferenceList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="symbolLayerReferenceListToString.html">Class: symbolLayerReferenceListToString</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../gui/index.html">gui</a><ul>
@@ -1234,6 +1241,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsMapUnitScaleDialog.html">Class: QgsMapUnitScaleDialog</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsMapUnitScaleWidget.html">Class: QgsMapUnitScaleWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsMarkerLineSymbolLayerWidget.html">Class: QgsMarkerLineSymbolLayerWidget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui/QgsMaskMarkerSymbolLayerWidget.html">Class: QgsMaskMarkerSymbolLayerWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsMenuHeader.html">Class: QgsMenuHeader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsMenuHeaderWidgetAction.html">Class: QgsMenuHeaderWidgetAction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsMessageBar.html">Class: QgsMessageBar</a></li>
@@ -2317,10 +2325,13 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.toSize" title="qgis.core.QgsSymbolLayerUtils.toSize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">toSize</span></code></a></p></td>
 <td><p>Converts a <code class="docutils literal notranslate"><span class="pre">value</span></code> to a size.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.wellKnownMarkerFromSld2" title="qgis.core.QgsSymbolLayerUtils.wellKnownMarkerFromSld2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wellKnownMarkerFromSld2</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.toSymbolLayerPointers" title="qgis.core.QgsSymbolLayerUtils.toSymbolLayerPointers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">toSymbolLayerPointers</span></code></a></p></td>
+<td><p>Converts a set of symbol layer id to a set of pointers to actual symbol layers carried by the feature renderer.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.wellKnownMarkerFromSld2" title="qgis.core.QgsSymbolLayerUtils.wellKnownMarkerFromSld2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wellKnownMarkerFromSld2</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.wellKnownMarkerToSld" title="qgis.core.QgsSymbolLayerUtils.wellKnownMarkerToSld"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wellKnownMarkerToSld</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.wellKnownMarkerToSld" title="qgis.core.QgsSymbolLayerUtils.wellKnownMarkerToSld"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wellKnownMarkerToSld</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param doc</dt>
 <dd class="field-odd"><p></p></dd>
@@ -4808,6 +4819,26 @@ can be paste in places where a color is expected.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="qgis.core.QgsSymbolLayerUtils.toSymbolLayerPointers">
+<code class="sig-name descname">toSymbolLayerPointers</code><span class="sig-paren">(</span><em class="sig-param">renderer: QgsFeatureRenderer, symbolLayerIds: Iterable[QgsSymbolLayerId]</em><span class="sig-paren">)</span> &#x2192; Set[QgsSymbolLayer]<a class="headerlink" href="#qgis.core.QgsSymbolLayerUtils.toSymbolLayerPointers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts a set of symbol layer id to a set of pointers to actual symbol layers carried by the feature renderer.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.12.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>renderer</strong> (<a class="reference internal" href="QgsFeatureRenderer.html#qgis.core.QgsFeatureRenderer" title="qgis.core.QgsFeatureRenderer"><em>QgsFeatureRenderer</em></a>) – </p></li>
+<li><p><strong>symbolLayerIds</strong> (<em>Iterable</em><em>[</em><a class="reference internal" href="QgsSymbolLayerId.html#qgis.core.QgsSymbolLayerId" title="qgis.core.QgsSymbolLayerId"><em>QgsSymbolLayerId</em></a><em>]</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Set[<a class="reference internal" href="QgsSymbolLayer.html#qgis.core.QgsSymbolLayer" title="qgis.core.QgsSymbolLayer">QgsSymbolLayer</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
 <dt id="qgis.core.QgsSymbolLayerUtils.wellKnownMarkerFromSld2">
 <code class="sig-name descname">wellKnownMarkerFromSld2</code><span class="sig-paren">(</span><em class="sig-param">element: QDomElement, name: str, color: Union[QColor, Qt.GlobalColor], strokeColor: Union[QColor, Qt.GlobalColor]</em><span class="sig-paren">)</span> &#x2192; Tuple[bool, Qt.PenStyle, float, float]<a class="headerlink" href="#qgis.core.QgsSymbolLayerUtils.wellKnownMarkerFromSld2" title="Permalink to this definition">¶</a></dt>
 <dd><div class="admonition note">
@@ -4864,7 +4895,7 @@ can be paste in places where a color is expected.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 21:31 Nov 06, 2019.
+        Last updated on 20:52 Nov 07, 2019.
       </span>
 
     </p>
