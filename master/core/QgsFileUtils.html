@@ -1628,10 +1628,13 @@
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsFileUtils.findClosestExistingPath" title="qgis.core.QgsFileUtils.findClosestExistingPath"><code class="xref py py-obj docutils literal notranslate"><span class="pre">findClosestExistingPath</span></code></a></p></td>
 <td><p>Returns the top-most existing folder from <code class="docutils literal notranslate"><span class="pre">path</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsFileUtils.representFileSize" title="qgis.core.QgsFileUtils.representFileSize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">representFileSize</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsFileUtils.findFile" title="qgis.core.QgsFileUtils.findFile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">findFile</span></code></a></p></td>
+<td><p>Will check <code class="docutils literal notranslate"><span class="pre">basepath</span></code> in an outward spiral up to <code class="docutils literal notranslate"><span class="pre">maxClimbs</span></code> levels to check if <code class="docutils literal notranslate"><span class="pre">file</span></code> exists.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsFileUtils.representFileSize" title="qgis.core.QgsFileUtils.representFileSize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">representFileSize</span></code></a></p></td>
 <td><p>Returns the human size from bytes</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsFileUtils.stringToSafeFilename" title="qgis.core.QgsFileUtils.stringToSafeFilename"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stringToSafeFilename</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsFileUtils.stringToSafeFilename" title="qgis.core.QgsFileUtils.stringToSafeFilename"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stringToSafeFilename</span></code></a></p></td>
 <td><p>Converts a <code class="docutils literal notranslate"><span class="pre">string</span></code> to a safe filename, replacing characters which are not safe for filenames with an ‘_’ character.</p></td>
 </tr>
 </tbody>
@@ -1754,6 +1757,32 @@ and “/home/user/projects” exists but no “2018” subfolder exists, then th
 </dd></dl>
 
 <dl class="method">
+<dt id="qgis.core.QgsFileUtils.findFile">
+<code class="sig-name descname">findFile</code><span class="sig-paren">(</span><em class="sig-param">file: str</em>, <em class="sig-param">basepath: str = ''</em>, <em class="sig-param">maxClimbs: int = 4</em>, <em class="sig-param">searchCeiling: int = 4</em>, <em class="sig-param">currentDir: str = ''</em><span class="sig-paren">)</span> &#x2192; List[str]<a class="headerlink" href="#qgis.core.QgsFileUtils.findFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Will check <code class="docutils literal notranslate"><span class="pre">basepath</span></code> in an outward spiral up to <code class="docutils literal notranslate"><span class="pre">maxClimbs</span></code> levels to check if <code class="docutils literal notranslate"><span class="pre">file</span></code> exists.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>file</strong> (<em>str</em>) – Name or full path of the file to find</p></li>
+<li><p><strong>basepath</strong> (<em>str = ''</em>) – current basepath of the file, needed if only the name is specified in file</p></li>
+<li><p><strong>maxClimbs</strong> (<em>int = 4</em>) – limit the number of time the search can move up from the basepath</p></li>
+<li><p><strong>searchCeiling</strong> (<em>int = 4</em>) – limits where in the folder hierarchy the search can be performed, 1 = root/drive, 2 = first folder level, 3 = sub folders ( Unix: /usr/bin, Win: C:/Users/Admin ), etc.</p></li>
+<li><p><strong>currentDir</strong> (<em>str = ''</em>) – alternative default directory to override the actual current directory during the search</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>List[str]</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>List of strings of the first matching path in unix format.</p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.12.</span></p>
+</div>
+</dd></dl>
+
+<dl class="method">
 <dt id="qgis.core.QgsFileUtils.representFileSize">
 <code class="sig-name descname">representFileSize</code><span class="sig-paren">(</span><em class="sig-param">bytes: int</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.core.QgsFileUtils.representFileSize" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the human size from bytes</p>
@@ -1802,7 +1831,7 @@ for filenames with an ‘_’ character.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 09:52 Nov 21, 2019.
+        Last updated on 11:04 Nov 22, 2019.
       </span>
 
     </p>
