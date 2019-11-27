@@ -2552,12 +2552,12 @@ can safely be used to modify parts of the geometry.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># print the WKT representation of each part in a multi-point geometry</span>
 <span class="n">geometry</span> <span class="o">=</span> <span class="n">QgsMultiPoint</span><span class="o">.</span><span class="n">fromWkt</span><span class="p">(</span> <span class="s1">&#39;MultiPoint( 0 0, 1 1, 2 2)&#39;</span> <span class="p">)</span>
 <span class="k">for</span> <span class="n">part</span> <span class="ow">in</span> <span class="n">geometry</span><span class="o">.</span><span class="n">parts</span><span class="p">():</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">part</span><span class="o">.</span><span class="n">asWkt</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">part</span><span class="o">.</span><span class="n">asWkt</span><span class="p">())</span>
 
 <span class="c1"># single part geometries only have one part - this loop will iterate once only</span>
 <span class="n">geometry</span> <span class="o">=</span> <span class="n">QgsLineString</span><span class="o">.</span><span class="n">fromWkt</span><span class="p">(</span> <span class="s1">&#39;LineString( 0 0, 10 10 )&#39;</span> <span class="p">)</span>
 <span class="k">for</span> <span class="n">part</span> <span class="ow">in</span> <span class="n">geometry</span><span class="o">.</span><span class="n">parts</span><span class="p">():</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">part</span><span class="o">.</span><span class="n">asWkt</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">part</span><span class="o">.</span><span class="n">asWkt</span><span class="p">())</span>
 
 <span class="c1"># parts can be modified during the iteration</span>
 <span class="n">geometry</span> <span class="o">=</span> <span class="n">QgsMultiPoint</span><span class="o">.</span><span class="n">fromWkt</span><span class="p">(</span> <span class="s1">&#39;MultiPoint( 0 0, 1 1, 2 2)&#39;</span> <span class="p">)</span>
@@ -2568,7 +2568,7 @@ can safely be used to modify parts of the geometry.</p>
 <span class="n">geometry</span> <span class="o">=</span> <span class="n">QgsMultiPolygon</span><span class="o">.</span><span class="n">fromWkt</span><span class="p">(</span> <span class="s1">&#39;MultiPolygon((( 0 0, 0 10, 10 10, 10 0, 0 0 ),( 5 5, 5 6, 6 6, 6 5, 5 5)),((20 2, 22 2, 22 4, 20 4, 20 2)))&#39;</span> <span class="p">)</span>
 <span class="k">for</span> <span class="n">part</span> <span class="ow">in</span> <span class="n">geometry</span><span class="o">.</span><span class="n">parts</span><span class="p">():</span>
     <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">part</span><span class="o">.</span><span class="n">vertices</span><span class="p">():</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">x</span><span class="p">(),</span> <span class="n">v</span><span class="o">.</span><span class="n">y</span><span class="p">())</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">x</span><span class="p">(),</span> <span class="n">v</span><span class="o">.</span><span class="n">y</span><span class="p">())</span>
 </pre></div>
 </div>
 <div class="admonition seealso">
@@ -2869,12 +2869,12 @@ modified using the iterator. See transformVertices() for a safe method to modify
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># print the x and y coordinate for each vertex in a LineString</span>
 <span class="n">geometry</span> <span class="o">=</span> <span class="n">QgsLineString</span><span class="o">.</span><span class="n">fromWkt</span><span class="p">(</span> <span class="s1">&#39;LineString( 0 0, 1 1, 2 2)&#39;</span> <span class="p">)</span>
 <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">geometry</span><span class="o">.</span><span class="n">vertices</span><span class="p">():</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">x</span><span class="p">(),</span> <span class="n">v</span><span class="o">.</span><span class="n">y</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">x</span><span class="p">(),</span> <span class="n">v</span><span class="o">.</span><span class="n">y</span><span class="p">())</span>
 
 <span class="c1"># vertex iteration includes all parts and rings</span>
 <span class="n">geometry</span> <span class="o">=</span> <span class="n">QgsMultiPolygon</span><span class="o">.</span><span class="n">fromWkt</span><span class="p">(</span> <span class="s1">&#39;MultiPolygon((( 0 0, 0 10, 10 10, 10 0, 0 0 ),( 5 5, 5 6, 6 6, 6 5, 5 5)),((20 2, 22 2, 22 4, 20 4, 20 2)))&#39;</span> <span class="p">)</span>
 <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">geometry</span><span class="o">.</span><span class="n">vertices</span><span class="p">():</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">x</span><span class="p">(),</span> <span class="n">v</span><span class="o">.</span><span class="n">y</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">x</span><span class="p">(),</span> <span class="n">v</span><span class="o">.</span><span class="n">y</span><span class="p">())</span>
 </pre></div>
 </div>
 <div class="admonition seealso">
@@ -2945,7 +2945,7 @@ modified using the iterator. See transformVertices() for a safe method to modify
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 18:42 Nov 20, 2019.
+        Last updated on 18:39 Nov 27, 2019.
       </span>
 
     </p>
