@@ -17,12 +17,8 @@ DIR=$(git rev-parse --show-toplevel)
 
 pushd ${DIR}
 
-QGIS_DOCKER_TAG="$(sed 's/master/latest/' <<<${QGIS_VERSION_BRANCH})"
-if [[ ${QGIS_DOCKER_TAG} =~ (final|release)-3_(4|6) ]]; then
-  QGIS_DOCKER_TAG="${QGIS_DOCKER_TAG}_cosmic"
-else
-  QGIS_DOCKER_TAG="${QGIS_DOCKER_TAG}_disco"
-fi
+# this uses cosmic image with recent sip
+QGIS_DOCKER_TAG="$(sed 's/master/latest/' <<<${QGIS_VERSION_BRANCH})_cosmic"
 
 # latest => master, final-3_0_2 => 3.0
 QGIS_VERSION=$(${GP}sed -r 's/latest(_cosmic|_disco)?/master/; s/^(final|release)-([0-9]_[0-9]{1,2})(_[0-9])?(_cosmic|_disco)?/\2/; s/_/./g' <<<$QGIS_DOCKER_TAG)
