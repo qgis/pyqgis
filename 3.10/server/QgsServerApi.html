@@ -1603,20 +1603,20 @@ APIs developers are encouraged to implement a more robust accept(url) logic by
 making sure that their APIs accept only URLs they can actually handle, if they do,
 the APIs registration order becomes irrelevant.</p>
 <p>After the API has been registered to the server API registry:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">API</span><span class="p">(:</span><span class="n">py</span><span class="p">:</span><span class="n">class</span><span class="p">:</span><span class="sb">`.QgsServerApi`</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>class API(:py:class:`.QgsServerApi`):
 
-  <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="k">return</span> <span class="s2">&quot;Test API&quot;</span>
+  def name(self):
+    return &quot;Test API&quot;
 
-  <span class="k">def</span> <span class="nf">rootPath</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="k">return</span> <span class="s2">&quot;/testapi&quot;</span>
+  def rootPath(self):
+    return &quot;/testapi&quot;
 
-  <span class="k">def</span> <span class="nf">executeRequest</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request_context</span><span class="p">):</span>
-    <span class="n">request_context</span><span class="o">.</span><span class="n">response</span><span class="p">()</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;</span><span class="se">\&quot;</span><span class="s2">Test API</span><span class="se">\&quot;</span><span class="s2">&quot;</span><span class="p">)</span>
+  def executeRequest(self, request_context):
+    request_context.response().write(b&quot;\&quot;Test API\&quot;&quot;)
 
-<span class="n">server</span> <span class="o">=</span> <span class="n">QgsServer</span><span class="p">()</span>
-<span class="n">api</span> <span class="o">=</span> <span class="n">API</span><span class="p">(</span><span class="n">server</span><span class="o">.</span><span class="n">serverInterface</span><span class="p">())</span>
-<span class="n">server</span><span class="o">.</span><span class="n">serverInterface</span><span class="p">()</span><span class="o">.</span><span class="n">serviceRegistry</span><span class="p">()</span><span class="o">.</span><span class="n">registerApi</span><span class="p">(</span><span class="n">api</span><span class="p">)</span>
+server = QgsServer()
+api = API(server.serverInterface())
+server.serverInterface().serviceRegistry().registerApi(api)
 </pre></div>
 </div>
 <p>the incoming calls with an URL path starting with the API root path
@@ -1741,7 +1741,7 @@ of the API will be invoked.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 23:28 Nov 15, 2019.
+        Last updated on 23:33 Dec 20, 2019.
       </span>
 
     </p>
