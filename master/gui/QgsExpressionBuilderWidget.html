@@ -321,6 +321,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsField.html">Class: QgsField</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsFieldConstraints.html">Class: QgsFieldConstraints</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsFieldFormatter.html">Class: QgsFieldFormatter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../core/QgsFieldFormatterContext.html">Class: QgsFieldFormatterContext</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsFieldFormatterRegistry.html">Class: QgsFieldFormatterRegistry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsFieldModel.html">Class: QgsFieldModel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsFieldProxyModel.html">Class: QgsFieldProxyModel</a></li>
@@ -646,6 +647,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsProcessingParameterBand.html">Class: QgsProcessingParameterBand</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsProcessingParameterBoolean.html">Class: QgsProcessingParameterBoolean</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsProcessingParameterColor.html">Class: QgsProcessingParameterColor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../core/QgsProcessingParameterCoordinateOperation.html">Class: QgsProcessingParameterCoordinateOperation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsProcessingParameterCrs.html">Class: QgsProcessingParameterCrs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsProcessingParameterDefinition.html">Class: QgsProcessingParameterDefinition</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsProcessingParameterDistance.html">Class: QgsProcessingParameterDistance</a></li>
@@ -1082,6 +1084,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsCompoundColorWidget.html">Class: QgsCompoundColorWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsConfigureShortcutsDialog.html">Class: QgsConfigureShortcutsDialog</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsCoordinateBoundsPreviewMapWidget.html">Class: QgsCoordinateBoundsPreviewMapWidget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsCoordinateOperationWidget.html">Class: QgsCoordinateOperationWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsCptCityColorRampDialog.html">Class: QgsCptCityColorRampDialog</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsCredentialDialog.html">Class: QgsCredentialDialog</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsCurveEditorWidget.html">Class: QgsCurveEditorWidget</a></li>
@@ -1886,9 +1889,22 @@ continue.</p>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="qgis.gui.QgsExpressionBuilderWidget.loadAllUsedValues">
+<code class="sig-name descname">loadAllUsedValues</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsExpressionBuilderWidget.loadAllUsedValues" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load all unique values from the set layer into the sample area.
+Only the used ones. Without available values, even if the
+formatter can provide them (eg. RelationReference).</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.12.</span></p>
+</div>
+</dd></dl>
+
+<dl class="method">
 <dt id="qgis.gui.QgsExpressionBuilderWidget.loadAllValues">
 <code class="sig-name descname">loadAllValues</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsExpressionBuilderWidget.loadAllValues" title="Permalink to this definition">¶</a></dt>
-<dd><p>Load all unique values from the set layer into the sample area</p>
+<dd><p>Load all unique values from the set layer into the sample area.
+Including all available values, in case the formatter can
+provide them (eg. RelationReference).</p>
 </dd></dl>
 
 <dl class="method">
@@ -1952,9 +1968,22 @@ By default it is loaded from the collection “generic”.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="qgis.gui.QgsExpressionBuilderWidget.loadSampleUsedValues">
+<code class="sig-name descname">loadSampleUsedValues</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsExpressionBuilderWidget.loadSampleUsedValues" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load used sample values into the sample value area.
+Only the used ones. Without available values, even if the
+formatter can provide them (eg. RelationReference).</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.12.</span></p>
+</div>
+</dd></dl>
+
+<dl class="method">
 <dt id="qgis.gui.QgsExpressionBuilderWidget.loadSampleValues">
 <code class="sig-name descname">loadSampleValues</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsExpressionBuilderWidget.loadSampleValues" title="Permalink to this definition">¶</a></dt>
-<dd><p>Load sample values into the sample value area</p>
+<dd><p>Load sample values into the sample value area.
+Including available values, in case the formatter can
+provide them (eg. RelationReference).</p>
 </dd></dl>
 
 <dl class="method">
@@ -2355,7 +2384,7 @@ controls which layers and relations and other project-specific items are shown i
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 11:06 Dec 20, 2019.
+        Last updated on 09:56 Dec 21, 2019.
       </span>
 
     </p>

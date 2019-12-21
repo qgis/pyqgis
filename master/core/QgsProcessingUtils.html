@@ -321,6 +321,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsField.html">Class: QgsField</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsFieldConstraints.html">Class: QgsFieldConstraints</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsFieldFormatter.html">Class: QgsFieldFormatter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsFieldFormatterContext.html">Class: QgsFieldFormatterContext</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsFieldFormatterRegistry.html">Class: QgsFieldFormatterRegistry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsFieldModel.html">Class: QgsFieldModel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsFieldProxyModel.html">Class: QgsFieldProxyModel</a></li>
@@ -646,6 +647,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingParameterBand.html">Class: QgsProcessingParameterBand</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingParameterBoolean.html">Class: QgsProcessingParameterBoolean</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingParameterColor.html">Class: QgsProcessingParameterColor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsProcessingParameterCoordinateOperation.html">Class: QgsProcessingParameterCoordinateOperation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingParameterCrs.html">Class: QgsProcessingParameterCrs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingParameterDefinition.html">Class: QgsProcessingParameterDefinition</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingParameterDistance.html">Class: QgsProcessingParameterDistance</a></li>
@@ -1082,6 +1084,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsCompoundColorWidget.html">Class: QgsCompoundColorWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsConfigureShortcutsDialog.html">Class: QgsConfigureShortcutsDialog</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsCoordinateBoundsPreviewMapWidget.html">Class: QgsCoordinateBoundsPreviewMapWidget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui/QgsCoordinateOperationWidget.html">Class: QgsCoordinateOperationWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsCptCityColorRampDialog.html">Class: QgsCptCityColorRampDialog</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsCredentialDialog.html">Class: QgsCredentialDialog</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsCurveEditorWidget.html">Class: QgsCurveEditorWidget</a></li>
@@ -1699,10 +1702,13 @@
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingUtils.tempFolder" title="qgis.core.QgsProcessingUtils.tempFolder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tempFolder</span></code></a></p></td>
 <td><p>Returns a session specific processing temporary folder for use in processing algorithms.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingUtils.variantToPythonLiteral" title="qgis.core.QgsProcessingUtils.variantToPythonLiteral"><code class="xref py py-obj docutils literal notranslate"><span class="pre">variantToPythonLiteral</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingUtils.variantToCrs" title="qgis.core.QgsProcessingUtils.variantToCrs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">variantToCrs</span></code></a></p></td>
+<td><p>Converts a variant <code class="docutils literal notranslate"><span class="pre">value</span></code> to a coordinate reference system.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingUtils.variantToPythonLiteral" title="qgis.core.QgsProcessingUtils.variantToPythonLiteral"><code class="xref py py-obj docutils literal notranslate"><span class="pre">variantToPythonLiteral</span></code></a></p></td>
 <td><p>Converts a variant to a Python literal.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingUtils.variantToSource" title="qgis.core.QgsProcessingUtils.variantToSource"><code class="xref py py-obj docutils literal notranslate"><span class="pre">variantToSource</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingUtils.variantToSource" title="qgis.core.QgsProcessingUtils.variantToSource"><code class="xref py py-obj docutils literal notranslate"><span class="pre">variantToSource</span></code></a></p></td>
 <td><p>Converts a variant <code class="docutils literal notranslate"><span class="pre">value</span></code> to a new feature source.</p></td>
 </tr>
 </tbody>
@@ -2315,6 +2321,29 @@ operating system environments.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="qgis.core.QgsProcessingUtils.variantToCrs">
+<code class="sig-name descname">variantToCrs</code><span class="sig-paren">(</span><em class="sig-param">value: Any</em>, <em class="sig-param">context: QgsProcessingContext</em>, <em class="sig-param">fallbackValue: Any = None</em><span class="sig-paren">)</span> &#x2192; QgsCoordinateReferenceSystem<a class="headerlink" href="#qgis.core.QgsProcessingUtils.variantToCrs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts a variant <code class="docutils literal notranslate"><span class="pre">value</span></code> to a coordinate reference system.</p>
+<p>The optional <code class="docutils literal notranslate"><span class="pre">fallbackValue</span></code> can be used to specify a “default” value which is used
+if <code class="docutils literal notranslate"><span class="pre">value</span></code> cannot be successfully converted to a CRS.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.12.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>value</strong> (<em>Any</em>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsProcessingContext.html#qgis.core.QgsProcessingContext" title="qgis.core.QgsProcessingContext"><em>QgsProcessingContext</em></a>) – </p></li>
+<li><p><strong>fallbackValue</strong> (<em>Any = None</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsCoordinateReferenceSystem.html#qgis.core.QgsCoordinateReferenceSystem" title="qgis.core.QgsCoordinateReferenceSystem">QgsCoordinateReferenceSystem</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
 <dt id="qgis.core.QgsProcessingUtils.variantToPythonLiteral">
 <code class="sig-name descname">variantToPythonLiteral</code><span class="sig-paren">(</span><em class="sig-param">value: Any</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.core.QgsProcessingUtils.variantToPythonLiteral" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts a variant to a Python literal.</p>
@@ -2374,7 +2403,7 @@ if <code class="docutils literal notranslate"><span class="pre">value</span></co
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 11:06 Dec 20, 2019.
+        Last updated on 09:56 Dec 21, 2019.
       </span>
 
     </p>
