@@ -1621,7 +1621,7 @@
 <span id="class-qgsprocessingparameterfield"></span><h1>Class: QgsProcessingParameterField<a class="headerlink" href="#module-QgsProcessingParameterField" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="qgis.core.QgsProcessingParameterField">
-<em class="property">class </em><code class="sig-prename descclassname">qgis.core.</code><code class="sig-name descname">QgsProcessingParameterField</code><span class="sig-paren">(</span><em class="sig-param">name: str</em>, <em class="sig-param">description: str = ''</em>, <em class="sig-param">defaultValue: Any = None</em>, <em class="sig-param">parentLayerParameterName: str = ''</em>, <em class="sig-param">type: QgsProcessingParameterField.DataType = QgsProcessingParameterField.Any</em>, <em class="sig-param">allowMultiple: bool = False</em>, <em class="sig-param">optional: bool = False</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsProcessingParameterField" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">qgis.core.</code><code class="sig-name descname">QgsProcessingParameterField</code><span class="sig-paren">(</span><em class="sig-param">name: str</em>, <em class="sig-param">description: str = ''</em>, <em class="sig-param">defaultValue: Any = None</em>, <em class="sig-param">parentLayerParameterName: str = ''</em>, <em class="sig-param">type: QgsProcessingParameterField.DataType = QgsProcessingParameterField.Any</em>, <em class="sig-param">allowMultiple: bool = False</em>, <em class="sig-param">optional: bool = False</em>, <em class="sig-param">defaultToAllFields: bool = False</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsProcessingParameterField" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="QgsProcessingParameterDefinition.html#module-QgsProcessingParameterDefinition" title="QgsProcessingParameterDefinition"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingParameterDefinition</span></code></a></p>
 <p>Constructor for QgsProcessingParameterField.</p>
 <p>QgsProcessingParameterField(<a class="reference internal" href="#qgis.core.QgsProcessingParameterField" title="qgis.core.QgsProcessingParameterField"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingParameterField</span></code></a>)</p>
@@ -1638,7 +1638,8 @@
 <li><p><strong>parentLayerParameterName</strong> (<em>str = ''</em>) – </p></li>
 <li><p><strong>type</strong> (<em>QgsProcessingParameterField.DataType = QgsProcessingParameterField.Any</em>) – </p></li>
 <li><p><strong>allowMultiple</strong> (<em>bool = False</em>) – </p></li>
-<li><p><strong>optional</strong> – </p></li>
+<li><p><strong>optional</strong> (<em>bool = False</em>) – </p></li>
+<li><p><strong>defaultToAllFields</strong> – </p></li>
 </ul>
 </dd>
 </dl>
@@ -1748,6 +1749,26 @@
 </dd></dl>
 
 <dl class="method">
+<dt id="qgis.core.QgsProcessingParameterField.defaultToAllFields">
+<code class="sig-name descname">defaultToAllFields</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsProcessingParameterField.defaultToAllFields" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns whether a parameter which allows multiple selections (see allowMultiple()) should automatically
+select all fields as the default value.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">True</span></code>, this will override any existing defaultValue() set on the parameter.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsProcessingParameterField.setDefaultToAllFields" title="qgis.core.QgsProcessingParameterField.setDefaultToAllFields"><code class="xref py py-func docutils literal notranslate"><span class="pre">setDefaultToAllFields()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.12.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
 <dt id="qgis.core.QgsProcessingParameterField.dependsOnOtherParameters">
 <code class="sig-name descname">dependsOnOtherParameters</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; List[str]<a class="headerlink" href="#qgis.core.QgsProcessingParameterField.dependsOnOtherParameters" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
@@ -1835,6 +1856,26 @@
 </dd></dl>
 
 <dl class="method">
+<dt id="qgis.core.QgsProcessingParameterField.setDefaultToAllFields">
+<code class="sig-name descname">setDefaultToAllFields</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">enabled: bool</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsProcessingParameterField.setDefaultToAllFields" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets whether a parameter which allows multiple selections (see allowMultiple()) should automatically
+select all fields as the default value.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">True</span></code>, this will override any existing defaultValue() set on the parameter.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsProcessingParameterField.defaultToAllFields" title="qgis.core.QgsProcessingParameterField.defaultToAllFields"><code class="xref py py-func docutils literal notranslate"><span class="pre">defaultToAllFields()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.12.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>enabled</strong> (<em>bool</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
 <dt id="qgis.core.QgsProcessingParameterField.setParentLayerParameterName">
 <code class="sig-name descname">setParentLayerParameterName</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">parentLayerParameterName: str</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsProcessingParameterField.setParentLayerParameterName" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets the name of the parent layer parameter. Use an empty string if this is not required.</p>
@@ -1912,7 +1953,7 @@
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 09:42 Jan 04, 2020.
+        Last updated on 10:03 Jan 05, 2020.
       </span>
 
     </p>
