@@ -37,7 +37,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Class: QgsRelationManager" href="QgsRelationManager.html" />
+    <link rel="next" title="Class: QgsRelationContext" href="QgsRelationContext.html" />
     <link rel="prev" title="Class: QgsRegularPolygon" href="QgsRegularPolygon.html" /> 
 </head>
 
@@ -735,6 +735,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsReferencedRectangle.html">Class: QgsReferencedRectangle</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsRegularPolygon.html">Class: QgsRegularPolygon</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Class: QgsRelation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsRelationContext.html">Class: QgsRelationContext</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsRelationManager.html">Class: QgsRelationManager</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsRelationReferenceFieldFormatter.html">Class: QgsRelationReferenceFieldFormatter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsRenderChecker.html">Class: QgsRenderChecker</a></li>
@@ -1585,6 +1586,8 @@
 <em class="property">class </em><code class="sig-prename descclassname">qgis.core.</code><code class="sig-name descname">QgsRelation</code><a class="headerlink" href="#qgis.core.QgsRelation" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sip.wrapper</span></code></p>
 <p>Default constructor. Creates an invalid relation.</p>
+<p>QgsRelation(context: <a class="reference internal" href="QgsRelationContext.html#qgis.core.QgsRelationContext" title="qgis.core.QgsRelationContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsRelationContext</span></code></a>)
+Constructor with context. Creates an invalid relation.</p>
 <p>QgsRelation(other: <a class="reference internal" href="#qgis.core.QgsRelation" title="qgis.core.QgsRelation"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsRelation</span></code></a>)
 Copies a relation.
 This makes a shallow copy, relations are implicitly shared and only duplicated when the copy is
@@ -1755,13 +1758,14 @@ The second element of each pair are the field names of the matching primary key.
 
 <dl class="method">
 <dt id="qgis.core.QgsRelation.createFromXml">
-<code class="sig-name descname">createFromXml</code><span class="sig-paren">(</span><em class="sig-param">node: QDomNode</em>, <em class="sig-param">context: QgsReadWriteContext</em><span class="sig-paren">)</span> &#x2192; QgsRelation<a class="headerlink" href="#qgis.core.QgsRelation.createFromXml" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">createFromXml</code><span class="sig-paren">(</span><em class="sig-param">node: QDomNode</em>, <em class="sig-param">context: QgsReadWriteContext</em>, <em class="sig-param">relationContext: QgsRelationContext = QgsRelationContext()</em><span class="sig-paren">)</span> &#x2192; QgsRelation<a class="headerlink" href="#qgis.core.QgsRelation.createFromXml" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates a relation from an XML structure. Used for reading .qgs projects.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>node</strong> (<em>QDomNode</em>) – The dom node containing the relation information</p></li>
 <li><p><strong>context</strong> (<a class="reference internal" href="QgsReadWriteContext.html#qgis.core.QgsReadWriteContext" title="qgis.core.QgsReadWriteContext"><em>QgsReadWriteContext</em></a>) – to pass project translator</p></li>
+<li><p><strong>relationContext</strong> (<a class="reference internal" href="QgsRelationContext.html#qgis.core.QgsRelationContext" title="qgis.core.QgsRelationContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsRelationContext</span></code></a> = QgsRelationContext()) – a relation context</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type</dt>
@@ -2235,7 +2239,7 @@ Will be called internally whenever a member is changed.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 21:49 Jan 03, 2020.
+        Last updated on 23:11 Jan 10, 2020.
       </span>
 
     </p>
