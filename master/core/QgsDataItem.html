@@ -393,6 +393,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsLabelPosition.html">Class: QgsLabelPosition</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsLabelSearchTree.html">Class: QgsLabelSearchTree</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsLabelThinningSettings.html">Class: QgsLabelThinningSettings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsLabeling.html">Class: QgsLabeling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsLabelingEngineSettings.html">Class: QgsLabelingEngineSettings</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsLabelingResults.html">Class: QgsLabelingResults</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsLayerDefinition.html">Class: QgsLayerDefinition</a></li>
@@ -1647,9 +1648,10 @@
 <span id="class-qgsdataitem"></span><h1>Class: QgsDataItem<a class="headerlink" href="#module-QgsDataItem" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="qgis.core.QgsDataItem">
-<em class="property">class </em><code class="sig-prename descclassname">qgis.core.</code><code class="sig-name descname">QgsDataItem</code><span class="sig-paren">(</span><em class="sig-param">type: QgsDataItem.Type</em>, <em class="sig-param">parent: QgsDataItem</em>, <em class="sig-param">name: str</em>, <em class="sig-param">path: str</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsDataItem" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">qgis.core.</code><code class="sig-name descname">QgsDataItem</code><span class="sig-paren">(</span><em class="sig-param">type: QgsDataItem.Type</em>, <em class="sig-param">parent: QgsDataItem</em>, <em class="sig-param">name: str</em>, <em class="sig-param">path: str</em>, <em class="sig-param">providerKey: str = ''</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsDataItem" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">PyQt5.QtCore.QObject</span></code></p>
-<p>Create new data item.</p>
+<p>Creates new data item
+<code class="docutils literal notranslate"><span class="pre">providerKey</span></code> added in QGIS 3.12</p>
 <p>Base class for all items in the model.
 Parent/children hierarchy is not based on QObject.</p>
 <dl class="field-list simple">
@@ -1658,7 +1660,8 @@ Parent/children hierarchy is not based on QObject.</p>
 <li><p><strong>type</strong> (<a class="reference internal" href="#qgis.core.QgsDataItem.Type" title="qgis.core.QgsDataItem.Type"><em>QgsDataItem.Type</em></a>) – </p></li>
 <li><p><strong>parent</strong> (<a class="reference internal" href="#qgis.core.QgsDataItem" title="qgis.core.QgsDataItem"><em>QgsDataItem</em></a>) – </p></li>
 <li><p><strong>name</strong> (<em>str</em>) – </p></li>
-<li><p><strong>path</strong> – </p></li>
+<li><p><strong>path</strong> (<em>str</em>) – </p></li>
+<li><p><strong>providerKey</strong> – </p></li>
 </ul>
 </dd>
 </dl>
@@ -2268,6 +2271,22 @@ QObject hierarchy. *</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="qgis.core.QgsDataItem.providerKey">
+<code class="sig-name descname">providerKey</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.core.QgsDataItem.providerKey" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the provider key that created this item (e.g. “PostGIS”)</p>
+<p>If key has a prefix “special:”, it marks that the item was not created with a provider,
+but manually. For example “special:Favorites”, “special:Home”</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.12.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
 <dt id="qgis.core.QgsDataItem.receivers">
 <code class="sig-name descname">receivers</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsDataItem.receivers" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -2442,6 +2461,22 @@ It does not add itself to parents children (mChildren) *</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="qgis.core.QgsDataItem.setProviderKey">
+<code class="sig-name descname">setProviderKey</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">value: str</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsDataItem.setProviderKey" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the provider key that created this item (e.g. “PostGIS”)</p>
+<p>If key has a prefix “special:”, it marks that the item was not created with a provider,
+but manually. For example “special:Favorites”</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.12.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
 <dt id="qgis.core.QgsDataItem.setSortKey">
 <code class="sig-name descname">setSortKey</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">key: Any</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsDataItem.setSortKey" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets a custom sorting <code class="docutils literal notranslate"><span class="pre">key</span></code> for the item.</p>
@@ -2581,7 +2616,7 @@ sort key.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 10:45 Jan 14, 2020.
+        Last updated on 10:54 Jan 15, 2020.
       </span>
 
     </p>
