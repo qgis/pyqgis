@@ -27,8 +27,8 @@ else:
         from qgis import core, gui, analysis, server
         packages = {'core': core, 'gui': gui, 'analysis': analysis, 'server': server}
     else:
-        from qgis import core, gui, analysis, server, processing, 3d
-        packages = {'core': core, 'gui': gui, 'analysis': analysis, 'server': server, 'processing': processing, '3d': 3d}
+        from qgis import core, gui, analysis, server, processing, _3d
+        packages = {'core': core, 'gui': gui, 'analysis': analysis, 'server': server, 'processing': processing, '3d': _3d}
  
 
 # Make sure :numbered: is only specified in the top level index - see
