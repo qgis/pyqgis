@@ -953,6 +953,7 @@
 <li class="toctree-l2"><a class="reference internal" href="SmartgroupName.html">Class: SmartgroupName</a></li>
 <li class="toctree-l2"><a class="reference internal" href="SmartgroupTable.html">Class: SmartgroupTable</a></li>
 <li class="toctree-l2"><a class="reference internal" href="SmartgroupXML.html">Class: SmartgroupXML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SnappingTypeFlag.html">Class: SnappingTypeFlag</a></li>
 <li class="toctree-l2"><a class="reference internal" href="StyleCategories.html">Class: StyleCategories</a></li>
 <li class="toctree-l2"><a class="reference internal" href="SymbolFavoriteId.html">Class: SymbolFavoriteId</a></li>
 <li class="toctree-l2"><a class="reference internal" href="SymbolId.html">Class: SymbolId</a></li>
@@ -1297,8 +1298,13 @@
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsMessageLogViewer.html">Class: QgsMessageLogViewer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsMessageViewer.html">Class: QgsMessageViewer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsMetadataWidget.html">Class: QgsMetadataWidget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui/QgsModelChildAlgorithmGraphicItem.html">Class: QgsModelChildAlgorithmGraphicItem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui/QgsModelComponentGraphicItem.html">Class: QgsModelComponentGraphicItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsModelDesignerFlatButtonGraphicItem.html">Class: QgsModelDesignerFlatButtonGraphicItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsModelDesignerFoldButtonGraphicItem.html">Class: QgsModelDesignerFoldButtonGraphicItem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui/QgsModelGraphicsScene.html">Class: QgsModelGraphicsScene</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui/QgsModelOutputGraphicItem.html">Class: QgsModelOutputGraphicItem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui/QgsModelParameterGraphicItem.html">Class: QgsModelParameterGraphicItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsMultiBandColorRendererWidget.html">Class: QgsMultiBandColorRendererWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsMultiEditToolButton.html">Class: QgsMultiEditToolButton</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsNewAuxiliaryFieldDialog.html">Class: QgsNewAuxiliaryFieldDialog</a></li>
@@ -1701,12 +1707,17 @@ from the current <a class="reference internal" href="QgsProject.html#qgis.core.Q
 </dl>
 <dl class="attribute">
 <dt id="qgis.core.QgsPointLocator.All">
-<code class="sig-name descname">All</code><em class="property"> = 7</em><a class="headerlink" href="#qgis.core.QgsPointLocator.All" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">All</code><em class="property"> = 31</em><a class="headerlink" href="#qgis.core.QgsPointLocator.All" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="qgis.core.QgsPointLocator.Area">
 <code class="sig-name descname">Area</code><em class="property"> = 4</em><a class="headerlink" href="#qgis.core.QgsPointLocator.Area" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qgis.core.QgsPointLocator.Centroid">
+<code class="sig-name descname">Centroid</code><em class="property"> = 8</em><a class="headerlink" href="#qgis.core.QgsPointLocator.Centroid" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -1763,7 +1774,19 @@ units depending on what class returns it (geom.cache: layer units, map canvas sn
 <dl class="method">
 <dt id="qgis.core.QgsPointLocator.Match.hasArea">
 <code class="sig-name descname">hasArea</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsPointLocator.Match.hasArea" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>Returns true if the Match is an area</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="qgis.core.QgsPointLocator.Match.hasCentroid">
+<code class="sig-name descname">hasCentroid</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsPointLocator.Match.hasCentroid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns true if the Match is a centroid</p>
+<dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>bool</p>
 </dd>
@@ -1773,7 +1796,19 @@ units depending on what class returns it (geom.cache: layer units, map canvas sn
 <dl class="method">
 <dt id="qgis.core.QgsPointLocator.Match.hasEdge">
 <code class="sig-name descname">hasEdge</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsPointLocator.Match.hasEdge" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>Returns true if the Match is an edge</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="qgis.core.QgsPointLocator.Match.hasMiddleSegment">
+<code class="sig-name descname">hasMiddleSegment</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsPointLocator.Match.hasMiddleSegment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns true if the Match is the middle of a segment</p>
+<dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>bool</p>
 </dd>
@@ -1783,7 +1818,8 @@ units depending on what class returns it (geom.cache: layer units, map canvas sn
 <dl class="method">
 <dt id="qgis.core.QgsPointLocator.Match.hasVertex">
 <code class="sig-name descname">hasVertex</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsPointLocator.Match.hasVertex" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>Returns true if the Match is a vertex</p>
+<dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>bool</p>
 </dd>
@@ -1881,6 +1917,11 @@ coords depending on what class returns it (geom.cache: layer coords, map canvas 
 </dd></dl>
 
 </dd></dl>
+
+<dl class="attribute">
+<dt id="qgis.core.QgsPointLocator.MiddleOfSegment">
+<code class="sig-name descname">MiddleOfSegment</code><em class="property"> = 16</em><a class="headerlink" href="#qgis.core.QgsPointLocator.MiddleOfSegment" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="class">
 <dt id="qgis.core.QgsPointLocator.Type">
@@ -2103,11 +2144,59 @@ This method is either blocking or non blocking according to <code class="docutil
 </dd></dl>
 
 <dl class="method">
+<dt id="qgis.core.QgsPointLocator.nearestCentroid">
+<code class="sig-name descname">nearestCentroid</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">point: QgsPointXY</em>, <em class="sig-param">tolerance: float</em>, <em class="sig-param">filter: QgsPointLocator.MatchFilter = None</em>, <em class="sig-param">relaxed: bool = False</em><span class="sig-paren">)</span> &#x2192; QgsPointLocator.Match<a class="headerlink" href="#qgis.core.QgsPointLocator.nearestCentroid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find nearest centroid to the specified point - up to distance specified by tolerance
+Optional filter may discard unwanted matches.
+This method is either blocking or non blocking according to <code class="docutils literal notranslate"><span class="pre">relaxed</span></code> parameter passed</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.12.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>point</strong> (<a class="reference internal" href="QgsPointXY.html#qgis.core.QgsPointXY" title="qgis.core.QgsPointXY"><em>QgsPointXY</em></a>) – </p></li>
+<li><p><strong>tolerance</strong> (<em>float</em>) – </p></li>
+<li><p><strong>filter</strong> (<em>QgsPointLocator.MatchFilter = None</em>) – </p></li>
+<li><p><strong>relaxed</strong> (<em>bool = False</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#qgis.core.QgsPointLocator.Match" title="qgis.core.QgsPointLocator.Match">QgsPointLocator.Match</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
 <dt id="qgis.core.QgsPointLocator.nearestEdge">
 <code class="sig-name descname">nearestEdge</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">point: QgsPointXY</em>, <em class="sig-param">tolerance: float</em>, <em class="sig-param">filter: QgsPointLocator.MatchFilter = None</em>, <em class="sig-param">relaxed: bool = False</em><span class="sig-paren">)</span> &#x2192; QgsPointLocator.Match<a class="headerlink" href="#qgis.core.QgsPointLocator.nearestEdge" title="Permalink to this definition">¶</a></dt>
 <dd><p>Find nearest edge to the specified point - up to distance specified by tolerance
 Optional filter may discard unwanted matches.
 This method is either blocking or non blocking according to <code class="docutils literal notranslate"><span class="pre">relaxed</span></code> parameter passed</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>point</strong> (<a class="reference internal" href="QgsPointXY.html#qgis.core.QgsPointXY" title="qgis.core.QgsPointXY"><em>QgsPointXY</em></a>) – </p></li>
+<li><p><strong>tolerance</strong> (<em>float</em>) – </p></li>
+<li><p><strong>filter</strong> (<em>QgsPointLocator.MatchFilter = None</em>) – </p></li>
+<li><p><strong>relaxed</strong> (<em>bool = False</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#qgis.core.QgsPointLocator.Match" title="qgis.core.QgsPointLocator.Match">QgsPointLocator.Match</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="qgis.core.QgsPointLocator.nearestMiddleOfSegment">
+<code class="sig-name descname">nearestMiddleOfSegment</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">point: QgsPointXY</em>, <em class="sig-param">tolerance: float</em>, <em class="sig-param">filter: QgsPointLocator.MatchFilter = None</em>, <em class="sig-param">relaxed: bool = False</em><span class="sig-paren">)</span> &#x2192; QgsPointLocator.Match<a class="headerlink" href="#qgis.core.QgsPointLocator.nearestMiddleOfSegment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find nearest middle of segment to the specified point - up to distance specified by tolerance
+Optional filter may discard unwanted matches.
+This method is either blocking or non blocking according to <code class="docutils literal notranslate"><span class="pre">relaxed</span></code> parameter passed</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.12.</span></p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -2273,7 +2362,7 @@ this methods waits for the indexing to be finished</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 10:21 Mar 01, 2020.
+        Last updated on 11:38 Mar 02, 2020.
       </span>
 
     </p>
