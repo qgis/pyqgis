@@ -1298,6 +1298,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsMessageLogViewer.html">Class: QgsMessageLogViewer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsMessageViewer.html">Class: QgsMessageViewer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsMetadataWidget.html">Class: QgsMetadataWidget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsModelArrowItem.html">Class: QgsModelArrowItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsModelChildAlgorithmGraphicItem.html">Class: QgsModelChildAlgorithmGraphicItem</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Class: QgsModelComponentGraphicItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsModelDesignerFlatButtonGraphicItem.html">Class: QgsModelDesignerFlatButtonGraphicItem</a></li>
@@ -1723,6 +1724,51 @@ it must exist for the lifetime of this object.</p>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
 </dd></dl>
 
+<dl class="method">
+<dt id="qgis.gui.QgsModelComponentGraphicItem.boundingRect">
+<code class="sig-name descname">boundingRect</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QRectF<a class="headerlink" href="#qgis.gui.QgsModelComponentGraphicItem.boundingRect" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>QRectF</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="qgis.gui.QgsModelComponentGraphicItem.calculateAutomaticLinkPoint">
+<code class="sig-name descname">calculateAutomaticLinkPoint</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">other: QgsModelComponentGraphicItem</em><span class="sig-paren">)</span> &#x2192; Tuple[QPointF, Qt.Edge]<a class="headerlink" href="#qgis.gui.QgsModelComponentGraphicItem.calculateAutomaticLinkPoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the best link point to use for a link originating at a specified <code class="docutils literal notranslate"><span class="pre">other</span></code> item.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>other</strong> (<a class="reference internal" href="#qgis.gui.QgsModelComponentGraphicItem" title="qgis.gui.QgsModelComponentGraphicItem"><em>QgsModelComponentGraphicItem</em></a>) – item at other end of link</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>calculated link point in item coordinates.</p></li>
+<li><p>edge: item edge for calculated best link point</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<p>calculateAutomaticLinkPoint(self, point: Union[QPointF, QPoint]) -&gt; Tuple[QPointF, Qt.Edge]
+Returns the best link point to use for a link originating at a specified <code class="docutils literal notranslate"><span class="pre">other</span></code> point.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>other</strong> – point for other end of link (in scene coordinates)</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Tuple[QPointF, Qt.Edge]</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p>calculated link point in item coordinates.</p></li>
+<li><p>edge: item edge for calculated best link point</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="attribute">
 <dt id="qgis.gui.QgsModelComponentGraphicItem.changed">
 <code class="sig-name descname">changed</code><a class="headerlink" href="#qgis.gui.QgsModelComponentGraphicItem.changed" title="Permalink to this definition">¶</a></dt>
@@ -1928,6 +1974,54 @@ by the item. [signal]</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="qgis.gui.QgsModelComponentGraphicItem.linkPoint">
+<code class="sig-name descname">linkPoint</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">edge: Qt.Edge</em>, <em class="sig-param">index: int</em><span class="sig-paren">)</span> &#x2192; QPointF<a class="headerlink" href="#qgis.gui.QgsModelComponentGraphicItem.linkPoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the location of the link point with the specified <code class="docutils literal notranslate"><span class="pre">index</span></code> on the specified <code class="docutils literal notranslate"><span class="pre">edge</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>edge</strong> (<em>Qt.Edge</em>) – </p></li>
+<li><p><strong>index</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>QPointF</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="qgis.gui.QgsModelComponentGraphicItem.linkPointCount">
+<code class="sig-name descname">linkPointCount</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">edge: Qt.Edge</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#qgis.gui.QgsModelComponentGraphicItem.linkPointCount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the number of link points associated with the component on the specified <code class="docutils literal notranslate"><span class="pre">edge</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>edge</strong> (<em>Qt.Edge</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="qgis.gui.QgsModelComponentGraphicItem.linkPointText">
+<code class="sig-name descname">linkPointText</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">edge: Qt.Edge</em>, <em class="sig-param">index: int</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.gui.QgsModelComponentGraphicItem.linkPointText" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the text to use for the link point with the specified <code class="docutils literal notranslate"><span class="pre">index</span></code> on the specified <code class="docutils literal notranslate"><span class="pre">edge</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>edge</strong> (<em>Qt.Edge</em>) – </p></li>
+<li><p><strong>index</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
 <dt id="qgis.gui.QgsModelComponentGraphicItem.model">
 <code class="sig-name descname">model</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QgsProcessingModelAlgorithm<a class="headerlink" href="#qgis.gui.QgsModelComponentGraphicItem.model" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the model associated with this item.</p>
@@ -2098,7 +2192,7 @@ accounting for margins and interactive buttons.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 11:38 Mar 02, 2020.
+        Last updated on 11:38 Mar 03, 2020.
       </span>
 
     </p>
