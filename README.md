@@ -13,8 +13,6 @@ https://qgis.org/pyqgis/master/index.html
 
 Building and mostly pushing the docs properly requires SIP 4.19.7+.
 
-``pip3 install -r requirements.txt``
-
 
 ## To build:
 
