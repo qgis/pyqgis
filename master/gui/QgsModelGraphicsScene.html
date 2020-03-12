@@ -1319,6 +1319,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsModelGraphicsView.html">Class: QgsModelGraphicsView</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsModelOutputGraphicItem.html">Class: QgsModelOutputGraphicItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsModelParameterGraphicItem.html">Class: QgsModelParameterGraphicItem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsModelViewSnapMarker.html">Class: QgsModelViewSnapMarker</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsMultiBandColorRendererWidget.html">Class: QgsMultiBandColorRendererWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsMultiEditToolButton.html">Class: QgsMultiEditToolButton</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsNewAuxiliaryFieldDialog.html">Class: QgsNewAuxiliaryFieldDialog</a></li>
@@ -1746,6 +1747,21 @@ QgsModelGraphicsScene.Flags(QgsModelGraphicsScene.Flags)</p>
 <code class="sig-name descname">ModelComponent</code><em class="property"> = 1</em><a class="headerlink" href="#qgis.gui.QgsModelGraphicsScene.ModelComponent" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
+<dl class="attribute">
+<dt id="qgis.gui.QgsModelGraphicsScene.MouseHandles">
+<code class="sig-name descname">MouseHandles</code><em class="property"> = 99</em><a class="headerlink" href="#qgis.gui.QgsModelGraphicsScene.MouseHandles" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qgis.gui.QgsModelGraphicsScene.RubberBand">
+<code class="sig-name descname">RubberBand</code><em class="property"> = 100</em><a class="headerlink" href="#qgis.gui.QgsModelGraphicsScene.RubberBand" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qgis.gui.QgsModelGraphicsScene.ZSnapIndicator">
+<code class="sig-name descname">ZSnapIndicator</code><em class="property"> = 101</em><a class="headerlink" href="#qgis.gui.QgsModelGraphicsScene.ZSnapIndicator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="class">
 <dt id="qgis.gui.QgsModelGraphicsScene.ZValues">
 <em class="property">class </em><code class="sig-name descname">ZValues</code><a class="headerlink" href="#qgis.gui.QgsModelGraphicsScene.ZValues" title="Permalink to this definition">¶</a></dt>
@@ -1777,6 +1793,20 @@ optional <code class="docutils literal notranslate"><span class="pre">id</span><
 <dt id="qgis.gui.QgsModelGraphicsScene.componentChanged">
 <code class="sig-name descname">componentChanged</code><a class="headerlink" href="#qgis.gui.QgsModelGraphicsScene.componentChanged" title="Permalink to this definition">¶</a></dt>
 <dd><p>Emitted whenever a component of the model is changed. [signal]</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qgis.gui.QgsModelGraphicsScene.componentItemAt">
+<code class="sig-name descname">componentItemAt</code><span class="sig-paren">(</span><em class="sig-param">self, position: Union[QPointF, QPoint]</em><span class="sig-paren">)</span> &#x2192; QgsModelComponentGraphicItem<a class="headerlink" href="#qgis.gui.QgsModelGraphicsScene.componentItemAt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the topmost component item at a specified <code class="docutils literal notranslate"><span class="pre">position</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>position</strong> (<em>Union</em><em>[</em><em>QPointF</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsModelComponentGraphicItem.html#qgis.gui.QgsModelComponentGraphicItem" title="qgis.gui.QgsModelComponentGraphicItem">QgsModelComponentGraphicItem</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1876,6 +1906,14 @@ optional <code class="docutils literal notranslate"><span class="pre">id</span><
 <dt id="qgis.gui.QgsModelGraphicsScene.customEvent">
 <code class="sig-name descname">customEvent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsModelGraphicsScene.customEvent" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="method">
+<dt id="qgis.gui.QgsModelGraphicsScene.deselectAll">
+<code class="sig-name descname">deselectAll</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsModelGraphicsScene.deselectAll" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clears any selected items in the scene.</p>
+<p>Call this method rather than QGraphicsScene.clearSelection, as the latter does
+not correctly emit signals to allow the scene’s model to update.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="qgis.gui.QgsModelGraphicsScene.disconnectNotify">
@@ -2018,6 +2056,29 @@ optional <code class="docutils literal notranslate"><span class="pre">id</span><
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="qgis.gui.QgsModelGraphicsScene.selectedComponentItems">
+<code class="sig-name descname">selectedComponentItems</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; List[QgsModelComponentGraphicItem]<a class="headerlink" href="#qgis.gui.QgsModelGraphicsScene.selectedComponentItems" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns list of selected component items.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List[<a class="reference internal" href="QgsModelComponentGraphicItem.html#qgis.gui.QgsModelComponentGraphicItem" title="qgis.gui.QgsModelComponentGraphicItem">QgsModelComponentGraphicItem</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="qgis.gui.QgsModelGraphicsScene.selectedItemChanged">
+<code class="sig-name descname">selectedItemChanged</code><a class="headerlink" href="#qgis.gui.QgsModelGraphicsScene.selectedItemChanged" title="Permalink to this definition">¶</a></dt>
+<dd><p>Emitted whenever the selected item changes.
+If <code class="docutils literal notranslate"><span class="pre">None</span></code>, no item is selected. [signal]</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>selected</strong> (<a class="reference internal" href="QgsModelComponentGraphicItem.html#qgis.gui.QgsModelComponentGraphicItem" title="qgis.gui.QgsModelComponentGraphicItem"><em>QgsModelComponentGraphicItem</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
 <dt id="qgis.gui.QgsModelGraphicsScene.sender">
 <code class="sig-name descname">sender</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsModelGraphicsScene.sender" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -2070,6 +2131,17 @@ flags are not affected.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="qgis.gui.QgsModelGraphicsScene.setSelectedItem">
+<code class="sig-name descname">setSelectedItem</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item: QgsModelComponentGraphicItem</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsModelGraphicsScene.setSelectedItem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clears any selected items and sets <code class="docutils literal notranslate"><span class="pre">item</span></code> as the current selection.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>item</strong> (<a class="reference internal" href="QgsModelComponentGraphicItem.html#qgis.gui.QgsModelComponentGraphicItem" title="qgis.gui.QgsModelComponentGraphicItem"><em>QgsModelComponentGraphicItem</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
 <dt id="qgis.gui.QgsModelGraphicsScene.timerEvent">
 <code class="sig-name descname">timerEvent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsModelGraphicsScene.timerEvent" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -2095,7 +2167,7 @@ flags are not affected.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 10:44 Mar 11, 2020.
+        Last updated on 14:27 Mar 12, 2020.
       </span>
 
     </p>

@@ -1319,6 +1319,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsModelGraphicsView.html">Class: QgsModelGraphicsView</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsModelOutputGraphicItem.html">Class: QgsModelOutputGraphicItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsModelParameterGraphicItem.html">Class: QgsModelParameterGraphicItem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsModelViewSnapMarker.html">Class: QgsModelViewSnapMarker</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsMultiBandColorRendererWidget.html">Class: QgsMultiBandColorRendererWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsMultiEditToolButton.html">Class: QgsMultiEditToolButton</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsNewAuxiliaryFieldDialog.html">Class: QgsNewAuxiliaryFieldDialog</a></li>
@@ -1725,11 +1726,6 @@ it must exist for the lifetime of this object.</p>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="qgis.gui.QgsModelComponentGraphicItem.FlagMultilineText">
-<code class="sig-name descname">FlagMultilineText</code><em class="property"> = 1</em><a class="headerlink" href="#qgis.gui.QgsModelComponentGraphicItem.FlagMultilineText" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
 <dl class="class">
 <dt id="qgis.gui.QgsModelComponentGraphicItem.Flags">
 <em class="property">class </em><code class="sig-name descname">Flags</code><a class="headerlink" href="#qgis.gui.QgsModelComponentGraphicItem.Flags" title="Permalink to this definition">¶</a></dt>
@@ -1817,6 +1813,17 @@ Returns the best link point to use for a link originating at a specified <code c
 <li><p>edge: item edge for calculated best link point</p></li>
 </ul>
 </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="qgis.gui.QgsModelComponentGraphicItem.canDeleteComponent">
+<code class="sig-name descname">canDeleteComponent</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.gui.QgsModelComponentGraphicItem.canDeleteComponent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the component can be deleted.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2045,11 +2052,14 @@ by the item. [signal]</p>
 
 <dl class="method">
 <dt id="qgis.gui.QgsModelComponentGraphicItem.itemRect">
-<code class="sig-name descname">itemRect</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QRectF<a class="headerlink" href="#qgis.gui.QgsModelComponentGraphicItem.itemRect" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">itemRect</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">storedRect: bool = False</em><span class="sig-paren">)</span> &#x2192; QRectF<a class="headerlink" href="#qgis.gui.QgsModelComponentGraphicItem.itemRect" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the rectangle representing the body of the item.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>QRectF</p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>storedRect</strong> (<em>bool = False</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>QRectF</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2160,10 +2170,23 @@ by the item. [signal]</p>
 
 <dl class="method">
 <dt id="qgis.gui.QgsModelComponentGraphicItem.mouseReleaseEvent">
-<code class="sig-name descname">mouseReleaseEvent</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">event: QGraphicsSceneMouseEvent</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsModelComponentGraphicItem.mouseReleaseEvent" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<code class="sig-name descname">mouseReleaseEvent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsModelComponentGraphicItem.mouseReleaseEvent" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="qgis.gui.QgsModelComponentGraphicItem.moveComponentBy">
+<code class="sig-name descname">moveComponentBy</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">dx: float</em>, <em class="sig-param">dy: float</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsModelComponentGraphicItem.moveComponentBy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Moves the component by the specified <code class="docutils literal notranslate"><span class="pre">dx</span></code> and <code class="docutils literal notranslate"><span class="pre">dy</span></code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Call this method, not QGraphicsItem.moveBy!</p>
+</div>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>event</strong> (<em>QGraphicsSceneMouseEvent</em>) – </p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dx</strong> (<em>float</em>) – </p></li>
+<li><p><strong>dy</strong> (<em>float</em>) – </p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -2186,6 +2209,31 @@ by the item. [signal]</p>
 <dt id="qgis.gui.QgsModelComponentGraphicItem.prepareGeometryChange">
 <code class="sig-name descname">prepareGeometryChange</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsModelComponentGraphicItem.prepareGeometryChange" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="method">
+<dt id="qgis.gui.QgsModelComponentGraphicItem.previewItemMove">
+<code class="sig-name descname">previewItemMove</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">dx: float</em>, <em class="sig-param">dy: float</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsModelComponentGraphicItem.previewItemMove" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shows a preview of moving the item from its stored position by <code class="docutils literal notranslate"><span class="pre">dx</span></code>, <code class="docutils literal notranslate"><span class="pre">dy</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dx</strong> (<em>float</em>) – </p></li>
+<li><p><strong>dy</strong> (<em>float</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="qgis.gui.QgsModelComponentGraphicItem.previewItemRectChange">
+<code class="sig-name descname">previewItemRectChange</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">rect: QRectF</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsModelComponentGraphicItem.previewItemRectChange" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shows a preview of setting a new <code class="docutils literal notranslate"><span class="pre">rect</span></code> for the item.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>rect</strong> (<em>QRectF</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="method">
 <dt id="qgis.gui.QgsModelComponentGraphicItem.receivers">
@@ -2240,6 +2288,17 @@ by the item. [signal]</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="qgis.gui.QgsModelComponentGraphicItem.setItemRect">
+<code class="sig-name descname">setItemRect</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">rect: QRectF</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsModelComponentGraphicItem.setItemRect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets a new scene <code class="docutils literal notranslate"><span class="pre">rect</span></code> for the item.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>rect</strong> (<em>QRectF</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
 <dt id="qgis.gui.QgsModelComponentGraphicItem.setLabel">
 <code class="sig-name descname">setLabel</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">label: str</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsModelComponentGraphicItem.setLabel" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the item’s <code class="docutils literal notranslate"><span class="pre">label</span></code> text.</p>
@@ -2252,6 +2311,12 @@ by the item. [signal]</p>
 <dd class="field-odd"><p><strong>label</strong> (<em>str</em>) – </p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="qgis.gui.QgsModelComponentGraphicItem.sizePositionChanged">
+<code class="sig-name descname">sizePositionChanged</code><a class="headerlink" href="#qgis.gui.QgsModelComponentGraphicItem.sizePositionChanged" title="Permalink to this definition">¶</a></dt>
+<dd><p>Emitted when the item’s size or position changes. [signal]</p>
 </dd></dl>
 
 <dl class="method">
@@ -2334,17 +2399,37 @@ accounting for margins and interactive buttons.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="qgis.gui.QgsModelComponentGraphicItem.updateButtonPositions">
+<code class="sig-name descname">updateButtonPositions</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsModelComponentGraphicItem.updateButtonPositions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates the item’s button positions, based on the current item rect.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="qgis.gui.QgsModelComponentGraphicItem.updateMicroFocus">
 <code class="sig-name descname">updateMicroFocus</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsModelComponentGraphicItem.updateMicroFocus" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="qgis.gui.QgsModelComponentGraphicItem.updateStoredComponentPosition">
-<code class="sig-name descname">updateStoredComponentPosition</code><span class="sig-paren">(</span><em class="sig-param">self, pos: Union[QPointF, QPoint]</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsModelComponentGraphicItem.updateStoredComponentPosition" title="Permalink to this definition">¶</a></dt>
-<dd><p>Updates the position stored in the model for the associated comment</p>
+<code class="sig-name descname">updateStoredComponentPosition</code><span class="sig-paren">(</span><em class="sig-param">self, pos: Union[QPointF, QPoint], size: QSizeF</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsModelComponentGraphicItem.updateStoredComponentPosition" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates the position and size stored in the model for the associated comment</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>pos</strong> (<em>Union</em><em>[</em><em>QPointF</em>) – </p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pos</strong> (<em>Union</em><em>[</em><em>QPointF</em>) – </p></li>
+<li><p><strong>size</strong> (<em>QSizeF</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="qgis.gui.QgsModelComponentGraphicItem.view">
+<code class="sig-name descname">view</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QgsModelGraphicsView<a class="headerlink" href="#qgis.gui.QgsModelComponentGraphicItem.view" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the associated view.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsModelGraphicsView.html#qgis.gui.QgsModelGraphicsView" title="qgis.gui.QgsModelGraphicsView">QgsModelGraphicsView</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -2370,7 +2455,7 @@ accounting for margins and interactive buttons.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 10:44 Mar 11, 2020.
+        Last updated on 14:27 Mar 12, 2020.
       </span>
 
     </p>
