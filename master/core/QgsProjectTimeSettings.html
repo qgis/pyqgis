@@ -869,8 +869,11 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsTaskManager.html">Class: QgsTaskManager</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsTaskWrapper.html">Class: QgsTaskWrapper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsTemplatedLineSymbolLayerBase.html">Class: QgsTemplatedLineSymbolLayerBase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsTemporalController.html">Class: QgsTemporalController</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsTemporalNavigationObject.html">Class: QgsTemporalNavigationObject</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsTemporalProperty.html">Class: QgsTemporalProperty</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsTemporalRangeObject.html">Class: QgsTemporalRangeObject</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsTemporalUtils.html">Class: QgsTemporalUtils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsTessellator.html">Class: QgsTessellator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsTestUtils.html">Class: QgsTestUtils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsTextAnnotation.html">Class: QgsTextAnnotation</a></li>
@@ -904,6 +907,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsVector.html">Class: QgsVector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsVector3D.html">Class: QgsVector3D</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsVectorDataProvider.html">Class: QgsVectorDataProvider</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsVectorDataProviderTemporalCapabilities.html">Class: QgsVectorDataProviderTemporalCapabilities</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsVectorFieldSymbolLayer.html">Class: QgsVectorFieldSymbolLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsVectorFileWriter.html">Class: QgsVectorFileWriter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsVectorFileWriterTask.html">Class: QgsVectorFileWriterTask</a></li>
@@ -1324,6 +1328,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsMultiEditToolButton.html">Class: QgsMultiEditToolButton</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsNewAuxiliaryFieldDialog.html">Class: QgsNewAuxiliaryFieldDialog</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsNewAuxiliaryLayerDialog.html">Class: QgsNewAuxiliaryLayerDialog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui/QgsNewDatabaseTableNameWidget.html">Class: QgsNewDatabaseTableNameWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsNewGeoPackageLayerDialog.html">Class: QgsNewGeoPackageLayerDialog</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsNewHttpConnection.html">Class: QgsNewHttpConnection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsNewMemoryLayerDialog.html">Class: QgsNewMemoryLayerDialog</a></li>
@@ -1486,6 +1491,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsTableWidgetBase.html">Class: QgsTableWidgetBase</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsTableWidgetItem.html">Class: QgsTableWidgetItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsTaskManagerWidget.html">Class: QgsTaskManagerWidget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui/QgsTemporalControllerWidget.html">Class: QgsTemporalControllerWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsTextFormatDialog.html">Class: QgsTextFormatDialog</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsTextFormatPanelWidget.html">Class: QgsTextFormatPanelWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsTextFormatWidget.html">Class: QgsTextFormatWidget</a></li>
@@ -1701,7 +1707,7 @@
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">PyQt5.QtCore.QObject</span></code></p>
 <p>Constructor for <a class="reference internal" href="#qgis.core.QgsProjectTimeSettings" title="qgis.core.QgsProjectTimeSettings"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProjectTimeSettings</span></code></a> with the specified <code class="docutils literal notranslate"><span class="pre">parent</span></code> object.</p>
 <p>Contains temporal settings and properties for the project,
-this will be used in animating/showing temporal layers.</p>
+this may be used when animating maps or showing temporal layers.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.14.</span></p>
 </div>
@@ -1731,6 +1737,21 @@ this will be used in animating/showing temporal layers.</p>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="qgis.core.QgsProjectTimeSettings.framesPerSecond">
+<code class="sig-name descname">framesPerSecond</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#qgis.core.QgsProjectTimeSettings.framesPerSecond" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the project’s default animation frame rate, in frames per second.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsProjectTimeSettings.setFramesPerSecond" title="qgis.core.QgsProjectTimeSettings.setFramesPerSecond"><code class="xref py py-func docutils literal notranslate"><span class="pre">setFramesPerSecond()</span></code></a></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
 <dt id="qgis.core.QgsProjectTimeSettings.isSignalConnected">
 <code class="sig-name descname">isSignalConnected</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsProjectTimeSettings.isSignalConnected" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -1738,7 +1759,7 @@ this will be used in animating/showing temporal layers.</p>
 <dl class="method">
 <dt id="qgis.core.QgsProjectTimeSettings.readXml">
 <code class="sig-name descname">readXml</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">element: QDomElement</em>, <em class="sig-param">context: QgsReadWriteContext</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsProjectTimeSettings.readXml" title="Permalink to this definition">¶</a></dt>
-<dd><p>Reads the settings’s state from a DOM element.</p>
+<dd><p>Reads the settings’s state from a DOM <code class="docutils literal notranslate"><span class="pre">element</span></code>.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsProjectTimeSettings.writeXml" title="qgis.core.QgsProjectTimeSettings.writeXml"><code class="xref py py-func docutils literal notranslate"><span class="pre">writeXml()</span></code></a></p>
@@ -1778,16 +1799,83 @@ this will be used in animating/showing temporal layers.</p>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="qgis.core.QgsProjectTimeSettings.setFramesPerSecond">
+<code class="sig-name descname">setFramesPerSecond</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">rate: float</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsProjectTimeSettings.setFramesPerSecond" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the project’s default animation frame <code class="docutils literal notranslate"><span class="pre">rate</span></code>, in frames per second.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsProjectTimeSettings.framesPerSecond" title="qgis.core.QgsProjectTimeSettings.framesPerSecond"><code class="xref py py-func docutils literal notranslate"><span class="pre">framesPerSecond()</span></code></a></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>rate</strong> (<em>float</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
 <dt id="qgis.core.QgsProjectTimeSettings.setTemporalRange">
-<code class="sig-name descname">setTemporalRange</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">extent: QgsDateTimeRange</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsProjectTimeSettings.setTemporalRange" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sets the project temporal range</p>
+<code class="sig-name descname">setTemporalRange</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">range: QgsDateTimeRange</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsProjectTimeSettings.setTemporalRange" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the project’s temporal <code class="docutils literal notranslate"><span class="pre">range</span></code>, which indicates the earliest
+and latest datetime ranges associated with the project.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is a manual, use-set property, and does not necessarily
+coincide with the earliest and latest temporal ranges set for
+individual layers in the project.</p>
+</div>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsProjectTimeSettings.temporalRange" title="qgis.core.QgsProjectTimeSettings.temporalRange"><code class="xref py py-func docutils literal notranslate"><span class="pre">temporalRange()</span></code></a></p>
 </div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsProjectTimeSettings.temporalRangeChanged" title="qgis.core.QgsProjectTimeSettings.temporalRangeChanged"><code class="xref py py-func docutils literal notranslate"><span class="pre">temporalRangeChanged()</span></code></a></p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>extent</strong> (<a class="reference internal" href="QgsDateTimeRange.html#qgis.core.QgsDateTimeRange" title="qgis.core.QgsDateTimeRange"><em>QgsDateTimeRange</em></a>) – </p>
+<dd class="field-odd"><p><strong>range</strong> (<a class="reference internal" href="QgsDateTimeRange.html#qgis.core.QgsDateTimeRange" title="qgis.core.QgsDateTimeRange"><em>QgsDateTimeRange</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="qgis.core.QgsProjectTimeSettings.setTimeStep">
+<code class="sig-name descname">setTimeStep</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">step: float</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsProjectTimeSettings.setTimeStep" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the project’s time <code class="docutils literal notranslate"><span class="pre">step</span></code> (length of one animation frame), which is used as the default value when
+animating the project.</p>
+<p>Units are specified via setTimeStepUnit()</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsProjectTimeSettings.timeStep" title="qgis.core.QgsProjectTimeSettings.timeStep"><code class="xref py py-func docutils literal notranslate"><span class="pre">timeStep()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsProjectTimeSettings.setTimeStepUnit" title="qgis.core.QgsProjectTimeSettings.setTimeStepUnit"><code class="xref py py-func docutils literal notranslate"><span class="pre">setTimeStepUnit()</span></code></a></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>step</strong> (<em>float</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="qgis.core.QgsProjectTimeSettings.setTimeStepUnit">
+<code class="sig-name descname">setTimeStepUnit</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">unit: QgsUnitTypes.TemporalUnit</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsProjectTimeSettings.setTimeStepUnit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the project’s time step (length of one animation frame) <code class="docutils literal notranslate"><span class="pre">unit</span></code>, which is used as the default value when
+animating the project.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsProjectTimeSettings.timeStepUnit" title="qgis.core.QgsProjectTimeSettings.timeStepUnit"><code class="xref py py-func docutils literal notranslate"><span class="pre">timeStepUnit()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsProjectTimeSettings.setTimeStep" title="qgis.core.QgsProjectTimeSettings.setTimeStep"><code class="xref py py-func docutils literal notranslate"><span class="pre">setTimeStep()</span></code></a></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>unit</strong> (<a class="reference internal" href="QgsUnitTypes.html#qgis.core.QgsUnitTypes.TemporalUnit" title="qgis.core.QgsUnitTypes.TemporalUnit"><em>QgsUnitTypes.TemporalUnit</em></a>) – </p>
 </dd>
 </dl>
 </dd></dl>
@@ -1795,10 +1883,21 @@ this will be used in animating/showing temporal layers.</p>
 <dl class="method">
 <dt id="qgis.core.QgsProjectTimeSettings.temporalRange">
 <code class="sig-name descname">temporalRange</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QgsDateTimeRange<a class="headerlink" href="#qgis.core.QgsProjectTimeSettings.temporalRange" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the project temporal range.</p>
+<dd><p>Returns the project’s temporal range, which indicates the earliest
+and latest datetime ranges associated with the project.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is a manual, use-set property, and does not necessarily
+coincide with the earliest and latest temporal ranges set for
+individual layers in the project.</p>
+</div>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsProjectTimeSettings.setTemporalRange" title="qgis.core.QgsProjectTimeSettings.setTemporalRange"><code class="xref py py-func docutils literal notranslate"><span class="pre">setTemporalRange()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsProjectTimeSettings.temporalRangeChanged" title="qgis.core.QgsProjectTimeSettings.temporalRangeChanged"><code class="xref py py-func docutils literal notranslate"><span class="pre">temporalRangeChanged()</span></code></a></p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
@@ -1810,7 +1909,7 @@ this will be used in animating/showing temporal layers.</p>
 <dl class="attribute">
 <dt id="qgis.core.QgsProjectTimeSettings.temporalRangeChanged">
 <code class="sig-name descname">temporalRangeChanged</code><a class="headerlink" href="#qgis.core.QgsProjectTimeSettings.temporalRangeChanged" title="Permalink to this definition">¶</a></dt>
-<dd><p>Emitted when temporal range changes.</p>
+<dd><p>Emitted when the temporal range changes.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsProjectTimeSettings.temporalRange" title="qgis.core.QgsProjectTimeSettings.temporalRange"><code class="xref py py-func docutils literal notranslate"><span class="pre">temporalRange()</span></code></a></p>
@@ -1819,6 +1918,47 @@ this will be used in animating/showing temporal layers.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsProjectTimeSettings.setTemporalRange" title="qgis.core.QgsProjectTimeSettings.setTemporalRange"><code class="xref py py-func docutils literal notranslate"><span class="pre">setTemporalRange()</span></code></a> [signal]</p>
 </div>
+</dd></dl>
+
+<dl class="method">
+<dt id="qgis.core.QgsProjectTimeSettings.timeStep">
+<code class="sig-name descname">timeStep</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#qgis.core.QgsProjectTimeSettings.timeStep" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the project’s time step (length of one animation frame), which is used as the default value when
+animating the project.</p>
+<p>Units are specified via timeStepUnit()</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsProjectTimeSettings.setTimeStep" title="qgis.core.QgsProjectTimeSettings.setTimeStep"><code class="xref py py-func docutils literal notranslate"><span class="pre">setTimeStep()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsProjectTimeSettings.timeStepUnit" title="qgis.core.QgsProjectTimeSettings.timeStepUnit"><code class="xref py py-func docutils literal notranslate"><span class="pre">timeStepUnit()</span></code></a></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="qgis.core.QgsProjectTimeSettings.timeStepUnit">
+<code class="sig-name descname">timeStepUnit</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; QgsUnitTypes.TemporalUnit<a class="headerlink" href="#qgis.core.QgsProjectTimeSettings.timeStepUnit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the project’s time step (length of one animation frame) unit, which is used as the default value when
+animating the project.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsProjectTimeSettings.setTimeStepUnit" title="qgis.core.QgsProjectTimeSettings.setTimeStepUnit"><code class="xref py py-func docutils literal notranslate"><span class="pre">setTimeStepUnit()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsProjectTimeSettings.timeStep" title="qgis.core.QgsProjectTimeSettings.timeStep"><code class="xref py py-func docutils literal notranslate"><span class="pre">timeStep()</span></code></a></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsUnitTypes.html#qgis.core.QgsUnitTypes.TemporalUnit" title="qgis.core.QgsUnitTypes.TemporalUnit">QgsUnitTypes.TemporalUnit</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -1863,7 +2003,7 @@ this will be used in animating/showing temporal layers.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 14:27 Mar 12, 2020.
+        Last updated on 11:55 Mar 13, 2020.
       </span>
 
     </p>
