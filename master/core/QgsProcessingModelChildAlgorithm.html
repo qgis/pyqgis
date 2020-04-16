@@ -37,7 +37,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Class: QgsProcessingModelChildParameterSource" href="QgsProcessingModelChildParameterSource.html" />
+    <link rel="next" title="Class: QgsProcessingModelChildDependency" href="QgsProcessingModelChildDependency.html" />
     <link rel="prev" title="Class: QgsProcessingModelAlgorithm" href="QgsProcessingModelAlgorithm.html" /> 
 </head>
 
@@ -650,6 +650,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingLayerPostProcessorInterface.html">Class: QgsProcessingLayerPostProcessorInterface</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingModelAlgorithm.html">Class: QgsProcessingModelAlgorithm</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Class: QgsProcessingModelChildAlgorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsProcessingModelChildDependency.html">Class: QgsProcessingModelChildDependency</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingModelChildParameterSource.html">Class: QgsProcessingModelChildParameterSource</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingModelComment.html">Class: QgsProcessingModelComment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingModelComponent.html">Class: QgsProcessingModelComponent</a></li>
@@ -658,6 +659,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingModelParameter.html">Class: QgsProcessingModelParameter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingMultiStepFeedback.html">Class: QgsProcessingMultiStepFeedback</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingOutputBoolean.html">Class: QgsProcessingOutputBoolean</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsProcessingOutputConditionalBranch.html">Class: QgsProcessingOutputConditionalBranch</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingOutputDefinition.html">Class: QgsProcessingOutputDefinition</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingOutputFile.html">Class: QgsProcessingOutputFile</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingOutputFolder.html">Class: QgsProcessingOutputFolder</a></li>
@@ -1354,6 +1356,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsMetadataWidget.html">Class: QgsMetadataWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsModelArrowItem.html">Class: QgsModelArrowItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsModelChildAlgorithmGraphicItem.html">Class: QgsModelChildAlgorithmGraphicItem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui/QgsModelChildDependenciesWidget.html">Class: QgsModelChildDependenciesWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsModelCommentGraphicItem.html">Class: QgsModelCommentGraphicItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsModelComponentGraphicItem.html">Class: QgsModelComponentGraphicItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsModelDesignerDialog.html">Class: QgsModelDesignerDialog</a></li>
@@ -1937,17 +1940,16 @@ like the specific algorithm or input details.</p>
 
 <dl class="py method">
 <dt id="qgis.core.QgsProcessingModelChildAlgorithm.dependencies">
-<code class="sig-name descname">dependencies</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span>str<span class="p">]</span><a class="headerlink" href="#qgis.core.QgsProcessingModelChildAlgorithm.dependencies" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">dependencies</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span><a class="reference internal" href="QgsProcessingModelChildDependency.html#module-QgsProcessingModelChildDependency" title="QgsProcessingModelChildDependency">QgsProcessingModelChildDependency</a><span class="p">]</span><a class="headerlink" href="#qgis.core.QgsProcessingModelChildAlgorithm.dependencies" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the list of child algorithms from the parent model on which this
-algorithm is dependent. The returned list contains the id() of the
-dependent algorithms.</p>
+algorithm is dependent.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsProcessingModelChildAlgorithm.setDependencies" title="qgis.core.QgsProcessingModelChildAlgorithm.setDependencies"><code class="xref py py-func docutils literal notranslate"><span class="pre">setDependencies()</span></code></a></p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>List[str]</p>
+<dd class="field-odd"><p>List[<a class="reference internal" href="QgsProcessingModelChildDependency.html#qgis.core.QgsProcessingModelChildDependency" title="qgis.core.QgsProcessingModelChildDependency">QgsProcessingModelChildDependency</a>]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2219,17 +2221,16 @@ to adjust their behavior at run time according to some user configuration.</p>
 
 <dl class="py method">
 <dt id="qgis.core.QgsProcessingModelChildAlgorithm.setDependencies">
-<code class="sig-name descname">setDependencies</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">dependencies</span><span class="p">:</span> <span class="n">Iterable<span class="p">[</span>str<span class="p">]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsProcessingModelChildAlgorithm.setDependencies" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">setDependencies</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">dependencies</span><span class="p">:</span> <span class="n">Iterable<span class="p">[</span><a class="reference internal" href="QgsProcessingModelChildDependency.html#module-QgsProcessingModelChildDependency" title="QgsProcessingModelChildDependency">QgsProcessingModelChildDependency</a><span class="p">]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsProcessingModelChildAlgorithm.setDependencies" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets the list of child algorithms from the parent model on which this
-algorithm is dependent. The list should contain the id() of the
-dependent algorithms.</p>
+algorithm is dependent.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsProcessingModelChildAlgorithm.dependencies" title="qgis.core.QgsProcessingModelChildAlgorithm.dependencies"><code class="xref py py-func docutils literal notranslate"><span class="pre">dependencies()</span></code></a></p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>dependencies</strong> (<em>Iterable</em><em>[</em><em>str</em><em>]</em>) – </p>
+<dd class="field-odd"><p><strong>dependencies</strong> (<em>Iterable</em><em>[</em><a class="reference internal" href="QgsProcessingModelChildDependency.html#qgis.core.QgsProcessingModelChildDependency" title="qgis.core.QgsProcessingModelChildDependency"><em>QgsProcessingModelChildDependency</em></a><em>]</em>) – </p>
 </dd>
 </dl>
 </dd></dl>
@@ -2303,7 +2304,7 @@ parameter names, the values are the sources for that parameter.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 15:56 Apr 15, 2020.
+        Last updated on 14:24 Apr 16, 2020.
       </span>
 
     </p>
