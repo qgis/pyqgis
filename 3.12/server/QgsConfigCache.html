@@ -1687,7 +1687,7 @@
 <td><p>Returns the current instance.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.server.QgsConfigCache.project" title="qgis.server.QgsConfigCache.project"><code class="xref py py-obj docutils literal notranslate"><span class="pre">project</span></code></a></p></td>
-<td><p>If the project is not cached yet, then the project is read thanks to the path.</p></td>
+<td><p>If the project is not cached yet, then the project is read from the path.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.server.QgsConfigCache.removeEntry" title="qgis.server.QgsConfigCache.removeEntry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeEntry</span></code></a></p></td>
 <td><p>Removes an entry from cache.</p></td>
@@ -1724,12 +1724,19 @@
 
 <dl class="py method">
 <dt id="qgis.server.QgsConfigCache.project">
-<code class="sig-name descname">project</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">path</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="../core/QgsProject.html#module-QgsProject" title="QgsProject">QgsProject</a><a class="headerlink" href="#qgis.server.QgsConfigCache.project" title="Permalink to this definition">¶</a></dt>
-<dd><p>If the project is not cached yet, then the project is read thanks to the
-path. If the project is not available, then <code class="docutils literal notranslate"><span class="pre">None</span></code> is returned.</p>
+<code class="sig-name descname">project</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">path</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">settings</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsServerSettings.html#module-QgsServerSettings" title="QgsServerSettings">QgsServerSettings</a></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="../core/QgsProject.html#module-QgsProject" title="QgsProject">QgsProject</a><a class="headerlink" href="#qgis.server.QgsConfigCache.project" title="Permalink to this definition">¶</a></dt>
+<dd><p>If the project is not cached yet, then the project is read from the
+path. If the project is not available, then <code class="docutils literal notranslate"><span class="pre">None</span></code> is returned.
+If the project contains any bad layer it is considered unavailable
+unless the server configuration variable QGIS_SERVER_IGNORE_BAD_LAYERS
+passed in the optional settings argument is set to <code class="docutils literal notranslate"><span class="pre">True</span></code> (the default
+value is <code class="docutils literal notranslate"><span class="pre">False</span></code>).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the filename of the QGIS project</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>str</em>) – the filename of the QGIS project</p></li>
+<li><p><strong>settings</strong> (<a class="reference internal" href="QgsServerSettings.html#qgis.server.QgsServerSettings" title="qgis.server.QgsServerSettings"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsServerSettings</span></code></a> = None) – QGIS server settings</p></li>
+</ul>
 </dd>
 <dt class="field-even">Return type</dt>
 <dd class="field-even"><p><a class="reference internal" href="../core/QgsProject.html#qgis.core.QgsProject" title="qgis.core.QgsProject">QgsProject</a></p>
@@ -1770,7 +1777,7 @@ path. If the project is not available, then <code class="docutils literal notran
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 15:42 Apr 10, 2020.
+        Last updated on 17:21 Apr 17, 2020.
       </span>
 
     </p>
