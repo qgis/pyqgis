@@ -693,6 +693,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsProcessingParameterFeatureSink.html">Class: QgsProcessingParameterFeatureSink</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsProcessingParameterFeatureSource.html">Class: QgsProcessingParameterFeatureSource</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsProcessingParameterField.html">Class: QgsProcessingParameterField</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../core/QgsProcessingParameterFieldMapping.html">Class: QgsProcessingParameterFieldMapping</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsProcessingParameterFile.html">Class: QgsProcessingParameterFile</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsProcessingParameterFileDestination.html">Class: QgsProcessingParameterFileDestination</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsProcessingParameterFolderDestination.html">Class: QgsProcessingParameterFolderDestination</a></li>
@@ -713,6 +714,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsProcessingParameterScale.html">Class: QgsProcessingParameterScale</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsProcessingParameterString.html">Class: QgsProcessingParameterString</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsProcessingParameterType.html">Class: QgsProcessingParameterType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../core/QgsProcessingParameterTypeFieldMapping.html">Class: QgsProcessingParameterTypeFieldMapping</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsProcessingParameterTypeVectorTileWriterLayers.html">Class: QgsProcessingParameterTypeVectorTileWriterLayers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsProcessingParameterVectorDestination.html">Class: QgsProcessingParameterVectorDestination</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsProcessingParameterVectorLayer.html">Class: QgsProcessingParameterVectorLayer</a></li>
@@ -2124,7 +2126,7 @@ to the canvas CRS.</p>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsRubberBand.addPoint">
-<code class="sig-name descname">addPoint</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">p</span><span class="p">:</span> <span class="n"><a class="reference internal" href="../core/QgsPointXY.html#module-QgsPointXY" title="QgsPointXY">QgsPointXY</a></span></em>, <em class="sig-param"><span class="n">doUpdate</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em>, <em class="sig-param"><span class="n">geometryIndex</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsRubberBand.addPoint" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">addPoint</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">p</span><span class="p">:</span> <span class="n"><a class="reference internal" href="../core/QgsPointXY.html#module-QgsPointXY" title="QgsPointXY">QgsPointXY</a></span></em>, <em class="sig-param"><span class="n">doUpdate</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em>, <em class="sig-param"><span class="n">geometryIndex</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">0</span></em>, <em class="sig-param"><span class="n">ringIndex</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsRubberBand.addPoint" title="Permalink to this definition">¶</a></dt>
 <dd><p>Adds a vertex to the rubberband and update canvas.
 The rendering of the vertex depends on the current GeometryType and icon.
 If adding more points consider using update=``False`` for better performance</p>
@@ -2134,6 +2136,7 @@ If adding more points consider using update=``False`` for better performance</p>
 <li><p><strong>p</strong> (<a class="reference internal" href="../core/QgsPointXY.html#qgis.core.QgsPointXY" title="qgis.core.QgsPointXY"><em>QgsPointXY</em></a>) – The vertex/point to add</p></li>
 <li><p><strong>doUpdate</strong> (<em>bool = True</em>) – Should the map canvas be updated immediately?</p></li>
 <li><p><strong>geometryIndex</strong> (<em>int = 0</em>) – The index of the feature part (in case of multipart geometries)</p></li>
+<li><p><strong>ringIndex</strong> (<em>int = 0</em>) – The index of the polygon ring (in case of polygons with holes)</p></li>
 </ul>
 </dd>
 </dl>
@@ -2155,14 +2158,15 @@ If adding more points consider using update=``False`` for better performance</p>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsRubberBand.closePoints">
-<code class="sig-name descname">closePoints</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">doUpdate</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em>, <em class="sig-param"><span class="n">geometryIndex</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsRubberBand.closePoints" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">closePoints</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">doUpdate</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em>, <em class="sig-param"><span class="n">geometryIndex</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">0</span></em>, <em class="sig-param"><span class="n">ringIndex</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsRubberBand.closePoints" title="Permalink to this definition">¶</a></dt>
 <dd><p>Ensures that a polygon geometry is closed and that the last vertex equals the
 first vertex.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>doUpdate</strong> (<em>bool = True</em>) – set to <code class="docutils literal notranslate"><span class="pre">True</span></code> to update the map canvas immediately</p></li>
-<li><p><strong>geometryIndex</strong> (<em>int = 0</em>) – index of the feature part (in case of multipart geometries)</p></li>
+<li><p><strong>geometryIndex</strong> (<em>int = 0</em>) – The index of the feature part (in case of multipart geometries)</p></li>
+<li><p><strong>ringIndex</strong> (<em>int = 0</em>) – The index of the polygon ring (in case of polygons with holes)</p></li>
 </ul>
 </dd>
 </dl>
@@ -2203,6 +2207,16 @@ first vertex.</p>
 </ul>
 </dd>
 </dl>
+<p>drawShape(self, p: QPainter, rings: Iterable[QPolygonF])
+Draws shape of the rubber band.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p</strong> – The QPainter object</p></li>
+<li><p><strong>rings</strong> – A list of points used to draw the shape</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -2233,13 +2247,14 @@ first vertex.</p>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsRubberBand.getPoint">
-<code class="sig-name descname">getPoint</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">i</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">j</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">0</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="../core/QgsPointXY.html#module-QgsPointXY" title="QgsPointXY">QgsPointXY</a><a class="headerlink" href="#qgis.gui.QgsRubberBand.getPoint" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">getPoint</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">i</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">j</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">0</span></em>, <em class="sig-param"><span class="n">ringIndex</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">0</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="../core/QgsPointXY.html#module-QgsPointXY" title="QgsPointXY">QgsPointXY</a><a class="headerlink" href="#qgis.gui.QgsRubberBand.getPoint" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a vertex</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>i</strong> (<em>int</em>) – The geometry index</p></li>
-<li><p><strong>j</strong> (<em>int = 0</em>) – The vertex index within geometry i</p></li>
+<li><p><strong>j</strong> (<em>int = 0</em>) – The vertex index within ring ringIndex</p></li>
+<li><p><strong>ringIndex</strong> (<em>int = 0</em>) – The ring index within geometry i</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type</dt>
@@ -2332,10 +2347,10 @@ first vertex.</p>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsRubberBand.movePoint">
-<code class="sig-name descname">movePoint</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">p</span><span class="p">:</span> <span class="n"><a class="reference internal" href="../core/QgsPointXY.html#module-QgsPointXY" title="QgsPointXY">QgsPointXY</a></span></em>, <em class="sig-param"><span class="n">geometryIndex</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsRubberBand.movePoint" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">movePoint</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">p</span><span class="p">:</span> <span class="n"><a class="reference internal" href="../core/QgsPointXY.html#module-QgsPointXY" title="QgsPointXY">QgsPointXY</a></span></em>, <em class="sig-param"><span class="n">geometryIndex</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">0</span></em>, <em class="sig-param"><span class="n">ringIndex</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsRubberBand.movePoint" title="Permalink to this definition">¶</a></dt>
 <dd><p>Moves the rubber band point specified by index. Note that if the rubber band is
 not used to track the last mouse position, the first point of the rubber band has two vertices</p>
-<p>movePoint(self, index: int, p: <a class="reference internal" href="../core/QgsPointXY.html#qgis.core.QgsPointXY" title="qgis.core.QgsPointXY"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsPointXY</span></code></a>, geometryIndex: int = 0)
+<p>movePoint(self, index: int, p: <a class="reference internal" href="../core/QgsPointXY.html#qgis.core.QgsPointXY" title="qgis.core.QgsPointXY"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsPointXY</span></code></a>, geometryIndex: int = 0, ringIndex: int = 0)
 Moves the rubber band point specified by index. Note that if the rubber band is
 not used to track the last mouse position, the first point of the rubber band has two vertices</p>
 <dl class="field-list simple">
@@ -2343,6 +2358,7 @@ not used to track the last mouse position, the first point of the rubber band ha
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>p</strong> (<a class="reference internal" href="../core/QgsPointXY.html#qgis.core.QgsPointXY" title="qgis.core.QgsPointXY"><em>QgsPointXY</em></a>) – </p></li>
 <li><p><strong>geometryIndex</strong> (<em>int = 0</em>) – </p></li>
+<li><p><strong>ringIndex</strong> (<em>int = 0</em>) – </p></li>
 </ul>
 </dd>
 </dl>
@@ -2397,13 +2413,14 @@ not used to track the last mouse position, the first point of the rubber band ha
 
 <dl class="py method">
 <dt id="qgis.gui.QgsRubberBand.removeLastPoint">
-<code class="sig-name descname">removeLastPoint</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">geometryIndex</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">0</span></em>, <em class="sig-param"><span class="n">doUpdate</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsRubberBand.removeLastPoint" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">removeLastPoint</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">geometryIndex</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">0</span></em>, <em class="sig-param"><span class="n">doUpdate</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em>, <em class="sig-param"><span class="n">ringIndex</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsRubberBand.removeLastPoint" title="Permalink to this definition">¶</a></dt>
 <dd><p>Removes the last point. Most useful in connection with undo operations</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>geometryIndex</strong> (<em>int = 0</em>) – </p></li>
 <li><p><strong>doUpdate</strong> (<em>bool = True</em>) – </p></li>
+<li><p><strong>ringIndex</strong> (<em>int = 0</em>) – </p></li>
 </ul>
 </dd>
 </dl>
@@ -2411,7 +2428,7 @@ not used to track the last mouse position, the first point of the rubber band ha
 
 <dl class="py method">
 <dt id="qgis.gui.QgsRubberBand.removePoint">
-<code class="sig-name descname">removePoint</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">index</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">0</span></em>, <em class="sig-param"><span class="n">doUpdate</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em>, <em class="sig-param"><span class="n">geometryIndex</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsRubberBand.removePoint" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">removePoint</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">index</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">0</span></em>, <em class="sig-param"><span class="n">doUpdate</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em>, <em class="sig-param"><span class="n">geometryIndex</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">0</span></em>, <em class="sig-param"><span class="n">ringIndex</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsRubberBand.removePoint" title="Permalink to this definition">¶</a></dt>
 <dd><p>Removes a vertex from the rubberband and (optionally) updates canvas.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2419,6 +2436,7 @@ not used to track the last mouse position, the first point of the rubber band ha
 <li><p><strong>index</strong> (<em>int = 0</em>) – The index of the vertex/point to remove, negative indexes start at end</p></li>
 <li><p><strong>doUpdate</strong> (<em>bool = True</em>) – Should the map canvas be updated immediately?</p></li>
 <li><p><strong>geometryIndex</strong> (<em>int = 0</em>) – The index of the feature part (in case of multipart geometries)</p></li>
+<li><p><strong>ringIndex</strong> (<em>int = 0</em>) – The index of the polygon ring (in case of polygons with holes)</p></li>
 </ul>
 </dd>
 </dl>
@@ -2719,7 +2737,7 @@ By default, no reprojection is done.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 15:48 Jun 01, 2020.
+        Last updated on 16:58 Jun 02, 2020.
       </span>
 
     </p>
