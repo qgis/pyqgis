@@ -118,10 +118,8 @@
 <li class="toctree-l2"><a class="reference internal" href="LabelSettingsXML.html">Class: LabelSettingsXML</a></li>
 <li class="toctree-l2"><a class="reference internal" href="LayerFlags.html">Class: LayerFlags</a></li>
 <li class="toctree-l2"><a class="reference internal" href="MeshDriverCapabilities.html">Class: MeshDriverCapabilities</a></li>
-<li class="toctree-l2"><a class="reference internal" href="MeshLayer.html">Class: MeshLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="NULL.html">Class: NULL</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PROJECT_SCALES.html">Class: PROJECT_SCALES</a></li>
-<li class="toctree-l2"><a class="reference internal" href="PluginLayer.html">Class: PluginLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ProjectDirtyBlocker.html">Class: ProjectDirtyBlocker</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgis.html">Class: Qgis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs25DRenderer.html">Class: Qgs25DRenderer</a></li>
@@ -941,7 +939,6 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsXmlUtils.html">Class: QgsXmlUtils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsZipItem.html">Class: QgsZipItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsZipUtils.html">Class: QgsZipUtils</a></li>
-<li class="toctree-l2"><a class="reference internal" href="RasterLayer.html">Class: RasterLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ReadWriteContextEnterCategory.html">Class: ReadWriteContextEnterCategory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="SimplifyHints.html">Class: SimplifyHints</a></li>
 <li class="toctree-l2"><a class="reference internal" href="SmartgroupId.html">Class: SmartgroupId</a></li>
@@ -967,7 +964,6 @@
 <li class="toctree-l2"><a class="reference internal" href="TextFormatTable.html">Class: TextFormatTable</a></li>
 <li class="toctree-l2"><a class="reference internal" href="TextFormatXML.html">Class: TextFormatXML</a></li>
 <li class="toctree-l2"><a class="reference internal" href="USER_CRS_START_ID.html">Class: USER_CRS_START_ID</a></li>
-<li class="toctree-l2"><a class="reference internal" href="VectorLayer.html">Class: VectorLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="additions.html">Class: additions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="check.html">Class: check</a></li>
 <li class="toctree-l2"><a class="reference internal" href="compareWkt.html">Class: compareWkt</a></li>
@@ -3189,18 +3185,18 @@ iteration only is required.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># print the WKT representation of each part in a multi-point geometry</span>
 <span class="n">geometry</span> <span class="o">=</span> <span class="n">QgsGeometry</span><span class="o">.</span><span class="n">fromWkt</span><span class="p">(</span> <span class="s1">&#39;MultiPoint( 0 0, 1 1, 2 2)&#39;</span> <span class="p">)</span>
 <span class="k">for</span> <span class="n">part</span> <span class="ow">in</span> <span class="n">geometry</span><span class="o">.</span><span class="n">parts</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">part</span><span class="o">.</span><span class="n">asWkt</span><span class="p">())</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">part</span><span class="o">.</span><span class="n">asWkt</span><span class="p">())</span>
 
 <span class="c1"># single part geometries only have one part - this loop will iterate once only</span>
 <span class="n">geometry</span> <span class="o">=</span> <span class="n">QgsGeometry</span><span class="o">.</span><span class="n">fromWkt</span><span class="p">(</span> <span class="s1">&#39;LineString( 0 0, 10 10 )&#39;</span> <span class="p">)</span>
 <span class="k">for</span> <span class="n">part</span> <span class="ow">in</span> <span class="n">geometry</span><span class="o">.</span><span class="n">parts</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">part</span><span class="o">.</span><span class="n">asWkt</span><span class="p">())</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">part</span><span class="o">.</span><span class="n">asWkt</span><span class="p">())</span>
 
 <span class="c1"># part iteration can also be combined with vertex iteration</span>
 <span class="n">geometry</span> <span class="o">=</span> <span class="n">QgsGeometry</span><span class="o">.</span><span class="n">fromWkt</span><span class="p">(</span> <span class="s1">&#39;MultiPolygon((( 0 0, 0 10, 10 10, 10 0, 0 0 ),( 5 5, 5 6, 6 6, 6 5, 5 5)),((20 2, 22 2, 22 4, 20 4, 20 2)))&#39;</span> <span class="p">)</span>
 <span class="k">for</span> <span class="n">part</span> <span class="ow">in</span> <span class="n">geometry</span><span class="o">.</span><span class="n">parts</span><span class="p">():</span>
     <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">part</span><span class="o">.</span><span class="n">vertices</span><span class="p">():</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">x</span><span class="p">(),</span> <span class="n">v</span><span class="o">.</span><span class="n">y</span><span class="p">())</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">x</span><span class="p">(),</span> <span class="n">v</span><span class="o">.</span><span class="n">y</span><span class="p">())</span>
 </pre></div>
 </div>
 <div class="admonition seealso">
@@ -4697,12 +4693,12 @@ if the parts are not going to be modified.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># print the WKT representation of each part in a multi-point geometry</span>
 <span class="n">geometry</span> <span class="o">=</span> <span class="n">QgsGeometry</span><span class="o">.</span><span class="n">fromWkt</span><span class="p">(</span> <span class="s1">&#39;MultiPoint( 0 0, 1 1, 2 2)&#39;</span> <span class="p">)</span>
 <span class="k">for</span> <span class="n">part</span> <span class="ow">in</span> <span class="n">geometry</span><span class="o">.</span><span class="n">parts</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">part</span><span class="o">.</span><span class="n">asWkt</span><span class="p">())</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">part</span><span class="o">.</span><span class="n">asWkt</span><span class="p">())</span>
 
 <span class="c1"># single part geometries only have one part - this loop will iterate once only</span>
 <span class="n">geometry</span> <span class="o">=</span> <span class="n">QgsGeometry</span><span class="o">.</span><span class="n">fromWkt</span><span class="p">(</span> <span class="s1">&#39;LineString( 0 0, 10 10 )&#39;</span> <span class="p">)</span>
 <span class="k">for</span> <span class="n">part</span> <span class="ow">in</span> <span class="n">geometry</span><span class="o">.</span><span class="n">parts</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">part</span><span class="o">.</span><span class="n">asWkt</span><span class="p">())</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">part</span><span class="o">.</span><span class="n">asWkt</span><span class="p">())</span>
 
 <span class="c1"># parts can be modified during the iteration</span>
 <span class="n">geometry</span> <span class="o">=</span> <span class="n">QgsGeometry</span><span class="o">.</span><span class="n">fromWkt</span><span class="p">(</span> <span class="s1">&#39;MultiPoint( 0 0, 1 1, 2 2)&#39;</span> <span class="p">)</span>
@@ -4713,7 +4709,7 @@ if the parts are not going to be modified.</p>
 <span class="n">geometry</span> <span class="o">=</span> <span class="n">QgsGeometry</span><span class="o">.</span><span class="n">fromWkt</span><span class="p">(</span> <span class="s1">&#39;MultiPolygon((( 0 0, 0 10, 10 10, 10 0, 0 0 ),( 5 5, 5 6, 6 6, 6 5, 5 5)),((20 2, 22 2, 22 4, 20 4, 20 2)))&#39;</span> <span class="p">)</span>
 <span class="k">for</span> <span class="n">part</span> <span class="ow">in</span> <span class="n">geometry</span><span class="o">.</span><span class="n">parts</span><span class="p">():</span>
     <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">part</span><span class="o">.</span><span class="n">vertices</span><span class="p">():</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">x</span><span class="p">(),</span> <span class="n">v</span><span class="o">.</span><span class="n">y</span><span class="p">())</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">x</span><span class="p">(),</span> <span class="n">v</span><span class="o">.</span><span class="n">y</span><span class="p">())</span>
 </pre></div>
 </div>
 <div class="admonition seealso">
@@ -5496,12 +5492,12 @@ modified using the iterator. See transformVertices() for a safe method to modify
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># print the x and y coordinate for each vertex in a LineString</span>
 <span class="n">geometry</span> <span class="o">=</span> <span class="n">QgsGeometry</span><span class="o">.</span><span class="n">fromWkt</span><span class="p">(</span> <span class="s1">&#39;LineString( 0 0, 1 1, 2 2)&#39;</span> <span class="p">)</span>
 <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">geometry</span><span class="o">.</span><span class="n">vertices</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">x</span><span class="p">(),</span> <span class="n">v</span><span class="o">.</span><span class="n">y</span><span class="p">())</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">x</span><span class="p">(),</span> <span class="n">v</span><span class="o">.</span><span class="n">y</span><span class="p">())</span>
 
 <span class="c1"># vertex iteration includes all parts and rings</span>
 <span class="n">geometry</span> <span class="o">=</span> <span class="n">QgsGeometry</span><span class="o">.</span><span class="n">fromWkt</span><span class="p">(</span> <span class="s1">&#39;MultiPolygon((( 0 0, 0 10, 10 10, 10 0, 0 0 ),( 5 5, 5 6, 6 6, 6 5, 5 5)),((20 2, 22 2, 22 4, 20 4, 20 2)))&#39;</span> <span class="p">)</span>
 <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">geometry</span><span class="o">.</span><span class="n">vertices</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">x</span><span class="p">(),</span> <span class="n">v</span><span class="o">.</span><span class="n">y</span><span class="p">())</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">x</span><span class="p">(),</span> <span class="n">v</span><span class="o">.</span><span class="n">y</span><span class="p">())</span>
 </pre></div>
 </div>
 <div class="admonition seealso">
@@ -5597,7 +5593,7 @@ An empty geometry will be returned if the diagram could not be calculated.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 15:20 May 29, 2020.
+        Last updated on 16:00 Jun 05, 2020.
       </span>
 
     </p>

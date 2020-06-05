@@ -118,10 +118,8 @@
 <li class="toctree-l2"><a class="reference internal" href="LabelSettingsXML.html">Class: LabelSettingsXML</a></li>
 <li class="toctree-l2"><a class="reference internal" href="LayerFlags.html">Class: LayerFlags</a></li>
 <li class="toctree-l2"><a class="reference internal" href="MeshDriverCapabilities.html">Class: MeshDriverCapabilities</a></li>
-<li class="toctree-l2"><a class="reference internal" href="MeshLayer.html">Class: MeshLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="NULL.html">Class: NULL</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PROJECT_SCALES.html">Class: PROJECT_SCALES</a></li>
-<li class="toctree-l2"><a class="reference internal" href="PluginLayer.html">Class: PluginLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ProjectDirtyBlocker.html">Class: ProjectDirtyBlocker</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgis.html">Class: Qgis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs25DRenderer.html">Class: Qgs25DRenderer</a></li>
@@ -941,7 +939,6 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsXmlUtils.html">Class: QgsXmlUtils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsZipItem.html">Class: QgsZipItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsZipUtils.html">Class: QgsZipUtils</a></li>
-<li class="toctree-l2"><a class="reference internal" href="RasterLayer.html">Class: RasterLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ReadWriteContextEnterCategory.html">Class: ReadWriteContextEnterCategory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="SimplifyHints.html">Class: SimplifyHints</a></li>
 <li class="toctree-l2"><a class="reference internal" href="SmartgroupId.html">Class: SmartgroupId</a></li>
@@ -967,7 +964,6 @@
 <li class="toctree-l2"><a class="reference internal" href="TextFormatTable.html">Class: TextFormatTable</a></li>
 <li class="toctree-l2"><a class="reference internal" href="TextFormatXML.html">Class: TextFormatXML</a></li>
 <li class="toctree-l2"><a class="reference internal" href="USER_CRS_START_ID.html">Class: USER_CRS_START_ID</a></li>
-<li class="toctree-l2"><a class="reference internal" href="VectorLayer.html">Class: VectorLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="additions.html">Class: additions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="check.html">Class: check</a></li>
 <li class="toctree-l2"><a class="reference internal" href="compareWkt.html">Class: compareWkt</a></li>
@@ -1696,7 +1692,7 @@
 <td><p>Returns a bitmask containing the supported capabilities</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterInterface.capabilitiesString" title="qgis.core.QgsRasterInterface.capabilitiesString"><code class="xref py py-obj docutils literal notranslate"><span class="pre">capabilitiesString</span></code></a></p></td>
-<td><p>Returns the above in friendly format.</p></td>
+<td><p>Returns the raster interface capabilities in friendly format.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterInterface.clone" title="qgis.core.QgsRasterInterface.clone"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clone</span></code></a></p></td>
 <td><p>Clone itself, create deep copy</p></td>
@@ -1822,10 +1818,13 @@
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterInterface.NoCapabilities" title="qgis.core.QgsRasterInterface.NoCapabilities"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NoCapabilities</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterInterface.Remove" title="qgis.core.QgsRasterInterface.Remove"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Remove</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterInterface.Prefetch" title="qgis.core.QgsRasterInterface.Prefetch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Prefetch</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterInterface.Size" title="qgis.core.QgsRasterInterface.Size"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Size</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterInterface.Remove" title="qgis.core.QgsRasterInterface.Remove"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Remove</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterInterface.Size" title="qgis.core.QgsRasterInterface.Size"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Size</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -1875,6 +1874,11 @@
 <dl class="py attribute">
 <dt id="qgis.core.QgsRasterInterface.NoCapabilities">
 <code class="sig-name descname">NoCapabilities</code><em class="property"> = 0</em><a class="headerlink" href="#qgis.core.QgsRasterInterface.NoCapabilities" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="qgis.core.QgsRasterInterface.Prefetch">
+<code class="sig-name descname">Prefetch</code><em class="property"> = 1024</em><a class="headerlink" href="#qgis.core.QgsRasterInterface.Prefetch" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -1954,7 +1958,7 @@ Caller is responsible to free the memory returned.</p>
 <dl class="py method">
 <dt id="qgis.core.QgsRasterInterface.capabilitiesString">
 <code class="sig-name descname">capabilitiesString</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.core.QgsRasterInterface.capabilitiesString" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the above in friendly format.</p>
+<dd><p>Returns the raster interface capabilities in friendly format.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>str</p>
@@ -2328,7 +2332,7 @@ resampling etc.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 15:20 May 29, 2020.
+        Last updated on 16:00 Jun 05, 2020.
       </span>
 
     </p>
