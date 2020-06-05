@@ -1350,6 +1350,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsMapCanvasItem.html">Class: QgsMapCanvasItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsMapCanvasSnappingUtils.html">Class: QgsMapCanvasSnappingUtils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsMapCanvasTracer.html">Class: QgsMapCanvasTracer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui/QgsMapCanvasUtils.html">Class: QgsMapCanvasUtils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsMapLayerAction.html">Class: QgsMapLayerAction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsMapLayerActionRegistry.html">Class: QgsMapLayerActionRegistry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsMapLayerComboBox.html">Class: QgsMapLayerComboBox</a></li>
@@ -2762,6 +2763,20 @@ relative home paths).</p>
 </dd></dl>
 
 <dl class="py method">
+<dt id="qgis.core.QgsProject.lastSaveDateTime">
+<code class="sig-name descname">lastSaveDateTime</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; QDateTime<a class="headerlink" href="#qgis.core.QgsProject.lastSaveDateTime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the date and time when the project was last saved.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.14.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>QDateTime</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt id="qgis.core.QgsProject.layerIsEmbedded">
 <code class="sig-name descname">layerIsEmbedded</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">id</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.core.QgsProject.layerIsEmbedded" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns project file path if layer is embedded from other project file. Returns empty string if layer is not embedded</p>
@@ -3305,6 +3320,28 @@ use QgsMapLayer.setFlags() instead</p>
 <dt id="qgis.core.QgsProject.oldProjectVersionWarning">
 <code class="sig-name descname">oldProjectVersionWarning</code><a class="headerlink" href="#qgis.core.QgsProject.oldProjectVersionWarning" title="Permalink to this definition">¶</a></dt>
 <dd><p>Emitted when an old project file is read. [signal]</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qgis.core.QgsProject.originalPath">
+<code class="sig-name descname">originalPath</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.core.QgsProject.originalPath" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the original path associated with the project.</p>
+<p>This is intended for use with non-qgs/qgz project files (see <a class="reference internal" href="../gui/QgsCustomProjectOpenHandler.html#module-QgsCustomProjectOpenHandler" title="QgsCustomProjectOpenHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsCustomProjectOpenHandler</span></code></a>) in order to allow
+custom project open handlers to specify the original file name of the project. For custom project formats,
+it is NOT appropriate to call setFileName() with the original project path, as this causes the original (non
+QGIS) project file to be overwritten when the project is next saved.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsProject.setOriginalPath" title="qgis.core.QgsProject.setOriginalPath"><code class="xref py py-func docutils literal notranslate"><span class="pre">setOriginalPath()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.14.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -4202,6 +4239,28 @@ use QgsMapLayer.setFlags() instead</p>
 </dd></dl>
 
 <dl class="py method">
+<dt id="qgis.core.QgsProject.setOriginalPath">
+<code class="sig-name descname">setOriginalPath</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">path</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsProject.setOriginalPath" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the original <code class="docutils literal notranslate"><span class="pre">path</span></code> associated with the project.</p>
+<p>This is intended for use with non-qgs/qgz project files (see <a class="reference internal" href="../gui/QgsCustomProjectOpenHandler.html#module-QgsCustomProjectOpenHandler" title="QgsCustomProjectOpenHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsCustomProjectOpenHandler</span></code></a>) in order to allow
+custom project open handlers to specify the original file name of the project. For custom project formats,
+it is NOT appropriate to call setFileName() with the original project path, as this causes the original (non
+QGIS) project file to be overwritten when the project is next saved.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsProject.originalPath" title="qgis.core.QgsProject.originalPath"><code class="xref py py-func docutils literal notranslate"><span class="pre">originalPath()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.14.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt id="qgis.core.QgsProject.setPresetHomePath">
 <code class="sig-name descname">setPresetHomePath</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">path</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsProject.setPresetHomePath" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets the project’s home <code class="docutils literal notranslate"><span class="pre">path</span></code>. If an empty path is specified than the
@@ -4874,7 +4933,7 @@ Paths written to the project file should be prepared with this method.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 15:00 Jun 04, 2020.
+        Last updated on 16:25 Jun 05, 2020.
       </span>
 
     </p>
