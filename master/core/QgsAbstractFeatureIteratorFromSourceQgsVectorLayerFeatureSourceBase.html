@@ -1814,31 +1814,31 @@
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractFeatureIteratorFromSourceQgsVectorLayerFeatureSourceBase.deref" title="qgis.core.QgsAbstractFeatureIteratorFromSourceQgsVectorLayerFeatureSourceBase.deref"><code class="xref py py-obj docutils literal notranslate"><span class="pre">deref</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Remove reference, delete if refs == 0</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractFeatureIteratorFromSourceQgsVectorLayerFeatureSourceBase.fetchFeature" title="qgis.core.QgsAbstractFeatureIteratorFromSourceQgsVectorLayerFeatureSourceBase.fetchFeature"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fetchFeature</span></code></a></p></td>
-<td><p></p></td>
+<td><p>If you write a feature iterator for your provider, this is the method you need to implement!!</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractFeatureIteratorFromSourceQgsVectorLayerFeatureSourceBase.filterRectToSourceCrs" title="qgis.core.QgsAbstractFeatureIteratorFromSourceQgsVectorLayerFeatureSourceBase.filterRectToSourceCrs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">filterRectToSourceCrs</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Returns a rectangle representing the original request’s <a class="reference internal" href="QgsFeatureRequest.html#qgis.core.QgsFeatureRequest.filterRect" title="qgis.core.QgsFeatureRequest.filterRect"><code class="xref py py-func docutils literal notranslate"><span class="pre">QgsFeatureRequest.filterRect()</span></code></a> If <code class="docutils literal notranslate"><span class="pre">transform</span></code> is a valid coordinate transform, the return rectangle will represent the requested filterRect() transformed to the source’s coordinate reference system.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractFeatureIteratorFromSourceQgsVectorLayerFeatureSourceBase.geometryToDestinationCrs" title="qgis.core.QgsAbstractFeatureIteratorFromSourceQgsVectorLayerFeatureSourceBase.geometryToDestinationCrs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geometryToDestinationCrs</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Transforms <code class="docutils literal notranslate"><span class="pre">feature</span></code>’s geometry according to the specified coordinate <code class="docutils literal notranslate"><span class="pre">transform</span></code>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractFeatureIteratorFromSourceQgsVectorLayerFeatureSourceBase.iteratorClosed" title="qgis.core.QgsAbstractFeatureIteratorFromSourceQgsVectorLayerFeatureSourceBase.iteratorClosed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">iteratorClosed</span></code></a></p></td>
 <td><p>to be called by from subclass in close()</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractFeatureIteratorFromSourceQgsVectorLayerFeatureSourceBase.nextFeatureFilterExpression" title="qgis.core.QgsAbstractFeatureIteratorFromSourceQgsVectorLayerFeatureSourceBase.nextFeatureFilterExpression"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nextFeatureFilterExpression</span></code></a></p></td>
-<td><p></p></td>
+<td><p>By default, the iterator will fetch all features and check if the feature matches the expression.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractFeatureIteratorFromSourceQgsVectorLayerFeatureSourceBase.nextFeatureFilterFids" title="qgis.core.QgsAbstractFeatureIteratorFromSourceQgsVectorLayerFeatureSourceBase.nextFeatureFilterFids"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nextFeatureFilterFids</span></code></a></p></td>
-<td><p></p></td>
+<td><p>By default, the iterator will fetch all features and check if the id is in the request.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractFeatureIteratorFromSourceQgsVectorLayerFeatureSourceBase.prepareSimplification" title="qgis.core.QgsAbstractFeatureIteratorFromSourceQgsVectorLayerFeatureSourceBase.prepareSimplification"><code class="xref py py-obj docutils literal notranslate"><span class="pre">prepareSimplification</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Setup the simplification of geometries to fetch using the specified simplify method</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractFeatureIteratorFromSourceQgsVectorLayerFeatureSourceBase.ref" title="qgis.core.QgsAbstractFeatureIteratorFromSourceQgsVectorLayerFeatureSourceBase.ref"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ref</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Add reference</p></td>
 </tr>
 </tbody>
 </table>
@@ -1861,23 +1861,51 @@
 </div>
 <dl class="py method">
 <dt id="qgis.core.QgsAbstractFeatureIteratorFromSourceQgsVectorLayerFeatureSourceBase.deref">
-<code class="sig-name descname">deref</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsAbstractFeatureIteratorFromSourceQgsVectorLayerFeatureSourceBase.deref" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">deref</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsAbstractFeatureIteratorFromSourceQgsVectorLayerFeatureSourceBase.deref" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove reference, delete if refs == 0</p>
+</dd></dl>
 
 <dl class="py method">
 <dt id="qgis.core.QgsAbstractFeatureIteratorFromSourceQgsVectorLayerFeatureSourceBase.fetchFeature">
-<code class="sig-name descname">fetchFeature</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsAbstractFeatureIteratorFromSourceQgsVectorLayerFeatureSourceBase.fetchFeature" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">fetchFeature</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">f</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsFeature.html#module-QgsFeature" title="QgsFeature">QgsFeature</a></span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsAbstractFeatureIteratorFromSourceQgsVectorLayerFeatureSourceBase.fetchFeature" title="Permalink to this definition">¶</a></dt>
+<dd><p>If you write a feature iterator for your provider, this is the method you
+need to implement!!</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>f</strong> – The feature to write to</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if a feature was written to f</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt id="qgis.core.QgsAbstractFeatureIteratorFromSourceQgsVectorLayerFeatureSourceBase.filterRectToSourceCrs">
-<code class="sig-name descname">filterRectToSourceCrs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsAbstractFeatureIteratorFromSourceQgsVectorLayerFeatureSourceBase.filterRectToSourceCrs" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">filterRectToSourceCrs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">transform</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsCoordinateTransform.html#module-QgsCoordinateTransform" title="QgsCoordinateTransform">QgsCoordinateTransform</a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="QgsRectangle.html#module-QgsRectangle" title="QgsRectangle">QgsRectangle</a><a class="headerlink" href="#qgis.core.QgsAbstractFeatureIteratorFromSourceQgsVectorLayerFeatureSourceBase.filterRectToSourceCrs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a rectangle representing the original request’s <a class="reference internal" href="QgsFeatureRequest.html#qgis.core.QgsFeatureRequest.filterRect" title="qgis.core.QgsFeatureRequest.filterRect"><code class="xref py py-func docutils literal notranslate"><span class="pre">QgsFeatureRequest.filterRect()</span></code></a>
+If <code class="docutils literal notranslate"><span class="pre">transform</span></code> is a valid coordinate transform, the return rectangle will represent
+the requested filterRect() transformed to the source’s coordinate reference system.
+Iterators should call this method and use the returned rectangle for filtering
+features to ensure that any QgsFeatureRequest.destinationCrs() set on the request is respected.
+Will throw a <a class="reference internal" href="QgsCsException.html#qgis.core.QgsCsException" title="qgis.core.QgsCsException"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsCsException</span></code></a> if the rect cannot be transformed from the destination CRS.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.0.</span></p>
+</div>
+</dd></dl>
 
 <dl class="py method">
 <dt id="qgis.core.QgsAbstractFeatureIteratorFromSourceQgsVectorLayerFeatureSourceBase.geometryToDestinationCrs">
-<code class="sig-name descname">geometryToDestinationCrs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsAbstractFeatureIteratorFromSourceQgsVectorLayerFeatureSourceBase.geometryToDestinationCrs" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">geometryToDestinationCrs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">feature</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsFeature.html#module-QgsFeature" title="QgsFeature">QgsFeature</a></span></em>, <em class="sig-param"><span class="n">transform</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsCoordinateTransform.html#module-QgsCoordinateTransform" title="QgsCoordinateTransform">QgsCoordinateTransform</a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsAbstractFeatureIteratorFromSourceQgsVectorLayerFeatureSourceBase.geometryToDestinationCrs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transforms <code class="docutils literal notranslate"><span class="pre">feature</span></code>’s geometry according to the specified coordinate <code class="docutils literal notranslate"><span class="pre">transform</span></code>.
+If <code class="docutils literal notranslate"><span class="pre">feature</span></code> has no geometry or <code class="docutils literal notranslate"><span class="pre">transform</span></code> is invalid then calling this method
+has no effect and will be shortcut.
+Iterators should call this method before returning features to ensure that any
+QgsFeatureRequest.destinationCrs() set on the request is respected.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.0.</span></p>
+</div>
+</dd></dl>
 
 <dl class="py method">
 <dt id="qgis.core.QgsAbstractFeatureIteratorFromSourceQgsVectorLayerFeatureSourceBase.iteratorClosed">
@@ -1887,23 +1915,52 @@
 
 <dl class="py method">
 <dt id="qgis.core.QgsAbstractFeatureIteratorFromSourceQgsVectorLayerFeatureSourceBase.nextFeatureFilterExpression">
-<code class="sig-name descname">nextFeatureFilterExpression</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsAbstractFeatureIteratorFromSourceQgsVectorLayerFeatureSourceBase.nextFeatureFilterExpression" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">nextFeatureFilterExpression</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">f</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsFeature.html#module-QgsFeature" title="QgsFeature">QgsFeature</a></span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsAbstractFeatureIteratorFromSourceQgsVectorLayerFeatureSourceBase.nextFeatureFilterExpression" title="Permalink to this definition">¶</a></dt>
+<dd><p>By default, the iterator will fetch all features and check if the feature
+matches the expression.
+If you have a more sophisticated metodology (SQL request for the features…)
+and you check for the expression in your fetchFeature method, you can just
+redirect this call to fetchFeature so the default check will be omitted.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>f</strong> – The feature to write to</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if a feature was written to f</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt id="qgis.core.QgsAbstractFeatureIteratorFromSourceQgsVectorLayerFeatureSourceBase.nextFeatureFilterFids">
-<code class="sig-name descname">nextFeatureFilterFids</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsAbstractFeatureIteratorFromSourceQgsVectorLayerFeatureSourceBase.nextFeatureFilterFids" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">nextFeatureFilterFids</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">f</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsFeature.html#module-QgsFeature" title="QgsFeature">QgsFeature</a></span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsAbstractFeatureIteratorFromSourceQgsVectorLayerFeatureSourceBase.nextFeatureFilterFids" title="Permalink to this definition">¶</a></dt>
+<dd><p>By default, the iterator will fetch all features and check if the id
+is in the request.
+If you have a more sophisticated metodology (SQL request for the features…)
+and you are sure, that any feature you return from fetchFeature will match
+if the request was FilterFids you can just redirect this call to fetchFeature
+so the default check will be omitted.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>f</strong> – The feature to write to</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if a feature was written to f</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt id="qgis.core.QgsAbstractFeatureIteratorFromSourceQgsVectorLayerFeatureSourceBase.prepareSimplification">
-<code class="sig-name descname">prepareSimplification</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsAbstractFeatureIteratorFromSourceQgsVectorLayerFeatureSourceBase.prepareSimplification" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">prepareSimplification</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">simplifyMethod</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsSimplifyMethod.html#module-QgsSimplifyMethod" title="QgsSimplifyMethod">QgsSimplifyMethod</a></span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsAbstractFeatureIteratorFromSourceQgsVectorLayerFeatureSourceBase.prepareSimplification" title="Permalink to this definition">¶</a></dt>
+<dd><p>Setup the simplification of geometries to fetch using the specified simplify method</p>
+</dd></dl>
 
 <dl class="py method">
 <dt id="qgis.core.QgsAbstractFeatureIteratorFromSourceQgsVectorLayerFeatureSourceBase.ref">
-<code class="sig-name descname">ref</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsAbstractFeatureIteratorFromSourceQgsVectorLayerFeatureSourceBase.ref" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">ref</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsAbstractFeatureIteratorFromSourceQgsVectorLayerFeatureSourceBase.ref" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add reference</p>
+</dd></dl>
 
 </dd></dl>
 
@@ -1921,7 +1978,7 @@
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 15:04 Jun 07, 2020.
+        Last updated on 16:18 Jun 08, 2020.
       </span>
 
     </p>

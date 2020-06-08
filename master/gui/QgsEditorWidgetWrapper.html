@@ -1850,7 +1850,7 @@ for their corresponding values and emit valuesChanged signal.</p>
 <td><p>Returns whether the constraint result is visible.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsEditorWidgetWrapper.createWidget" title="qgis.gui.QgsEditorWidgetWrapper.createWidget"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createWidget</span></code></a></p></td>
-<td><p></p></td>
+<td><p>This method should create a new widget with the provided parent.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsEditorWidgetWrapper.customEvent" title="qgis.gui.QgsEditorWidgetWrapper.customEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">customEvent</span></code></a></p></td>
 <td><p></p></td>
@@ -1877,7 +1877,7 @@ for their corresponding values and emit valuesChanged signal.</p>
 <td><p>Will return a wrapper for a given widget</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsEditorWidgetWrapper.initWidget" title="qgis.gui.QgsEditorWidgetWrapper.initWidget"><code class="xref py py-obj docutils literal notranslate"><span class="pre">initWidget</span></code></a></p></td>
-<td><p></p></td>
+<td><p>This method should initialize the editor widget with runtime data.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsEditorWidgetWrapper.isBlockingCommit" title="qgis.gui.QgsEditorWidgetWrapper.isBlockingCommit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isBlockingCommit</span></code></a></p></td>
 <td><p>Returns true if the widget is preventing the feature from being committed.</p></td>
@@ -1959,7 +1959,12 @@ for their corresponding values and emit valuesChanged signal.</p>
 <td><p>Emit this signal when the constraint result visibility changed.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsEditorWidgetWrapper.constraintStatusChanged" title="qgis.gui.QgsEditorWidgetWrapper.constraintStatusChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">constraintStatusChanged</span></code></a></p></td>
-<td><p>Emit this signal when the constraint status changed.</p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">type constraint</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsEditorWidgetWrapper.valueChanged" title="qgis.gui.QgsEditorWidgetWrapper.valueChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">valueChanged</span></code></a></p></td>
 <td><p>Emit this signal, whenever the value changed.</p></td>
@@ -2046,12 +2051,12 @@ for their corresponding values and emit valuesChanged signal.</p>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsEditorWidgetWrapper.childEvent">
-<code class="sig-name descname">childEvent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsEditorWidgetWrapper.childEvent" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">childEvent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">QChildEvent</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsEditorWidgetWrapper.childEvent" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsEditorWidgetWrapper.connectNotify">
-<code class="sig-name descname">connectNotify</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsEditorWidgetWrapper.connectNotify" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">connectNotify</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">QMetaMethod</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsEditorWidgetWrapper.connectNotify" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -2118,9 +2123,7 @@ This will be disabled when the form is not editable.</p>
 <dl class="py attribute">
 <dt id="qgis.gui.QgsEditorWidgetWrapper.constraintStatusChanged">
 <code class="sig-name descname">constraintStatusChanged</code><a class="headerlink" href="#qgis.gui.QgsEditorWidgetWrapper.constraintStatusChanged" title="Permalink to this definition">¶</a></dt>
-<dd><p>Emit this signal when the constraint status changed.
-constraintStatusChanged</p>
-<dl class="field-list simple">
+<dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>constraint</strong> (<em>str</em>) – represented as a string</p></li>
@@ -2134,12 +2137,26 @@ constraintStatusChanged</p>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsEditorWidgetWrapper.createWidget">
-<code class="sig-name descname">createWidget</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsEditorWidgetWrapper.createWidget" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">createWidget</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">parent</span><span class="p">:</span> <span class="n">QWidget</span></em><span class="sig-paren">)</span> &#x2192; QWidget<a class="headerlink" href="#qgis.gui.QgsEditorWidgetWrapper.createWidget" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method should create a new widget with the provided parent. This will only be called
+if the form did not already provide a widget, so it is not guaranteed to be called!
+You should not do initialization stuff, which also has to be done for custom editor
+widgets inside this method. Things like filling comboboxes and assigning other data which
+will also be used to make widgets on forms created in the QtDesigner usable should be assigned
+in initWidget().</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>parent</strong> – You should set this parent on the created widget.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A new widget</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsEditorWidgetWrapper.customEvent">
-<code class="sig-name descname">customEvent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsEditorWidgetWrapper.customEvent" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">customEvent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">QEvent</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsEditorWidgetWrapper.customEvent" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -2162,7 +2179,7 @@ constraintStatusChanged</p>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsEditorWidgetWrapper.disconnectNotify">
-<code class="sig-name descname">disconnectNotify</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsEditorWidgetWrapper.disconnectNotify" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">disconnectNotify</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">QMetaMethod</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsEditorWidgetWrapper.disconnectNotify" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -2243,8 +2260,14 @@ constraintStatusChanged</p>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsEditorWidgetWrapper.initWidget">
-<code class="sig-name descname">initWidget</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsEditorWidgetWrapper.initWidget" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">initWidget</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">editor</span><span class="p">:</span> <span class="n">QWidget</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsEditorWidgetWrapper.initWidget" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method should initialize the editor widget with runtime data. Fill your comboboxes here.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>editor</strong> – The widget which will represent this attribute editor in a form.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsEditorWidgetWrapper.isBlockingCommit">
@@ -2284,7 +2307,7 @@ of attribute values failing enforced field constraints.</p>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsEditorWidgetWrapper.isSignalConnected">
-<code class="sig-name descname">isSignalConnected</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsEditorWidgetWrapper.isSignalConnected" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">isSignalConnected</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">QMetaMethod</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.gui.QgsEditorWidgetWrapper.isSignalConnected" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -2337,17 +2360,17 @@ depend on the parent form scope.</p>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsEditorWidgetWrapper.receivers">
-<code class="sig-name descname">receivers</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsEditorWidgetWrapper.receivers" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">receivers</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">PYQT_SIGNAL</span></em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#qgis.gui.QgsEditorWidgetWrapper.receivers" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsEditorWidgetWrapper.sender">
-<code class="sig-name descname">sender</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsEditorWidgetWrapper.sender" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">sender</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; QObject<a class="headerlink" href="#qgis.gui.QgsEditorWidgetWrapper.sender" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsEditorWidgetWrapper.senderSignalIndex">
-<code class="sig-name descname">senderSignalIndex</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsEditorWidgetWrapper.senderSignalIndex" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">senderSignalIndex</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#qgis.gui.QgsEditorWidgetWrapper.senderSignalIndex" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -2484,7 +2507,7 @@ to reflect the new values.</p>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsEditorWidgetWrapper.timerEvent">
-<code class="sig-name descname">timerEvent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsEditorWidgetWrapper.timerEvent" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">timerEvent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">QTimerEvent</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsEditorWidgetWrapper.timerEvent" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -2602,7 +2625,7 @@ It will also return the values for the additional fields handled by the widget</
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 15:04 Jun 07, 2020.
+        Last updated on 16:18 Jun 08, 2020.
       </span>
 
     </p>

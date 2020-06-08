@@ -1818,22 +1818,22 @@
 </p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSurface.calculateBoundingBox" title="qgis.core.QgsSurface.calculateBoundingBox"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calculateBoundingBox</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Default calculator for the minimal bounding box for the geometry.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSurface.childCount" title="qgis.core.QgsSurface.childCount"><code class="xref py py-obj docutils literal notranslate"><span class="pre">childCount</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Returns number of child geometries (for geometries with child geometries) or child points (for geometries without child geometries - i.e.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSurface.childGeometry" title="qgis.core.QgsSurface.childGeometry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">childGeometry</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Returns pointer to child geometry (for geometries with child geometries - i.e.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSurface.childPoint" title="qgis.core.QgsSurface.childPoint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">childPoint</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Returns point at index (for geometries without child geometries - i.e.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSurface.clearCache" title="qgis.core.QgsSurface.clearCache"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clearCache</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSurface.hasChildGeometries" title="qgis.core.QgsSurface.hasChildGeometries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hasChildGeometries</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Returns whether the geometry has any child geometries (<code class="docutils literal notranslate"><span class="pre">False</span></code> for point / curve, <code class="docutils literal notranslate"><span class="pre">True</span></code> otherwise)</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSurface.isValid" title="qgis.core.QgsSurface.isValid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isValid</span></code></a></p></td>
 <td><p><dl class="field-list simple">
@@ -1843,7 +1843,7 @@
 </p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSurface.setZMTypeFromSubGeometry" title="qgis.core.QgsSurface.setZMTypeFromSubGeometry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setZMTypeFromSubGeometry</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Updates the geometry type based on whether sub geometries contain z or m values.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSurface.surfaceToPolygon" title="qgis.core.QgsSurface.surfaceToPolygon"><code class="xref py py-obj docutils literal notranslate"><span class="pre">surfaceToPolygon</span></code></a></p></td>
 <td><p>Gets a polygon representation of this surface.</p></td>
@@ -1879,23 +1879,49 @@
 
 <dl class="py method">
 <dt id="qgis.core.QgsSurface.calculateBoundingBox">
-<code class="sig-name descname">calculateBoundingBox</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsSurface.calculateBoundingBox" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">calculateBoundingBox</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="QgsRectangle.html#module-QgsRectangle" title="QgsRectangle">QgsRectangle</a><a class="headerlink" href="#qgis.core.QgsSurface.calculateBoundingBox" title="Permalink to this definition">¶</a></dt>
+<dd><p>Default calculator for the minimal bounding box for the geometry. Derived classes should override this method
+if a more efficient bounding box calculation is available.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt id="qgis.core.QgsSurface.childCount">
-<code class="sig-name descname">childCount</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsSurface.childCount" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">childCount</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#qgis.core.QgsSurface.childCount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns number of child geometries (for geometries with child geometries) or child points (for geometries without child geometries - i.e. curve / point)</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>used for vertex_iterator implementation</p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.0.</span></p>
+</div>
+</dd></dl>
 
 <dl class="py method">
 <dt id="qgis.core.QgsSurface.childGeometry">
-<code class="sig-name descname">childGeometry</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsSurface.childGeometry" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">childGeometry</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">index</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="QgsAbstractGeometry.html#module-QgsAbstractGeometry" title="QgsAbstractGeometry">QgsAbstractGeometry</a><a class="headerlink" href="#qgis.core.QgsSurface.childGeometry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns pointer to child geometry (for geometries with child geometries - i.e. geom. collection / polygon)</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>used for vertex_iterator implementation</p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.0.</span></p>
+</div>
+</dd></dl>
 
 <dl class="py method">
 <dt id="qgis.core.QgsSurface.childPoint">
-<code class="sig-name descname">childPoint</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsSurface.childPoint" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">childPoint</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">index</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="QgsPoint.html#module-QgsPoint" title="QgsPoint">QgsPoint</a><a class="headerlink" href="#qgis.core.QgsSurface.childPoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns point at index (for geometries without child geometries - i.e. curve / point)</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>used for vertex_iterator implementation</p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.0.</span></p>
+</div>
+</dd></dl>
 
 <dl class="py method">
 <dt id="qgis.core.QgsSurface.clearCache">
@@ -1904,8 +1930,16 @@
 
 <dl class="py method">
 <dt id="qgis.core.QgsSurface.hasChildGeometries">
-<code class="sig-name descname">hasChildGeometries</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsSurface.hasChildGeometries" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">hasChildGeometries</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsSurface.hasChildGeometries" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns whether the geometry has any child geometries (<code class="docutils literal notranslate"><span class="pre">False</span></code> for point / curve, <code class="docutils literal notranslate"><span class="pre">True</span></code> otherwise)</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>used for vertex_iterator implementation</p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.0.</span></p>
+</div>
+</dd></dl>
 
 <dl class="py method">
 <dt id="qgis.core.QgsSurface.isValid">
@@ -1922,8 +1956,9 @@
 
 <dl class="py method">
 <dt id="qgis.core.QgsSurface.setZMTypeFromSubGeometry">
-<code class="sig-name descname">setZMTypeFromSubGeometry</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsSurface.setZMTypeFromSubGeometry" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">setZMTypeFromSubGeometry</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">subggeom</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsAbstractGeometry.html#module-QgsAbstractGeometry" title="QgsAbstractGeometry">QgsAbstractGeometry</a></span></em>, <em class="sig-param"><span class="n">baseGeomType</span><span class="p">:</span> <span class="n">QgsWkbTypes.Type</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsSurface.setZMTypeFromSubGeometry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates the geometry type based on whether sub geometries contain z or m values.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt id="qgis.core.QgsSurface.surfaceToPolygon">
@@ -1953,7 +1988,7 @@ Ownership is transferred to the caller.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 15:04 Jun 07, 2020.
+        Last updated on 16:18 Jun 08, 2020.
       </span>
 
     </p>

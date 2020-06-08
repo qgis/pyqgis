@@ -1981,8 +1981,10 @@ based on the following rules:</p>
 
 <dl class="py method">
 <dt id="qgis.core.QgsPoint.calculateBoundingBox">
-<code class="sig-name descname">calculateBoundingBox</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsPoint.calculateBoundingBox" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">calculateBoundingBox</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="QgsRectangle.html#module-QgsRectangle" title="QgsRectangle">QgsRectangle</a><a class="headerlink" href="#qgis.core.QgsPoint.calculateBoundingBox" title="Permalink to this definition">¶</a></dt>
+<dd><p>Default calculator for the minimal bounding box for the geometry. Derived classes should override this method
+if a more efficient bounding box calculation is available.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt id="qgis.core.QgsPoint.childCount">
@@ -1996,8 +1998,16 @@ based on the following rules:</p>
 
 <dl class="py method">
 <dt id="qgis.core.QgsPoint.childGeometry">
-<code class="sig-name descname">childGeometry</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsPoint.childGeometry" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">childGeometry</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">index</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="QgsAbstractGeometry.html#module-QgsAbstractGeometry" title="QgsAbstractGeometry">QgsAbstractGeometry</a><a class="headerlink" href="#qgis.core.QgsPoint.childGeometry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns pointer to child geometry (for geometries with child geometries - i.e. geom. collection / polygon)</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>used for vertex_iterator implementation</p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.0.</span></p>
+</div>
+</dd></dl>
 
 <dl class="py method">
 <dt id="qgis.core.QgsPoint.childPoint">
@@ -2019,8 +2029,9 @@ based on the following rules:</p>
 
 <dl class="py method">
 <dt id="qgis.core.QgsPoint.clearCache">
-<code class="sig-name descname">clearCache</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsPoint.clearCache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">clearCache</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsPoint.clearCache" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clears any cached parameters associated with the geometry, e.g., bounding boxes</p>
+</dd></dl>
 
 <dl class="py method">
 <dt id="qgis.core.QgsPoint.clone">
@@ -2314,8 +2325,16 @@ distances where the extra expense of calling distance() is not required.</p>
 
 <dl class="py method">
 <dt id="qgis.core.QgsPoint.hasChildGeometries">
-<code class="sig-name descname">hasChildGeometries</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsPoint.hasChildGeometries" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">hasChildGeometries</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsPoint.hasChildGeometries" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns whether the geometry has any child geometries (<code class="docutils literal notranslate"><span class="pre">False</span></code> for point / curve, <code class="docutils literal notranslate"><span class="pre">True</span></code> otherwise)</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>used for vertex_iterator implementation</p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.0.</span></p>
+</div>
+</dd></dl>
 
 <dl class="py method">
 <dt id="qgis.core.QgsPoint.inclination">
@@ -2613,8 +2632,9 @@ add a z value and force the point to have a z dimension.</p>
 
 <dl class="py method">
 <dt id="qgis.core.QgsPoint.setZMTypeFromSubGeometry">
-<code class="sig-name descname">setZMTypeFromSubGeometry</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsPoint.setZMTypeFromSubGeometry" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">setZMTypeFromSubGeometry</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">subggeom</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsAbstractGeometry.html#module-QgsAbstractGeometry" title="QgsAbstractGeometry">QgsAbstractGeometry</a></span></em>, <em class="sig-param"><span class="n">baseGeomType</span><span class="p">:</span> <span class="n">QgsWkbTypes.Type</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsPoint.setZMTypeFromSubGeometry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates the geometry type based on whether sub geometries contain z or m values.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt id="qgis.core.QgsPoint.snappedToGrid">
@@ -2806,7 +2826,7 @@ add a z value and force the point to have a z dimension.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 15:04 Jun 07, 2020.
+        Last updated on 16:18 Jun 08, 2020.
       </span>
 
     </p>

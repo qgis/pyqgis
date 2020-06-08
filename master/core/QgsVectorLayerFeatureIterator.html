@@ -1877,8 +1877,9 @@
 
 <dl class="py method">
 <dt id="qgis.core.QgsVectorLayerFeatureIterator.deref">
-<code class="sig-name descname">deref</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsVectorLayerFeatureIterator.deref" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">deref</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsVectorLayerFeatureIterator.deref" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove reference, delete if refs == 0</p>
+</dd></dl>
 
 <dl class="py method">
 <dt id="qgis.core.QgsVectorLayerFeatureIterator.fetchFeature">
@@ -1896,13 +1897,30 @@
 
 <dl class="py method">
 <dt id="qgis.core.QgsVectorLayerFeatureIterator.filterRectToSourceCrs">
-<code class="sig-name descname">filterRectToSourceCrs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsVectorLayerFeatureIterator.filterRectToSourceCrs" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">filterRectToSourceCrs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">transform</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsCoordinateTransform.html#module-QgsCoordinateTransform" title="QgsCoordinateTransform">QgsCoordinateTransform</a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="QgsRectangle.html#module-QgsRectangle" title="QgsRectangle">QgsRectangle</a><a class="headerlink" href="#qgis.core.QgsVectorLayerFeatureIterator.filterRectToSourceCrs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a rectangle representing the original request’s <a class="reference internal" href="QgsFeatureRequest.html#qgis.core.QgsFeatureRequest.filterRect" title="qgis.core.QgsFeatureRequest.filterRect"><code class="xref py py-func docutils literal notranslate"><span class="pre">QgsFeatureRequest.filterRect()</span></code></a>
+If <code class="docutils literal notranslate"><span class="pre">transform</span></code> is a valid coordinate transform, the return rectangle will represent
+the requested filterRect() transformed to the source’s coordinate reference system.
+Iterators should call this method and use the returned rectangle for filtering
+features to ensure that any QgsFeatureRequest.destinationCrs() set on the request is respected.
+Will throw a <a class="reference internal" href="QgsCsException.html#qgis.core.QgsCsException" title="qgis.core.QgsCsException"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsCsException</span></code></a> if the rect cannot be transformed from the destination CRS.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.0.</span></p>
+</div>
+</dd></dl>
 
 <dl class="py method">
 <dt id="qgis.core.QgsVectorLayerFeatureIterator.geometryToDestinationCrs">
-<code class="sig-name descname">geometryToDestinationCrs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsVectorLayerFeatureIterator.geometryToDestinationCrs" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">geometryToDestinationCrs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">feature</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsFeature.html#module-QgsFeature" title="QgsFeature">QgsFeature</a></span></em>, <em class="sig-param"><span class="n">transform</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsCoordinateTransform.html#module-QgsCoordinateTransform" title="QgsCoordinateTransform">QgsCoordinateTransform</a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsVectorLayerFeatureIterator.geometryToDestinationCrs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transforms <code class="docutils literal notranslate"><span class="pre">feature</span></code>’s geometry according to the specified coordinate <code class="docutils literal notranslate"><span class="pre">transform</span></code>.
+If <code class="docutils literal notranslate"><span class="pre">feature</span></code> has no geometry or <code class="docutils literal notranslate"><span class="pre">transform</span></code> is invalid then calling this method
+has no effect and will be shortcut.
+Iterators should call this method before returning features to ensure that any
+QgsFeatureRequest.destinationCrs() set on the request is respected.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.0.</span></p>
+</div>
+</dd></dl>
 
 <dl class="py method">
 <dt id="qgis.core.QgsVectorLayerFeatureIterator.isValid">
@@ -1916,8 +1934,9 @@
 
 <dl class="py method">
 <dt id="qgis.core.QgsVectorLayerFeatureIterator.iteratorClosed">
-<code class="sig-name descname">iteratorClosed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsVectorLayerFeatureIterator.iteratorClosed" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">iteratorClosed</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsVectorLayerFeatureIterator.iteratorClosed" title="Permalink to this definition">¶</a></dt>
+<dd><p>to be called by from subclass in close()</p>
+</dd></dl>
 
 <dl class="py method">
 <dt id="qgis.core.QgsVectorLayerFeatureIterator.nextFeatureFilterExpression">
@@ -1936,8 +1955,22 @@ while for others filtering is left to the provider implementation.</p>
 
 <dl class="py method">
 <dt id="qgis.core.QgsVectorLayerFeatureIterator.nextFeatureFilterFids">
-<code class="sig-name descname">nextFeatureFilterFids</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsVectorLayerFeatureIterator.nextFeatureFilterFids" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">nextFeatureFilterFids</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">f</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsFeature.html#module-QgsFeature" title="QgsFeature">QgsFeature</a></span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsVectorLayerFeatureIterator.nextFeatureFilterFids" title="Permalink to this definition">¶</a></dt>
+<dd><p>By default, the iterator will fetch all features and check if the id
+is in the request.
+If you have a more sophisticated metodology (SQL request for the features…)
+and you are sure, that any feature you return from fetchFeature will match
+if the request was FilterFids you can just redirect this call to fetchFeature
+so the default check will be omitted.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>f</strong> – The feature to write to</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if a feature was written to f</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt id="qgis.core.QgsVectorLayerFeatureIterator.prepareSimplification">
@@ -1955,8 +1988,9 @@ while for others filtering is left to the provider implementation.</p>
 
 <dl class="py method">
 <dt id="qgis.core.QgsVectorLayerFeatureIterator.ref">
-<code class="sig-name descname">ref</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsVectorLayerFeatureIterator.ref" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">ref</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsVectorLayerFeatureIterator.ref" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add reference</p>
+</dd></dl>
 
 <dl class="py method">
 <dt id="qgis.core.QgsVectorLayerFeatureIterator.rewind">
@@ -1985,7 +2019,7 @@ while for others filtering is left to the provider implementation.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 15:04 Jun 07, 2020.
+        Last updated on 16:18 Jun 08, 2020.
       </span>
 
     </p>
