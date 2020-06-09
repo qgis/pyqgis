@@ -1798,6 +1798,17 @@ output will not be created by default.</p>
 <p>QgsProcessingParameterFileDestination(<a class="reference internal" href="#qgis.core.QgsProcessingParameterFileDestination" title="qgis.core.QgsProcessingParameterFileDestination"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingParameterFileDestination</span></code></a>)</p>
 <p>A generic file based destination parameter, for specifying the destination path for a file (non-map layer)
 created by the algorithm.</p>
+<p>In some circumstances it is desirable to avoid the usual file overwriting confirmation prompt when
+users select an existing destination file for this parameter type (e.g., for algorithms which
+append to an existing destination file instead of overwriting them.). This can be done by setting
+the widget wrapper metadata “dontconfirmoverwrite” option:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">param</span> <span class="o">=</span> <span class="n">QgsProcessingParameterFileDestination</span><span class="p">(</span> <span class="s1">&#39;OUTPUT&#39;</span><span class="p">,</span> <span class="s1">&#39;Destination file&#39;</span><span class="p">)</span>
+<span class="c1"># don&#39;t show the file overwrite warning when users select a destination file:</span>
+<span class="n">param</span><span class="o">.</span><span class="n">setMetadata</span><span class="p">(</span> <span class="p">{</span><span class="s1">&#39;widget_wrapper&#39;</span><span class="p">:</span>
+  <span class="p">{</span> <span class="s1">&#39;dontconfirmoverwrite&#39;</span><span class="p">:</span> <span class="bp">True</span> <span class="p">}</span>
+<span class="p">})</span>
+</pre></div>
+</div>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0.</span></p>
 </div>
@@ -2020,7 +2031,7 @@ the model provider)</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 16:18 Jun 08, 2020.
+        Last updated on 15:43 Jun 09, 2020.
       </span>
 
     </p>
