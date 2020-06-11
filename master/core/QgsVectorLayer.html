@@ -1832,19 +1832,15 @@ url specifies the geometry type (“point”, “linestring”, “polygon”,
 “multipoint”,”multilinestring”,”multipolygon”), optionally followed by url parameters
 as follows:</p>
 <ul class="simple">
-<li><p>crs=definition</p></li>
+<li><p>crs=definition
+Defines the coordinate reference system to use for the layer.
+definition is any string accepted by <a class="reference internal" href="QgsCoordinateReferenceSystem.html#qgis.core.QgsCoordinateReferenceSystem.createFromString" title="qgis.core.QgsCoordinateReferenceSystem.createFromString"><code class="xref py py-func docutils literal notranslate"><span class="pre">QgsCoordinateReferenceSystem.createFromString()</span></code></a></p></li>
+<li><p>index=yes
+Specifies that the layer will be constructed with a spatial index</p></li>
+<li><p>field=name:type(length,precision)
+Defines an attribute of the layer. Multiple field parameters can be added
+to the data provider definition. type is one of “integer”, “double”, “string”.</p></li>
 </ul>
-<p>Defines the coordinate reference system to use for the layer.
-definition is any string accepted by <a class="reference internal" href="QgsCoordinateReferenceSystem.html#qgis.core.QgsCoordinateReferenceSystem.createFromString" title="qgis.core.QgsCoordinateReferenceSystem.createFromString"><code class="xref py py-func docutils literal notranslate"><span class="pre">QgsCoordinateReferenceSystem.createFromString()</span></code></a></p>
-<ul class="simple">
-<li><p>index=yes</p></li>
-</ul>
-<p>Specifies that the layer will be constructed with a spatial index</p>
-<ul class="simple">
-<li><p>field=name:type(length,precision)</p></li>
-</ul>
-<p>Defines an attribute of the layer. Multiple field parameters can be added
-to the data provider definition. type is one of “integer”, “double”, “string”.</p>
 <p>An example url is “Point?crs=epsg:4326&amp;field=id:integer&amp;field=name:string(20)&amp;index=yes”</p>
 <p>Since QGIS 3.4 when closing a project, the application shows a warning about potential data
 loss if there are any non-empty memory layers present. If your memory layer should not
@@ -1874,23 +1870,25 @@ geometry column, and other attributes. The url can be constructed using the
 <p>subsection wfs WFS (web feature service) data provider (wfs)</p>
 <p>Used to access data provided by a web feature service.</p>
 <p>The url can be a HTTP url to a WFS server (legacy, e.g. <a class="reference external" href="http://foobar/wfs?TYPENAME=xxx&amp;SRSNAME=yyy[&amp;FILTER=zzz">http://foobar/wfs?TYPENAME=xxx&amp;SRSNAME=yyy[&amp;FILTER=zzz</a>]), or,
-starting with QGIS 2.16, a URI constructed using the <a class="reference internal" href="QgsDataSourceUri.html#qgis.core.QgsDataSourceUri" title="qgis.core.QgsDataSourceUri"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsDataSourceUri</span></code></a> class with the following parameters :
-- url=string (mandatory): HTTP url to a WFS server endpoint. e.g <a class="reference external" href="http://foobar/wfs">http://foobar/wfs</a>
-- typename=string (mandatory): WFS typename
-- srsname=string (recommended): SRS like ‘EPSG:XXXX’
-- username=string
-- password=string
-- authcfg=string
-- version=auto/1.0.0/1.1.0/2.0.0
--sql=string: full SELECT SQL statement with optional WHERE, ORDER BY and possibly with JOIN if supported on server
-- filter=string: QGIS expression or OGC/FES filter
-- restrictToRequestBBOX=1: to download only features in the view extent (or more generally
-in the bounding box of the feature iterator)
-- pageSize=number: number of features to retrieve in a single request (WFS 2)
-- maxNumFeatures=number: maximum number of features to retrieve (possibly across several multiple paging requests)
-- IgnoreAxisOrientation=1: to ignore EPSG axis order for WFS 1.1 or 2.0
-- InvertAxisOrientation=1: to invert axis order
-- hideDownloadProgressDialog=1: to hide the download progress dialog</p>
+starting with QGIS 2.16, a URI constructed using the <a class="reference internal" href="QgsDataSourceUri.html#qgis.core.QgsDataSourceUri" title="qgis.core.QgsDataSourceUri"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsDataSourceUri</span></code></a> class with the following parameters :</p>
+<ul class="simple">
+<li><p>url=string (mandatory): HTTP url to a WFS server endpoint. e.g <a class="reference external" href="http://foobar/wfs">http://foobar/wfs</a></p></li>
+<li><p>typename=string (mandatory): WFS typename</p></li>
+<li><p>srsname=string (recommended): SRS like ‘EPSG:XXXX’</p></li>
+<li><p>username=string</p></li>
+<li><p>password=string</p></li>
+<li><p>authcfg=string</p></li>
+<li><p>version=auto/1.0.0/1.1.0/2.0.0</p></li>
+<li><p>sql=string: full SELECT SQL statement with optional WHERE, ORDER BY and possibly with JOIN if supported on server</p></li>
+<li><p>filter=string: QGIS expression or OGC/FES filter</p></li>
+<li><p>restrictToRequestBBOX=1: to download only features in the view extent (or more generally
+in the bounding box of the feature iterator)</p></li>
+<li><p>pageSize=number: number of features to retrieve in a single request (WFS 2)</p></li>
+<li><p>maxNumFeatures=number: maximum number of features to retrieve (possibly across several multiple paging requests)</p></li>
+<li><p>IgnoreAxisOrientation=1: to ignore EPSG axis order for WFS 1.1 or 2.0</p></li>
+<li><p>InvertAxisOrientation=1: to invert axis order</p></li>
+<li><p>hideDownloadProgressDialog=1: to hide the download progress dialog</p></li>
+</ul>
 <p>The ‘FILTER’ query string parameter can be used to filter
 the WFS feature type. The ‘FILTER’ key value can either be a QGIS expression
 or an OGC XML filter. If the value is set to a QGIS expression the driver will
@@ -1901,27 +1899,27 @@ spatial binary operators and the QGIS local “geomFromWKT, geomFromGML”
 geometry constructor functions.</p>
 <p>subsection oapif OGC API - Features data provider (oapif)</p>
 <p>Used to access data provided by a OGC API - Features server.</p>
-<p>The URI should be constructed using the <a class="reference internal" href="QgsDataSourceUri.html#qgis.core.QgsDataSourceUri" title="qgis.core.QgsDataSourceUri"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsDataSourceUri</span></code></a> class with the following parameters:
-- url=string (mandatory): HTTP url to a OGC API - Features landing page.
-- typename=string (mandatory): Collection id
-- username=string
-- password=string
-- authcfg=string
-- filter=string: QGIS expression (only datetime filtering is forwarded to the server)
-- restrictToRequestBBOX=1: to download only features in the view extent (or more generally
-in the bounding box of the feature iterator)
-- pageSize=number: number of features to retrieve in a single request
-- maxNumFeatures=number: maximum number of features to retrieve (possibly across several multiple paging requests)
-- hideDownloadProgressDialog=1: to hide the download progress dialog.</p>
+<p>The URI should be constructed using the <a class="reference internal" href="QgsDataSourceUri.html#qgis.core.QgsDataSourceUri" title="qgis.core.QgsDataSourceUri"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsDataSourceUri</span></code></a> class with the following parameters:</p>
+<ul class="simple">
+<li><p>url=string (mandatory): HTTP url to a OGC API - Features landing page.</p></li>
+<li><p>typename=string (mandatory): Collection id</p></li>
+<li><p>username=string</p></li>
+<li><p>password=string</p></li>
+<li><p>authcfg=string</p></li>
+<li><p>filter=string: QGIS expression (only datetime filtering is forwarded to the server)</p></li>
+<li><p>restrictToRequestBBOX=1: to download only features in the view extent (or more generally
+in the bounding box of the feature iterator)</p></li>
+<li><p>pageSize=number: number of features to retrieve in a single request</p></li>
+<li><p>maxNumFeatures=number: maximum number of features to retrieve (possibly across several multiple paging requests)</p></li>
+<li><p>hideDownloadProgressDialog=1: to hide the download progress dialog.</p></li>
+</ul>
 <p>Also note:</p>
 <ul class="simple">
-<li><p>You can use various functions available in the QGIS Expression list,</p></li>
+<li><p>You can use various functions available in the QGIS Expression list,
+however the function must exist server side and have the same name and arguments to work.</p></li>
+<li><p>Use the special $geometry parameter to provide the layer geometry column as input
+into the spatial binary operators e.g intersects($geometry, geomFromWKT(‘POINT (5 6)’))</p></li>
 </ul>
-<p>however the function must exist server side and have the same name and arguments to work.</p>
-<ul class="simple">
-<li><p>Use the special $geometry parameter to provide the layer geometry column as input</p></li>
-</ul>
-<p>into the spatial binary operators e.g intersects($geometry, geomFromWKT(‘POINT (5 6)’))</p>
 <p>subsection delimitedtext Delimited text file data provider (delimitedtext)</p>
 <p>Accesses data in a delimited text file, for example CSV files generated by
 spreadsheets. The contents of the file are split into columns based on specified
@@ -1946,9 +1944,8 @@ the default encoding for the operating system use “System”.</p>
 defined by new lines, except for csv format files for which quoted fields
 may span multiple records.  The default type is csv.</p>
 <ul class="simple">
-<li><p>“csv” splits the file based on three sets of characters:</p></li>
-</ul>
-<p>delimiter characters, quote characters,
+<li><p>“csv” splits the file based on three sets of characters:
+delimiter characters, quote characters,
 and escape characters.  Delimiter characters mark the end
 of a field. Quote characters enclose a field which can contain
 delimiter characters, and newlines.  Escape characters cause the
@@ -1958,15 +1955,14 @@ be different from delimiter characters. Escape characters that are
 also quote characters are treated specially - they can only
 escape themselves within quotes.  Elsewhere they are treated as
 quote characters.  The defaults for delimiter, quote, and escape
-are ‘,’, ‘”’, ‘”’.
--  “regexp” splits each record using a regular expression (see QRegExp
-documentation for details).
--  “whitespace” splits each record based on whitespace (on or more whitespace
-characters.  Leading whitespace in the record is ignored.
--  “plain” is provided for backwards compatibility.  It is equivalent to
+are ‘,’, ‘”’, ‘”’.</p></li>
+<li><p>“regexp” splits each record using a regular expression (see QRegExp
+documentation for details).</p></li>
+<li><p>“whitespace” splits each record based on whitespace (on or more whitespace
+characters.  Leading whitespace in the record is ignored.</p></li>
+<li><p>“plain” is provided for backwards compatibility.  It is equivalent to
 CSV except that the default quote characters are single and double quotes,
-and there is no escape characters.</p>
-<ul class="simple">
+and there is no escape characters.</p></li>
 <li><p>delimiter=characters</p></li>
 </ul>
 <p>Defines the delimiter characters used for csv and plain type files, or the
@@ -2045,12 +2041,18 @@ geometries.</p>
 </ul>
 <p>Defines the coordinate reference system used for the layer.  This can be
 any string accepted by <a class="reference internal" href="QgsCoordinateReferenceSystem.html#qgis.core.QgsCoordinateReferenceSystem.createFromString" title="qgis.core.QgsCoordinateReferenceSystem.createFromString"><code class="xref py py-func docutils literal notranslate"><span class="pre">QgsCoordinateReferenceSystem.createFromString()</span></code></a></p>
-<p>-subsetIndex=(yes|no)</p>
+<ul class="simple">
+<li><p>subsetIndex=(yes|no)</p></li>
+</ul>
 <p>Determines whether the provider generates an index to improve the efficiency
 of subsets.  The default is yes</p>
-<p>-spatialIndex=(yes|no)</p>
+<ul class="simple">
+<li><p>spatialIndex=(yes|no)</p></li>
+</ul>
 <p>Determines whether the provider generates a spatial index.  The default is no.</p>
-<p>-watchFile=(yes|no)</p>
+<ul class="simple">
+<li><p>watchFile=(yes|no)</p></li>
+</ul>
 <p>Defines whether the file will be monitored for changes. The default is
 to monitor for changes.</p>
 <ul class="simple">
@@ -3252,14 +3254,17 @@ changes can be discarded by calling rollBack().</p>
 <dd class="field-even"><p>Tuple[<a class="reference internal" href="QgsGeometry.html#qgis.core.QgsGeometry.OperationResult" title="qgis.core.QgsGeometry.OperationResult">QgsGeometry.OperationResult</a>, int]</p>
 </dd>
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>QgsGeometry.OperationResult
-- Success
-- LayerNotEditable
-- AddRingNotInExistingFeature
-- InvalidInputGeometryType
-- AddRingNotClosed
-- AddRingNotValid
-- AddRingCrossesExistingRings</p>
+<dd class="field-odd"><p><p>QgsGeometry.OperationResult</p>
+<ul class="simple">
+<li><p>Success</p></li>
+<li><p>LayerNotEditable</p></li>
+<li><p>AddRingNotInExistingFeature</p></li>
+<li><p>InvalidInputGeometryType</p></li>
+<li><p>AddRingNotClosed</p></li>
+<li><p>AddRingNotValid</p></li>
+<li><p>AddRingCrossesExistingRings</p></li>
+</ul>
+</p>
 </dd>
 </dl>
 <div class="admonition note">
@@ -3359,15 +3364,18 @@ changes can be discarded by calling rollBack().</p>
 <dd class="field-odd"><p><a class="reference internal" href="QgsGeometry.html#qgis.core.QgsGeometry.OperationResult" title="qgis.core.QgsGeometry.OperationResult">QgsGeometry.OperationResult</a></p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>QgsGeometry.OperationResult
-- Success
-- LayerNotEditable
-- SelectionIsEmpty
-- SelectionIsGreaterThanOne
-- AddPartSelectedGeometryNotFound
-- AddPartNotMultiGeometry
-- InvalidBaseGeometry
-- InvalidInputGeometryType</p>
+<dd class="field-even"><p><p>QgsGeometry.OperationResult</p>
+<ul class="simple">
+<li><p>Success</p></li>
+<li><p>LayerNotEditable</p></li>
+<li><p>SelectionIsEmpty</p></li>
+<li><p>SelectionIsGreaterThanOne</p></li>
+<li><p>AddPartSelectedGeometryNotFound</p></li>
+<li><p>AddPartNotMultiGeometry</p></li>
+<li><p>InvalidBaseGeometry</p></li>
+<li><p>InvalidInputGeometryType</p></li>
+</ul>
+</p>
 </dd>
 </dl>
 <div class="admonition note">
@@ -3394,15 +3402,18 @@ changes can be discarded by calling rollBack().</p>
 <dd><p>Adds a new part polygon to a multipart feature</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>QgsGeometry.OperationResult
-- Success
-- LayerNotEditable
-- SelectionIsEmpty
-- SelectionIsGreaterThanOne
-- AddPartSelectedGeometryNotFound
-- AddPartNotMultiGeometry
-- InvalidBaseGeometry
-- InvalidInputGeometryType</p>
+<dd class="field-odd"><p><p>QgsGeometry.OperationResult</p>
+<ul class="simple">
+<li><p>Success</p></li>
+<li><p>LayerNotEditable</p></li>
+<li><p>SelectionIsEmpty</p></li>
+<li><p>SelectionIsGreaterThanOne</p></li>
+<li><p>AddPartSelectedGeometryNotFound</p></li>
+<li><p>AddPartNotMultiGeometry</p></li>
+<li><p>InvalidBaseGeometry</p></li>
+<li><p>InvalidInputGeometryType</p></li>
+</ul>
+</p>
 </dd>
 </dl>
 <div class="admonition note">
@@ -3427,15 +3438,18 @@ Adds a new part polygon to a multipart feature</p>
 <dd class="field-odd"><p><a class="reference internal" href="QgsGeometry.html#qgis.core.QgsGeometry.OperationResult" title="qgis.core.QgsGeometry.OperationResult">QgsGeometry.OperationResult</a></p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>QgsGeometry.OperationResult
-- Success
-- LayerNotEditable
-- SelectionIsEmpty
-- SelectionIsGreaterThanOne
-- AddPartSelectedGeometryNotFound
-- AddPartNotMultiGeometry
-- InvalidBaseGeometry
-- InvalidInputGeometryType</p>
+<dd class="field-even"><p><p>QgsGeometry.OperationResult</p>
+<ul class="simple">
+<li><p>Success</p></li>
+<li><p>LayerNotEditable</p></li>
+<li><p>SelectionIsEmpty</p></li>
+<li><p>SelectionIsGreaterThanOne</p></li>
+<li><p>AddPartSelectedGeometryNotFound</p></li>
+<li><p>AddPartNotMultiGeometry</p></li>
+<li><p>InvalidBaseGeometry</p></li>
+<li><p>InvalidInputGeometryType</p></li>
+</ul>
+</p>
 </dd>
 </dl>
 <div class="admonition note">
@@ -3468,14 +3482,17 @@ changes can be discarded by calling rollBack().</p>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>QgsGeometry.OperationResult
-- Success
-- LayerNotEditable
-- AddRingNotInExistingFeature
-- InvalidInputGeometryType
-- AddRingNotClosed
-- AddRingNotValid
-- AddRingCrossesExistingRings</p>
+<dd class="field-even"><p><p>QgsGeometry.OperationResult</p>
+<ul class="simple">
+<li><p>Success</p></li>
+<li><p>LayerNotEditable</p></li>
+<li><p>AddRingNotInExistingFeature</p></li>
+<li><p>InvalidInputGeometryType</p></li>
+<li><p>AddRingNotClosed</p></li>
+<li><p>AddRingNotValid</p></li>
+<li><p>AddRingCrossesExistingRings</p></li>
+</ul>
+</p>
 </dd>
 </dl>
 <div class="admonition note">
@@ -3502,14 +3519,17 @@ Adds a ring to polygon/multipolygon features</p>
 <dd class="field-even"><p>Tuple[<a class="reference internal" href="QgsGeometry.html#qgis.core.QgsGeometry.OperationResult" title="qgis.core.QgsGeometry.OperationResult">QgsGeometry.OperationResult</a>, int]</p>
 </dd>
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>QgsGeometry.OperationResult
-- Success
-- LayerNotEditable
-- AddRingNotInExistingFeature
-- InvalidInputGeometryType
-- AddRingNotClosed
-- AddRingNotValid
-- AddRingCrossesExistingRings</p>
+<dd class="field-odd"><p><p>QgsGeometry.OperationResult</p>
+<ul class="simple">
+<li><p>Success</p></li>
+<li><p>LayerNotEditable</p></li>
+<li><p>AddRingNotInExistingFeature</p></li>
+<li><p>InvalidInputGeometryType</p></li>
+<li><p>AddRingNotClosed</p></li>
+<li><p>AddRingNotValid</p></li>
+<li><p>AddRingCrossesExistingRings</p></li>
+</ul>
+</p>
 </dd>
 </dl>
 <div class="admonition note">
@@ -6994,14 +7014,17 @@ and data store.</p>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>QgsGeometry.OperationResult
-- Success
-- NothingHappened
-- LayerNotEditable
-- InvalidInputGeometryType
-- InvalidBaseGeometry
-- GeometryEngineError
-- SplitCannotSplitPoint</p>
+<dd class="field-even"><p><p>QgsGeometry.OperationResult</p>
+<ul class="simple">
+<li><p>Success</p></li>
+<li><p>NothingHappened</p></li>
+<li><p>LayerNotEditable</p></li>
+<li><p>InvalidInputGeometryType</p></li>
+<li><p>InvalidBaseGeometry</p></li>
+<li><p>GeometryEngineError</p></li>
+<li><p>SplitCannotSplitPoint</p></li>
+</ul>
+</p>
 </dd>
 </dl>
 <div class="admonition note">
@@ -7028,14 +7051,17 @@ Splits features cut by the given line</p>
 <dd class="field-even"><p><a class="reference internal" href="QgsGeometry.html#qgis.core.QgsGeometry.OperationResult" title="qgis.core.QgsGeometry.OperationResult">QgsGeometry.OperationResult</a></p>
 </dd>
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>QgsGeometry.OperationResult
-- Success
-- NothingHappened
-- LayerNotEditable
-- InvalidInputGeometryType
-- InvalidBaseGeometry
-- GeometryEngineError
-- SplitCannotSplitPoint</p>
+<dd class="field-odd"><p><p>QgsGeometry.OperationResult</p>
+<ul class="simple">
+<li><p>Success</p></li>
+<li><p>NothingHappened</p></li>
+<li><p>LayerNotEditable</p></li>
+<li><p>InvalidInputGeometryType</p></li>
+<li><p>InvalidBaseGeometry</p></li>
+<li><p>GeometryEngineError</p></li>
+<li><p>SplitCannotSplitPoint</p></li>
+</ul>
+</p>
 </dd>
 </dl>
 <div class="admonition note">
@@ -7059,14 +7085,17 @@ changes can be discarded by calling rollBack().</p>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>QgsGeometry.OperationResult
-- Success
-- NothingHappened
-- LayerNotEditable
-- InvalidInputGeometryType
-- InvalidBaseGeometry
-- GeometryEngineError
-- SplitCannotSplitPoint</p>
+<dd class="field-even"><p><p>QgsGeometry.OperationResult</p>
+<ul class="simple">
+<li><p>Success</p></li>
+<li><p>NothingHappened</p></li>
+<li><p>LayerNotEditable</p></li>
+<li><p>InvalidInputGeometryType</p></li>
+<li><p>InvalidBaseGeometry</p></li>
+<li><p>GeometryEngineError</p></li>
+<li><p>SplitCannotSplitPoint</p></li>
+</ul>
+</p>
 </dd>
 </dl>
 <div class="admonition note">
@@ -7093,14 +7122,17 @@ Splits parts cut by the given line</p>
 <dd class="field-even"><p><a class="reference internal" href="QgsGeometry.html#qgis.core.QgsGeometry.OperationResult" title="qgis.core.QgsGeometry.OperationResult">QgsGeometry.OperationResult</a></p>
 </dd>
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>QgsGeometry.OperationResult
-- Success
-- NothingHappened
-- LayerNotEditable
-- InvalidInputGeometryType
-- InvalidBaseGeometry
-- GeometryEngineError
-- SplitCannotSplitPoint</p>
+<dd class="field-odd"><p><p>QgsGeometry.OperationResult</p>
+<ul class="simple">
+<li><p>Success</p></li>
+<li><p>NothingHappened</p></li>
+<li><p>LayerNotEditable</p></li>
+<li><p>InvalidInputGeometryType</p></li>
+<li><p>InvalidBaseGeometry</p></li>
+<li><p>GeometryEngineError</p></li>
+<li><p>SplitCannotSplitPoint</p></li>
+</ul>
+</p>
 </dd>
 </dl>
 <div class="admonition note">
@@ -7588,7 +7620,7 @@ to this signal and update the element accordingly.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 16:12 Jun 11, 2020.
+        Last updated on 16:38 Jun 11, 2020.
       </span>
 
     </p>

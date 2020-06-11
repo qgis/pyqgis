@@ -1803,28 +1803,30 @@ used by vector tile layers: parameters are encoded as a HTTP query string,
 where “type” key determines the type of the destination container,
 the “url” key is normally the path. Currently supported types:</p>
 <ul class="simple">
-<li><p>“xyz” - tile data written as local files, using a template where {x},{y},{z}</p></li>
+<li><p>“xyz” - tile data written as local files, using a template where {x},{y},{z}
+are replaced by the actual tile column, row and zoom level numbers, e.g.:
+<a class="reference external" href="file:///home/qgis/tiles">file:///home/qgis/tiles</a>/{z}/{x}/{y}.pbf</p></li>
+<li><p>“mbtiles” - tile data written to a new MBTiles file, the “url” key should
+be ordinary file system path, e.g.: /home/qgis/output.mbtiles</p></li>
 </ul>
-<p>are replaced by the actual tile column, row and zoom level numbers, e.g.:
-<a class="reference external" href="file:///home/qgis/tiles">file:///home/qgis/tiles</a>/{z}/{x}/{y}.pbf
-- “mbtiles” - tile data written to a new MBTiles file, the “url” key should
-be ordinary file system path, e.g.: /home/qgis/output.mbtiles</p>
 <p>Currently the writer only support MVT encoding of data.</p>
 <p>Metadata support: it is possible to pass a QVariantMap with metadata. This
 is backend dependent. Currently only “mbtiles” source type supports writing
 of metadata. The key-value pairs will be written to the “metadata” table
 in the MBTiles file. Some useful metadata keys listed here, but see MBTiles spec
-for more details:
-- “name” - human-readable name of the tileset
-- “bounds” - extent in WGS 84: “minlon,minlat,maxlon,maxlat”
-- “center” - default view of the map: “longitude,latitude,zoomlevel”
-- “minzoom” - lowest zoom level
-- “maxzoom” - highest zoom level
-- “attribution” - string that explains the sources of data
-- “description” - descriptions of the content
-- “type” - whether this is an overlay or a basemap
-- “version” - version of the tileset
-Vector tile writer always writes “format” and “json” metadata. If not specified
+for more details:</p>
+<ul class="simple">
+<li><p>“name” - human-readable name of the tileset</p></li>
+<li><p>“bounds” - extent in WGS 84: “minlon,minlat,maxlon,maxlat”</p></li>
+<li><p>“center” - default view of the map: “longitude,latitude,zoomlevel”</p></li>
+<li><p>“minzoom” - lowest zoom level</p></li>
+<li><p>“maxzoom” - highest zoom level</p></li>
+<li><p>“attribution” - string that explains the sources of data</p></li>
+<li><p>“description” - descriptions of the content</p></li>
+<li><p>“type” - whether this is an overlay or a basemap</p></li>
+<li><p>“version” - version of the tileset</p></li>
+</ul>
+<p>Vector tile writer always writes “format” and “json” metadata. If not specified
 in metadata by the client, tile writer also writes “name”, “bounds”, “minzoom”
 and “maxzoom”.</p>
 <div class="versionadded">
@@ -2143,7 +2145,7 @@ provide cancellation functionality.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 16:12 Jun 11, 2020.
+        Last updated on 16:38 Jun 11, 2020.
       </span>
 
     </p>

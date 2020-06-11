@@ -2930,14 +2930,18 @@ then the result will be a closed QPolygonF of the geometry’s exterior ring.</p
 
 <dl class="py method">
 <dt id="qgis.core.QgsGeometry.asWkb">
-<code class="sig-name descname">asWkb</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; QByteArray<a class="headerlink" href="#qgis.core.QgsGeometry.asWkb" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">asWkb</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">flags</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>QgsAbstractGeometry.WkbFlags<span class="p">, </span>QgsAbstractGeometry.WkbFlag<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">0</span></em><span class="sig-paren">)</span> &#x2192; QByteArray<a class="headerlink" href="#qgis.core.QgsGeometry.asWkb" title="Permalink to this definition">¶</a></dt>
 <dd><p>Export the geometry to WKB</p>
+<p>The optional <code class="docutils literal notranslate"><span class="pre">flags</span></code> argument specifies flags controlling WKB export behavior (since QGIS 3.14).</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0.</span></p>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>QByteArray</p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>flags</strong> (<em>Union</em><em>[</em><a class="reference internal" href="QgsAbstractGeometry.html#qgis.core.QgsAbstractGeometry.WkbFlags" title="qgis.core.QgsAbstractGeometry.WkbFlags"><em>QgsAbstractGeometry.WkbFlags</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>QByteArray</p>
 </dd>
 </dl>
 </dd></dl>
@@ -3209,16 +3213,18 @@ not present.</p></li>
 <dt id="qgis.core.QgsGeometry.coerceToType">
 <code class="sig-name descname">coerceToType</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">type</span><span class="p">:</span> <span class="n">QgsWkbTypes.Type</span></em><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span><a class="reference internal" href="#module-QgsGeometry" title="QgsGeometry">QgsGeometry</a><span class="p">]</span><a class="headerlink" href="#qgis.core.QgsGeometry.coerceToType" title="Permalink to this definition">¶</a></dt>
 <dd><p>Attempts to coerce this geometry into the specified destination <code class="docutils literal notranslate"><span class="pre">type</span></code>.</p>
-<p>This method will do anything possible to force the current geometry into the specified type. E.g.
-- lines or polygons will be converted to points by return either a single multipoint geometry or multiple
-single point geometries.
-- polygons will be converted to lines by extracting their exterior and interior rings, returning
-either a multilinestring or multiple single line strings as dictated by <code class="docutils literal notranslate"><span class="pre">type</span></code>.
-- lines will be converted to polygon rings if <code class="docutils literal notranslate"><span class="pre">type</span></code> is a polygon type
-- curved geometries will be segmented if <code class="docutils literal notranslate"><span class="pre">type</span></code> is non-curved.
-- multi geometries will be converted to a list of single geometries
-- single geometries will be upgraded to multi geometries
-- z or m values will be added or dropped as required.</p>
+<p>This method will do anything possible to force the current geometry into the specified type. E.g.</p>
+<ul class="simple">
+<li><p>lines or polygons will be converted to points by return either a single multipoint geometry or multiple
+single point geometries.</p></li>
+<li><p>polygons will be converted to lines by extracting their exterior and interior rings, returning
+either a multilinestring or multiple single line strings as dictated by <code class="docutils literal notranslate"><span class="pre">type</span></code>.</p></li>
+<li><p>lines will be converted to polygon rings if <code class="docutils literal notranslate"><span class="pre">type</span></code> is a polygon type</p></li>
+<li><p>curved geometries will be segmented if <code class="docutils literal notranslate"><span class="pre">type</span></code> is non-curved.</p></li>
+<li><p>multi geometries will be converted to a list of single geometries</p></li>
+<li><p>single geometries will be upgraded to multi geometries</p></li>
+<li><p>z or m values will be added or dropped as required.</p></li>
+</ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This method is much stricter than convertToType(), as it considers the exact WKB type
@@ -3293,15 +3299,17 @@ The 2 types should match.</p>
 <dd class="field-even"><p>bool</p>
 </dd>
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if objects are
-- polylines and have the same number of points and all
-points are equal within the specified tolerance
-- polygons and have the same number of points and all
-points are equal within the specified tolerance
-- multipolygons and  have the same number of polygons, the polygons have the same number
+<dd class="field-odd"><p><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if objects are</p>
+<ul class="simple">
+<li><p>polylines and have the same number of points and all
+points are equal within the specified tolerance</p></li>
+<li><p>polygons and have the same number of points and all
+points are equal within the specified tolerance</p></li>
+<li><p>multipolygons and  have the same number of polygons, the polygons have the same number
 of rings, and each ring has the same number of points and all points are equal
-within the specified
-tolerance</p>
+within the specified tolerance</p></li>
+</ul>
+</p>
 </dd>
 </dl>
 <div class="versionadded">
@@ -4258,10 +4266,10 @@ and a deep copy. Where possible, use constGet() instead.</p>
 <p>This algorithm is an approximation to the standard Hausdorff distance. This approximation is exact or close enough for a large
 subset of useful cases. Examples of these are:</p>
 <ul class="simple">
-<li><p>computing distance between Linestrings that are roughly parallel to each other,</p></li>
+<li><p>computing distance between Linestrings that are roughly parallel to each other,
+and roughly equal in length. This occurs in matching linear networks.</p></li>
+<li><p>Testing similarity of geometries.</p></li>
 </ul>
-<p>and roughly equal in length. This occurs in matching linear networks.
-- Testing similarity of geometries.</p>
 <p>If the default approximate provided by this method is insufficient, use hausdorffDistanceDensify() instead.</p>
 <p>In case of error -1 will be returned.</p>
 <div class="admonition seealso">
@@ -5807,7 +5815,7 @@ An empty geometry will be returned if the diagram could not be calculated.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 16:12 Jun 11, 2020.
+        Last updated on 16:38 Jun 11, 2020.
       </span>
 
     </p>
