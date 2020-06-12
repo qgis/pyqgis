@@ -17,6 +17,8 @@
   
   
   
+    <link rel="canonical" href="https://qgis.org/pyqgis/latestgui/QgsColorBox.html"/>
+  
 
   
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
@@ -1696,7 +1698,7 @@ axis.</p>
 <td><p></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsColorBox.alterColor" title="qgis.gui.QgsColorBox.alterColor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">alterColor</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Alters a color by modifying the value of a specific color component</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsColorBox.changeEvent" title="qgis.gui.QgsColorBox.changeEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">changeEvent</span></code></a></p></td>
 <td><p></p></td>
@@ -1708,10 +1710,10 @@ axis.</p>
 <td><p></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsColorBox.componentRange" title="qgis.gui.QgsColorBox.componentRange"><code class="xref py py-obj docutils literal notranslate"><span class="pre">componentRange</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Returns the range of valid values for the color widget’s component</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsColorBox.componentValue" title="qgis.gui.QgsColorBox.componentValue"><code class="xref py py-obj docutils literal notranslate"><span class="pre">componentValue</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Returns the current value of the widget’s color component</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsColorBox.connectNotify" title="qgis.gui.QgsColorBox.connectNotify"><code class="xref py py-obj docutils literal notranslate"><span class="pre">connectNotify</span></code></a></p></td>
 <td><p></p></td>
@@ -1768,7 +1770,7 @@ axis.</p>
 <td><p></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsColorBox.hue" title="qgis.gui.QgsColorBox.hue"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hue</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Returns the hue for the widget.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsColorBox.initPainter" title="qgis.gui.QgsColorBox.initPainter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">initPainter</span></code></a></p></td>
 <td><p></p></td>
@@ -1875,7 +1877,7 @@ axis.</p>
 <td><p></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsColorBox.transparentBackground" title="qgis.gui.QgsColorBox.transparentBackground"><code class="xref py py-obj docutils literal notranslate"><span class="pre">transparentBackground</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Generates a checkboard pattern pixmap for use as a background to transparent colors</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsColorBox.updateMicroFocus" title="qgis.gui.QgsColorBox.updateMicroFocus"><code class="xref py py-obj docutils literal notranslate"><span class="pre">updateMicroFocus</span></code></a></p></td>
 <td><p></p></td>
@@ -1904,172 +1906,233 @@ axis.</p>
 </div>
 <dl class="py method">
 <dt id="qgis.gui.QgsColorBox.actionEvent">
-<code class="sig-name descname">actionEvent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.actionEvent" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">actionEvent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">QActionEvent</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.actionEvent" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsColorBox.alterColor">
-<code class="sig-name descname">alterColor</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.alterColor" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">alterColor</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">color</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>QColor<span class="p">, </span>Qt.GlobalColor<span class="p">, </span>QGradient<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">component</span><span class="p">:</span> <span class="n">QgsColorWidget.ColorComponent</span></em>, <em class="sig-param"><span class="n">newValue</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.alterColor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alters a color by modifying the value of a specific color component</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>color</strong> – color to alter</p></li>
+<li><p><strong>component</strong> – color component to alter</p></li>
+<li><p><strong>newValue</strong> – new value of color component. Values are automatically clipped to a
+valid range for the color component.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsColorBox.changeEvent">
-<code class="sig-name descname">changeEvent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.changeEvent" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">changeEvent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">QEvent</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.changeEvent" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsColorBox.childEvent">
-<code class="sig-name descname">childEvent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.childEvent" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">childEvent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">QChildEvent</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.childEvent" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsColorBox.closeEvent">
-<code class="sig-name descname">closeEvent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.closeEvent" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">closeEvent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">QCloseEvent</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.closeEvent" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsColorBox.componentRange">
-<code class="sig-name descname">componentRange</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.componentRange" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">componentRange</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#qgis.gui.QgsColorBox.componentRange" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the range of valid values for the color widget’s component</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>maximum value allowed for color component, or -1 if widget has multiple components</p>
+</dd>
+</dl>
+<p>componentRange(self, component: QgsColorWidget.ColorComponent) -&gt; int
+Returns the range of valid values a color component</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>maximum value allowed for color component</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsColorBox.componentValue">
-<code class="sig-name descname">componentValue</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.componentValue" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">componentValue</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#qgis.gui.QgsColorBox.componentValue" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the current value of the widget’s color component</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>value of color component, or -1 if widget has multiple components or an invalid color
+set</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><code class="xref py py-func docutils literal notranslate"><span class="pre">setComponentValue()</span></code></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><code class="xref py py-func docutils literal notranslate"><span class="pre">component()</span></code></p>
+</div>
+<p>componentValue(self, component: QgsColorWidget.ColorComponent) -&gt; int
+Returns the value of a component of the widget’s current color. This method correctly
+handles hue values when the color has an ambiguous hue (e.g., black or white shades)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>component</strong> – color component to return</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>value of color component, or -1 if widget has an invalid color set</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.gui.QgsColorBox.hue" title="qgis.gui.QgsColorBox.hue"><code class="xref py py-func docutils literal notranslate"><span class="pre">hue()</span></code></a></p>
+</div>
+</dd></dl>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsColorBox.connectNotify">
-<code class="sig-name descname">connectNotify</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.connectNotify" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">connectNotify</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">QMetaMethod</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.connectNotify" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsColorBox.contextMenuEvent">
-<code class="sig-name descname">contextMenuEvent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.contextMenuEvent" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">contextMenuEvent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">QContextMenuEvent</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.contextMenuEvent" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsColorBox.create">
-<code class="sig-name descname">create</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.create" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">create</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">window</span><span class="p">:</span> <span class="n">sip.voidptr</span> <span class="o">=</span> <span class="default_value">0</span></em>, <em class="sig-param"><span class="n">initializeWindow</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em>, <em class="sig-param"><span class="n">destroyOldWindow</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.create" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsColorBox.customEvent">
-<code class="sig-name descname">customEvent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.customEvent" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">customEvent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">QEvent</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.customEvent" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsColorBox.destroy">
-<code class="sig-name descname">destroy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.destroy" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">destroy</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">destroyWindow</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em>, <em class="sig-param"><span class="n">destroySubWindows</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.destroy" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsColorBox.disconnectNotify">
-<code class="sig-name descname">disconnectNotify</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.disconnectNotify" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">disconnectNotify</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">QMetaMethod</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.disconnectNotify" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsColorBox.dragEnterEvent">
-<code class="sig-name descname">dragEnterEvent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.dragEnterEvent" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">dragEnterEvent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">e</span><span class="p">:</span> <span class="n">QDragEnterEvent</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.dragEnterEvent" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsColorBox.dragLeaveEvent">
-<code class="sig-name descname">dragLeaveEvent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.dragLeaveEvent" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">dragLeaveEvent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">QDragLeaveEvent</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.dragLeaveEvent" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsColorBox.dragMoveEvent">
-<code class="sig-name descname">dragMoveEvent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.dragMoveEvent" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">dragMoveEvent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">QDragMoveEvent</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.dragMoveEvent" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsColorBox.dropEvent">
-<code class="sig-name descname">dropEvent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.dropEvent" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">dropEvent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">e</span><span class="p">:</span> <span class="n">QDropEvent</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.dropEvent" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsColorBox.enterEvent">
-<code class="sig-name descname">enterEvent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.enterEvent" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">enterEvent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">QEvent</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.enterEvent" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsColorBox.event">
-<code class="sig-name descname">event</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.event" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">event</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">QEvent</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.gui.QgsColorBox.event" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsColorBox.focusInEvent">
-<code class="sig-name descname">focusInEvent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.focusInEvent" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">focusInEvent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">QFocusEvent</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.focusInEvent" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsColorBox.focusNextChild">
-<code class="sig-name descname">focusNextChild</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.focusNextChild" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">focusNextChild</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.gui.QgsColorBox.focusNextChild" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsColorBox.focusNextPrevChild">
-<code class="sig-name descname">focusNextPrevChild</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.focusNextPrevChild" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">focusNextPrevChild</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">bool</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.gui.QgsColorBox.focusNextPrevChild" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsColorBox.focusOutEvent">
-<code class="sig-name descname">focusOutEvent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.focusOutEvent" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">focusOutEvent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">QFocusEvent</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.focusOutEvent" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsColorBox.focusPreviousChild">
-<code class="sig-name descname">focusPreviousChild</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.focusPreviousChild" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">focusPreviousChild</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.gui.QgsColorBox.focusPreviousChild" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsColorBox.hideEvent">
-<code class="sig-name descname">hideEvent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.hideEvent" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">hideEvent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">QHideEvent</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.hideEvent" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsColorBox.hue">
-<code class="sig-name descname">hue</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.hue" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">hue</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#qgis.gui.QgsColorBox.hue" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the hue for the widget. This may differ from the hue for the QColor returned by color(),
+as QColor returns a hue of -1 if the color’s hue is ambiguous (e.g., if the saturation is zero).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>explicitly set hue for widget</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsColorBox.initPainter">
-<code class="sig-name descname">initPainter</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.initPainter" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">initPainter</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">QPainter</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.initPainter" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsColorBox.inputMethodEvent">
-<code class="sig-name descname">inputMethodEvent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.inputMethodEvent" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">inputMethodEvent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">QInputMethodEvent</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.inputMethodEvent" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsColorBox.isSignalConnected">
-<code class="sig-name descname">isSignalConnected</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.isSignalConnected" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">isSignalConnected</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">QMetaMethod</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.gui.QgsColorBox.isSignalConnected" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsColorBox.keyPressEvent">
-<code class="sig-name descname">keyPressEvent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.keyPressEvent" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">keyPressEvent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">QKeyEvent</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.keyPressEvent" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsColorBox.keyReleaseEvent">
-<code class="sig-name descname">keyReleaseEvent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.keyReleaseEvent" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">keyReleaseEvent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">QKeyEvent</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.keyReleaseEvent" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsColorBox.leaveEvent">
-<code class="sig-name descname">leaveEvent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.leaveEvent" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">leaveEvent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">QEvent</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.leaveEvent" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsColorBox.metric">
-<code class="sig-name descname">metric</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.metric" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">metric</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">QPaintDevice.PaintDeviceMetric</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#qgis.gui.QgsColorBox.metric" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsColorBox.mouseDoubleClickEvent">
-<code class="sig-name descname">mouseDoubleClickEvent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.mouseDoubleClickEvent" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">mouseDoubleClickEvent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">QMouseEvent</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.mouseDoubleClickEvent" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -2094,17 +2157,17 @@ axis.</p>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsColorBox.mouseReleaseEvent">
-<code class="sig-name descname">mouseReleaseEvent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.mouseReleaseEvent" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">mouseReleaseEvent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">e</span><span class="p">:</span> <span class="n">QMouseEvent</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.mouseReleaseEvent" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsColorBox.moveEvent">
-<code class="sig-name descname">moveEvent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.moveEvent" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">moveEvent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">QMoveEvent</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.moveEvent" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsColorBox.nativeEvent">
-<code class="sig-name descname">nativeEvent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.nativeEvent" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">nativeEvent</code><span class="sig-paren">(</span><em class="sig-param">self, Union[QByteArray, bytes, bytearray], sip.voidptr</em><span class="sig-paren">)</span> &#x2192; Tuple<span class="p">[</span>bool<span class="p">, </span>int<span class="p">]</span><a class="headerlink" href="#qgis.gui.QgsColorBox.nativeEvent" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -2119,7 +2182,7 @@ axis.</p>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsColorBox.receivers">
-<code class="sig-name descname">receivers</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.receivers" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">receivers</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">PYQT_SIGNAL</span></em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#qgis.gui.QgsColorBox.receivers" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -2134,12 +2197,12 @@ axis.</p>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsColorBox.sender">
-<code class="sig-name descname">sender</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.sender" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">sender</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; QObject<a class="headerlink" href="#qgis.gui.QgsColorBox.sender" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsColorBox.senderSignalIndex">
-<code class="sig-name descname">senderSignalIndex</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.senderSignalIndex" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">senderSignalIndex</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#qgis.gui.QgsColorBox.senderSignalIndex" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -2167,12 +2230,12 @@ axis.</p>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsColorBox.sharedPainter">
-<code class="sig-name descname">sharedPainter</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.sharedPainter" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">sharedPainter</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; QPainter<a class="headerlink" href="#qgis.gui.QgsColorBox.sharedPainter" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsColorBox.showEvent">
-<code class="sig-name descname">showEvent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.showEvent" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">showEvent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">QShowEvent</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.showEvent" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -2187,27 +2250,33 @@ axis.</p>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsColorBox.tabletEvent">
-<code class="sig-name descname">tabletEvent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.tabletEvent" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">tabletEvent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">QTabletEvent</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.tabletEvent" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsColorBox.timerEvent">
-<code class="sig-name descname">timerEvent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.timerEvent" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">timerEvent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">QTimerEvent</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.timerEvent" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsColorBox.transparentBackground">
-<code class="sig-name descname">transparentBackground</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.transparentBackground" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">transparentBackground</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; QPixmap<a class="headerlink" href="#qgis.gui.QgsColorBox.transparentBackground" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates a checkboard pattern pixmap for use as a background to transparent colors</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>checkerboard pixmap</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsColorBox.updateMicroFocus">
-<code class="sig-name descname">updateMicroFocus</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.updateMicroFocus" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">updateMicroFocus</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.updateMicroFocus" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsColorBox.wheelEvent">
-<code class="sig-name descname">wheelEvent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.wheelEvent" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">wheelEvent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">QWheelEvent</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsColorBox.wheelEvent" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -2226,7 +2295,7 @@ axis.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 16:00 Jun 05, 2020.
+        Last updated on 15:39 Jun 12, 2020.
       </span>
 
     </p>

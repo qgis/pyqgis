@@ -17,6 +17,8 @@
   
   
   
+    <link rel="canonical" href="https://qgis.org/pyqgis/latestcore/QgsLayoutItemMapOverviewStack.html"/>
+  
 
   
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
@@ -1682,8 +1684,20 @@ order they are drawn in.</p>
 </dl>
 <dl class="py method">
 <dt id="qgis.core.QgsLayoutItemMapOverviewStack.addItem">
-<code class="sig-name descname">addItem</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsLayoutItemMapOverviewStack.addItem" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">addItem</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">item</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsLayoutItemMapItem.html#module-QgsLayoutItemMapItem" title="QgsLayoutItemMapItem">QgsLayoutItemMapItem</a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsLayoutItemMapOverviewStack.addItem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a new map item to the stack and takes ownership of the item.
+The item will be added to the end of the stack, and rendered
+above any existing map items already present in the stack.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>After adding an item to the stack update()
+should be called for the <a class="reference internal" href="QgsLayoutItemMap.html#qgis.core.QgsLayoutItemMap" title="qgis.core.QgsLayoutItemMap"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsLayoutItemMap</span></code></a> to prevent rendering artifacts.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverviewStack.removeItem" title="qgis.core.QgsLayoutItemMapOverviewStack.removeItem"><code class="xref py py-func docutils literal notranslate"><span class="pre">removeItem()</span></code></a></p>
+</div>
+</dd></dl>
 
 <dl class="py method">
 <dt id="qgis.core.QgsLayoutItemMapOverviewStack.addOverview">
@@ -1720,8 +1734,11 @@ should be called for the <a class="reference internal" href="QgsLayoutItemMap.ht
 
 <dl class="py method">
 <dt id="qgis.core.QgsLayoutItemMapOverviewStack.item">
-<code class="sig-name descname">item</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsLayoutItemMapOverviewStack.item" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">item</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">index</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="QgsLayoutItemMapItem.html#module-QgsLayoutItemMapItem" title="QgsLayoutItemMapItem">QgsLayoutItemMapItem</a><a class="headerlink" href="#qgis.core.QgsLayoutItemMapOverviewStack.item" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a reference to the item at the specified <code class="docutils literal notranslate"><span class="pre">index</span></code> within the stack.</p>
+<p>item(self, itemId: str) -&gt; QgsLayoutItemMapItem
+Returns a reference to an item which matching <code class="docutils literal notranslate"><span class="pre">itemId</span></code> within the stack.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt id="qgis.core.QgsLayoutItemMapOverviewStack.modifyMapLayerList">
@@ -1743,13 +1760,33 @@ temporary layers which represent overview extents as required.</p>
 
 <dl class="py method">
 <dt id="qgis.core.QgsLayoutItemMapOverviewStack.moveItemDown">
-<code class="sig-name descname">moveItemDown</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsLayoutItemMapOverviewStack.moveItemDown" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">moveItemDown</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">itemId</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsLayoutItemMapOverviewStack.moveItemDown" title="Permalink to this definition">¶</a></dt>
+<dd><p>Moves an item which matching <code class="docutils literal notranslate"><span class="pre">itemId</span></code> up the stack, causing it to be rendered above other items.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>After moving an item within the stack, update() should be
+called for the <a class="reference internal" href="QgsLayoutItemMap.html#qgis.core.QgsLayoutItemMap" title="qgis.core.QgsLayoutItemMap"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsLayoutItemMap</span></code></a> to redraw the map with the new item stack order.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverviewStack.moveItemUp" title="qgis.core.QgsLayoutItemMapOverviewStack.moveItemUp"><code class="xref py py-func docutils literal notranslate"><span class="pre">moveItemUp()</span></code></a></p>
+</div>
+</dd></dl>
 
 <dl class="py method">
 <dt id="qgis.core.QgsLayoutItemMapOverviewStack.moveItemUp">
-<code class="sig-name descname">moveItemUp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsLayoutItemMapOverviewStack.moveItemUp" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">moveItemUp</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">itemId</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsLayoutItemMapOverviewStack.moveItemUp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Moves an item which matching <code class="docutils literal notranslate"><span class="pre">itemId</span></code> up the stack, causing it to be rendered above other items.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>After moving an item within the stack, update() should be
+called for the <a class="reference internal" href="QgsLayoutItemMap.html#qgis.core.QgsLayoutItemMap" title="qgis.core.QgsLayoutItemMap"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsLayoutItemMap</span></code></a> to redraw the map with the new item stack order.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverviewStack.moveItemDown" title="qgis.core.QgsLayoutItemMapOverviewStack.moveItemDown"><code class="xref py py-func docutils literal notranslate"><span class="pre">moveItemDown()</span></code></a></p>
+</div>
+</dd></dl>
 
 <dl class="py method">
 <dt id="qgis.core.QgsLayoutItemMapOverviewStack.moveOverviewDown">
@@ -1826,13 +1863,25 @@ Returns a reference to an overview at the specified <code class="docutils litera
 
 <dl class="py method">
 <dt id="qgis.core.QgsLayoutItemMapOverviewStack.removeItem">
-<code class="sig-name descname">removeItem</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsLayoutItemMapOverviewStack.removeItem" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">removeItem</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">itemId</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsLayoutItemMapOverviewStack.removeItem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes an item which matching <code class="docutils literal notranslate"><span class="pre">itemId</span></code> from the stack and deletes the corresponding <a class="reference internal" href="QgsLayoutItemMapItem.html#module-QgsLayoutItemMapItem" title="QgsLayoutItemMapItem"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsLayoutItemMapItem</span></code></a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>After removing an item from the stack, update()
+should be called for the <a class="reference internal" href="QgsLayoutItemMap.html#qgis.core.QgsLayoutItemMap" title="qgis.core.QgsLayoutItemMap"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsLayoutItemMap</span></code></a> to prevent rendering artifacts.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsLayoutItemMapOverviewStack.addItem" title="qgis.core.QgsLayoutItemMapOverviewStack.addItem"><code class="xref py py-func docutils literal notranslate"><span class="pre">addItem()</span></code></a></p>
+</div>
+</dd></dl>
 
 <dl class="py method">
 <dt id="qgis.core.QgsLayoutItemMapOverviewStack.removeItems">
-<code class="sig-name descname">removeItems</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsLayoutItemMapOverviewStack.removeItems" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">removeItems</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsLayoutItemMapOverviewStack.removeItems" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clears the item stack and deletes all <code class="xref py py-class docutils literal notranslate"><span class="pre">QgsLayoutItemMapItems</span></code> contained
+by the stack</p>
+</dd></dl>
 
 <dl class="py method">
 <dt id="qgis.core.QgsLayoutItemMapOverviewStack.removeOverview">
@@ -1870,7 +1919,7 @@ should be called for the <a class="reference internal" href="QgsLayoutItemMap.ht
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 16:00 Jun 05, 2020.
+        Last updated on 15:39 Jun 12, 2020.
       </span>
 
     </p>

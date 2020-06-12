@@ -17,6 +17,8 @@
   
   
   
+    <link rel="canonical" href="https://qgis.org/pyqgis/latestcore/QgsBlurEffect.html"/>
+  
 
   
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
@@ -1723,13 +1725,13 @@ methods.</p>
 </p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsBlurEffect.drawSource" title="qgis.core.QgsBlurEffect.drawSource"><code class="xref py py-obj docutils literal notranslate"><span class="pre">drawSource</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Draws the source QPicture onto the specified painter.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsBlurEffect.fixQPictureDpi" title="qgis.core.QgsBlurEffect.fixQPictureDpi"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fixQPictureDpi</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Applies a workaround to a QPainter to avoid an issue with incorrect scaling when drawing QPictures.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsBlurEffect.imageOffset" title="qgis.core.QgsBlurEffect.imageOffset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">imageOffset</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Returns the offset which should be used when drawing the source image on to a destination render context.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsBlurEffect.opacity" title="qgis.core.QgsBlurEffect.opacity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">opacity</span></code></a></p></td>
 <td><p>Returns the opacity for the effect.</p></td>
@@ -1768,10 +1770,10 @@ methods.</p>
 <td><p>Sets the <code class="docutils literal notranslate"><span class="pre">opacity</span></code> for the effect.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsBlurEffect.source" title="qgis.core.QgsBlurEffect.source"><code class="xref py py-obj docutils literal notranslate"><span class="pre">source</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Returns the source QPicture.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsBlurEffect.sourceAsImage" title="qgis.core.QgsBlurEffect.sourceAsImage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sourceAsImage</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Returns the source QPicture rendered to a new QImage.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsBlurEffect.type" title="qgis.core.QgsBlurEffect.type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a></p></td>
 <td><p><dl class="field-list simple">
@@ -2004,18 +2006,55 @@ has different effects</p>
 
 <dl class="py method">
 <dt id="qgis.core.QgsBlurEffect.drawSource">
-<code class="sig-name descname">drawSource</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsBlurEffect.drawSource" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">drawSource</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">painter</span><span class="p">:</span> <span class="n">QPainter</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsBlurEffect.drawSource" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draws the source QPicture onto the specified painter. Handles scaling of the picture
+to account for the destination painter’s DPI.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>painter</strong> – destination painter</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsBlurEffect.source" title="qgis.core.QgsBlurEffect.source"><code class="xref py py-func docutils literal notranslate"><span class="pre">source()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsBlurEffect.sourceAsImage" title="qgis.core.QgsBlurEffect.sourceAsImage"><code class="xref py py-func docutils literal notranslate"><span class="pre">sourceAsImage()</span></code></a></p>
+</div>
+</dd></dl>
 
 <dl class="py method">
 <dt id="qgis.core.QgsBlurEffect.fixQPictureDpi">
-<code class="sig-name descname">fixQPictureDpi</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsBlurEffect.fixQPictureDpi" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">fixQPictureDpi</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">painter</span><span class="p">:</span> <span class="n">QPainter</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsBlurEffect.fixQPictureDpi" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies a workaround to a QPainter to avoid an issue with incorrect scaling
+when drawing QPictures. This may need to be called by derived classes prior
+to rendering results onto a painter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>painter</strong> – destination painter</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt id="qgis.core.QgsBlurEffect.imageOffset">
-<code class="sig-name descname">imageOffset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsBlurEffect.imageOffset" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">imageOffset</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">context</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsRenderContext.html#module-QgsRenderContext" title="QgsRenderContext">QgsRenderContext</a></span></em><span class="sig-paren">)</span> &#x2192; QPointF<a class="headerlink" href="#qgis.core.QgsBlurEffect.imageOffset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the offset which should be used when drawing the source image on to a destination
+render context.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>context</strong> – destination render context</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>point offset for image top left corner</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsBlurEffect.sourceAsImage" title="qgis.core.QgsBlurEffect.sourceAsImage"><code class="xref py py-func docutils literal notranslate"><span class="pre">sourceAsImage()</span></code></a></p>
+</div>
+</dd></dl>
 
 <dl class="py method">
 <dt id="qgis.core.QgsBlurEffect.opacity">
@@ -2185,13 +2224,53 @@ and 1 is fully opaque</p>
 
 <dl class="py method">
 <dt id="qgis.core.QgsBlurEffect.source">
-<code class="sig-name descname">source</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsBlurEffect.source" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">source</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; QPicture<a class="headerlink" href="#qgis.core.QgsBlurEffect.source" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the source QPicture. The draw() member can utilize this when
+drawing the effect.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>source QPicture</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsBlurEffect.drawSource" title="qgis.core.QgsBlurEffect.drawSource"><code class="xref py py-func docutils literal notranslate"><span class="pre">drawSource()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsBlurEffect.sourceAsImage" title="qgis.core.QgsBlurEffect.sourceAsImage"><code class="xref py py-func docutils literal notranslate"><span class="pre">sourceAsImage()</span></code></a></p>
+</div>
+</dd></dl>
 
 <dl class="py method">
 <dt id="qgis.core.QgsBlurEffect.sourceAsImage">
-<code class="sig-name descname">sourceAsImage</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsBlurEffect.sourceAsImage" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">sourceAsImage</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">context</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsRenderContext.html#module-QgsRenderContext" title="QgsRenderContext">QgsRenderContext</a></span></em><span class="sig-paren">)</span> &#x2192; QImage<a class="headerlink" href="#qgis.core.QgsBlurEffect.sourceAsImage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the source QPicture rendered to a new QImage. The draw() member can
+utilize this when drawing the effect. The image will be padded or cropped from the original
+source QPicture by the results of the boundingRect() method.
+The result is cached to speed up subsequent calls to sourceAsImage.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>source QPicture rendered to an image</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsBlurEffect.drawSource" title="qgis.core.QgsBlurEffect.drawSource"><code class="xref py py-func docutils literal notranslate"><span class="pre">drawSource()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsBlurEffect.source" title="qgis.core.QgsBlurEffect.source"><code class="xref py py-func docutils literal notranslate"><span class="pre">source()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsBlurEffect.imageOffset" title="qgis.core.QgsBlurEffect.imageOffset"><code class="xref py py-func docutils literal notranslate"><span class="pre">imageOffset()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsBlurEffect.boundingRect" title="qgis.core.QgsBlurEffect.boundingRect"><code class="xref py py-func docutils literal notranslate"><span class="pre">boundingRect()</span></code></a></p>
+</div>
+</dd></dl>
 
 <dl class="py method">
 <dt id="qgis.core.QgsBlurEffect.type">
@@ -2219,7 +2298,7 @@ and 1 is fully opaque</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 16:00 Jun 05, 2020.
+        Last updated on 15:39 Jun 12, 2020.
       </span>
 
     </p>
