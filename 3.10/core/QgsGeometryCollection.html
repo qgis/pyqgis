@@ -17,6 +17,8 @@
   
   
   
+    <link rel="canonical" href="https://qgis.org/pyqgis/latestcore/QgsGeometryCollection.html"/>
+  
 
   
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
@@ -1712,7 +1714,7 @@
 </p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsGeometryCollection.childPoint" title="qgis.core.QgsGeometryCollection.childPoint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">childPoint</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Returns point at index (for geometries without child geometries - i.e.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsGeometryCollection.clear" title="qgis.core.QgsGeometryCollection.clear"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clear</span></code></a></p></td>
 <td><p></p></td>
@@ -1818,7 +1820,7 @@
 </p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsGeometryCollection.hasChildGeometries" title="qgis.core.QgsGeometryCollection.hasChildGeometries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hasChildGeometries</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Returns whether the geometry has any child geometries (<code class="docutils literal notranslate"><span class="pre">False</span></code> for point / curve, <code class="docutils literal notranslate"><span class="pre">True</span></code> otherwise)</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsGeometryCollection.hasCurvedSegments" title="qgis.core.QgsGeometryCollection.hasCurvedSegments"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hasCurvedSegments</span></code></a></p></td>
 <td><p><dl class="field-list simple">
@@ -1933,7 +1935,7 @@
 <td><p>Returns a geometry without curves.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsGeometryCollection.setZMTypeFromSubGeometry" title="qgis.core.QgsGeometryCollection.setZMTypeFromSubGeometry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setZMTypeFromSubGeometry</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Updates the geometry type based on whether sub geometries contain z or m values.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsGeometryCollection.snappedToGrid" title="qgis.core.QgsGeometryCollection.snappedToGrid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">snappedToGrid</span></code></a></p></td>
 <td><p><dl class="field-list simple">
@@ -2183,8 +2185,16 @@
 
 <dl class="py method">
 <dt id="qgis.core.QgsGeometryCollection.childPoint">
-<code class="sig-name descname">childPoint</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsGeometryCollection.childPoint" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">childPoint</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">index</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="QgsPoint.html#module-QgsPoint" title="QgsPoint">QgsPoint</a><a class="headerlink" href="#qgis.core.QgsGeometryCollection.childPoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns point at index (for geometries without child geometries - i.e. curve / point)</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>used for vertex_iterator implementation</p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.0.</span></p>
+</div>
+</dd></dl>
 
 <dl class="py method">
 <dt id="qgis.core.QgsGeometryCollection.clear">
@@ -2365,8 +2375,16 @@
 
 <dl class="py method">
 <dt id="qgis.core.QgsGeometryCollection.hasChildGeometries">
-<code class="sig-name descname">hasChildGeometries</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsGeometryCollection.hasChildGeometries" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">hasChildGeometries</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsGeometryCollection.hasChildGeometries" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns whether the geometry has any child geometries (<code class="docutils literal notranslate"><span class="pre">False</span></code> for point / curve, <code class="docutils literal notranslate"><span class="pre">True</span></code> otherwise)</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>used for vertex_iterator implementation</p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.0.</span></p>
+</div>
+</dd></dl>
 
 <dl class="py method">
 <dt id="qgis.core.QgsGeometryCollection.hasCurvedSegments">
@@ -2609,8 +2627,9 @@ reallocations and memory fragmentation.</p>
 
 <dl class="py method">
 <dt id="qgis.core.QgsGeometryCollection.setZMTypeFromSubGeometry">
-<code class="sig-name descname">setZMTypeFromSubGeometry</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsGeometryCollection.setZMTypeFromSubGeometry" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">setZMTypeFromSubGeometry</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">subggeom</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsAbstractGeometry.html#module-QgsAbstractGeometry" title="QgsAbstractGeometry">QgsAbstractGeometry</a></span></em>, <em class="sig-param"><span class="n">baseGeomType</span><span class="p">:</span> <span class="n">QgsWkbTypes.Type</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsGeometryCollection.setZMTypeFromSubGeometry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates the geometry type based on whether sub geometries contain z or m values.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt id="qgis.core.QgsGeometryCollection.snappedToGrid">
@@ -2745,7 +2764,7 @@ reallocations and memory fragmentation.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 22:57 Jun 05, 2020.
+        Last updated on 22:08 Jun 12, 2020.
       </span>
 
     </p>

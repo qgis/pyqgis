@@ -17,6 +17,8 @@
   
   
   
+    <link rel="canonical" href="https://qgis.org/pyqgis/latestgui/QgsSearchWidgetWrapper.html"/>
+  
 
   
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
@@ -1650,7 +1652,7 @@
 <td><p>Gets a field name or expression to use as field comparison.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsSearchWidgetWrapper.createWidget" title="qgis.gui.QgsSearchWidgetWrapper.createWidget"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createWidget</span></code></a></p></td>
-<td><p></p></td>
+<td><p>This method should create a new widget with the provided parent.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsSearchWidgetWrapper.customEvent" title="qgis.gui.QgsSearchWidgetWrapper.customEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">customEvent</span></code></a></p></td>
 <td><p></p></td>
@@ -1671,7 +1673,7 @@
 <td><p>Returns the field index</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsSearchWidgetWrapper.initWidget" title="qgis.gui.QgsSearchWidgetWrapper.initWidget"><code class="xref py py-obj docutils literal notranslate"><span class="pre">initWidget</span></code></a></p></td>
-<td><p></p></td>
+<td><p>This method should initialize the editor widget with runtime data.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsSearchWidgetWrapper.isSignalConnected" title="qgis.gui.QgsSearchWidgetWrapper.isSignalConnected"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isSignalConnected</span></code></a></p></td>
 <td><p></p></td>
@@ -1906,7 +1908,7 @@ when its expression changes</p>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsSearchWidgetWrapper.childEvent">
-<code class="sig-name descname">childEvent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsSearchWidgetWrapper.childEvent" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">childEvent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">QChildEvent</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsSearchWidgetWrapper.childEvent" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -1926,7 +1928,7 @@ when its expression changes</p>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsSearchWidgetWrapper.connectNotify">
-<code class="sig-name descname">connectNotify</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsSearchWidgetWrapper.connectNotify" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">connectNotify</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">QMetaMethod</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsSearchWidgetWrapper.connectNotify" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -1960,12 +1962,26 @@ If in AggregateSearchMode returns an appropriate aggregate expression.</p>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsSearchWidgetWrapper.createWidget">
-<code class="sig-name descname">createWidget</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsSearchWidgetWrapper.createWidget" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">createWidget</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">parent</span><span class="p">:</span> <span class="n">QWidget</span></em><span class="sig-paren">)</span> &#x2192; QWidget<a class="headerlink" href="#qgis.gui.QgsSearchWidgetWrapper.createWidget" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method should create a new widget with the provided parent. This will only be called
+if the form did not already provide a widget, so it is not guaranteed to be called!
+You should not do initialization stuff, which also has to be done for custom editor
+widgets inside this method. Things like filling comboboxes and assigning other data which
+will also be used to make widgets on forms created in the QtDesigner usable should be assigned
+in initWidget().</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>parent</strong> – You should set this parent on the created widget.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A new widget</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsSearchWidgetWrapper.customEvent">
-<code class="sig-name descname">customEvent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsSearchWidgetWrapper.customEvent" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">customEvent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">QEvent</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsSearchWidgetWrapper.customEvent" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -1988,7 +2004,7 @@ If in AggregateSearchMode returns an appropriate aggregate expression.</p>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsSearchWidgetWrapper.disconnectNotify">
-<code class="sig-name descname">disconnectNotify</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsSearchWidgetWrapper.disconnectNotify" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">disconnectNotify</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">QMetaMethod</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsSearchWidgetWrapper.disconnectNotify" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -2053,12 +2069,18 @@ Be sure to return a NULL QVariant if it should be set to NULL.</p>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsSearchWidgetWrapper.initWidget">
-<code class="sig-name descname">initWidget</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsSearchWidgetWrapper.initWidget" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">initWidget</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">editor</span><span class="p">:</span> <span class="n">QWidget</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsSearchWidgetWrapper.initWidget" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method should initialize the editor widget with runtime data. Fill your comboboxes here.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>editor</strong> – The widget which will represent this attribute editor in a form.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsSearchWidgetWrapper.isSignalConnected">
-<code class="sig-name descname">isSignalConnected</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsSearchWidgetWrapper.isSignalConnected" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">isSignalConnected</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">QMetaMethod</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.gui.QgsSearchWidgetWrapper.isSignalConnected" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -2081,17 +2103,17 @@ Be sure to return a NULL QVariant if it should be set to NULL.</p>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsSearchWidgetWrapper.receivers">
-<code class="sig-name descname">receivers</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsSearchWidgetWrapper.receivers" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">receivers</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">PYQT_SIGNAL</span></em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#qgis.gui.QgsSearchWidgetWrapper.receivers" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsSearchWidgetWrapper.sender">
-<code class="sig-name descname">sender</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsSearchWidgetWrapper.sender" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">sender</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; QObject<a class="headerlink" href="#qgis.gui.QgsSearchWidgetWrapper.sender" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsSearchWidgetWrapper.senderSignalIndex">
-<code class="sig-name descname">senderSignalIndex</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsSearchWidgetWrapper.senderSignalIndex" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">senderSignalIndex</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#qgis.gui.QgsSearchWidgetWrapper.senderSignalIndex" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -2161,7 +2183,7 @@ the filter expression. Is a Null String if none.</p>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsSearchWidgetWrapper.timerEvent">
-<code class="sig-name descname">timerEvent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsSearchWidgetWrapper.timerEvent" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">timerEvent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">QTimerEvent</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsSearchWidgetWrapper.timerEvent" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -2218,7 +2240,7 @@ to an empty, default state.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 22:57 Jun 05, 2020.
+        Last updated on 22:08 Jun 12, 2020.
       </span>
 
     </p>

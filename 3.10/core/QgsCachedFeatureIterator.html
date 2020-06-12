@@ -17,6 +17,8 @@
   
   
   
+    <link rel="canonical" href="https://qgis.org/pyqgis/latestcore/QgsCachedFeatureIterator.html"/>
+  
 
   
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
@@ -1625,28 +1627,28 @@
 <td><p>Close this iterator.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsCachedFeatureIterator.deref" title="qgis.core.QgsCachedFeatureIterator.deref"><code class="xref py py-obj docutils literal notranslate"><span class="pre">deref</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Remove reference, delete if refs == 0</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsCachedFeatureIterator.fetchFeature" title="qgis.core.QgsCachedFeatureIterator.fetchFeature"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fetchFeature</span></code></a></p></td>
 <td><p>Implementation for fetching a feature.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsCachedFeatureIterator.filterRectToSourceCrs" title="qgis.core.QgsCachedFeatureIterator.filterRectToSourceCrs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">filterRectToSourceCrs</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Returns a rectangle representing the original request’s <a class="reference internal" href="QgsFeatureRequest.html#qgis.core.QgsFeatureRequest.filterRect" title="qgis.core.QgsFeatureRequest.filterRect"><code class="xref py py-func docutils literal notranslate"><span class="pre">QgsFeatureRequest.filterRect()</span></code></a> If <code class="docutils literal notranslate"><span class="pre">transform</span></code> is a valid coordinate transform, the return rectangle will represent the requested filterRect() transformed to the source’s coordinate reference system.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsCachedFeatureIterator.geometryToDestinationCrs" title="qgis.core.QgsCachedFeatureIterator.geometryToDestinationCrs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geometryToDestinationCrs</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Transforms <code class="docutils literal notranslate"><span class="pre">feature</span></code>’s geometry according to the specified coordinate <code class="docutils literal notranslate"><span class="pre">transform</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsCachedFeatureIterator.nextFeatureFilterExpression" title="qgis.core.QgsCachedFeatureIterator.nextFeatureFilterExpression"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nextFeatureFilterExpression</span></code></a></p></td>
-<td><p></p></td>
+<td><p>By default, the iterator will fetch all features and check if the feature matches the expression.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsCachedFeatureIterator.nextFeatureFilterFids" title="qgis.core.QgsCachedFeatureIterator.nextFeatureFilterFids"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nextFeatureFilterFids</span></code></a></p></td>
 <td><p>We have a local special iterator for FilterFids, no need to run the generic.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsCachedFeatureIterator.prepareSimplification" title="qgis.core.QgsCachedFeatureIterator.prepareSimplification"><code class="xref py py-obj docutils literal notranslate"><span class="pre">prepareSimplification</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Setup the simplification of geometries to fetch using the specified simplify method</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsCachedFeatureIterator.ref" title="qgis.core.QgsCachedFeatureIterator.ref"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ref</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Add reference</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsCachedFeatureIterator.rewind" title="qgis.core.QgsCachedFeatureIterator.rewind"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rewind</span></code></a></p></td>
 <td><p>Rewind to the beginning of the iterator</p></td>
@@ -1686,8 +1688,9 @@
 
 <dl class="py method">
 <dt id="qgis.core.QgsCachedFeatureIterator.deref">
-<code class="sig-name descname">deref</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsCachedFeatureIterator.deref" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">deref</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsCachedFeatureIterator.deref" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove reference, delete if refs == 0</p>
+</dd></dl>
 
 <dl class="py method">
 <dt id="qgis.core.QgsCachedFeatureIterator.fetchFeature">
@@ -1712,18 +1715,48 @@
 
 <dl class="py method">
 <dt id="qgis.core.QgsCachedFeatureIterator.filterRectToSourceCrs">
-<code class="sig-name descname">filterRectToSourceCrs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsCachedFeatureIterator.filterRectToSourceCrs" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">filterRectToSourceCrs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">transform</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsCoordinateTransform.html#module-QgsCoordinateTransform" title="QgsCoordinateTransform">QgsCoordinateTransform</a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="QgsRectangle.html#module-QgsRectangle" title="QgsRectangle">QgsRectangle</a><a class="headerlink" href="#qgis.core.QgsCachedFeatureIterator.filterRectToSourceCrs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a rectangle representing the original request’s <a class="reference internal" href="QgsFeatureRequest.html#qgis.core.QgsFeatureRequest.filterRect" title="qgis.core.QgsFeatureRequest.filterRect"><code class="xref py py-func docutils literal notranslate"><span class="pre">QgsFeatureRequest.filterRect()</span></code></a>
+If <code class="docutils literal notranslate"><span class="pre">transform</span></code> is a valid coordinate transform, the return rectangle will represent
+the requested filterRect() transformed to the source’s coordinate reference system.
+Iterators should call this method and use the returned rectangle for filtering
+features to ensure that any QgsFeatureRequest.destinationCrs() set on the request is respected.
+Will throw a <a class="reference internal" href="QgsCsException.html#qgis.core.QgsCsException" title="qgis.core.QgsCsException"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsCsException</span></code></a> if the rect cannot be transformed from the destination CRS.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.0.</span></p>
+</div>
+</dd></dl>
 
 <dl class="py method">
 <dt id="qgis.core.QgsCachedFeatureIterator.geometryToDestinationCrs">
-<code class="sig-name descname">geometryToDestinationCrs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsCachedFeatureIterator.geometryToDestinationCrs" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">geometryToDestinationCrs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">feature</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsFeature.html#module-QgsFeature" title="QgsFeature">QgsFeature</a></span></em>, <em class="sig-param"><span class="n">transform</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsCoordinateTransform.html#module-QgsCoordinateTransform" title="QgsCoordinateTransform">QgsCoordinateTransform</a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsCachedFeatureIterator.geometryToDestinationCrs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transforms <code class="docutils literal notranslate"><span class="pre">feature</span></code>’s geometry according to the specified coordinate <code class="docutils literal notranslate"><span class="pre">transform</span></code>.
+If <code class="docutils literal notranslate"><span class="pre">feature</span></code> has no geometry or <code class="docutils literal notranslate"><span class="pre">transform</span></code> is invalid then calling this method
+has no effect and will be shortcut.
+Iterators should call this method before returning features to ensure that any
+QgsFeatureRequest.destinationCrs() set on the request is respected.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.0.</span></p>
+</div>
+</dd></dl>
 
 <dl class="py method">
 <dt id="qgis.core.QgsCachedFeatureIterator.nextFeatureFilterExpression">
-<code class="sig-name descname">nextFeatureFilterExpression</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsCachedFeatureIterator.nextFeatureFilterExpression" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">nextFeatureFilterExpression</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">f</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsFeature.html#module-QgsFeature" title="QgsFeature">QgsFeature</a></span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsCachedFeatureIterator.nextFeatureFilterExpression" title="Permalink to this definition">¶</a></dt>
+<dd><p>By default, the iterator will fetch all features and check if the feature
+matches the expression.
+If you have a more sophisticated metodology (SQL request for the features…)
+and you check for the expression in your fetchFeature method, you can just
+redirect this call to fetchFeature so the default check will be omitted.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>f</strong> – The feature to write to</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if a feature was written to f</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt id="qgis.core.QgsCachedFeatureIterator.nextFeatureFilterFids">
@@ -1744,13 +1777,15 @@
 
 <dl class="py method">
 <dt id="qgis.core.QgsCachedFeatureIterator.prepareSimplification">
-<code class="sig-name descname">prepareSimplification</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsCachedFeatureIterator.prepareSimplification" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">prepareSimplification</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">simplifyMethod</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsSimplifyMethod.html#module-QgsSimplifyMethod" title="QgsSimplifyMethod">QgsSimplifyMethod</a></span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsCachedFeatureIterator.prepareSimplification" title="Permalink to this definition">¶</a></dt>
+<dd><p>Setup the simplification of geometries to fetch using the specified simplify method</p>
+</dd></dl>
 
 <dl class="py method">
 <dt id="qgis.core.QgsCachedFeatureIterator.ref">
-<code class="sig-name descname">ref</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsCachedFeatureIterator.ref" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">ref</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsCachedFeatureIterator.ref" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add reference</p>
+</dd></dl>
 
 <dl class="py method">
 <dt id="qgis.core.QgsCachedFeatureIterator.rewind">
@@ -1782,7 +1817,7 @@
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 22:57 Jun 05, 2020.
+        Last updated on 22:08 Jun 12, 2020.
       </span>
 
     </p>

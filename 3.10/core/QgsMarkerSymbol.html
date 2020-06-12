@@ -17,6 +17,8 @@
   
   
   
+    <link rel="canonical" href="https://qgis.org/pyqgis/latestcore/QgsMarkerSymbol.html"/>
+  
 
   
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
@@ -1661,8 +1663,10 @@ include data defined parameters such as offset and rotation</p></li>
 
 <dl class="py method">
 <dt id="qgis.core.QgsMarkerSymbol.cloneLayers">
-<code class="sig-name descname">cloneLayers</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsMarkerSymbol.cloneLayers" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">cloneLayers</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span><a class="reference internal" href="QgsSymbolLayer.html#module-QgsSymbolLayer" title="QgsSymbolLayer">QgsSymbolLayer</a><span class="p">]</span><a class="headerlink" href="#qgis.core.QgsMarkerSymbol.cloneLayers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve a cloned list of all layers that make up this symbol.
+Ownership is transferred to the caller.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt id="qgis.core.QgsMarkerSymbol.createSimple">
@@ -1748,13 +1752,24 @@ style and colors instead of the symbol’s normal style.</p>
 
 <dl class="py method">
 <dt id="qgis.core.QgsMarkerSymbol.renderUsingLayer">
-<code class="sig-name descname">renderUsingLayer</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsMarkerSymbol.renderUsingLayer" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">renderUsingLayer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">layer</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsSymbolLayer.html#module-QgsSymbolLayer" title="QgsSymbolLayer">QgsSymbolLayer</a></span></em>, <em class="sig-param"><span class="n">context</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsSymbolRenderContext.html#module-QgsSymbolRenderContext" title="QgsSymbolRenderContext">QgsSymbolRenderContext</a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsMarkerSymbol.renderUsingLayer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Renders a context using a particular symbol layer without passing in a
+geometry. This is used as fallback, if the symbol being rendered is not
+compatible with the specified layer. In such a case, this method can be
+called and will call the layer’s rendering method anyway but the
+geometry passed to the layer will be empty.
+This is required for layers that generate their own geometry from other
+information in the rendering context.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt id="qgis.core.QgsMarkerSymbol.renderVertexMarker">
-<code class="sig-name descname">renderVertexMarker</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsMarkerSymbol.renderVertexMarker" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">renderVertexMarker</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">pt</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>QPointF<span class="p">, </span>QPoint<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">context</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsRenderContext.html#module-QgsRenderContext" title="QgsRenderContext">QgsRenderContext</a></span></em>, <em class="sig-param"><span class="n">currentVertexMarkerType</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">currentVertexMarkerSize</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsMarkerSymbol.renderVertexMarker" title="Permalink to this definition">¶</a></dt>
+<dd><p>Render editing vertex marker at specified point</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.16.</span></p>
+</div>
+</dd></dl>
 
 <dl class="py method">
 <dt id="qgis.core.QgsMarkerSymbol.scaleMethod">
@@ -2043,7 +2058,7 @@ for the first symbol layer.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 22:57 Jun 05, 2020.
+        Last updated on 22:08 Jun 12, 2020.
       </span>
 
     </p>

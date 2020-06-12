@@ -17,6 +17,8 @@
   
   
   
+    <link rel="canonical" href="https://qgis.org/pyqgis/latestcore/QgsVirtualLayerTask.html"/>
+  
 
   
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
@@ -1640,10 +1642,10 @@ data in a separated thread.</p>
 <td><p>Returns the exception text or an empty string if no exceptions were raised</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVirtualLayerTask.finished" title="qgis.core.QgsVirtualLayerTask.finished"><code class="xref py py-obj docutils literal notranslate"><span class="pre">finished</span></code></a></p></td>
-<td><p></p></td>
+<td><p>If the task is managed by a <a class="reference internal" href="QgsTaskManager.html#qgis.core.QgsTaskManager" title="qgis.core.QgsTaskManager"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsTaskManager</span></code></a>, this will be called after the task has finished (whether through successful completion or via early termination).</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVirtualLayerTask.isCanceled" title="qgis.core.QgsVirtualLayerTask.isCanceled"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isCanceled</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Will return <code class="docutils literal notranslate"><span class="pre">True</span></code> if task should terminate ASAP.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVirtualLayerTask.isSignalConnected" title="qgis.core.QgsVirtualLayerTask.isSignalConnected"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isSignalConnected</span></code></a></p></td>
 <td><p></p></td>
@@ -1667,7 +1669,7 @@ data in a separated thread.</p>
 <td><p>Sets the <code class="docutils literal notranslate"><span class="pre">exceptionText</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVirtualLayerTask.setProgress" title="qgis.core.QgsVirtualLayerTask.setProgress"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setProgress</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Sets the task’s current progress.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVirtualLayerTask.takeLayer" title="qgis.core.QgsVirtualLayerTask.takeLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">takeLayer</span></code></a></p></td>
 <td><p>Returns the underlying virtual layer and ownership.</p></td>
@@ -1702,17 +1704,17 @@ data in a separated thread.</p>
 
 <dl class="py method">
 <dt id="qgis.core.QgsVirtualLayerTask.childEvent">
-<code class="sig-name descname">childEvent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsVirtualLayerTask.childEvent" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">childEvent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">QChildEvent</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsVirtualLayerTask.childEvent" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="qgis.core.QgsVirtualLayerTask.connectNotify">
-<code class="sig-name descname">connectNotify</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsVirtualLayerTask.connectNotify" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">connectNotify</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">QMetaMethod</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsVirtualLayerTask.connectNotify" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="qgis.core.QgsVirtualLayerTask.customEvent">
-<code class="sig-name descname">customEvent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsVirtualLayerTask.customEvent" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">customEvent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">QEvent</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsVirtualLayerTask.customEvent" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -1728,7 +1730,7 @@ data in a separated thread.</p>
 
 <dl class="py method">
 <dt id="qgis.core.QgsVirtualLayerTask.disconnectNotify">
-<code class="sig-name descname">disconnectNotify</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsVirtualLayerTask.disconnectNotify" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">disconnectNotify</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">QMetaMethod</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsVirtualLayerTask.disconnectNotify" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -1747,17 +1749,28 @@ data in a separated thread.</p>
 
 <dl class="py method">
 <dt id="qgis.core.QgsVirtualLayerTask.finished">
-<code class="sig-name descname">finished</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsVirtualLayerTask.finished" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">finished</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">result</span><span class="p">:</span> <span class="n">bool</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsVirtualLayerTask.finished" title="Permalink to this definition">¶</a></dt>
+<dd><p>If the task is managed by a <a class="reference internal" href="QgsTaskManager.html#qgis.core.QgsTaskManager" title="qgis.core.QgsTaskManager"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsTaskManager</span></code></a>, this will be called after the
+task has finished (whether through successful completion or via early
+termination). The result argument reflects whether
+the task was successfully completed or not. This method is always called
+from the main thread, so it is safe to create widgets and perform other
+operations which require the main thread. However, the GUI will be blocked
+for the duration of this method so tasks should avoid performing any
+lengthy operations here.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt id="qgis.core.QgsVirtualLayerTask.isCanceled">
-<code class="sig-name descname">isCanceled</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsVirtualLayerTask.isCanceled" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">isCanceled</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsVirtualLayerTask.isCanceled" title="Permalink to this definition">¶</a></dt>
+<dd><p>Will return <code class="docutils literal notranslate"><span class="pre">True</span></code> if task should terminate ASAP. If the task reports the CanCancel
+flag, then derived classes’ run() methods should periodically check this and
+terminate in a safe manner.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt id="qgis.core.QgsVirtualLayerTask.isSignalConnected">
-<code class="sig-name descname">isSignalConnected</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsVirtualLayerTask.isSignalConnected" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">isSignalConnected</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">QMetaMethod</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsVirtualLayerTask.isSignalConnected" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -1773,7 +1786,7 @@ data in a separated thread.</p>
 
 <dl class="py method">
 <dt id="qgis.core.QgsVirtualLayerTask.receivers">
-<code class="sig-name descname">receivers</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsVirtualLayerTask.receivers" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">receivers</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">PYQT_SIGNAL</span></em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#qgis.core.QgsVirtualLayerTask.receivers" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -1792,12 +1805,12 @@ data in a separated thread.</p>
 
 <dl class="py method">
 <dt id="qgis.core.QgsVirtualLayerTask.sender">
-<code class="sig-name descname">sender</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsVirtualLayerTask.sender" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">sender</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; QObject<a class="headerlink" href="#qgis.core.QgsVirtualLayerTask.sender" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="qgis.core.QgsVirtualLayerTask.senderSignalIndex">
-<code class="sig-name descname">senderSignalIndex</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsVirtualLayerTask.senderSignalIndex" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">senderSignalIndex</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#qgis.core.QgsVirtualLayerTask.senderSignalIndex" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -1816,8 +1829,15 @@ data in a separated thread.</p>
 
 <dl class="py method">
 <dt id="qgis.core.QgsVirtualLayerTask.setProgress">
-<code class="sig-name descname">setProgress</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsVirtualLayerTask.setProgress" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">setProgress</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">progress</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsVirtualLayerTask.setProgress" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the task’s current progress. The derived class should call this method whenever
+the task wants to update its progress. Calling will automatically emit the progressChanged signal.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>progress</strong> – percent of progress, from 0.0 - 100.0</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt id="qgis.core.QgsVirtualLayerTask.takeLayer">
@@ -1832,7 +1852,7 @@ data in a separated thread.</p>
 
 <dl class="py method">
 <dt id="qgis.core.QgsVirtualLayerTask.timerEvent">
-<code class="sig-name descname">timerEvent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsVirtualLayerTask.timerEvent" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">timerEvent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">QTimerEvent</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsVirtualLayerTask.timerEvent" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -1851,7 +1871,7 @@ data in a separated thread.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 22:57 Jun 05, 2020.
+        Last updated on 22:08 Jun 12, 2020.
       </span>
 
     </p>
