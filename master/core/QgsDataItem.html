@@ -1940,7 +1940,7 @@ QgsDataItem.Capabilities(QgsDataItem.Capabilities)</p>
 <dt id="qgis.core.QgsDataItem.acceptDrop">
 <code class="sig-name descname">acceptDrop</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsDataItem.acceptDrop" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns whether the item accepts drag and dropped layers - e.g. for importing a dataset to a provider.
-Subclasses should override this and handleDrop() to accept dropped layers.</p>
+Subclasses should override this and <a class="reference internal" href="#qgis.core.QgsDataItem.handleDrop" title="qgis.core.QgsDataItem.handleDrop"><code class="xref py py-func docutils literal notranslate"><span class="pre">handleDrop()</span></code></a> to accept dropped layers.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsDataItem.handleDrop" title="qgis.core.QgsDataItem.handleDrop"><code class="xref py py-func docutils literal notranslate"><span class="pre">handleDrop()</span></code></a></p>
@@ -2112,12 +2112,12 @@ This method MUST BE THREAD SAFE. *</p>
 <dl class="py method">
 <dt id="qgis.core.QgsDataItem.deferredDelete">
 <code class="sig-name descname">deferredDelete</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsDataItem.deferredDelete" title="Permalink to this definition">¶</a></dt>
-<dd><p>The item is scheduled to be deleted. E.g. if deleteLater() is called when
-item is in Populating state (createChildren() running in another thread),
-the deferredDelete() returns <code class="docutils literal notranslate"><span class="pre">True</span></code> and item will be deleted once Populating finished.
-Items with slow reateChildren() (for example network or database based) may
-check during createChildren() if deferredDelete() returns <code class="docutils literal notranslate"><span class="pre">True</span></code> and return from
-createChildren() immediately because result will be useless. *</p>
+<dd><p>The item is scheduled to be deleted. E.g. if <a class="reference internal" href="#qgis.core.QgsDataItem.deleteLater" title="qgis.core.QgsDataItem.deleteLater"><code class="xref py py-func docutils literal notranslate"><span class="pre">deleteLater()</span></code></a> is called when
+item is in Populating state (<a class="reference internal" href="#qgis.core.QgsDataItem.createChildren" title="qgis.core.QgsDataItem.createChildren"><code class="xref py py-func docutils literal notranslate"><span class="pre">createChildren()</span></code></a> running in another thread),
+the <a class="reference internal" href="#qgis.core.QgsDataItem.deferredDelete" title="qgis.core.QgsDataItem.deferredDelete"><code class="xref py py-func docutils literal notranslate"><span class="pre">deferredDelete()</span></code></a> returns <code class="docutils literal notranslate"><span class="pre">True</span></code> and item will be deleted once Populating finished.
+Items with slow <code class="xref py py-func docutils literal notranslate"><span class="pre">reateChildren()</span></code> (for example network or database based) may
+check during <a class="reference internal" href="#qgis.core.QgsDataItem.createChildren" title="qgis.core.QgsDataItem.createChildren"><code class="xref py py-func docutils literal notranslate"><span class="pre">createChildren()</span></code></a> if <a class="reference internal" href="#qgis.core.QgsDataItem.deferredDelete" title="qgis.core.QgsDataItem.deferredDelete"><code class="xref py py-func docutils literal notranslate"><span class="pre">deferredDelete()</span></code></a> returns <code class="docutils literal notranslate"><span class="pre">True</span></code> and return from
+<a class="reference internal" href="#qgis.core.QgsDataItem.createChildren" title="qgis.core.QgsDataItem.createChildren"><code class="xref py py-func docutils literal notranslate"><span class="pre">createChildren()</span></code></a> immediately because result will be useless. *</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>bool</p>
@@ -2149,7 +2149,7 @@ Safely delete the item:</p>
 <li><p>disconnects parent</p></li>
 <li><p>unsets parent (but does not remove itself)</p></li>
 <li><p>deletes all its descendants recursively</p></li>
-<li><p>waits until Populating state (createChildren() in thread) finished without blocking main thread</p></li>
+<li><p>waits until Populating state (<a class="reference internal" href="#qgis.core.QgsDataItem.createChildren" title="qgis.core.QgsDataItem.createChildren"><code class="xref py py-func docutils literal notranslate"><span class="pre">createChildren()</span></code></a> in thread) finished without blocking main thread</p></li>
 <li><p>calls QObject.deleteLater()</p></li>
 </ul>
 <dl class="field-list simple">
@@ -2231,7 +2231,7 @@ double-click behavior for items.</p>
 <dl class="py method">
 <dt id="qgis.core.QgsDataItem.handleDrop">
 <code class="sig-name descname">handleDrop</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">QMimeData</em>, <em class="sig-param">Qt.DropAction</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsDataItem.handleDrop" title="Permalink to this definition">¶</a></dt>
-<dd><p>Attempts to process the mime data dropped on this item. Subclasses must override this and acceptDrop() if they
+<dd><p>Attempts to process the mime data dropped on this item. Subclasses must override this and <a class="reference internal" href="#qgis.core.QgsDataItem.acceptDrop" title="qgis.core.QgsDataItem.acceptDrop"><code class="xref py py-func docutils literal notranslate"><span class="pre">acceptDrop()</span></code></a> if they
 accept dropped layers.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -2266,7 +2266,7 @@ accept dropped layers.</p>
 <code class="sig-name descname">hasDragEnabled</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsDataItem.hasDragEnabled" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the item may be dragged.
 Default implementation returns <code class="docutils literal notranslate"><span class="pre">False</span></code>.
-A draggable item has to implement mimeUri() that will be used to pass data.</p>
+A draggable item has to implement <a class="reference internal" href="#qgis.core.QgsDataItem.mimeUri" title="qgis.core.QgsDataItem.mimeUri"><code class="xref py py-func docutils literal notranslate"><span class="pre">mimeUri()</span></code></a> that will be used to pass data.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsDataItem.mimeUri" title="qgis.core.QgsDataItem.mimeUri"><code class="xref py py-func docutils literal notranslate"><span class="pre">mimeUri()</span></code></a></p>
@@ -2382,7 +2382,7 @@ Items that return valid URI will be returned in mime data when dragging a select
 <dt id="qgis.core.QgsDataItem.paramWidget">
 <code class="sig-name descname">paramWidget</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; QWidget<a class="headerlink" href="#qgis.core.QgsDataItem.paramWidget" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns source widget from data item for <code class="xref py py-class docutils literal notranslate"><span class="pre">QgsBrowserPropertiesWidget</span></code></p>
-<p>Use QgsDataItemGuiProvider.createParamWidget() instead</p>
+<p>Use <code class="xref py py-func docutils literal notranslate"><span class="pre">QgsDataItemGuiProvider.createParamWidget()</span></code> instead</p>
 <div class="deprecated">
 <p><span class="versionmodified deprecated">Deprecated since version QGIS: </span>3.10</p>
 </div>
@@ -2698,8 +2698,8 @@ but manually. For example “special:Favorites”</p>
 <dl class="py method">
 <dt id="qgis.core.QgsDataItem.sortKey">
 <code class="sig-name descname">sortKey</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; Any<a class="headerlink" href="#qgis.core.QgsDataItem.sortKey" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the sorting key for the item. By default name() is returned,
-but setSortKey() can be used to set a custom sort key for the item.</p>
+<dd><p>Returns the sorting key for the item. By default <a class="reference internal" href="#qgis.core.QgsDataItem.name" title="qgis.core.QgsDataItem.name"><code class="xref py py-func docutils literal notranslate"><span class="pre">name()</span></code></a> is returned,
+but <a class="reference internal" href="#qgis.core.QgsDataItem.setSortKey" title="qgis.core.QgsDataItem.setSortKey"><code class="xref py py-func docutils literal notranslate"><span class="pre">setSortKey()</span></code></a> can be used to set a custom sort key for the item.</p>
 <p>Alternatively subclasses can override this method to return a custom
 sort key.</p>
 <div class="admonition seealso">
@@ -2793,7 +2793,7 @@ sort key.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 16:15 Jun 14, 2020.
+        Last updated on 16:33 Jun 15, 2020.
       </span>
 
     </p>

@@ -1804,14 +1804,16 @@ from the original map layer because it may change any time.</p>
 it is highly desirable to use copy-on-write where possible. This way,
 the overhead of copying (both memory and CPU) will be kept low.
 Qt containers and various Qt classes use implicit sharing.</p>
-<p>The scenario will be:
-1. renderer job (doing preparation in the GUI thread) calls
-QgsMapLayer.createMapRenderer() and gets instance of this class.
+<p>The scenario will be:</p>
+<dl class="simple">
+<dt># renderer job (doing preparation in the GUI thread) calls</dt><dd><p><a class="reference internal" href="QgsMapLayer.html#qgis.core.QgsMapLayer.createMapRenderer" title="qgis.core.QgsMapLayer.createMapRenderer"><code class="xref py py-func docutils literal notranslate"><span class="pre">QgsMapLayer.createMapRenderer()</span></code></a> and gets instance of this class.
 The instance is initialized at that point and should not need
-additional calls to QgsVectorLayer.
-2. renderer job (still in GUI thread) stores the renderer for later use.
-3. renderer job (in worker thread) calls <a class="reference internal" href="#qgis.core.QgsMapLayerRenderer.render" title="qgis.core.QgsMapLayerRenderer.render"><code class="xref py py-func docutils literal notranslate"><span class="pre">QgsMapLayerRenderer.render()</span></code></a>
-4. renderer job (again in GUI thread) will check errors() and report them</p>
+additional calls to QgsVectorLayer.</p>
+</dd>
+</dl>
+<p># renderer job (still in GUI thread) stores the renderer for later use.
+# renderer job (in worker thread) calls <a class="reference internal" href="#qgis.core.QgsMapLayerRenderer.render" title="qgis.core.QgsMapLayerRenderer.render"><code class="xref py py-func docutils literal notranslate"><span class="pre">QgsMapLayerRenderer.render()</span></code></a>
+# renderer job (again in GUI thread) will check <a class="reference internal" href="#qgis.core.QgsMapLayerRenderer.errors" title="qgis.core.QgsMapLayerRenderer.errors"><code class="xref py py-func docutils literal notranslate"><span class="pre">errors()</span></code></a> and report them</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 2.4.</span></p>
 </div>
@@ -1900,7 +1902,7 @@ additional calls to QgsVectorLayer.
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 16:15 Jun 14, 2020.
+        Last updated on 16:33 Jun 15, 2020.
       </span>
 
     </p>

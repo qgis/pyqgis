@@ -2062,7 +2062,7 @@ the original expression, it’s just guaranteed to behave the same way.</p>
 <code class="sig-name descname">eval</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">parent</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsExpression.html#module-QgsExpression" title="QgsExpression">QgsExpression</a></span></em>, <em class="sig-param"><span class="n">context</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsExpressionContext.html#module-QgsExpressionContext" title="QgsExpressionContext">QgsExpressionContext</a></span></em><span class="sig-paren">)</span> &#x2192; Any<a class="headerlink" href="#qgis.core.QgsExpressionNode.eval" title="Permalink to this definition">¶</a></dt>
 <dd><p>Evaluate this node with the given context and parent.
 This will return a cached value if it has been determined to be static
-during the prepare() execution.</p>
+during the <a class="reference internal" href="#qgis.core.QgsExpressionNode.prepare" title="qgis.core.QgsExpressionNode.prepare"><code class="xref py py-func docutils literal notranslate"><span class="pre">prepare()</span></code></a> execution.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 2.12.</span></p>
 </div>
@@ -2083,9 +2083,9 @@ during the prepare() execution.</p>
 <dt id="qgis.core.QgsExpressionNode.isStatic">
 <code class="sig-name descname">isStatic</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">parent</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsExpression.html#module-QgsExpression" title="QgsExpression">QgsExpression</a></span></em>, <em class="sig-param"><span class="n">context</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsExpressionContext.html#module-QgsExpressionContext" title="QgsExpressionContext">QgsExpressionContext</a></span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsExpressionNode.isStatic" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if this node can be evaluated for a static value. This is used during
-the prepare() step and in case it returns <code class="docutils literal notranslate"><span class="pre">True</span></code>, the value of this node will already
+the <a class="reference internal" href="#qgis.core.QgsExpressionNode.prepare" title="qgis.core.QgsExpressionNode.prepare"><code class="xref py py-func docutils literal notranslate"><span class="pre">prepare()</span></code></a> step and in case it returns <code class="docutils literal notranslate"><span class="pre">True</span></code>, the value of this node will already
 be evaluated and the result cached (and therefore not re-evaluated in subsequent calls
-to eval()). In case this returns <code class="docutils literal notranslate"><span class="pre">True</span></code>, prepareNode() will never be called.</p>
+to <a class="reference internal" href="#qgis.core.QgsExpressionNode.eval" title="qgis.core.QgsExpressionNode.eval"><code class="xref py py-func docutils literal notranslate"><span class="pre">eval()</span></code></a>). In case this returns <code class="docutils literal notranslate"><span class="pre">True</span></code>, <code class="xref py py-func docutils literal notranslate"><span class="pre">prepareNode()</span></code> will never be called.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0.</span></p>
 </div>
@@ -2107,7 +2107,7 @@ to eval()). In case this returns <code class="docutils literal notranslate"><spa
 <code class="sig-name descname">needsGeometry</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsExpressionNode.needsGeometry" title="Permalink to this definition">¶</a></dt>
 <dd><p>Abstract virtual method which returns if the geometry is required to evaluate
 this expression.</p>
-<p>This needs to call <cite>needsGeometry()</cite> recursively on any child nodes.</p>
+<p>This needs to call <cite>:py:func:`~QgsExpressionNode.needsGeometry`</cite> recursively on any child nodes.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>bool</p>
@@ -2197,7 +2197,7 @@ this expression.</p>
 <code class="sig-name descname">prepare</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">parent</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsExpression.html#module-QgsExpression" title="QgsExpression">QgsExpression</a></span></em>, <em class="sig-param"><span class="n">context</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsExpressionContext.html#module-QgsExpressionContext" title="QgsExpressionContext">QgsExpressionContext</a></span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsExpressionNode.prepare" title="Permalink to this definition">¶</a></dt>
 <dd><p>Prepare this node for evaluation.
 This will check if the node content is static and in this case cache the value.
-If it’s not static it will call prepareNode() to allow the node to do initialization
+If it’s not static it will call <code class="xref py py-func docutils literal notranslate"><span class="pre">prepareNode()</span></code> to allow the node to do initialization
 work like for example resolving a column name to an attribute index.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 2.12.</span></p>
@@ -2271,7 +2271,7 @@ to evaluate child nodes.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 16:15 Jun 14, 2020.
+        Last updated on 16:33 Jun 15, 2020.
       </span>
 
     </p>

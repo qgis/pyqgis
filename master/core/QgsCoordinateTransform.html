@@ -1821,7 +1821,7 @@ to <code class="docutils literal notranslate"><span class="pre">destination</spa
 given <code class="docutils literal notranslate"><span class="pre">project</span></code>.</p>
 <p>No reference to <code class="docutils literal notranslate"><span class="pre">project</span></code> is stored or utilized outside of the constructor,
 and it is used to retrieve the project’s transform context only.</p>
-<p>Python scripts should utilize the QgsProject.instance() project
+<p>Python scripts should utilize the <a class="reference internal" href="QgsProject.html#qgis.core.QgsProject.instance" title="qgis.core.QgsProject.instance"><code class="xref py py-func docutils literal notranslate"><span class="pre">QgsProject.instance()</span></code></a> project
 instance when creating <a class="reference internal" href="#qgis.core.QgsCoordinateTransform" title="qgis.core.QgsCoordinateTransform"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsCoordinateTransform</span></code></a>. This will ensure
 that any datum transforms defined in the project will be
 correctly respected during coordinate transforms. E.g.</p>
@@ -2004,7 +2004,7 @@ transforms coordinates from the layer’s coordinate system to the map canvas.</
 <code class="sig-name descname">allowFallbackTransforms</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsCoordinateTransform.allowFallbackTransforms" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns whether “ballpark” fallback transformations will be used in the case that the specified
 coordinate operation fails (such as when coordinates from outside a required grid shift file
-are transformed). See fallbackOperationOccurred() for further details.</p>
+are transformed). See <a class="reference internal" href="#qgis.core.QgsCoordinateTransform.fallbackOperationOccurred" title="qgis.core.QgsCoordinateTransform.fallbackOperationOccurred"><code class="xref py py-func docutils literal notranslate"><span class="pre">fallbackOperationOccurred()</span></code></a> for further details.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Requires Proj 6.0 or later. Builds based on earlier Proj versions will ignore this setting.</p>
@@ -2056,12 +2056,12 @@ coordinates.</p>
 <p>The string returned by this method gives the desired coordinate operation string, based on
 the state of the <a class="reference internal" href="QgsCoordinateTransformContext.html#qgis.core.QgsCoordinateTransformContext" title="qgis.core.QgsCoordinateTransformContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsCoordinateTransformContext</span></code></a> object given in the QgsCoordinateTransform’s constructor.
 It may be an empty string if no explicit coordinate operation is required. In order to determine the
-ACTUAL coordinate operation which is being used by the transform, use the instantiatedCoordinateOperationDetails() call instead.</p>
+ACTUAL coordinate operation which is being used by the transform, use the <a class="reference internal" href="#qgis.core.QgsCoordinateTransform.instantiatedCoordinateOperationDetails" title="qgis.core.QgsCoordinateTransform.instantiatedCoordinateOperationDetails"><code class="xref py py-func docutils literal notranslate"><span class="pre">instantiatedCoordinateOperationDetails()</span></code></a> call instead.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Requires Proj 6.0 or later. Builds based on earlier Proj versions will always return
-an empty string, and the deprecated sourceDatumTransformId() or destinationDatumTransformId() methods should be used instead.</p>
+an empty string, and the deprecated <a class="reference internal" href="#qgis.core.QgsCoordinateTransform.sourceDatumTransformId" title="qgis.core.QgsCoordinateTransform.sourceDatumTransformId"><code class="xref py py-func docutils literal notranslate"><span class="pre">sourceDatumTransformId()</span></code></a> or <a class="reference internal" href="#qgis.core.QgsCoordinateTransform.destinationDatumTransformId" title="qgis.core.QgsCoordinateTransform.destinationDatumTransformId"><code class="xref py py-func docutils literal notranslate"><span class="pre">destinationDatumTransformId()</span></code></a> methods should be used instead.</p>
 </div>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -2107,7 +2107,7 @@ transform coordinates to.</p>
 <dd><p>Returns the ID of the datum transform to use when projecting to the destination
 CRS.</p>
 <p>This is usually calculated automatically from the transform’s <a class="reference internal" href="QgsCoordinateTransformContext.html#qgis.core.QgsCoordinateTransformContext" title="qgis.core.QgsCoordinateTransformContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsCoordinateTransformContext</span></code></a>,
-but can be manually overwritten by a call to setDestinationDatumTransformId().</p>
+but can be manually overwritten by a call to <a class="reference internal" href="#qgis.core.QgsCoordinateTransform.setDestinationDatumTransformId" title="qgis.core.QgsCoordinateTransform.setDestinationDatumTransformId"><code class="xref py py-func docutils literal notranslate"><span class="pre">setDestinationDatumTransformId()</span></code></a>.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="QgsDatumTransform.html#module-QgsDatumTransform" title="QgsDatumTransform"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsDatumTransform</span></code></a></p>
@@ -2135,7 +2135,7 @@ but can be manually overwritten by a call to setDestinationDatumTransformId().</
 <code class="sig-name descname">disableFallbackOperationHandler</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">disabled</span><span class="p">:</span> <span class="n">bool</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsCoordinateTransform.disableFallbackOperationHandler" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets whether the default fallback operation handler is disabled for this transform instance.</p>
 <p>If the default handler is <code class="docutils literal notranslate"><span class="pre">disabled</span></code> then it is possible to determine whether a fallback
-operation occurred by testing fallbackOperationOccurred() immediately after a transformation.</p>
+operation occurred by testing <a class="reference internal" href="#qgis.core.QgsCoordinateTransform.fallbackOperationOccurred" title="qgis.core.QgsCoordinateTransform.fallbackOperationOccurred"><code class="xref py py-func docutils literal notranslate"><span class="pre">fallbackOperationOccurred()</span></code></a> immediately after a transformation.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>This setting applies to a single instance of a coordinate transform only,
@@ -2186,12 +2186,12 @@ and is not copied when a coordinate transform object is copied or assigned.</p>
 <code class="sig-name descname">instantiatedCoordinateOperationDetails</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; QgsDatumTransform.TransformDetails<a class="headerlink" href="#qgis.core.QgsCoordinateTransform.instantiatedCoordinateOperationDetails" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the transform details representing the coordinate operation which is being used to transform
 coordinates.</p>
-<p>This may differ from the result returned by coordinateOperation() if the desired coordinate
+<p>This may differ from the result returned by <a class="reference internal" href="#qgis.core.QgsCoordinateTransform.coordinateOperation" title="qgis.core.QgsCoordinateTransform.coordinateOperation"><code class="xref py py-func docutils literal notranslate"><span class="pre">coordinateOperation()</span></code></a> if the desired coordinate
 operation was not successfully instantiated.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Requires Proj 6.0 or later. Builds based on earlier Proj versions will always return
-an empty result, and the deprecated sourceDatumTransformId() or destinationDatumTransformId() methods should be used instead.</p>
+an empty result, and the deprecated <a class="reference internal" href="#qgis.core.QgsCoordinateTransform.sourceDatumTransformId" title="qgis.core.QgsCoordinateTransform.sourceDatumTransformId"><code class="xref py py-func docutils literal notranslate"><span class="pre">sourceDatumTransformId()</span></code></a> or <a class="reference internal" href="#qgis.core.QgsCoordinateTransform.destinationDatumTransformId" title="qgis.core.QgsCoordinateTransform.destinationDatumTransformId"><code class="xref py py-func docutils literal notranslate"><span class="pre">destinationDatumTransformId()</span></code></a> methods should be used instead.</p>
 </div>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -2269,14 +2269,14 @@ CRS have been set and are valid.</p>
 <code class="sig-name descname">setAllowFallbackTransforms</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">allowed</span><span class="p">:</span> <span class="n">bool</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsCoordinateTransform.setAllowFallbackTransforms" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets whether “ballpark” fallback transformations can be used in the case that the specified
 coordinate operation fails (such as when coordinates from outside a required grid shift file
-are transformed). See fallbackOperationOccurred() for further details.</p>
+are transformed). See <a class="reference internal" href="#qgis.core.QgsCoordinateTransform.fallbackOperationOccurred" title="qgis.core.QgsCoordinateTransform.fallbackOperationOccurred"><code class="xref py py-func docutils literal notranslate"><span class="pre">fallbackOperationOccurred()</span></code></a> for further details.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Requires Proj 6.0 or later. Builds based on earlier Proj versions will ignore this setting.</p>
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>If setBallparkTransformsAreAppropriate() is set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, this setting will be ignored
+<p>If <a class="reference internal" href="#qgis.core.QgsCoordinateTransform.setBallparkTransformsAreAppropriate" title="qgis.core.QgsCoordinateTransform.setBallparkTransformsAreAppropriate"><code class="xref py py-func docutils literal notranslate"><span class="pre">setBallparkTransformsAreAppropriate()</span></code></a> is set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, this setting will be ignored
 and fallback transformations will always be permitted.</p>
 </div>
 <div class="admonition seealso">
@@ -2315,7 +2315,7 @@ CRS with a localized area of use.</p>
 <p>If <code class="docutils literal notranslate"><span class="pre">appropriate</span></code> is <code class="docutils literal notranslate"><span class="pre">False</span></code> (the default behavior), then transforms MAY STILL fallback to default operations
 when the preferred or user-specified operation fails, however whenever this occurs
 a user-visible warning will be generated.</p>
-<p>If <code class="docutils literal notranslate"><span class="pre">appropriate</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code>, then this setting overrides allowFallbackTransforms()
+<p>If <code class="docutils literal notranslate"><span class="pre">appropriate</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code>, then this setting overrides <a class="reference internal" href="#qgis.core.QgsCoordinateTransform.allowFallbackTransforms" title="qgis.core.QgsCoordinateTransform.allowFallbackTransforms"><code class="xref py py-func docutils literal notranslate"><span class="pre">allowFallbackTransforms()</span></code></a>
 and fallback transforms will always be allowed when required.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -2368,7 +2368,7 @@ coordinate operation string.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Requires Proj 6.0 or later. Builds based on earlier Proj versions will ignore this setting,
-and the deprecated setSourceDatumTransformId() or setDestinationDatumTransformId() methods should be used instead.</p>
+and the deprecated <a class="reference internal" href="#qgis.core.QgsCoordinateTransform.setSourceDatumTransformId" title="qgis.core.QgsCoordinateTransform.setSourceDatumTransformId"><code class="xref py py-func docutils literal notranslate"><span class="pre">setSourceDatumTransformId()</span></code></a> or <a class="reference internal" href="#qgis.core.QgsCoordinateTransform.setDestinationDatumTransformId" title="qgis.core.QgsCoordinateTransform.setDestinationDatumTransformId"><code class="xref py py-func docutils literal notranslate"><span class="pre">setDestinationDatumTransformId()</span></code></a> methods should be used instead.</p>
 </div>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -2506,7 +2506,7 @@ transform coordinates from.</p>
 <dd><p>Returns the ID of the datum transform to use when projecting from the source
 CRS.</p>
 <p>This is usually calculated automatically from the transform’s <a class="reference internal" href="QgsCoordinateTransformContext.html#qgis.core.QgsCoordinateTransformContext" title="qgis.core.QgsCoordinateTransformContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsCoordinateTransformContext</span></code></a>,
-but can be manually overwritten by a call to setSourceDatumTransformId().</p>
+but can be manually overwritten by a call to <a class="reference internal" href="#qgis.core.QgsCoordinateTransform.setSourceDatumTransformId" title="qgis.core.QgsCoordinateTransform.setSourceDatumTransformId"><code class="xref py py-func docutils literal notranslate"><span class="pre">setSourceDatumTransformId()</span></code></a>.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="QgsDatumTransform.html#module-QgsDatumTransform" title="QgsDatumTransform"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsDatumTransform</span></code></a></p>
@@ -2684,7 +2684,7 @@ heights) and must be expressed in its vertical units (generally meters)</p></li>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 16:15 Jun 14, 2020.
+        Last updated on 16:33 Jun 15, 2020.
       </span>
 
     </p>

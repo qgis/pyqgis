@@ -1798,7 +1798,7 @@
 <p>Parameters are stored in a QVariantMap and referenced by a unique string key.
 The QVariants in parameters are not usually accessed
 directly, and instead the high level API provided through <a class="reference internal" href="#module-QgsProcessingParameters" title="QgsProcessingParameters"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingParameters</span></code></a>
-parameterAsString(), parameterAsDouble() are used instead.</p>
+<code class="xref py py-func docutils literal notranslate"><span class="pre">parameterAsString()</span></code>, <code class="xref py py-func docutils literal notranslate"><span class="pre">parameterAsDouble()</span></code> are used instead.</p>
 <p>Parameters are evaluated using a provided <a class="reference internal" href="QgsProcessingContext.html#module-QgsProcessingContext" title="QgsProcessingContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingContext</span></code></a>, allowing
 the evaluation to understand available map layers and expression contexts
 (for expression based parameters).</p>
@@ -2087,7 +2087,7 @@ in a temporary location. The function will then return the path to that temporar
 <p>The <code class="docutils literal notranslate"><span class="pre">preferredFormat</span></code> argument is used to specify to desired file extension to use when a temporary
 layer export is required. This defaults to shapefiles, because shapefiles are the future (don’t believe the geopackage hype!).</p>
 <p>When an algorithm is capable of handling multi-layer input files (such as Geopackage), it is preferable
-to use parameterAsCompatibleSourceLayerPathAndLayerName() which may avoid conversion in more situations.</p>
+to use <a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsCompatibleSourceLayerPathAndLayerName" title="qgis.core.QgsProcessingParameters.parameterAsCompatibleSourceLayerPathAndLayerName"><code class="xref py py-func docutils literal notranslate"><span class="pre">parameterAsCompatibleSourceLayerPathAndLayerName()</span></code></a> which may avoid conversion in more situations.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -2115,8 +2115,8 @@ in a temporary location. The function will then return the path to that temporar
 <p><code class="docutils literal notranslate"><span class="pre">compatibleFormats</span></code> should consist entirely of lowercase file extensions, e.g. ‘shp’.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">preferredFormat</span></code> argument is used to specify to desired file extension to use when a temporary
 layer export is required. This defaults to shapefiles, because shapefiles are the future (don’t believe the geopackage hype!).</p>
-<p>This method should be preferred over parameterAsCompatibleSourceLayerPath() when an algorithm is able
-to correctly handle files with multiple layers. Unlike parameterAsCompatibleSourceLayerPath(), it will not force
+<p>This method should be preferred over <a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsCompatibleSourceLayerPath" title="qgis.core.QgsProcessingParameters.parameterAsCompatibleSourceLayerPath"><code class="xref py py-func docutils literal notranslate"><span class="pre">parameterAsCompatibleSourceLayerPath()</span></code></a> when an algorithm is able
+to correctly handle files with multiple layers. Unlike <a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsCompatibleSourceLayerPath" title="qgis.core.QgsProcessingParameters.parameterAsCompatibleSourceLayerPath"><code class="xref py py-func docutils literal notranslate"><span class="pre">parameterAsCompatibleSourceLayerPath()</span></code></a>, it will not force
 a conversion in this case and will return the target layer name in the <code class="docutils literal notranslate"><span class="pre">layerName</span></code> argument.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2477,8 +2477,8 @@ Returns the coordinate reference system associated with an extent parameter valu
 <code class="sig-name descname">parameterAsExtentGeometry</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">definition</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsProcessingParameterDefinition.html#module-QgsProcessingParameterDefinition" title="QgsProcessingParameterDefinition">QgsProcessingParameterDefinition</a></span></em>, <em class="sig-param"><span class="n">parameters</span><span class="p">:</span> <span class="n">Dict<span class="p">[</span>str<span class="p">, </span>Any<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">context</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsProcessingContext.html#module-QgsProcessingContext" title="QgsProcessingContext">QgsProcessingContext</a></span></em>, <em class="sig-param"><span class="n">crs</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsCoordinateReferenceSystem.html#module-QgsCoordinateReferenceSystem" title="QgsCoordinateReferenceSystem">QgsCoordinateReferenceSystem</a></span> <span class="o">=</span> <span class="default_value">QgsCoordinateReferenceSystem()</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="QgsGeometry.html#module-QgsGeometry" title="QgsGeometry">QgsGeometry</a><a class="headerlink" href="#qgis.core.QgsProcessingParameters.parameterAsExtentGeometry" title="Permalink to this definition">¶</a></dt>
 <dd><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">definition</span></code> to a rectangular extent, and returns a geometry covering this extent.</p>
 <p>If <code class="docutils literal notranslate"><span class="pre">crs</span></code> is set, and the original coordinate reference system of the parameter can be determined, then the extent will be automatically
-reprojected so that it is in the specified <code class="docutils literal notranslate"><span class="pre">crs</span></code>. Unlike parameterAsExtent(), the reprojected rectangle returned by this function
-will no longer be a rectangle itself (i.e. this method returns the geometry of the actual reprojected rectangle, while parameterAsExtent() returns
+reprojected so that it is in the specified <code class="docutils literal notranslate"><span class="pre">crs</span></code>. Unlike <a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsExtent" title="qgis.core.QgsProcessingParameters.parameterAsExtent"><code class="xref py py-func docutils literal notranslate"><span class="pre">parameterAsExtent()</span></code></a>, the reprojected rectangle returned by this function
+will no longer be a rectangle itself (i.e. this method returns the geometry of the actual reprojected rectangle, while <a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsExtent" title="qgis.core.QgsProcessingParameters.parameterAsExtent"><code class="xref py py-func docutils literal notranslate"><span class="pre">parameterAsExtent()</span></code></a> returns
 just the extent of the reprojected rectangle).</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -3005,7 +3005,7 @@ of the resulting feature sink.</p>
 <p>Sinks will either be taken from <code class="docutils literal notranslate"><span class="pre">context</span></code>’s active project, or created from external
 providers and stored temporarily in the <code class="docutils literal notranslate"><span class="pre">context</span></code>. The <code class="docutils literal notranslate"><span class="pre">destinationIdentifier</span></code>
 argument will be set to a string which can be used to retrieve the layer corresponding
-to the sink, e.g. via calling <a class="reference internal" href="QgsProcessingUtils.html#qgis.core.QgsProcessingUtils.mapLayerFromString" title="qgis.core.QgsProcessingUtils.mapLayerFromString"><code class="xref py py-func docutils literal notranslate"><span class="pre">QgsProcessingUtils.mapLayerFromString()</span></code></a></p>
+to the sink, e.g. via calling <a class="reference internal" href="QgsProcessingUtils.html#qgis.core.QgsProcessingUtils.mapLayerFromString" title="qgis.core.QgsProcessingUtils.mapLayerFromString"><code class="xref py py-func docutils literal notranslate"><span class="pre">QgsProcessingUtils.mapLayerFromString()</span></code></a>.</p>
 <p>This function creates a new object and the caller takes responsibility for deleting the returned object.</p>
 <p>parameterAsSink(definition: <a class="reference internal" href="QgsProcessingParameterDefinition.html#qgis.core.QgsProcessingParameterDefinition" title="qgis.core.QgsProcessingParameterDefinition"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingParameterDefinition</span></code></a>, value: Any, fields: <a class="reference internal" href="QgsFields.html#qgis.core.QgsFields" title="qgis.core.QgsFields"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsFields</span></code></a>, geometryType: QgsWkbTypes.Type, crs: <a class="reference internal" href="QgsCoordinateReferenceSystem.html#qgis.core.QgsCoordinateReferenceSystem" title="qgis.core.QgsCoordinateReferenceSystem"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsCoordinateReferenceSystem</span></code></a>, context: <a class="reference internal" href="QgsProcessingContext.html#qgis.core.QgsProcessingContext" title="qgis.core.QgsProcessingContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingContext</span></code></a>, sinkFlags: Union[QgsFeatureSink.SinkFlags, QgsFeatureSink.SinkFlag] = 0) -&gt; Tuple[<a class="reference internal" href="QgsFeatureSink.html#qgis.core.QgsFeatureSink" title="qgis.core.QgsFeatureSink"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsFeatureSink</span></code></a>, str]
 Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">definition</span></code> and <code class="docutils literal notranslate"><span class="pre">value</span></code> to a feature sink.</p>
@@ -3014,7 +3014,7 @@ of the resulting feature sink.</p>
 <p>Sinks will either be taken from <code class="docutils literal notranslate"><span class="pre">context</span></code>’s active project, or created from external
 providers and stored temporarily in the <code class="docutils literal notranslate"><span class="pre">context</span></code>. The <code class="docutils literal notranslate"><span class="pre">destinationIdentifier</span></code>
 argument will be set to a string which can be used to retrieve the layer corresponding
-to the sink, e.g. via calling <a class="reference internal" href="QgsProcessingUtils.html#qgis.core.QgsProcessingUtils.mapLayerFromString" title="qgis.core.QgsProcessingUtils.mapLayerFromString"><code class="xref py py-func docutils literal notranslate"><span class="pre">QgsProcessingUtils.mapLayerFromString()</span></code></a></p>
+to the sink, e.g. via calling <a class="reference internal" href="QgsProcessingUtils.html#qgis.core.QgsProcessingUtils.mapLayerFromString" title="qgis.core.QgsProcessingUtils.mapLayerFromString"><code class="xref py py-func docutils literal notranslate"><span class="pre">QgsProcessingUtils.mapLayerFromString()</span></code></a>.</p>
 <p>This function creates a new object and the caller takes responsibility for deleting the returned object.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Raises</dt>
@@ -3213,7 +3213,7 @@ The caller takes responsibility for deleting the returned object.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 16:15 Jun 14, 2020.
+        Last updated on 16:33 Jun 15, 2020.
       </span>
 
     </p>

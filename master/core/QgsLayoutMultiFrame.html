@@ -2069,7 +2069,7 @@ and general frame properties (e.g., frame style, background, rendering settings)
 <dd><p>Called after all pending items have been restored from XML. Multiframes can use
 this method to run steps which must take place after all items have been restored to the layout,
 such as connecting to signals emitted by other items, which may not have existed in the layout
-at the time readXml() was called. E.g. a scalebar can use this to connect to its linked
+at the time <a class="reference internal" href="#qgis.core.QgsLayoutMultiFrame.readXml" title="qgis.core.QgsLayoutMultiFrame.readXml"><code class="xref py py-func docutils literal notranslate"><span class="pre">readXml()</span></code></a> was called. E.g. a scalebar can use this to connect to its linked
 map item after restoration from XML.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -2099,7 +2099,7 @@ to and before the specified yPos</p>
 <dt id="qgis.core.QgsLayoutMultiFrame.fixedFrameSize">
 <code class="sig-name descname">fixedFrameSize</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">frameIndex</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">- 1</span></em><span class="sig-paren">)</span> &#x2192; QSizeF<a class="headerlink" href="#qgis.core.QgsLayoutMultiFrame.fixedFrameSize" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the fixed size for a frame, if desired. If the fixed frame size changes,
-the sizes of all frames can be recalculated by calling recalculateFrameRects().</p>
+the sizes of all frames can be recalculated by calling <a class="reference internal" href="#qgis.core.QgsLayoutMultiFrame.recalculateFrameRects" title="qgis.core.QgsLayoutMultiFrame.recalculateFrameRects"><code class="xref py py-func docutils literal notranslate"><span class="pre">recalculateFrameRects()</span></code></a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>frameIndex</strong> (<em>int = -1</em>) – frame number</p>
@@ -2215,7 +2215,7 @@ or height accordingly.</p>
 <code class="sig-name descname">minFrameSize</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">frameIndex</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">- 1</span></em><span class="sig-paren">)</span> &#x2192; QSizeF<a class="headerlink" href="#qgis.core.QgsLayoutMultiFrame.minFrameSize" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the minimum size for a frames, if desired. If the minimum
 size changes, the sizes of all frames can be recalculated by calling
-recalculateFrameRects().</p>
+<a class="reference internal" href="#qgis.core.QgsLayoutMultiFrame.recalculateFrameRects" title="qgis.core.QgsLayoutMultiFrame.recalculateFrameRects"><code class="xref py py-func docutils literal notranslate"><span class="pre">recalculateFrameRects()</span></code></a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>frameIndex</strong> (<em>int = -1</em>) – frame number</p>
@@ -2279,9 +2279,9 @@ the frame size has no minimum in that direction.</p>
 </div>
 <p>Note that item subclasses should not rely on all other items being present in the
 layout at the time this method is called. Instead, any connections and links to
-other items must be made in the finalizeRestoreFromXml() method. E.g. when restoring
+other items must be made in the <a class="reference internal" href="#qgis.core.QgsLayoutMultiFrame.finalizeRestoreFromXml" title="qgis.core.QgsLayoutMultiFrame.finalizeRestoreFromXml"><code class="xref py py-func docutils literal notranslate"><span class="pre">finalizeRestoreFromXml()</span></code></a> method. E.g. when restoring
 a scalebar, the connection to the linked map’s signals should be implemented
-in finalizeRestoreFromXml(), not readPropertiesFromElement().</p>
+in <a class="reference internal" href="#qgis.core.QgsLayoutMultiFrame.finalizeRestoreFromXml" title="qgis.core.QgsLayoutMultiFrame.finalizeRestoreFromXml"><code class="xref py py-func docutils literal notranslate"><span class="pre">finalizeRestoreFromXml()</span></code></a>, not <a class="reference internal" href="#qgis.core.QgsLayoutMultiFrame.readPropertiesFromElement" title="qgis.core.QgsLayoutMultiFrame.readPropertiesFromElement"><code class="xref py py-func docutils literal notranslate"><span class="pre">readPropertiesFromElement()</span></code></a>.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsLayoutMultiFrame.readXml" title="qgis.core.QgsLayoutMultiFrame.readXml"><code class="xref py py-func docutils literal notranslate"><span class="pre">readXml()</span></code></a></p>
@@ -2322,8 +2322,8 @@ in finalizeRestoreFromXml(), not readPropertiesFromElement().</p>
 <dt id="qgis.core.QgsLayoutMultiFrame.recalculateFrameRects">
 <code class="sig-name descname">recalculateFrameRects</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsLayoutMultiFrame.recalculateFrameRects" title="Permalink to this definition">¶</a></dt>
 <dd><p>Forces a recalculation of all the associated frame’s scene rectangles. This
-method is useful for multiframes which implement a minFrameSize() or
-fixedFrameSize() method.</p>
+method is useful for multiframes which implement a <a class="reference internal" href="#qgis.core.QgsLayoutMultiFrame.minFrameSize" title="qgis.core.QgsLayoutMultiFrame.minFrameSize"><code class="xref py py-func docutils literal notranslate"><span class="pre">minFrameSize()</span></code></a> or
+<a class="reference internal" href="#qgis.core.QgsLayoutMultiFrame.fixedFrameSize" title="qgis.core.QgsLayoutMultiFrame.fixedFrameSize"><code class="xref py py-func docutils literal notranslate"><span class="pre">fixedFrameSize()</span></code></a> method.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsLayoutMultiFrame.minFrameSize" title="qgis.core.QgsLayoutMultiFrame.minFrameSize"><code class="xref py py-func docutils literal notranslate"><span class="pre">minFrameSize()</span></code></a></p>
@@ -2596,7 +2596,7 @@ upon creation.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 16:15 Jun 14, 2020.
+        Last updated on 16:33 Jun 15, 2020.
       </span>
 
     </p>

@@ -1796,8 +1796,8 @@
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sip.wrapper</span></code></p>
 <p>Takes care of writing vector tiles. The intended use is to set up the class
 by setting the destination URI, extent, zoom level range and input vector
-layers. Then with a call to writeTiles() the data gets written. In case
-of a failure, errorMessage() returns the cause of the problem during writing.</p>
+layers. Then with a call to <a class="reference internal" href="#qgis.core.QgsVectorTileWriter.writeTiles" title="qgis.core.QgsVectorTileWriter.writeTiles"><code class="xref py py-func docutils literal notranslate"><span class="pre">writeTiles()</span></code></a> the data gets written. In case
+of a failure, <a class="reference internal" href="#qgis.core.QgsVectorTileWriter.errorMessage" title="qgis.core.QgsVectorTileWriter.errorMessage"><code class="xref py py-func docutils literal notranslate"><span class="pre">errorMessage()</span></code></a> returns the cause of the problem during writing.</p>
 <p>The syntax of destination URIs is the same like the data source string
 used by vector tile layers: parameters are encoded as a HTTP query string,
 where “type” key determines the type of the destination container,
@@ -1846,7 +1846,7 @@ and “maxzoom”.</p>
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileWriter.errorMessage" title="qgis.core.QgsVectorTileWriter.errorMessage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">errorMessage</span></code></a></p></td>
-<td><p>Returns error message related to the previous call to writeTiles().</p></td>
+<td><p>Returns error message related to the previous call to <a class="reference internal" href="#qgis.core.QgsVectorTileWriter.writeTiles" title="qgis.core.QgsVectorTileWriter.writeTiles"><code class="xref py py-func docutils literal notranslate"><span class="pre">writeTiles()</span></code></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileWriter.fullExtent" title="qgis.core.QgsVectorTileWriter.fullExtent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fullExtent</span></code></a></p></td>
 <td><p>Returns calculated extent that combines extent of all input layers</p></td>
@@ -1934,7 +1934,7 @@ and “maxzoom”.</p>
 <dl class="py method">
 <dt id="qgis.core.QgsVectorTileWriter.Layer.layerName">
 <code class="sig-name descname">layerName</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.core.QgsVectorTileWriter.Layer.layerName" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns layer name in the output. If not set, layer()-&gt;name() will be used.</p>
+<dd><p>Returns layer name in the output. If not set, <code class="xref py py-func docutils literal notranslate"><span class="pre">layer()</span></code>-&gt;:py:func:<cite>~Layer.name</cite> will be used.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>str</p>
@@ -1978,7 +1978,7 @@ and “maxzoom”.</p>
 <dl class="py method">
 <dt id="qgis.core.QgsVectorTileWriter.Layer.setLayerName">
 <code class="sig-name descname">setLayerName</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsVectorTileWriter.Layer.setLayerName" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sets layer name in the output. If not set, layer()-&gt;name() will be used.</p>
+<dd><p>Sets layer name in the output. If not set, <code class="xref py py-func docutils literal notranslate"><span class="pre">layer()</span></code>-&gt;:py:func:<cite>~Layer.name</cite> will be used.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – </p>
@@ -2013,7 +2013,7 @@ and “maxzoom”.</p>
 <dl class="py method">
 <dt id="qgis.core.QgsVectorTileWriter.errorMessage">
 <code class="sig-name descname">errorMessage</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.core.QgsVectorTileWriter.errorMessage" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns error message related to the previous call to writeTiles(). Will return
+<dd><p>Returns error message related to the previous call to <a class="reference internal" href="#qgis.core.QgsVectorTileWriter.writeTiles" title="qgis.core.QgsVectorTileWriter.writeTiles"><code class="xref py py-func docutils literal notranslate"><span class="pre">writeTiles()</span></code></a>. Will return
 an empty string if writing was successful.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
@@ -2116,7 +2116,7 @@ If unset, it will use the full extent of all input layers combined</p>
 <dt id="qgis.core.QgsVectorTileWriter.writeTiles">
 <code class="sig-name descname">writeTiles</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">feedback</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsFeedback.html#module-QgsFeedback" title="QgsFeedback">QgsFeedback</a></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsVectorTileWriter.writeTiles" title="Permalink to this definition">¶</a></dt>
 <dd><p>Writes vector tiles according to the configuration.
-Returns true on success (upon failure one can get error cause using errorMessage())</p>
+Returns true on success (upon failure one can get error cause using <a class="reference internal" href="#qgis.core.QgsVectorTileWriter.errorMessage" title="qgis.core.QgsVectorTileWriter.errorMessage"><code class="xref py py-func docutils literal notranslate"><span class="pre">errorMessage()</span></code></a>)</p>
 <p>If a pointer to a feedback object is provided, it can be used to track progress or
 provide cancellation functionality.</p>
 <dl class="field-list simple">
@@ -2145,7 +2145,7 @@ provide cancellation functionality.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 16:15 Jun 14, 2020.
+        Last updated on 16:33 Jun 15, 2020.
       </span>
 
     </p>

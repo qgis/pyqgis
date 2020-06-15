@@ -1801,8 +1801,8 @@ construct a request with feature ID filter</p>
 construct a request with feature ID filter</p>
 <p>QgsFeatureRequest(rectangle: <a class="reference internal" href="QgsRectangle.html#qgis.core.QgsRectangle" title="qgis.core.QgsRectangle"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsRectangle</span></code></a>)
 Construct a request with <code class="docutils literal notranslate"><span class="pre">rectangle</span></code> bounding box filter.</p>
-<p>When a destination CRS is set using setDestinationCrs(), <code class="docutils literal notranslate"><span class="pre">rectangle</span></code>
-is expected to be in the same CRS as the destinationCrs(). Otherwise, <code class="docutils literal notranslate"><span class="pre">rectangle</span></code>
+<p>When a destination CRS is set using <a class="reference internal" href="#qgis.core.QgsFeatureRequest.setDestinationCrs" title="qgis.core.QgsFeatureRequest.setDestinationCrs"><code class="xref py py-func docutils literal notranslate"><span class="pre">setDestinationCrs()</span></code></a>, <code class="docutils literal notranslate"><span class="pre">rectangle</span></code>
+is expected to be in the same CRS as the <a class="reference internal" href="#qgis.core.QgsFeatureRequest.destinationCrs" title="qgis.core.QgsFeatureRequest.destinationCrs"><code class="xref py py-func docutils literal notranslate"><span class="pre">destinationCrs()</span></code></a>. Otherwise, <code class="docutils literal notranslate"><span class="pre">rectangle</span></code>
 should use the same CRS as the source layer/provider.</p>
 <p>QgsFeatureRequest(expr: <a class="reference internal" href="QgsExpression.html#qgis.core.QgsExpression" title="qgis.core.QgsExpression"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsExpression</span></code></a>, context: <a class="reference internal" href="QgsExpressionContext.html#qgis.core.QgsExpressionContext" title="qgis.core.QgsExpressionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsExpressionContext</span></code></a> = QgsExpressionContext())
 construct a request with a filter expression</p>
@@ -2411,8 +2411,8 @@ The spatial filter (filterRect) will be kept in place.</p>
 <code class="sig-name descname">filterRect</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="QgsRectangle.html#module-QgsRectangle" title="QgsRectangle">QgsRectangle</a><a class="headerlink" href="#qgis.core.QgsFeatureRequest.filterRect" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the rectangle from which features will be taken. If the returned
 rectangle is null, then no filter rectangle is set.</p>
-<p>When a destination CRS is set using setDestinationCrs(), the rectangle
-will be in the same CRS as the destinationCrs(). Otherwise, the rectangle
+<p>When a destination CRS is set using <a class="reference internal" href="#qgis.core.QgsFeatureRequest.setDestinationCrs" title="qgis.core.QgsFeatureRequest.setDestinationCrs"><code class="xref py py-func docutils literal notranslate"><span class="pre">setDestinationCrs()</span></code></a>, the rectangle
+will be in the same CRS as the <a class="reference internal" href="#qgis.core.QgsFeatureRequest.destinationCrs" title="qgis.core.QgsFeatureRequest.destinationCrs"><code class="xref py py-func docutils literal notranslate"><span class="pre">destinationCrs()</span></code></a>. Otherwise, the rectangle
 will use the same CRS as the source layer/provider.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -2551,13 +2551,13 @@ geometries will be reprojected from their original coordinate reference
 system to this desired reference system. If <code class="docutils literal notranslate"><span class="pre">crs</span></code> is an invalid
 <a class="reference internal" href="QgsCoordinateReferenceSystem.html#qgis.core.QgsCoordinateReferenceSystem" title="qgis.core.QgsCoordinateReferenceSystem"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsCoordinateReferenceSystem</span></code></a> then no reprojection will be done
 and all features will be left with their original geometry.</p>
-<p>When a <code class="docutils literal notranslate"><span class="pre">crs</span></code> is set using setDestinationCrs(), then any filterRect()
+<p>When a <code class="docutils literal notranslate"><span class="pre">crs</span></code> is set using <a class="reference internal" href="#qgis.core.QgsFeatureRequest.setDestinationCrs" title="qgis.core.QgsFeatureRequest.setDestinationCrs"><code class="xref py py-func docutils literal notranslate"><span class="pre">setDestinationCrs()</span></code></a>, then any <a class="reference internal" href="#qgis.core.QgsFeatureRequest.filterRect" title="qgis.core.QgsFeatureRequest.filterRect"><code class="xref py py-func docutils literal notranslate"><span class="pre">filterRect()</span></code></a>
 set on the request is expected to be in the same CRS as the destination
 CRS.</p>
 <p>The feature geometry transformation to the destination CRS is performed
 after all filter expressions are tested and any virtual fields are
 calculated. Accordingly, any geometric expressions used in
-filterExpression() will be performed in the original
+<a class="reference internal" href="#qgis.core.QgsFeatureRequest.filterExpression" title="qgis.core.QgsFeatureRequest.filterExpression"><code class="xref py py-func docutils literal notranslate"><span class="pre">filterExpression()</span></code></a> will be performed in the original
 source CRS. This ensures consistent results are returned regardless of the
 destination CRS. Similarly, virtual field values will be calculated using the
 original geometry in the source CRS, so these values are not affected by
@@ -2663,8 +2663,8 @@ any destination CRS transform present in the feature request.</p>
 <dt id="qgis.core.QgsFeatureRequest.setFilterRect">
 <code class="sig-name descname">setFilterRect</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">rectangle</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsRectangle.html#module-QgsRectangle" title="QgsRectangle">QgsRectangle</a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#module-QgsFeatureRequest" title="QgsFeatureRequest">QgsFeatureRequest</a><a class="headerlink" href="#qgis.core.QgsFeatureRequest.setFilterRect" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets the <code class="docutils literal notranslate"><span class="pre">rectangle</span></code> from which features will be taken. An empty rectangle removes the filter.</p>
-<p>When a destination CRS is set using setDestinationCrs(), <code class="docutils literal notranslate"><span class="pre">rectangle</span></code>
-is expected to be in the same CRS as the destinationCrs(). Otherwise, <code class="docutils literal notranslate"><span class="pre">rectangle</span></code>
+<p>When a destination CRS is set using <a class="reference internal" href="#qgis.core.QgsFeatureRequest.setDestinationCrs" title="qgis.core.QgsFeatureRequest.setDestinationCrs"><code class="xref py py-func docutils literal notranslate"><span class="pre">setDestinationCrs()</span></code></a>, <code class="docutils literal notranslate"><span class="pre">rectangle</span></code>
+is expected to be in the same CRS as the <a class="reference internal" href="#qgis.core.QgsFeatureRequest.destinationCrs" title="qgis.core.QgsFeatureRequest.destinationCrs"><code class="xref py py-func docutils literal notranslate"><span class="pre">destinationCrs()</span></code></a>. Otherwise, <code class="docutils literal notranslate"><span class="pre">rectangle</span></code>
 should use the same CRS as the source layer/provider.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -2698,7 +2698,7 @@ should use the same CRS as the source layer/provider.</p>
 <dt id="qgis.core.QgsFeatureRequest.setInvalidGeometryCallback">
 <code class="sig-name descname">setInvalidGeometryCallback</code><span class="sig-paren">(</span><em class="sig-param">self, Callable[..., None]</em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#module-QgsFeatureRequest" title="QgsFeatureRequest">QgsFeatureRequest</a><a class="headerlink" href="#qgis.core.QgsFeatureRequest.setInvalidGeometryCallback" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets a callback function to use when encountering an invalid geometry and
-invalidGeometryCheck() is set to GeometryAbortOnInvalid or GeometrySkipInvalid. This function will be
+<a class="reference internal" href="#qgis.core.QgsFeatureRequest.invalidGeometryCheck" title="qgis.core.QgsFeatureRequest.invalidGeometryCheck"><code class="xref py py-func docutils literal notranslate"><span class="pre">invalidGeometryCheck()</span></code></a> is set to GeometryAbortOnInvalid or GeometrySkipInvalid. This function will be
 called using the feature with invalid geometry as a parameter.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -2882,7 +2882,7 @@ feature is returned. A negative value (which is set by default) will wait foreve
 <dt id="qgis.core.QgsFeatureRequest.setTransformErrorCallback">
 <code class="sig-name descname">setTransformErrorCallback</code><span class="sig-paren">(</span><em class="sig-param">self, Callable[..., None]</em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#module-QgsFeatureRequest" title="QgsFeatureRequest">QgsFeatureRequest</a><a class="headerlink" href="#qgis.core.QgsFeatureRequest.setTransformErrorCallback" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets a callback function to use when encountering a transform error when iterating
-features and a destinationCrs() is set. This function will be
+features and a <a class="reference internal" href="#qgis.core.QgsFeatureRequest.destinationCrs" title="qgis.core.QgsFeatureRequest.destinationCrs"><code class="xref py py-func docutils literal notranslate"><span class="pre">destinationCrs()</span></code></a> is set. This function will be
 called using the feature which encountered the transform error as a parameter.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -2952,7 +2952,7 @@ feature is returned. A negative value (which is set by default) will wait foreve
 <dl class="py method">
 <dt id="qgis.core.QgsFeatureRequest.transformContext">
 <code class="sig-name descname">transformContext</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="QgsCoordinateTransformContext.html#module-QgsCoordinateTransformContext" title="QgsCoordinateTransformContext">QgsCoordinateTransformContext</a><a class="headerlink" href="#qgis.core.QgsFeatureRequest.transformContext" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the transform context, for use when a destinationCrs() has been set
+<dd><p>Returns the transform context, for use when a <a class="reference internal" href="#qgis.core.QgsFeatureRequest.destinationCrs" title="qgis.core.QgsFeatureRequest.destinationCrs"><code class="xref py py-func docutils literal notranslate"><span class="pre">destinationCrs()</span></code></a> has been set
 and reprojection is required</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -2988,7 +2988,7 @@ and reprojection is required</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 16:15 Jun 14, 2020.
+        Last updated on 16:33 Jun 15, 2020.
       </span>
 
     </p>

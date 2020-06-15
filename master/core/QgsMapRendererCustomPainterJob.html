@@ -1961,8 +1961,8 @@ platforms).</p>
 <code class="sig-name descname">prepare</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsMapRendererCustomPainterJob.prepare" title="Permalink to this definition">¶</a></dt>
 <dd><p>Prepares the job for rendering synchronously in a background thread.</p>
 <p>Must be called from the main thread.</p>
-<p>This is an alternative to ordinary API (using start() + waiting for finished() signal),
-and an alternative to renderSynchronously() (which should only ever be called from the main thread).</p>
+<p>This is an alternative to ordinary API (using <a class="reference internal" href="#qgis.core.QgsMapRendererCustomPainterJob.start" title="qgis.core.QgsMapRendererCustomPainterJob.start"><code class="xref py py-func docutils literal notranslate"><span class="pre">start()</span></code></a> + waiting for <code class="xref py py-func docutils literal notranslate"><span class="pre">finished()</span></code> signal),
+and an alternative to <a class="reference internal" href="#qgis.core.QgsMapRendererCustomPainterJob.renderSynchronously" title="qgis.core.QgsMapRendererCustomPainterJob.renderSynchronously"><code class="xref py py-func docutils literal notranslate"><span class="pre">renderSynchronously()</span></code></a> (which should only ever be called from the main thread).</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsMapRendererCustomPainterJob.renderPrepared" title="qgis.core.QgsMapRendererCustomPainterJob.renderPrepared"><code class="xref py py-func docutils literal notranslate"><span class="pre">renderPrepared()</span></code></a></p>
@@ -1988,9 +1988,9 @@ and an alternative to renderSynchronously() (which should only ever be called fr
 <dt id="qgis.core.QgsMapRendererCustomPainterJob.renderPrepared">
 <code class="sig-name descname">renderPrepared</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsMapRendererCustomPainterJob.renderPrepared" title="Permalink to this definition">¶</a></dt>
 <dd><p>Render a pre-prepared job. Can be safely called in a background thread.</p>
-<p>Must be preceded by a call to prepare()</p>
-<p>This is an alternative to ordinary API (using start() + waiting for finished() signal),
-and an alternative to renderSynchronously() (which should only ever be called from the main thread).</p>
+<p>Must be preceded by a call to <a class="reference internal" href="#qgis.core.QgsMapRendererCustomPainterJob.prepare" title="qgis.core.QgsMapRendererCustomPainterJob.prepare"><code class="xref py py-func docutils literal notranslate"><span class="pre">prepare()</span></code></a></p>
+<p>This is an alternative to ordinary API (using <a class="reference internal" href="#qgis.core.QgsMapRendererCustomPainterJob.start" title="qgis.core.QgsMapRendererCustomPainterJob.start"><code class="xref py py-func docutils literal notranslate"><span class="pre">start()</span></code></a> + waiting for <code class="xref py py-func docutils literal notranslate"><span class="pre">finished()</span></code> signal),
+and an alternative to <a class="reference internal" href="#qgis.core.QgsMapRendererCustomPainterJob.renderSynchronously" title="qgis.core.QgsMapRendererCustomPainterJob.renderSynchronously"><code class="xref py py-func docutils literal notranslate"><span class="pre">renderSynchronously()</span></code></a> (which should only ever be called from the main thread).</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.10.</span></p>
 </div>
@@ -2001,7 +2001,7 @@ and an alternative to renderSynchronously() (which should only ever be called fr
 <code class="sig-name descname">renderSynchronously</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsMapRendererCustomPainterJob.renderSynchronously" title="Permalink to this definition">¶</a></dt>
 <dd><p>Render the map synchronously in this thread. The function does not return until the map
 is completely rendered.</p>
-<p>This is an alternative to ordinary API (using start() + waiting for finished() signal).
+<p>This is an alternative to ordinary API (using <a class="reference internal" href="#qgis.core.QgsMapRendererCustomPainterJob.start" title="qgis.core.QgsMapRendererCustomPainterJob.start"><code class="xref py py-func docutils literal notranslate"><span class="pre">start()</span></code></a> + waiting for <code class="xref py py-func docutils literal notranslate"><span class="pre">finished()</span></code> signal).
 Users are discouraged to use this method unless they have a strong reason for doing it.
 The synchronous rendering blocks the main thread, making the application unresponsive.
 Also, it is not possible to cancel rendering while it is in progress.</p>
@@ -2056,7 +2056,7 @@ Also, it is not possible to cancel rendering while it is in progress.</p>
 <dt id="qgis.core.QgsMapRendererCustomPainterJob.waitForFinishedWithEventLoop">
 <code class="sig-name descname">waitForFinishedWithEventLoop</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">flags</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>QEventLoop.ProcessEventsFlags<span class="p">, </span>QEventLoop.ProcessEventsFlag<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">QEventLoop.AllEvents</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsMapRendererCustomPainterJob.waitForFinishedWithEventLoop" title="Permalink to this definition">¶</a></dt>
 <dd><p>Wait for the job to be finished - and keep the thread’s event loop running while waiting.</p>
-<p>With a call to waitForFinished(), the waiting is done with a synchronization primitive
+<p>With a call to <a class="reference internal" href="#qgis.core.QgsMapRendererCustomPainterJob.waitForFinished" title="qgis.core.QgsMapRendererCustomPainterJob.waitForFinished"><code class="xref py py-func docutils literal notranslate"><span class="pre">waitForFinished()</span></code></a>, the waiting is done with a synchronization primitive
 and does not involve processing of messages. That may cause issues to code which requires
 some events to be handled in the main thread. Some plugins hooking into the rendering
 pipeline may require this in order to work properly - for example, OpenLayers plugin
@@ -2086,7 +2086,7 @@ rendering should not need to actively wait for rendering to finish.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 16:15 Jun 14, 2020.
+        Last updated on 16:33 Jun 15, 2020.
       </span>
 
     </p>

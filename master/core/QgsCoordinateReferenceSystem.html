@@ -1796,14 +1796,14 @@
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sip.wrapper</span></code></p>
 <p>Constructs an invalid CRS object</p>
 <p>QgsCoordinateReferenceSystem(definition: str)
-Constructs a CRS object from a string definition using createFromString()</p>
+Constructs a CRS object from a string definition using <a class="reference internal" href="#qgis.core.QgsCoordinateReferenceSystem.createFromString" title="qgis.core.QgsCoordinateReferenceSystem.createFromString"><code class="xref py py-func docutils literal notranslate"><span class="pre">createFromString()</span></code></a></p>
 <p>It supports the following formats:</p>
 <ul class="simple">
-<li><p>“EPSG:&lt;code&gt;” - handled with createFromOgcWms()</p></li>
-<li><p>“POSTGIS:&lt;srid&gt;” - handled with createFromSrid()</p></li>
-<li><p>“INTERNAL:&lt;srsid&gt;” - handled with createFromSrsId()</p></li>
-<li><p>“PROJ:&lt;proj&gt;” - handled with createFromProj()</p></li>
-<li><p>“WKT:&lt;wkt&gt;” - handled with createFromWkt()</p></li>
+<li><p>“EPSG:&lt;code&gt;” - handled with <code class="xref py py-func docutils literal notranslate"><span class="pre">createFromOgcWms()</span></code></p></li>
+<li><p>“POSTGIS:&lt;srid&gt;” - handled with <a class="reference internal" href="#qgis.core.QgsCoordinateReferenceSystem.createFromSrid" title="qgis.core.QgsCoordinateReferenceSystem.createFromSrid"><code class="xref py py-func docutils literal notranslate"><span class="pre">createFromSrid()</span></code></a></p></li>
+<li><p>“INTERNAL:&lt;srsid&gt;” - handled with <a class="reference internal" href="#qgis.core.QgsCoordinateReferenceSystem.createFromSrsId" title="qgis.core.QgsCoordinateReferenceSystem.createFromSrsId"><code class="xref py py-func docutils literal notranslate"><span class="pre">createFromSrsId()</span></code></a></p></li>
+<li><p>“PROJ:&lt;proj&gt;” - handled with <a class="reference internal" href="#qgis.core.QgsCoordinateReferenceSystem.createFromProj" title="qgis.core.QgsCoordinateReferenceSystem.createFromProj"><code class="xref py py-func docutils literal notranslate"><span class="pre">createFromProj()</span></code></a></p></li>
+<li><p>“WKT:&lt;wkt&gt;” - handled with <a class="reference internal" href="#qgis.core.QgsCoordinateReferenceSystem.createFromWkt" title="qgis.core.QgsCoordinateReferenceSystem.createFromWkt"><code class="xref py py-func docutils literal notranslate"><span class="pre">createFromWkt()</span></code></a></p></li>
 </ul>
 <p>If no prefix is specified, WKT definition is assumed.</p>
 <dl class="field-list simple">
@@ -1844,16 +1844,18 @@ using well-known text (WKT), PROJ string or combination of authority and code (e
 QGIS comes with its internal database of coordinate reference systems (stored in SQLite) that
 allows lookups of CRS and seamless conversions between the various definitions.</p>
 <p>Most commonly one comes across two types of coordinate systems:</p>
-<p>1. <strong>Geographic coordinate systems</strong> - based on a geodetic datum, normally with coordinates being
-latitude/longitude in degrees. The most common one is World Geodetic System 84 (WGS84).</p>
-<p>2. <strong>Projected coordinate systems</strong> - based on a geodetic datum with coordinates projected to a plane,
-typically using meters or feet as units. Common projected coordinate systems are Universal
+<dl class="simple">
+<dt># Geographic coordinate systems: based on a geodetic datum, normally with coordinates being</dt><dd><p>latitude/longitude in degrees. The most common one is World Geodetic System 84 (WGS84).</p>
+</dd>
+<dt># Projected coordinate systems: based on a geodetic datum with coordinates projected to a plane,</dt><dd><p>typically using meters or feet as units. Common projected coordinate systems are Universal
 Transverse Mercator or Albers Equal Area.</p>
+</dd>
+</dl>
 <p>Internally QGIS uses proj library for all the math behind coordinate transformations, so in case
 of any troubles with projections it is best to examine the PROJ representation within the object,
 as that is the representation that will be ultimately used.</p>
-<p>Methods that allow inspection of CRS instances include isValid(), authid(), description(),
-toWkt(), toProj(), mapUnits() and others.
+<p>Methods that allow inspection of CRS instances include <a class="reference internal" href="#qgis.core.QgsCoordinateReferenceSystem.isValid" title="qgis.core.QgsCoordinateReferenceSystem.isValid"><code class="xref py py-func docutils literal notranslate"><span class="pre">isValid()</span></code></a>, <a class="reference internal" href="#qgis.core.QgsCoordinateReferenceSystem.authid" title="qgis.core.QgsCoordinateReferenceSystem.authid"><code class="xref py py-func docutils literal notranslate"><span class="pre">authid()</span></code></a>, <a class="reference internal" href="#qgis.core.QgsCoordinateReferenceSystem.description" title="qgis.core.QgsCoordinateReferenceSystem.description"><code class="xref py py-func docutils literal notranslate"><span class="pre">description()</span></code></a>,
+<a class="reference internal" href="#qgis.core.QgsCoordinateReferenceSystem.toWkt" title="qgis.core.QgsCoordinateReferenceSystem.toWkt"><code class="xref py py-func docutils literal notranslate"><span class="pre">toWkt()</span></code></a>, <a class="reference internal" href="#qgis.core.QgsCoordinateReferenceSystem.toProj" title="qgis.core.QgsCoordinateReferenceSystem.toProj"><code class="xref py py-func docutils literal notranslate"><span class="pre">toProj()</span></code></a>, <a class="reference internal" href="#qgis.core.QgsCoordinateReferenceSystem.mapUnits" title="qgis.core.QgsCoordinateReferenceSystem.mapUnits"><code class="xref py py-func docutils literal notranslate"><span class="pre">mapUnits()</span></code></a> and others.
 Creation of CRS instances is further described in ref crs_construct_and_copy section below.
 Transformations between coordinate reference systems are done using <a class="reference internal" href="QgsCoordinateTransform.html#qgis.core.QgsCoordinateTransform" title="qgis.core.QgsCoordinateTransform"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsCoordinateTransform</span></code></a> class.</p>
 <p>For example, the following code will create and inspect “British national grid” CRS:</p>
@@ -1871,10 +1873,12 @@ Transformations between coordinate reference systems are done using <a class="re
 </pre></div>
 </div>
 <p>This section gives an overview of various supported CRS definition formats:</p>
-<p>1. <strong>Authority and Code.</strong> Also referred to as OGC WMS format within QGIS as they have been widely
-used in OGC standards. These are encoded as <cite>&lt;auth&gt;:&lt;code&gt;</cite>, for example <cite>EPSG:4326</cite> refers
+<dl class="simple">
+<dt># Authority and Code: Also referred to as OGC WMS format within QGIS as they have been widely</dt><dd><p>used in OGC standards. These are encoded as <cite>&lt;auth&gt;:&lt;code&gt;</cite>, for example <cite>EPSG:4326</cite> refers
 to WGS84 system. EPSG is the most commonly used authority that covers a wide range
 of coordinate systems around the world.</p>
+</dd>
+</dl>
 <p>An extended variant of this format is OGC URN. Syntax of URN for CRS definition is
 <cite>urn:ogc:def:crs:&lt;auth&gt;:[&lt;version&gt;]:&lt;code&gt;</cite>. This class can also parse URNs (versions
 are currently ignored). For example, WGS84 may be encoded as <cite>urn:ogc:def:crs:OGC:1.3:CRS84</cite>.</p>
@@ -1889,9 +1893,11 @@ on different machines or user profiles.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsCoordinateReferenceSystem.createFromOgcWmsCrs" title="qgis.core.QgsCoordinateReferenceSystem.createFromOgcWmsCrs"><code class="xref py py-func docutils literal notranslate"><span class="pre">createFromOgcWmsCrs()</span></code></a></p>
 </div>
-<p>2. <strong>PROJ string.</strong> This is a string consisting of a series of key/value pairs in the following
-format: <cite>+param1=value1 +param2=value2 […]</cite>. This is the format natively used by the
+<dl class="simple">
+<dt># PROJ string: This is a string consisting of a series of key/value pairs in the following</dt><dd><p>format: <cite>+param1=value1 +param2=value2 […]</cite>. This is the format natively used by the
 underlying proj library. For example, the definition of WGS84 looks like this:</p>
+</dd>
+</dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">+</span><span class="n">proj</span><span class="o">=</span><span class="n">longlat</span> <span class="o">+</span><span class="n">datum</span><span class="o">=</span><span class="n">WGS84</span> <span class="o">+</span><span class="n">no_defs</span>
 </pre></div>
 </div>
@@ -1903,8 +1909,10 @@ underlying proj library. For example, the definition of WGS84 looks like this:</
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsCoordinateReferenceSystem.createFromProj" title="qgis.core.QgsCoordinateReferenceSystem.createFromProj"><code class="xref py py-func docutils literal notranslate"><span class="pre">createFromProj()</span></code></a></p>
 </div>
-<p>3. <strong>Well-known text (WKT).</strong> Defined by Open Geospatial Consortium (OGC), this is another common
-format to define CRS. For WGS84 the OGC WKT definition is the following:</p>
+<dl class="simple">
+<dt># Well-known text (WKT): Defined by Open Geospatial Consortium (OGC), this is another common</dt><dd><p>format to define CRS. For WGS84 the OGC WKT definition is the following:</p>
+</dd>
+</dl>
 <p>GEOGCS[“WGS 84”,
 DATUM[“WGS_1984”,
 SPHEROID[“WGS 84”,6378137,298.257223563,AUTHORITY[“EPSG”,”7030”]],
@@ -1920,21 +1928,21 @@ AUTHORITY[“EPSG”,”4326”]]</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsCoordinateReferenceSystem.createFromWkt" title="qgis.core.QgsCoordinateReferenceSystem.createFromWkt"><code class="xref py py-func docutils literal notranslate"><span class="pre">createFromWkt()</span></code></a></p>
 </div>
-<p>The database of CRS shipped with QGIS is stored in a SQLite database (see QgsApplication.srsDatabaseFilePath())
+<p>The database of CRS shipped with QGIS is stored in a SQLite database (see <a class="reference internal" href="QgsApplication.html#qgis.core.QgsApplication.srsDatabaseFilePath" title="qgis.core.QgsApplication.srsDatabaseFilePath"><code class="xref py py-func docutils literal notranslate"><span class="pre">QgsApplication.srsDatabaseFilePath()</span></code></a>)
 and it is based on the data files maintained by GDAL project (a variety of .csv and .wkt files).</p>
 <p>Sometimes it happens that users need to use a CRS definition that is not well known
 or that has been only created with a specific purpose (and thus its definition is not
 available in our database of CRS). Whenever a new CRS definition is seen, it will
-be added to the local database (in user’s home directory, see QgsApplication.qgisUserDatabaseFilePath()).
+be added to the local database (in user’s home directory, see <a class="reference internal" href="QgsApplication.html#qgis.core.QgsApplication.qgisUserDatabaseFilePath" title="qgis.core.QgsApplication.qgisUserDatabaseFilePath"><code class="xref py py-func docutils literal notranslate"><span class="pre">QgsApplication.qgisUserDatabaseFilePath()</span></code></a>).
 QGIS also features a GUI for management of local custom CRS definitions.</p>
 <p>There are therefore two databases: one for shipped CRS definitions and one for custom CRS definitions.
-Custom CRS have internal IDs (accessible with srsid()) greater or equal to ref USER_CRS_START_ID.
+Custom CRS have internal IDs (accessible with <a class="reference internal" href="#qgis.core.QgsCoordinateReferenceSystem.srsid" title="qgis.core.QgsCoordinateReferenceSystem.srsid"><code class="xref py py-func docutils literal notranslate"><span class="pre">srsid()</span></code></a>) greater or equal to ref USER_CRS_START_ID.
 The local CRS databases should never be accessed directly with SQLite functions, instead
 you should use <a class="reference internal" href="#qgis.core.QgsCoordinateReferenceSystem" title="qgis.core.QgsCoordinateReferenceSystem"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsCoordinateReferenceSystem</span></code></a> API for CRS lookups and for managements of custom CRS.</p>
 <p>In some cases (most prominently when loading a map layer), QGIS will try to ensure
-that the given map layer CRS is valid using validate() call. If not, a custom
+that the given map layer CRS is valid using <a class="reference internal" href="#qgis.core.QgsCoordinateReferenceSystem.validate" title="qgis.core.QgsCoordinateReferenceSystem.validate"><code class="xref py py-func docutils literal notranslate"><span class="pre">validate()</span></code></a> call. If not, a custom
 validation function will be called - such function may for example show a GUI
-for manual CRS selection. The validation function is configured using setCustomCrsValidation().
+for manual CRS selection. The validation function is configured using <code class="xref py py-func docutils literal notranslate"><span class="pre">setCustomCrsValidation()</span></code>.
 If validation fails or no validation function is set, the default CRS is assigned
 (WGS84). QGIS application registers its validation function that will act according
 to user’s settings (either show CRS selector dialog or use project/custom CRS).</p>
@@ -1943,7 +1951,7 @@ constructor that automatically recognizes definition format from the given strin
 <p>Creation of CRS object involves some queries in a local SQLite database, which may
 be potentially expensive. Consequently, CRS creation methods use an internal cache to avoid
 unnecessary database lookups. If the CRS database is modified, then it is necessary to call
-invalidateCache() to ensure that outdated records are not being returned from the cache.</p>
+<a class="reference internal" href="#qgis.core.QgsCoordinateReferenceSystem.invalidateCache" title="qgis.core.QgsCoordinateReferenceSystem.invalidateCache"><code class="xref py py-func docutils literal notranslate"><span class="pre">invalidateCache()</span></code></a> to ensure that outdated records are not being returned from the cache.</p>
 <p>Since QGIS 2.16 <a class="reference internal" href="#qgis.core.QgsCoordinateReferenceSystem" title="qgis.core.QgsCoordinateReferenceSystem"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsCoordinateReferenceSystem</span></code></a> objects are implicitly shared.</p>
 <p>There are two different flavors of WKT: one is defined by OGC, the other is the standard
 used by ESRI. They look very similar, but they are not the same. QGIS is able to consume
@@ -2381,7 +2389,7 @@ and refer to QGIS internal CRS IDs.</p>
 </dl>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>this method uses an internal cache. Call invalidateCache() to clear the cache.</p>
+<p>this method uses an internal cache. Call <a class="reference internal" href="#qgis.core.QgsCoordinateReferenceSystem.invalidateCache" title="qgis.core.QgsCoordinateReferenceSystem.invalidateCache"><code class="xref py py-func docutils literal notranslate"><span class="pre">invalidateCache()</span></code></a> to clear the cache.</p>
 </div>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -2432,7 +2440,7 @@ argument is not available in Python.</p></li>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This method uses an internal cache. Call invalidateCache() to clear the cache.</p>
+<p>This method uses an internal cache. Call <a class="reference internal" href="#qgis.core.QgsCoordinateReferenceSystem.invalidateCache" title="qgis.core.QgsCoordinateReferenceSystem.invalidateCache"><code class="xref py py-func docutils literal notranslate"><span class="pre">invalidateCache()</span></code></a> to clear the cache.</p>
 </div>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -2476,7 +2484,7 @@ database.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This method uses an internal cache. Call invalidateCache() to clear the cache.</p>
+<p>This method uses an internal cache. Call <a class="reference internal" href="#qgis.core.QgsCoordinateReferenceSystem.invalidateCache" title="qgis.core.QgsCoordinateReferenceSystem.invalidateCache"><code class="xref py py-func docutils literal notranslate"><span class="pre">invalidateCache()</span></code></a> to clear the cache.</p>
 </div>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -2526,7 +2534,7 @@ user’s local CRS database from home directory is used.</p>
 </dl>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>this method uses an internal cache. Call invalidateCache() to clear the cache.</p>
+<p>this method uses an internal cache. Call <a class="reference internal" href="#qgis.core.QgsCoordinateReferenceSystem.invalidateCache" title="qgis.core.QgsCoordinateReferenceSystem.invalidateCache"><code class="xref py py-func docutils literal notranslate"><span class="pre">invalidateCache()</span></code></a> to clear the cache.</p>
 </div>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -2545,11 +2553,11 @@ using auth:id codes or WKT strings</p>
 <dd><p>Set up this CRS from a string definition.</p>
 <p>It supports the following formats:</p>
 <ul class="simple">
-<li><p>“EPSG:&lt;code&gt;” - handled with createFromOgcWms()</p></li>
-<li><p>“POSTGIS:&lt;srid&gt;” - handled with createFromSrid()</p></li>
-<li><p>“INTERNAL:&lt;srsid&gt;” - handled with createFromSrsId()</p></li>
-<li><p>“PROJ:&lt;proj&gt;” - handled with createFromProj()</p></li>
-<li><p>“WKT:&lt;wkt&gt;” - handled with createFromWkt()</p></li>
+<li><p>“EPSG:&lt;code&gt;” - handled with <code class="xref py py-func docutils literal notranslate"><span class="pre">createFromOgcWms()</span></code></p></li>
+<li><p>“POSTGIS:&lt;srid&gt;” - handled with <a class="reference internal" href="#qgis.core.QgsCoordinateReferenceSystem.createFromSrid" title="qgis.core.QgsCoordinateReferenceSystem.createFromSrid"><code class="xref py py-func docutils literal notranslate"><span class="pre">createFromSrid()</span></code></a></p></li>
+<li><p>“INTERNAL:&lt;srsid&gt;” - handled with <a class="reference internal" href="#qgis.core.QgsCoordinateReferenceSystem.createFromSrsId" title="qgis.core.QgsCoordinateReferenceSystem.createFromSrsId"><code class="xref py py-func docutils literal notranslate"><span class="pre">createFromSrsId()</span></code></a></p></li>
+<li><p>“PROJ:&lt;proj&gt;” - handled with <a class="reference internal" href="#qgis.core.QgsCoordinateReferenceSystem.createFromProj" title="qgis.core.QgsCoordinateReferenceSystem.createFromProj"><code class="xref py py-func docutils literal notranslate"><span class="pre">createFromProj()</span></code></a></p></li>
+<li><p>“WKT:&lt;wkt&gt;” - handled with <a class="reference internal" href="#qgis.core.QgsCoordinateReferenceSystem.createFromWkt" title="qgis.core.QgsCoordinateReferenceSystem.createFromWkt"><code class="xref py py-func docutils literal notranslate"><span class="pre">createFromWkt()</span></code></a></p></li>
 </ul>
 <p>If no prefix is specified, WKT definition is assumed.</p>
 <dl class="field-list simple">
@@ -2589,7 +2597,7 @@ ESRI.[WKT string] (directly or in a file), “IGNF:xxx”</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>this function generates a WKT string using OSRSetFromUserInput() and
-passes it to createFromWkt() function.
+passes it to <a class="reference internal" href="#qgis.core.QgsCoordinateReferenceSystem.createFromWkt" title="qgis.core.QgsCoordinateReferenceSystem.createFromWkt"><code class="xref py py-func docutils literal notranslate"><span class="pre">createFromWkt()</span></code></a> function.
 /    // TODO QGIS3: rename to createFromStringOGR so it is clear it’s similar to createFromString, just different backend</p>
 </div>
 </dd></dl>
@@ -2599,7 +2607,7 @@ passes it to createFromWkt() function.
 <code class="sig-name descname">createFromWkt</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">wkt</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsCoordinateReferenceSystem.createFromWkt" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets this CRS using a WKT definition.</p>
 <p>If EPSG code of the WKT definition can be determined, it is extracted
-and createFromOgcWmsCrs() is used to initialize the object.</p>
+and <a class="reference internal" href="#qgis.core.QgsCoordinateReferenceSystem.createFromOgcWmsCrs" title="qgis.core.QgsCoordinateReferenceSystem.createFromOgcWmsCrs"><code class="xref py py-func docutils literal notranslate"><span class="pre">createFromOgcWmsCrs()</span></code></a> is used to initialize the object.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>wkt</strong> (<em>str</em>) – The WKT for the desired spatial reference system.</p>
@@ -2617,7 +2625,7 @@ and createFromOgcWmsCrs() is used to initialize the object.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>this method uses an internal cache. Call invalidateCache() to clear the cache.</p>
+<p>this method uses an internal cache. Call <a class="reference internal" href="#qgis.core.QgsCoordinateReferenceSystem.invalidateCache" title="qgis.core.QgsCoordinateReferenceSystem.invalidateCache"><code class="xref py py-func docutils literal notranslate"><span class="pre">invalidateCache()</span></code></a> to clear the cache.</p>
 </div>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -3014,7 +3022,7 @@ If it fails or if the node is empty, a default empty CRS will be returned.</p>
 <dt id="qgis.core.QgsCoordinateReferenceSystem.saveAsUserCrs">
 <code class="sig-name descname">saveAsUserCrs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">nativeFormat</span><span class="p">:</span> <span class="n">QgsCoordinateReferenceSystem.Format</span> <span class="o">=</span> <span class="default_value">QgsCoordinateReferenceSystem.FormatWkt</span></em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#qgis.core.QgsCoordinateReferenceSystem.saveAsUserCrs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Saves the CRS as a custom (“USER”) CRS.</p>
-<p>Returns the new CRS srsid(), or -1 if the CRS could not be saved.</p>
+<p>Returns the new CRS <a class="reference internal" href="#qgis.core.QgsCoordinateReferenceSystem.srsid" title="qgis.core.QgsCoordinateReferenceSystem.srsid"><code class="xref py py-func docutils literal notranslate"><span class="pre">srsid()</span></code></a>, or -1 if the CRS could not be saved.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">nativeFormat</span></code> argument specifies the format to use when saving the CRS
 definition. FormatWkt is recommended as it is a lossless format.</p>
 <div class="admonition warning">
@@ -3053,7 +3061,7 @@ take care when using the FormatProj option.</p>
 This is required for proper shapefile CRS import when using gdal&gt;= 1.9.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This function is called by createFromUserInput() and QgsOgrProvider.crs(), there is usually
+<p>This function is called by <a class="reference internal" href="#qgis.core.QgsCoordinateReferenceSystem.createFromUserInput" title="qgis.core.QgsCoordinateReferenceSystem.createFromUserInput"><code class="xref py py-func docutils literal notranslate"><span class="pre">createFromUserInput()</span></code></a> and <code class="xref py py-func docutils literal notranslate"><span class="pre">QgsOgrProvider.crs()</span></code>, there is usually
 no need to call it from elsewhere.</p>
 </div>
 <div class="admonition note">
@@ -3219,7 +3227,7 @@ user.</p>
 <dt id="qgis.core.QgsCoordinateReferenceSystem.validSrsIds">
 <code class="sig-name descname">validSrsIds</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; object<a class="headerlink" href="#qgis.core.QgsCoordinateReferenceSystem.validSrsIds" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a list of all valid SRS IDs present in the CRS database. Any of the
-returned values can be safely passed to fromSrsId() to create a new, valid
+returned values can be safely passed to <a class="reference internal" href="#qgis.core.QgsCoordinateReferenceSystem.fromSrsId" title="qgis.core.QgsCoordinateReferenceSystem.fromSrsId"><code class="xref py py-func docutils literal notranslate"><span class="pre">fromSrsId()</span></code></a> to create a new, valid
 <a class="reference internal" href="#qgis.core.QgsCoordinateReferenceSystem" title="qgis.core.QgsCoordinateReferenceSystem"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsCoordinateReferenceSystem</span></code></a> object.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -3301,7 +3309,7 @@ are trying to force this CRS to be valid.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 16:15 Jun 14, 2020.
+        Last updated on 16:33 Jun 15, 2020.
       </span>
 
     </p>

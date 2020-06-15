@@ -1796,7 +1796,7 @@
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">PyQt5.QtWidgets.QGraphicsScene</span></code>, <a class="reference internal" href="QgsExpressionContextGenerator.html#module-QgsExpressionContextGenerator" title="QgsExpressionContextGenerator"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsExpressionContextGenerator</span></code></a>, <a class="reference internal" href="QgsLayoutUndoObjectInterface.html#module-QgsLayoutUndoObjectInterface" title="QgsLayoutUndoObjectInterface"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsLayoutUndoObjectInterface</span></code></a></p>
 <p>Construct a new layout linked to the specified <code class="docutils literal notranslate"><span class="pre">project</span></code>.</p>
 <p>If the layout is a “new” layout (as opposed to a layout which will
-restore a previous state from XML) then initializeDefaults() should be
+restore a previous state from XML) then <a class="reference internal" href="#qgis.core.QgsLayout.initializeDefaults" title="qgis.core.QgsLayout.initializeDefaults"><code class="xref py py-func docutils literal notranslate"><span class="pre">initializeDefaults()</span></code></a> should be
 called on the new layout.</p>
 <p>Base class for layouts, which can contain items such as maps, labels, scalebars, etc.</p>
 <p>While the raw QGraphicsScene API can be used to render the contents of a QgsLayout
@@ -1923,7 +1923,7 @@ origin of the page corresponding to the page at <code class="docutils literal no
 <dl class="py method">
 <dt id="qgis.core.QgsLayout.addLayoutItem">
 <code class="sig-name descname">addLayoutItem</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">item</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsLayoutItem.html#module-QgsLayoutItem" title="QgsLayoutItem">QgsLayoutItem</a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsLayout.addLayoutItem" title="Permalink to this definition">¶</a></dt>
-<dd><p>Adds an <code class="docutils literal notranslate"><span class="pre">item</span></code> to the layout. This should be called instead of the base class addItem()
+<dd><p>Adds an <code class="docutils literal notranslate"><span class="pre">item</span></code> to the layout. This should be called instead of the base class <code class="xref py py-func docutils literal notranslate"><span class="pre">addItem()</span></code>
 method. Ownership of the item is transferred to the layout.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1935,7 +1935,7 @@ method. Ownership of the item is transferred to the layout.</p>
 <dl class="py method">
 <dt id="qgis.core.QgsLayout.addMultiFrame">
 <code class="sig-name descname">addMultiFrame</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">multiFrame</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsLayoutMultiFrame.html#module-QgsLayoutMultiFrame" title="QgsLayoutMultiFrame">QgsLayoutMultiFrame</a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsLayout.addMultiFrame" title="Permalink to this definition">¶</a></dt>
-<dd><p>Adds a <code class="docutils literal notranslate"><span class="pre">multiFrame</span></code> to the layout. The object is owned by the layout until removeMultiFrame() is called.</p>
+<dd><p>Adds a <code class="docutils literal notranslate"><span class="pre">multiFrame</span></code> to the layout. The object is owned by the layout until <a class="reference internal" href="#qgis.core.QgsLayout.removeMultiFrame" title="qgis.core.QgsLayout.removeMultiFrame"><code class="xref py py-func docutils literal notranslate"><span class="pre">removeMultiFrame()</span></code></a> is called.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsLayout.removeMultiFrame" title="qgis.core.QgsLayout.removeMultiFrame"><code class="xref py py-func docutils literal notranslate"><span class="pre">removeMultiFrame()</span></code></a></p>
@@ -2369,11 +2369,11 @@ item found.</p>
 <dt id="qgis.core.QgsLayout.itemByTemplateUuid">
 <code class="sig-name descname">itemByTemplateUuid</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">uuid</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="QgsLayoutItem.html#module-QgsLayoutItem" title="QgsLayoutItem">QgsLayoutItem</a><a class="headerlink" href="#qgis.core.QgsLayout.itemByTemplateUuid" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the layout item with matching template <code class="docutils literal notranslate"><span class="pre">uuid</span></code> unique identifier, or <code class="docutils literal notranslate"><span class="pre">None</span></code>
-if a matching item could not be found. Unlike itemByUuid(), this method ONLY checks
+if a matching item could not be found. Unlike <a class="reference internal" href="#qgis.core.QgsLayout.itemByUuid" title="qgis.core.QgsLayout.itemByUuid"><code class="xref py py-func docutils literal notranslate"><span class="pre">itemByUuid()</span></code></a>, this method ONLY checks
 template UUIDs for a match.</p>
 <p>Template UUIDs are valid only for items which have been added to an existing layout from a template. In this case
 the template UUID is the original item UUID at the time the template was created,
-vs the item’s uuid() which returns the current instance of the item’s unique identifier.</p>
+vs the item’s <code class="xref py py-func docutils literal notranslate"><span class="pre">uuid()</span></code> which returns the current instance of the item’s unique identifier.</p>
 <p>Note that template UUIDs are only available while a layout is being restored from XML.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -2406,7 +2406,7 @@ if a matching item could not be found.</p>
 will also be tested when trying to match the uuid. This may differ from the item’s UUID
 for items which have been added to an existing layout from a template. In this case
 the template UUID returns the original item UUID at the time the template was created,
-vs the item’s uuid() which returns the current instance of the item’s unique identifier.
+vs the item’s <code class="xref py py-func docutils literal notranslate"><span class="pre">uuid()</span></code> which returns the current instance of the item’s unique identifier.
 Note that template UUIDs are only available while a layout is being restored from XML.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -2530,7 +2530,7 @@ from the template, without overwriting the existing items or layout settings.</p
 Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the item was successfully lowered.</p>
 <p>If <code class="docutils literal notranslate"><span class="pre">deferUpdate</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code>, the scene will not be visibly updated
 to reflect the new stacking order. This allows multiple
-raiseItem() calls to be made in sequence without the cost of
+<a class="reference internal" href="#qgis.core.QgsLayout.raiseItem" title="qgis.core.QgsLayout.raiseItem"><code class="xref py py-func docutils literal notranslate"><span class="pre">raiseItem()</span></code></a> calls to be made in sequence without the cost of
 updating the scene for each one.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -2580,7 +2580,7 @@ updating the scene for each one.</p>
 Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the item was successfully lowered.
 If <code class="docutils literal notranslate"><span class="pre">deferUpdate</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code>, the scene will not be visibly updated
 to reflect the new stacking order. This allows multiple
-raiseItem() calls to be made in sequence without the cost of
+<a class="reference internal" href="#qgis.core.QgsLayout.raiseItem" title="qgis.core.QgsLayout.raiseItem"><code class="xref py py-func docutils literal notranslate"><span class="pre">raiseItem()</span></code></a> calls to be made in sequence without the cost of
 updating the scene for each one.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -2610,7 +2610,7 @@ updating the scene for each one.</p>
 Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the item was successfully raised.</p>
 <p>If <code class="docutils literal notranslate"><span class="pre">deferUpdate</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code>, the scene will not be visibly updated
 to reflect the new stacking order. This allows multiple
-raiseItem() calls to be made in sequence without the cost of
+<a class="reference internal" href="#qgis.core.QgsLayout.raiseItem" title="qgis.core.QgsLayout.raiseItem"><code class="xref py py-func docutils literal notranslate"><span class="pre">raiseItem()</span></code></a> calls to be made in sequence without the cost of
 updating the scene for each one.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -2642,7 +2642,7 @@ if a matching multiframe could not be found.</p>
 will also be tested when trying to match the uuid. Template UUIDs are valid only for items
 which have been added to an existing layout from a template. In this case
 the template UUID is the original item UUID at the time the template was created,
-vs the item’s uuid() which returns the current instance of the item’s unique identifier.
+vs the item’s <code class="xref py py-func docutils literal notranslate"><span class="pre">uuid()</span></code> which returns the current instance of the item’s unique identifier.
 Note that template UUIDs are only available while a layout is being restored from XML.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -2735,7 +2735,7 @@ relations and various other bits. It is never <code class="docutils literal notr
 Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the item was successfully raised.</p>
 <p>If <code class="docutils literal notranslate"><span class="pre">deferUpdate</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code>, the scene will not be visibly updated
 to reflect the new stacking order. This allows multiple
-raiseItem() calls to be made in sequence without the cost of
+<a class="reference internal" href="#qgis.core.QgsLayout.raiseItem" title="qgis.core.QgsLayout.raiseItem"><code class="xref py py-func docutils literal notranslate"><span class="pre">raiseItem()</span></code></a> calls to be made in sequence without the cost of
 updating the scene for each one.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -2789,7 +2789,7 @@ updating the scene for each one.</p>
 <dt id="qgis.core.QgsLayout.referenceMap">
 <code class="sig-name descname">referenceMap</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="QgsLayoutItemMap.html#module-QgsLayoutItemMap" title="QgsLayoutItemMap">QgsLayoutItemMap</a><a class="headerlink" href="#qgis.core.QgsLayout.referenceMap" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the map item which will be used to generate corresponding world files when the
-layout is exported. If no map was explicitly set via setReferenceMap(), the largest
+layout is exported. If no map was explicitly set via <a class="reference internal" href="#qgis.core.QgsLayout.setReferenceMap" title="qgis.core.QgsLayout.setReferenceMap"><code class="xref py py-func docutils literal notranslate"><span class="pre">setReferenceMap()</span></code></a>, the largest
 map in the layout will be returned (or <code class="docutils literal notranslate"><span class="pre">None</span></code> if there are no maps in the layout).</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -2854,7 +2854,7 @@ and updated. [signal]</p>
 <dl class="py method">
 <dt id="qgis.core.QgsLayout.removeLayoutItem">
 <code class="sig-name descname">removeLayoutItem</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">item</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsLayoutItem.html#module-QgsLayoutItem" title="QgsLayoutItem">QgsLayoutItem</a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsLayout.removeLayoutItem" title="Permalink to this definition">¶</a></dt>
-<dd><p>Removes an <code class="docutils literal notranslate"><span class="pre">item</span></code> from the layout. This should be called instead of the base class removeItem()
+<dd><p>Removes an <code class="docutils literal notranslate"><span class="pre">item</span></code> from the layout. This should be called instead of the base class <code class="xref py py-func docutils literal notranslate"><span class="pre">removeItem()</span></code>
 method.
 The item will also be deleted.</p>
 <dl class="field-list simple">
@@ -3176,7 +3176,7 @@ which deferred z-order updates.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 16:15 Jun 14, 2020.
+        Last updated on 16:33 Jun 15, 2020.
       </span>
 
     </p>

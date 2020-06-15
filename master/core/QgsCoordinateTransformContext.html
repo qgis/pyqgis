@@ -1858,7 +1858,7 @@ system.</p>
 <td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the context has a valid coordinate operation to use when transforming from the specified <code class="docutils literal notranslate"><span class="pre">source</span></code> CRS to <code class="docutils literal notranslate"><span class="pre">destination</span></code> CRS.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsCoordinateTransformContext.mustReverseCoordinateOperation" title="qgis.core.QgsCoordinateTransformContext.mustReverseCoordinateOperation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mustReverseCoordinateOperation</span></code></a></p></td>
-<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the coordinate operation returned by calculateCoordinateOperation() for the <code class="docutils literal notranslate"><span class="pre">source</span></code> to <code class="docutils literal notranslate"><span class="pre">destination</span></code> pair must be inverted.</p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the coordinate operation returned by <a class="reference internal" href="#qgis.core.QgsCoordinateTransformContext.calculateCoordinateOperation" title="qgis.core.QgsCoordinateTransformContext.calculateCoordinateOperation"><code class="xref py py-func docutils literal notranslate"><span class="pre">calculateCoordinateOperation()</span></code></a> for the <code class="docutils literal notranslate"><span class="pre">source</span></code> to <code class="docutils literal notranslate"><span class="pre">destination</span></code> pair must be inverted.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsCoordinateTransformContext.readSettings" title="qgis.core.QgsCoordinateTransformContext.readSettings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readSettings</span></code></a></p></td>
 <td><p>Reads the context’s state from application settings.</p></td>
@@ -1911,7 +1911,7 @@ will be used when transforming between the coordinate reference systems.</p>
 <p>If <code class="docutils literal notranslate"><span class="pre">allowFallback</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code> (since QGIS 3.12), then “ballpark” fallback transformations
 will be used in the case that the specified coordinate operation fails (such as when
 coordinates from outside a required grid shift file are transformed). See
-QgsCoordinateTransform.fallbackOperationOccurred() for further details. Note that if an
+<a class="reference internal" href="QgsCoordinateTransform.html#qgis.core.QgsCoordinateTransform.fallbackOperationOccurred" title="qgis.core.QgsCoordinateTransform.fallbackOperationOccurred"><code class="xref py py-func docutils literal notranslate"><span class="pre">QgsCoordinateTransform.fallbackOperationOccurred()</span></code></a> for further details. Note that if an
 existing <code class="docutils literal notranslate"><span class="pre">sourceCrs</span></code> and <code class="docutils literal notranslate"><span class="pre">destinationCrs</span></code> pair are added with a different <code class="docutils literal notranslate"><span class="pre">allowFallback</span></code>
 value, that value will replace the existing one (i.e. each combination of <code class="docutils literal notranslate"><span class="pre">sourceCrs</span></code> and
 <code class="docutils literal notranslate"><span class="pre">destinationCrs</span></code> must be unique).</p>
@@ -1934,7 +1934,7 @@ automatically normalize the axis order!).</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Requires Proj 6.0 or later. Builds based on earlier Proj versions will ignore this setting,
-and the deprecated addSourceDestinationDatumTransform() method must be used instead.</p>
+and the deprecated <a class="reference internal" href="#qgis.core.QgsCoordinateTransformContext.addSourceDestinationDatumTransform" title="qgis.core.QgsCoordinateTransformContext.addSourceDestinationDatumTransform"><code class="xref py py-func docutils literal notranslate"><span class="pre">addSourceDestinationDatumTransform()</span></code></a> method must be used instead.</p>
 </div>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.8.</span></p>
@@ -1995,7 +1995,7 @@ required for transformations for that source or destination.</p>
 between a <code class="docutils literal notranslate"><span class="pre">source</span></code> and <code class="docutils literal notranslate"><span class="pre">destination</span></code> CRS pair, in the case that the preferred
 coordinate operation fails (such as when
 coordinates from outside a required grid shift file are transformed). See
-QgsCoordinateTransform.fallbackOperationOccurred() for further details.</p>
+<a class="reference internal" href="QgsCoordinateTransform.html#qgis.core.QgsCoordinateTransform.fallbackOperationOccurred" title="qgis.core.QgsCoordinateTransform.fallbackOperationOccurred"><code class="xref py py-func docutils literal notranslate"><span class="pre">QgsCoordinateTransform.fallbackOperationOccurred()</span></code></a> for further details.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.12.</span></p>
 </div>
@@ -2027,11 +2027,11 @@ be used.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Requires Proj 6.0 or later. Builds based on earlier Proj versions will always return
-an empty string, and the deprecated calculateDatumTransforms() method should be used instead.</p>
+an empty string, and the deprecated <a class="reference internal" href="#qgis.core.QgsCoordinateTransformContext.calculateDatumTransforms" title="qgis.core.QgsCoordinateTransformContext.calculateDatumTransforms"><code class="xref py py-func docutils literal notranslate"><span class="pre">calculateDatumTransforms()</span></code></a> method should be used instead.</p>
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Always check the result of mustReverseCoordinateOperation() in order to determine if the
+<p>Always check the result of <a class="reference internal" href="#qgis.core.QgsCoordinateTransformContext.mustReverseCoordinateOperation" title="qgis.core.QgsCoordinateTransformContext.mustReverseCoordinateOperation"><code class="xref py py-func docutils literal notranslate"><span class="pre">mustReverseCoordinateOperation()</span></code></a> in order to determine if the
 proj coordinate operation string returned by this method corresponds to the reverse operation, and
 must be manually flipped when calculating coordinate transforms.</p>
 </div>
@@ -2088,11 +2088,11 @@ destination.</p>
 <dt id="qgis.core.QgsCoordinateTransformContext.coordinateOperations">
 <code class="sig-name descname">coordinateOperations</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; object<a class="headerlink" href="#qgis.core.QgsCoordinateTransformContext.coordinateOperations" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the stored mapping for source to destination CRS pairs to associated coordinate operation to use
-(as a proj string). The map keys will be :py:func:<a href="#id1"><span class="problematic" id="id2">`</span></a>QgsCoordinateReferenceSystems.authid()`s.</p>
+(as a proj string). The map keys will be QgsCoordinateReferenceSystems.authid()s.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>This method should not be used to calculate the corresponding coordinate operation
-to use for a coordinate transform. Instead, always use calculateCoordinateOperation()
+to use for a coordinate transform. Instead, always use <a class="reference internal" href="#qgis.core.QgsCoordinateTransformContext.calculateCoordinateOperation" title="qgis.core.QgsCoordinateTransformContext.calculateCoordinateOperation"><code class="xref py py-func docutils literal notranslate"><span class="pre">calculateCoordinateOperation()</span></code></a>
 to determine this.</p>
 </div>
 <div class="admonition seealso">
@@ -2102,7 +2102,7 @@ to determine this.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Requires Proj 6.0 or later. Builds based on earlier Proj versions will always return an empty list,
-and the deprecated sourceDestinationDatumTransforms() method must be used instead.</p>
+and the deprecated <a class="reference internal" href="#qgis.core.QgsCoordinateTransformContext.sourceDestinationDatumTransforms" title="qgis.core.QgsCoordinateTransformContext.sourceDestinationDatumTransforms"><code class="xref py py-func docutils literal notranslate"><span class="pre">sourceDestinationDatumTransforms()</span></code></a> method must be used instead.</p>
 </div>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.8.</span></p>
@@ -2139,7 +2139,7 @@ when transforming from the specified <code class="docutils literal notranslate">
 <dl class="py method">
 <dt id="qgis.core.QgsCoordinateTransformContext.mustReverseCoordinateOperation">
 <code class="sig-name descname">mustReverseCoordinateOperation</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">source</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsCoordinateReferenceSystem.html#module-QgsCoordinateReferenceSystem" title="QgsCoordinateReferenceSystem">QgsCoordinateReferenceSystem</a></span></em>, <em class="sig-param"><span class="n">destination</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsCoordinateReferenceSystem.html#module-QgsCoordinateReferenceSystem" title="QgsCoordinateReferenceSystem">QgsCoordinateReferenceSystem</a></span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsCoordinateTransformContext.mustReverseCoordinateOperation" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the coordinate operation returned by calculateCoordinateOperation() for the <code class="docutils literal notranslate"><span class="pre">source</span></code> to <code class="docutils literal notranslate"><span class="pre">destination</span></code> pair
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the coordinate operation returned by <a class="reference internal" href="#qgis.core.QgsCoordinateTransformContext.calculateCoordinateOperation" title="qgis.core.QgsCoordinateTransformContext.calculateCoordinateOperation"><code class="xref py py-func docutils literal notranslate"><span class="pre">calculateCoordinateOperation()</span></code></a> for the <code class="docutils literal notranslate"><span class="pre">source</span></code> to <code class="docutils literal notranslate"><span class="pre">destination</span></code> pair
 must be inverted.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.10.2.</span></p>
@@ -2233,13 +2233,13 @@ filled with missing datum transform strings.</p>
 <dt id="qgis.core.QgsCoordinateTransformContext.sourceDestinationDatumTransforms">
 <code class="sig-name descname">sourceDestinationDatumTransforms</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; object<a class="headerlink" href="#qgis.core.QgsCoordinateTransformContext.sourceDestinationDatumTransforms" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the stored mapping for source to destination CRS pairs to associated datum transforms to use.
-The map keys will be :py:func:<a href="#id3"><span class="problematic" id="id4">`</span></a>QgsCoordinateReferenceSystems.authid()`s.</p>
+The map keys will be QgsCoordinateReferenceSystems.authid()s.</p>
 <p>If either the source transform ID or destination transform ID is -1, then no datum transform is
 required for transformations for that source or destination.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>This method should not be used to calculate the corresponding datum transforms
-to use for a coordinate transform. Instead, always use calculateDatumTransforms()
+to use for a coordinate transform. Instead, always use <a class="reference internal" href="#qgis.core.QgsCoordinateTransformContext.calculateDatumTransforms" title="qgis.core.QgsCoordinateTransformContext.calculateDatumTransforms"><code class="xref py py-func docutils literal notranslate"><span class="pre">calculateDatumTransforms()</span></code></a>
 to determine this.</p>
 </div>
 <div class="admonition seealso">
@@ -2300,7 +2300,7 @@ to determine this.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 16:15 Jun 14, 2020.
+        Last updated on 16:33 Jun 15, 2020.
       </span>
 
     </p>

@@ -1808,14 +1808,14 @@ geom is transferred.</p>
 so making copies of geometries is inexpensive. The geometry container class can also be stored inside
 a QVariant object.</p>
 <p>The actual geometry representation is stored as a <a class="reference internal" href="QgsAbstractGeometry.html#qgis.core.QgsAbstractGeometry" title="qgis.core.QgsAbstractGeometry"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsAbstractGeometry</span></code></a> within the container, and
-can be accessed via the get() method or set using the set() method. This gives access to the underlying
+can be accessed via the <a class="reference internal" href="#qgis.core.QgsGeometry.get" title="qgis.core.QgsGeometry.get"><code class="xref py py-func docutils literal notranslate"><span class="pre">get()</span></code></a> method or set using the <a class="reference internal" href="#qgis.core.QgsGeometry.set" title="qgis.core.QgsGeometry.set"><code class="xref py py-func docutils literal notranslate"><span class="pre">set()</span></code></a> method. This gives access to the underlying
 raw geometry primitive, such as the point, line, polygon, curve or other geometry subclasses.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <blockquote>
 <div><p><a class="reference internal" href="#qgis.core.QgsGeometry" title="qgis.core.QgsGeometry"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsGeometry</span></code></a> objects are inherently Cartesian/planar geometries. They have no concept of geodesy, and none
 of the methods or properties exposed from the <a class="reference internal" href="#qgis.core.QgsGeometry" title="qgis.core.QgsGeometry"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsGeometry</span></code></a> API (or <a class="reference internal" href="QgsAbstractGeometry.html#qgis.core.QgsAbstractGeometry" title="qgis.core.QgsAbstractGeometry"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsAbstractGeometry</span></code></a> subclasses) utilize
-geodesic calculations. Accordingly, properties like length() and area() or spatial operations like buffer()
+geodesic calculations. Accordingly, properties like <a class="reference internal" href="#qgis.core.QgsGeometry.length" title="qgis.core.QgsGeometry.length"><code class="xref py py-func docutils literal notranslate"><span class="pre">length()</span></code></a> and <a class="reference internal" href="#qgis.core.QgsGeometry.area" title="qgis.core.QgsGeometry.area"><code class="xref py py-func docutils literal notranslate"><span class="pre">area()</span></code></a> or spatial operations like <a class="reference internal" href="#qgis.core.QgsGeometry.buffer" title="qgis.core.QgsGeometry.buffer"><code class="xref py py-func docutils literal notranslate"><span class="pre">buffer()</span></code></a>
 are always calculated using strictly Cartesian mathematics. In contrast, the <a class="reference internal" href="QgsDistanceArea.html#qgis.core.QgsDistanceArea" title="qgis.core.QgsDistanceArea"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsDistanceArea</span></code></a> class exposes
 methods for working with geodesic calculations and spatial operations on geometries,
 and should be used whenever calculations which account for the curvature of the Earth (or any other celestial body)
@@ -2101,7 +2101,7 @@ are required.</p>
 <td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if WKB of the geometry is of WKBMulti* type</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsGeometry.isNull" title="qgis.core.QgsGeometry.isNull"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isNull</span></code></a></p></td>
-<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the geometry is null (ie, contains no underlying geometry accessible via geometry() ).</p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the geometry is null (ie, contains no underlying geometry accessible via <code class="xref py py-func docutils literal notranslate"><span class="pre">geometry()</span></code> ).</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsGeometry.isSimple" title="qgis.core.QgsGeometry.isSimple"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isSimple</span></code></a></p></td>
 <td><p>Determines whether the geometry is simple (according to OGC definition), i.e.</p></td>
@@ -2709,12 +2709,14 @@ Adds a new ring to this geometry. This makes only sense for polygon and multipol
 <code class="sig-name descname">adjacentVertices</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">atVertex</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; Tuple<span class="p">[</span>int<span class="p">, </span>int<span class="p">]</span><a class="headerlink" href="#qgis.core.QgsGeometry.adjacentVertices" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the indexes of the vertices before and after the given vertex index.</p>
 <p>This function takes into account the following factors:</p>
-<p>1. If the given vertex index is at the end of a linestring,
-the adjacent index will be -1 (for “no adjacent vertex”)
-2. If the given vertex index is at the end of a linear ring
-(such as in a polygon), the adjacent index will take into
+<dl class="simple">
+<dt># If the given vertex index is at the end of a linestring,</dt><dd><p>the adjacent index will be -1 (for “no adjacent vertex”)</p>
+</dd>
+<dt># If the given vertex index is at the end of a linear ring</dt><dd><p>(such as in a polygon), the adjacent index will take into
 account the first vertex is equal to the last vertex (and will
 skip equal vertex positions).</p>
+</dd>
+</dl>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>atVertex</strong> (<em>int</em>) – </p>
@@ -3091,7 +3093,7 @@ Returns a buffer region around the geometry, with additional style options.</p>
 <dd><p>Returns the center of mass of a geometry.</p>
 <p>If the input is a NULL geometry, the output will also be a NULL geometry.</p>
 <p>If an error was encountered while creating the result, more information can be retrieved
-by calling <cite>error()</cite> on the returned geometry.</p>
+by calling <a class="reference internal" href="#qgis.core.QgsGeometry.lastError" title="qgis.core.QgsGeometry.lastError"><code class="xref py py-func docutils literal notranslate"><span class="pre">lastError()</span></code></a> on the returned geometry.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>for line based geometries, the center point of the line is returned,
@@ -3227,7 +3229,7 @@ either a multilinestring or multiple single line strings as dictated by <code cl
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This method is much stricter than convertToType(), as it considers the exact WKB type
+<p>This method is much stricter than <a class="reference internal" href="#qgis.core.QgsGeometry.convertToType" title="qgis.core.QgsGeometry.convertToType"><code class="xref py py-func docutils literal notranslate"><span class="pre">convertToType()</span></code></a>, as it considers the exact WKB type
 of geometries instead of the geometry family (point/line/polygon), and tries more exhaustively
 to coerce geometries to the desired <code class="docutils literal notranslate"><span class="pre">type</span></code>. It also correctly maintains curves and z/m values
 wherever appropriate.</p>
@@ -3266,7 +3268,7 @@ wherever appropriate.</p>
 union geometry operation).</p>
 <p>If the input is a NULL geometry, the output will also be a NULL geometry.</p>
 <p>If an error was encountered while creating the result, more information can be retrieved
-by calling <cite>error()</cite> on the returned geometry.</p>
+by calling <a class="reference internal" href="#qgis.core.QgsGeometry.lastError" title="qgis.core.QgsGeometry.lastError"><code class="xref py py-func docutils literal notranslate"><span class="pre">lastError()</span></code></a> on the returned geometry.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>this operation is not called union since its a reserved word in C++.</p>
@@ -3329,10 +3331,10 @@ within the specified tolerance</p></li>
 <dt id="qgis.core.QgsGeometry.constGet">
 <code class="sig-name descname">constGet</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="QgsAbstractGeometry.html#module-QgsAbstractGeometry" title="QgsAbstractGeometry">QgsAbstractGeometry</a><a class="headerlink" href="#qgis.core.QgsGeometry.constGet" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a non-modifiable (const) reference to the underlying abstract geometry primitive.</p>
-<p>This is much faster then calling the non-const get() method.</p>
+<p>This is much faster then calling the non-const <a class="reference internal" href="#qgis.core.QgsGeometry.get" title="qgis.core.QgsGeometry.get"><code class="xref py py-func docutils literal notranslate"><span class="pre">get()</span></code></a> method.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>In QGIS 2.x this method was named geometry().</p>
+<p>In QGIS 2.x this method was named <code class="xref py py-func docutils literal notranslate"><span class="pre">geometry()</span></code>.</p>
 </div>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -3357,7 +3359,7 @@ within the specified tolerance</p></li>
 <code class="sig-name descname">constParts</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="QgsGeometryConstPartIterator.html#module-QgsGeometryConstPartIterator" title="QgsGeometryConstPartIterator">QgsGeometryConstPartIterator</a><a class="headerlink" href="#qgis.core.QgsGeometry.constParts" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns Java-style iterator for traversal of parts of the geometry. This iterator
 returns read-only references to parts and cannot be used to modify the parts.</p>
-<p>Unlike parts(), this method does not force a detach and is more efficient if read-only
+<p>Unlike <a class="reference internal" href="#qgis.core.QgsGeometry.parts" title="qgis.core.QgsGeometry.parts"><code class="xref py py-func docutils literal notranslate"><span class="pre">parts()</span></code></a>, this method does not force a detach and is more efficient if read-only
 iteration only is required.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># print the WKT representation of each part in a multi-point geometry</span>
 <span class="n">geometry</span> <span class="o">=</span> <span class="n">QgsGeometry</span><span class="o">.</span><span class="n">fromWkt</span><span class="p">(</span> <span class="s1">&#39;MultiPoint( 0 0, 1 1, 2 2)&#39;</span> <span class="p">)</span>
@@ -3568,7 +3570,7 @@ not change the geometry.</p>
 </dl>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The coerceToType() method applies much stricter and more exhaustive attempts to convert
+<p>The <a class="reference internal" href="#qgis.core.QgsGeometry.coerceToType" title="qgis.core.QgsGeometry.coerceToType"><code class="xref py py-func docutils literal notranslate"><span class="pre">coerceToType()</span></code></a> method applies much stricter and more exhaustive attempts to convert
 between geometry types, and is recommended instead of this method. This method force drops
 curves and any z or m values present in the geometry.</p>
 </div>
@@ -3583,7 +3585,7 @@ curves and any z or m values present in the geometry.</p>
 <dd><p>Returns the smallest convex polygon that contains all the points in the geometry.</p>
 <p>If the input is a NULL geometry, the output will also be a NULL geometry.</p>
 <p>If an error was encountered while creating the result, more information can be retrieved
-by calling <cite>error()</cite> on the returned geometry.</p>
+by calling <a class="reference internal" href="#qgis.core.QgsGeometry.lastError" title="qgis.core.QgsGeometry.lastError"><code class="xref py py-func docutils literal notranslate"><span class="pre">lastError()</span></code></a> on the returned geometry.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><a class="reference internal" href="#qgis.core.QgsGeometry" title="qgis.core.QgsGeometry">QgsGeometry</a></p>
@@ -3858,7 +3860,7 @@ Curved geometry types are automatically segmentized by this routine.</p>
 <dd><p>Returns a geometry representing the points making up this geometry that do not make up other.</p>
 <p>If the input is a NULL geometry, the output will also be a NULL geometry.</p>
 <p>If an error was encountered while creating the result, more information can be retrieved
-by calling <cite>error()</cite> on the returned geometry.</p>
+by calling <a class="reference internal" href="#qgis.core.QgsGeometry.lastError" title="qgis.core.QgsGeometry.lastError"><code class="xref py py-func docutils literal notranslate"><span class="pre">lastError()</span></code></a> on the returned geometry.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>geometry</strong> (<a class="reference internal" href="#qgis.core.QgsGeometry" title="qgis.core.QgsGeometry"><em>QgsGeometry</em></a>) – </p>
@@ -3952,7 +3954,7 @@ returned by this method is calculated using strictly Cartesian mathematics.</p>
 <p>This is a strict equality check, where the underlying geometries must
 have exactly the same type, component vertices and vertex order.</p>
 <p>Calling this method is dramatically faster than the topological
-equality test performed by isGeosEqual().</p>
+equality test performed by <a class="reference internal" href="#qgis.core.QgsGeometry.isGeosEqual" title="qgis.core.QgsGeometry.isGeosEqual"><code class="xref py py-func docutils literal notranslate"><span class="pre">isGeosEqual()</span></code></a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Comparing two null geometries will return <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
@@ -4123,11 +4125,11 @@ a LineStringZ type.</p>
 <dt id="qgis.core.QgsGeometry.fromPolylineXY">
 <code class="sig-name descname">fromPolylineXY</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">polyline</span><span class="p">:</span> <span class="n">Iterable<span class="p">[</span><a class="reference internal" href="QgsPointXY.html#module-QgsPointXY" title="QgsPointXY">QgsPointXY</a><span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#module-QgsGeometry" title="QgsGeometry">QgsGeometry</a><a class="headerlink" href="#qgis.core.QgsGeometry.fromPolylineXY" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates a new LineString geometry from a list of <a class="reference internal" href="QgsPointXY.html#qgis.core.QgsPointXY" title="qgis.core.QgsPointXY"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsPointXY</span></code></a> points.</p>
-<p>Using fromPolyline() is preferred, as fromPolyline() is more efficient
+<p>Using <a class="reference internal" href="#qgis.core.QgsGeometry.fromPolyline" title="qgis.core.QgsGeometry.fromPolyline"><code class="xref py py-func docutils literal notranslate"><span class="pre">fromPolyline()</span></code></a> is preferred, as <a class="reference internal" href="#qgis.core.QgsGeometry.fromPolyline" title="qgis.core.QgsGeometry.fromPolyline"><code class="xref py py-func docutils literal notranslate"><span class="pre">fromPolyline()</span></code></a> is more efficient
 and will respect any Z or M dimensions present in the input points.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>In QGIS 2.x this method was available as fromPolyline().</p>
+<p>In QGIS 2.x this method was available as <a class="reference internal" href="#qgis.core.QgsGeometry.fromPolyline" title="qgis.core.QgsGeometry.fromPolyline"><code class="xref py py-func docutils literal notranslate"><span class="pre">fromPolyline()</span></code></a>.</p>
 </div>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -4233,10 +4235,10 @@ geometry will be a polyline.</p>
 <code class="sig-name descname">get</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="QgsAbstractGeometry.html#module-QgsAbstractGeometry" title="QgsAbstractGeometry">QgsAbstractGeometry</a><a class="headerlink" href="#qgis.core.QgsGeometry.get" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a modifiable (non-const) reference to the underlying abstract geometry primitive.</p>
 <p>This method can be slow to call, as it may trigger a detachment of the geometry
-and a deep copy. Where possible, use constGet() instead.</p>
+and a deep copy. Where possible, use <a class="reference internal" href="#qgis.core.QgsGeometry.constGet" title="qgis.core.QgsGeometry.constGet"><code class="xref py py-func docutils literal notranslate"><span class="pre">constGet()</span></code></a> instead.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>In QGIS 2.x this method was named geometry().</p>
+<p>In QGIS 2.x this method was named <code class="xref py py-func docutils literal notranslate"><span class="pre">geometry()</span></code>.</p>
 </div>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -4267,7 +4269,7 @@ subset of useful cases. Examples of these are:</p>
 and roughly equal in length. This occurs in matching linear networks.</p></li>
 <li><p>Testing similarity of geometries.</p></li>
 </ul>
-<p>If the default approximate provided by this method is insufficient, use hausdorffDistanceDensify() instead.</p>
+<p>If the default approximate provided by this method is insufficient, use <a class="reference internal" href="#qgis.core.QgsGeometry.hausdorffDistanceDensify" title="qgis.core.QgsGeometry.hausdorffDistanceDensify"><code class="xref py py-func docutils literal notranslate"><span class="pre">hausdorffDistanceDensify()</span></code></a> instead.</p>
 <p>In case of error -1 will be returned.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -4295,7 +4297,7 @@ densification before computing the discrete Hausdorff distance. The <code class=
 sets the fraction by which to densify each segment. Each segment will be split into a
 number of equal-length subsegments, whose fraction of the total length is
 closest to the given fraction.</p>
-<p>This method can be used when the default approximation provided by hausdorffDistance()
+<p>This method can be used when the default approximation provided by <a class="reference internal" href="#qgis.core.QgsGeometry.hausdorffDistance" title="qgis.core.QgsGeometry.hausdorffDistance"><code class="xref py py-func docutils literal notranslate"><span class="pre">hausdorffDistance()</span></code></a>
 is not sufficient. Decreasing the <code class="docutils literal notranslate"><span class="pre">densifyFraction</span></code> parameter will make the
 distance returned approach the true Hausdorff distance for the geometries.</p>
 <p>In case of error -1 will be returned.</p>
@@ -4416,7 +4418,7 @@ of the node is returned.</p>
 <dd><p>Returns a geometry representing the points shared by this geometry and other.</p>
 <p>If the input is a NULL geometry, the output will also be a NULL geometry.</p>
 <p>If an error was encountered while creating the result, more information can be retrieved
-by calling <cite>error()</cite> on the returned geometry.</p>
+by calling <a class="reference internal" href="#qgis.core.QgsGeometry.lastError" title="qgis.core.QgsGeometry.lastError"><code class="xref py py-func docutils literal notranslate"><span class="pre">lastError()</span></code></a> on the returned geometry.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>geometry</strong> (<a class="reference internal" href="#qgis.core.QgsGeometry" title="qgis.core.QgsGeometry"><em>QgsGeometry</em></a>) – </p>
@@ -4462,7 +4464,7 @@ valid may return incorrect results.</p>
 <code class="sig-name descname">isEmpty</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsGeometry.isEmpty" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the geometry is empty (eg a linestring with no vertices,
 or a collection with no geometries). A null geometry will always
-return <code class="docutils literal notranslate"><span class="pre">True</span></code> for isEmpty().</p>
+return <code class="docutils literal notranslate"><span class="pre">True</span></code> for <a class="reference internal" href="#qgis.core.QgsGeometry.isEmpty" title="qgis.core.QgsGeometry.isEmpty"><code class="xref py py-func docutils literal notranslate"><span class="pre">isEmpty()</span></code></a>.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsGeometry.isNull" title="qgis.core.QgsGeometry.isNull"><code class="xref py py-func docutils literal notranslate"><span class="pre">isNull()</span></code></a></p>
@@ -4483,7 +4485,7 @@ are considered equal if all of the their component edges overlap. E.g.
 lines with the same vertex locations but opposite direction will be
 considered equal by this method.</p>
 <p>Consider using the much faster, stricter equality test performed
-by equals() instead.</p>
+by <a class="reference internal" href="#qgis.core.QgsGeometry.equals" title="qgis.core.QgsGeometry.equals"><code class="xref py py-func docutils literal notranslate"><span class="pre">equals()</span></code></a> instead.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Comparing two null geometries will return <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
@@ -4535,7 +4537,7 @@ by equals() instead.</p>
 <dt id="qgis.core.QgsGeometry.isNull">
 <code class="sig-name descname">isNull</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsGeometry.isNull" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the geometry is null (ie, contains no underlying geometry
-accessible via geometry() ).</p>
+accessible via <code class="xref py py-func docutils literal notranslate"><span class="pre">geometry()</span></code> ).</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsGeometry.get" title="qgis.core.QgsGeometry.get"><code class="xref py py-func docutils literal notranslate"><span class="pre">get()</span></code></a></p>
@@ -4563,7 +4565,7 @@ Uses GEOS library for the test.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This is useful mainly for linestrings and linear rings. Polygons are simple by definition,
-for checking anomalies in polygon geometries one can use isGeosValid().</p>
+for checking anomalies in polygon geometries one can use <a class="reference internal" href="#qgis.core.QgsGeometry.isGeosValid" title="qgis.core.QgsGeometry.isGeosValid"><code class="xref py py-func docutils literal notranslate"><span class="pre">isGeosValid()</span></code></a>.</p>
 </div>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0.</span></p>
@@ -4679,7 +4681,7 @@ of lower-to-equal dimension geometries or a geometry of lower dimension.
 Single polygons may become multi-geometries in case of self-intersections.
 It preserves Z values, but M values will be dropped.</p>
 <p>If an error was encountered during the process, more information can be retrieved
-by calling <cite>error()</cite> on the returned geometry.</p>
+by calling <a class="reference internal" href="#qgis.core.QgsGeometry.lastError" title="qgis.core.QgsGeometry.lastError"><code class="xref py py-func docutils literal notranslate"><span class="pre">lastError()</span></code></a> on the returned geometry.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><a class="reference internal" href="#qgis.core.QgsGeometry" title="qgis.core.QgsGeometry">QgsGeometry</a></p>
@@ -4898,7 +4900,7 @@ straight line an angle must be before it is attempted to be straightened.</p>
 <code class="sig-name descname">parts</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="QgsGeometryPartIterator.html#module-QgsGeometryPartIterator" title="QgsGeometryPartIterator">QgsGeometryPartIterator</a><a class="headerlink" href="#qgis.core.QgsGeometry.parts" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns Java-style iterator for traversal of parts of the geometry. This iterator
 can safely be used to modify parts of the geometry.</p>
-<p>This method forces a detach. Use constParts() to avoid the detach
+<p>This method forces a detach. Use <a class="reference internal" href="#qgis.core.QgsGeometry.constParts" title="qgis.core.QgsGeometry.constParts"><code class="xref py py-func docutils literal notranslate"><span class="pre">constParts()</span></code></a> to avoid the detach
 if the parts are not going to be modified.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># print the WKT representation of each part in a multi-point geometry</span>
 <span class="n">geometry</span> <span class="o">=</span> <span class="n">QgsGeometry</span><span class="o">.</span><span class="n">fromWkt</span><span class="p">(</span> <span class="s1">&#39;MultiPoint( 0 0, 1 1, 2 2)&#39;</span> <span class="p">)</span>
@@ -4943,12 +4945,12 @@ if the parts are not going to be modified.</p>
 <dl class="py method">
 <dt id="qgis.core.QgsGeometry.pointOnSurface">
 <code class="sig-name descname">pointOnSurface</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#module-QgsGeometry" title="QgsGeometry">QgsGeometry</a><a class="headerlink" href="#qgis.core.QgsGeometry.pointOnSurface" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns a point guaranteed to lie on the surface of a geometry. While the centroid()
+<dd><p>Returns a point guaranteed to lie on the surface of a geometry. While the <a class="reference internal" href="#qgis.core.QgsGeometry.centroid" title="qgis.core.QgsGeometry.centroid"><code class="xref py py-func docutils literal notranslate"><span class="pre">centroid()</span></code></a>
 of a geometry may be located outside of the geometry itself (e.g., for concave shapes),
 the point on surface will always be inside the geometry.</p>
 <p>If the input is a NULL geometry, the output will also be a NULL geometry.</p>
 <p>If an error was encountered while creating the result, more information can be retrieved
-by calling <cite>error()</cite> on the returned geometry.</p>
+by calling <a class="reference internal" href="#qgis.core.QgsGeometry.lastError" title="qgis.core.QgsGeometry.lastError"><code class="xref py py-func docutils literal notranslate"><span class="pre">lastError()</span></code></a> on the returned geometry.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsGeometry.centroid" title="qgis.core.QgsGeometry.centroid"><code class="xref py py-func docutils literal notranslate"><span class="pre">centroid()</span></code></a></p>
@@ -5001,7 +5003,7 @@ Optionally, the distance to the polygon boundary from the pole can be stored.</p
 <dd><p>Creates a GeometryCollection geometry containing possible polygons formed from the constituent
 linework of a set of <code class="docutils literal notranslate"><span class="pre">geometries</span></code>. The input geometries must be fully noded (i.e. nodes exist
 at every common intersection of the geometries). The easiest way to ensure this is to first
-call unaryUnion() on the set of input geometries and then pass the result to polygonize().
+call <a class="reference internal" href="#qgis.core.QgsGeometry.unaryUnion" title="qgis.core.QgsGeometry.unaryUnion"><code class="xref py py-func docutils literal notranslate"><span class="pre">unaryUnion()</span></code></a> on the set of input geometries and then pass the result to <a class="reference internal" href="#qgis.core.QgsGeometry.polygonize" title="qgis.core.QgsGeometry.polygonize"><code class="xref py py-func docutils literal notranslate"><span class="pre">polygonize()</span></code></a>.
 An empty geometry will be returned in the case of errors.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0.</span></p>
@@ -5153,7 +5155,7 @@ display as straight line segments.</p>
 <dd><p>Sets the underlying geometry store. Ownership of geometry is transferred.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>In QGIS 2.x this method was named setGeometry().</p>
+<p>In QGIS 2.x this method was named <code class="xref py py-func docutils literal notranslate"><span class="pre">setGeometry()</span></code>.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -5344,7 +5346,7 @@ Splits this geometry according to a given line.</p>
 <dd class="field-odd"><p><strong>splitLine</strong> – the line that splits the geometry</p>
 </dd>
 </dl>
-<p>param[out] newGeometries list of new geometries that have been created with the split
+<p>param[out] newGeometries list of new geometries that have been created with the <code class="docutils literal notranslate"><span class="pre">splitLine</span></code>. If the geometry is 3D, a linear interpolation of the z value is performed on the geometry at split points, see example.
 :param topological: <code class="docutils literal notranslate"><span class="pre">True</span></code> if topological editing is enabled
 param[out] topologyTestPoints points that need to be tested for topological completeness in the dataset
 :param splitFeature: Set to True if you want to split a feature, otherwise set to False to split parts</p>
@@ -5359,6 +5361,16 @@ param[out] topologyTestPoints points that need to be tested for topological comp
 <dd class="field-even"><p>OperationResult a result code: success or reason of failure</p>
 </dd>
 </dl>
+<ul class="simple">
+<li><p>Example:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">geometry</span> <span class="o">=</span> <span class="n">QgsGeometry</span><span class="o">.</span><span class="n">fromWkt</span><span class="p">(</span><span class="s1">&#39;CompoundCurveZ ((2749546.2003820720128715 1262904.45356595050543547 100, 2749557.82053794478997588 1262920.05570670193992555 200))&#39;</span><span class="p">)</span>
+<span class="n">split_line</span> <span class="o">=</span> <span class="p">[</span><span class="n">QgsPoint</span><span class="p">(</span><span class="mf">2749544.19</span><span class="p">,</span> <span class="mf">1262914.79</span><span class="p">),</span> <span class="n">QgsPoint</span><span class="p">(</span><span class="mf">2749557.64</span><span class="p">,</span> <span class="mf">1262897.30</span><span class="p">)]</span>
+<span class="n">result</span><span class="p">,</span> <span class="n">new_geometries</span><span class="p">,</span> <span class="n">point_xy</span> <span class="o">=</span> <span class="n">geometry</span><span class="o">.</span><span class="n">splitGeometry</span><span class="p">(</span><span class="n">split_line</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">geometry</span><span class="o">.</span><span class="n">asWkt</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="o">&gt;</span> <span class="n">LineStringZ</span> <span class="p">(</span><span class="mf">2749549.12</span> <span class="mf">1262908.38</span> <span class="mf">125.14</span><span class="p">,</span> <span class="mf">2749557.82</span> <span class="mf">1262920.06</span> <span class="mi">200</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="py method">
@@ -5397,7 +5409,7 @@ not be valid and may contain self-intersections.</p>
 <p>Curved geometries will be segmentized before subdivision.</p>
 <p>If the input is a NULL geometry, the output will also be a NULL geometry.</p>
 <p>If an error was encountered while creating the result, more information can be retrieved
-by calling <cite>error()</cite> on the returned geometry.</p>
+by calling <a class="reference internal" href="#qgis.core.QgsGeometry.lastError" title="qgis.core.QgsGeometry.lastError"><code class="xref py py-func docutils literal notranslate"><span class="pre">lastError()</span></code></a> on the returned geometry.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0.</span></p>
 </div>
@@ -5417,7 +5429,7 @@ by calling <cite>error()</cite> on the returned geometry.</p>
 <dd><p>Returns a geometry representing the points making up this geometry that do not make up other.</p>
 <p>If the input is a NULL geometry, the output will also be a NULL geometry.</p>
 <p>If an error was encountered while creating the result, more information can be retrieved
-by calling <cite>error()</cite> on the returned geometry.</p>
+by calling <a class="reference internal" href="#qgis.core.QgsGeometry.lastError" title="qgis.core.QgsGeometry.lastError"><code class="xref py py-func docutils literal notranslate"><span class="pre">lastError()</span></code></a> on the returned geometry.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>geometry</strong> (<a class="reference internal" href="#qgis.core.QgsGeometry" title="qgis.core.QgsGeometry"><em>QgsGeometry</em></a>) – </p>
@@ -5433,7 +5445,7 @@ by calling <cite>error()</cite> on the returned geometry.</p>
 <code class="sig-name descname">taperedBuffer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">startWidth</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">endWidth</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">segments</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#module-QgsGeometry" title="QgsGeometry">QgsGeometry</a><a class="headerlink" href="#qgis.core.QgsGeometry.taperedBuffer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculates a variable width buffer (“tapered buffer”) for a (multi)curve geometry.</p>
 <p>The buffer begins at a width of <code class="docutils literal notranslate"><span class="pre">startWidth</span></code> at the start of each curve, and
-ends at a width of <code class="docutils literal notranslate"><span class="pre">endWidth</span></code>. Note that unlike buffer() methods, <code class="docutils literal notranslate"><span class="pre">startWidth</span></code>
+ends at a width of <code class="docutils literal notranslate"><span class="pre">endWidth</span></code>. Note that unlike <a class="reference internal" href="#qgis.core.QgsGeometry.buffer" title="qgis.core.QgsGeometry.buffer"><code class="xref py py-func docutils literal notranslate"><span class="pre">buffer()</span></code></a> methods, <code class="docutils literal notranslate"><span class="pre">startWidth</span></code>
 and <code class="docutils literal notranslate"><span class="pre">endWidth</span></code> are the diameter of the buffer at these points, not the radius.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">segments</span></code> argument specifies the number of segments to approximate quarter-circle
 curves in the buffer.</p>
@@ -5700,7 +5712,7 @@ to the first vertex.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>The iterator returns a copy of individual vertices, and accordingly geometries cannot be
-modified using the iterator. See transformVertices() for a safe method to modify vertices “in-place”.</p>
+modified using the iterator. See <code class="xref py py-func docutils literal notranslate"><span class="pre">transformVertices()</span></code> for a safe method to modify vertices “in-place”.</p>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># print the x and y coordinate for each vertex in a LineString</span>
 <span class="n">geometry</span> <span class="o">=</span> <span class="n">QgsGeometry</span><span class="o">.</span><span class="n">fromWkt</span><span class="p">(</span> <span class="s1">&#39;LineString( 0 0, 1 1, 2 2)&#39;</span> <span class="p">)</span>
@@ -5806,7 +5818,7 @@ An empty geometry will be returned if the diagram could not be calculated.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 16:15 Jun 14, 2020.
+        Last updated on 16:33 Jun 15, 2020.
       </span>
 
     </p>

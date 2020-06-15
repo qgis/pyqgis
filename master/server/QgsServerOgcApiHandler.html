@@ -1797,7 +1797,7 @@
 <p>The <a class="reference internal" href="#qgis.server.QgsServerOgcApiHandler" title="qgis.server.QgsServerOgcApiHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsServerOgcApiHandler</span></code></a> abstract class represents a OGC API handler to be registered
 in <a class="reference internal" href="QgsServerOgcApi.html#qgis.server.QgsServerOgcApi" title="qgis.server.QgsServerOgcApi"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsServerOgcApi</span></code></a> class.</p>
 <p>Subclasses must override operational and informative methods and define
-the core functionality in handleRequest() method.</p>
+the core functionality in <a class="reference internal" href="#qgis.server.QgsServerOgcApiHandler.handleRequest" title="qgis.server.QgsServerOgcApiHandler.handleRequest"><code class="xref py py-func docutils literal notranslate"><span class="pre">handleRequest()</span></code></a> method.</p>
 <p>The following methods MUST be implemented:</p>
 <ul class="simple">
 <li><p>path</p></li>
@@ -1899,7 +1899,7 @@ the core functionality in handleRequest() method.</p>
 <td><p>Returns a link to the parent page up to <code class="docutils literal notranslate"><span class="pre">levels</span></code> in the HTML hierarchy from the given <code class="docutils literal notranslate"><span class="pre">url</span></code>, MAP query argument is preserved</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.server.QgsServerOgcApiHandler.path" title="qgis.server.QgsServerOgcApiHandler.path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">path</span></code></a></p></td>
-<td><p>URL pattern for this handler, named capture group are automatically extracted and returned by values()</p></td>
+<td><p>URL pattern for this handler, named capture group are automatically extracted and returned by <a class="reference internal" href="#qgis.server.QgsServerOgcApiHandler.values" title="qgis.server.QgsServerOgcApiHandler.values"><code class="xref py py-func docutils literal notranslate"><span class="pre">values()</span></code></a></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.server.QgsServerOgcApiHandler.setContentTypes" title="qgis.server.QgsServerOgcApiHandler.setContentTypes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setContentTypes</span></code></a></p></td>
 <td><p>Set the content types to <code class="docutils literal notranslate"><span class="pre">contentTypes</span></code></p></td>
@@ -1982,7 +1982,7 @@ Fallback to the default content type of the handler if none of the above matches
 <dd><p>Returns the default response content type in case the client did not specifically
 ask for any particular content type.
 The default implementation returns the first content type returned by
-contentTypes() or JSON if that list is empty.</p>
+<code class="xref py py-func docutils literal notranslate"><span class="pre">contentTypes()</span></code> or JSON if that list is empty.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><a class="reference internal" href="QgsServerOgcApi.html#qgis.server.QgsServerOgcApi.ContentType" title="qgis.server.QgsServerOgcApi.ContentType">QgsServerOgcApi.ContentType</a></p>
@@ -2005,7 +2005,7 @@ contentTypes() or JSON if that list is empty.</p>
 <dt id="qgis.server.QgsServerOgcApiHandler.handleRequest">
 <code class="sig-name descname">handleRequest</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">context</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsServerApiContext.html#module-QgsServerApiContext" title="QgsServerApiContext">QgsServerApiContext</a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.server.QgsServerOgcApiHandler.handleRequest" title="Permalink to this definition">¶</a></dt>
 <dd><p>Handles the request within its <code class="docutils literal notranslate"><span class="pre">context</span></code></p>
-<p>Subclasses must implement this methods, and call validate() to
+<p>Subclasses must implement this methods, and call <code class="xref py py-func docutils literal notranslate"><span class="pre">validate()</span></code> to
 extract validated parameters from the request.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Raises</dt>
@@ -2124,7 +2124,7 @@ extract validated parameters from the request.</p>
 <dt id="qgis.server.QgsServerOgcApiHandler.path">
 <code class="sig-name descname">path</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; QRegularExpression<a class="headerlink" href="#qgis.server.QgsServerOgcApiHandler.path" title="Permalink to this definition">¶</a></dt>
 <dd><p>URL pattern for this handler, named capture group are automatically
-extracted and returned by values()</p>
+extracted and returned by <a class="reference internal" href="#qgis.server.QgsServerOgcApiHandler.values" title="qgis.server.QgsServerOgcApiHandler.values"><code class="xref py py-func docutils literal notranslate"><span class="pre">values()</span></code></a></p>
 <p>Example: “/handlername/(?P&lt;code1&gt;d{2})/items” will capture “code1” as a
 named parameter.</p>
 <div class="admonition seealso">
@@ -2190,10 +2190,10 @@ this handler are stored in the given <code class="docutils literal notranslate">
 <dt id="qgis.server.QgsServerOgcApiHandler.templatePath">
 <code class="sig-name descname">templatePath</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">context</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsServerApiContext.html#module-QgsServerApiContext" title="QgsServerApiContext">QgsServerApiContext</a></span></em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.server.QgsServerOgcApiHandler.templatePath" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the HTML template path for the handler in the given <code class="docutils literal notranslate"><span class="pre">context</span></code></p>
-<p>The template path is calculated from QgsServerSettings’s apiResourcesDirectory() as follow:
-apiResourcesDirectory() + “/ogc/templates/” + context.apiRootPath + operationId + “.html”
+<p>The template path is calculated from QgsServerSettings’s <code class="xref py py-func docutils literal notranslate"><span class="pre">apiResourcesDirectory()</span></code> as follow:
+<code class="xref py py-func docutils literal notranslate"><span class="pre">apiResourcesDirectory()</span></code> + “/ogc/templates/” + context.apiRootPath + operationId + “.html”
 e.g. for an API with root path “/wfs3” and an handler with operationId “collectionItems”, the path
-will be apiResourcesDirectory() + “/ogc/templates/wfs3/collectionItems.html”</p>
+will be <code class="xref py py-func docutils literal notranslate"><span class="pre">apiResourcesDirectory()</span></code> + “/ogc/templates/wfs3/collectionItems.html”</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>context</strong> (<a class="reference internal" href="QgsServerApiContext.html#qgis.server.QgsServerApiContext" title="qgis.server.QgsServerApiContext"><em>QgsServerApiContext</em></a>) – </p>
@@ -2209,7 +2209,7 @@ will be apiResourcesDirectory() + “/ogc/templates/wfs3/collectionItems.html”
 <code class="sig-name descname">values</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">context</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsServerApiContext.html#module-QgsServerApiContext" title="QgsServerApiContext">QgsServerApiContext</a></span></em><span class="sig-paren">)</span> &#x2192; Dict<span class="p">[</span>str<span class="p">, </span>Any<span class="p">]</span><a class="headerlink" href="#qgis.server.QgsServerOgcApiHandler.values" title="Permalink to this definition">¶</a></dt>
 <dd><p>Analyzes the incoming request <code class="docutils literal notranslate"><span class="pre">context</span></code> and returns the validated
 parameter map, throws <code class="xref py py-class docutils literal notranslate"><span class="pre">QgsServerApiBadRequestError</span></code> in case of errors.</p>
-<p>Path fragments from the named groups in the path() regular expression
+<p>Path fragments from the named groups in the <a class="reference internal" href="#qgis.server.QgsServerOgcApiHandler.path" title="qgis.server.QgsServerOgcApiHandler.path"><code class="xref py py-func docutils literal notranslate"><span class="pre">path()</span></code></a> regular expression
 are also added to the map.</p>
 <p>Your handleRequest method should call this function to retrieve
 the parameters map.</p>
@@ -2255,7 +2255,7 @@ See: <a class="reference external" href="https://github.com/pantor/inja#tutorial
 <ul class="simple">
 <li><p>path_append( path ): appends a directory path to the current url</p></li>
 <li><p>path_chomp( n ): removes the specified number “n” of directory components from the current url path</p></li>
-<li><p>json_dump(): prints current JSON data passed to the template</p></li>
+<li><p><code class="xref py py-func docutils literal notranslate"><span class="pre">json_dump()</span></code>: prints current JSON data passed to the template</p></li>
 <li><p>static( path): returns the full URL to the specified static path, for example:
 static(“/style/black.css”) will return something like “/wfs3/static/style/black.css”.</p></li>
 <li><p>links_filter( links, key, value ): returns filtered links from a link list</p></li>
@@ -2288,7 +2288,7 @@ static(“/style/black.css”) will return something like “/wfs3/static/style/
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 16:15 Jun 14, 2020.
+        Last updated on 16:33 Jun 15, 2020.
       </span>
 
     </p>

@@ -1804,62 +1804,30 @@ help a user to create valid geometries.</p>
 <p>A new subclass of <a class="reference internal" href="#qgis.analysis.QgsGeometryCheck" title="qgis.analysis.QgsGeometryCheck"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsGeometryCheck</span></code></a> needs to be written and at least the following
 abstract methods need to be implemented:</p>
 <ul class="simple">
-<li><p><cite>compatibleGeometryTypes()</cite></p></li>
-</ul>
-<p>A list of geometry types to which this check applies</p>
-<ul class="simple">
-<li><p><cite>resolutionMethods()</cite></p></li>
-</ul>
-<p>A list of names for (automated) resolution methods that can be used to fix errors of this type</p>
-<ul class="simple">
-<li><p><cite>description()</cite></p></li>
-</ul>
-<p>A description for the geometry check.</p>
-<ul class="simple">
-<li><p><cite>id()</cite></p></li>
-</ul>
-<p>A unique id for this check.</p>
-<ul class="simple">
-<li><p><cite>checkType()</cite></p></li>
-</ul>
-<p>One of QgsGeometryCheck.LayerCheck, QgsGeometryCheck.FeatureCheck,QgsGeometryCheck.FeatureNodeCheck</p>
-<ul class="simple">
-<li><p>link collectErrors() <cite>collectErrors(featurePools, errors, messages, feedback, ids)</cite>endlink</p></li>
-</ul>
-<p>This method will be called to validate geometries. All geometries which should be validated are passed
+<li><p><a class="reference internal" href="#qgis.analysis.QgsGeometryCheck.compatibleGeometryTypes" title="qgis.analysis.QgsGeometryCheck.compatibleGeometryTypes"><code class="xref py py-func docutils literal notranslate"><span class="pre">compatibleGeometryTypes()</span></code></a>: A list of geometry types to which this check applies</p></li>
+<li><p><a class="reference internal" href="#qgis.analysis.QgsGeometryCheck.resolutionMethods" title="qgis.analysis.QgsGeometryCheck.resolutionMethods"><code class="xref py py-func docutils literal notranslate"><span class="pre">resolutionMethods()</span></code></a>: A list of names for (automated) resolution methods that can be used to fix errors of this type</p></li>
+<li><p><a class="reference internal" href="#qgis.analysis.QgsGeometryCheck.description" title="qgis.analysis.QgsGeometryCheck.description"><code class="xref py py-func docutils literal notranslate"><span class="pre">description()</span></code></a>: A description for the geometry check.</p></li>
+<li><p><a class="reference internal" href="#qgis.analysis.QgsGeometryCheck.id" title="qgis.analysis.QgsGeometryCheck.id"><code class="xref py py-func docutils literal notranslate"><span class="pre">id()</span></code></a>: A unique id for this check.</p></li>
+<li><p><a class="reference internal" href="#qgis.analysis.QgsGeometryCheck.checkType" title="qgis.analysis.QgsGeometryCheck.checkType"><code class="xref py py-func docutils literal notranslate"><span class="pre">checkType()</span></code></a>: One of QgsGeometryCheck.LayerCheck, QgsGeometryCheck.FeatureCheck,QgsGeometryCheck.FeatureNodeCheck</p></li>
+<li><p><a class="reference internal" href="#qgis.analysis.QgsGeometryCheck.collectErrors" title="qgis.analysis.QgsGeometryCheck.collectErrors"><code class="xref py py-func docutils literal notranslate"><span class="pre">collectErrors()</span></code></a>: This method will be called to validate geometries. All geometries which should be validated are passed
 into this method with the parameter ids and should be retrieved from the available featurePools to make
 use of caching. New errors should be appended to the error list and other message strings to messages.
-The method needs to return a tuple (errors, messages).</p>
+The method needs to return a tuple (errors, messages).</p></li>
+</ul>
 <p>A Geometry check factory manages meta information for checks. There will always be one single
 geometry check factory created per check type, but it’s possible that multiple QgsGeometryCheck
 instances are created and used in parallel.</p>
 <p>A new subclass of <a class="reference internal" href="QgsGeometryCheckFactory.html#qgis.analysis.QgsGeometryCheckFactory" title="qgis.analysis.QgsGeometryCheckFactory"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsGeometryCheckFactory</span></code></a> needs to be written and at least the following
 abstract methods need to be implemented:</p>
 <ul class="simple">
-<li><p>link QgsGeometryCheckFactory.createGeometryCheck() <cite>createGeometryCheck(context, configuration)</cite>endlink</p></li>
+<li><p><a class="reference internal" href="QgsGeometryCheckFactory.html#qgis.analysis.QgsGeometryCheckFactory.createGeometryCheck" title="qgis.analysis.QgsGeometryCheckFactory.createGeometryCheck"><code class="xref py py-func docutils literal notranslate"><span class="pre">QgsGeometryCheckFactory.createGeometryCheck()</span></code></a>: Needs to return a new subclassed <a class="reference internal" href="#qgis.analysis.QgsGeometryCheck" title="qgis.analysis.QgsGeometryCheck"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsGeometryCheck</span></code></a> object that has been written in the previous step.</p></li>
+<li><p><a class="reference internal" href="QgsGeometryCheckFactory.html#qgis.analysis.QgsGeometryCheckFactory.id" title="qgis.analysis.QgsGeometryCheckFactory.id"><code class="xref py py-func docutils literal notranslate"><span class="pre">QgsGeometryCheckFactory.id()</span></code></a>: A unique id for this geometry check.</p></li>
+<li><p><a class="reference internal" href="QgsGeometryCheckFactory.html#qgis.analysis.QgsGeometryCheckFactory.description" title="qgis.analysis.QgsGeometryCheckFactory.description"><code class="xref py py-func docutils literal notranslate"><span class="pre">QgsGeometryCheckFactory.description()</span></code></a>: A description for this geometry check that can be presented to the user for more explanation.</p></li>
+<li><p><a class="reference internal" href="QgsGeometryCheckFactory.html#qgis.analysis.QgsGeometryCheckFactory.isCompatible" title="qgis.analysis.QgsGeometryCheckFactory.isCompatible"><code class="xref py py-func docutils literal notranslate"><span class="pre">QgsGeometryCheckFactory.isCompatible()</span></code></a>: Returns a boolean that determines if this check is available for a given layer. This often
+checks for the geometry type of the layer.</p></li>
+<li><p><a class="reference internal" href="QgsGeometryCheckFactory.html#qgis.analysis.QgsGeometryCheckFactory.flags" title="qgis.analysis.QgsGeometryCheckFactory.flags"><code class="xref py py-func docutils literal notranslate"><span class="pre">QgsGeometryCheckFactory.flags()</span></code></a>: Returns additional flags for a geometry check. If unsure return QgsGeometryCheck.AvailableInValidation.</p></li>
+<li><p><a class="reference internal" href="QgsGeometryCheckFactory.html#qgis.analysis.QgsGeometryCheckFactory.checkType" title="qgis.analysis.QgsGeometryCheckFactory.checkType"><code class="xref py py-func docutils literal notranslate"><span class="pre">QgsGeometryCheckFactory.checkType()</span></code></a>: Returns the type of this geometry check.</p></li>
 </ul>
-<p>Needs to return a new subclassed <a class="reference internal" href="#qgis.analysis.QgsGeometryCheck" title="qgis.analysis.QgsGeometryCheck"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsGeometryCheck</span></code></a> object that has been written in the previous step.</p>
-<ul class="simple">
-<li><p>link QgsGeometryCheckFactory.id() <a href="#id1"><span class="problematic" id="id2">`</span></a>id()endlink</p></li>
-</ul>
-<p>A unique id for this geometry check.</p>
-<ul class="simple">
-<li><p>link QgsGeometryCheckFactory.description() <a href="#id3"><span class="problematic" id="id4">`</span></a>description()endlink</p></li>
-</ul>
-<p>A description for this geometry check that can be presented to the user for more explanation.</p>
-<ul class="simple">
-<li><p>link QgsGeometryCheckFactory.isCompatible() <cite>QgsGeometryCheckFactory.isCompatible(layer)</cite>endlink</p></li>
-</ul>
-<p>Returns a boolean that determines if this check is available for a given layer. This often
-checks for the geometry type of the layer.</p>
-<ul class="simple">
-<li><p>link QgsGeometryCheckFactory.flags() <cite>flags()</cite>endlink</p></li>
-</ul>
-<p>Returns additional flags for a geometry check. If unsure return QgsGeometryCheck.AvailableInValidation.</p>
-<ul class="simple">
-<li><p>link QgsGeometryCheckFactory.checkType() <cite>checkType()</cite>endlink</p></li>
-</ul>
-<p>Returns the type of this geometry check.</p>
 <p>Finally the geometry check factory needs to be registered in QGIS, so the system
 is aware of the available geometry checks.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make sure you always keep a</span>
@@ -2131,7 +2099,7 @@ Progress should be reported to <code class="docutils literal notranslate"><span 
 <dt id="qgis.analysis.QgsGeometryCheck.isCompatible">
 <code class="sig-name descname">isCompatible</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">layer</span><span class="p">:</span> <span class="n"><a class="reference internal" href="../core/QgsVectorLayer.html#module-QgsVectorLayer" title="QgsVectorLayer">QgsVectorLayer</a></span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.analysis.QgsGeometryCheck.isCompatible" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns if this geometry check is compatible with <code class="docutils literal notranslate"><span class="pre">layer</span></code>.
-By default it checks for the geometry type in <a href="#id5"><span class="problematic" id="id6">``</span></a>compatibleGeometryTypes``().</p>
+By default it checks for the geometry type in <a href="#id1"><span class="problematic" id="id2">``</span></a>compatibleGeometryTypes``().</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.4.</span></p>
 </div>
@@ -2202,7 +2170,7 @@ use availableResolutionMethods() instead</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 16:15 Jun 14, 2020.
+        Last updated on 16:33 Jun 15, 2020.
       </span>
 
     </p>

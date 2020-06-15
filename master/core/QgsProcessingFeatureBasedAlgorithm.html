@@ -2067,9 +2067,9 @@ algorithm in “chains”, avoiding the need for temporary outputs in multi-step
 <dd><p>Adds an output <code class="docutils literal notranslate"><span class="pre">definition</span></code> to the algorithm. Ownership of the definition is transferred to the algorithm.
 Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the output could be successfully added, or <code class="docutils literal notranslate"><span class="pre">False</span></code> if the output could not be added (e.g.
 as a result of a duplicate name).</p>
-<p>This should usually be called from a subclass’ initAlgorithm() implementation.</p>
-<p>Note that in some cases output creation can be automatically performed when calling addParameter().
-See the notes in addParameter() for a description of when this occurs.</p>
+<p>This should usually be called from a subclass’ <a class="reference internal" href="QgsProcessingAlgorithm.html#qgis.core.QgsProcessingAlgorithm.initAlgorithm" title="qgis.core.QgsProcessingAlgorithm.initAlgorithm"><code class="xref py py-func docutils literal notranslate"><span class="pre">initAlgorithm()</span></code></a> implementation.</p>
+<p>Note that in some cases output creation can be automatically performed when calling <a class="reference internal" href="QgsProcessingAlgorithm.html#qgis.core.QgsProcessingAlgorithm.addParameter" title="qgis.core.QgsProcessingAlgorithm.addParameter"><code class="xref py py-func docutils literal notranslate"><span class="pre">addParameter()</span></code></a>.
+See the notes in <a class="reference internal" href="QgsProcessingAlgorithm.html#qgis.core.QgsProcessingAlgorithm.addParameter" title="qgis.core.QgsProcessingAlgorithm.addParameter"><code class="xref py py-func docutils literal notranslate"><span class="pre">addParameter()</span></code></a> for a description of when this occurs.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsProcessingFeatureBasedAlgorithm.addParameter" title="qgis.core.QgsProcessingFeatureBasedAlgorithm.addParameter"><code class="xref py py-func docutils literal notranslate"><span class="pre">addParameter()</span></code></a></p>
@@ -2086,11 +2086,11 @@ See the notes in addParameter() for a description of when this occurs.</p>
 <dd><p>Adds a parameter <code class="docutils literal notranslate"><span class="pre">definition</span></code> to the algorithm. Ownership of the definition is transferred to the algorithm.
 Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if parameter could be successfully added, or <code class="docutils literal notranslate"><span class="pre">False</span></code> if the parameter could not be added (e.g.
 as a result of a duplicate name).</p>
-<p>This should usually be called from a subclass’ initAlgorithm() implementation.</p>
+<p>This should usually be called from a subclass’ <a class="reference internal" href="QgsProcessingAlgorithm.html#qgis.core.QgsProcessingAlgorithm.initAlgorithm" title="qgis.core.QgsProcessingAlgorithm.initAlgorithm"><code class="xref py py-func docutils literal notranslate"><span class="pre">initAlgorithm()</span></code></a> implementation.</p>
 <p>If the <code class="docutils literal notranslate"><span class="pre">createOutput</span></code> argument is <code class="docutils literal notranslate"><span class="pre">True</span></code>, then a corresponding output definition will also be created
 (and added to the algorithm) where appropriate. E.g. when adding a <a class="reference internal" href="QgsProcessingParameterVectorDestination.html#module-QgsProcessingParameterVectorDestination" title="QgsProcessingParameterVectorDestination"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingParameterVectorDestination</span></code></a>
 and <code class="docutils literal notranslate"><span class="pre">createOutput</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code>, then a <a class="reference internal" href="QgsProcessingOutputVectorLayer.html#qgis.core.QgsProcessingOutputVectorLayer" title="qgis.core.QgsProcessingOutputVectorLayer"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingOutputVectorLayer</span></code></a> output will be created and
-added to the algorithm. There is no need to call addOutput() to manually add a corresponding output
+added to the algorithm. There is no need to call <a class="reference internal" href="QgsProcessingAlgorithm.html#qgis.core.QgsProcessingAlgorithm.addOutput" title="qgis.core.QgsProcessingAlgorithm.addOutput"><code class="xref py py-func docutils literal notranslate"><span class="pre">addOutput()</span></code></a> to manually add a corresponding output
 for this vector. If <code class="docutils literal notranslate"><span class="pre">createOutput</span></code> is <code class="docutils literal notranslate"><span class="pre">False</span></code> then this automatic output creation will not
 occur.</p>
 <div class="admonition seealso">
@@ -2362,7 +2362,7 @@ in a temporary location. The function will then return the path to that temporar
 <p>The <code class="docutils literal notranslate"><span class="pre">preferredFormat</span></code> argument is used to specify to desired file extension to use when a temporary
 layer export is required.</p>
 <p>When an algorithm is capable of handling multi-layer input files (such as Geopackage), it is preferable
-to use parameterAsCompatibleSourceLayerPathAndLayerName() which may avoid conversion in more situations.</p>
+to use <a class="reference internal" href="QgsProcessingAlgorithm.html#qgis.core.QgsProcessingAlgorithm.parameterAsCompatibleSourceLayerPathAndLayerName" title="qgis.core.QgsProcessingAlgorithm.parameterAsCompatibleSourceLayerPathAndLayerName"><code class="xref py py-func docutils literal notranslate"><span class="pre">parameterAsCompatibleSourceLayerPathAndLayerName()</span></code></a> which may avoid conversion in more situations.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -2375,8 +2375,8 @@ in a temporary location. The function will then return the path to that temporar
 <p><code class="docutils literal notranslate"><span class="pre">compatibleFormats</span></code> should consist entirely of lowercase file extensions, e.g. ‘shp’.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">preferredFormat</span></code> argument is used to specify to desired file extension to use when a temporary
 layer export is required. This defaults to shapefiles, because shapefiles are the future (don’t believe the geopackage hype!).</p>
-<p>This method should be preferred over parameterAsCompatibleSourceLayerPath() when an algorithm is able
-to correctly handle files with multiple layers. Unlike parameterAsCompatibleSourceLayerPath(), it will not force
+<p>This method should be preferred over <a class="reference internal" href="QgsProcessingAlgorithm.html#qgis.core.QgsProcessingAlgorithm.parameterAsCompatibleSourceLayerPath" title="qgis.core.QgsProcessingAlgorithm.parameterAsCompatibleSourceLayerPath"><code class="xref py py-func docutils literal notranslate"><span class="pre">parameterAsCompatibleSourceLayerPath()</span></code></a> when an algorithm is able
+to correctly handle files with multiple layers. Unlike <a class="reference internal" href="QgsProcessingAlgorithm.html#qgis.core.QgsProcessingAlgorithm.parameterAsCompatibleSourceLayerPath" title="qgis.core.QgsProcessingAlgorithm.parameterAsCompatibleSourceLayerPath"><code class="xref py py-func docutils literal notranslate"><span class="pre">parameterAsCompatibleSourceLayerPath()</span></code></a>, it will not force
 a conversion in this case and will return the target layer name in the <code class="docutils literal notranslate"><span class="pre">layerName</span></code> argument.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2490,8 +2490,8 @@ reprojected so that it is in the specified <code class="docutils literal notrans
 <code class="sig-name descname">parameterAsExtentGeometry</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">parameters</span><span class="p">:</span> <span class="n">Dict<span class="p">[</span>str<span class="p">, </span>Any<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">context</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsProcessingContext.html#module-QgsProcessingContext" title="QgsProcessingContext">QgsProcessingContext</a></span></em>, <em class="sig-param"><span class="n">crs</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsCoordinateReferenceSystem.html#module-QgsCoordinateReferenceSystem" title="QgsCoordinateReferenceSystem">QgsCoordinateReferenceSystem</a></span> <span class="o">=</span> <span class="default_value">QgsCoordinateReferenceSystem()</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="QgsGeometry.html#module-QgsGeometry" title="QgsGeometry">QgsGeometry</a><a class="headerlink" href="#qgis.core.QgsProcessingFeatureBasedAlgorithm.parameterAsExtentGeometry" title="Permalink to this definition">¶</a></dt>
 <dd><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a rectangular extent, and returns a geometry covering this extent.</p>
 <p>If <code class="docutils literal notranslate"><span class="pre">crs</span></code> is set, and the original coordinate reference system of the parameter can be determined, then the extent will be automatically
-reprojected so that it is in the specified <code class="docutils literal notranslate"><span class="pre">crs</span></code>. Unlike parameterAsExtent(), the reprojected rectangle returned by this function
-will no longer be a rectangle itself (i.e. this method returns the geometry of the actual reprojected rectangle, while parameterAsExtent() returns
+reprojected so that it is in the specified <code class="docutils literal notranslate"><span class="pre">crs</span></code>. Unlike <a class="reference internal" href="QgsProcessingAlgorithm.html#qgis.core.QgsProcessingAlgorithm.parameterAsExtent" title="qgis.core.QgsProcessingAlgorithm.parameterAsExtent"><code class="xref py py-func docutils literal notranslate"><span class="pre">parameterAsExtent()</span></code></a>, the reprojected rectangle returned by this function
+will no longer be a rectangle itself (i.e. this method returns the geometry of the actual reprojected rectangle, while <a class="reference internal" href="QgsProcessingAlgorithm.html#qgis.core.QgsProcessingAlgorithm.parameterAsExtent" title="qgis.core.QgsProcessingAlgorithm.parameterAsExtent"><code class="xref py py-func docutils literal notranslate"><span class="pre">parameterAsExtent()</span></code></a> returns
 just the extent of the reprojected rectangle).</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -2664,7 +2664,7 @@ providers and stored temporarily in the <code class="docutils literal notranslat
 <p>The <code class="docutils literal notranslate"><span class="pre">fields</span></code>, <code class="docutils literal notranslate"><span class="pre">geometryType</span></code> and <code class="docutils literal notranslate"><span class="pre">crs</span></code> parameters dictate the properties
 of the resulting feature sink.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">destinationIdentifier</span></code> argument will be set to a string which can be used to retrieve the layer corresponding
-to the sink, e.g. via calling <a class="reference internal" href="QgsProcessingUtils.html#qgis.core.QgsProcessingUtils.mapLayerFromString" title="qgis.core.QgsProcessingUtils.mapLayerFromString"><code class="xref py py-func docutils literal notranslate"><span class="pre">QgsProcessingUtils.mapLayerFromString()</span></code></a></p>
+to the sink, e.g. via calling <a class="reference internal" href="QgsProcessingUtils.html#qgis.core.QgsProcessingUtils.mapLayerFromString" title="qgis.core.QgsProcessingUtils.mapLayerFromString"><code class="xref py py-func docutils literal notranslate"><span class="pre">QgsProcessingUtils.mapLayerFromString()</span></code></a>.</p>
 <p>This function creates a new object and the caller takes responsibility for deleting the returned object.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Raises</dt>
@@ -2712,13 +2712,13 @@ by the algorithm. It will always be called from the same thread that <code class
 affinity with. While this will generally be the main thread, it is not guaranteed. For instance,
 algorithms which are run as a step in a larger model or as a subcomponent of a script-based algorithm
 will call postProcessAlgorithm from the same thread as that model/script it being executed in.</p>
-<p>postProcessAlgorithm will not be called if the prepareAlgorithm() step failed (returned <code class="docutils literal notranslate"><span class="pre">False</span></code>),
-or if an exception was raised by the processAlgorithm() step.</p>
+<p>postProcessAlgorithm will not be called if the <a class="reference internal" href="QgsProcessingAlgorithm.html#qgis.core.QgsProcessingAlgorithm.prepareAlgorithm" title="qgis.core.QgsProcessingAlgorithm.prepareAlgorithm"><code class="xref py py-func docutils literal notranslate"><span class="pre">prepareAlgorithm()</span></code></a> step failed (returned <code class="docutils literal notranslate"><span class="pre">False</span></code>),
+or if an exception was raised by the <a class="reference internal" href="QgsProcessingAlgorithm.html#qgis.core.QgsProcessingAlgorithm.processAlgorithm" title="qgis.core.QgsProcessingAlgorithm.processAlgorithm"><code class="xref py py-func docutils literal notranslate"><span class="pre">processAlgorithm()</span></code></a> step.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>A map of algorithm outputs. These may be output layer references, or calculated
 values such as statistical calculations. Implementations which return a non-empty
-map will override any results returned by processAlgorithm().</p>
+map will override any results returned by <a class="reference internal" href="QgsProcessingAlgorithm.html#qgis.core.QgsProcessingAlgorithm.processAlgorithm" title="qgis.core.QgsProcessingAlgorithm.processAlgorithm"><code class="xref py py-func docutils literal notranslate"><span class="pre">processAlgorithm()</span></code></a>.</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -2736,7 +2736,7 @@ map will override any results returned by processAlgorithm().</p>
 <code class="sig-name descname">prepareAlgorithm</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">parameters</span><span class="p">:</span> <span class="n">Dict<span class="p">[</span>str<span class="p">, </span>Any<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">context</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsProcessingContext.html#module-QgsProcessingContext" title="QgsProcessingContext">QgsProcessingContext</a></span></em>, <em class="sig-param"><span class="n">feedback</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsProcessingFeedback.html#module-QgsProcessingFeedback" title="QgsProcessingFeedback">QgsProcessingFeedback</a></span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsProcessingFeatureBasedAlgorithm.prepareAlgorithm" title="Permalink to this definition">¶</a></dt>
 <dd><p>Prepares the algorithm to run using the specified <code class="docutils literal notranslate"><span class="pre">parameters</span></code>. Algorithms should implement
 their logic for evaluating parameter values here. The evaluated parameter results should
-be stored in member variables ready for a call to processAlgorithm().</p>
+be stored in member variables ready for a call to <a class="reference internal" href="QgsProcessingAlgorithm.html#qgis.core.QgsProcessingAlgorithm.processAlgorithm" title="qgis.core.QgsProcessingAlgorithm.processAlgorithm"><code class="xref py py-func docutils literal notranslate"><span class="pre">processAlgorithm()</span></code></a>.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">context</span></code> argument specifies the context in which the algorithm is being run.</p>
 <p>prepareAlgorithm should be used to handle any thread-sensitive preparation which is required
 by the algorithm. It will always be called from the same thread that <code class="docutils literal notranslate"><span class="pre">context</span></code> has thread
@@ -2891,7 +2891,7 @@ source layer. The default implementation requests all attributes and geometry.</
 <dt id="qgis.core.QgsProcessingFeatureBasedAlgorithm.sourceCrs">
 <code class="sig-name descname">sourceCrs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="QgsCoordinateReferenceSystem.html#module-QgsCoordinateReferenceSystem" title="QgsCoordinateReferenceSystem">QgsCoordinateReferenceSystem</a><a class="headerlink" href="#qgis.core.QgsProcessingFeatureBasedAlgorithm.sourceCrs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the source’s coordinate reference system. This will only return a valid CRS when
-called from a subclasses’ processFeature() implementation.</p>
+called from a subclasses’ <a class="reference internal" href="#qgis.core.QgsProcessingFeatureBasedAlgorithm.processFeature" title="qgis.core.QgsProcessingFeatureBasedAlgorithm.processFeature"><code class="xref py py-func docutils literal notranslate"><span class="pre">processFeature()</span></code></a> implementation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><a class="reference internal" href="QgsCoordinateReferenceSystem.html#qgis.core.QgsCoordinateReferenceSystem" title="qgis.core.QgsCoordinateReferenceSystem">QgsCoordinateReferenceSystem</a></p>
@@ -2950,7 +2950,7 @@ checks based on the geometry type of the layer.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 16:15 Jun 14, 2020.
+        Last updated on 16:33 Jun 15, 2020.
       </span>
 
     </p>

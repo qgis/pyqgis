@@ -1806,9 +1806,9 @@
 <p>Abstract base class for long running background tasks. Tasks can be controlled directly,
 or added to a <a class="reference internal" href="QgsTaskManager.html#qgis.core.QgsTaskManager" title="qgis.core.QgsTaskManager"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsTaskManager</span></code></a> for automatic management.</p>
 <p>Derived classes should implement the process they want to execute in the background
-within the run() method. This method will be called when the
-task commences (ie via calling run() ).</p>
-<p>Long running tasks should periodically check the isCanceled() flag to detect if the task
+within the <a class="reference internal" href="#qgis.core.QgsTask.run" title="qgis.core.QgsTask.run"><code class="xref py py-func docutils literal notranslate"><span class="pre">run()</span></code></a> method. This method will be called when the
+task commences (ie via calling <a class="reference internal" href="#qgis.core.QgsTask.run" title="qgis.core.QgsTask.run"><code class="xref py py-func docutils literal notranslate"><span class="pre">run()</span></code></a> ).</p>
+<p>Long running tasks should periodically check the <a class="reference internal" href="#qgis.core.QgsTask.isCanceled" title="qgis.core.QgsTask.isCanceled"><code class="xref py py-func docutils literal notranslate"><span class="pre">isCanceled()</span></code></a> flag to detect if the task
 has been canceled via some external event. If this flag is <code class="docutils literal notranslate"><span class="pre">True</span></code> then the task should
 clean up and terminate at the earliest possible convenience.</p>
 <div class="versionadded">
@@ -2117,7 +2117,7 @@ be emitted when the task begins [signal]</p>
 <dt id="qgis.core.QgsTask.cancel">
 <code class="sig-name descname">cancel</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsTask.cancel" title="Permalink to this definition">¶</a></dt>
 <dd><p>Notifies the task that it should terminate. Calling this is not guaranteed
-to immediately end the task, rather it sets the isCanceled() flag which
+to immediately end the task, rather it sets the <a class="reference internal" href="#qgis.core.QgsTask.isCanceled" title="qgis.core.QgsTask.isCanceled"><code class="xref py py-func docutils literal notranslate"><span class="pre">isCanceled()</span></code></a> flag which
 task subclasses can check and terminate their operations at an appropriate
 time. Any subtasks owned by this task will also be canceled.
 Derived classes must ensure that the base class implementation is called
@@ -2277,7 +2277,7 @@ not been canceled.</p>
 <dt id="qgis.core.QgsTask.isCanceled">
 <code class="sig-name descname">isCanceled</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsTask.isCanceled" title="Permalink to this definition">¶</a></dt>
 <dd><p>Will return <code class="docutils literal notranslate"><span class="pre">True</span></code> if task should terminate ASAP. If the task reports the CanCancel
-flag, then derived classes’ run() methods should periodically check this and
+flag, then derived classes’ <a class="reference internal" href="#qgis.core.QgsTask.run" title="qgis.core.QgsTask.run"><code class="xref py py-func docutils literal notranslate"><span class="pre">run()</span></code></a> methods should periodically check this and
 terminate in a safe manner.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
@@ -2314,7 +2314,7 @@ terminate in a safe manner.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>derived classes should not emit this signal directly, instead they should call
-setProgress() [signal]</p>
+<a class="reference internal" href="#qgis.core.QgsTask.setProgress" title="qgis.core.QgsTask.setProgress"><code class="xref py py-func docutils literal notranslate"><span class="pre">setProgress()</span></code></a> [signal]</p>
 </div>
 </dd></dl>
 
@@ -2327,7 +2327,7 @@ setProgress() [signal]</p>
 <dt id="qgis.core.QgsTask.run">
 <code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsTask.run" title="Permalink to this definition">¶</a></dt>
 <dd><p>Performs the task’s operation. This method will be called when the task commences
-(ie via calling start() ), and subclasses should implement the operation they
+(ie via calling <code class="xref py py-func docutils literal notranslate"><span class="pre">start()</span></code> ), and subclasses should implement the operation they
 wish to perform in the background within this method.</p>
 <p>A task must return a boolean value to indicate whether the
 task was completed successfully or terminated before completion.</p>
@@ -2494,7 +2494,7 @@ returning <code class="docutils literal notranslate"><span class="pre">``True``<
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 16:15 Jun 14, 2020.
+        Last updated on 16:33 Jun 15, 2020.
       </span>
 
     </p>

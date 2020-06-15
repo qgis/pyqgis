@@ -1798,17 +1798,17 @@
 <p>Handles the management of <a class="reference internal" href="QgsLocatorFilter.html#qgis.core.QgsLocatorFilter" title="qgis.core.QgsLocatorFilter"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsLocatorFilter</span></code></a> objects and async collection of search results from them.</p>
 <p><a class="reference internal" href="#qgis.core.QgsLocator" title="qgis.core.QgsLocator"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsLocator</span></code></a> acts as both a registry for <a class="reference internal" href="QgsLocatorFilter.html#qgis.core.QgsLocatorFilter" title="qgis.core.QgsLocatorFilter"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsLocatorFilter</span></code></a> objects and a means of firing up
 asynchronous queries against these filter objects.</p>
-<p>Filters are first registered to the locator by calling registerFilter(). Registering filters
+<p>Filters are first registered to the locator by calling <a class="reference internal" href="#qgis.core.QgsLocator.registerFilter" title="qgis.core.QgsLocator.registerFilter"><code class="xref py py-func docutils literal notranslate"><span class="pre">registerFilter()</span></code></a>. Registering filters
 transfers their ownership to the locator object. Plugins which register filters to the locator
-must take care to correctly call deregisterFilter() and deregister their filter upon plugin
+must take care to correctly call <a class="reference internal" href="#qgis.core.QgsLocator.deregisterFilter" title="qgis.core.QgsLocator.deregisterFilter"><code class="xref py py-func docutils literal notranslate"><span class="pre">deregisterFilter()</span></code></a> and deregister their filter upon plugin
 unload to avoid crashes.</p>
-<p>In order to trigger a search across registered filters, the fetchResults() method is called.
-This triggers threaded calls to QgsLocatorFilter.fetchResults() for all registered filters.
-As individual filters find matching results, the foundResult() signal will be triggered
+<p>In order to trigger a search across registered filters, the <a class="reference internal" href="#qgis.core.QgsLocator.fetchResults" title="qgis.core.QgsLocator.fetchResults"><code class="xref py py-func docutils literal notranslate"><span class="pre">fetchResults()</span></code></a> method is called.
+This triggers threaded calls to <a class="reference internal" href="QgsLocatorFilter.html#qgis.core.QgsLocatorFilter.fetchResults" title="qgis.core.QgsLocatorFilter.fetchResults"><code class="xref py py-func docutils literal notranslate"><span class="pre">QgsLocatorFilter.fetchResults()</span></code></a> for all registered filters.
+As individual filters find matching results, the <a class="reference internal" href="#qgis.core.QgsLocator.foundResult" title="qgis.core.QgsLocator.foundResult"><code class="xref py py-func docutils literal notranslate"><span class="pre">foundResult()</span></code></a> signal will be triggered
 for each result. Callers should connect this signal to an appropriate slot designed
-to collect and handle these results. Since foundResult() is triggered whenever a filter
+to collect and handle these results. Since <a class="reference internal" href="#qgis.core.QgsLocator.foundResult" title="qgis.core.QgsLocator.foundResult"><code class="xref py py-func docutils literal notranslate"><span class="pre">foundResult()</span></code></a> is triggered whenever a filter
 encounters an individual result, it will usually be triggered many times for a single
-call to fetchResults().</p>
+call to <a class="reference internal" href="#qgis.core.QgsLocator.fetchResults" title="qgis.core.QgsLocator.fetchResults"><code class="xref py py-func docutils literal notranslate"><span class="pre">fetchResults()</span></code></a>.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0.</span></p>
 </div>
@@ -1874,7 +1874,7 @@ take some time to cancel after calling this.</p>
 <dd><p>Deregisters a <code class="docutils literal notranslate"><span class="pre">filter</span></code> from the locator and deletes it. Calling this will block whilst
 any currently running query is terminated.</p>
 <p>Plugins which register filters to the locator must take care to correctly call
-deregisterFilter() to deregister their filters upon plugin unload to avoid crashes.</p>
+<a class="reference internal" href="#qgis.core.QgsLocator.deregisterFilter" title="qgis.core.QgsLocator.deregisterFilter"><code class="xref py py-func docutils literal notranslate"><span class="pre">deregisterFilter()</span></code></a> to deregister their filters upon plugin unload to avoid crashes.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsLocator.registerFilter" title="qgis.core.QgsLocator.registerFilter"><code class="xref py py-func docutils literal notranslate"><span class="pre">registerFilter()</span></code></a></p>
@@ -1898,7 +1898,7 @@ deregisterFilter() to deregister their filters upon plugin unload to avoid crash
 The <code class="docutils literal notranslate"><span class="pre">context</span></code> argument encapsulates the context relating to the search (such as a map
 extent to prioritize).</p>
 <p>If specified, the <code class="docutils literal notranslate"><span class="pre">feedback</span></code> object must exist for the lifetime of this query.</p>
-<p>The foundResult() signal will be emitted for each individual result encountered
+<p>The <a class="reference internal" href="#qgis.core.QgsLocator.foundResult" title="qgis.core.QgsLocator.foundResult"><code class="xref py py-func docutils literal notranslate"><span class="pre">foundResult()</span></code></a> signal will be emitted for each individual result encountered
 by the registered filters.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1941,7 +1941,7 @@ of successful completion or early cancellation. [signal]</p>
 <dl class="py attribute">
 <dt id="qgis.core.QgsLocator.foundResult">
 <code class="sig-name descname">foundResult</code><a class="headerlink" href="#qgis.core.QgsLocator.foundResult" title="Permalink to this definition">¶</a></dt>
-<dd><p>Emitted whenever a filter encounters a matching <code class="docutils literal notranslate"><span class="pre">result</span></code> after the fetchResults() method
+<dd><p>Emitted whenever a filter encounters a matching <code class="docutils literal notranslate"><span class="pre">result</span></code> after the <a class="reference internal" href="#qgis.core.QgsLocator.fetchResults" title="qgis.core.QgsLocator.fetchResults"><code class="xref py py-func docutils literal notranslate"><span class="pre">fetchResults()</span></code></a> method
 is called. [signal]</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1999,7 +1999,7 @@ locator.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Plugins which register filters to the locator must take care to correctly call
-deregisterFilter() and deregister their filters upon plugin unload to avoid crashes.</p>
+<a class="reference internal" href="#qgis.core.QgsLocator.deregisterFilter" title="qgis.core.QgsLocator.deregisterFilter"><code class="xref py py-func docutils literal notranslate"><span class="pre">deregisterFilter()</span></code></a> and deregister their filters upon plugin unload to avoid crashes.</p>
 </div>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -2043,7 +2043,7 @@ deregisterFilter() and deregister their filters upon plugin unload to avoid cras
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 16:15 Jun 14, 2020.
+        Last updated on 16:33 Jun 15, 2020.
       </span>
 
     </p>

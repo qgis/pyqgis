@@ -1800,11 +1800,11 @@ the results of the check via <a class="reference internal" href="QgsValidityChec
 <p>Checks can be used for many different use cases, e.g. validating a layout’s contents before allowing
 an export to occur, or validating the contents of a Processing model (and warning if required plugin based
 providers are not available or if compulsory algorithm parameters have not been populated).</p>
-<p>Subclasses must indicate the type of check they represent via the checkType() method. When checks are performed,
+<p>Subclasses must indicate the type of check they represent via the <code class="xref py py-func docutils literal notranslate"><span class="pre">checkType()</span></code> method. When checks are performed,
 all the registered checks with a matching check type are performed sequentially. The check type also
 dictates the subclass of the <a class="reference internal" href="QgsValidityCheckContext.html#qgis.core.QgsValidityCheckContext" title="qgis.core.QgsValidityCheckContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsValidityCheckContext</span></code></a> which is given to the subclass’ runCheck method.</p>
 <p>Checks must be registered in the application’s <a class="reference internal" href="QgsValidityCheckRegistry.html#module-QgsValidityCheckRegistry" title="QgsValidityCheckRegistry"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsValidityCheckRegistry</span></code></a>, which is accessible via
-<a class="reference internal" href="QgsApplication.html#qgis.core.QgsApplication.validityCheckRegistry" title="qgis.core.QgsApplication.validityCheckRegistry"><code class="xref py py-func docutils literal notranslate"><span class="pre">QgsApplication.validityCheckRegistry()</span></code></a></p>
+<a class="reference internal" href="QgsApplication.html#qgis.core.QgsApplication.validityCheckRegistry" title="qgis.core.QgsApplication.validityCheckRegistry"><code class="xref py py-func docutils literal notranslate"><span class="pre">QgsApplication.validityCheckRegistry()</span></code></a>.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="QgsValidityCheckRegistry.html#module-QgsValidityCheckRegistry" title="QgsValidityCheckRegistry"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsValidityCheckRegistry</span></code></a></p>
@@ -1922,11 +1922,11 @@ dictates the subclass of the <a class="reference internal" href="QgsValidityChec
 <dd><p>Prepares the check for execution, and returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the check can be run.</p>
 <p>This method is always called from the main thread, and subclasses can implement
 it to do preparatory steps which are not thread safe (e.g. obtaining feature
-sources from vector layers). It is followed by a call to runCheck(), which
+sources from vector layers). It is followed by a call to <a class="reference internal" href="#qgis.core.QgsAbstractValidityCheck.runCheck" title="qgis.core.QgsAbstractValidityCheck.runCheck"><code class="xref py py-func docutils literal notranslate"><span class="pre">runCheck()</span></code></a>, which
 may be performed in a background thread.</p>
-<p>Individual calls to prepareCheck()/runCheck() are run on a new instance of the
-check (see create()), so subclasses can safely store state from the prepareCheck() method
-ready for the subsequent runCheck() method.</p>
+<p>Individual calls to <a class="reference internal" href="#qgis.core.QgsAbstractValidityCheck.prepareCheck" title="qgis.core.QgsAbstractValidityCheck.prepareCheck"><code class="xref py py-func docutils literal notranslate"><span class="pre">prepareCheck()</span></code></a>/<a class="reference internal" href="#qgis.core.QgsAbstractValidityCheck.runCheck" title="qgis.core.QgsAbstractValidityCheck.runCheck"><code class="xref py py-func docutils literal notranslate"><span class="pre">runCheck()</span></code></a> are run on a new instance of the
+check (see <a class="reference internal" href="#qgis.core.QgsAbstractValidityCheck.create" title="qgis.core.QgsAbstractValidityCheck.create"><code class="xref py py-func docutils literal notranslate"><span class="pre">create()</span></code></a>), so subclasses can safely store state from the <a class="reference internal" href="#qgis.core.QgsAbstractValidityCheck.prepareCheck" title="qgis.core.QgsAbstractValidityCheck.prepareCheck"><code class="xref py py-func docutils literal notranslate"><span class="pre">prepareCheck()</span></code></a> method
+ready for the subsequent <a class="reference internal" href="#qgis.core.QgsAbstractValidityCheck.runCheck" title="qgis.core.QgsAbstractValidityCheck.runCheck"><code class="xref py py-func docutils literal notranslate"><span class="pre">runCheck()</span></code></a> method.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">context</span></code> argument gives the wider in which the check is being run.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1947,8 +1947,8 @@ ready for the subsequent runCheck() method.</p>
 <dd><p>Runs the check and returns a list of results. If the check is “passed” and no warnings or errors are generated,
 then an empty list should be returned.</p>
 <p>This method may be called in a background thread, so subclasses should take care to ensure that
-only thread-safe methods are used. It is always preceded by a call to prepareCheck().</p>
-<p>If a check needs to perform non-thread-safe tests, these should be implemented within prepareCheck()
+only thread-safe methods are used. It is always preceded by a call to <a class="reference internal" href="#qgis.core.QgsAbstractValidityCheck.prepareCheck" title="qgis.core.QgsAbstractValidityCheck.prepareCheck"><code class="xref py py-func docutils literal notranslate"><span class="pre">prepareCheck()</span></code></a>.</p>
+<p>If a check needs to perform non-thread-safe tests, these should be implemented within <a class="reference internal" href="#qgis.core.QgsAbstractValidityCheck.prepareCheck" title="qgis.core.QgsAbstractValidityCheck.prepareCheck"><code class="xref py py-func docutils literal notranslate"><span class="pre">prepareCheck()</span></code></a>
 and stored in the subclass instance to be returned by this method.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">context</span></code> argument gives the wider in which the check is being run.</p>
 <dl class="field-list simple">
@@ -1980,7 +1980,7 @@ and stored in the subclass instance to be returned by this method.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 16:15 Jun 14, 2020.
+        Last updated on 16:33 Jun 15, 2020.
       </span>
 
     </p>
