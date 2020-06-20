@@ -1711,6 +1711,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../3d/QgsAbstract3DSymbol.html">Class: QgsAbstract3DSymbol</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../3d/QgsAbstractVectorLayer3DRenderer.html">Class: QgsAbstractVectorLayer3DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../3d/QgsCameraPose.html">Class: QgsCameraPose</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../3d/QgsDirectionalLightSettings.html">Class: QgsDirectionalLightSettings</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../3d/QgsLayoutItem3DMap.html">Class: QgsLayoutItem3DMap</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../3d/QgsLine3DSymbol.html">Class: QgsLine3DSymbol</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../3d/QgsPhongMaterialSettings.html">Class: QgsPhongMaterialSettings</a></li>
@@ -1798,12 +1799,16 @@
 <p>Constructor for QgsRasterPipe.</p>
 <p>Base class for processing modules.</p>
 <blockquote>
-<div><table class="longtable docutils align-default">
+<div><p class="rubric">Enums</p>
+<table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
 <col style="width: 90%" />
 </colgroup>
 <tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterPipe.ResamplingStage" title="qgis.core.QgsRasterPipe.ResamplingStage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ResamplingStage</span></code></a></p></td>
+<td><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.IntEnum</span></code></p></td>
+</tr>
 </tbody>
 </table>
 <p class="rubric">Methods</p>
@@ -1896,11 +1901,17 @@
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterPipe.set" title="qgis.core.QgsRasterPipe.set"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterPipe.resamplingStage" title="qgis.core.QgsRasterPipe.resamplingStage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">resamplingStage</span></code></a></p></td>
+<td><p>Returns which stage of the pipe should apply resampling</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterPipe.set" title="qgis.core.QgsRasterPipe.set"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set</span></code></a></p></td>
 <td><p>Insert a new known interface in default place or replace interface of the same role if it already exists.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterPipe.setOn" title="qgis.core.QgsRasterPipe.setOn"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setOn</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterPipe.setOn" title="qgis.core.QgsRasterPipe.setOn"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setOn</span></code></a></p></td>
 <td><p>Set interface at index on/off Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> on success</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterPipe.setResamplingStage" title="qgis.core.QgsRasterPipe.setResamplingStage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setResamplingStage</span></code></a></p></td>
+<td><p>Select which stage of the pipe should apply resampling.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterPipe.size" title="qgis.core.QgsRasterPipe.size"><code class="xref py py-obj docutils literal notranslate"><span class="pre">size</span></code></a></p></td>
 <td><p><dl class="field-list simple">
@@ -1988,6 +1999,23 @@
 <dt id="qgis.core.QgsRasterPipe.ResamplerRole">
 <code class="sig-name descname">ResamplerRole</code><em class="property"> = 4</em><a class="headerlink" href="#qgis.core.QgsRasterPipe.ResamplerRole" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="py class">
+<dt id="qgis.core.QgsRasterPipe.ResamplingStage">
+<em class="property">class </em><code class="sig-name descname">ResamplingStage</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsRasterPipe.ResamplingStage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.IntEnum</span></code></p>
+<p>An enumeration.</p>
+<dl class="py attribute">
+<dt id="qgis.core.QgsRasterPipe.ResamplingStage.Provider">
+<code class="sig-name descname">Provider</code><em class="property"> = 1</em><a class="headerlink" href="#qgis.core.QgsRasterPipe.ResamplingStage.Provider" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="qgis.core.QgsRasterPipe.ResamplingStage.ResampleFilter">
+<code class="sig-name descname">ResampleFilter</code><em class="property"> = 0</em><a class="headerlink" href="#qgis.core.QgsRasterPipe.ResamplingStage.ResampleFilter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
 
 <dl class="py class">
 <dt id="qgis.core.QgsRasterPipe.Role">
@@ -2163,6 +2191,20 @@ if connection would fail, the interface is not inserted and <code class="docutil
 </dd></dl>
 
 <dl class="py method">
+<dt id="qgis.core.QgsRasterPipe.resamplingStage">
+<code class="sig-name descname">resamplingStage</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; QgsRasterPipe.ResamplingStage<a class="headerlink" href="#qgis.core.QgsRasterPipe.resamplingStage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns which stage of the pipe should apply resampling</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.16.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#qgis.core.QgsRasterPipe.ResamplingStage" title="qgis.core.QgsRasterPipe.ResamplingStage">QgsRasterPipe.ResamplingStage</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt id="qgis.core.QgsRasterPipe.set">
 <code class="sig-name descname">set</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">interface</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsRasterInterface.html#module-QgsRasterInterface" title="QgsRasterInterface">QgsRasterInterface</a></span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsRasterPipe.set" title="Permalink to this definition">¶</a></dt>
 <dd><p>Insert a new known interface in default place or replace interface of the same
@@ -2199,6 +2241,22 @@ Returns <code class="docutils literal notranslate"><span class="pre">True</span>
 </dd></dl>
 
 <dl class="py method">
+<dt id="qgis.core.QgsRasterPipe.setResamplingStage">
+<code class="sig-name descname">setResamplingStage</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">stage</span><span class="p">:</span> <span class="n">QgsRasterPipe.ResamplingStage</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsRasterPipe.setResamplingStage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Select which stage of the pipe should apply resampling.</p>
+<p>Provider resampling is only supported if provider sets
+ProviderHintCanPerformProviderResampling in <code class="xref py py-func docutils literal notranslate"><span class="pre">providerCapabilities()</span></code>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.16.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>stage</strong> (<a class="reference internal" href="#qgis.core.QgsRasterPipe.ResamplingStage" title="qgis.core.QgsRasterPipe.ResamplingStage"><em>QgsRasterPipe.ResamplingStage</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt id="qgis.core.QgsRasterPipe.size">
 <code class="sig-name descname">size</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#qgis.core.QgsRasterPipe.size" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
@@ -2224,7 +2282,7 @@ Returns <code class="docutils literal notranslate"><span class="pre">True</span>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 18:37 Jun 19, 2020.
+        Last updated on 16:32 Jun 20, 2020.
       </span>
 
     </p>

@@ -1711,6 +1711,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../3d/QgsAbstract3DSymbol.html">Class: QgsAbstract3DSymbol</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../3d/QgsAbstractVectorLayer3DRenderer.html">Class: QgsAbstractVectorLayer3DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../3d/QgsCameraPose.html">Class: QgsCameraPose</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../3d/QgsDirectionalLightSettings.html">Class: QgsDirectionalLightSettings</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../3d/QgsLayoutItem3DMap.html">Class: QgsLayoutItem3DMap</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../3d/QgsLine3DSymbol.html">Class: QgsLine3DSymbol</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../3d/QgsPhongMaterialSettings.html">Class: QgsPhongMaterialSettings</a></li>
@@ -1802,12 +1803,16 @@ source and it’s parameters.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">options</span></code> argument specifies generic provider options.</p>
 <p>Base class for raster data providers.</p>
 <blockquote>
-<div><table class="longtable docutils align-default">
+<div><p class="rubric">Enums</p>
+<table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
 <col style="width: 90%" />
 </colgroup>
 <tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.ResamplingMethod" title="qgis.core.QgsRasterDataProvider.ResamplingMethod"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ResamplingMethod</span></code></a></p></td>
+<td><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.IntEnum</span></code></p></td>
+</tr>
 </tbody>
 </table>
 <p class="rubric">Methods</p>
@@ -1894,7 +1899,10 @@ source and it’s parameters.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.dpi" title="qgis.core.QgsRasterDataProvider.dpi"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dpi</span></code></a></p></td>
 <td><p>Returns the dpi of the output device.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.extent" title="qgis.core.QgsRasterDataProvider.extent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">extent</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.enableProviderResampling" title="qgis.core.QgsRasterDataProvider.enableProviderResampling"><code class="xref py py-obj docutils literal notranslate"><span class="pre">enableProviderResampling</span></code></a></p></td>
+<td><p>Enable or disable provider-level resampling.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.extent" title="qgis.core.QgsRasterDataProvider.extent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">extent</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">rtype</dt>
 <dd class="field-odd"><p>QgsRectangle</p>
@@ -1902,60 +1910,63 @@ source and it’s parameters.</p>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.fields" title="qgis.core.QgsRasterDataProvider.fields"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fields</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.fields" title="qgis.core.QgsRasterDataProvider.fields"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fields</span></code></a></p></td>
 <td><p>Returns the fields of the raster layer for data providers that expose them, the default implementation returns an empty list.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.getLegendGraphicFetcher" title="qgis.core.QgsRasterDataProvider.getLegendGraphicFetcher"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getLegendGraphicFetcher</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.getLegendGraphicFetcher" title="qgis.core.QgsRasterDataProvider.getLegendGraphicFetcher"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getLegendGraphicFetcher</span></code></a></p></td>
 <td><p>Returns a new image downloader for the raster legend.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.hasPyramids" title="qgis.core.QgsRasterDataProvider.hasPyramids"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hasPyramids</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.hasPyramids" title="qgis.core.QgsRasterDataProvider.hasPyramids"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hasPyramids</span></code></a></p></td>
 <td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if raster has at least one populated histogram.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.htmlMetadata" title="qgis.core.QgsRasterDataProvider.htmlMetadata"><code class="xref py py-obj docutils literal notranslate"><span class="pre">htmlMetadata</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.htmlMetadata" title="qgis.core.QgsRasterDataProvider.htmlMetadata"><code class="xref py py-obj docutils literal notranslate"><span class="pre">htmlMetadata</span></code></a></p></td>
 <td><p>Returns metadata in a format suitable for feeding directly into a subset of the GUI raster properties “Metadata” tab.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.identify" title="qgis.core.QgsRasterDataProvider.identify"><code class="xref py py-obj docutils literal notranslate"><span class="pre">identify</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.identify" title="qgis.core.QgsRasterDataProvider.identify"><code class="xref py py-obj docutils literal notranslate"><span class="pre">identify</span></code></a></p></td>
 <td><p>Identify raster value(s) found on the point position.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.identifyFormatFromName" title="qgis.core.QgsRasterDataProvider.identifyFormatFromName"><code class="xref py py-obj docutils literal notranslate"><span class="pre">identifyFormatFromName</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.identifyFormatFromName" title="qgis.core.QgsRasterDataProvider.identifyFormatFromName"><code class="xref py py-obj docutils literal notranslate"><span class="pre">identifyFormatFromName</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param formatName</dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.identifyFormatLabel" title="qgis.core.QgsRasterDataProvider.identifyFormatLabel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">identifyFormatLabel</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.identifyFormatLabel" title="qgis.core.QgsRasterDataProvider.identifyFormatLabel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">identifyFormatLabel</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param format</dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.identifyFormatName" title="qgis.core.QgsRasterDataProvider.identifyFormatName"><code class="xref py py-obj docutils literal notranslate"><span class="pre">identifyFormatName</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.identifyFormatName" title="qgis.core.QgsRasterDataProvider.identifyFormatName"><code class="xref py py-obj docutils literal notranslate"><span class="pre">identifyFormatName</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param format</dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.identifyFormatToCapability" title="qgis.core.QgsRasterDataProvider.identifyFormatToCapability"><code class="xref py py-obj docutils literal notranslate"><span class="pre">identifyFormatToCapability</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.identifyFormatToCapability" title="qgis.core.QgsRasterDataProvider.identifyFormatToCapability"><code class="xref py py-obj docutils literal notranslate"><span class="pre">identifyFormatToCapability</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param format</dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.ignoreExtents" title="qgis.core.QgsRasterDataProvider.ignoreExtents"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ignoreExtents</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.ignoreExtents" title="qgis.core.QgsRasterDataProvider.ignoreExtents"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ignoreExtents</span></code></a></p></td>
 <td><p>Returns true if the extents reported by the data provider are not reliable and it’s possible that there is renderable content outside of these extents.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.initHistogram" title="qgis.core.QgsRasterDataProvider.initHistogram"><code class="xref py py-obj docutils literal notranslate"><span class="pre">initHistogram</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.initHistogram" title="qgis.core.QgsRasterDataProvider.initHistogram"><code class="xref py py-obj docutils literal notranslate"><span class="pre">initHistogram</span></code></a></p></td>
 <td><p>Fill in histogram defaults if not specified</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.initStatistics" title="qgis.core.QgsRasterDataProvider.initStatistics"><code class="xref py py-obj docutils literal notranslate"><span class="pre">initStatistics</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.initStatistics" title="qgis.core.QgsRasterDataProvider.initStatistics"><code class="xref py py-obj docutils literal notranslate"><span class="pre">initStatistics</span></code></a></p></td>
 <td><p>Fill in statistics defaults if not specified</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.isEditable" title="qgis.core.QgsRasterDataProvider.isEditable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isEditable</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.isEditable" title="qgis.core.QgsRasterDataProvider.isEditable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isEditable</span></code></a></p></td>
 <td><p>Checks whether the provider is in editing mode, i.e.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.isProviderResamplingEnabled" title="qgis.core.QgsRasterDataProvider.isProviderResamplingEnabled"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isProviderResamplingEnabled</span></code></a></p></td>
+<td><p>Returns whether provider-level resampling is enabled.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.isSignalConnected" title="qgis.core.QgsRasterDataProvider.isSignalConnected"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isSignalConnected</span></code></a></p></td>
 <td><p></p></td>
@@ -1969,14 +1980,24 @@ source and it’s parameters.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.lastErrorTitle" title="qgis.core.QgsRasterDataProvider.lastErrorTitle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lastErrorTitle</span></code></a></p></td>
 <td><p>Returns the caption error text for the last error in this provider</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.nativeResolutions" title="qgis.core.QgsRasterDataProvider.nativeResolutions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nativeResolutions</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.maxOversampling" title="qgis.core.QgsRasterDataProvider.maxOversampling"><code class="xref py py-obj docutils literal notranslate"><span class="pre">maxOversampling</span></code></a></p></td>
+<td><p>Returns maximum oversampling factor for zoomed-out operations.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.nativeResolutions" title="qgis.core.QgsRasterDataProvider.nativeResolutions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nativeResolutions</span></code></a></p></td>
 <td><p>Returns a list of native resolutions if available, i.e.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.providerCapabilities" title="qgis.core.QgsRasterDataProvider.providerCapabilities"><code class="xref py py-obj docutils literal notranslate"><span class="pre">providerCapabilities</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.providerCapabilities" title="qgis.core.QgsRasterDataProvider.providerCapabilities"><code class="xref py py-obj docutils literal notranslate"><span class="pre">providerCapabilities</span></code></a></p></td>
 <td><p>Returns flags containing the supported capabilities of the data provider.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.pyramidResamplingMethods" title="qgis.core.QgsRasterDataProvider.pyramidResamplingMethods"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pyramidResamplingMethods</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.pyramidResamplingMethods" title="qgis.core.QgsRasterDataProvider.pyramidResamplingMethods"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pyramidResamplingMethods</span></code></a></p></td>
 <td><p>Returns a list of pyramid resampling method name and label pairs for given provider</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.readXml" title="qgis.core.QgsRasterDataProvider.readXml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readXml</span></code></a></p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">param filterElem</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.receivers" title="qgis.core.QgsRasterDataProvider.receivers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">receivers</span></code></a></p></td>
 <td><p></p></td>
@@ -2008,41 +2029,50 @@ source and it’s parameters.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.setInput" title="qgis.core.QgsRasterDataProvider.setInput"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setInput</span></code></a></p></td>
 <td><p>It makes no sense to set input on provider <a href="#id1"><span class="problematic" id="id2">*</span></a>/</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.setNoDataValue" title="qgis.core.QgsRasterDataProvider.setNoDataValue"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setNoDataValue</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.setMaxOversampling" title="qgis.core.QgsRasterDataProvider.setMaxOversampling"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setMaxOversampling</span></code></a></p></td>
+<td><p>Sets maximum oversampling factor for zoomed-out operations.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.setNoDataValue" title="qgis.core.QgsRasterDataProvider.setNoDataValue"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setNoDataValue</span></code></a></p></td>
 <td><p>Set no data value on created dataset</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.setUseSourceNoDataValue" title="qgis.core.QgsRasterDataProvider.setUseSourceNoDataValue"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setUseSourceNoDataValue</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.setUseSourceNoDataValue" title="qgis.core.QgsRasterDataProvider.setUseSourceNoDataValue"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setUseSourceNoDataValue</span></code></a></p></td>
 <td><p>Sets the source nodata value usage</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.setUserNoDataValue" title="qgis.core.QgsRasterDataProvider.setUserNoDataValue"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setUserNoDataValue</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.setUserNoDataValue" title="qgis.core.QgsRasterDataProvider.setUserNoDataValue"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setUserNoDataValue</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param bandNo</dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.sourceDataType" title="qgis.core.QgsRasterDataProvider.sourceDataType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sourceDataType</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.setZoomedInResamplingMethod" title="qgis.core.QgsRasterDataProvider.setZoomedInResamplingMethod"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setZoomedInResamplingMethod</span></code></a></p></td>
+<td><p>Set resampling method to apply for zoomed-in operations.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.setZoomedOutResamplingMethod" title="qgis.core.QgsRasterDataProvider.setZoomedOutResamplingMethod"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setZoomedOutResamplingMethod</span></code></a></p></td>
+<td><p>Set resampling method to apply for zoomed-out operations.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.sourceDataType" title="qgis.core.QgsRasterDataProvider.sourceDataType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sourceDataType</span></code></a></p></td>
 <td><p>Returns source data type for the band specified by number, source data type may be shorter than dataType</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.sourceHasNoDataValue" title="qgis.core.QgsRasterDataProvider.sourceHasNoDataValue"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sourceHasNoDataValue</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.sourceHasNoDataValue" title="qgis.core.QgsRasterDataProvider.sourceHasNoDataValue"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sourceHasNoDataValue</span></code></a></p></td>
 <td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if source band has no data value</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.sourceNoDataValue" title="qgis.core.QgsRasterDataProvider.sourceNoDataValue"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sourceNoDataValue</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.sourceNoDataValue" title="qgis.core.QgsRasterDataProvider.sourceNoDataValue"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sourceNoDataValue</span></code></a></p></td>
 <td><p>Value representing no data value.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.stepHeight" title="qgis.core.QgsRasterDataProvider.stepHeight"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stepHeight</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.stepHeight" title="qgis.core.QgsRasterDataProvider.stepHeight"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stepHeight</span></code></a></p></td>
 <td><p>Step height for raster iterations.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.stepWidth" title="qgis.core.QgsRasterDataProvider.stepWidth"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stepWidth</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.stepWidth" title="qgis.core.QgsRasterDataProvider.stepWidth"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stepWidth</span></code></a></p></td>
 <td><p>Step width for raster iterations.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.subLayers" title="qgis.core.QgsRasterDataProvider.subLayers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">subLayers</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.subLayers" title="qgis.core.QgsRasterDataProvider.subLayers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">subLayers</span></code></a></p></td>
 <td><p>Returns the sublayers of this layer - useful for providers that manage their own layers, such as WMS</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.supportsLegendGraphic" title="qgis.core.QgsRasterDataProvider.supportsLegendGraphic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">supportsLegendGraphic</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.supportsLegendGraphic" title="qgis.core.QgsRasterDataProvider.supportsLegendGraphic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">supportsLegendGraphic</span></code></a></p></td>
 <td><p>Returns whether the provider supplies a legend graphic</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.temporalCapabilities" title="qgis.core.QgsRasterDataProvider.temporalCapabilities"><code class="xref py py-obj docutils literal notranslate"><span class="pre">temporalCapabilities</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.temporalCapabilities" title="qgis.core.QgsRasterDataProvider.temporalCapabilities"><code class="xref py py-obj docutils literal notranslate"><span class="pre">temporalCapabilities</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">rtype</dt>
 <dd class="field-odd"><p>QgsRasterDataProviderTemporalCapabilities</p>
@@ -2050,39 +2080,52 @@ source and it’s parameters.</p>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.timerEvent" title="qgis.core.QgsRasterDataProvider.timerEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">timerEvent</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.timerEvent" title="qgis.core.QgsRasterDataProvider.timerEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">timerEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.timestamp" title="qgis.core.QgsRasterDataProvider.timestamp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">timestamp</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.timestamp" title="qgis.core.QgsRasterDataProvider.timestamp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">timestamp</span></code></a></p></td>
 <td><p>Time stamp of data source in the moment when data/metadata were loaded by provider</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.transformCoordinates" title="qgis.core.QgsRasterDataProvider.transformCoordinates"><code class="xref py py-obj docutils literal notranslate"><span class="pre">transformCoordinates</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.transformCoordinates" title="qgis.core.QgsRasterDataProvider.transformCoordinates"><code class="xref py py-obj docutils literal notranslate"><span class="pre">transformCoordinates</span></code></a></p></td>
 <td><p>Transforms coordinates between source image coordinate space [0..width]x[0..height] and layer coordinate space (georeferenced coordinates).</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.useSourceNoDataValue" title="qgis.core.QgsRasterDataProvider.useSourceNoDataValue"><code class="xref py py-obj docutils literal notranslate"><span class="pre">useSourceNoDataValue</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.useSourceNoDataValue" title="qgis.core.QgsRasterDataProvider.useSourceNoDataValue"><code class="xref py py-obj docutils literal notranslate"><span class="pre">useSourceNoDataValue</span></code></a></p></td>
 <td><p>Returns the source nodata value usage</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.userNoDataValues" title="qgis.core.QgsRasterDataProvider.userNoDataValues"><code class="xref py py-obj docutils literal notranslate"><span class="pre">userNoDataValues</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.userNoDataValues" title="qgis.core.QgsRasterDataProvider.userNoDataValues"><code class="xref py py-obj docutils literal notranslate"><span class="pre">userNoDataValues</span></code></a></p></td>
 <td><p>Returns a list of user no data value ranges.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.userNoDataValuesContains" title="qgis.core.QgsRasterDataProvider.userNoDataValuesContains"><code class="xref py py-obj docutils literal notranslate"><span class="pre">userNoDataValuesContains</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.userNoDataValuesContains" title="qgis.core.QgsRasterDataProvider.userNoDataValuesContains"><code class="xref py py-obj docutils literal notranslate"><span class="pre">userNoDataValuesContains</span></code></a></p></td>
 <td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if user no data contains value</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.validateCreationOptions" title="qgis.core.QgsRasterDataProvider.validateCreationOptions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">validateCreationOptions</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.validateCreationOptions" title="qgis.core.QgsRasterDataProvider.validateCreationOptions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">validateCreationOptions</span></code></a></p></td>
 <td><p>Validates creation options for a specific dataset and destination format.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.validatePyramidsConfigOptions" title="qgis.core.QgsRasterDataProvider.validatePyramidsConfigOptions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">validatePyramidsConfigOptions</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.validatePyramidsConfigOptions" title="qgis.core.QgsRasterDataProvider.validatePyramidsConfigOptions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">validatePyramidsConfigOptions</span></code></a></p></td>
 <td><p>Validates pyramid creation options for a specific dataset and destination format</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.write" title="qgis.core.QgsRasterDataProvider.write"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.write" title="qgis.core.QgsRasterDataProvider.write"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param data</dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.writeBlock" title="qgis.core.QgsRasterDataProvider.writeBlock"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeBlock</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.writeBlock" title="qgis.core.QgsRasterDataProvider.writeBlock"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeBlock</span></code></a></p></td>
 <td><p>Writes pixel data from a raster block into the provider data source.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.writeXml" title="qgis.core.QgsRasterDataProvider.writeXml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeXml</span></code></a></p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">param doc</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.zoomedInResamplingMethod" title="qgis.core.QgsRasterDataProvider.zoomedInResamplingMethod"><code class="xref py py-obj docutils literal notranslate"><span class="pre">zoomedInResamplingMethod</span></code></a></p></td>
+<td><p>Returns resampling method for zoomed-in operations.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.zoomedOutResamplingMethod" title="qgis.core.QgsRasterDataProvider.zoomedOutResamplingMethod"><code class="xref py py-obj docutils literal notranslate"><span class="pre">zoomedOutResamplingMethod</span></code></a></p></td>
+<td><p>Returns resampling method for zoomed-out operations.</p></td>
 </tr>
 </tbody>
 </table>
@@ -2111,16 +2154,19 @@ source and it’s parameters.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.ProviderHintBenefitsFromResampling" title="qgis.core.QgsRasterDataProvider.ProviderHintBenefitsFromResampling"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ProviderHintBenefitsFromResampling</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.ReadLayerMetadata" title="qgis.core.QgsRasterDataProvider.ReadLayerMetadata"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ReadLayerMetadata</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.ProviderHintCanPerformProviderResampling" title="qgis.core.QgsRasterDataProvider.ProviderHintCanPerformProviderResampling"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ProviderHintCanPerformProviderResampling</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.TransformImageToLayer" title="qgis.core.QgsRasterDataProvider.TransformImageToLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TransformImageToLayer</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.ReadLayerMetadata" title="qgis.core.QgsRasterDataProvider.ReadLayerMetadata"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ReadLayerMetadata</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.TransformLayerToImage" title="qgis.core.QgsRasterDataProvider.TransformLayerToImage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TransformLayerToImage</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.TransformImageToLayer" title="qgis.core.QgsRasterDataProvider.TransformImageToLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TransformImageToLayer</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.WriteLayerMetadata" title="qgis.core.QgsRasterDataProvider.WriteLayerMetadata"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WriteLayerMetadata</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.TransformLayerToImage" title="qgis.core.QgsRasterDataProvider.TransformLayerToImage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TransformLayerToImage</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.WriteLayerMetadata" title="qgis.core.QgsRasterDataProvider.WriteLayerMetadata"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WriteLayerMetadata</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -2151,9 +2197,36 @@ QgsRasterDataProvider.ProviderCapabilities(QgsRasterDataProvider.ProviderCapabil
 <dd></dd></dl>
 
 <dl class="py attribute">
+<dt id="qgis.core.QgsRasterDataProvider.ProviderHintCanPerformProviderResampling">
+<code class="sig-name descname">ProviderHintCanPerformProviderResampling</code><em class="property"> = 16</em><a class="headerlink" href="#qgis.core.QgsRasterDataProvider.ProviderHintCanPerformProviderResampling" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt id="qgis.core.QgsRasterDataProvider.ReadLayerMetadata">
 <code class="sig-name descname">ReadLayerMetadata</code><em class="property"> = 2</em><a class="headerlink" href="#qgis.core.QgsRasterDataProvider.ReadLayerMetadata" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="py class">
+<dt id="qgis.core.QgsRasterDataProvider.ResamplingMethod">
+<em class="property">class </em><code class="sig-name descname">ResamplingMethod</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsRasterDataProvider.ResamplingMethod" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.IntEnum</span></code></p>
+<p>An enumeration.</p>
+<dl class="py attribute">
+<dt id="qgis.core.QgsRasterDataProvider.ResamplingMethod.Bilinear">
+<code class="sig-name descname">Bilinear</code><em class="property"> = 1</em><a class="headerlink" href="#qgis.core.QgsRasterDataProvider.ResamplingMethod.Bilinear" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="qgis.core.QgsRasterDataProvider.ResamplingMethod.Cubic">
+<code class="sig-name descname">Cubic</code><em class="property"> = 2</em><a class="headerlink" href="#qgis.core.QgsRasterDataProvider.ResamplingMethod.Cubic" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="qgis.core.QgsRasterDataProvider.ResamplingMethod.Nearest">
+<code class="sig-name descname">Nearest</code><em class="property"> = 0</em><a class="headerlink" href="#qgis.core.QgsRasterDataProvider.ResamplingMethod.Nearest" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
 
 <dl class="py attribute">
 <dt id="qgis.core.QgsRasterDataProvider.TransformImageToLayer">
@@ -2429,6 +2502,28 @@ list.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt id="qgis.core.QgsRasterDataProvider.enableProviderResampling">
+<code class="sig-name descname">enableProviderResampling</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">enable</span><span class="p">:</span> <span class="n">bool</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsRasterDataProvider.enableProviderResampling" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enable or disable provider-level resampling.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>true if success</p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.16.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>enable</strong> (<em>bool</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt id="qgis.core.QgsRasterDataProvider.extent">
 <code class="sig-name descname">extent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="QgsRectangle.html#module-QgsRectangle" title="QgsRectangle">QgsRectangle</a><a class="headerlink" href="#qgis.core.QgsRasterDataProvider.extent" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
@@ -2645,6 +2740,37 @@ By default providers are not editable. Use <a class="reference internal" href="#
 </dd></dl>
 
 <dl class="py method">
+<dt id="qgis.core.QgsRasterDataProvider.isProviderResamplingEnabled">
+<code class="sig-name descname">isProviderResamplingEnabled</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsRasterDataProvider.isProviderResamplingEnabled" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns whether provider-level resampling is enabled.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Resampling is effective only if <a class="reference internal" href="#qgis.core.QgsRasterDataProvider.zoomedInResamplingMethod" title="qgis.core.QgsRasterDataProvider.zoomedInResamplingMethod"><code class="xref py py-func docutils literal notranslate"><span class="pre">zoomedInResamplingMethod()</span></code></a> and/or
+<a class="reference internal" href="#qgis.core.QgsRasterDataProvider.zoomedOutResamplingMethod" title="qgis.core.QgsRasterDataProvider.zoomedOutResamplingMethod"><code class="xref py py-func docutils literal notranslate"><span class="pre">zoomedOutResamplingMethod()</span></code></a> return non-nearest resampling.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.zoomedInResamplingMethod" title="qgis.core.QgsRasterDataProvider.zoomedInResamplingMethod"><code class="xref py py-func docutils literal notranslate"><span class="pre">zoomedInResamplingMethod()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.zoomedOutResamplingMethod" title="qgis.core.QgsRasterDataProvider.zoomedOutResamplingMethod"><code class="xref py py-func docutils literal notranslate"><span class="pre">zoomedOutResamplingMethod()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.maxOversampling" title="qgis.core.QgsRasterDataProvider.maxOversampling"><code class="xref py py-func docutils literal notranslate"><span class="pre">maxOversampling()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.16.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt id="qgis.core.QgsRasterDataProvider.isSignalConnected">
 <code class="sig-name descname">isSignalConnected</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">QMetaMethod</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsRasterDataProvider.isSignalConnected" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -2691,6 +2817,20 @@ call a QMessageBox to display the contents.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt id="qgis.core.QgsRasterDataProvider.maxOversampling">
+<code class="sig-name descname">maxOversampling</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#qgis.core.QgsRasterDataProvider.maxOversampling" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns maximum oversampling factor for zoomed-out operations.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.16.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt id="qgis.core.QgsRasterDataProvider.nativeResolutions">
 <code class="sig-name descname">nativeResolutions</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span>float<span class="p">]</span><a class="headerlink" href="#qgis.core.QgsRasterDataProvider.nativeResolutions" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a list of native resolutions if available, i.e. map units per pixel at which the raster source
@@ -2731,6 +2871,16 @@ for given provider</p>
 </dd>
 <dt class="field-even">Return type</dt>
 <dd class="field-even"><p>List[Tuple[str, str]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qgis.core.QgsRasterDataProvider.readXml">
+<code class="sig-name descname">readXml</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">filterElem</span><span class="p">:</span> <span class="n">QDomElement</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsRasterDataProvider.readXml" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filterElem</strong> (<em>QDomElement</em>) – </p>
 </dd>
 </dl>
 </dd></dl>
@@ -2872,6 +3022,28 @@ value whether the operation was successful.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt id="qgis.core.QgsRasterDataProvider.setMaxOversampling">
+<code class="sig-name descname">setMaxOversampling</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">factor</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsRasterDataProvider.setMaxOversampling" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets maximum oversampling factor for zoomed-out operations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>true if success</p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.16.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>factor</strong> (<em>float</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt id="qgis.core.QgsRasterDataProvider.setNoDataValue">
 <code class="sig-name descname">setNoDataValue</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">bandNo</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">noDataValue</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsRasterDataProvider.setNoDataValue" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set no data value on created dataset</p>
@@ -2911,6 +3083,50 @@ value whether the operation was successful.</p>
 <li><p><strong>bandNo</strong> (<em>int</em>) – </p></li>
 <li><p><strong>noData</strong> (<em>Iterable</em><em>[</em><a class="reference internal" href="QgsRasterRange.html#qgis.core.QgsRasterRange" title="qgis.core.QgsRasterRange"><em>QgsRasterRange</em></a><em>]</em>) – </p></li>
 </ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qgis.core.QgsRasterDataProvider.setZoomedInResamplingMethod">
+<code class="sig-name descname">setZoomedInResamplingMethod</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">method</span><span class="p">:</span> <span class="n">QgsRasterDataProvider.ResamplingMethod</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsRasterDataProvider.setZoomedInResamplingMethod" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set resampling method to apply for zoomed-in operations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>true if success</p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.16.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>method</strong> (<a class="reference internal" href="#qgis.core.QgsRasterDataProvider.ResamplingMethod" title="qgis.core.QgsRasterDataProvider.ResamplingMethod"><em>QgsRasterDataProvider.ResamplingMethod</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qgis.core.QgsRasterDataProvider.setZoomedOutResamplingMethod">
+<code class="sig-name descname">setZoomedOutResamplingMethod</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">method</span><span class="p">:</span> <span class="n">QgsRasterDataProvider.ResamplingMethod</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsRasterDataProvider.setZoomedOutResamplingMethod" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set resampling method to apply for zoomed-out operations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>true if success</p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.16.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>method</strong> (<a class="reference internal" href="#qgis.core.QgsRasterDataProvider.ResamplingMethod" title="qgis.core.QgsRasterDataProvider.ResamplingMethod"><em>QgsRasterDataProvider.ResamplingMethod</em></a>) – </p>
 </dd>
 </dl>
 </dd></dl>
@@ -3229,6 +3445,47 @@ in order to allow write operations.</p>
 </dl>
 </dd></dl>
 
+<dl class="py method">
+<dt id="qgis.core.QgsRasterDataProvider.writeXml">
+<code class="sig-name descname">writeXml</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">doc</span><span class="p">:</span> <span class="n">QDomDocument</span></em>, <em class="sig-param"><span class="n">parentElem</span><span class="p">:</span> <span class="n">QDomElement</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsRasterDataProvider.writeXml" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>doc</strong> (<em>QDomDocument</em>) – </p></li>
+<li><p><strong>parentElem</strong> (<em>QDomElement</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qgis.core.QgsRasterDataProvider.zoomedInResamplingMethod">
+<code class="sig-name descname">zoomedInResamplingMethod</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; QgsRasterDataProvider.ResamplingMethod<a class="headerlink" href="#qgis.core.QgsRasterDataProvider.zoomedInResamplingMethod" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns resampling method for zoomed-in operations.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.16.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.ResamplingMethod" title="qgis.core.QgsRasterDataProvider.ResamplingMethod">QgsRasterDataProvider.ResamplingMethod</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qgis.core.QgsRasterDataProvider.zoomedOutResamplingMethod">
+<code class="sig-name descname">zoomedOutResamplingMethod</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; QgsRasterDataProvider.ResamplingMethod<a class="headerlink" href="#qgis.core.QgsRasterDataProvider.zoomedOutResamplingMethod" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns resampling method for zoomed-out operations.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.16.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.ResamplingMethod" title="qgis.core.QgsRasterDataProvider.ResamplingMethod">QgsRasterDataProvider.ResamplingMethod</a></p>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 </div>
@@ -3245,7 +3502,7 @@ in order to allow write operations.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 18:37 Jun 19, 2020.
+        Last updated on 16:32 Jun 20, 2020.
       </span>
 
     </p>
