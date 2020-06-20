@@ -5060,7 +5060,7 @@ Splits this geometry according to a given line.</p>
 <dd class="field-odd"><p><strong>splitLine</strong> – the line that splits the geometry</p>
 </dd>
 </dl>
-<p>param[out] newGeometries list of new geometries that have been created with the split
+<p>param[out] newGeometries list of new geometries that have been created with the <code class="docutils literal notranslate"><span class="pre">splitLine</span></code>. If the geometry is 3D, a linear interpolation of the z value is performed on the geometry at split points, see example.
 :param topological: <code class="docutils literal notranslate"><span class="pre">True</span></code> if topological editing is enabled
 param[out] topologyTestPoints points that need to be tested for topological completeness in the dataset</p>
 <dl class="field-list simple">
@@ -5071,6 +5071,16 @@ param[out] topologyTestPoints points that need to be tested for topological comp
 <dd class="field-even"><p>OperationResult a result code: success or reason of failure</p>
 </dd>
 </dl>
+<ul class="simple">
+<li><p>Example:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">geometry</span> <span class="o">=</span> <span class="n">QgsGeometry</span><span class="o">.</span><span class="n">fromWkt</span><span class="p">(</span><span class="s1">&#39;CompoundCurveZ ((2749546.2003820720128715 1262904.45356595050543547 100, 2749557.82053794478997588 1262920.05570670193992555 200))&#39;</span><span class="p">)</span>
+<span class="n">split_line</span> <span class="o">=</span> <span class="p">[</span><span class="n">QgsPoint</span><span class="p">(</span><span class="mf">2749544.19</span><span class="p">,</span> <span class="mf">1262914.79</span><span class="p">),</span> <span class="n">QgsPoint</span><span class="p">(</span><span class="mf">2749557.64</span><span class="p">,</span> <span class="mf">1262897.30</span><span class="p">)]</span>
+<span class="n">result</span><span class="p">,</span> <span class="n">new_geometries</span><span class="p">,</span> <span class="n">point_xy</span> <span class="o">=</span> <span class="n">geometry</span><span class="o">.</span><span class="n">splitGeometry</span><span class="p">(</span><span class="n">split_line</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">geometry</span><span class="o">.</span><span class="n">asWkt</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="o">&gt;</span> <span class="n">LineStringZ</span> <span class="p">(</span><span class="mf">2749549.12</span> <span class="mf">1262908.38</span> <span class="mf">125.14</span><span class="p">,</span> <span class="mf">2749557.82</span> <span class="mf">1262920.06</span> <span class="mi">200</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="py method">
@@ -5521,7 +5531,7 @@ An empty geometry will be returned if the diagram could not be calculated.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 18:06 Jun 19, 2020.
+        Last updated on 23:57 Jun 19, 2020.
       </span>
 
     </p>
