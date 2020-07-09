@@ -54,9 +54,15 @@ class AutoAutoSummary(Autosummary):
                                 continue
                             if not signal and type(chobj) == PyQt5.QtCore.pyqtSignal:
                                 continue
-                        elif typ == 'class':
-                            if enum and not issubclass(chobj, Enum):
+                            # skip monkey patched enums
+                            # the monkeypatched enums coming out of scoped enum inherit Enum
+                            # while the standard/old ones do not
+                            if hasattr(chobj, '__objclass__') and issubclass(chobj.__objclass__, Enum):
                                 continue
+                        elif typ == 'class':
+                            if enum:
+                                if not issubclass(chobj, Enum):
+                                    continue
                             if not enum and issubclass(chobj, Enum):
                                 continue
                         items.append(name)
