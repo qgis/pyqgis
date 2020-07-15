@@ -1455,6 +1455,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsProcessingContextGenerator.html">Class: QgsProcessingContextGenerator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsProcessingGui.html">Class: QgsProcessingGui</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsProcessingGuiRegistry.html">Class: QgsProcessingGuiRegistry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui/QgsProcessingHiddenWidgetWrapper.html">Class: QgsProcessingHiddenWidgetWrapper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsProcessingLayerOutputDestinationWidget.html">Class: QgsProcessingLayerOutputDestinationWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsProcessingMapLayerComboBox.html">Class: QgsProcessingMapLayerComboBox</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsProcessingModelerParameterWidget.html">Class: QgsProcessingModelerParameterWidget</a></li>
@@ -1824,8 +1825,6 @@ manages editing transactions.</p>
 </pre></div>
 </div>
 <p>The main data providers supported by QGIS are listed below.</p>
-<p>section providers Vector data providers</p>
-<p>subsection memory Memory data providerType (memory)</p>
 <p>The memory data provider is used to construct in memory data, for example scratch
 data or data generated from spatial operations such as contouring. There is no
 inherent persistent storage of the data. The data source uri is constructed. The
@@ -1850,25 +1849,20 @@ trigger such warning, it is possible to suppress that by setting the following c
 <blockquote>
 <div><p>layer.setCustomProperty(“skipMemoryLayersCheck”, 1)</p>
 </div></blockquote>
-<p>subsection ogr OGR data provider (ogr)</p>
 <p>Accesses data using the OGR drivers (<a class="reference external" href="http://www.gdal.org/ogr/ogr_formats.html">http://www.gdal.org/ogr/ogr_formats.html</a>). The url
 is the OGR connection string. A wide variety of data formats can be accessed using this
 driver, including file based formats used by many GIS systems, database formats, and
 web services. Some of these formats are also supported by custom data providers listed
 below.</p>
-<p>subsection spatialite SpatiaLite data provider (spatialite)</p>
 <p>Access data in a SpatiaLite database. The url defines the connection parameters, table,
 geometry column, and other attributes. The url can be constructed using the
 <a class="reference internal" href="QgsDataSourceUri.html#qgis.core.QgsDataSourceUri" title="qgis.core.QgsDataSourceUri"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsDataSourceUri</span></code></a> class.</p>
-<p>subsection postgres PostgreSQL data provider (postgres)</p>
 <p>Connects to a PostgreSQL database. The url defines the connection parameters, table,
 geometry column, and other attributes. The url can be constructed using the
 <a class="reference internal" href="QgsDataSourceUri.html#qgis.core.QgsDataSourceUri" title="qgis.core.QgsDataSourceUri"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsDataSourceUri</span></code></a> class.</p>
-<p>subsection mssql Microsoft SQL server data provider (mssql)</p>
 <p>Connects to a Microsoft SQL server database. The url defines the connection parameters, table,
 geometry column, and other attributes. The url can be constructed using the
 <a class="reference internal" href="QgsDataSourceUri.html#qgis.core.QgsDataSourceUri" title="qgis.core.QgsDataSourceUri"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsDataSourceUri</span></code></a> class.</p>
-<p>subsection wfs WFS (web feature service) data provider (wfs)</p>
 <p>Used to access data provided by a web feature service.</p>
 <p>The url can be a HTTP url to a WFS server (legacy, e.g. <a class="reference external" href="http://foobar/wfs?TYPENAME=xxx&amp;SRSNAME=yyy[&amp;FILTER=zzz">http://foobar/wfs?TYPENAME=xxx&amp;SRSNAME=yyy[&amp;FILTER=zzz</a>]), or,
 starting with QGIS 2.16, a URI constructed using the <a class="reference internal" href="QgsDataSourceUri.html#qgis.core.QgsDataSourceUri" title="qgis.core.QgsDataSourceUri"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsDataSourceUri</span></code></a> class with the following parameters :</p>
@@ -1898,7 +1892,8 @@ QGIS expression filter only supports” =, !=, &lt;, &gt;, &lt;=, &gt;=, AND, OR
 attribute operators, “BBOX, Disjoint, Intersects, Touches, Crosses, Contains, Overlaps, Within”
 spatial binary operators and the QGIS local “geomFromWKT, geomFromGML”
 geometry constructor functions.</p>
-<p>subsection oapif OGC API - Features data provider (oapif)</p>
+<p>OGC API - Features data provider (oapif)
+~~~~~~~~-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</p>
 <p>Used to access data provided by a OGC API - Features server.</p>
 <p>The URI should be constructed using the <a class="reference internal" href="QgsDataSourceUri.html#qgis.core.QgsDataSourceUri" title="qgis.core.QgsDataSourceUri"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsDataSourceUri</span></code></a> class with the following parameters:</p>
 <ul class="simple">
@@ -1921,7 +1916,6 @@ however the function must exist server side and have the same name and arguments
 <li><p>Use the special $geometry parameter to provide the layer geometry column as input
 into the spatial binary operators e.g intersects($geometry, geomFromWKT(‘POINT (5 6)’))</p></li>
 </ul>
-<p>subsection delimitedtext Delimited text file data provider (delimitedtext)</p>
 <p>Accesses data in a delimited text file, for example CSV files generated by
 spreadsheets. The contents of the file are split into columns based on specified
 delimiter characters.  Each record may be represented spatially either by an
@@ -2061,12 +2055,10 @@ to monitor for changes.</p>
 </ul>
 <p>Errors encountered loading the file will not be reported in a user dialog if
 quiet is included (They will still be shown in the output log).</p>
-<p>subsection gpx GPX data provider (gpx)</p>
 <p>Provider reads tracks, routes, and waypoints from a GPX file.  The url
 defines the name of the file, and the type of data to retrieve from it
 (“track”, “route”, or “waypoint”).</p>
 <p>An example url is “/home/user/data/holiday.gpx?type=route”</p>
-<p>subsection grass Grass data provider (grass)</p>
 <p>Provider to display vector data in a GRASS GIS layer.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -7620,7 +7612,7 @@ to this signal and update the element accordingly.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 12:31 Jul 08, 2020.
+        Last updated on 10:49 Jul 15, 2020.
       </span>
 
     </p>
