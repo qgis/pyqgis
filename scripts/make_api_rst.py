@@ -8,7 +8,7 @@ import yaml
 import argparse
 
 with open('pyqgis_conf.yml', 'r') as f:
-    cfg = yaml.load(f)
+    cfg = yaml.safe_load(f)
 
 parser = argparse.ArgumentParser(description='Create RST files for QGIS Python API Documentation')
 parser.add_argument('--version', '-v', dest='qgis_version', default="master")

@@ -10,7 +10,7 @@ import enum
 import yaml
 
 with open('pyqgis_conf.yml', 'r') as f:
-    cfg = yaml.load(f)
+    cfg = yaml.safe_load(f)
 
 
 # https://github.com/sphinx-doc/sphinx/blob/685e3fdb49c42b464e09ec955e1033e2a8729fff/sphinx/ext/autodoc/__init__.py#L51

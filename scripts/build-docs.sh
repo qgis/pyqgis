@@ -6,15 +6,8 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 pushd ${DIR}/..
 
-# https://stackoverflow.com/questions/16989598/bash-comparing-version-numbers
-function version_gt() { test "$(printf '%s\n' "$@" | sort -V | head -n 1)" != "$1"; }
-if version_gt '4.19.7' $(sip -V); then
-     echo "Your version of SIP is too old. SIP 4.19.7+ is required"
-     exit 1
-fi
-
 QGIS_VERSION=master
-while getopts "q:p:c:v:t:" opt; do
+while getopts "q:p:c:v:" opt; do
   case $opt in
     v)
       QGIS_VERSION=$OPTARG
@@ -36,9 +29,6 @@ while getopts "q:p:c:v:t:" opt; do
         CLASS="$CLASS $OPTARG"
       fi
       ;;
-    t)
-      THEME_PATH=$OPTARG
-      ;;
     \?)
       echo "Invalid option: -$OPTARG" >&2
       exit 1
@@ -48,7 +38,6 @@ done
 shift $(expr $OPTIND - 1)
 
 echo "QGIS VERSION: ${QGIS_VERSION}"
-echo "THEME PATH: ${THEME_PATH}"
 echo "PACKAGE LIMIT: ${PACKAGE}"
 
 if [[ -n $QGIS_BUILD_DIR ]]; then
@@ -62,13 +51,14 @@ echo "setting PYTHONPATH $PYTHONPATH"
 echo "travis_fold:start:make_api_rst"
 echo "make API RST ./scripts/make_api_rst.py $PACKAGE $CLASS -v $QGIS_VERSION"
 ./scripts/make_api_rst.py $PACKAGE $CLASS -v ${QGIS_VERSION}
+cp -r _templates api/${QGIS_VERSION}/_templates
 echo "travis_fold:end:make_api_rst"
 
 echo "travis_fold:start:build_html"
 echo "build HTML"
-make prepare QGISVERSION=${QGIS_VERSION} SPHINX_RTD_EGG_PATH=${THEME_PATH}
+make prepare QGISVERSION=${QGIS_VERSION}
 make html QGISVERSION=${QGIS_VERSION}
-#make rinoh QGISVERSION=${QGIS_VERSION}
 echo "travis_fold:end:build_html"
+
 
 popd

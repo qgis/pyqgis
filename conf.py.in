@@ -3,10 +3,6 @@
 import sys, os
 import yaml
 
-# append custom sphinx_rtd_theme to handle versioning
-sphinx_rtd_egg_path = '__SPHINX_RTD_EGG_PATH__'
-if sphinx_rtd_egg_path != "":
-    sys.path.append(sphinx_rtd_egg_path)
 import sphinx_rtd_theme
 
 
@@ -16,7 +12,7 @@ import sphinx_rtd_theme
 sys.path.insert(0, os.path.abspath('../../'))
 
 with open('../../pyqgis_conf.yml', 'r') as f:
-    cfg = yaml.load(f)
+    cfg = yaml.safe_load(f)
 
 
 # -- General configuration -----------------------------------------------------
@@ -117,21 +113,23 @@ html_last_updated_fmt = '%H:%M %b %d, %Y'
 
 # If true, SmartyPants will be used to convert quotes and dashes to
 # typographically correct entities.
-#html_use_smartypants = True
+# html_use_smartypants = True
 
-version_list = cfg['version_list'].replace(' ','').split(',')
+version_list = cfg['version_list'].replace(' ', '').split(',')
 url = cfg['pyqgis_url']
 if not url.endswith('/'):
-  url += '/'
+    url += '/'
 
 if version not in version_list:
-  raise ValueError('QGIS version is not in version list', version, version_list)
+    raise ValueError('QGIS version is not in version list', version, version_list)
 
 context = {
     # 'READTHEDOCS': True,
     'version_downloads': False,
     'current_version': version,
-    'versions': [ [v, url+v] for v in version_list],
+    'version': version,
+    'versions': [[v, url+v] for v in version_list],
+    'display_lower_left': True,
     # 'downloads': [ ['PDF', '/builders.pdf'], ['HTML', '/builders.tgz'] ],
 }
 
@@ -140,10 +138,8 @@ if 'html_context' in globals():
 else:
     html_context = context
 
+templates_path = ['_templates']
 
-# Additional templates that should be rendered to pages, maps page names to
-# template names.
-#html_additional_pages = {}
 
 # If false, no module index is generated.
 html_domain_indices = True

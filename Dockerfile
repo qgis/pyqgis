@@ -10,13 +10,10 @@ RUN curl https://bootstrap.pypa.io/get-pip.py | python3
 
 WORKDIR /root
 
-RUN git clone --depth 1 https://github.com/3nids/sphinx_rtd_theme.git --branch versioning2
+RUN pip install sphinx-rtd-theme
+
 RUN mkdir /root/pyqgis
-WORKDIR /root/sphinx_rtd_theme
-RUN python3 setup.py install | egrep '^Installed.*sphinx_rtd_theme.*\.egg$' | sed 's/^Installed //' > /root/pyqgis/rtd_theme_path
-
 COPY . /root/pyqgis
-
 WORKDIR /root/pyqgis
 
-CMD /bin/bash -c "THEME_PATH=$(cat /root/pyqgis/rtd_theme_path) /root/pyqgis/scripts/build-docs.sh -v ${QGIS_VERSION} ${BUILD_OPTIONS}"
+CMD /bin/bash -c "/root/pyqgis/scripts/build-docs.sh -v ${QGIS_VERSION} ${BUILD_OPTIONS}"
