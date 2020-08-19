@@ -28,10 +28,14 @@ jobs:
     steps:
       - env:
           QGIS_VERSION_BRANCH: ${{ github.event.inputs.qgis_branch || 'master' }}
-          DOCKER_PASSWORD: ${{ secrets.docker_password }}
+          GH_TOKEN: ${{ secrets.gh_token }}
           PUBLISH: TRUE
           BUILD_TESTING: ${{ github.event_name == 'pull_request' && 'TRUE' || 'FALSE' }}
         run: |
+          echo "QGIS_VERSION_BRANCH: ${QGIS_VERSION_BRANCH}"
+          echo "PUBLISH: ${PUBLISH}"
+          echo "BUILD_TESTING: ${BUILD_TESTING}"
+
           QGIS_BRANCH=${{ github.event.inputs.qgis_branch }}
           [[ -z ${QGIS_BRANCH} ]] && QGIS_BRANCH=master
 
