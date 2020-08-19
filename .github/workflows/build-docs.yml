@@ -19,7 +19,7 @@ on:
 
   workflow_dispatch:
     # to manually trigger the build for a given branch
-    # POST /repos/qgis/pyqgis/actions/workflows/build-docs.yml/dispatches
+    # POST /repos/qgis/pyqgis/actions/workflows/2246440/dispatches
     inputs:
       qgis_branch:
         description: 'The QGIS branch'
@@ -39,13 +39,11 @@ jobs:
       PUBLISH: true
       BUILD_TESTING: ${{ github.event_name == 'pull_request_target' && true || false }}
     steps:
+      - uses: actions/checkout@v2
       - name: Build PyQGIS docs
         run: |
           echo "QGIS_VERSION_BRANCH: ${QGIS_VERSION_BRANCH}"
           echo "PUBLISH: ${PUBLISH}"
           echo "BUILD_TESTING: ${BUILD_TESTING}"
+          ./scripts/run-docker.sh
 
-          QGIS_BRANCH=${{ github.event.inputs.qgis_branch }}
-          [[ -z ${QGIS_BRANCH} ]] && QGIS_BRANCH=master
-
-          echo "QGIS branch ${{ github.event.inputs.qgis_branch }}!"
