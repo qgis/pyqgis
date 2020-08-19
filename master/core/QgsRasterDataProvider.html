@@ -1964,7 +1964,7 @@ source and it’s parameters.</p>
 <td><p>Fill in statistics defaults if not specified</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.isEditable" title="qgis.core.QgsRasterDataProvider.isEditable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isEditable</span></code></a></p></td>
-<td><p>Checks whether the provider is in editing mode, i.e.</p></td>
+<td><p>Checks whether the provider is in editing mode, i.e. raster write operations will be accepted.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.isProviderResamplingEnabled" title="qgis.core.QgsRasterDataProvider.isProviderResamplingEnabled"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isProviderResamplingEnabled</span></code></a></p></td>
 <td><p>Returns whether provider-level resampling is enabled.</p></td>
@@ -1985,7 +1985,7 @@ source and it’s parameters.</p>
 <td><p>Returns maximum oversampling factor for zoomed-out operations.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.nativeResolutions" title="qgis.core.QgsRasterDataProvider.nativeResolutions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nativeResolutions</span></code></a></p></td>
-<td><p>Returns a list of native resolutions if available, i.e.</p></td>
+<td><p>Returns a list of native resolutions if available, i.e. map units per pixel at which the raster source was originally created.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.providerCapabilities" title="qgis.core.QgsRasterDataProvider.providerCapabilities"><code class="xref py py-obj docutils literal notranslate"><span class="pre">providerCapabilities</span></code></a></p></td>
 <td><p>Returns flags containing the supported capabilities of the data provider.</p></td>
@@ -2330,7 +2330,7 @@ list.</p>
 
 <dl class="py method">
 <dt id="qgis.core.QgsRasterDataProvider.buildPyramids">
-<code class="sig-name descname">buildPyramids</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">pyramidList</span><span class="p">:</span> <span class="n">Iterable<span class="p">[</span><a class="reference internal" href="QgsRasterPyramid.html#module-QgsRasterPyramid" title="QgsRasterPyramid">QgsRasterPyramid</a><span class="p">]</span></span></em>, <em class="sig-param"><span class="n">resamplingMethod</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">''</span></em>, <em class="sig-param"><span class="n">format</span><span class="p">:</span> <span class="n">QgsRaster.RasterPyramidsFormat</span> <span class="o">=</span> <span class="default_value">QgsRaster.PyramidsGTiff</span></em>, <em class="sig-param"><span class="n">configOptions</span><span class="p">:</span> <span class="n">Iterable<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">feedback</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsRasterBlockFeedback.html#module-QgsRasterBlockFeedback" title="QgsRasterBlockFeedback">QgsRasterBlockFeedback</a></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.core.QgsRasterDataProvider.buildPyramids" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">buildPyramids</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">pyramidList</span><span class="p">:</span> <span class="n">Iterable<span class="p">[</span><a class="reference internal" href="QgsRasterPyramid.html#module-QgsRasterPyramid" title="QgsRasterPyramid">QgsRasterPyramid</a><span class="p">]</span></span></em>, <em class="sig-param"><span class="n">resamplingMethod</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">''</span></em>, <em class="sig-param"><span class="n">format</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsRaster.html#qgis.core.QgsRaster.RasterPyramidsFormat" title="qgis.core.QgsRaster.RasterPyramidsFormat">QgsRaster.RasterPyramidsFormat</a></span> <span class="o">=</span> <span class="default_value">QgsRaster.PyramidsGTiff</span></em>, <em class="sig-param"><span class="n">configOptions</span><span class="p">:</span> <span class="n">Iterable<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">feedback</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsRasterBlockFeedback.html#module-QgsRasterBlockFeedback" title="QgsRasterBlockFeedback">QgsRasterBlockFeedback</a></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.core.QgsRasterDataProvider.buildPyramids" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create pyramid overviews</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2405,7 +2405,7 @@ list.</p>
 
 <dl class="py method">
 <dt id="qgis.core.QgsRasterDataProvider.colorTable">
-<code class="sig-name descname">colorTable</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">bandNo</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span>QgsColorRampShader.ColorRampItem<span class="p">]</span><a class="headerlink" href="#qgis.core.QgsRasterDataProvider.colorTable" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">colorTable</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">bandNo</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span><a class="reference internal" href="QgsColorRampShader.html#qgis.core.QgsColorRampShader.ColorRampItem" title="qgis.core.QgsColorRampShader.ColorRampItem">QgsColorRampShader.ColorRampItem</a><span class="p">]</span><a class="headerlink" href="#qgis.core.QgsRasterDataProvider.colorTable" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>bandNo</strong> (<em>int</em>) – </p>
@@ -2434,7 +2434,7 @@ list.</p>
 
 <dl class="py method">
 <dt id="qgis.core.QgsRasterDataProvider.create">
-<code class="sig-name descname">create</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">providerKey</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">uri</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">format</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">nBands</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">type</span><span class="p">:</span> <span class="n">Qgis.DataType</span></em>, <em class="sig-param"><span class="n">width</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">height</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">crs</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsCoordinateReferenceSystem.html#module-QgsCoordinateReferenceSystem" title="QgsCoordinateReferenceSystem">QgsCoordinateReferenceSystem</a></span></em>, <em class="sig-param"><span class="n">createOptions</span><span class="p">:</span> <span class="n">Iterable<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">[]</span></em><span class="sig-paren">)</span> &#x2192; Tuple<span class="p">[</span><a class="reference internal" href="#module-QgsRasterDataProvider" title="QgsRasterDataProvider">QgsRasterDataProvider</a><span class="p">, </span>float<span class="p">]</span><a class="headerlink" href="#qgis.core.QgsRasterDataProvider.create" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">create</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">providerKey</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">uri</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">format</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">nBands</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">type</span><span class="p">:</span> <span class="n"><a class="reference internal" href="Qgis.html#qgis.core.Qgis.DataType" title="qgis.core.Qgis.DataType">Qgis.DataType</a></span></em>, <em class="sig-param"><span class="n">width</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">height</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">crs</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsCoordinateReferenceSystem.html#module-QgsCoordinateReferenceSystem" title="QgsCoordinateReferenceSystem">QgsCoordinateReferenceSystem</a></span></em>, <em class="sig-param"><span class="n">createOptions</span><span class="p">:</span> <span class="n">Iterable<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">[]</span></em><span class="sig-paren">)</span> &#x2192; Tuple<span class="p">[</span><a class="reference internal" href="#module-QgsRasterDataProvider" title="QgsRasterDataProvider">QgsRasterDataProvider</a><span class="p">, </span>float<span class="p">]</span><a class="headerlink" href="#qgis.core.QgsRasterDataProvider.create" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates a new dataset with mDataSourceURI</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2474,7 +2474,7 @@ list.</p>
 
 <dl class="py method">
 <dt id="qgis.core.QgsRasterDataProvider.dataType">
-<code class="sig-name descname">dataType</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">bandNo</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; Qgis.DataType<a class="headerlink" href="#qgis.core.QgsRasterDataProvider.dataType" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">dataType</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">bandNo</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="Qgis.html#qgis.core.Qgis.DataType" title="qgis.core.Qgis.DataType">Qgis.DataType</a><a class="headerlink" href="#qgis.core.QgsRasterDataProvider.dataType" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns data type for the band specified by number</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2597,7 +2597,7 @@ into a subset of the GUI raster properties “Metadata” tab.</p>
 
 <dl class="py method">
 <dt id="qgis.core.QgsRasterDataProvider.identify">
-<code class="sig-name descname">identify</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">point</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsPointXY.html#module-QgsPointXY" title="QgsPointXY">QgsPointXY</a></span></em>, <em class="sig-param"><span class="n">format</span><span class="p">:</span> <span class="n">QgsRaster.IdentifyFormat</span></em>, <em class="sig-param"><span class="n">boundingBox</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsRectangle.html#module-QgsRectangle" title="QgsRectangle">QgsRectangle</a></span> <span class="o">=</span> <span class="default_value">QgsRectangle()</span></em>, <em class="sig-param"><span class="n">width</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">0</span></em>, <em class="sig-param"><span class="n">height</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">0</span></em>, <em class="sig-param"><span class="n">dpi</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">96</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="QgsRasterIdentifyResult.html#module-QgsRasterIdentifyResult" title="QgsRasterIdentifyResult">QgsRasterIdentifyResult</a><a class="headerlink" href="#qgis.core.QgsRasterDataProvider.identify" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">identify</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">point</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsPointXY.html#module-QgsPointXY" title="QgsPointXY">QgsPointXY</a></span></em>, <em class="sig-param"><span class="n">format</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsRaster.html#qgis.core.QgsRaster.IdentifyFormat" title="qgis.core.QgsRaster.IdentifyFormat">QgsRaster.IdentifyFormat</a></span></em>, <em class="sig-param"><span class="n">boundingBox</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsRectangle.html#module-QgsRectangle" title="QgsRectangle">QgsRectangle</a></span> <span class="o">=</span> <span class="default_value">QgsRectangle()</span></em>, <em class="sig-param"><span class="n">width</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">0</span></em>, <em class="sig-param"><span class="n">height</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">0</span></em>, <em class="sig-param"><span class="n">dpi</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">96</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="QgsRasterIdentifyResult.html#module-QgsRasterIdentifyResult" title="QgsRasterIdentifyResult">QgsRasterIdentifyResult</a><a class="headerlink" href="#qgis.core.QgsRasterDataProvider.identify" title="Permalink to this definition">¶</a></dt>
 <dd><p>Identify raster value(s) found on the point position. The context
 parameters extent, width and height are important to identify
 on the same zoom level as a displayed map and to do effective
@@ -2640,7 +2640,7 @@ up to at least v1.3.0</p>
 
 <dl class="py method">
 <dt id="qgis.core.QgsRasterDataProvider.identifyFormatFromName">
-<code class="sig-name descname">identifyFormatFromName</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">formatName</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; QgsRaster.IdentifyFormat<a class="headerlink" href="#qgis.core.QgsRasterDataProvider.identifyFormatFromName" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">identifyFormatFromName</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">formatName</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="QgsRaster.html#qgis.core.QgsRaster.IdentifyFormat" title="qgis.core.QgsRaster.IdentifyFormat">QgsRaster.IdentifyFormat</a><a class="headerlink" href="#qgis.core.QgsRasterDataProvider.identifyFormatFromName" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>formatName</strong> (<em>str</em>) – </p>
@@ -2653,7 +2653,7 @@ up to at least v1.3.0</p>
 
 <dl class="py method">
 <dt id="qgis.core.QgsRasterDataProvider.identifyFormatLabel">
-<code class="sig-name descname">identifyFormatLabel</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">format</span><span class="p">:</span> <span class="n">QgsRaster.IdentifyFormat</span></em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.core.QgsRasterDataProvider.identifyFormatLabel" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">identifyFormatLabel</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">format</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsRaster.html#qgis.core.QgsRaster.IdentifyFormat" title="qgis.core.QgsRaster.IdentifyFormat">QgsRaster.IdentifyFormat</a></span></em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.core.QgsRasterDataProvider.identifyFormatLabel" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>format</strong> (<a class="reference internal" href="QgsRaster.html#qgis.core.QgsRaster.IdentifyFormat" title="qgis.core.QgsRaster.IdentifyFormat"><em>QgsRaster.IdentifyFormat</em></a>) – </p>
@@ -2666,7 +2666,7 @@ up to at least v1.3.0</p>
 
 <dl class="py method">
 <dt id="qgis.core.QgsRasterDataProvider.identifyFormatName">
-<code class="sig-name descname">identifyFormatName</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">format</span><span class="p">:</span> <span class="n">QgsRaster.IdentifyFormat</span></em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.core.QgsRasterDataProvider.identifyFormatName" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">identifyFormatName</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">format</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsRaster.html#qgis.core.QgsRaster.IdentifyFormat" title="qgis.core.QgsRaster.IdentifyFormat">QgsRaster.IdentifyFormat</a></span></em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.core.QgsRasterDataProvider.identifyFormatName" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>format</strong> (<a class="reference internal" href="QgsRaster.html#qgis.core.QgsRaster.IdentifyFormat" title="qgis.core.QgsRaster.IdentifyFormat"><em>QgsRaster.IdentifyFormat</em></a>) – </p>
@@ -2679,7 +2679,7 @@ up to at least v1.3.0</p>
 
 <dl class="py method">
 <dt id="qgis.core.QgsRasterDataProvider.identifyFormatToCapability">
-<code class="sig-name descname">identifyFormatToCapability</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">format</span><span class="p">:</span> <span class="n">QgsRaster.IdentifyFormat</span></em><span class="sig-paren">)</span> &#x2192; QgsRasterInterface.Capability<a class="headerlink" href="#qgis.core.QgsRasterDataProvider.identifyFormatToCapability" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">identifyFormatToCapability</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">format</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsRaster.html#qgis.core.QgsRaster.IdentifyFormat" title="qgis.core.QgsRaster.IdentifyFormat">QgsRaster.IdentifyFormat</a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="QgsRasterInterface.html#qgis.core.QgsRasterInterface.Capability" title="qgis.core.QgsRasterInterface.Capability">QgsRasterInterface.Capability</a><a class="headerlink" href="#qgis.core.QgsRasterDataProvider.identifyFormatToCapability" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>format</strong> (<a class="reference internal" href="QgsRaster.html#qgis.core.QgsRaster.IdentifyFormat" title="qgis.core.QgsRaster.IdentifyFormat"><em>QgsRaster.IdentifyFormat</em></a>) – </p>
@@ -2849,7 +2849,7 @@ was originally created.</p>
 
 <dl class="py method">
 <dt id="qgis.core.QgsRasterDataProvider.providerCapabilities">
-<code class="sig-name descname">providerCapabilities</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; QgsRasterDataProvider.ProviderCapabilities<a class="headerlink" href="#qgis.core.QgsRasterDataProvider.providerCapabilities" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">providerCapabilities</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#qgis.core.QgsRasterDataProvider.ProviderCapabilities" title="qgis.core.QgsRasterDataProvider.ProviderCapabilities">QgsRasterDataProvider.ProviderCapabilities</a><a class="headerlink" href="#qgis.core.QgsRasterDataProvider.providerCapabilities" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns flags containing the supported capabilities of the data provider.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0.</span></p>
@@ -3090,7 +3090,7 @@ value whether the operation was successful.</p>
 
 <dl class="py method">
 <dt id="qgis.core.QgsRasterDataProvider.setZoomedInResamplingMethod">
-<code class="sig-name descname">setZoomedInResamplingMethod</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">method</span><span class="p">:</span> <span class="n">QgsRasterDataProvider.ResamplingMethod</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsRasterDataProvider.setZoomedInResamplingMethod" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">setZoomedInResamplingMethod</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">method</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.ResamplingMethod" title="qgis.core.QgsRasterDataProvider.ResamplingMethod">QgsRasterDataProvider.ResamplingMethod</a></span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsRasterDataProvider.setZoomedInResamplingMethod" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set resampling method to apply for zoomed-in operations.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
@@ -3112,7 +3112,7 @@ value whether the operation was successful.</p>
 
 <dl class="py method">
 <dt id="qgis.core.QgsRasterDataProvider.setZoomedOutResamplingMethod">
-<code class="sig-name descname">setZoomedOutResamplingMethod</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">method</span><span class="p">:</span> <span class="n">QgsRasterDataProvider.ResamplingMethod</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsRasterDataProvider.setZoomedOutResamplingMethod" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">setZoomedOutResamplingMethod</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">method</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.ResamplingMethod" title="qgis.core.QgsRasterDataProvider.ResamplingMethod">QgsRasterDataProvider.ResamplingMethod</a></span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsRasterDataProvider.setZoomedOutResamplingMethod" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set resampling method to apply for zoomed-out operations.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
@@ -3134,7 +3134,7 @@ value whether the operation was successful.</p>
 
 <dl class="py method">
 <dt id="qgis.core.QgsRasterDataProvider.sourceDataType">
-<code class="sig-name descname">sourceDataType</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">bandNo</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; Qgis.DataType<a class="headerlink" href="#qgis.core.QgsRasterDataProvider.sourceDataType" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">sourceDataType</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">bandNo</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="Qgis.html#qgis.core.Qgis.DataType" title="qgis.core.Qgis.DataType">Qgis.DataType</a><a class="headerlink" href="#qgis.core.QgsRasterDataProvider.sourceDataType" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns source data type for the band specified by number,
 source data type may be shorter than dataType</p>
 <dl class="field-list simple">
@@ -3271,7 +3271,7 @@ their own layers, such as WMS</p>
 
 <dl class="py method">
 <dt id="qgis.core.QgsRasterDataProvider.transformCoordinates">
-<code class="sig-name descname">transformCoordinates</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">point</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsPoint.html#module-QgsPoint" title="QgsPoint">QgsPoint</a></span></em>, <em class="sig-param"><span class="n">type</span><span class="p">:</span> <span class="n">QgsRasterDataProvider.TransformType</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="QgsPoint.html#module-QgsPoint" title="QgsPoint">QgsPoint</a><a class="headerlink" href="#qgis.core.QgsRasterDataProvider.transformCoordinates" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">transformCoordinates</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">point</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsPoint.html#module-QgsPoint" title="QgsPoint">QgsPoint</a></span></em>, <em class="sig-param"><span class="n">type</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#qgis.core.QgsRasterDataProvider.TransformType" title="qgis.core.QgsRasterDataProvider.TransformType">QgsRasterDataProvider.TransformType</a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="QgsPoint.html#module-QgsPoint" title="QgsPoint">QgsPoint</a><a class="headerlink" href="#qgis.core.QgsRasterDataProvider.transformCoordinates" title="Permalink to this definition">¶</a></dt>
 <dd><p>Transforms coordinates between source image coordinate space [0..width]x[0..height] and
 layer coordinate space (georeferenced coordinates). Often this transformation is a simple
 2D affine transformation (offset and scaling), but rasters with different georeferencing
@@ -3367,7 +3367,7 @@ does not support this functionality), an empty point is returned.</p>
 
 <dl class="py method">
 <dt id="qgis.core.QgsRasterDataProvider.validatePyramidsConfigOptions">
-<code class="sig-name descname">validatePyramidsConfigOptions</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">pyramidsFormat</span><span class="p">:</span> <span class="n">QgsRaster.RasterPyramidsFormat</span></em>, <em class="sig-param"><span class="n">configOptions</span><span class="p">:</span> <span class="n">Iterable<span class="p">[</span>str<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">fileFormat</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.core.QgsRasterDataProvider.validatePyramidsConfigOptions" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">validatePyramidsConfigOptions</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">pyramidsFormat</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsRaster.html#qgis.core.QgsRaster.RasterPyramidsFormat" title="qgis.core.QgsRaster.RasterPyramidsFormat">QgsRaster.RasterPyramidsFormat</a></span></em>, <em class="sig-param"><span class="n">configOptions</span><span class="p">:</span> <span class="n">Iterable<span class="p">[</span>str<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">fileFormat</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.core.QgsRasterDataProvider.validatePyramidsConfigOptions" title="Permalink to this definition">¶</a></dt>
 <dd><p>Validates pyramid creation options for a specific dataset and destination format</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -3461,7 +3461,7 @@ in order to allow write operations.</p>
 
 <dl class="py method">
 <dt id="qgis.core.QgsRasterDataProvider.zoomedInResamplingMethod">
-<code class="sig-name descname">zoomedInResamplingMethod</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; QgsRasterDataProvider.ResamplingMethod<a class="headerlink" href="#qgis.core.QgsRasterDataProvider.zoomedInResamplingMethod" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">zoomedInResamplingMethod</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#qgis.core.QgsRasterDataProvider.ResamplingMethod" title="qgis.core.QgsRasterDataProvider.ResamplingMethod">QgsRasterDataProvider.ResamplingMethod</a><a class="headerlink" href="#qgis.core.QgsRasterDataProvider.zoomedInResamplingMethod" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns resampling method for zoomed-in operations.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.16.</span></p>
@@ -3475,7 +3475,7 @@ in order to allow write operations.</p>
 
 <dl class="py method">
 <dt id="qgis.core.QgsRasterDataProvider.zoomedOutResamplingMethod">
-<code class="sig-name descname">zoomedOutResamplingMethod</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; QgsRasterDataProvider.ResamplingMethod<a class="headerlink" href="#qgis.core.QgsRasterDataProvider.zoomedOutResamplingMethod" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">zoomedOutResamplingMethod</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#qgis.core.QgsRasterDataProvider.ResamplingMethod" title="qgis.core.QgsRasterDataProvider.ResamplingMethod">QgsRasterDataProvider.ResamplingMethod</a><a class="headerlink" href="#qgis.core.QgsRasterDataProvider.zoomedOutResamplingMethod" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns resampling method for zoomed-out operations.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.16.</span></p>
@@ -3503,7 +3503,7 @@ in order to allow write operations.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 13:20 Aug 03, 2020.
+        Last updated on 06:59 Aug 19, 2020.
       </span>
 
     </p>
