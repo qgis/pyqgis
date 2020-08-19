@@ -11,7 +11,7 @@ https://qgis.org/pyqgis/master/index.html
 
 ## Prerequisites:
 
-Building and mostly pushing the docs properly requires SIP 4.19.7+.
+Building and motly pushing the docs properly requires SIP 4.19.7+.
 
 
 ## To build:
