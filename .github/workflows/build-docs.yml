@@ -5,6 +5,9 @@ on:
   push:
     branches:
       - master
+    pull_request:
+      branches:
+        - master
   workflow_dispatch:
     inputs:
       qgis_branch:
@@ -17,8 +20,19 @@ on:
 
 
 jobs:
-  say_hello:
+  build-docs:
     runs-on: ubuntu-latest
+    env:
+      DOCKER_USERNAME: ${{ secrets.docker_username }}
+      DOCKER_PASSWORD: ${{ secrets.docker_password }}
     steps:
+      - env:
+          QGIS_VERSION_BRANCH: ${{ github.event.inputs.qgis_branch or 'master' }}
+          DOCKER_PASSWORD: ${{ secrets.docker_password }}
+          PUBLISH: TRUE
+          BUILD_TESTING: ${{ github.event_name == 'pull_request' && 'TRUE' || 'FALSE' }}
       - run: |
+          QGIS_BRANCH=${{ github.event.inputs.qgis_branch }}
+          [[ -z ${QGIS_BRANCH} ]] && QGIS_BRANCH=master
+
           echo "QGIS branch ${{ github.event.inputs.qgis_branch }}!"
