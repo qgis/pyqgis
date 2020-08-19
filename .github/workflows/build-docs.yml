@@ -27,7 +27,7 @@ jobs:
       DOCKER_PASSWORD: ${{ secrets.docker_password }}
     steps:
       - env:
-          QGIS_VERSION_BRANCH: ${{ github.event.inputs.qgis_branch or 'master' }}
+          QGIS_VERSION_BRANCH: ${{ github.event.inputs.qgis_branch || 'master' }}
           DOCKER_PASSWORD: ${{ secrets.docker_password }}
           PUBLISH: TRUE
           BUILD_TESTING: ${{ github.event_name == 'pull_request' && 'TRUE' || 'FALSE' }}
