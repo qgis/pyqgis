@@ -2,16 +2,24 @@ on:
   schedule:
     # runs every day
     - cron: '0 0 * * *'
+
   push:
     branches:
       - master
+
   pull_request_target:
+    # This event is similar to pull_request, except that it runs in the context
+    # of the base repository of the pull request, rather than in the merge commit.
+    # This means that you can more safely make your secrets available to the workflows
+    # triggered by the pull request, because only workflows defined in the commit
+    # on the base repository are run
+    # https://docs.github.com/en/actions/reference/events-that-trigger-workflows#pull_request_target
     branches:
       - master
-  pull_request:
-    branches:
-      - master
+
   workflow_dispatch:
+    # to manually trigger the build for a given branch
+    # POST /repos/qgis/pyqgis/actions/workflows/build-docs.yml/dispatches
     inputs:
       qgis_branch:
         description: 'The QGIS branch'
@@ -26,14 +34,12 @@ jobs:
   build-docs:
     runs-on: ubuntu-latest
     env:
-      DOCKER_USERNAME: ${{ secrets.docker_username }}
-      DOCKER_PASSWORD: ${{ secrets.docker_password }}
+      QGIS_VERSION_BRANCH: ${{ github.event.inputs.qgis_branch || 'master' }}
+      GH_TOKEN: ${{ secrets.gh_token }}
+      PUBLISH: true
+      BUILD_TESTING: ${{ github.event_name == 'pull_request_target' && true || false }}
     steps:
-      - env:
-          QGIS_VERSION_BRANCH: ${{ github.event.inputs.qgis_branch || 'master' }}
-          GH_TOKEN: ${{ secrets.gh_token }}
-          PUBLISH: true
-          BUILD_TESTING: ${{ github.event_name == 'pull_request' && true || false }}
+      - name: Build PyQGIS docs
         run: |
           echo "QGIS_VERSION_BRANCH: ${QGIS_VERSION_BRANCH}"
           echo "PUBLISH: ${PUBLISH}"
