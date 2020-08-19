@@ -20,7 +20,7 @@ Call ``build-docs.sh``. QGIS python package must be found.
 You can either:
 
 * export the PYTHONPATH yourself
-* export your QGIS build directory with ``export QGIS-BUILD-DIR=/Users/timlinux/dev/QGIS/build``
+* export yur QGIS build directory with ``export QGIS-BUILD-DIR=/Users/timlinux/dev/QGIS/build``
 * or provide QGIS build directory as argument to the script: ``./build-docs.sh -qgis-build-dir /Users/timlinux/dev/QGIS/build``
 
 ## Viewing the docs
