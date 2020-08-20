@@ -59,7 +59,7 @@ echo "##[group]:gitcommit"
 echo "*** Add and push"
 git add --all
 git commit -m "Update docs for QGIS ${QGIS_VERSION}"
-echo "##[endgroup]
+echo "##[endgroup]"
 if [[ $TRAVIS =~ true ]]; then
   echo "pushing from Travis"
   git push -v

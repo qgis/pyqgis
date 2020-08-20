@@ -26,11 +26,11 @@ echo "Building for QGIS: ${QGIS_VERSION}"
 
 echo "##[group]:pullqgis" && echo "Pull QGIS"
 docker pull "qgis/qgis:${QGIS_DOCKER_TAG}"
-echo "##[endgroup]
+echo "##[endgroup]"
 
 echo "##[group]:dockerbuild" && echo "Docker build"
 docker build --build-arg QGIS_DOCKER_TAG=${QGIS_DOCKER_TAG} -t qgis/qgis-python-api-doc:${QGIS_DOCKER_TAG} .
-echo "##[endgroup]
+echo "##[endgroup]"
 
 echo "##[group]:dockerrun" && echo "Docker run"
 docker rm -f pyqgis || true
@@ -40,7 +40,7 @@ docker run --name pyqgis \
   -e "BUILD_OPTIONS=${BUILD_OPTIONS}" \
   -e "GH_TOKEN=${GH_TOKEN}" \
   qgis/qgis-python-api-doc:${QGIS_DOCKER_TAG}
-echo "##[endgroup]
+echo "##[endgroup]"
 
 echo "Copy files"
 mkdir -p ${DIR}/build
