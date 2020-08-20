@@ -50,8 +50,11 @@ echo "setting PYTHONPATH $PYTHONPATH"
 
 echo "travis_fold:start:make_api_rst"
 echo "make API RST ./scripts/make_api_rst.py $PACKAGE $CLASS -v $QGIS_VERSION"
+
 # see https://bugs.launchpad.net/ubuntu/+source/opencv/+bug/1890170?comments=all
-LD_PRELOAD=/lib/x86_64-linux-gnu/libstdc++.so.6 ./scripts/make_api_rst.py $PACKAGE $CLASS -v ${QGIS_VERSION}
+export LD_PRELOAD=/lib/x86_64-linux-gnu/libstdc++.so.6
+
+./scripts/make_api_rst.py $PACKAGE $CLASS -v ${QGIS_VERSION}
 cp -r _templates api/${QGIS_VERSION}/_templates
 echo "travis_fold:end:make_api_rst"
 
