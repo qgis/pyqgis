@@ -39,7 +39,7 @@ docker run --name pyqgis \
   -e "BUILD_TESTING=${BUILD_TESTING}" \
   -e "BUILD_OPTIONS=${BUILD_OPTIONS}" \
   -e "GH_TOKEN=${GH_TOKEN}" \
-  -e "RUNS_ON_CI=${RUNS_ON_CI}"
+  -e "RUNS_ON_CI=${RUNS_ON_CI}" \
   qgis/qgis-python-api-doc:${QGIS_DOCKER_TAG}
 echo "##[endgroup]"
 
