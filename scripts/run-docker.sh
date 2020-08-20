@@ -24,23 +24,23 @@ QGIS_VERSION=$(${GP}sed -r 's/latest(_focal)?/master/; s/^(final|release)-([0-9]
 echo "QGIS Docker tag: ${QGIS_DOCKER_TAG}"
 echo "Building for QGIS: ${QGIS_VERSION}"
 
-echo "travis_fold:start:pullqgis" && echo "Pull QGIS"
+echo "##[group]:pullqgis" && echo "Pull QGIS"
 docker pull "qgis/qgis:${QGIS_DOCKER_TAG}"
-echo "travis_fold:end:pullqgis"
+echo "##[endgroup]
 
-echo "travis_fold:start:dockerbuild" && echo "Docker build"
+echo "##[group]:dockerbuild" && echo "Docker build"
 docker build --build-arg QGIS_DOCKER_TAG=${QGIS_DOCKER_TAG} -t qgis/qgis-python-api-doc:${QGIS_DOCKER_TAG} .
-echo "travis_fold:end:dockerbuild"
+echo "##[endgroup]
 
-echo "travis_fold:start:dockerrun" && echo "Docker run"
+echo "##[group]:dockerrun" && echo "Docker run"
 docker rm -f pyqgis || true
 docker run --name pyqgis \
   -e "QGIS_VERSION=${QGIS_VERSION}" \
   -e "BUILD_TESTING=${BUILD_TESTING}" \
   -e "BUILD_OPTIONS=${BUILD_OPTIONS}" \
-  -e "GH_TOKEN" \
+  -e "GH_TOKEN=${GH_TOKEN}" \
   qgis/qgis-python-api-doc:${QGIS_DOCKER_TAG}
-echo "travis_fold:end:dockerrun"
+echo "##[endgroup]
 
 echo "Copy files"
 mkdir -p ${DIR}/build

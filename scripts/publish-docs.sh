@@ -55,11 +55,11 @@ else
   cp -R ${DATA_PATH}/* ${OUTPUT}/
 fi
 
-echo "travis_fold:start:gitcommit"
+echo "##[group]:gitcommit"
 echo "*** Add and push"
 git add --all
 git commit -m "Update docs for QGIS ${QGIS_VERSION}"
-echo "travis_fold:end:gitcommit"
+echo "##[endgroup]
 if [[ $TRAVIS =~ true ]]; then
   echo "pushing from Travis"
   git push -v
