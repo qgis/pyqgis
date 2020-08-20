@@ -55,13 +55,13 @@ else
   cp -R ${DATA_PATH}/* ${OUTPUT}/
 fi
 
-echo "##[group]:gitcommit"
+echo "##[group] Git commit"
 echo "*** Add and push"
 git add --all
 git commit -m "Update docs for QGIS ${QGIS_VERSION}"
 echo "##[endgroup]"
-if [[ $TRAVIS =~ true ]]; then
-  echo "pushing from Travis"
+if [[ ${RUNS_ON_CI} =~ true ]]; then
+  echo "pushing from CI without confirmation"
   git push -v
 else
   read -p "Are you sure to push? (y/n)" -n 1 -r response
