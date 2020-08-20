@@ -25,7 +25,7 @@ pushd publish
 
 echo "*** Clone gh-pages branch"
 OUTPUT=${QGIS_VERSION}
-if [[ ${TRAVIS} =~ true ]]; then
+if [[ ${RUNS_ON_CI} =~ true ]]; then
   git config --global user.email "qgisninja@gmail.com"
   git config --global user.name "Geo-Ninja"
   git clone https://${GH_TOKEN}@github.com/qgis/pyqgis.git --depth 1 --branch gh-pages
