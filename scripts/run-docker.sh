@@ -38,6 +38,7 @@ docker run --name pyqgis \
   -e "QGIS_VERSION=${QGIS_VERSION}" \
   -e "BUILD_TESTING=${BUILD_TESTING}" \
   -e "BUILD_OPTIONS=${BUILD_OPTIONS}" \
+  -e "GH_TOKEN" \
   qgis/qgis-python-api-doc:${QGIS_DOCKER_TAG}
 echo "travis_fold:end:dockerrun"
 

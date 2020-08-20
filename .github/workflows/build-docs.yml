@@ -33,14 +33,14 @@ on:
 jobs:
   build-docs:
     runs-on: ubuntu-latest
-    env:
-      QGIS_VERSION_BRANCH: ${{ github.event.inputs.qgis_branch || 'master' }}
-      GH_TOKEN: ${{ secrets.GH_TOKEN }}
-      PUBLISH: true
-      BUILD_TESTING: ${{ github.event_name == 'pull_request_target' && true || false }}
     steps:
       - uses: actions/checkout@v2
       - name: Build PyQGIS docs
+        env:
+          QGIS_VERSION_BRANCH: ${{ github.event.inputs.qgis_branch || 'master' }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          PUBLISH: true
+          BUILD_TESTING: ${{ github.event_name == 'pull_request_target' && true || false }}
         run: |
           echo "QGIS_VERSION_BRANCH: ${QGIS_VERSION_BRANCH}"
           echo "PUBLISH: ${PUBLISH}"
