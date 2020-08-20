@@ -2,7 +2,7 @@
 
 # QGIS Python API Documentation
 
-Sphinx project to build python API documentation for QGIS
+Sphinx project to build python API documentation for QGIS.
 
 You can see an online version of the generated documentation at this
 website:
