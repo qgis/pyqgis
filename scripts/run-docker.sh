@@ -17,10 +17,10 @@ DIR=$(git rev-parse --show-toplevel)
 
 pushd ${DIR}
 
-QGIS_DOCKER_TAG="${QGIS_VERSION_BRANCH//master/latest}_focal"
+QGIS_DOCKER_TAG="${QGIS_VERSION_BRANCH//master/latest}"
 
 # latest => master, final-3_0_2 => 3.0
-QGIS_VERSION=$(${GP}sed -r 's/latest(_focal)?/master/; s/^(final|release)-([0-9]_[0-9]+)(_[0-9]+)?(_focal)?/\2/; s/_/./g' <<< "${QGIS_DOCKER_TAG}")
+QGIS_VERSION=$(${GP}sed -r 's/latest/master/; s/^(final|release)-([0-9]_[0-9]+)(_[0-9]+)?/\2/; s/_/./g' <<< "${QGIS_DOCKER_TAG}")
 echo "QGIS Docker tag: ${QGIS_DOCKER_TAG}"
 echo "Building for QGIS: ${QGIS_VERSION}"
 
