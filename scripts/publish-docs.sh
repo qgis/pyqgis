@@ -61,6 +61,8 @@ git add --all
 git commit -m "Update docs for QGIS ${QGIS_VERSION}"
 echo "##[endgroup]"
 if [[ ${RUNS_ON_CI} =~ true ]]; then
+  echo "pull and rebase if some builds are running in parallel"
+  git pull --rebase
   echo "pushing from CI without confirmation"
   git push -v
 else
