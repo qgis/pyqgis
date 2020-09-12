@@ -745,9 +745,11 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingParameterRasterLayer.html">Class: QgsProcessingParameterRasterLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingParameterScale.html">Class: QgsProcessingParameterScale</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingParameterString.html">Class: QgsProcessingParameterString</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsProcessingParameterTinInputLayers.html">Class: QgsProcessingParameterTinInputLayers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingParameterType.html">Class: QgsProcessingParameterType</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingParameterTypeAggregate.html">Class: QgsProcessingParameterTypeAggregate</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingParameterTypeFieldMapping.html">Class: QgsProcessingParameterTypeFieldMapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsProcessingParameterTypeTinInputLayers.html">Class: QgsProcessingParameterTypeTinInputLayers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingParameterTypeVectorTileWriterLayers.html">Class: QgsProcessingParameterTypeVectorTileWriterLayers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingParameterVectorDestination.html">Class: QgsProcessingParameterVectorDestination</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingParameterVectorLayer.html">Class: QgsProcessingParameterVectorLayer</a></li>
@@ -1672,6 +1674,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../analysis/QgsInterpolatorVertexData.html">Class: QgsInterpolatorVertexData</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../analysis/QgsKernelDensityEstimation.html">Class: QgsKernelDensityEstimation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../analysis/QgsMeshContours.html">Class: QgsMeshContours</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../analysis/QgsMeshTriangulation.html">Class: QgsMeshTriangulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../analysis/QgsMeshZValueDatasetGroup.html">Class: QgsMeshZValueDatasetGroup</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../analysis/QgsNativeAlgorithms.html">Class: QgsNativeAlgorithms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../analysis/QgsNetworkDistanceStrategy.html">Class: QgsNetworkDistanceStrategy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../analysis/QgsNetworkSpeedStrategy.html">Class: QgsNetworkSpeedStrategy</a></li>
@@ -1841,16 +1845,17 @@
 <span id="class-qgsdataprovider"></span><h1>Class: QgsDataProvider<a class="headerlink" href="#module-QgsDataProvider" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt id="qgis.core.QgsDataProvider">
-<em class="property">class </em><code class="sig-prename descclassname">qgis.core.</code><code class="sig-name descname">QgsDataProvider</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">uri</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">''</span></em>, <em class="sig-param"><span class="n">providerOptions</span><span class="p">:</span> <span class="n">QgsDataProvider.ProviderOptions</span> <span class="o">=</span> <span class="default_value">QgsDataProvider.ProviderOptions()</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsDataProvider" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">qgis.core.</code><code class="sig-name descname">QgsDataProvider</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">uri</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">''</span></em>, <em class="sig-param"><span class="n">providerOptions</span><span class="p">:</span> <span class="n">QgsDataProvider.ProviderOptions</span> <span class="o">=</span> <span class="default_value">QgsDataProvider.ProviderOptions()</span></em>, <em class="sig-param"><span class="n">flags</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>QgsDataProvider.ReadFlags<span class="p">, </span>QgsDataProvider.ReadFlag<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">QgsDataProvider.ReadFlags()</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsDataProvider" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">PyQt5.QtCore.QObject</span></code></p>
 <p>Create a new dataprovider with the specified in the <code class="docutils literal notranslate"><span class="pre">uri</span></code>.</p>
-<p>Additional creation options are specified within the <code class="docutils literal notranslate"><span class="pre">options</span></code> value.</p>
+<p>Additional creation options are specified within the <code class="docutils literal notranslate"><span class="pre">options</span></code> value and since QGIS 3.16 creation flags are specified within the <code class="docutils literal notranslate"><span class="pre">flags</span></code> value.</p>
 <p>Abstract base class for spatial data provider implementations.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>uri</strong> (<em>str = ''</em>) – </p></li>
-<li><p><strong>providerOptions</strong> – </p></li>
+<li><p><strong>providerOptions</strong> (<em>QgsDataProvider.ProviderOptions = QgsDataProvider.ProviderOptions</em><em>(</em><em>)</em>) – </p></li>
+<li><p><strong>flags</strong> – </p></li>
 </ul>
 </dd>
 </dl>
@@ -1894,6 +1899,11 @@ QgsDataProvider.DataCapabilities(QgsDataProvider.DataCapabilities)</p>
 <dd></dd></dl>
 
 <dl class="py attribute">
+<dt id="qgis.core.QgsDataProvider.FlagTrustDataSource">
+<code class="sig-name descname">FlagTrustDataSource</code><em class="property"> = 1</em><a class="headerlink" href="#qgis.core.QgsDataProvider.FlagTrustDataSource" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt id="qgis.core.QgsDataProvider.Net">
 <code class="sig-name descname">Net</code><em class="property"> = 8</em><a class="headerlink" href="#qgis.core.QgsDataProvider.Net" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -1919,6 +1929,20 @@ QgsDataProvider.DataCapabilities(QgsDataProvider.DataCapabilities)</p>
 <dt id="qgis.core.QgsDataProvider.ProviderProperty">
 <em class="property">class </em><code class="sig-name descname">ProviderProperty</code><a class="headerlink" href="#qgis.core.QgsDataProvider.ProviderProperty" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="qgis.core.QgsDataProvider.ReadFlag">
+<em class="property">class </em><code class="sig-name descname">ReadFlag</code><a class="headerlink" href="#qgis.core.QgsDataProvider.ReadFlag" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="qgis.core.QgsDataProvider.ReadFlags">
+<em class="property">class </em><code class="sig-name descname">ReadFlags</code><a class="headerlink" href="#qgis.core.QgsDataProvider.ReadFlags" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sip.wrapper</span></code></p>
+<p>QgsDataProvider.ReadFlags(Union[QgsDataProvider.ReadFlags, QgsDataProvider.ReadFlag])
+QgsDataProvider.ReadFlags(QgsDataProvider.ReadFlags)</p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -2617,7 +2641,7 @@ on individual provider capabilities.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 03:25 Sep 12, 2020.
+        Last updated on 03:52 Sep 12, 2020.
       </span>
 
     </p>

@@ -745,9 +745,11 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingParameterRasterLayer.html">Class: QgsProcessingParameterRasterLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingParameterScale.html">Class: QgsProcessingParameterScale</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingParameterString.html">Class: QgsProcessingParameterString</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsProcessingParameterTinInputLayers.html">Class: QgsProcessingParameterTinInputLayers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingParameterType.html">Class: QgsProcessingParameterType</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingParameterTypeAggregate.html">Class: QgsProcessingParameterTypeAggregate</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingParameterTypeFieldMapping.html">Class: QgsProcessingParameterTypeFieldMapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsProcessingParameterTypeTinInputLayers.html">Class: QgsProcessingParameterTypeTinInputLayers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingParameterTypeVectorTileWriterLayers.html">Class: QgsProcessingParameterTypeVectorTileWriterLayers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingParameterVectorDestination.html">Class: QgsProcessingParameterVectorDestination</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingParameterVectorLayer.html">Class: QgsProcessingParameterVectorLayer</a></li>
@@ -1672,6 +1674,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../analysis/QgsInterpolatorVertexData.html">Class: QgsInterpolatorVertexData</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../analysis/QgsKernelDensityEstimation.html">Class: QgsKernelDensityEstimation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../analysis/QgsMeshContours.html">Class: QgsMeshContours</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../analysis/QgsMeshTriangulation.html">Class: QgsMeshTriangulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../analysis/QgsMeshZValueDatasetGroup.html">Class: QgsMeshZValueDatasetGroup</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../analysis/QgsNativeAlgorithms.html">Class: QgsNativeAlgorithms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../analysis/QgsNetworkDistanceStrategy.html">Class: QgsNetworkDistanceStrategy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../analysis/QgsNetworkSpeedStrategy.html">Class: QgsNetworkSpeedStrategy</a></li>
@@ -2042,7 +2046,7 @@ ogr and postgres.</p>
 
 <dl class="py method">
 <dt id="qgis.core.QgsProviderRegistry.createProvider">
-<code class="sig-name descname">createProvider</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">providerKey</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">dataSource</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">options</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsDataProvider.html#qgis.core.QgsDataProvider.ProviderOptions" title="qgis.core.QgsDataProvider.ProviderOptions">QgsDataProvider.ProviderOptions</a></span> <span class="o">=</span> <span class="default_value">QgsDataProvider.ProviderOptions()</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="QgsDataProvider.html#module-QgsDataProvider" title="QgsDataProvider">QgsDataProvider</a><a class="headerlink" href="#qgis.core.QgsProviderRegistry.createProvider" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">createProvider</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">providerKey</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">dataSource</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">options</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsDataProvider.html#qgis.core.QgsDataProvider.ProviderOptions" title="qgis.core.QgsDataProvider.ProviderOptions">QgsDataProvider.ProviderOptions</a></span> <span class="o">=</span> <span class="default_value">QgsDataProvider.ProviderOptions()</span></em>, <em class="sig-param"><span class="n">flags</span><span class="p">:</span> <span class="n">Union<span class="p">[</span><a class="reference internal" href="QgsDataProvider.html#qgis.core.QgsDataProvider.ReadFlags" title="qgis.core.QgsDataProvider.ReadFlags">QgsDataProvider.ReadFlags</a><span class="p">, </span><a class="reference internal" href="QgsDataProvider.html#qgis.core.QgsDataProvider.ReadFlag" title="qgis.core.QgsDataProvider.ReadFlag">QgsDataProvider.ReadFlag</a><span class="p">]</span></span> <span class="o">=</span> <span class="default_value">QgsDataProvider.ReadFlags()</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="QgsDataProvider.html#module-QgsDataProvider" title="QgsDataProvider">QgsDataProvider</a><a class="headerlink" href="#qgis.core.QgsProviderRegistry.createProvider" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates a new instance of a provider.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2050,6 +2054,7 @@ ogr and postgres.</p>
 <li><p><strong>providerKey</strong> (<em>str</em>) – identifier of the provider</p></li>
 <li><p><strong>dataSource</strong> (<em>str</em>) – string containing data source for the provider</p></li>
 <li><p><strong>options</strong> (<em>QgsDataProvider.ProviderOptions = QgsDataProvider.ProviderOptions</em><em>(</em><em>)</em>) – provider options</p></li>
+<li><p><strong>flags</strong> (<em>Union</em><em>[</em><a class="reference internal" href="QgsDataProvider.html#qgis.core.QgsDataProvider.ReadFlags" title="qgis.core.QgsDataProvider.ReadFlags"><em>QgsDataProvider.ReadFlags</em></a>) – provider flags since QGIS 3.16</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type</dt>
@@ -2686,7 +2691,7 @@ be returned.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 03:25 Sep 12, 2020.
+        Last updated on 03:52 Sep 12, 2020.
       </span>
 
     </p>
