@@ -729,6 +729,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingParameterFile.html">Class: QgsProcessingParameterFile</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingParameterFileDestination.html">Class: QgsProcessingParameterFileDestination</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingParameterFolderDestination.html">Class: QgsProcessingParameterFolderDestination</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsProcessingParameterGeometry.html">Class: QgsProcessingParameterGeometry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingParameterLayout.html">Class: QgsProcessingParameterLayout</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingParameterLayoutItem.html">Class: QgsProcessingParameterLayoutItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingParameterLimitedDataTypes.html">Class: QgsProcessingParameterLimitedDataTypes</a></li>
@@ -833,6 +834,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsReadWriteLocker.html">Class: QgsReadWriteLocker</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsRecentColorScheme.html">Class: QgsRecentColorScheme</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsRectangle.html">Class: QgsRectangle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsReferencedGeometry.html">Class: QgsReferencedGeometry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsReferencedGeometryBase.html">Class: QgsReferencedGeometryBase</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsReferencedPointXY.html">Class: QgsReferencedPointXY</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsReferencedRectangle.html">Class: QgsReferencedRectangle</a></li>
@@ -1418,6 +1420,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsMaskMarkerSymbolLayerWidget.html">Class: QgsMaskMarkerSymbolLayerWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsMenuHeader.html">Class: QgsMenuHeader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsMenuHeaderWidgetAction.html">Class: QgsMenuHeaderWidgetAction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui/QgsMeshLayerProperties.html">Class: QgsMeshLayerProperties</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsMessageBar.html">Class: QgsMessageBar</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsMessageBarItem.html">Class: QgsMessageBarItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsMessageLogViewer.html">Class: QgsMessageLogViewer</a></li>
@@ -2008,6 +2011,12 @@ a pre-initialized copy of the algorithm.</p>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingAlgorithm.parameterAsFileOutput" title="qgis.core.QgsProcessingAlgorithm.parameterAsFileOutput"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsFileOutput</span></code></a></p></td>
 <td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a file based output destination.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingAlgorithm.parameterAsGeometry" title="qgis.core.QgsProcessingAlgorithm.parameterAsGeometry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsGeometry</span></code></a></p></td>
+<td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a geometry.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingAlgorithm.parameterAsGeometryCrs" title="qgis.core.QgsProcessingAlgorithm.parameterAsGeometryCrs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsGeometryCrs</span></code></a></p></td>
+<td><p>Returns the coordinate reference system associated with a geometry parameter value.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingAlgorithm.parameterAsInt" title="qgis.core.QgsProcessingAlgorithm.parameterAsInt"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsInt</span></code></a></p></td>
 <td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a static integer value.</p></td>
@@ -3333,6 +3342,53 @@ just the extent of the reprojected rectangle).</p>
 </dd></dl>
 
 <dl class="py method">
+<dt id="qgis.core.QgsProcessingAlgorithm.parameterAsGeometry">
+<code class="sig-name descname">parameterAsGeometry</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">parameters</span><span class="p">:</span> <span class="n">Dict<span class="p">[</span>str<span class="p">, </span>Any<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">context</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsProcessingContext.html#module-QgsProcessingContext" title="QgsProcessingContext">QgsProcessingContext</a></span></em>, <em class="sig-param"><span class="n">crs</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsCoordinateReferenceSystem.html#module-QgsCoordinateReferenceSystem" title="QgsCoordinateReferenceSystem">QgsCoordinateReferenceSystem</a></span> <span class="o">=</span> <span class="default_value">QgsCoordinateReferenceSystem()</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="QgsGeometry.html#module-QgsGeometry" title="QgsGeometry">QgsGeometry</a><a class="headerlink" href="#qgis.core.QgsProcessingAlgorithm.parameterAsGeometry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a geometry.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">crs</span></code> is set then the geometry will be automatically
+reprojected so that it is in the specified <code class="docutils literal notranslate"><span class="pre">crs</span></code>.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsProcessingAlgorithm.parameterAsGeometryCrs" title="qgis.core.QgsProcessingAlgorithm.parameterAsGeometryCrs"><code class="xref py py-func docutils literal notranslate"><span class="pre">parameterAsGeometryCrs()</span></code></a></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parameters</strong> (<em>Dict</em><em>[</em><em>str</em>) – </p></li>
+<li><p><strong>name</strong> (<em>str</em>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsProcessingContext.html#qgis.core.QgsProcessingContext" title="qgis.core.QgsProcessingContext"><em>QgsProcessingContext</em></a>) – </p></li>
+<li><p><strong>crs</strong> (<a class="reference internal" href="QgsCoordinateReferenceSystem.html#qgis.core.QgsCoordinateReferenceSystem" title="qgis.core.QgsCoordinateReferenceSystem"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsCoordinateReferenceSystem</span></code></a> = QgsCoordinateReferenceSystem()) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsGeometry.html#qgis.core.QgsGeometry" title="qgis.core.QgsGeometry">QgsGeometry</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qgis.core.QgsProcessingAlgorithm.parameterAsGeometryCrs">
+<code class="sig-name descname">parameterAsGeometryCrs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">parameters</span><span class="p">:</span> <span class="n">Dict<span class="p">[</span>str<span class="p">, </span>Any<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">context</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsProcessingContext.html#module-QgsProcessingContext" title="QgsProcessingContext">QgsProcessingContext</a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="QgsCoordinateReferenceSystem.html#module-QgsCoordinateReferenceSystem" title="QgsCoordinateReferenceSystem">QgsCoordinateReferenceSystem</a><a class="headerlink" href="#qgis.core.QgsProcessingAlgorithm.parameterAsGeometryCrs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the coordinate reference system associated with a geometry parameter value.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsProcessingAlgorithm.parameterAsGeometry" title="qgis.core.QgsProcessingAlgorithm.parameterAsGeometry"><code class="xref py py-func docutils literal notranslate"><span class="pre">parameterAsGeometry()</span></code></a></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parameters</strong> (<em>Dict</em><em>[</em><em>str</em>) – </p></li>
+<li><p><strong>name</strong> (<em>str</em>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsProcessingContext.html#qgis.core.QgsProcessingContext" title="qgis.core.QgsProcessingContext"><em>QgsProcessingContext</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsCoordinateReferenceSystem.html#qgis.core.QgsCoordinateReferenceSystem" title="qgis.core.QgsCoordinateReferenceSystem">QgsCoordinateReferenceSystem</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt id="qgis.core.QgsProcessingAlgorithm.parameterAsInt">
 <code class="sig-name descname">parameterAsInt</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">parameters</span><span class="p">:</span> <span class="n">Dict<span class="p">[</span>str<span class="p">, </span>Any<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">context</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsProcessingContext.html#module-QgsProcessingContext" title="QgsProcessingContext">QgsProcessingContext</a></span></em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#qgis.core.QgsProcessingAlgorithm.parameterAsInt" title="Permalink to this definition">¶</a></dt>
 <dd><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a static integer value.</p>
@@ -4243,7 +4299,7 @@ Returns <code class="docutils literal notranslate"><span class="pre">True</span>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 03:29 Sep 15, 2020.
+        Last updated on 03:57 Sep 15, 2020.
       </span>
 
     </p>

@@ -729,6 +729,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingParameterFile.html">Class: QgsProcessingParameterFile</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingParameterFileDestination.html">Class: QgsProcessingParameterFileDestination</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingParameterFolderDestination.html">Class: QgsProcessingParameterFolderDestination</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsProcessingParameterGeometry.html">Class: QgsProcessingParameterGeometry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingParameterLayout.html">Class: QgsProcessingParameterLayout</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingParameterLayoutItem.html">Class: QgsProcessingParameterLayoutItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingParameterLimitedDataTypes.html">Class: QgsProcessingParameterLimitedDataTypes</a></li>
@@ -833,6 +834,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsReadWriteLocker.html">Class: QgsReadWriteLocker</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsRecentColorScheme.html">Class: QgsRecentColorScheme</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsRectangle.html">Class: QgsRectangle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsReferencedGeometry.html">Class: QgsReferencedGeometry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsReferencedGeometryBase.html">Class: QgsReferencedGeometryBase</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsReferencedPointXY.html">Class: QgsReferencedPointXY</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsReferencedRectangle.html">Class: QgsReferencedRectangle</a></li>
@@ -1418,6 +1420,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsMaskMarkerSymbolLayerWidget.html">Class: QgsMaskMarkerSymbolLayerWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsMenuHeader.html">Class: QgsMenuHeader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsMenuHeaderWidgetAction.html">Class: QgsMenuHeaderWidgetAction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui/QgsMeshLayerProperties.html">Class: QgsMeshLayerProperties</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsMessageBar.html">Class: QgsMessageBar</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsMessageBarItem.html">Class: QgsMessageBarItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsMessageLogViewer.html">Class: QgsMessageLogViewer</a></li>
@@ -1889,39 +1892,46 @@ each defines a rendering rule.</p>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileBasicRenderer.setStyle" title="qgis.core.QgsVectorTileBasicRenderer.setStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setStyle</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileBasicRenderer.requiredLayers" title="qgis.core.QgsVectorTileBasicRenderer.requiredLayers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">requiredLayers</span></code></a></p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">param context</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileBasicRenderer.setStyle" title="qgis.core.QgsVectorTileBasicRenderer.setStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setStyle</span></code></a></p></td>
 <td><p>Updates style definition at the paricular index of the list (the index must be in interval [0,N-1] otherwise this function does nothing)</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileBasicRenderer.setStyles" title="qgis.core.QgsVectorTileBasicRenderer.setStyles"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setStyles</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileBasicRenderer.setStyles" title="qgis.core.QgsVectorTileBasicRenderer.setStyles"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setStyles</span></code></a></p></td>
 <td><p>Sets list of styles of the renderer</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileBasicRenderer.simpleStyle" title="qgis.core.QgsVectorTileBasicRenderer.simpleStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">simpleStyle</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileBasicRenderer.simpleStyle" title="qgis.core.QgsVectorTileBasicRenderer.simpleStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">simpleStyle</span></code></a></p></td>
 <td><p>Returns a list of styles to render all layers with the given fill/stroke colors, stroke widths and marker sizes</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileBasicRenderer.simpleStyleWithRandomColors" title="qgis.core.QgsVectorTileBasicRenderer.simpleStyleWithRandomColors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">simpleStyleWithRandomColors</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileBasicRenderer.simpleStyleWithRandomColors" title="qgis.core.QgsVectorTileBasicRenderer.simpleStyleWithRandomColors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">simpleStyleWithRandomColors</span></code></a></p></td>
 <td><p>Returns a list of styles to render all layers, using random colors</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileBasicRenderer.startRender" title="qgis.core.QgsVectorTileBasicRenderer.startRender"><code class="xref py py-obj docutils literal notranslate"><span class="pre">startRender</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileBasicRenderer.startRender" title="qgis.core.QgsVectorTileBasicRenderer.startRender"><code class="xref py py-obj docutils literal notranslate"><span class="pre">startRender</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param context</dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileBasicRenderer.stopRender" title="qgis.core.QgsVectorTileBasicRenderer.stopRender"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stopRender</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileBasicRenderer.stopRender" title="qgis.core.QgsVectorTileBasicRenderer.stopRender"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stopRender</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param context</dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileBasicRenderer.style" title="qgis.core.QgsVectorTileBasicRenderer.style"><code class="xref py py-obj docutils literal notranslate"><span class="pre">style</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileBasicRenderer.style" title="qgis.core.QgsVectorTileBasicRenderer.style"><code class="xref py py-obj docutils literal notranslate"><span class="pre">style</span></code></a></p></td>
 <td><p>Returns style definition at the particular index</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileBasicRenderer.styles" title="qgis.core.QgsVectorTileBasicRenderer.styles"><code class="xref py py-obj docutils literal notranslate"><span class="pre">styles</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileBasicRenderer.styles" title="qgis.core.QgsVectorTileBasicRenderer.styles"><code class="xref py py-obj docutils literal notranslate"><span class="pre">styles</span></code></a></p></td>
 <td><p>Returns list of styles of the renderer</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileBasicRenderer.type" title="qgis.core.QgsVectorTileBasicRenderer.type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileBasicRenderer.type" title="qgis.core.QgsVectorTileBasicRenderer.type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">rtype</dt>
 <dd class="field-odd"><p>str</p>
@@ -1929,7 +1939,7 @@ each defines a rendering rule.</p>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileBasicRenderer.writeXml" title="qgis.core.QgsVectorTileBasicRenderer.writeXml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeXml</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileBasicRenderer.writeXml" title="qgis.core.QgsVectorTileBasicRenderer.writeXml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeXml</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param elem</dt>
 <dd class="field-odd"><p></p></dd>
@@ -1987,6 +1997,22 @@ each defines a rendering rule.</p>
 <li><p><strong>tile</strong> (<a class="reference internal" href="QgsVectorTileRendererData.html#qgis.core.QgsVectorTileRendererData" title="qgis.core.QgsVectorTileRendererData"><em>QgsVectorTileRendererData</em></a>) – </p></li>
 <li><p><strong>context</strong> (<a class="reference internal" href="QgsRenderContext.html#qgis.core.QgsRenderContext" title="qgis.core.QgsRenderContext"><em>QgsRenderContext</em></a>) – </p></li>
 </ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qgis.core.QgsVectorTileBasicRenderer.requiredLayers">
+<code class="sig-name descname">requiredLayers</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">context</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsRenderContext.html#module-QgsRenderContext" title="QgsRenderContext">QgsRenderContext</a></span></em>, <em class="sig-param"><span class="n">tileZoom</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; Set<span class="p">[</span>str<span class="p">]</span><a class="headerlink" href="#qgis.core.QgsVectorTileBasicRenderer.requiredLayers" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsRenderContext.html#qgis.core.QgsRenderContext" title="qgis.core.QgsRenderContext"><em>QgsRenderContext</em></a>) – </p></li>
+<li><p><strong>tileZoom</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Set[str]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2138,7 +2164,7 @@ each defines a rendering rule.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 03:29 Sep 15, 2020.
+        Last updated on 03:57 Sep 15, 2020.
       </span>
 
     </p>
