@@ -3646,6 +3646,29 @@ editing.</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>p</strong> – position of the vertex</p>
 </dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>0 in case of success</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Calls to <a class="reference internal" href="#qgis.core.QgsVectorLayer.addTopologicalPoints" title="qgis.core.QgsVectorLayer.addTopologicalPoints"><code class="xref py py-func docutils literal notranslate"><span class="pre">addTopologicalPoints()</span></code></a> are only valid for layers in which edits have been enabled
+by a call to <a class="reference internal" href="#qgis.core.QgsVectorLayer.startEditing" title="qgis.core.QgsVectorLayer.startEditing"><code class="xref py py-func docutils literal notranslate"><span class="pre">startEditing()</span></code></a>. Changes made to features using this method are not committed
+to the underlying data provider until a <a class="reference internal" href="#qgis.core.QgsVectorLayer.commitChanges" title="qgis.core.QgsVectorLayer.commitChanges"><code class="xref py py-func docutils literal notranslate"><span class="pre">commitChanges()</span></code></a> call is made. Any uncommitted
+changes can be discarded by calling <a class="reference internal" href="#qgis.core.QgsVectorLayer.rollBack" title="qgis.core.QgsVectorLayer.rollBack"><code class="xref py py-func docutils literal notranslate"><span class="pre">rollBack()</span></code></a>.</p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.10.</span></p>
+</div>
+<p>addTopologicalPoints(self, ps: Iterable[QgsPoint]) -&gt; int
+Adds a vertex to segments which intersect any of the points <code class="docutils literal notranslate"><span class="pre">p</span></code> but don’t
+already have a vertex there. If a feature already has a vertex at position <code class="docutils literal notranslate"><span class="pre">p</span></code>,
+no additional vertex is inserted. This method is useful for topological
+editing.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>ps</strong> – point sequence of the vertices</p>
+</dd>
 <dt class="field-even">Return type</dt>
 <dd class="field-even"><p>int</p>
 </dd>
@@ -3661,7 +3684,7 @@ to the underlying data provider until a <a class="reference internal" href="#qgi
 changes can be discarded by calling <a class="reference internal" href="#qgis.core.QgsVectorLayer.rollBack" title="qgis.core.QgsVectorLayer.rollBack"><code class="xref py py-func docutils literal notranslate"><span class="pre">rollBack()</span></code></a>.</p>
 </div>
 <div class="versionadded">
-<p><span class="versionmodified added">New in version 3.10.</span></p>
+<p><span class="versionmodified added">New in version 3.16.</span></p>
 </div>
 </dd></dl>
 
@@ -4977,6 +5000,10 @@ for the field at <cite>index</cite>.</p>
 <dt id="qgis.core.QgsVectorLayer.excludeAttributesWfs">
 <code class="sig-name descname">excludeAttributesWfs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; Set<span class="p">[</span>str<span class="p">]</span><a class="headerlink" href="#qgis.core.QgsVectorLayer.excludeAttributesWfs" title="Permalink to this definition">¶</a></dt>
 <dd><p>A set of attributes that are not advertised in WFS requests with QGIS server.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version QGIS: </span>3.16
+use fields().configurationFlags() instead</p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>Set[str]</p>
@@ -4988,6 +5015,10 @@ for the field at <cite>index</cite>.</p>
 <dt id="qgis.core.QgsVectorLayer.excludeAttributesWms">
 <code class="sig-name descname">excludeAttributesWms</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; Set<span class="p">[</span>str<span class="p">]</span><a class="headerlink" href="#qgis.core.QgsVectorLayer.excludeAttributesWms" title="Permalink to this definition">¶</a></dt>
 <dd><p>A set of attributes that are not advertised in WMS requests with QGIS server.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version QGIS: </span>3.16
+use fields().configurationFlags() instead</p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>Set[str]</p>
@@ -6719,6 +6750,10 @@ for this layer</p>
 <dt id="qgis.core.QgsVectorLayer.setExcludeAttributesWfs">
 <code class="sig-name descname">setExcludeAttributesWfs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">att</span><span class="p">:</span> <span class="n">Iterable<span class="p">[</span>str<span class="p">]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsVectorLayer.setExcludeAttributesWfs" title="Permalink to this definition">¶</a></dt>
 <dd><p>A set of attributes that are not advertised in WFS requests with QGIS server.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version QGIS: </span>3.16
+use setFieldConfigurationFlag instead</p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>att</strong> (<em>Iterable</em><em>[</em><em>str</em><em>]</em>) – </p>
@@ -6730,6 +6765,10 @@ for this layer</p>
 <dt id="qgis.core.QgsVectorLayer.setExcludeAttributesWms">
 <code class="sig-name descname">setExcludeAttributesWms</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">att</span><span class="p">:</span> <span class="n">Iterable<span class="p">[</span>str<span class="p">]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsVectorLayer.setExcludeAttributesWms" title="Permalink to this definition">¶</a></dt>
 <dd><p>A set of attributes that are not advertised in WMS requests with QGIS server.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version QGIS: </span>3.16
+use setFieldConfigurationFlag instead</p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>att</strong> (<em>Iterable</em><em>[</em><em>str</em><em>]</em>) – </p>
@@ -7137,21 +7176,22 @@ by a call to <a class="reference internal" href="#qgis.core.QgsVectorLayer.start
 to the underlying data provider until a <a class="reference internal" href="#qgis.core.QgsVectorLayer.commitChanges" title="qgis.core.QgsVectorLayer.commitChanges"><code class="xref py py-func docutils literal notranslate"><span class="pre">commitChanges()</span></code></a> call is made. Any uncommitted
 changes can be discarded by calling <a class="reference internal" href="#qgis.core.QgsVectorLayer.rollBack" title="qgis.core.QgsVectorLayer.rollBack"><code class="xref py py-func docutils literal notranslate"><span class="pre">rollBack()</span></code></a>.</p>
 </div>
-<p>splitFeatures(self, curve: <a class="reference internal" href="QgsCurve.html#qgis.core.QgsCurve" title="qgis.core.QgsCurve"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsCurve</span></code></a>, preserveCircular: bool = False, topologicalEditing: bool = False) -&gt; QgsGeometry.OperationResult
+<p>splitFeatures(self, curve: <a class="reference internal" href="QgsCurve.html#qgis.core.QgsCurve" title="qgis.core.QgsCurve"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsCurve</span></code></a>, preserveCircular: bool = False, topologicalEditing: bool = False) -&gt; Tuple[QgsGeometry.OperationResult, List[QgsPoint]]
 Splits features cut by the given curve</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>curve</strong> – curve that splits the layer features</p></li>
-<li><p><strong>preserveCircular</strong> – whether if circular strings are preserved after splitting</p></li>
-<li><p><strong>topologicalEditing</strong> – <code class="docutils literal notranslate"><span class="pre">True</span></code> if topological editing is enabled</p></li>
-</ul>
+<dd class="field-odd"><p><strong>curve</strong> – curve that splits the layer features</p>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference internal" href="QgsGeometry.html#qgis.core.QgsGeometry.OperationResult" title="qgis.core.QgsGeometry.OperationResult">QgsGeometry.OperationResult</a></p>
+</dl>
+<p>param[out] topologyTestPoints topological points to be tested against other layers
+:param preserveCircular: whether circular strings are preserved after splitting
+:param topologicalEditing: <code class="docutils literal notranslate"><span class="pre">True</span></code> if topological editing is enabled</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsGeometry.html#qgis.core.QgsGeometry.OperationResult" title="qgis.core.QgsGeometry.OperationResult">QgsGeometry.OperationResult</a></p>
 </dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><p>QgsGeometry.OperationResult</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p>QgsGeometry.OperationResult</p>
 <ul class="simple">
 <li><p>Success</p></li>
 <li><p>NothingHappened</p></li>
@@ -7723,7 +7763,7 @@ to this signal and update the element accordingly.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 03:19 Sep 17, 2020.
+        Last updated on 03:58 Sep 17, 2020.
       </span>
 
     </p>
