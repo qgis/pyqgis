@@ -1131,6 +1131,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsAggregateMappingWidget.html">Class: QgsAggregateMappingWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAggregateToolButton.html">Class: QgsAggregateToolButton</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAlignmentComboBox.html">Class: QgsAlignmentComboBox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsApplicationExitBlockerInterface.html">Class: QgsApplicationExitBlockerInterface</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsArrowSymbolLayerWidget.html">Class: QgsArrowSymbolLayerWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAttributeDialog.html">Class: QgsAttributeDialog</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAttributeEditorContext.html">Class: QgsAttributeEditorContext</a></li>
@@ -1186,6 +1187,8 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsCheckboxSearchWidgetWrapper.html">Class: QgsCheckboxSearchWidgetWrapper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsCodeEditor.html">Class: QgsCodeEditor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsCodeEditorCSS.html">Class: QgsCodeEditorCSS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsCodeEditorColorScheme.html">Class: QgsCodeEditorColorScheme</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsCodeEditorColorSchemeRegistry.html">Class: QgsCodeEditorColorSchemeRegistry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsCodeEditorExpression.html">Class: QgsCodeEditorExpression</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsCodeEditorHTML.html">Class: QgsCodeEditorHTML</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsCodeEditorJavascript.html">Class: QgsCodeEditorJavascript</a></li>
@@ -2669,125 +2672,131 @@ could provide their own implementation to be able to use plugins.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.receivers" title="qgis.gui.QgisInterface.receivers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">receivers</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.registerCustomDropHandler" title="qgis.gui.QgisInterface.registerCustomDropHandler"><code class="xref py py-obj docutils literal notranslate"><span class="pre">registerCustomDropHandler</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.registerApplicationExitBlocker" title="qgis.gui.QgisInterface.registerApplicationExitBlocker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">registerApplicationExitBlocker</span></code></a></p></td>
+<td><p>Register a new application exit blocker, which can be used to prevent the QGIS application from exiting while a plugin or script has unsaved changes.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.registerCustomDropHandler" title="qgis.gui.QgisInterface.registerCustomDropHandler"><code class="xref py py-obj docutils literal notranslate"><span class="pre">registerCustomDropHandler</span></code></a></p></td>
 <td><p>Register a new custom drop <code class="docutils literal notranslate"><span class="pre">handler</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.registerCustomLayoutDropHandler" title="qgis.gui.QgisInterface.registerCustomLayoutDropHandler"><code class="xref py py-obj docutils literal notranslate"><span class="pre">registerCustomLayoutDropHandler</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.registerCustomLayoutDropHandler" title="qgis.gui.QgisInterface.registerCustomLayoutDropHandler"><code class="xref py py-obj docutils literal notranslate"><span class="pre">registerCustomLayoutDropHandler</span></code></a></p></td>
 <td><p>Register a new custom drop <code class="docutils literal notranslate"><span class="pre">handler</span></code> for layout windows.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.registerCustomProjectOpenHandler" title="qgis.gui.QgisInterface.registerCustomProjectOpenHandler"><code class="xref py py-obj docutils literal notranslate"><span class="pre">registerCustomProjectOpenHandler</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.registerCustomProjectOpenHandler" title="qgis.gui.QgisInterface.registerCustomProjectOpenHandler"><code class="xref py py-obj docutils literal notranslate"><span class="pre">registerCustomProjectOpenHandler</span></code></a></p></td>
 <td><p>Register a new custom project open <code class="docutils literal notranslate"><span class="pre">handler</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.registerDevToolWidgetFactory" title="qgis.gui.QgisInterface.registerDevToolWidgetFactory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">registerDevToolWidgetFactory</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.registerDevToolWidgetFactory" title="qgis.gui.QgisInterface.registerDevToolWidgetFactory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">registerDevToolWidgetFactory</span></code></a></p></td>
 <td><p>Register a new tool in the development/debugging tools dock.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.registerLocatorFilter" title="qgis.gui.QgisInterface.registerLocatorFilter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">registerLocatorFilter</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.registerLocatorFilter" title="qgis.gui.QgisInterface.registerLocatorFilter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">registerLocatorFilter</span></code></a></p></td>
 <td><p>Registers a locator <code class="docutils literal notranslate"><span class="pre">filter</span></code> for the app’s locator bar.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.registerMainWindowAction" title="qgis.gui.QgisInterface.registerMainWindowAction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">registerMainWindowAction</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.registerMainWindowAction" title="qgis.gui.QgisInterface.registerMainWindowAction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">registerMainWindowAction</span></code></a></p></td>
 <td><p>Register action to the shortcuts manager so its shortcut can be changed in GUI</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.registerMapLayerConfigWidgetFactory" title="qgis.gui.QgisInterface.registerMapLayerConfigWidgetFactory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">registerMapLayerConfigWidgetFactory</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.registerMapLayerConfigWidgetFactory" title="qgis.gui.QgisInterface.registerMapLayerConfigWidgetFactory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">registerMapLayerConfigWidgetFactory</span></code></a></p></td>
 <td><p>Register a new tab in the map layer properties dialog.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.registerOptionsWidgetFactory" title="qgis.gui.QgisInterface.registerOptionsWidgetFactory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">registerOptionsWidgetFactory</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.registerOptionsWidgetFactory" title="qgis.gui.QgisInterface.registerOptionsWidgetFactory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">registerOptionsWidgetFactory</span></code></a></p></td>
 <td><p>Register a new tab in the options dialog.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.registerProjectPropertiesWidgetFactory" title="qgis.gui.QgisInterface.registerProjectPropertiesWidgetFactory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">registerProjectPropertiesWidgetFactory</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.registerProjectPropertiesWidgetFactory" title="qgis.gui.QgisInterface.registerProjectPropertiesWidgetFactory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">registerProjectPropertiesWidgetFactory</span></code></a></p></td>
 <td><p>Register a new tab in the project properties dialog.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.reloadConnections" title="qgis.gui.QgisInterface.reloadConnections"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reloadConnections</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.reloadConnections" title="qgis.gui.QgisInterface.reloadConnections"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reloadConnections</span></code></a></p></td>
 <td><p>Triggered when connections have changed.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.removeAddLayerAction" title="qgis.gui.QgisInterface.removeAddLayerAction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeAddLayerAction</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.removeAddLayerAction" title="qgis.gui.QgisInterface.removeAddLayerAction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeAddLayerAction</span></code></a></p></td>
 <td><p>Remove “add layer” action from layer menu</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.removeCustomActionForLayerType" title="qgis.gui.QgisInterface.removeCustomActionForLayerType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeCustomActionForLayerType</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.removeCustomActionForLayerType" title="qgis.gui.QgisInterface.removeCustomActionForLayerType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeCustomActionForLayerType</span></code></a></p></td>
 <td><p>Remove action for layers in the layer tree previously added with <a class="reference internal" href="#qgis.gui.QgisInterface.addCustomActionForLayerType" title="qgis.gui.QgisInterface.addCustomActionForLayerType"><code class="xref py py-func docutils literal notranslate"><span class="pre">addCustomActionForLayerType()</span></code></a></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.removeDatabaseToolBarIcon" title="qgis.gui.QgisInterface.removeDatabaseToolBarIcon"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeDatabaseToolBarIcon</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.removeDatabaseToolBarIcon" title="qgis.gui.QgisInterface.removeDatabaseToolBarIcon"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeDatabaseToolBarIcon</span></code></a></p></td>
 <td><p>Remove an action (icon) from the Database toolbar</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.removeDockWidget" title="qgis.gui.QgisInterface.removeDockWidget"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeDockWidget</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.removeDockWidget" title="qgis.gui.QgisInterface.removeDockWidget"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeDockWidget</span></code></a></p></td>
 <td><p>Removes the specified <code class="docutils literal notranslate"><span class="pre">dock</span></code> widget from main window (without deleting it).</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.removePluginDatabaseMenu" title="qgis.gui.QgisInterface.removePluginDatabaseMenu"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removePluginDatabaseMenu</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.removePluginDatabaseMenu" title="qgis.gui.QgisInterface.removePluginDatabaseMenu"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removePluginDatabaseMenu</span></code></a></p></td>
 <td><p>Remove action from the Database menu</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.removePluginMenu" title="qgis.gui.QgisInterface.removePluginMenu"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removePluginMenu</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.removePluginMenu" title="qgis.gui.QgisInterface.removePluginMenu"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removePluginMenu</span></code></a></p></td>
 <td><p>Remove action from the plugins menu</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.removePluginRasterMenu" title="qgis.gui.QgisInterface.removePluginRasterMenu"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removePluginRasterMenu</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.removePluginRasterMenu" title="qgis.gui.QgisInterface.removePluginRasterMenu"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removePluginRasterMenu</span></code></a></p></td>
 <td><p>Remove action from the Raster menu</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.removePluginVectorMenu" title="qgis.gui.QgisInterface.removePluginVectorMenu"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removePluginVectorMenu</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.removePluginVectorMenu" title="qgis.gui.QgisInterface.removePluginVectorMenu"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removePluginVectorMenu</span></code></a></p></td>
 <td><p>Remove action from the Vector menu</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.removePluginWebMenu" title="qgis.gui.QgisInterface.removePluginWebMenu"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removePluginWebMenu</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.removePluginWebMenu" title="qgis.gui.QgisInterface.removePluginWebMenu"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removePluginWebMenu</span></code></a></p></td>
 <td><p>Remove action from the Web menu</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.removeRasterToolBarIcon" title="qgis.gui.QgisInterface.removeRasterToolBarIcon"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeRasterToolBarIcon</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.removeRasterToolBarIcon" title="qgis.gui.QgisInterface.removeRasterToolBarIcon"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeRasterToolBarIcon</span></code></a></p></td>
 <td><p>Remove an action (icon) from the Raster toolbar</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.removeToolBarIcon" title="qgis.gui.QgisInterface.removeToolBarIcon"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeToolBarIcon</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.removeToolBarIcon" title="qgis.gui.QgisInterface.removeToolBarIcon"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeToolBarIcon</span></code></a></p></td>
 <td><p>Remove an action (icon) from the plugin toolbar</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.removeVectorToolBarIcon" title="qgis.gui.QgisInterface.removeVectorToolBarIcon"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeVectorToolBarIcon</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.removeVectorToolBarIcon" title="qgis.gui.QgisInterface.removeVectorToolBarIcon"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeVectorToolBarIcon</span></code></a></p></td>
 <td><p>Remove an action (icon) from the Vector toolbar</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.removeWebToolBarIcon" title="qgis.gui.QgisInterface.removeWebToolBarIcon"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeWebToolBarIcon</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.removeWebToolBarIcon" title="qgis.gui.QgisInterface.removeWebToolBarIcon"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeWebToolBarIcon</span></code></a></p></td>
 <td><p>Remove an action (icon) from the Web toolbar</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.removeWindow" title="qgis.gui.QgisInterface.removeWindow"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeWindow</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.removeWindow" title="qgis.gui.QgisInterface.removeWindow"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeWindow</span></code></a></p></td>
 <td><p>Remove window from Window menu.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.saveStyleSheetOptions" title="qgis.gui.QgisInterface.saveStyleSheetOptions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">saveStyleSheetOptions</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.saveStyleSheetOptions" title="qgis.gui.QgisInterface.saveStyleSheetOptions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">saveStyleSheetOptions</span></code></a></p></td>
 <td><p>Save changed default option keys/values to user settings</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.selectionToolBar" title="qgis.gui.QgisInterface.selectionToolBar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">selectionToolBar</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.selectionToolBar" title="qgis.gui.QgisInterface.selectionToolBar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">selectionToolBar</span></code></a></p></td>
 <td><p>Returns a reference to the main window “Selection” toolbar.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.sender" title="qgis.gui.QgisInterface.sender"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sender</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.sender" title="qgis.gui.QgisInterface.sender"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sender</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.senderSignalIndex" title="qgis.gui.QgisInterface.senderSignalIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">senderSignalIndex</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.senderSignalIndex" title="qgis.gui.QgisInterface.senderSignalIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">senderSignalIndex</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.setActiveLayer" title="qgis.gui.QgisInterface.setActiveLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setActiveLayer</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.setActiveLayer" title="qgis.gui.QgisInterface.setActiveLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setActiveLayer</span></code></a></p></td>
 <td><p>Set the active layer (layer gets selected in the legend) returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the layer exists, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.setGpsPanelConnection" title="qgis.gui.QgisInterface.setGpsPanelConnection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setGpsPanelConnection</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.setGpsPanelConnection" title="qgis.gui.QgisInterface.setGpsPanelConnection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setGpsPanelConnection</span></code></a></p></td>
 <td><p>Sets a GPS <code class="docutils literal notranslate"><span class="pre">connection</span></code> to use within the GPS Panel widget.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.settingsMenu" title="qgis.gui.QgisInterface.settingsMenu"><code class="xref py py-obj docutils literal notranslate"><span class="pre">settingsMenu</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.settingsMenu" title="qgis.gui.QgisInterface.settingsMenu"><code class="xref py py-obj docutils literal notranslate"><span class="pre">settingsMenu</span></code></a></p></td>
 <td><p>Returns a reference to the main window “Settings” menu.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.shapeDigitizeToolBar" title="qgis.gui.QgisInterface.shapeDigitizeToolBar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shapeDigitizeToolBar</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.shapeDigitizeToolBar" title="qgis.gui.QgisInterface.shapeDigitizeToolBar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shapeDigitizeToolBar</span></code></a></p></td>
 <td><p>Returns a reference to the main window “Shape Digitizing” toolbar.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.showAttributeTable" title="qgis.gui.QgisInterface.showAttributeTable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">showAttributeTable</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.showAttributeTable" title="qgis.gui.QgisInterface.showAttributeTable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">showAttributeTable</span></code></a></p></td>
 <td><p>Open attribute table dialog</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.showLayerProperties" title="qgis.gui.QgisInterface.showLayerProperties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">showLayerProperties</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.showLayerProperties" title="qgis.gui.QgisInterface.showLayerProperties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">showLayerProperties</span></code></a></p></td>
 <td><p>Open layer properties dialog</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.showLayoutManager" title="qgis.gui.QgisInterface.showLayoutManager"><code class="xref py py-obj docutils literal notranslate"><span class="pre">showLayoutManager</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.showLayoutManager" title="qgis.gui.QgisInterface.showLayoutManager"><code class="xref py py-obj docutils literal notranslate"><span class="pre">showLayoutManager</span></code></a></p></td>
 <td><p>Opens the layout manager dialog.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.showOptionsDialog" title="qgis.gui.QgisInterface.showOptionsDialog"><code class="xref py py-obj docutils literal notranslate"><span class="pre">showOptionsDialog</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.showOptionsDialog" title="qgis.gui.QgisInterface.showOptionsDialog"><code class="xref py py-obj docutils literal notranslate"><span class="pre">showOptionsDialog</span></code></a></p></td>
 <td><p>Opens the options dialog.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.showProjectPropertiesDialog" title="qgis.gui.QgisInterface.showProjectPropertiesDialog"><code class="xref py py-obj docutils literal notranslate"><span class="pre">showProjectPropertiesDialog</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.showProjectPropertiesDialog" title="qgis.gui.QgisInterface.showProjectPropertiesDialog"><code class="xref py py-obj docutils literal notranslate"><span class="pre">showProjectPropertiesDialog</span></code></a></p></td>
 <td><p>Opens the project properties dialog.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.statusBarIface" title="qgis.gui.QgisInterface.statusBarIface"><code class="xref py py-obj docutils literal notranslate"><span class="pre">statusBarIface</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.statusBarIface" title="qgis.gui.QgisInterface.statusBarIface"><code class="xref py py-obj docutils literal notranslate"><span class="pre">statusBarIface</span></code></a></p></td>
 <td><p>Returns a pointer to the app’s status bar interface.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.takeAppScreenShots" title="qgis.gui.QgisInterface.takeAppScreenShots"><code class="xref py py-obj docutils literal notranslate"><span class="pre">takeAppScreenShots</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.takeAppScreenShots" title="qgis.gui.QgisInterface.takeAppScreenShots"><code class="xref py py-obj docutils literal notranslate"><span class="pre">takeAppScreenShots</span></code></a></p></td>
 <td><p>Take screenshots for user documentation</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.timerEvent" title="qgis.gui.QgisInterface.timerEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">timerEvent</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.timerEvent" title="qgis.gui.QgisInterface.timerEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">timerEvent</span></code></a></p></td>
 <td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.unregisterApplicationExitBlocker" title="qgis.gui.QgisInterface.unregisterApplicationExitBlocker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">unregisterApplicationExitBlocker</span></code></a></p></td>
+<td><p>Unregister a previously registered application exit <code class="docutils literal notranslate"><span class="pre">blocker</span></code>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgisInterface.unregisterCustomDropHandler" title="qgis.gui.QgisInterface.unregisterCustomDropHandler"><code class="xref py py-obj docutils literal notranslate"><span class="pre">unregisterCustomDropHandler</span></code></a></p></td>
 <td><p>Unregister a previously registered custom drop <code class="docutils literal notranslate"><span class="pre">handler</span></code>.</p></td>
@@ -5457,6 +5466,30 @@ knows to then check the project properties for any relevant state. [signal]</p>
 <dd></dd></dl>
 
 <dl class="py method">
+<dt id="qgis.gui.QgisInterface.registerApplicationExitBlocker">
+<code class="sig-name descname">registerApplicationExitBlocker</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">blocker</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsApplicationExitBlockerInterface.html#module-QgsApplicationExitBlockerInterface" title="QgsApplicationExitBlockerInterface">QgsApplicationExitBlockerInterface</a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgisInterface.registerApplicationExitBlocker" title="Permalink to this definition">¶</a></dt>
+<dd><p>Register a new application exit blocker, which can be used to prevent the QGIS application
+from exiting while a plugin or script has unsaved changes.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Ownership of <code class="docutils literal notranslate"><span class="pre">blocker</span></code> is not transferred, and the blocker must
+be unregistered when plugin is unloaded.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.gui.QgisInterface.unregisterApplicationExitBlocker" title="qgis.gui.QgisInterface.unregisterApplicationExitBlocker"><code class="xref py py-func docutils literal notranslate"><span class="pre">unregisterApplicationExitBlocker()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.16.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>blocker</strong> (<a class="reference internal" href="QgsApplicationExitBlockerInterface.html#qgis.gui.QgsApplicationExitBlockerInterface" title="qgis.gui.QgsApplicationExitBlockerInterface"><em>QgsApplicationExitBlockerInterface</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt id="qgis.gui.QgisInterface.registerCustomDropHandler">
 <code class="sig-name descname">registerCustomDropHandler</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">handler</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsCustomDropHandler.html#module-QgsCustomDropHandler" title="QgsCustomDropHandler">QgsCustomDropHandler</a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgisInterface.registerCustomDropHandler" title="Permalink to this definition">¶</a></dt>
 <dd><p>Register a new custom drop <code class="docutils literal notranslate"><span class="pre">handler</span></code>.</p>
@@ -6072,6 +6105,24 @@ status bar (do not use the native Qt <code class="xref py py-func docutils liter
 <dd></dd></dl>
 
 <dl class="py method">
+<dt id="qgis.gui.QgisInterface.unregisterApplicationExitBlocker">
+<code class="sig-name descname">unregisterApplicationExitBlocker</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">blocker</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsApplicationExitBlockerInterface.html#module-QgsApplicationExitBlockerInterface" title="QgsApplicationExitBlockerInterface">QgsApplicationExitBlockerInterface</a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgisInterface.unregisterApplicationExitBlocker" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unregister a previously registered application exit <code class="docutils literal notranslate"><span class="pre">blocker</span></code>.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.gui.QgisInterface.registerApplicationExitBlocker" title="qgis.gui.QgisInterface.registerApplicationExitBlocker"><code class="xref py py-func docutils literal notranslate"><span class="pre">registerApplicationExitBlocker()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.16.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>blocker</strong> (<a class="reference internal" href="QgsApplicationExitBlockerInterface.html#qgis.gui.QgsApplicationExitBlockerInterface" title="qgis.gui.QgsApplicationExitBlockerInterface"><em>QgsApplicationExitBlockerInterface</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt id="qgis.gui.QgisInterface.unregisterCustomDropHandler">
 <code class="sig-name descname">unregisterCustomDropHandler</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">handler</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsCustomDropHandler.html#module-QgsCustomDropHandler" title="QgsCustomDropHandler">QgsCustomDropHandler</a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgisInterface.unregisterCustomDropHandler" title="Permalink to this definition">¶</a></dt>
 <dd><p>Unregister a previously registered custom drop <code class="docutils literal notranslate"><span class="pre">handler</span></code>.</p>
@@ -6357,7 +6408,7 @@ or stopEditing while giving the user the appropriate dialogs.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 03:11 Oct 07, 2020.
+        Last updated on 04:01 Oct 08, 2020.
       </span>
 
     </p>
