@@ -4073,13 +4073,15 @@ definition.</p>
 
 <dl class="py method">
 <dt id="qgis.core.QgsProcessingAlgorithm.run">
-<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">parameters</span><span class="p">:</span> <span class="n">Dict<span class="p">[</span>str<span class="p">, </span>Any<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">context</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsProcessingContext.html#module-QgsProcessingContext" title="QgsProcessingContext">QgsProcessingContext</a></span></em>, <em class="sig-param"><span class="n">feedback</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsProcessingFeedback.html#module-QgsProcessingFeedback" title="QgsProcessingFeedback">QgsProcessingFeedback</a></span></em>, <em class="sig-param"><span class="n">configuration</span><span class="p">:</span> <span class="n">Dict<span class="p">[</span>str<span class="p">, </span>Any<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">{}</span></em><span class="sig-paren">)</span> &#x2192; Tuple<span class="p">[</span>Dict<span class="p">[</span>str<span class="p">, </span>Any<span class="p">]</span><span class="p">, </span>bool<span class="p">]</span><a class="headerlink" href="#qgis.core.QgsProcessingAlgorithm.run" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">parameters</span><span class="p">:</span> <span class="n">Dict<span class="p">[</span>str<span class="p">, </span>Any<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">context</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsProcessingContext.html#module-QgsProcessingContext" title="QgsProcessingContext">QgsProcessingContext</a></span></em>, <em class="sig-param"><span class="n">feedback</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsProcessingFeedback.html#module-QgsProcessingFeedback" title="QgsProcessingFeedback">QgsProcessingFeedback</a></span></em>, <em class="sig-param"><span class="n">configuration</span><span class="p">:</span> <span class="n">Dict<span class="p">[</span>str<span class="p">, </span>Any<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">{}</span></em>, <em class="sig-param"><span class="n">catchExceptions</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em><span class="sig-paren">)</span> &#x2192; Tuple<span class="p">[</span>Dict<span class="p">[</span>str<span class="p">, </span>Any<span class="p">]</span><span class="p">, </span>bool<span class="p">]</span><a class="headerlink" href="#qgis.core.QgsProcessingAlgorithm.run" title="Permalink to this definition">¶</a></dt>
 <dd><p>Executes the algorithm using the specified <code class="docutils literal notranslate"><span class="pre">parameters</span></code>. This method internally
 creates a copy of the algorithm before running it, so it is safe to call
 on algorithms directly retrieved from <a class="reference internal" href="QgsProcessingRegistry.html#qgis.core.QgsProcessingRegistry" title="qgis.core.QgsProcessingRegistry"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingRegistry</span></code></a> and <a class="reference internal" href="QgsProcessingProvider.html#module-QgsProcessingProvider" title="QgsProcessingProvider"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingProvider</span></code></a>.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">context</span></code> argument specifies the context in which the algorithm is being run.</p>
 <p>Algorithm progress should be reported using the supplied <code class="docutils literal notranslate"><span class="pre">feedback</span></code> object.</p>
 <p>If specified, <code class="docutils literal notranslate"><span class="pre">ok</span></code> will be set to <code class="docutils literal notranslate"><span class="pre">True</span></code> if algorithm was successfully run.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">catchExceptions</span></code> is set to <code class="docutils literal notranslate"><span class="pre">False</span></code>, then <code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingExceptions</span></code> raised during
+the algorithm run will not be automatically caught and will be raised instead.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>Tuple[Dict[str, Any], bool]</p>
@@ -4101,6 +4103,7 @@ if you need to run algorithms from a background thread, or use the <a class="ref
 <li><p><strong>context</strong> (<a class="reference internal" href="QgsProcessingContext.html#qgis.core.QgsProcessingContext" title="qgis.core.QgsProcessingContext"><em>QgsProcessingContext</em></a>) – </p></li>
 <li><p><strong>feedback</strong> (<a class="reference internal" href="QgsProcessingFeedback.html#qgis.core.QgsProcessingFeedback" title="qgis.core.QgsProcessingFeedback"><em>QgsProcessingFeedback</em></a>) – </p></li>
 <li><p><strong>configuration</strong> (<em>Dict</em><em>[</em><em>str</em>) – </p></li>
+<li><p><strong>catchExceptions</strong> (<em>bool = True</em>) – </p></li>
 </ul>
 </dd>
 </dl>
@@ -4303,7 +4306,7 @@ Returns <code class="docutils literal notranslate"><span class="pre">True</span>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 03:27 Oct 09, 2020.
+        Last updated on 04:14 Oct 09, 2020.
       </span>
 
     </p>
