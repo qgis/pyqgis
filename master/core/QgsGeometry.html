@@ -3204,10 +3204,6 @@ a <code class="docutils literal notranslate"><span class="pre">rectangle</span><
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>point</strong> (<a class="reference internal" href="QgsPointXY.html#qgis.core.QgsPointXY" title="qgis.core.QgsPointXY"><em>QgsPointXY</em></a>) – Specifies the point for search</p></li>
-<li><p><strong>afterVertex</strong> – Receives index of the vertex after the closest segment. The vertex
-before the closest segment is always afterVertex - 1</p></li>
-<li><p><strong>leftOf</strong> – Out: Returns if the point lies on the left of left side of the geometry ( &lt; 0 means left, &gt; 0 means right, 0 indicates
-that the test was unsuccessful, e.g. for a point exactly on the line)</p></li>
 <li><p><strong>epsilon</strong> (<em>float = DEFAULT_SEGMENT_EPSILON</em>) – epsilon for segment snapping</p></li>
 </ul>
 </dd>
@@ -3218,6 +3214,8 @@ that the test was unsuccessful, e.g. for a point exactly on the line)</p></li>
 <dd class="field-odd"><p><ul class="simple">
 <li><p>The squared Cartesian distance is also returned in sqrDist, negative number on error</p></li>
 <li><p>minDistPoint: Receives the nearest point on the segment</p></li>
+<li><p>afterVertex: Receives index of the vertex after the closest segment. The vertex before the closest segment is always afterVertex - 1</p></li>
+<li><p>leftOf: Out: Returns if the point lies on the left of left side of the geometry ( &lt; 0 means left, &gt; 0 means right, 0 indicates that the test was unsuccessful, e.g. for a point exactly on the line)</p></li>
 </ul>
 </p>
 </dd>
@@ -3231,14 +3229,7 @@ that the test was unsuccessful, e.g. for a point exactly on the line)</p></li>
 and the indices of the vertices before and after the closest vertex.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>point</strong> (<a class="reference internal" href="QgsPointXY.html#qgis.core.QgsPointXY" title="qgis.core.QgsPointXY"><em>QgsPointXY</em></a>) – point to search for</p></li>
-<li><p><strong>beforeVertex</strong> – will be set to the vertex index of the previous vertex from the closest one. Will be set to -1 if
-not present.</p></li>
-<li><p><strong>afterVertex</strong> – will be set to the vertex index of the next vertex after the closest one. Will be set to -1 if
-not present.</p></li>
-<li><p><strong>sqrDist</strong> – will be set to the square distance between the closest vertex and the specified point</p></li>
-</ul>
+<dd class="field-odd"><p><strong>point</strong> (<a class="reference internal" href="QgsPointXY.html#qgis.core.QgsPointXY" title="qgis.core.QgsPointXY"><em>QgsPointXY</em></a>) – point to search for</p>
 </dd>
 <dt class="field-even">Return type</dt>
 <dd class="field-even"><p>Tuple[<a class="reference internal" href="QgsPointXY.html#qgis.core.QgsPointXY" title="qgis.core.QgsPointXY"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsPointXY</span></code></a>, int, int, int, float]</p>
@@ -3247,6 +3238,9 @@ not present.</p></li>
 <dd class="field-odd"><p><ul class="simple">
 <li><p>closest point in geometry. If not found (empty geometry), returns null point and sqrDist is negative.</p></li>
 <li><p>atVertex: will be set to the vertex index of the closest found vertex</p></li>
+<li><p>beforeVertex: will be set to the vertex index of the previous vertex from the closest one. Will be set to -1 if not present.</p></li>
+<li><p>afterVertex: will be set to the vertex index of the next vertex after the closest one. Will be set to -1 if not present.</p></li>
+<li><p>sqrDist: will be set to the square distance between the closest vertex and the specified point</p></li>
 </ul>
 </p>
 </dd>
@@ -4802,10 +4796,7 @@ MultiLineString geometry.</p>
 <dd><p>Returns the minimal enclosing circle for the geometry.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>radius</strong> – Radius of the minimal enclosing circle returned</p></li>
-<li><p><strong>segments</strong> (<em>int = 36</em>) – Number of segments used to segment geometry. <a class="reference internal" href="QgsEllipse.html#qgis.core.QgsEllipse.toPolygon" title="qgis.core.QgsEllipse.toPolygon"><code class="xref py py-func docutils literal notranslate"><span class="pre">QgsEllipse.toPolygon()</span></code></a></p></li>
-</ul>
+<dd class="field-odd"><p><strong>segments</strong> (<em>int = 36</em>) – Number of segments used to segment geometry. <a class="reference internal" href="QgsEllipse.html#qgis.core.QgsEllipse.toPolygon" title="qgis.core.QgsEllipse.toPolygon"><code class="xref py py-func docutils literal notranslate"><span class="pre">QgsEllipse.toPolygon()</span></code></a></p>
 </dd>
 <dt class="field-even">Return type</dt>
 <dd class="field-even"><p>Tuple[<a class="reference internal" href="#qgis.core.QgsGeometry" title="qgis.core.QgsGeometry"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsGeometry</span></code></a>, <a class="reference internal" href="QgsPointXY.html#qgis.core.QgsPointXY" title="qgis.core.QgsPointXY"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsPointXY</span></code></a>, float]</p>
@@ -4814,6 +4805,7 @@ MultiLineString geometry.</p>
 <dd class="field-odd"><p><ul class="simple">
 <li><p>the minimal enclosing circle as a QGIS geometry</p></li>
 <li><p>center: Center of the minimal enclosing circle returneds</p></li>
+<li><p>radius: Radius of the minimal enclosing circle returned</p></li>
 </ul>
 </p>
 </dd>
@@ -5902,7 +5894,7 @@ An empty geometry will be returned if the diagram could not be calculated.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 03:30 Oct 10, 2020.
+        Last updated on 04:00 Oct 10, 2020.
       </span>
 
     </p>
