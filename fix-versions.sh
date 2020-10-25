@@ -2,7 +2,7 @@
 
 set -e
 
-VERSIONS=(master 3.14 3.12 3.10 3.8 3.6 3.4 3.2 3.0)
+VERSIONS=(master 3.16 3.14 3.12 3.10 3.8 3.6 3.4 3.2 3.0)
 for v in "${VERSIONS[@]}"; do
   HTML="${HTML}\n      \n        <dd><a href=\"https://qgis.org/pyqgis/${v}\">${v}</a></dd>"
 done
