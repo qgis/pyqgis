@@ -1659,6 +1659,9 @@
 <li class="toctree-l2"><a class="reference internal" href="../analysis/QgsDerivativeFilter.html">Class: QgsDerivativeFilter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../analysis/QgsExifTools.html">Class: QgsExifTools</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../analysis/QgsFeaturePool.html">Class: QgsFeaturePool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../analysis/QgsGeocoderContext.html">Class: QgsGeocoderContext</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../analysis/QgsGeocoderInterface.html">Class: QgsGeocoderInterface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../analysis/QgsGeocoderResult.html">Class: QgsGeocoderResult</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../analysis/QgsGeometryCheck.html">Class: QgsGeometryCheck</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../analysis/QgsGeometryCheckContext.html">Class: QgsGeometryCheckContext</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../analysis/QgsGeometryCheckError.html">Class: QgsGeometryCheckError</a></li>
@@ -2198,7 +2201,7 @@ are required.</p>
 <td><p>Moves the vertex at the given position number and item (first number is index 0) to the given coordinates.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsGeometry.nearestPoint" title="qgis.core.QgsGeometry.nearestPoint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nearestPoint</span></code></a></p></td>
-<td><p>Returns the nearest point on this geometry to another geometry.</p></td>
+<td><p>Returns the nearest (closest) point on this geometry to another geometry.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsGeometry.offsetCurve" title="qgis.core.QgsGeometry.offsetCurve"><code class="xref py py-obj docutils literal notranslate"><span class="pre">offsetCurve</span></code></a></p></td>
 <td><p>Returns an offset line at a given distance and side from an input line.</p></td>
@@ -3221,8 +3224,8 @@ a <code class="docutils literal notranslate"><span class="pre">rectangle</span><
 <dd class="field-odd"><p><ul class="simple">
 <li><p>The squared Cartesian distance is also returned in sqrDist, negative number on error</p></li>
 <li><p>minDistPoint: Receives the nearest point on the segment</p></li>
-<li><p>afterVertex: Receives index of the vertex after the closest segment. The vertex before the closest segment is always afterVertex - 1</p></li>
-<li><p>leftOf: Out: Returns if the point lies on the left of left side of the geometry ( &lt; 0 means left, &gt; 0 means right, 0 indicates that the test was unsuccessful, e.g. for a point exactly on the line)</p></li>
+<li><p>nextVertexIndex: Receives index of the next vertex after the closest segment. The vertex before the closest segment is always nextVertexIndex - 1</p></li>
+<li><p>leftOrRightOfSegment: Out: Returns if the point is located on the left or right side of the geometry ( &lt; 0 means left, &gt; 0 means right, 0 indicates that the test was unsuccessful, e.g. for a point exactly on the line)</p></li>
 </ul>
 </p>
 </dd>
@@ -3244,9 +3247,9 @@ and the indices of the vertices before and after the closest vertex.</p>
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p><ul class="simple">
 <li><p>closest point in geometry. If not found (empty geometry), returns null point and sqrDist is negative.</p></li>
-<li><p>atVertex: will be set to the vertex index of the closest found vertex</p></li>
-<li><p>beforeVertex: will be set to the vertex index of the previous vertex from the closest one. Will be set to -1 if not present.</p></li>
-<li><p>afterVertex: will be set to the vertex index of the next vertex after the closest one. Will be set to -1 if not present.</p></li>
+<li><p>closestVertexIndex: will be set to the vertex index of the closest found vertex</p></li>
+<li><p>previousVertexIndex: will be set to the vertex index of the previous vertex from the closest one. Will be set to -1 if not present.</p></li>
+<li><p>nextVertexIndex: will be set to the vertex index of the next vertex after the closest one. Will be set to -1 if not present.</p></li>
 <li><p>sqrDist: will be set to the square distance between the closest vertex and the specified point</p></li>
 </ul>
 </p>
@@ -4853,7 +4856,7 @@ on this geometry</p>
 <dl class="py method">
 <dt id="qgis.core.QgsGeometry.nearestPoint">
 <code class="sig-name descname">nearestPoint</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">other</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#module-QgsGeometry" title="QgsGeometry">QgsGeometry</a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#module-QgsGeometry" title="QgsGeometry">QgsGeometry</a><a class="headerlink" href="#qgis.core.QgsGeometry.nearestPoint" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the nearest point on this geometry to another geometry.</p>
+<dd><p>Returns the nearest (closest) point on this geometry to another geometry.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsGeometry.shortestLine" title="qgis.core.QgsGeometry.shortestLine"><code class="xref py py-func docutils literal notranslate"><span class="pre">shortestLine()</span></code></a></p>
@@ -5919,7 +5922,7 @@ An empty geometry will be returned if the diagram could not be calculated.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 00:46 Oct 30, 2020.
+        Last updated on 03:51 Oct 30, 2020.
       </span>
 
     </p>
