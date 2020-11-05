@@ -1861,7 +1861,7 @@
 <span id="class-qgsprocessingparametermeshdatasetgroups"></span><h1>Class: QgsProcessingParameterMeshDatasetGroups<a class="headerlink" href="#module-QgsProcessingParameterMeshDatasetGroups" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt id="qgis.core.QgsProcessingParameterMeshDatasetGroups">
-<em class="property">class </em><code class="sig-prename descclassname">qgis.core.</code><code class="sig-name descname">QgsProcessingParameterMeshDatasetGroups</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">description</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">''</span></em>, <em class="sig-param"><span class="n">meshLayerParameterName</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">''</span></em>, <em class="sig-param"><span class="n">dataType</span><span class="p">:</span> <span class="n">QgsMeshDatasetGroupMetadata.DataType</span> <span class="o">=</span> <span class="default_value">QgsMeshDatasetGroupMetadata.DataOnVertices</span></em>, <em class="sig-param"><span class="n">optional</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsProcessingParameterMeshDatasetGroups" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">qgis.core.</code><code class="sig-name descname">QgsProcessingParameterMeshDatasetGroups</code><span class="sig-paren">(</span><em class="sig-param">name: str</em>, <em class="sig-param">description: str = ''</em>, <em class="sig-param">meshLayerParameterName: str = ''</em>, <em class="sig-param">supportedDataType: object = QSet&amp;lt;int&amp;gt;()</em>, <em class="sig-param">optional: bool = False</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsProcessingParameterMeshDatasetGroups" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="QgsProcessingParameterDefinition.html#module-QgsProcessingParameterDefinition" title="QgsProcessingParameterDefinition"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingParameterDefinition</span></code></a></p>
 <p>Constructor</p>
 <dl class="field-list simple">
@@ -1870,7 +1870,7 @@
 <li><p><strong>name</strong> (<em>str</em>) – name of the parameter</p></li>
 <li><p><strong>description</strong> (<em>str = ''</em>) – description of the parameter</p></li>
 <li><p><strong>meshLayerParameterName</strong> (<em>str = ''</em>) – name of the associated mesh layer parameter</p></li>
-<li><p><strong>dataType</strong> (<em>QgsMeshDatasetGroupMetadata.DataType = QgsMeshDatasetGroupMetadata.DataOnVertices</em>) – data type supported by the parameter</p></li>
+<li><p><strong>supportedDataType</strong> (<em>object = QSet&amp;lt;int&amp;gt;</em><em>(</em><em>)</em>) – a set of QgsMeshDatasetGroupMetadata.DataType values for data types supported by the parameter</p></li>
 <li><p><strong>optional</strong> (<em>bool = False</em>) – whether the parameter is optional</p></li>
 </ul>
 </dd>
@@ -1921,16 +1921,16 @@ Dataset group index can be evaluated with the method <a class="reference interna
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameterMeshDatasetGroups.dataType" title="qgis.core.QgsProcessingParameterMeshDatasetGroups.dataType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dataType</span></code></a></p></td>
-<td><p>Returns the data type supported by the parameter</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameterMeshDatasetGroups.dependsOnOtherParameters" title="qgis.core.QgsProcessingParameterMeshDatasetGroups.dependsOnOtherParameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dependsOnOtherParameters</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameterMeshDatasetGroups.dependsOnOtherParameters" title="qgis.core.QgsProcessingParameterMeshDatasetGroups.dependsOnOtherParameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dependsOnOtherParameters</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">rtype</dt>
 <dd class="field-odd"><p>List[str]</p>
 </dd>
 </dl>
 </p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameterMeshDatasetGroups.isDataTypeSupported" title="qgis.core.QgsProcessingParameterMeshDatasetGroups.isDataTypeSupported"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isDataTypeSupported</span></code></a></p></td>
+<td><p>Returns whether the data type is supported by the parameter</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameterMeshDatasetGroups.meshLayerParameterName" title="qgis.core.QgsProcessingParameterMeshDatasetGroups.meshLayerParameterName"><code class="xref py py-obj docutils literal notranslate"><span class="pre">meshLayerParameterName</span></code></a></p></td>
 <td><p>Returns the name of the mesh layer parameter</p></td>
@@ -2015,22 +2015,25 @@ Dataset group index can be evaluated with the method <a class="reference interna
 </dd></dl>
 
 <dl class="py method">
-<dt id="qgis.core.QgsProcessingParameterMeshDatasetGroups.dataType">
-<code class="sig-name descname">dataType</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="QgsMeshDatasetGroupMetadata.html#qgis.core.QgsMeshDatasetGroupMetadata.DataType" title="qgis.core.QgsMeshDatasetGroupMetadata.DataType">QgsMeshDatasetGroupMetadata.DataType</a><a class="headerlink" href="#qgis.core.QgsProcessingParameterMeshDatasetGroups.dataType" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the data type supported by the parameter</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference internal" href="QgsMeshDatasetGroupMetadata.html#qgis.core.QgsMeshDatasetGroupMetadata.DataType" title="qgis.core.QgsMeshDatasetGroupMetadata.DataType">QgsMeshDatasetGroupMetadata.DataType</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
 <dt id="qgis.core.QgsProcessingParameterMeshDatasetGroups.dependsOnOtherParameters">
 <code class="sig-name descname">dependsOnOtherParameters</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span>str<span class="p">]</span><a class="headerlink" href="#qgis.core.QgsProcessingParameterMeshDatasetGroups.dependsOnOtherParameters" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>List[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qgis.core.QgsProcessingParameterMeshDatasetGroups.isDataTypeSupported">
+<code class="sig-name descname">isDataTypeSupported</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">dataType</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsMeshDatasetGroupMetadata.html#qgis.core.QgsMeshDatasetGroupMetadata.DataType" title="qgis.core.QgsMeshDatasetGroupMetadata.DataType">QgsMeshDatasetGroupMetadata.DataType</a></span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsProcessingParameterMeshDatasetGroups.isDataTypeSupported" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns whether the data type is supported by the parameter</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>dataType</strong> (<a class="reference internal" href="QgsMeshDatasetGroupMetadata.html#qgis.core.QgsMeshDatasetGroupMetadata.DataType" title="qgis.core.QgsMeshDatasetGroupMetadata.DataType"><em>QgsMeshDatasetGroupMetadata.DataType</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2113,7 +2116,7 @@ Dataset group index can be evaluated with the method <a class="reference interna
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 00:47 Nov 05, 2020.
+        Last updated on 04:22 Nov 05, 2020.
       </span>
 
     </p>

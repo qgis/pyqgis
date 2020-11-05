@@ -1889,16 +1889,19 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsFileUtils.extensionsFromFilter" title="qgis.core.QgsFileUtils.extensionsFromFilter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">extensionsFromFilter</span></code></a></p></td>
 <td><p>Returns a list of the extensions contained within a file <code class="docutils literal notranslate"><span class="pre">filter</span></code> string. E.g. a <code class="docutils literal notranslate"><span class="pre">filter</span></code> of “GeoTIFF Files (<a href="#id1"><span class="problematic" id="id2">*</span></a>.tiff <a href="#id3"><span class="problematic" id="id4">*</span></a>.tif)” would return a list containing “tiff”, “tif”. The initial ‘.’ is stripped off the extension.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsFileUtils.findClosestExistingPath" title="qgis.core.QgsFileUtils.findClosestExistingPath"><code class="xref py py-obj docutils literal notranslate"><span class="pre">findClosestExistingPath</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsFileUtils.fileMatchesFilter" title="qgis.core.QgsFileUtils.fileMatchesFilter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fileMatchesFilter</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the given <code class="docutils literal notranslate"><span class="pre">fileName</span></code> matches a file <code class="docutils literal notranslate"><span class="pre">filter</span></code> string.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsFileUtils.findClosestExistingPath" title="qgis.core.QgsFileUtils.findClosestExistingPath"><code class="xref py py-obj docutils literal notranslate"><span class="pre">findClosestExistingPath</span></code></a></p></td>
 <td><p>Returns the top-most existing folder from <code class="docutils literal notranslate"><span class="pre">path</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsFileUtils.findFile" title="qgis.core.QgsFileUtils.findFile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">findFile</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsFileUtils.findFile" title="qgis.core.QgsFileUtils.findFile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">findFile</span></code></a></p></td>
 <td><p>Will check <code class="docutils literal notranslate"><span class="pre">basepath</span></code> in an outward spiral up to <code class="docutils literal notranslate"><span class="pre">maxClimbs</span></code> levels to check if <code class="docutils literal notranslate"><span class="pre">file</span></code> exists.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsFileUtils.representFileSize" title="qgis.core.QgsFileUtils.representFileSize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">representFileSize</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsFileUtils.representFileSize" title="qgis.core.QgsFileUtils.representFileSize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">representFileSize</span></code></a></p></td>
 <td><p>Returns the human size from bytes</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsFileUtils.stringToSafeFilename" title="qgis.core.QgsFileUtils.stringToSafeFilename"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stringToSafeFilename</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsFileUtils.stringToSafeFilename" title="qgis.core.QgsFileUtils.stringToSafeFilename"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stringToSafeFilename</span></code></a></p></td>
 <td><p>Converts a <code class="docutils literal notranslate"><span class="pre">string</span></code> to a safe filename, replacing characters which are not safe for filenames with an ‘_’ character.</p></td>
 </tr>
 </tbody>
@@ -2003,6 +2006,28 @@ containing “tiff”, “tif”. The initial ‘.’ is stripped off the extens
 </dd></dl>
 
 <dl class="py method">
+<dt id="qgis.core.QgsFileUtils.fileMatchesFilter">
+<code class="sig-name descname">fileMatchesFilter</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fileName</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">filter</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsFileUtils.fileMatchesFilter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the given <code class="docutils literal notranslate"><span class="pre">fileName</span></code> matches a file <code class="docutils literal notranslate"><span class="pre">filter</span></code> string.</p>
+<p>E.g a filter of “GeoTIFF Files (<a href="#id13"><span class="problematic" id="id14">*</span></a>.tiff <a href="#id15"><span class="problematic" id="id16">*</span></a>.tif)” would return <code class="docutils literal notranslate"><span class="pre">True</span></code> for a <code class="docutils literal notranslate"><span class="pre">fileName</span></code>
+of “/home/test.tif”, or <code class="docutils literal notranslate"><span class="pre">False</span></code> for “/home/test.jpg”.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.18.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fileName</strong> (<em>str</em>) – </p></li>
+<li><p><strong>filter</strong> (<em>str</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt id="qgis.core.QgsFileUtils.findClosestExistingPath">
 <code class="sig-name descname">findClosestExistingPath</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.core.QgsFileUtils.findClosestExistingPath" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the top-most existing folder from <code class="docutils literal notranslate"><span class="pre">path</span></code>. E.g. if <code class="docutils literal notranslate"><span class="pre">path</span></code> is “/home/user/projects/2018/P4343”
@@ -2095,7 +2120,7 @@ for filenames with an ‘_’ character.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 00:47 Nov 05, 2020.
+        Last updated on 04:22 Nov 05, 2020.
       </span>
 
     </p>
