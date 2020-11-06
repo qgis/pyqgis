@@ -1353,6 +1353,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsLayerTreeEmbeddedWidgetProvider.html">Class: QgsLayerTreeEmbeddedWidgetProvider</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsLayerTreeEmbeddedWidgetRegistry.html">Class: QgsLayerTreeEmbeddedWidgetRegistry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsLayerTreeMapCanvasBridge.html">Class: QgsLayerTreeMapCanvasBridge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui/QgsLayerTreeProxyModel.html">Class: QgsLayerTreeProxyModel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsLayerTreeView.html">Class: QgsLayerTreeView</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsLayerTreeViewDefaultActions.html">Class: QgsLayerTreeViewDefaultActions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsLayerTreeViewIndicator.html">Class: QgsLayerTreeViewIndicator</a></li>
@@ -1904,6 +1905,9 @@
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsFileUtils.stringToSafeFilename" title="qgis.core.QgsFileUtils.stringToSafeFilename"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stringToSafeFilename</span></code></a></p></td>
 <td><p>Converts a <code class="docutils literal notranslate"><span class="pre">string</span></code> to a safe filename, replacing characters which are not safe for filenames with an ‘_’ character.</p></td>
 </tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsFileUtils.wildcardsFromFilter" title="qgis.core.QgsFileUtils.wildcardsFromFilter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wildcardsFromFilter</span></code></a></p></td>
+<td><p>Given a <code class="docutils literal notranslate"><span class="pre">filter</span></code> string like “GeoTIFF Files (<em>.tiff *.tif)”, extracts the wildcard portion of this filter (i.e. “</em>.tiff <a href="#id5"><span class="problematic" id="id6">*</span></a>.tif”).</p></td>
+</tr>
 </tbody>
 </table>
 <table class="longtable docutils align-default">
@@ -1928,7 +1932,7 @@
 <code class="sig-name descname">addExtensionFromFilter</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fileName</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">filter</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.core.QgsFileUtils.addExtensionFromFilter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Ensures that a <code class="docutils literal notranslate"><span class="pre">fileName</span></code> ends with an extension from the specified <code class="docutils literal notranslate"><span class="pre">filter</span></code>
 string.</p>
-<p>E.g. a <code class="docutils literal notranslate"><span class="pre">fileName</span></code> of “d:/my_file” with a filter of “GeoTIFF Files (<a href="#id5"><span class="problematic" id="id6">*</span></a>.tiff <a href="#id7"><span class="problematic" id="id8">*</span></a>.tif)”
+<p>E.g. a <code class="docutils literal notranslate"><span class="pre">fileName</span></code> of “d:/my_file” with a filter of “GeoTIFF Files (<a href="#id7"><span class="problematic" id="id8">*</span></a>.tiff <a href="#id9"><span class="problematic" id="id10">*</span></a>.tif)”
 will return “d:/my_file.tif”, where as <code class="docutils literal notranslate"><span class="pre">fileName</span></code> of “d:/my_file.TIFF” or “d:/my_file.TIF”
 will be returned unchanged.</p>
 <div class="admonition seealso">
@@ -1985,7 +1989,7 @@ will be returned unchanged.</p>
 <dt id="qgis.core.QgsFileUtils.extensionsFromFilter">
 <code class="sig-name descname">extensionsFromFilter</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filter</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span>str<span class="p">]</span><a class="headerlink" href="#qgis.core.QgsFileUtils.extensionsFromFilter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a list of the extensions contained within a file <code class="docutils literal notranslate"><span class="pre">filter</span></code> string.
-E.g. a <code class="docutils literal notranslate"><span class="pre">filter</span></code> of “GeoTIFF Files (<a href="#id9"><span class="problematic" id="id10">*</span></a>.tiff <a href="#id11"><span class="problematic" id="id12">*</span></a>.tif)” would return a list
+E.g. a <code class="docutils literal notranslate"><span class="pre">filter</span></code> of “GeoTIFF Files (<a href="#id11"><span class="problematic" id="id12">*</span></a>.tiff <a href="#id13"><span class="problematic" id="id14">*</span></a>.tif)” would return a list
 containing “tiff”, “tif”. The initial ‘.’ is stripped off the extension.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -2009,7 +2013,7 @@ containing “tiff”, “tif”. The initial ‘.’ is stripped off the extens
 <dt id="qgis.core.QgsFileUtils.fileMatchesFilter">
 <code class="sig-name descname">fileMatchesFilter</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fileName</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">filter</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsFileUtils.fileMatchesFilter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the given <code class="docutils literal notranslate"><span class="pre">fileName</span></code> matches a file <code class="docutils literal notranslate"><span class="pre">filter</span></code> string.</p>
-<p>E.g a filter of “GeoTIFF Files (<a href="#id13"><span class="problematic" id="id14">*</span></a>.tiff <a href="#id15"><span class="problematic" id="id16">*</span></a>.tif)” would return <code class="docutils literal notranslate"><span class="pre">True</span></code> for a <code class="docutils literal notranslate"><span class="pre">fileName</span></code>
+<p>E.g a filter of “GeoTIFF Files (<a href="#id15"><span class="problematic" id="id16">*</span></a>.tiff <a href="#id17"><span class="problematic" id="id18">*</span></a>.tif)” would return <code class="docutils literal notranslate"><span class="pre">True</span></code> for a <code class="docutils literal notranslate"><span class="pre">fileName</span></code>
 of “/home/test.tif”, or <code class="docutils literal notranslate"><span class="pre">False</span></code> for “/home/test.jpg”.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.18.</span></p>
@@ -2104,6 +2108,24 @@ for filenames with an ‘_’ character.</p>
 </dl>
 </dd></dl>
 
+<dl class="py method">
+<dt id="qgis.core.QgsFileUtils.wildcardsFromFilter">
+<code class="sig-name descname">wildcardsFromFilter</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filter</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.core.QgsFileUtils.wildcardsFromFilter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a <code class="docutils literal notranslate"><span class="pre">filter</span></code> string like “GeoTIFF Files (<em>.tiff *.tif)”, extracts
+the wildcard portion of this filter (i.e. “</em>.tiff <a href="#id19"><span class="problematic" id="id20">*</span></a>.tif”).</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.18.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filter</strong> (<em>str</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 </div>
@@ -2120,7 +2142,7 @@ for filenames with an ‘_’ character.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 00:49 Nov 06, 2020.
+        Last updated on 04:17 Nov 06, 2020.
       </span>
 
     </p>

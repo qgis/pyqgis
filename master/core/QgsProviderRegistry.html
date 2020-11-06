@@ -1353,6 +1353,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsLayerTreeEmbeddedWidgetProvider.html">Class: QgsLayerTreeEmbeddedWidgetProvider</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsLayerTreeEmbeddedWidgetRegistry.html">Class: QgsLayerTreeEmbeddedWidgetRegistry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsLayerTreeMapCanvasBridge.html">Class: QgsLayerTreeMapCanvasBridge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui/QgsLayerTreeProxyModel.html">Class: QgsLayerTreeProxyModel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsLayerTreeView.html">Class: QgsLayerTreeView</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsLayerTreeViewDefaultActions.html">Class: QgsLayerTreeViewDefaultActions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsLayerTreeViewIndicator.html">Class: QgsLayerTreeViewIndicator</a></li>
@@ -1962,8 +1963,8 @@ ogr and postgres.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProviderRegistry.pluginList" title="qgis.core.QgsProviderRegistry.pluginList"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pluginList</span></code></a></p></td>
 <td><p>Returns list of provider plugins found</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProviderRegistry.preferredProviderForUri" title="qgis.core.QgsProviderRegistry.preferredProviderForUri"><code class="xref py py-obj docutils literal notranslate"><span class="pre">preferredProviderForUri</span></code></a></p></td>
-<td><p>Returns the metadata for the preferred provider for opening the specified <code class="docutils literal notranslate"><span class="pre">uri</span></code>.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProviderRegistry.preferredProvidersForUri" title="qgis.core.QgsProviderRegistry.preferredProvidersForUri"><code class="xref py py-obj docutils literal notranslate"><span class="pre">preferredProvidersForUri</span></code></a></p></td>
+<td><p>Returns the metadata for the preferred provider(s) for opening the specified <code class="docutils literal notranslate"><span class="pre">uri</span></code>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProviderRegistry.protocolDrivers" title="qgis.core.QgsProviderRegistry.protocolDrivers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">protocolDrivers</span></code></a></p></td>
 <td><p>Returns a string containing the available protocol drivers</p></td>
@@ -1994,6 +1995,12 @@ ogr and postgres.</p>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProviderRegistry.setLibraryDirectory" title="qgis.core.QgsProviderRegistry.setLibraryDirectory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setLibraryDirectory</span></code></a></p></td>
 <td><p>Sets library directory where to search for plugins</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProviderRegistry.shouldDeferUriForOtherProviders" title="qgis.core.QgsProviderRegistry.shouldDeferUriForOtherProviders"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shouldDeferUriForOtherProviders</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the provider with matching <code class="docutils literal notranslate"><span class="pre">providerKey</span></code> should defer handling of the specified <code class="docutils literal notranslate"><span class="pre">uri</span></code> to another provider.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProviderRegistry.uriIsBlocklisted" title="qgis.core.QgsProviderRegistry.uriIsBlocklisted"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uriIsBlocklisted</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the specified <code class="docutils literal notranslate"><span class="pre">uri</span></code> is known by any registered provider to be something which should be blocklisted from the QGIS interface, e.g.</p></td>
 </tr>
 </tbody>
 </table>
@@ -2599,17 +2606,20 @@ be returned.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="qgis.core.QgsProviderRegistry.preferredProviderForUri">
-<code class="sig-name descname">preferredProviderForUri</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">uri</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="QgsProviderMetadata.html#module-QgsProviderMetadata" title="QgsProviderMetadata">QgsProviderMetadata</a><a class="headerlink" href="#qgis.core.QgsProviderRegistry.preferredProviderForUri" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the metadata for the preferred provider for opening the specified <code class="docutils literal notranslate"><span class="pre">uri</span></code>.</p>
+<dt id="qgis.core.QgsProviderRegistry.preferredProvidersForUri">
+<code class="sig-name descname">preferredProvidersForUri</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">uri</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span><a class="reference internal" href="QgsProviderMetadata.html#module-QgsProviderMetadata" title="QgsProviderMetadata">QgsProviderMetadata</a><span class="p">]</span><a class="headerlink" href="#qgis.core.QgsProviderRegistry.preferredProvidersForUri" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the metadata for the preferred provider(s) for opening the specified <code class="docutils literal notranslate"><span class="pre">uri</span></code>.</p>
 <p>The preferred provider is determined by comparing the priority returned by
 <code class="xref py py-func docutils literal notranslate"><span class="pre">QgsProviderMetadata.priorityForUri()</span></code> for all registered providers, and selecting
 the provider with the largest non-zero priority.</p>
-<p>A <code class="docutils literal notranslate"><span class="pre">None</span></code> may be returned, which indicates that no providers are available which
+<p>An empty list may be returned, which indicates that no providers are available which
 returned a non-zero priority for the specified URI.</p>
 <p>In the case that multiple providers returned the same priority for the URI then
-either of these providers will be returned. In this case the <code class="xref py py-func docutils literal notranslate"><span class="pre">QgsProviderMetadata.priorityForUri()</span></code>
-implementation for the providers should be refined to avoid ties.</p>
+all of these providers will be returned.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsProviderRegistry.shouldDeferUriForOtherProviders" title="qgis.core.QgsProviderRegistry.shouldDeferUriForOtherProviders"><code class="xref py py-func docutils literal notranslate"><span class="pre">shouldDeferUriForOtherProviders()</span></code></a></p>
+</div>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.18.</span></p>
 </div>
@@ -2618,7 +2628,7 @@ implementation for the providers should be refined to avoid ties.</p>
 <dd class="field-odd"><p><strong>uri</strong> (<em>str</em>) – </p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p>QgsProviderMetadata</p>
+<dd class="field-even"><p>List[QgsProviderMetadata]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2776,6 +2786,61 @@ implementation for the providers should be refined to avoid ties.</p>
 </dl>
 </dd></dl>
 
+<dl class="py method">
+<dt id="qgis.core.QgsProviderRegistry.shouldDeferUriForOtherProviders">
+<code class="sig-name descname">shouldDeferUriForOtherProviders</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">uri</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">providerKey</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsProviderRegistry.shouldDeferUriForOtherProviders" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the provider with matching <code class="docutils literal notranslate"><span class="pre">providerKey</span></code> should defer handling of
+the specified <code class="docutils literal notranslate"><span class="pre">uri</span></code> to another provider.</p>
+<p>This method tests whether any providers are listed as the preferred provider for <code class="docutils literal notranslate"><span class="pre">uri</span></code>
+(see <a class="reference internal" href="#qgis.core.QgsProviderRegistry.preferredProvidersForUri" title="qgis.core.QgsProviderRegistry.preferredProvidersForUri"><code class="xref py py-func docutils literal notranslate"><span class="pre">preferredProvidersForUri()</span></code></a>), and if so tests whether the specified provider is
+included in that preferred providers list. Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> only if the specified provider
+is calculated as one of the preferred providers for the URI.</p>
+<p>In the case that there is no registered preferred provider for the URI then <code class="docutils literal notranslate"><span class="pre">False</span></code> will be
+returned, and the provider must use another metric to determine whether it should
+handle the URI.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsProviderRegistry.preferredProvidersForUri" title="qgis.core.QgsProviderRegistry.preferredProvidersForUri"><code class="xref py py-func docutils literal notranslate"><span class="pre">preferredProvidersForUri()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.18.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>uri</strong> (<em>str</em>) – </p></li>
+<li><p><strong>providerKey</strong> (<em>str</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qgis.core.QgsProviderRegistry.uriIsBlocklisted">
+<code class="sig-name descname">uriIsBlocklisted</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">uri</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsProviderRegistry.uriIsBlocklisted" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the specified <code class="docutils literal notranslate"><span class="pre">uri</span></code> is known by any registered provider to be something which should
+be blocklisted from the QGIS interface, e.g. an internal detail only.</p>
+<p>Specifically, this method can be utilized by the browser panel to hide noisy internal details
+for URIs which are known to be sidecar files only, such as “.aux.xml” files or “.shp.xml” files,
+or the “ept-build.json” files which sit alongside Entwine “ept.json” point cloud sources.</p>
+<p>This method tests whether any of the registered providers return <code class="docutils literal notranslate"><span class="pre">True</span></code> for the their
+<code class="xref py py-func docutils literal notranslate"><span class="pre">QgsProviderMetadata.uriIsBlocklisted()</span></code> implementation for the specified URI.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.18.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>uri</strong> (<em>str</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 </div>
@@ -2792,7 +2857,7 @@ implementation for the providers should be refined to avoid ties.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 00:49 Nov 06, 2020.
+        Last updated on 04:17 Nov 06, 2020.
       </span>
 
     </p>

@@ -41,7 +41,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Class: QgsLayerTreeViewDefaultActions" href="QgsLayerTreeViewDefaultActions.html" />
-    <link rel="prev" title="Class: QgsLayerTreeMapCanvasBridge" href="QgsLayerTreeMapCanvasBridge.html" /> 
+    <link rel="prev" title="Class: QgsLayerTreeProxyModel" href="QgsLayerTreeProxyModel.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -1353,6 +1353,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsLayerTreeEmbeddedWidgetProvider.html">Class: QgsLayerTreeEmbeddedWidgetProvider</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsLayerTreeEmbeddedWidgetRegistry.html">Class: QgsLayerTreeEmbeddedWidgetRegistry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsLayerTreeMapCanvasBridge.html">Class: QgsLayerTreeMapCanvasBridge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsLayerTreeProxyModel.html">Class: QgsLayerTreeProxyModel</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Class: QgsLayerTreeView</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsLayerTreeViewDefaultActions.html">Class: QgsLayerTreeViewDefaultActions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsLayerTreeViewIndicator.html">Class: QgsLayerTreeViewIndicator</a></li>
@@ -2219,6 +2220,45 @@ user interaction.</p>
 <dd></dd></dl>
 
 <dl class="py method">
+<dt id="qgis.gui.QgsLayerTreeView.index2legendNode">
+<code class="sig-name descname">index2legendNode</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">index</span><span class="p">:</span> <span class="n">QModelIndex</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="../core/QgsLayerTreeModelLegendNode.html#module-QgsLayerTreeModelLegendNode" title="QgsLayerTreeModelLegendNode">QgsLayerTreeModelLegendNode</a><a class="headerlink" href="#qgis.gui.QgsLayerTreeView.index2legendNode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns legend node for given proxy model tree <code class="docutils literal notranslate"><span class="pre">index</span></code>. Returns <code class="docutils literal notranslate"><span class="pre">None</span></code> for invalid index</p>
+<p>Unlike <code class="xref py py-func docutils literal notranslate"><span class="pre">QgsLayerTreeModel.index2legendNode()</span></code>, calling this method correctly accounts
+for mapping the view indexes through the view’s proxy model to the source model.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.18.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>index</strong> (<em>QModelIndex</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="../core/QgsLayerTreeModelLegendNode.html#qgis.core.QgsLayerTreeModelLegendNode" title="qgis.core.QgsLayerTreeModelLegendNode">QgsLayerTreeModelLegendNode</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qgis.gui.QgsLayerTreeView.index2node">
+<code class="sig-name descname">index2node</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">index</span><span class="p">:</span> <span class="n">QModelIndex</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="../core/QgsLayerTreeNode.html#module-QgsLayerTreeNode" title="QgsLayerTreeNode">QgsLayerTreeNode</a><a class="headerlink" href="#qgis.gui.QgsLayerTreeView.index2node" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns layer tree node for given proxy model tree <code class="docutils literal notranslate"><span class="pre">index</span></code>. Returns root node for invalid index.
+Returns <code class="docutils literal notranslate"><span class="pre">None</span></code> if index does not refer to a layer tree node (e.g. it is a legend node)</p>
+<p>Unlike <code class="xref py py-func docutils literal notranslate"><span class="pre">QgsLayerTreeModel.index2Node()</span></code>, calling this method correctly accounts
+for mapping the view indexes through the view’s proxy model to the source model.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.18.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>index</strong> (<em>QModelIndex</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="../core/QgsLayerTreeNode.html#qgis.core.QgsLayerTreeNode" title="qgis.core.QgsLayerTreeNode">QgsLayerTreeNode</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt id="qgis.gui.QgsLayerTreeView.indexRowSizeHint">
 <code class="sig-name descname">indexRowSizeHint</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">QModelIndex</span></em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#qgis.gui.QgsLayerTreeView.indexRowSizeHint" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -2336,6 +2376,44 @@ user interaction.</p>
 <dd></dd></dl>
 
 <dl class="py method">
+<dt id="qgis.gui.QgsLayerTreeView.legendNode2index">
+<code class="sig-name descname">legendNode2index</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">legendNode</span><span class="p">:</span> <span class="n"><a class="reference internal" href="../core/QgsLayerTreeModelLegendNode.html#module-QgsLayerTreeModelLegendNode" title="QgsLayerTreeModelLegendNode">QgsLayerTreeModelLegendNode</a></span></em><span class="sig-paren">)</span> &#x2192; QModelIndex<a class="headerlink" href="#qgis.gui.QgsLayerTreeView.legendNode2index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns proxy model index for a given legend node. If the legend node does not belong to the layer tree, the result is undefined.
+If the legend node is belongs to the tree but it is filtered out, invalid model index is returned.</p>
+<p>Unlike <code class="xref py py-func docutils literal notranslate"><span class="pre">QgsLayerTreeModel.legendNode2index()</span></code>, calling this method correctly accounts
+for mapping the view indexes through the view’s proxy model to the source model.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.18.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>legendNode</strong> (<a class="reference internal" href="../core/QgsLayerTreeModelLegendNode.html#qgis.core.QgsLayerTreeModelLegendNode" title="qgis.core.QgsLayerTreeModelLegendNode"><em>QgsLayerTreeModelLegendNode</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>QModelIndex</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qgis.gui.QgsLayerTreeView.legendNode2sourceIndex">
+<code class="sig-name descname">legendNode2sourceIndex</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">legendNode</span><span class="p">:</span> <span class="n"><a class="reference internal" href="../core/QgsLayerTreeModelLegendNode.html#module-QgsLayerTreeModelLegendNode" title="QgsLayerTreeModelLegendNode">QgsLayerTreeModelLegendNode</a></span></em><span class="sig-paren">)</span> &#x2192; QModelIndex<a class="headerlink" href="#qgis.gui.QgsLayerTreeView.legendNode2sourceIndex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns index for a given legend node. If the legend node does not belong to the layer tree, the result is undefined.
+If the legend node is belongs to the tree but it is filtered out, invalid model index is returned.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.18.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>legendNode</strong> (<a class="reference internal" href="../core/QgsLayerTreeModelLegendNode.html#qgis.core.QgsLayerTreeModelLegendNode" title="qgis.core.QgsLayerTreeModelLegendNode"><em>QgsLayerTreeModelLegendNode</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>QModelIndex</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt id="qgis.gui.QgsLayerTreeView.menuProvider">
 <code class="sig-name descname">menuProvider</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="QgsLayerTreeViewMenuProvider.html#module-QgsLayerTreeViewMenuProvider" title="QgsLayerTreeViewMenuProvider">QgsLayerTreeViewMenuProvider</a><a class="headerlink" href="#qgis.gui.QgsLayerTreeView.menuProvider" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns pointer to the context menu provider. May be <code class="docutils literal notranslate"><span class="pre">None</span></code></p>
@@ -2411,6 +2489,42 @@ user interaction.</p>
 <dd></dd></dl>
 
 <dl class="py method">
+<dt id="qgis.gui.QgsLayerTreeView.node2index">
+<code class="sig-name descname">node2index</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">node</span><span class="p">:</span> <span class="n"><a class="reference internal" href="../core/QgsLayerTreeNode.html#module-QgsLayerTreeNode" title="QgsLayerTreeNode">QgsLayerTreeNode</a></span></em><span class="sig-paren">)</span> &#x2192; QModelIndex<a class="headerlink" href="#qgis.gui.QgsLayerTreeView.node2index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns proxy model index for a given node. If the node does not belong to the layer tree, the result is undefined</p>
+<p>Unlike <code class="xref py py-func docutils literal notranslate"><span class="pre">QgsLayerTreeModel.node2index()</span></code>, calling this method correctly accounts
+for mapping the view indexes through the view’s proxy model to the source model.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.18.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>node</strong> (<a class="reference internal" href="../core/QgsLayerTreeNode.html#qgis.core.QgsLayerTreeNode" title="qgis.core.QgsLayerTreeNode"><em>QgsLayerTreeNode</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>QModelIndex</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qgis.gui.QgsLayerTreeView.node2sourceIndex">
+<code class="sig-name descname">node2sourceIndex</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">node</span><span class="p">:</span> <span class="n"><a class="reference internal" href="../core/QgsLayerTreeNode.html#module-QgsLayerTreeNode" title="QgsLayerTreeNode">QgsLayerTreeNode</a></span></em><span class="sig-paren">)</span> &#x2192; QModelIndex<a class="headerlink" href="#qgis.gui.QgsLayerTreeView.node2sourceIndex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns source model index for a given node. If the node does not belong to the layer tree, the result is undefined</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.18.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>node</strong> (<a class="reference internal" href="../core/QgsLayerTreeNode.html#qgis.core.QgsLayerTreeNode" title="qgis.core.QgsLayerTreeNode"><em>QgsLayerTreeNode</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>QModelIndex</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt id="qgis.gui.QgsLayerTreeView.onCurrentChanged">
 <code class="sig-name descname">onCurrentChanged</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsLayerTreeView.onCurrentChanged" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -2437,6 +2551,21 @@ user interaction.</p>
 <dt id="qgis.gui.QgsLayerTreeView.paintEvent">
 <code class="sig-name descname">paintEvent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">QPaintEvent</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsLayerTreeView.paintEvent" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="py method">
+<dt id="qgis.gui.QgsLayerTreeView.proxyModel">
+<code class="sig-name descname">proxyModel</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="QgsLayerTreeProxyModel.html#module-QgsLayerTreeProxyModel" title="QgsLayerTreeProxyModel">QgsLayerTreeProxyModel</a><a class="headerlink" href="#qgis.gui.QgsLayerTreeView.proxyModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the proxy model used by the view.</p>
+<p>This can be used to set filters controlling which layers are shown in the view.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.18.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsLayerTreeProxyModel.html#qgis.gui.QgsLayerTreeProxyModel" title="qgis.gui.QgsLayerTreeProxyModel">QgsLayerTreeProxyModel</a></p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsLayerTreeView.receivers">
@@ -2708,6 +2837,20 @@ node is selected, this method returns L1 and L2, while <a class="reference inter
 <dd></dd></dl>
 
 <dl class="py method">
+<dt id="qgis.gui.QgsLayerTreeView.setShowPrivateLayers">
+<code class="sig-name descname">setShowPrivateLayers</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">showPrivate</span><span class="p">:</span> <span class="n">bool</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsLayerTreeView.setShowPrivateLayers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the show private layers to <code class="docutils literal notranslate"><span class="pre">showPrivate</span></code></p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.18.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>showPrivate</strong> (<em>bool</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt id="qgis.gui.QgsLayerTreeView.setState">
 <code class="sig-name descname">setState</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">QAbstractItemView.State</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsLayerTreeView.setState" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -2727,6 +2870,20 @@ node is selected, this method returns L1 and L2, while <a class="reference inter
 <dt id="qgis.gui.QgsLayerTreeView.showEvent">
 <code class="sig-name descname">showEvent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">QShowEvent</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsLayerTreeView.showEvent" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="py method">
+<dt id="qgis.gui.QgsLayerTreeView.showPrivateLayers">
+<code class="sig-name descname">showPrivateLayers</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.gui.QgsLayerTreeView.showPrivateLayers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the show private layers status</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.18.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsLayerTreeView.sizeHintForColumn">
@@ -2854,7 +3011,7 @@ node is selected, this method returns L1 and L2, while <a class="reference inter
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 00:49 Nov 06, 2020.
+        Last updated on 04:17 Nov 06, 2020.
       </span>
 
     </p>
