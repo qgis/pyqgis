@@ -672,8 +672,16 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsPointCloudAttribute.html">Class: QgsPointCloudAttribute</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsPointCloudAttributeCollection.html">Class: QgsPointCloudAttributeCollection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsPointCloudAttributeModel.html">Class: QgsPointCloudAttributeModel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsPointCloudAttributeProxyModel.html">Class: QgsPointCloudAttributeProxyModel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsPointCloudBlock.html">Class: QgsPointCloudBlock</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsPointCloudDataProvider.html">Class: QgsPointCloudDataProvider</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsPointCloudLayer.html">Class: QgsPointCloudLayer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsPointCloudRenderContext.html">Class: QgsPointCloudRenderContext</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsPointCloudRenderer.html">Class: QgsPointCloudRenderer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsPointCloudRendererAbstractMetadata.html">Class: QgsPointCloudRendererAbstractMetadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsPointCloudRendererMetadata.html">Class: QgsPointCloudRendererMetadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsPointCloudRendererRegistry.html">Class: QgsPointCloudRendererRegistry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsPointCloudRgbRenderer.html">Class: QgsPointCloudRgbRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsPointClusterRenderer.html">Class: QgsPointClusterRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsPointDisplacementRenderer.html">Class: QgsPointDisplacementRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsPointDistanceRenderer.html">Class: QgsPointDistanceRenderer</a></li>
@@ -1899,7 +1907,7 @@
 <td><p>Returns the curve type for a WKB type.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsWkbTypes.displayString" title="qgis.core.QgsWkbTypes.displayString"><code class="xref py py-obj docutils literal notranslate"><span class="pre">displayString</span></code></a></p></td>
-<td><p>Returns a display string type for a WKB type, e.g., the geometry name used in WKT geometry representations.</p></td>
+<td><p>Returns a non-translated display string type for a WKB type, e.g., the geometry name used in WKT geometry representations.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsWkbTypes.dropM" title="qgis.core.QgsWkbTypes.dropM"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dropM</span></code></a></p></td>
 <td><p>Drops the m dimension (if present) for a WKB type and returns the new type.</p></td>
@@ -1946,10 +1954,13 @@
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsWkbTypes.to25D" title="qgis.core.QgsWkbTypes.to25D"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to25D</span></code></a></p></td>
 <td><p>Will convert the 25D version of the flat type if supported or Unknown if not supported.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsWkbTypes.wkbDimensions" title="qgis.core.QgsWkbTypes.wkbDimensions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wkbDimensions</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsWkbTypes.translatedDisplayString" title="qgis.core.QgsWkbTypes.translatedDisplayString"><code class="xref py py-obj docutils literal notranslate"><span class="pre">translatedDisplayString</span></code></a></p></td>
+<td><p>Returns a translated display string type for a WKB type, e.g., the geometry name used in WKT geometry representations.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsWkbTypes.wkbDimensions" title="qgis.core.QgsWkbTypes.wkbDimensions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wkbDimensions</span></code></a></p></td>
 <td><p>Returns the inherent dimension of the geometry type as an integer.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsWkbTypes.zmType" title="qgis.core.QgsWkbTypes.zmType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">zmType</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsWkbTypes.zmType" title="qgis.core.QgsWkbTypes.zmType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">zmType</span></code></a></p></td>
 <td><p>Returns the modified input geometry type according to hasZ / hasM</p></td>
 </tr>
 </tbody>
@@ -2652,7 +2663,7 @@ Invalid geometry types will return a dimension of 0.</p>
 <dl class="py method">
 <dt id="qgis.core.QgsWkbTypes.displayString">
 <code class="sig-name descname">displayString</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#qgis.core.QgsWkbTypes.Type" title="qgis.core.QgsWkbTypes.Type">QgsWkbTypes.Type</a></span></em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.core.QgsWkbTypes.displayString" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns a display string type for a WKB type, e.g., the geometry name used in WKT geometry representations.</p>
+<dd><p>Returns a non-translated display string type for a WKB type, e.g., the geometry name used in WKT geometry representations.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>type</strong> (<a class="reference internal" href="#qgis.core.QgsWkbTypes.Type" title="qgis.core.QgsWkbTypes.Type"><em>QgsWkbTypes.Type</em></a>) – </p>
@@ -3039,6 +3050,23 @@ GeometryCollections are reported as QgsWkbTypes.UnknownGeometry.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt id="qgis.core.QgsWkbTypes.translatedDisplayString">
+<code class="sig-name descname">translatedDisplayString</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#qgis.core.QgsWkbTypes.Type" title="qgis.core.QgsWkbTypes.Type">QgsWkbTypes.Type</a></span></em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.core.QgsWkbTypes.translatedDisplayString" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a translated display string type for a WKB type, e.g., the geometry name used in WKT geometry representations.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.18.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>type</strong> (<a class="reference internal" href="#qgis.core.QgsWkbTypes.Type" title="qgis.core.QgsWkbTypes.Type"><em>QgsWkbTypes.Type</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt id="qgis.core.QgsWkbTypes.wkbDimensions">
 <code class="sig-name descname">wkbDimensions</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#qgis.core.QgsWkbTypes.Type" title="qgis.core.QgsWkbTypes.Type">QgsWkbTypes.Type</a></span></em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#qgis.core.QgsWkbTypes.wkbDimensions" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the inherent dimension of the geometry type as an integer. Returned value will
@@ -3097,7 +3125,7 @@ Invalid geometry types will return a dimension of 0.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 00:47 Nov 13, 2020.
+        Last updated on 04:03 Nov 13, 2020.
       </span>
 
     </p>
