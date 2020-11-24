@@ -1882,9 +1882,10 @@
 <span id="class-qgsprojectviewsettings"></span><h1>Class: QgsProjectViewSettings<a class="headerlink" href="#module-QgsProjectViewSettings" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt id="qgis.core.QgsProjectViewSettings">
-<em class="property">class </em><code class="sig-prename descclassname">qgis.core.</code><code class="sig-name descname">QgsProjectViewSettings</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">parent</span><span class="p">:</span> <span class="n">QObject</span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsProjectViewSettings" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">qgis.core.</code><code class="sig-name descname">QgsProjectViewSettings</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">project</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsProject.html#module-QgsProject" title="QgsProject">QgsProject</a></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsProjectViewSettings" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">PyQt5.QtCore.QObject</span></code></p>
-<p>Constructor for <a class="reference internal" href="#qgis.core.QgsProjectViewSettings" title="qgis.core.QgsProjectViewSettings"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProjectViewSettings</span></code></a> with the specified <code class="docutils literal notranslate"><span class="pre">parent</span></code> object.</p>
+<p>Constructor for <a class="reference internal" href="#qgis.core.QgsProjectViewSettings" title="qgis.core.QgsProjectViewSettings"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProjectViewSettings</span></code></a> for the specified <code class="docutils literal notranslate"><span class="pre">project</span></code>.</p>
+<p>Ownership is transferred to the <code class="docutils literal notranslate"><span class="pre">project</span></code>.</p>
 <p>Contains settings and properties relating to how a <a class="reference internal" href="QgsProject.html#qgis.core.QgsProject" title="qgis.core.QgsProject"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProject</span></code></a> should be displayed inside
 map canvas, e.g. map scales and default view extent for the project.</p>
 <div class="versionadded">
@@ -1892,7 +1893,7 @@ map canvas, e.g. map scales and default view extent for the project.</p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>parent</strong> – </p>
+<dd class="field-odd"><p><strong>project</strong> – </p>
 </dd>
 </dl>
 <dl class="py method">
@@ -1940,6 +1941,29 @@ view used when the project is opened for the very first time.</p>
 <dd></dd></dl>
 
 <dl class="py method">
+<dt id="qgis.core.QgsProjectViewSettings.fullExtent">
+<code class="sig-name descname">fullExtent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="QgsReferencedRectangle.html#module-QgsReferencedRectangle" title="QgsReferencedRectangle">QgsReferencedRectangle</a><a class="headerlink" href="#qgis.core.QgsProjectViewSettings.fullExtent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the full extent of the project, which represents the maximal limits of the project.</p>
+<p>The returned extent will be in the project’s CRS.</p>
+<p>If the <a class="reference internal" href="#qgis.core.QgsProjectViewSettings.presetFullExtent" title="qgis.core.QgsProjectViewSettings.presetFullExtent"><code class="xref py py-func docutils literal notranslate"><span class="pre">presetFullExtent()</span></code></a> is non null, this will be returned as the full extent.
+Otherwise the full extent will be calculated based on the extent of all layers
+in the project.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsProjectViewSettings.presetFullExtent" title="qgis.core.QgsProjectViewSettings.presetFullExtent"><code class="xref py py-func docutils literal notranslate"><span class="pre">presetFullExtent()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsProjectViewSettings.setPresetFullExtent" title="qgis.core.QgsProjectViewSettings.setPresetFullExtent"><code class="xref py py-func docutils literal notranslate"><span class="pre">setPresetFullExtent()</span></code></a></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsReferencedRectangle.html#qgis.core.QgsReferencedRectangle" title="qgis.core.QgsReferencedRectangle">QgsReferencedRectangle</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt id="qgis.core.QgsProjectViewSettings.isSignalConnected">
 <code class="sig-name descname">isSignalConnected</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">QMetaMethod</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsProjectViewSettings.isSignalConnected" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -1976,6 +2000,39 @@ view used when the project is opened for the very first time.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsProjectViewSettings.setMapScales" title="qgis.core.QgsProjectViewSettings.setMapScales"><code class="xref py py-func docutils literal notranslate"><span class="pre">setMapScales()</span></code></a> [signal]</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qgis.core.QgsProjectViewSettings.presetFullExtent">
+<code class="sig-name descname">presetFullExtent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="QgsReferencedRectangle.html#module-QgsReferencedRectangle" title="QgsReferencedRectangle">QgsReferencedRectangle</a><a class="headerlink" href="#qgis.core.QgsProjectViewSettings.presetFullExtent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the project’s preset full extent.</p>
+<p>This extent represents the maximal limits of the project. The full extent defaults to a null rectangle,
+which indicates that the maximal extent should be calculated based on the layers in the project.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsProjectViewSettings.setPresetFullExtent" title="qgis.core.QgsProjectViewSettings.setPresetFullExtent"><code class="xref py py-func docutils literal notranslate"><span class="pre">setPresetFullExtent()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsProjectViewSettings.fullExtent" title="qgis.core.QgsProjectViewSettings.fullExtent"><code class="xref py py-func docutils literal notranslate"><span class="pre">fullExtent()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.18.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsReferencedRectangle.html#qgis.core.QgsReferencedRectangle" title="qgis.core.QgsReferencedRectangle">QgsReferencedRectangle</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="qgis.core.QgsProjectViewSettings.presetFullExtentChanged">
+<code class="sig-name descname">presetFullExtentChanged</code><a class="headerlink" href="#qgis.core.QgsProjectViewSettings.presetFullExtentChanged" title="Permalink to this definition">¶</a></dt>
+<dd><p>Emitted whenever the <a class="reference internal" href="#qgis.core.QgsProjectViewSettings.presetFullExtent" title="qgis.core.QgsProjectViewSettings.presetFullExtent"><code class="xref py py-func docutils literal notranslate"><span class="pre">presetFullExtent()</span></code></a> is changed.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.18: </span>[signal]</p>
 </div>
 </dd></dl>
 
@@ -2067,6 +2124,30 @@ view used when the project is opened for the very first time.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt id="qgis.core.QgsProjectViewSettings.setPresetFullExtent">
+<code class="sig-name descname">setPresetFullExtent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">extent</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsReferencedRectangle.html#module-QgsReferencedRectangle" title="QgsReferencedRectangle">QgsReferencedRectangle</a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsProjectViewSettings.setPresetFullExtent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the project’s preset full <code class="docutils literal notranslate"><span class="pre">extent</span></code>.</p>
+<p>This extent represents the maximal limits of the project. Setting the full <code class="docutils literal notranslate"><span class="pre">extent</span></code> to a null rectangle
+indicates that the maximal extent should be calculated based on the layers in the project.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsProjectViewSettings.setPresetFullExtent" title="qgis.core.QgsProjectViewSettings.setPresetFullExtent"><code class="xref py py-func docutils literal notranslate"><span class="pre">setPresetFullExtent()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsProjectViewSettings.fullExtent" title="qgis.core.QgsProjectViewSettings.fullExtent"><code class="xref py py-func docutils literal notranslate"><span class="pre">fullExtent()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.18.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>extent</strong> (<a class="reference internal" href="QgsReferencedRectangle.html#qgis.core.QgsReferencedRectangle" title="qgis.core.QgsReferencedRectangle"><em>QgsReferencedRectangle</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt id="qgis.core.QgsProjectViewSettings.setUseProjectScales">
 <code class="sig-name descname">setUseProjectScales</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">enabled</span><span class="p">:</span> <span class="n">bool</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsProjectViewSettings.setUseProjectScales" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets whether project <a class="reference internal" href="#qgis.core.QgsProjectViewSettings.mapScales" title="qgis.core.QgsProjectViewSettings.mapScales"><code class="xref py py-func docutils literal notranslate"><span class="pre">mapScales()</span></code></a> are <code class="docutils literal notranslate"><span class="pre">enabled</span></code>.</p>
@@ -2150,7 +2231,7 @@ while working with this project.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 00:53 Nov 24, 2020.
+        Last updated on 04:17 Nov 24, 2020.
       </span>
 
     </p>
