@@ -1929,6 +1929,12 @@ The azimuth is the north angle to the semi-major axis, in degrees. By default, t
 </dl>
 </p></td>
 </tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsCircle.asGml2" title="qgis.core.QgsCircle.asGml2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">asGml2</span></code></a></p></td>
+<td><p>Returns a GML2 representation of the geometry.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsCircle.asGml3" title="qgis.core.QgsCircle.asGml3"><code class="xref py py-obj docutils literal notranslate"><span class="pre">asGml3</span></code></a></p></td>
+<td><p>Returns a GML3 representation of the geometry.</p></td>
+</tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsCircle.boundingBox" title="qgis.core.QgsCircle.boundingBox"><code class="xref py py-obj docutils literal notranslate"><span class="pre">boundingBox</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">rtype</dt>
@@ -2031,6 +2037,63 @@ The azimuth is the north angle to the semi-major axis, in degrees. By default, t
 <dd><dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qgis.core.QgsCircle.asGml2">
+<code class="sig-name descname">asGml2</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">doc</span><span class="p">:</span> <span class="n">QDomDocument</span></em>, <em class="sig-param"><span class="n">precision</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">17</span></em>, <em class="sig-param"><span class="n">ns</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">''</span></em>, <em class="sig-param"><span class="n">axisOrder</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsAbstractGeometry.html#qgis.core.QgsAbstractGeometry.AxisOrder" title="qgis.core.QgsAbstractGeometry.AxisOrder">QgsAbstractGeometry.AxisOrder</a></span> <span class="o">=</span> <span class="default_value">QgsAbstractGeometry.AxisOrder.XY</span></em><span class="sig-paren">)</span> &#x2192; QDomElement<a class="headerlink" href="#qgis.core.QgsCircle.asGml2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a GML2 representation of the geometry.
+Since GML2 does not supports curve, it will be converted to a LineString.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>doc</strong> (<em>QDomDocument</em>) – DOM document</p></li>
+<li><p><strong>precision</strong> (<em>int = 17</em>) – number of decimal places for coordinates</p></li>
+<li><p><strong>ns</strong> (<em>str = ''</em>) – XML namespace</p></li>
+<li><p><strong>axisOrder</strong> (<em>QgsAbstractGeometry.AxisOrder = QgsAbstractGeometry.AxisOrder.XY</em>) – Axis order for generated GML</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsCircle.asGml3" title="qgis.core.QgsCircle.asGml3"><code class="xref py py-func docutils literal notranslate"><span class="pre">asGml3()</span></code></a></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>QDomElement</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qgis.core.QgsCircle.asGml3">
+<code class="sig-name descname">asGml3</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">doc</span><span class="p">:</span> <span class="n">QDomDocument</span></em>, <em class="sig-param"><span class="n">precision</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">17</span></em>, <em class="sig-param"><span class="n">ns</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">''</span></em>, <em class="sig-param"><span class="n">axisOrder</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsAbstractGeometry.html#qgis.core.QgsAbstractGeometry.AxisOrder" title="qgis.core.QgsAbstractGeometry.AxisOrder">QgsAbstractGeometry.AxisOrder</a></span> <span class="o">=</span> <span class="default_value">QgsAbstractGeometry.AxisOrder.XY</span></em><span class="sig-paren">)</span> &#x2192; QDomElement<a class="headerlink" href="#qgis.core.QgsCircle.asGml3" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a GML3 representation of the geometry.</p>
+<p>From the GML3 description:
+A Circle is an arc whose ends coincide to form a simple closed loop.
+The three control points shall be distinct non-co-linear points for
+the circle to be unambiguously defined. The arc is simply extended
+past the third control point until the first control point is encountered.</p>
+<p>Coordinates are taken from quadrant North, East and South.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>doc</strong> (<em>QDomDocument</em>) – DOM document</p></li>
+<li><p><strong>precision</strong> (<em>int = 17</em>) – number of decimal places for coordinates</p></li>
+<li><p><strong>ns</strong> (<em>str = ''</em>) – XML namespace</p></li>
+<li><p><strong>axisOrder</strong> (<em>QgsAbstractGeometry.AxisOrder = QgsAbstractGeometry.AxisOrder.XY</em>) – Axis order for generated GML</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsCircle.asGml2" title="qgis.core.QgsCircle.asGml2"><code class="xref py py-func docutils literal notranslate"><span class="pre">asGml2()</span></code></a></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>QDomElement</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2471,7 +2534,7 @@ and <code class="docutils literal notranslate"><span class="pre">line2P2</span><
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 00:56 Dec 02, 2020.
+        Last updated on 03:47 Dec 02, 2020.
       </span>
 
     </p>
