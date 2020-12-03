@@ -284,6 +284,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsDateTimeStatisticalSummary.html">Class: QgsDateTimeStatisticalSummary</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsDatumTransform.html">Class: QgsDatumTransform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsDefaultMeshLayerLegend.html">Class: QgsDefaultMeshLayerLegend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsDefaultPointCloudLayerLegend.html">Class: QgsDefaultPointCloudLayerLegend</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsDefaultRasterLayerLegend.html">Class: QgsDefaultRasterLayerLegend</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsDefaultValue.html">Class: QgsDefaultValue</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsDefaultVectorLayerLegend.html">Class: QgsDefaultVectorLayerLegend</a></li>
@@ -672,6 +673,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsPluginLayerType.html">Class: QgsPluginLayerType</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsPoint.html">Class: QgsPoint</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsPointCloudAttribute.html">Class: QgsPointCloudAttribute</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsPointCloudAttributeByRampRenderer.html">Class: QgsPointCloudAttributeByRampRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsPointCloudAttributeCollection.html">Class: QgsPointCloudAttributeCollection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsPointCloudAttributeModel.html">Class: QgsPointCloudAttributeModel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsPointCloudAttributeProxyModel.html">Class: QgsPointCloudAttributeProxyModel</a></li>
@@ -2017,6 +2019,100 @@ providers will return <code class="docutils literal notranslate"><span class="pr
 <dd></dd></dl>
 
 <dl class="py method">
+<dt id="qgis.core.QgsPointCloudDataProvider.lasClassificationCodes">
+<code class="sig-name descname">lasClassificationCodes</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; Dict<span class="p">[</span>int<span class="p">, </span>str<span class="p">]</span><a class="headerlink" href="#qgis.core.QgsPointCloudDataProvider.lasClassificationCodes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the map of LAS classification code to untranslated string value, corresponding to the ASPRS Standard
+Lidar Point Classes.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsPointCloudDataProvider.translatedLasClassificationCodes" title="qgis.core.QgsPointCloudDataProvider.translatedLasClassificationCodes"><code class="xref py py-func docutils literal notranslate"><span class="pre">translatedLasClassificationCodes()</span></code></a></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Dict[int, str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qgis.core.QgsPointCloudDataProvider.metadataClassStatistic">
+<code class="sig-name descname">metadataClassStatistic</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">attribute</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">value</span><span class="p">:</span> <span class="n">Any</span></em>, <em class="sig-param"><span class="n">statistic</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsStatisticalSummary.html#qgis.core.QgsStatisticalSummary.Statistic" title="qgis.core.QgsStatisticalSummary.Statistic">QgsStatisticalSummary.Statistic</a></span></em><span class="sig-paren">)</span> &#x2192; object<a class="headerlink" href="#qgis.core.QgsPointCloudDataProvider.metadataClassStatistic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a statistic for one class <code class="docutils literal notranslate"><span class="pre">value</span></code> from the specified <code class="docutils literal notranslate"><span class="pre">attribute</span></code>, taken only from the metadata of the point cloud
+data source.
+This method will not perform any statistical calculations, rather it will return only precomputed class
+statistics which are included in the data source’s metadata. Not all data sources include this information
+in the metadata, and even for sources with statistical metadata only some <code class="docutils literal notranslate"><span class="pre">statistic</span></code> values may be available.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – if no matching precalculated statistic is available for the attribute.</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>attribute</strong> (<em>str</em>) – </p></li>
+<li><p><strong>value</strong> (<em>Any</em>) – </p></li>
+<li><p><strong>statistic</strong> (<a class="reference internal" href="QgsStatisticalSummary.html#qgis.core.QgsStatisticalSummary.Statistic" title="qgis.core.QgsStatisticalSummary.Statistic"><em>QgsStatisticalSummary.Statistic</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qgis.core.QgsPointCloudDataProvider.metadataClasses">
+<code class="sig-name descname">metadataClasses</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">attribute</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span>Any<span class="p">]</span><a class="headerlink" href="#qgis.core.QgsPointCloudDataProvider.metadataClasses" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of existing classes which are present for the specified <code class="docutils literal notranslate"><span class="pre">attribute</span></code>, taken only from the
+metadata of the point cloud data source.</p>
+<p>This method will not perform any classification or scan for available classes, rather it will return only
+precomputed classes which are included in the data source’s metadata. Not all data sources include this information
+in the metadata.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>attribute</strong> (<em>str</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>List[Any]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qgis.core.QgsPointCloudDataProvider.metadataStatistic">
+<code class="sig-name descname">metadataStatistic</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">attribute</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">statistic</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsStatisticalSummary.html#qgis.core.QgsStatisticalSummary.Statistic" title="qgis.core.QgsStatisticalSummary.Statistic">QgsStatisticalSummary.Statistic</a></span></em><span class="sig-paren">)</span> &#x2192; object<a class="headerlink" href="#qgis.core.QgsPointCloudDataProvider.metadataStatistic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a statistic for the specified <code class="docutils literal notranslate"><span class="pre">attribute</span></code>, taken only from the metadata of the point cloud
+data source.</p>
+<p>This method will not perform any statistical calculations, rather it will return only precomputed attribute
+statistics which are included in the data source’s metadata. Not all data sources include this information
+in the metadata, and even for sources with statistical metadata only some <code class="docutils literal notranslate"><span class="pre">statistic</span></code> values may be available.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – if no matching precalculated statistic is available for the attribute.</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>attribute</strong> (<em>str</em>) – </p></li>
+<li><p><strong>statistic</strong> (<a class="reference internal" href="QgsStatisticalSummary.html#qgis.core.QgsStatisticalSummary.Statistic" title="qgis.core.QgsStatisticalSummary.Statistic"><em>QgsStatisticalSummary.Statistic</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qgis.core.QgsPointCloudDataProvider.pointCount">
+<code class="sig-name descname">pointCount</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#qgis.core.QgsPointCloudDataProvider.pointCount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the total number of points available in the dataset.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt id="qgis.core.QgsPointCloudDataProvider.receivers">
 <code class="sig-name descname">receivers</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">PYQT_SIGNAL</span></em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#qgis.core.QgsPointCloudDataProvider.receivers" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -2042,6 +2138,22 @@ providers will return <code class="docutils literal notranslate"><span class="pr
 <code class="sig-name descname">timerEvent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">QTimerEvent</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsPointCloudDataProvider.timerEvent" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
+<dl class="py method">
+<dt id="qgis.core.QgsPointCloudDataProvider.translatedLasClassificationCodes">
+<code class="sig-name descname">translatedLasClassificationCodes</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; Dict<span class="p">[</span>int<span class="p">, </span>str<span class="p">]</span><a class="headerlink" href="#qgis.core.QgsPointCloudDataProvider.translatedLasClassificationCodes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the map of LAS classification code to translated string value, corresponding to the ASPRS Standard
+Lidar Point Classes.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsPointCloudDataProvider.lasClassificationCodes" title="qgis.core.QgsPointCloudDataProvider.lasClassificationCodes"><code class="xref py py-func docutils literal notranslate"><span class="pre">lasClassificationCodes()</span></code></a></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Dict[int, str]</p>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 </div>
@@ -2058,7 +2170,7 @@ providers will return <code class="docutils literal notranslate"><span class="pr
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 00:54 Dec 03, 2020.
+        Last updated on 03:32 Dec 03, 2020.
       </span>
 
     </p>
