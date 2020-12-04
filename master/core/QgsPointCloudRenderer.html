@@ -678,6 +678,8 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsPointCloudAttributeModel.html">Class: QgsPointCloudAttributeModel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsPointCloudAttributeProxyModel.html">Class: QgsPointCloudAttributeProxyModel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsPointCloudBlock.html">Class: QgsPointCloudBlock</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsPointCloudCategory.html">Class: QgsPointCloudCategory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsPointCloudClassifiedRenderer.html">Class: QgsPointCloudClassifiedRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsPointCloudDataProvider.html">Class: QgsPointCloudDataProvider</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsPointCloudLayer.html">Class: QgsPointCloudLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsPointCloudLayerElevationProperties.html">Class: QgsPointCloudLayerElevationProperties</a></li>
@@ -1797,6 +1799,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../3d/QgsAbstractMaterialSettings.html">Class: QgsAbstractMaterialSettings</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../3d/QgsAbstractVectorLayer3DRenderer.html">Class: QgsAbstractVectorLayer3DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../3d/QgsCameraPose.html">Class: QgsCameraPose</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../3d/QgsColorRampPointCloud3DSymbol.html">Class: QgsColorRampPointCloud3DSymbol</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../3d/QgsDirectionalLightSettings.html">Class: QgsDirectionalLightSettings</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../3d/QgsGoochMaterialSettings.html">Class: QgsGoochMaterialSettings</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../3d/QgsLayoutItem3DMap.html">Class: QgsLayoutItem3DMap</a></li>
@@ -1813,9 +1816,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../3d/QgsPointCloudLayer3DRenderer.html">Class: QgsPointCloudLayer3DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../3d/QgsPointLightSettings.html">Class: QgsPointLightSettings</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../3d/QgsPolygon3DSymbol.html">Class: QgsPolygon3DSymbol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../3d/QgsRgbPointCloud3DSymbol.html">Class: QgsRgbPointCloud3DSymbol</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../3d/QgsRuleBased3DRenderer.html">Class: QgsRuleBased3DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../3d/QgsRuleBased3DRendererMetadata.html">Class: QgsRuleBased3DRendererMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../3d/QgsSimpleLineMaterialSettings.html">Class: QgsSimpleLineMaterialSettings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../3d/QgsSingleColorPointCloud3DSymbol.html">Class: QgsSingleColorPointCloud3DSymbol</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../3d/QgsVectorLayer3DRenderer.html">Class: QgsVectorLayer3DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../3d/QgsVectorLayer3DRendererMetadata.html">Class: QgsVectorLayer3DRendererMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../3d/QgsVectorLayer3DTilingSettings.html">Class: QgsVectorLayer3DTilingSettings</a></li>
@@ -1910,14 +1915,26 @@
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudRenderer.clone" title="qgis.core.QgsPointCloudRenderer.clone"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clone</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudRenderer.checkLegendItem" title="qgis.core.QgsPointCloudRenderer.checkLegendItem"><code class="xref py py-obj docutils literal notranslate"><span class="pre">checkLegendItem</span></code></a></p></td>
+<td><p>Called when the check state of the legend item with the specified <code class="docutils literal notranslate"><span class="pre">key</span></code> is changed.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudRenderer.clone" title="qgis.core.QgsPointCloudRenderer.clone"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clone</span></code></a></p></td>
 <td><p>Create a deep copy of this renderer.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudRenderer.copyCommonProperties" title="qgis.core.QgsPointCloudRenderer.copyCommonProperties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">copyCommonProperties</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudRenderer.copyCommonProperties" title="qgis.core.QgsPointCloudRenderer.copyCommonProperties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">copyCommonProperties</span></code></a></p></td>
 <td><p>Copies common point cloud properties (such as point size and screen error) to the <code class="docutils literal notranslate"><span class="pre">destination</span></code> renderer.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudRenderer.createLegendNodes" title="qgis.core.QgsPointCloudRenderer.createLegendNodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createLegendNodes</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudRenderer.createLegendNodes" title="qgis.core.QgsPointCloudRenderer.createLegendNodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createLegendNodes</span></code></a></p></td>
 <td><p>Creates a set of legend nodes representing the renderer.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudRenderer.drawPoint" title="qgis.core.QgsPointCloudRenderer.drawPoint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">drawPoint</span></code></a></p></td>
+<td><p>Draws a point using a <code class="docutils literal notranslate"><span class="pre">color</span></code> at the specified <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> (in map coordinates).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudRenderer.legendItemChecked" title="qgis.core.QgsPointCloudRenderer.legendItemChecked"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legendItemChecked</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the legend item with the specified <code class="docutils literal notranslate"><span class="pre">key</span></code> is checked.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudRenderer.legendRuleKeys" title="qgis.core.QgsPointCloudRenderer.legendRuleKeys"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legendRuleKeys</span></code></a></p></td>
+<td><p>Returns a list of all rule keys for legend nodes created by the renderer.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudRenderer.load" title="qgis.core.QgsPointCloudRenderer.load"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load</span></code></a></p></td>
 <td><p>Creates a renderer from an XML <code class="docutils literal notranslate"><span class="pre">element</span></code>.</p></td>
@@ -1937,38 +1954,44 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudRenderer.pointSizeUnit" title="qgis.core.QgsPointCloudRenderer.pointSizeUnit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pointSizeUnit</span></code></a></p></td>
 <td><p>Returns the units used for the point size.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudRenderer.pointXY" title="qgis.core.QgsPointCloudRenderer.pointXY"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pointXY</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudRenderer.pointSymbol" title="qgis.core.QgsPointCloudRenderer.pointSymbol"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pointSymbol</span></code></a></p></td>
+<td><p>Returns the symbol used by the renderer for drawing points.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudRenderer.pointXY" title="qgis.core.QgsPointCloudRenderer.pointXY"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pointXY</span></code></a></p></td>
 <td><p>Retrieves the x and y coordinate for the point at index <code class="docutils literal notranslate"><span class="pre">i</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudRenderer.pointZ" title="qgis.core.QgsPointCloudRenderer.pointZ"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pointZ</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudRenderer.pointZ" title="qgis.core.QgsPointCloudRenderer.pointZ"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pointZ</span></code></a></p></td>
 <td><p>Retrieves the z value for the point at index <code class="docutils literal notranslate"><span class="pre">i</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudRenderer.renderBlock" title="qgis.core.QgsPointCloudRenderer.renderBlock"><code class="xref py py-obj docutils literal notranslate"><span class="pre">renderBlock</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudRenderer.renderBlock" title="qgis.core.QgsPointCloudRenderer.renderBlock"><code class="xref py py-obj docutils literal notranslate"><span class="pre">renderBlock</span></code></a></p></td>
 <td><p>Renders a <code class="docutils literal notranslate"><span class="pre">block</span></code> of point cloud data using the specified render <code class="docutils literal notranslate"><span class="pre">context</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudRenderer.restoreCommonProperties" title="qgis.core.QgsPointCloudRenderer.restoreCommonProperties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">restoreCommonProperties</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudRenderer.restoreCommonProperties" title="qgis.core.QgsPointCloudRenderer.restoreCommonProperties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">restoreCommonProperties</span></code></a></p></td>
 <td><p>Restores common renderer properties (such as point size and screen error) from the specified DOM <code class="docutils literal notranslate"><span class="pre">element</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudRenderer.save" title="qgis.core.QgsPointCloudRenderer.save"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudRenderer.save" title="qgis.core.QgsPointCloudRenderer.save"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save</span></code></a></p></td>
 <td><p>Saves the renderer configuration to an XML element.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudRenderer.saveCommonProperties" title="qgis.core.QgsPointCloudRenderer.saveCommonProperties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">saveCommonProperties</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudRenderer.saveCommonProperties" title="qgis.core.QgsPointCloudRenderer.saveCommonProperties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">saveCommonProperties</span></code></a></p></td>
 <td><p>Saves common renderer properties (such as point size and screen error) to the specified DOM <code class="docutils literal notranslate"><span class="pre">element</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudRenderer.setMaximumScreenError" title="qgis.core.QgsPointCloudRenderer.setMaximumScreenError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setMaximumScreenError</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudRenderer.setMaximumScreenError" title="qgis.core.QgsPointCloudRenderer.setMaximumScreenError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setMaximumScreenError</span></code></a></p></td>
 <td><p>Sets the maximum screen <code class="docutils literal notranslate"><span class="pre">error</span></code> allowed when rendering the point cloud.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudRenderer.setMaximumScreenErrorUnit" title="qgis.core.QgsPointCloudRenderer.setMaximumScreenErrorUnit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setMaximumScreenErrorUnit</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudRenderer.setMaximumScreenErrorUnit" title="qgis.core.QgsPointCloudRenderer.setMaximumScreenErrorUnit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setMaximumScreenErrorUnit</span></code></a></p></td>
 <td><p>Sets the <code class="docutils literal notranslate"><span class="pre">unit</span></code> for the maximum screen error allowed when rendering the point cloud.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudRenderer.setPointSize" title="qgis.core.QgsPointCloudRenderer.setPointSize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setPointSize</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudRenderer.setPointSize" title="qgis.core.QgsPointCloudRenderer.setPointSize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setPointSize</span></code></a></p></td>
 <td><p>Sets the point <code class="docutils literal notranslate"><span class="pre">size</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudRenderer.setPointSizeMapUnitScale" title="qgis.core.QgsPointCloudRenderer.setPointSizeMapUnitScale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setPointSizeMapUnitScale</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudRenderer.setPointSizeMapUnitScale" title="qgis.core.QgsPointCloudRenderer.setPointSizeMapUnitScale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setPointSizeMapUnitScale</span></code></a></p></td>
 <td><p>Sets the map unit <code class="docutils literal notranslate"><span class="pre">scale</span></code> used for the point size.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudRenderer.setPointSizeUnit" title="qgis.core.QgsPointCloudRenderer.setPointSizeUnit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setPointSizeUnit</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudRenderer.setPointSizeUnit" title="qgis.core.QgsPointCloudRenderer.setPointSizeUnit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setPointSizeUnit</span></code></a></p></td>
 <td><p>Sets the <code class="docutils literal notranslate"><span class="pre">units</span></code> used for the point size.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudRenderer.setPointSymbol" title="qgis.core.QgsPointCloudRenderer.setPointSymbol"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setPointSymbol</span></code></a></p></td>
+<td><p>Sets the <code class="docutils literal notranslate"><span class="pre">symbol</span></code> used by the renderer for drawing points.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudRenderer.startRender" title="qgis.core.QgsPointCloudRenderer.startRender"><code class="xref py py-obj docutils literal notranslate"><span class="pre">startRender</span></code></a></p></td>
 <td><p>Must be called when a new render cycle is started.</p></td>
@@ -1992,15 +2015,56 @@
 <tbody>
 </tbody>
 </table>
+<p class="rubric">Attributes</p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
 <col style="width: 90%" />
 </colgroup>
 <tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudRenderer.Circle" title="qgis.core.QgsPointCloudRenderer.Circle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Circle</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudRenderer.Square" title="qgis.core.QgsPointCloudRenderer.Square"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Square</span></code></a></p></td>
+<td><p></p></td>
+</tr>
 </tbody>
 </table>
 </div>
+<dl class="py attribute">
+<dt id="qgis.core.QgsPointCloudRenderer.Circle">
+<code class="sig-name descname">Circle</code><em class="property"> = 1</em><a class="headerlink" href="#qgis.core.QgsPointCloudRenderer.Circle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt id="qgis.core.QgsPointCloudRenderer.PointSymbol">
+<em class="property">class </em><code class="sig-name descname">PointSymbol</code><a class="headerlink" href="#qgis.core.QgsPointCloudRenderer.PointSymbol" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="qgis.core.QgsPointCloudRenderer.Square">
+<code class="sig-name descname">Square</code><em class="property"> = 0</em><a class="headerlink" href="#qgis.core.QgsPointCloudRenderer.Square" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="qgis.core.QgsPointCloudRenderer.checkLegendItem">
+<code class="sig-name descname">checkLegendItem</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">key</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">state</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsPointCloudRenderer.checkLegendItem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when the check state of the legend item with the specified <code class="docutils literal notranslate"><span class="pre">key</span></code> is changed.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsPointCloudRenderer.legendItemChecked" title="qgis.core.QgsPointCloudRenderer.legendItemChecked"><code class="xref py py-func docutils literal notranslate"><span class="pre">legendItemChecked()</span></code></a></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> (<em>str</em>) – </p></li>
+<li><p><strong>state</strong> (<em>bool = True</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py method">
 <dt id="qgis.core.QgsPointCloudRenderer.clone">
 <code class="sig-name descname">clone</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#module-QgsPointCloudRenderer" title="QgsPointCloudRenderer">QgsPointCloudRenderer</a><a class="headerlink" href="#qgis.core.QgsPointCloudRenderer.clone" title="Permalink to this definition">¶</a></dt>
@@ -2034,6 +2098,51 @@ and generate a proper subclass.</p>
 </dd>
 <dt class="field-even">Return type</dt>
 <dd class="field-even"><p>List[<a class="reference internal" href="QgsLayerTreeModelLegendNode.html#qgis.core.QgsLayerTreeModelLegendNode" title="qgis.core.QgsLayerTreeModelLegendNode">QgsLayerTreeModelLegendNode</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qgis.core.QgsPointCloudRenderer.drawPoint">
+<code class="sig-name descname">drawPoint</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">x</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">y</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">color</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>QColor<span class="p">, </span>Qt.GlobalColor<span class="p">, </span>QGradient<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">context</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsPointCloudRenderContext.html#module-QgsPointCloudRenderContext" title="QgsPointCloudRenderContext">QgsPointCloudRenderContext</a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsPointCloudRenderer.drawPoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draws a point using a <code class="docutils literal notranslate"><span class="pre">color</span></code> at the specified <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> (in map coordinates).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>float</em>) – </p></li>
+<li><p><strong>y</strong> (<em>float</em>) – </p></li>
+<li><p><strong>color</strong> (<em>Union</em><em>[</em><em>QColor</em>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsPointCloudRenderContext.html#qgis.core.QgsPointCloudRenderContext" title="qgis.core.QgsPointCloudRenderContext"><em>QgsPointCloudRenderContext</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qgis.core.QgsPointCloudRenderer.legendItemChecked">
+<code class="sig-name descname">legendItemChecked</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">key</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsPointCloudRenderer.legendItemChecked" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the legend item with the specified <code class="docutils literal notranslate"><span class="pre">key</span></code> is checked.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsPointCloudRenderer.checkLegendItem" title="qgis.core.QgsPointCloudRenderer.checkLegendItem"><code class="xref py py-func docutils literal notranslate"><span class="pre">checkLegendItem()</span></code></a></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>key</strong> (<em>str</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qgis.core.QgsPointCloudRenderer.legendRuleKeys">
+<code class="sig-name descname">legendRuleKeys</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span>str<span class="p">]</span><a class="headerlink" href="#qgis.core.QgsPointCloudRenderer.legendRuleKeys" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of all rule keys for legend nodes created by the renderer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List[str]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2166,6 +2275,21 @@ and generate a proper subclass.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><a class="reference internal" href="QgsUnitTypes.html#qgis.core.QgsUnitTypes.RenderUnit" title="qgis.core.QgsUnitTypes.RenderUnit">QgsUnitTypes.RenderUnit</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qgis.core.QgsPointCloudRenderer.pointSymbol">
+<code class="sig-name descname">pointSymbol</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#qgis.core.QgsPointCloudRenderer.PointSymbol" title="qgis.core.QgsPointCloudRenderer.PointSymbol">QgsPointCloudRenderer.PointSymbol</a><a class="headerlink" href="#qgis.core.QgsPointCloudRenderer.pointSymbol" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the symbol used by the renderer for drawing points.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsPointCloudRenderer.setPointSymbol" title="qgis.core.QgsPointCloudRenderer.setPointSymbol"><code class="xref py py-func docutils literal notranslate"><span class="pre">setPointSymbol()</span></code></a></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#qgis.core.QgsPointCloudRenderer.PointSymbol" title="qgis.core.QgsPointCloudRenderer.PointSymbol">QgsPointCloudRenderer.PointSymbol</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -2389,6 +2513,21 @@ specified DOM <code class="docutils literal notranslate"><span class="pre">eleme
 </dd></dl>
 
 <dl class="py method">
+<dt id="qgis.core.QgsPointCloudRenderer.setPointSymbol">
+<code class="sig-name descname">setPointSymbol</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">symbol</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#qgis.core.QgsPointCloudRenderer.PointSymbol" title="qgis.core.QgsPointCloudRenderer.PointSymbol">QgsPointCloudRenderer.PointSymbol</a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsPointCloudRenderer.setPointSymbol" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the <code class="docutils literal notranslate"><span class="pre">symbol</span></code> used by the renderer for drawing points.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsPointCloudRenderer.pointSymbol" title="qgis.core.QgsPointCloudRenderer.pointSymbol"><code class="xref py py-func docutils literal notranslate"><span class="pre">pointSymbol()</span></code></a></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>symbol</strong> (<a class="reference internal" href="#qgis.core.QgsPointCloudRenderer.PointSymbol" title="qgis.core.QgsPointCloudRenderer.PointSymbol"><em>QgsPointCloudRenderer.PointSymbol</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt id="qgis.core.QgsPointCloudRenderer.startRender">
 <code class="sig-name descname">startRender</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">context</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsPointCloudRenderContext.html#module-QgsPointCloudRenderContext" title="QgsPointCloudRenderContext">QgsPointCloudRenderContext</a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsPointCloudRenderer.startRender" title="Permalink to this definition">¶</a></dt>
 <dd><p>Must be called when a new render cycle is started. A call to <a class="reference internal" href="#qgis.core.QgsPointCloudRenderer.startRender" title="qgis.core.QgsPointCloudRenderer.startRender"><code class="xref py py-func docutils literal notranslate"><span class="pre">startRender()</span></code></a> must always
@@ -2477,7 +2616,7 @@ returned here.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 00:57 Dec 04, 2020.
+        Last updated on 03:38 Dec 04, 2020.
       </span>
 
     </p>

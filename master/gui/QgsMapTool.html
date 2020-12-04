@@ -678,6 +678,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsPointCloudAttributeModel.html">Class: QgsPointCloudAttributeModel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsPointCloudAttributeProxyModel.html">Class: QgsPointCloudAttributeProxyModel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsPointCloudBlock.html">Class: QgsPointCloudBlock</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../core/QgsPointCloudCategory.html">Class: QgsPointCloudCategory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../core/QgsPointCloudClassifiedRenderer.html">Class: QgsPointCloudClassifiedRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsPointCloudDataProvider.html">Class: QgsPointCloudDataProvider</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsPointCloudLayer.html">Class: QgsPointCloudLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsPointCloudLayerElevationProperties.html">Class: QgsPointCloudLayerElevationProperties</a></li>
@@ -1797,6 +1799,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../3d/QgsAbstractMaterialSettings.html">Class: QgsAbstractMaterialSettings</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../3d/QgsAbstractVectorLayer3DRenderer.html">Class: QgsAbstractVectorLayer3DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../3d/QgsCameraPose.html">Class: QgsCameraPose</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../3d/QgsColorRampPointCloud3DSymbol.html">Class: QgsColorRampPointCloud3DSymbol</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../3d/QgsDirectionalLightSettings.html">Class: QgsDirectionalLightSettings</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../3d/QgsGoochMaterialSettings.html">Class: QgsGoochMaterialSettings</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../3d/QgsLayoutItem3DMap.html">Class: QgsLayoutItem3DMap</a></li>
@@ -1813,9 +1816,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../3d/QgsPointCloudLayer3DRenderer.html">Class: QgsPointCloudLayer3DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../3d/QgsPointLightSettings.html">Class: QgsPointLightSettings</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../3d/QgsPolygon3DSymbol.html">Class: QgsPolygon3DSymbol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../3d/QgsRgbPointCloud3DSymbol.html">Class: QgsRgbPointCloud3DSymbol</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../3d/QgsRuleBased3DRenderer.html">Class: QgsRuleBased3DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../3d/QgsRuleBased3DRendererMetadata.html">Class: QgsRuleBased3DRendererMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../3d/QgsSimpleLineMaterialSettings.html">Class: QgsSimpleLineMaterialSettings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../3d/QgsSingleColorPointCloud3DSymbol.html">Class: QgsSingleColorPointCloud3DSymbol</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../3d/QgsVectorLayer3DRenderer.html">Class: QgsVectorLayer3DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../3d/QgsVectorLayer3DRendererMetadata.html">Class: QgsVectorLayer3DRendererMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../3d/QgsVectorLayer3DTilingSettings.html">Class: QgsVectorLayer3DTilingSettings</a></li>
@@ -2176,6 +2181,37 @@ is present in <a class="reference internal" href="#qgis.gui.QgsMapTool.flags" ti
 </dd></dl>
 
 <dl class="py method">
+<dt id="qgis.gui.QgsMapTool.populateContextMenuWithEvent">
+<code class="sig-name descname">populateContextMenuWithEvent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">menu</span><span class="p">:</span> <span class="n">QMenu</span></em>, <em class="sig-param"><span class="n">event</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsMapMouseEvent.html#module-QgsMapMouseEvent" title="QgsMapMouseEvent">QgsMapMouseEvent</a></span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.gui.QgsMapTool.populateContextMenuWithEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Allows the tool to populate and customize the given <code class="docutils literal notranslate"><span class="pre">menu</span></code>,
+prior to showing it in response to a right-mouse button click.</p>
+<p><code class="docutils literal notranslate"><span class="pre">menu</span></code> will be initially populated with a set of default, generic actions.
+Any new actions added to the menu should be correctly parented to <code class="docutils literal notranslate"><span class="pre">menu</span></code>.</p>
+<p>A pointer to the map mouse <code class="docutils literal notranslate"><span class="pre">event</span></code> can be provided to allow particular behavior depending on the map tool.</p>
+<p>This method can return true to inform the caller that the menu was effectively populated.</p>
+<p>The default implementation does nothing and returns false.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The context menu is only shown when the ShowContextMenu flag
+is present in <a class="reference internal" href="#qgis.gui.QgsMapTool.flags" title="qgis.gui.QgsMapTool.flags"><code class="xref py py-func docutils literal notranslate"><span class="pre">flags()</span></code></a>.</p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.18.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>menu</strong> (<em>QMenu</em>) – </p></li>
+<li><p><strong>event</strong> (<a class="reference internal" href="QgsMapMouseEvent.html#qgis.gui.QgsMapMouseEvent" title="qgis.gui.QgsMapMouseEvent"><em>QgsMapMouseEvent</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt id="qgis.gui.QgsMapTool.receivers">
 <code class="sig-name descname">receivers</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">PYQT_SIGNAL</span></em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#qgis.gui.QgsMapTool.receivers" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -2385,7 +2421,7 @@ transformation from layer’s coordinates to map coordinates (which is different
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 00:57 Dec 04, 2020.
+        Last updated on 03:38 Dec 04, 2020.
       </span>
 
     </p>
