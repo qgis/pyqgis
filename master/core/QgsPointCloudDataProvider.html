@@ -641,6 +641,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsNewsFeedParser.html">Class: QgsNewsFeedParser</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsNewsFeedProxyModel.html">Class: QgsNewsFeedProxyModel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsNmeaConnection.html">Class: QgsNmeaConnection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsNominatimGeocoder.html">Class: QgsNominatimGeocoder</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsNullSymbolRenderer.html">Class: QgsNullSymbolRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsNumericFormat.html">Class: QgsNumericFormat</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsNumericFormatContext.html">Class: QgsNumericFormatContext</a></li>
@@ -1939,9 +1940,30 @@ QgsPointCloudDataProvider.Capabilities(QgsPointCloudDataProvider.Capabilities)</
 <dd></dd></dl>
 
 <dl class="py attribute">
+<dt id="qgis.core.QgsPointCloudDataProvider.Indexed">
+<code class="sig-name descname">Indexed</code><em class="property"> = 2</em><a class="headerlink" href="#qgis.core.QgsPointCloudDataProvider.Indexed" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="qgis.core.QgsPointCloudDataProvider.Indexing">
+<code class="sig-name descname">Indexing</code><em class="property"> = 1</em><a class="headerlink" href="#qgis.core.QgsPointCloudDataProvider.Indexing" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt id="qgis.core.QgsPointCloudDataProvider.NoCapabilities">
 <code class="sig-name descname">NoCapabilities</code><em class="property"> = 0</em><a class="headerlink" href="#qgis.core.QgsPointCloudDataProvider.NoCapabilities" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="qgis.core.QgsPointCloudDataProvider.NotIndexed">
+<code class="sig-name descname">NotIndexed</code><em class="property"> = 0</em><a class="headerlink" href="#qgis.core.QgsPointCloudDataProvider.NotIndexed" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt id="qgis.core.QgsPointCloudDataProvider.PointCloudIndexGenerationState">
+<em class="property">class </em><code class="sig-name descname">PointCloudIndexGenerationState</code><a class="headerlink" href="#qgis.core.QgsPointCloudDataProvider.PointCloudIndexGenerationState" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt id="qgis.core.QgsPointCloudDataProvider.ReadLayerMetadata">
@@ -1962,7 +1984,8 @@ QgsPointCloudDataProvider.Capabilities(QgsPointCloudDataProvider.Capabilities)</
 <dl class="py method">
 <dt id="qgis.core.QgsPointCloudDataProvider.attributes">
 <code class="sig-name descname">attributes</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="QgsPointCloudAttributeCollection.html#module-QgsPointCloudAttributeCollection" title="QgsPointCloudAttributeCollection">QgsPointCloudAttributeCollection</a><a class="headerlink" href="#qgis.core.QgsPointCloudDataProvider.attributes" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the attributes available from this data provider.</p>
+<dd><p>Returns the attributes available from this data provider.
+May return empty collection until <code class="xref py py-func docutils literal notranslate"><span class="pre">pointCloudIndexLoaded()</span></code> is emitted</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><a class="reference internal" href="QgsPointCloudAttributeCollection.html#qgis.core.QgsPointCloudAttributeCollection" title="qgis.core.QgsPointCloudAttributeCollection">QgsPointCloudAttributeCollection</a></p>
@@ -2037,6 +2060,47 @@ providers will return <code class="docutils literal notranslate"><span class="pr
 <dd></dd></dl>
 
 <dl class="py method">
+<dt id="qgis.core.QgsPointCloudDataProvider.generateIndex">
+<code class="sig-name descname">generateIndex</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsPointCloudDataProvider.generateIndex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Triggers generation of the point cloud index</p>
+<p>emits <a class="reference internal" href="#qgis.core.QgsPointCloudDataProvider.indexGenerationStateChanged" title="qgis.core.QgsPointCloudDataProvider.indexGenerationStateChanged"><code class="xref py py-func docutils literal notranslate"><span class="pre">indexGenerationStateChanged()</span></code></a></p>
+<p>sa <code class="xref py py-func docutils literal notranslate"><span class="pre">index()</span></code></p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qgis.core.QgsPointCloudDataProvider.hasValidIndex">
+<code class="sig-name descname">hasValidIndex</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsPointCloudDataProvider.hasValidIndex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns whether provider has index which is valid</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="qgis.core.QgsPointCloudDataProvider.indexGenerationStateChanged">
+<code class="sig-name descname">indexGenerationStateChanged</code><a class="headerlink" href="#qgis.core.QgsPointCloudDataProvider.indexGenerationStateChanged" title="Permalink to this definition">¶</a></dt>
+<dd><p>Emitted when point cloud generation state is changed [signal]</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>state</strong> (<a class="reference internal" href="#qgis.core.QgsPointCloudDataProvider.PointCloudIndexGenerationState" title="qgis.core.QgsPointCloudDataProvider.PointCloudIndexGenerationState"><em>QgsPointCloudDataProvider.PointCloudIndexGenerationState</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qgis.core.QgsPointCloudDataProvider.indexingState">
+<code class="sig-name descname">indexingState</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#qgis.core.QgsPointCloudDataProvider.PointCloudIndexGenerationState" title="qgis.core.QgsPointCloudDataProvider.PointCloudIndexGenerationState">QgsPointCloudDataProvider.PointCloudIndexGenerationState</a><a class="headerlink" href="#qgis.core.QgsPointCloudDataProvider.indexingState" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the current index generation state</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#qgis.core.QgsPointCloudDataProvider.PointCloudIndexGenerationState" title="qgis.core.QgsPointCloudDataProvider.PointCloudIndexGenerationState">QgsPointCloudDataProvider.PointCloudIndexGenerationState</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt id="qgis.core.QgsPointCloudDataProvider.isSignalConnected">
 <code class="sig-name descname">isSignalConnected</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">QMetaMethod</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsPointCloudDataProvider.isSignalConnected" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -2055,6 +2119,13 @@ Lidar Point Classes.</p>
 <dd class="field-odd"><p>Dict[int, str]</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qgis.core.QgsPointCloudDataProvider.loadIndex">
+<code class="sig-name descname">loadIndex</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsPointCloudDataProvider.loadIndex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Triggers loading of the point cloud index</p>
+<p>sa <code class="xref py py-func docutils literal notranslate"><span class="pre">index()</span></code></p>
 </dd></dl>
 
 <dl class="py method">
@@ -2238,7 +2309,7 @@ Lidar Point Classes.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 01:02 Dec 16, 2020.
+        Last updated on 04:00 Dec 16, 2020.
       </span>
 
     </p>
