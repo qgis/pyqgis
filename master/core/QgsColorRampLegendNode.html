@@ -40,7 +40,7 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Class: QgsColorRampShader" href="QgsColorRampShader.html" />
+    <link rel="next" title="Class: QgsColorRampLegendNodeSettings" href="QgsColorRampLegendNodeSettings.html" />
     <link rel="prev" title="Class: QgsColorRamp" href="QgsColorRamp.html" /> 
 </head>
 
@@ -170,6 +170,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsAnnotationPointTextItem.html">Class: QgsAnnotationPointTextItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAnnotationPolygonItem.html">Class: QgsAnnotationPolygonItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsApplication.html">Class: QgsApplication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsArcGisRestUtils.html">Class: QgsArcGisRestUtils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsArchive.html">Class: QgsArchive</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsArrowSymbolLayer.html">Class: QgsArrowSymbolLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAttributeEditorContainer.html">Class: QgsAttributeEditorContainer</a></li>
@@ -230,6 +231,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsColorEffect.html">Class: QgsColorEffect</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsColorRamp.html">Class: QgsColorRamp</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Class: QgsColorRampLegendNode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsColorRampLegendNodeSettings.html">Class: QgsColorRampLegendNodeSettings</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsColorRampShader.html">Class: QgsColorRampShader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsColorRampTransformer.html">Class: QgsColorRampTransformer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsColorScheme.html">Class: QgsColorScheme</a></li>
@@ -1235,6 +1237,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsColorEffectWidget.html">Class: QgsColorEffectWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsColorPreviewWidget.html">Class: QgsColorPreviewWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsColorRampButton.html">Class: QgsColorRampButton</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui/QgsColorRampLegendNodeDialog.html">Class: QgsColorRampLegendNodeDialog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui/QgsColorRampLegendNodeWidget.html">Class: QgsColorRampLegendNodeWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsColorRampShaderWidget.html">Class: QgsColorRampShaderWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsColorRampWidget.html">Class: QgsColorRampWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsColorSchemeList.html">Class: QgsColorSchemeList</a></li>
@@ -1914,6 +1918,20 @@
 </ul>
 </dd>
 </dl>
+<p>QgsColorRampLegendNode(nodeLayer: <a class="reference internal" href="QgsLayerTreeLayer.html#qgis.core.QgsLayerTreeLayer" title="qgis.core.QgsLayerTreeLayer"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsLayerTreeLayer</span></code></a>, ramp: <a class="reference internal" href="QgsColorRamp.html#qgis.core.QgsColorRamp" title="qgis.core.QgsColorRamp"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsColorRamp</span></code></a>, settings: <a class="reference internal" href="QgsColorRampLegendNodeSettings.html#qgis.core.QgsColorRampLegendNodeSettings" title="qgis.core.QgsColorRampLegendNodeSettings"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsColorRampLegendNodeSettings</span></code></a>, minimumValue: float, maximumValue: float, parent: QObject = None)
+Constructor for QgsColorRampLegendNode.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>nodeLayer</strong> – layer node</p></li>
+<li><p><strong>ramp</strong> – color ramp to render in node. Ownership is transferred to the node.</p></li>
+<li><p><strong>settings</strong> – node settings</p></li>
+<li><p><strong>minimumValue</strong> – value associated with minimum of ramp</p></li>
+<li><p><strong>maximumValue</strong> – value associated with maximum of ramp</p></li>
+<li><p><strong>parent</strong> – attach a parent QObject to the legend node.</p></li>
+</ul>
+</dd>
+</dl>
 <p>A legend node which renders a color ramp.</p>
 <div class="versionadded">
 <table class="longtable docutils align-default">
@@ -1960,28 +1978,41 @@
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsColorRampLegendNode.iconSize" title="qgis.core.QgsColorRampLegendNode.iconSize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">iconSize</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsColorRampLegendNode.drawSymbolText" title="qgis.core.QgsColorRampLegendNode.drawSymbolText"><code class="xref py py-obj docutils literal notranslate"><span class="pre">drawSymbolText</span></code></a></p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">param settings</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsColorRampLegendNode.iconSize" title="qgis.core.QgsColorRampLegendNode.iconSize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">iconSize</span></code></a></p></td>
 <td><p>Returns the icon size, which is how large the ramp will render in a layer tree widget.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsColorRampLegendNode.isSignalConnected" title="qgis.core.QgsColorRampLegendNode.isSignalConnected"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isSignalConnected</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsColorRampLegendNode.isSignalConnected" title="qgis.core.QgsColorRampLegendNode.isSignalConnected"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isSignalConnected</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsColorRampLegendNode.ramp" title="qgis.core.QgsColorRampLegendNode.ramp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ramp</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsColorRampLegendNode.ramp" title="qgis.core.QgsColorRampLegendNode.ramp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ramp</span></code></a></p></td>
 <td><p>Returns the color ramp used by the node.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsColorRampLegendNode.receivers" title="qgis.core.QgsColorRampLegendNode.receivers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">receivers</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsColorRampLegendNode.receivers" title="qgis.core.QgsColorRampLegendNode.receivers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">receivers</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsColorRampLegendNode.sender" title="qgis.core.QgsColorRampLegendNode.sender"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sender</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsColorRampLegendNode.sender" title="qgis.core.QgsColorRampLegendNode.sender"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sender</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsColorRampLegendNode.senderSignalIndex" title="qgis.core.QgsColorRampLegendNode.senderSignalIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">senderSignalIndex</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsColorRampLegendNode.senderSignalIndex" title="qgis.core.QgsColorRampLegendNode.senderSignalIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">senderSignalIndex</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsColorRampLegendNode.setIconSize" title="qgis.core.QgsColorRampLegendNode.setIconSize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setIconSize</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsColorRampLegendNode.setIconSize" title="qgis.core.QgsColorRampLegendNode.setIconSize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setIconSize</span></code></a></p></td>
 <td><p>Set the icon <code class="docutils literal notranslate"><span class="pre">size</span></code>, which controls how large the ramp will render in a layer tree widget.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsColorRampLegendNode.timerEvent" title="qgis.core.QgsColorRampLegendNode.timerEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">timerEvent</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsColorRampLegendNode.setSettings" title="qgis.core.QgsColorRampLegendNode.setSettings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setSettings</span></code></a></p></td>
+<td><p>Sets the node’s <code class="docutils literal notranslate"><span class="pre">settings</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsColorRampLegendNode.settings" title="qgis.core.QgsColorRampLegendNode.settings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">settings</span></code></a></p></td>
+<td><p>Returns the node’s settings.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsColorRampLegendNode.timerEvent" title="qgis.core.QgsColorRampLegendNode.timerEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">timerEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -2060,6 +2091,23 @@
 </dd></dl>
 
 <dl class="py method">
+<dt id="qgis.core.QgsColorRampLegendNode.drawSymbolText">
+<code class="sig-name descname">drawSymbolText</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">settings</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsLegendSettings.html#module-QgsLegendSettings" title="QgsLegendSettings">QgsLegendSettings</a></span></em>, <em class="sig-param"><span class="n">ctx</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsLayerTreeModelLegendNode.html#qgis.core.QgsLayerTreeModelLegendNode.ItemContext" title="qgis.core.QgsLayerTreeModelLegendNode.ItemContext">QgsLayerTreeModelLegendNode.ItemContext</a></span></em>, <em class="sig-param"><span class="n">symbolSize</span><span class="p">:</span> <span class="n">QSizeF</span></em><span class="sig-paren">)</span> &#x2192; QSizeF<a class="headerlink" href="#qgis.core.QgsColorRampLegendNode.drawSymbolText" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>settings</strong> (<a class="reference internal" href="QgsLegendSettings.html#qgis.core.QgsLegendSettings" title="qgis.core.QgsLegendSettings"><em>QgsLegendSettings</em></a>) – </p></li>
+<li><p><strong>ctx</strong> (<a class="reference internal" href="QgsLayerTreeModelLegendNode.html#qgis.core.QgsLayerTreeModelLegendNode.ItemContext" title="qgis.core.QgsLayerTreeModelLegendNode.ItemContext"><em>QgsLayerTreeModelLegendNode.ItemContext</em></a>) – </p></li>
+<li><p><strong>symbolSize</strong> (<em>QSizeF</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>QSizeF</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt id="qgis.core.QgsColorRampLegendNode.iconSize">
 <code class="sig-name descname">iconSize</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; QSize<a class="headerlink" href="#qgis.core.QgsColorRampLegendNode.iconSize" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the icon size, which is how large the ramp will render in a layer tree widget.</p>
@@ -2121,6 +2169,36 @@
 </dd></dl>
 
 <dl class="py method">
+<dt id="qgis.core.QgsColorRampLegendNode.setSettings">
+<code class="sig-name descname">setSettings</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">settings</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsColorRampLegendNodeSettings.html#module-QgsColorRampLegendNodeSettings" title="QgsColorRampLegendNodeSettings">QgsColorRampLegendNodeSettings</a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsColorRampLegendNode.setSettings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the node’s <code class="docutils literal notranslate"><span class="pre">settings</span></code>.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsColorRampLegendNode.settings" title="qgis.core.QgsColorRampLegendNode.settings"><code class="xref py py-func docutils literal notranslate"><span class="pre">settings()</span></code></a></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>settings</strong> (<a class="reference internal" href="QgsColorRampLegendNodeSettings.html#qgis.core.QgsColorRampLegendNodeSettings" title="qgis.core.QgsColorRampLegendNodeSettings"><em>QgsColorRampLegendNodeSettings</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qgis.core.QgsColorRampLegendNode.settings">
+<code class="sig-name descname">settings</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="QgsColorRampLegendNodeSettings.html#module-QgsColorRampLegendNodeSettings" title="QgsColorRampLegendNodeSettings">QgsColorRampLegendNodeSettings</a><a class="headerlink" href="#qgis.core.QgsColorRampLegendNode.settings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the node’s settings.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsColorRampLegendNode.setSettings" title="qgis.core.QgsColorRampLegendNode.setSettings"><code class="xref py py-func docutils literal notranslate"><span class="pre">setSettings()</span></code></a></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsColorRampLegendNodeSettings.html#qgis.core.QgsColorRampLegendNodeSettings" title="qgis.core.QgsColorRampLegendNodeSettings">QgsColorRampLegendNodeSettings</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt id="qgis.core.QgsColorRampLegendNode.timerEvent">
 <code class="sig-name descname">timerEvent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">QTimerEvent</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsColorRampLegendNode.timerEvent" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -2141,7 +2219,7 @@
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 01:02 Dec 19, 2020.
+        Last updated on 03:31 Dec 19, 2020.
       </span>
 
     </p>

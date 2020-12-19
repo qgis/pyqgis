@@ -170,6 +170,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsAnnotationPointTextItem.html">Class: QgsAnnotationPointTextItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAnnotationPolygonItem.html">Class: QgsAnnotationPolygonItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsApplication.html">Class: QgsApplication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsArcGisRestUtils.html">Class: QgsArcGisRestUtils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsArchive.html">Class: QgsArchive</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsArrowSymbolLayer.html">Class: QgsArrowSymbolLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAttributeEditorContainer.html">Class: QgsAttributeEditorContainer</a></li>
@@ -230,6 +231,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsColorEffect.html">Class: QgsColorEffect</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsColorRamp.html">Class: QgsColorRamp</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsColorRampLegendNode.html">Class: QgsColorRampLegendNode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsColorRampLegendNodeSettings.html">Class: QgsColorRampLegendNodeSettings</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsColorRampShader.html">Class: QgsColorRampShader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsColorRampTransformer.html">Class: QgsColorRampTransformer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsColorScheme.html">Class: QgsColorScheme</a></li>
@@ -1235,6 +1237,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsColorEffectWidget.html">Class: QgsColorEffectWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsColorPreviewWidget.html">Class: QgsColorPreviewWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsColorRampButton.html">Class: QgsColorRampButton</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui/QgsColorRampLegendNodeDialog.html">Class: QgsColorRampLegendNodeDialog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui/QgsColorRampLegendNodeWidget.html">Class: QgsColorRampLegendNodeWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsColorRampShaderWidget.html">Class: QgsColorRampShaderWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsColorRampWidget.html">Class: QgsColorRampWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsColorSchemeList.html">Class: QgsColorSchemeList</a></li>
@@ -1973,7 +1977,10 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSingleBandGrayRenderer.initStatistics" title="qgis.core.QgsSingleBandGrayRenderer.initStatistics"><code class="xref py py-obj docutils literal notranslate"><span class="pre">initStatistics</span></code></a></p></td>
 <td><p>Fill in statistics defaults if not specified</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSingleBandGrayRenderer.legendSymbologyItems" title="qgis.core.QgsSingleBandGrayRenderer.legendSymbologyItems"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legendSymbologyItems</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSingleBandGrayRenderer.legendSettings" title="qgis.core.QgsSingleBandGrayRenderer.legendSettings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legendSettings</span></code></a></p></td>
+<td><p>Returns the color ramp shader legend settings.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSingleBandGrayRenderer.legendSymbologyItems" title="qgis.core.QgsSingleBandGrayRenderer.legendSymbologyItems"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legendSymbologyItems</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">rtype</dt>
 <dd class="field-odd"><p>List[Tuple[str, QColor]]</p>
@@ -1981,25 +1988,28 @@
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSingleBandGrayRenderer.renderColorForNodataPixel" title="qgis.core.QgsSingleBandGrayRenderer.renderColorForNodataPixel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">renderColorForNodataPixel</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSingleBandGrayRenderer.renderColorForNodataPixel" title="qgis.core.QgsSingleBandGrayRenderer.renderColorForNodataPixel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">renderColorForNodataPixel</span></code></a></p></td>
 <td><p>Returns the color for the renderer to use to represent nodata pixels.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSingleBandGrayRenderer.setContrastEnhancement" title="qgis.core.QgsSingleBandGrayRenderer.setContrastEnhancement"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setContrastEnhancement</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSingleBandGrayRenderer.setContrastEnhancement" title="qgis.core.QgsSingleBandGrayRenderer.setContrastEnhancement"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setContrastEnhancement</span></code></a></p></td>
 <td><p>Takes ownership</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSingleBandGrayRenderer.setGradient" title="qgis.core.QgsSingleBandGrayRenderer.setGradient"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setGradient</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSingleBandGrayRenderer.setGradient" title="qgis.core.QgsSingleBandGrayRenderer.setGradient"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setGradient</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param gradient</dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSingleBandGrayRenderer.setGrayBand" title="qgis.core.QgsSingleBandGrayRenderer.setGrayBand"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setGrayBand</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSingleBandGrayRenderer.setGrayBand" title="qgis.core.QgsSingleBandGrayRenderer.setGrayBand"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setGrayBand</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param band</dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSingleBandGrayRenderer.setLegendSettings" title="qgis.core.QgsSingleBandGrayRenderer.setLegendSettings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setLegendSettings</span></code></a></p></td>
+<td><p>Sets the color ramp shader legend <code class="docutils literal notranslate"><span class="pre">settings</span></code>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSingleBandGrayRenderer.toSld" title="qgis.core.QgsSingleBandGrayRenderer.toSld"><code class="xref py py-obj docutils literal notranslate"><span class="pre">toSld</span></code></a></p></td>
 <td><p><dl class="field-list simple">
@@ -2171,6 +2181,24 @@
 </dd></dl>
 
 <dl class="py method">
+<dt id="qgis.core.QgsSingleBandGrayRenderer.legendSettings">
+<code class="sig-name descname">legendSettings</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="QgsColorRampLegendNodeSettings.html#module-QgsColorRampLegendNodeSettings" title="QgsColorRampLegendNodeSettings">QgsColorRampLegendNodeSettings</a><a class="headerlink" href="#qgis.core.QgsSingleBandGrayRenderer.legendSettings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the color ramp shader legend settings.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsSingleBandGrayRenderer.setLegendSettings" title="qgis.core.QgsSingleBandGrayRenderer.setLegendSettings"><code class="xref py py-func docutils literal notranslate"><span class="pre">setLegendSettings()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.18.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsColorRampLegendNodeSettings.html#qgis.core.QgsColorRampLegendNodeSettings" title="qgis.core.QgsColorRampLegendNodeSettings">QgsColorRampLegendNodeSettings</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt id="qgis.core.QgsSingleBandGrayRenderer.legendSymbologyItems">
 <code class="sig-name descname">legendSymbologyItems</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span>Tuple<span class="p">[</span>str<span class="p">, </span>QColor<span class="p">]</span><span class="p">]</span><a class="headerlink" href="#qgis.core.QgsSingleBandGrayRenderer.legendSymbologyItems" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
@@ -2218,6 +2246,25 @@ during an actual rendering operation.</p>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>band</strong> (<em>int</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qgis.core.QgsSingleBandGrayRenderer.setLegendSettings">
+<code class="sig-name descname">setLegendSettings</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">settings</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsColorRampLegendNodeSettings.html#module-QgsColorRampLegendNodeSettings" title="QgsColorRampLegendNodeSettings">QgsColorRampLegendNodeSettings</a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsSingleBandGrayRenderer.setLegendSettings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the color ramp shader legend <code class="docutils literal notranslate"><span class="pre">settings</span></code>.</p>
+<p>Ownership of <code class="docutils literal notranslate"><span class="pre">settings</span></code> is transferred.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsSingleBandGrayRenderer.legendSettings" title="qgis.core.QgsSingleBandGrayRenderer.legendSettings"><code class="xref py py-func docutils literal notranslate"><span class="pre">legendSettings()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.18.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>settings</strong> (<a class="reference internal" href="QgsColorRampLegendNodeSettings.html#qgis.core.QgsColorRampLegendNodeSettings" title="qgis.core.QgsColorRampLegendNodeSettings"><em>QgsColorRampLegendNodeSettings</em></a>) – </p>
 </dd>
 </dl>
 </dd></dl>
@@ -2275,7 +2322,7 @@ during an actual rendering operation.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 01:02 Dec 19, 2020.
+        Last updated on 03:31 Dec 19, 2020.
       </span>
 
     </p>

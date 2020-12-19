@@ -170,6 +170,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsAnnotationPointTextItem.html">Class: QgsAnnotationPointTextItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAnnotationPolygonItem.html">Class: QgsAnnotationPolygonItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsApplication.html">Class: QgsApplication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsArcGisRestUtils.html">Class: QgsArcGisRestUtils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsArchive.html">Class: QgsArchive</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsArrowSymbolLayer.html">Class: QgsArrowSymbolLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAttributeEditorContainer.html">Class: QgsAttributeEditorContainer</a></li>
@@ -230,6 +231,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsColorEffect.html">Class: QgsColorEffect</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsColorRamp.html">Class: QgsColorRamp</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsColorRampLegendNode.html">Class: QgsColorRampLegendNode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsColorRampLegendNodeSettings.html">Class: QgsColorRampLegendNodeSettings</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsColorRampShader.html">Class: QgsColorRampShader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsColorRampTransformer.html">Class: QgsColorRampTransformer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsColorScheme.html">Class: QgsColorScheme</a></li>
@@ -1235,6 +1237,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsColorEffectWidget.html">Class: QgsColorEffectWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsColorPreviewWidget.html">Class: QgsColorPreviewWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsColorRampButton.html">Class: QgsColorRampButton</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui/QgsColorRampLegendNodeDialog.html">Class: QgsColorRampLegendNodeDialog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui/QgsColorRampLegendNodeWidget.html">Class: QgsColorRampLegendNodeWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsColorRampShaderWidget.html">Class: QgsColorRampShaderWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsColorRampWidget.html">Class: QgsColorRampWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsColorSchemeList.html">Class: QgsColorSchemeList</a></li>
@@ -1962,6 +1966,12 @@ Constructor for <a class="reference internal" href="#qgis.core.QgsInterval" titl
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsInterval.months" title="qgis.core.QgsInterval.months"><code class="xref py py-obj docutils literal notranslate"><span class="pre">months</span></code></a></p></td>
 <td><p>Returns the interval duration in months (based on a 30 day month).</p></td>
 </tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsInterval.originalDuration" title="qgis.core.QgsInterval.originalDuration"><code class="xref py py-obj docutils literal notranslate"><span class="pre">originalDuration</span></code></a></p></td>
+<td><p>Returns the original interval duration.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsInterval.originalUnit" title="qgis.core.QgsInterval.originalUnit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">originalUnit</span></code></a></p></td>
+<td><p>Returns the original interval temporal unit.</p></td>
+</tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsInterval.seconds" title="qgis.core.QgsInterval.seconds"><code class="xref py py-obj docutils literal notranslate"><span class="pre">seconds</span></code></a></p></td>
 <td><p>Returns the interval duration in seconds.</p></td>
 </tr>
@@ -2067,6 +2077,9 @@ Constructor for <a class="reference internal" href="#qgis.core.QgsInterval" titl
 <dt id="qgis.core.QgsInterval.days">
 <code class="sig-name descname">days</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#qgis.core.QgsInterval.days" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the interval duration in days.</p>
+<p>If the <a class="reference internal" href="#qgis.core.QgsInterval.originalUnit" title="qgis.core.QgsInterval.originalUnit"><code class="xref py py-func docutils literal notranslate"><span class="pre">originalUnit()</span></code></a> is QgsUnitTypes.TemporalDays then this value
+will match the exact number of days as returned by <a class="reference internal" href="#qgis.core.QgsInterval.originalDuration" title="qgis.core.QgsInterval.originalDuration"><code class="xref py py-func docutils literal notranslate"><span class="pre">originalDuration()</span></code></a>,
+otherwise it will be calculated using the QgsInterval.DAY constant.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsInterval.setDays" title="qgis.core.QgsInterval.setDays"><code class="xref py py-func docutils literal notranslate"><span class="pre">setDays()</span></code></a></p>
@@ -2099,6 +2112,9 @@ Constructor for <a class="reference internal" href="#qgis.core.QgsInterval" titl
 <dt id="qgis.core.QgsInterval.hours">
 <code class="sig-name descname">hours</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#qgis.core.QgsInterval.hours" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the interval duration in hours.</p>
+<p>If the <a class="reference internal" href="#qgis.core.QgsInterval.originalUnit" title="qgis.core.QgsInterval.originalUnit"><code class="xref py py-func docutils literal notranslate"><span class="pre">originalUnit()</span></code></a> is QgsUnitTypes.TemporalHours then this value
+will match the exact number of hours as returned by <a class="reference internal" href="#qgis.core.QgsInterval.originalDuration" title="qgis.core.QgsInterval.originalDuration"><code class="xref py py-func docutils literal notranslate"><span class="pre">originalDuration()</span></code></a>,
+otherwise it will be calculated using the QgsInterval.HOUR constant.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsInterval.setHours" title="qgis.core.QgsInterval.setHours"><code class="xref py py-func docutils literal notranslate"><span class="pre">setHours()</span></code></a></p>
@@ -2129,6 +2145,9 @@ Constructor for <a class="reference internal" href="#qgis.core.QgsInterval" titl
 <dt id="qgis.core.QgsInterval.minutes">
 <code class="sig-name descname">minutes</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#qgis.core.QgsInterval.minutes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the interval duration in minutes.</p>
+<p>If the <a class="reference internal" href="#qgis.core.QgsInterval.originalUnit" title="qgis.core.QgsInterval.originalUnit"><code class="xref py py-func docutils literal notranslate"><span class="pre">originalUnit()</span></code></a> is QgsUnitTypes.TemporalMinutes then this value
+will match the exact number of minutes as returned by <a class="reference internal" href="#qgis.core.QgsInterval.originalDuration" title="qgis.core.QgsInterval.originalDuration"><code class="xref py py-func docutils literal notranslate"><span class="pre">originalDuration()</span></code></a>,
+otherwise it will be calculated using the QgsInterval.MINUTE constant.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsInterval.setMinutes" title="qgis.core.QgsInterval.setMinutes"><code class="xref py py-func docutils literal notranslate"><span class="pre">setMinutes()</span></code></a></p>
@@ -2144,6 +2163,10 @@ Constructor for <a class="reference internal" href="#qgis.core.QgsInterval" titl
 <dt id="qgis.core.QgsInterval.months">
 <code class="sig-name descname">months</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#qgis.core.QgsInterval.months" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the interval duration in months (based on a 30 day month).</p>
+<p>If the <a class="reference internal" href="#qgis.core.QgsInterval.originalUnit" title="qgis.core.QgsInterval.originalUnit"><code class="xref py py-func docutils literal notranslate"><span class="pre">originalUnit()</span></code></a> is QgsUnitTypes.TemporalMonths then this value
+will match the exact number of months as returned by <a class="reference internal" href="#qgis.core.QgsInterval.originalDuration" title="qgis.core.QgsInterval.originalDuration"><code class="xref py py-func docutils literal notranslate"><span class="pre">originalDuration()</span></code></a>,
+otherwise it will be calculated using the assumption that
+a month consists of exactly 30 days.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsInterval.setMonths" title="qgis.core.QgsInterval.setMonths"><code class="xref py py-func docutils literal notranslate"><span class="pre">setMonths()</span></code></a></p>
@@ -2151,6 +2174,52 @@ Constructor for <a class="reference internal" href="#qgis.core.QgsInterval" titl
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qgis.core.QgsInterval.originalDuration">
+<code class="sig-name descname">originalDuration</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#qgis.core.QgsInterval.originalDuration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the original interval duration.</p>
+<p>This original interval duration can be updated through calling
+<a class="reference internal" href="#qgis.core.QgsInterval" title="qgis.core.QgsInterval"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsInterval</span></code></a> setter methods.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsInterval.originalUnit" title="qgis.core.QgsInterval.originalUnit"><code class="xref py py-func docutils literal notranslate"><span class="pre">originalUnit()</span></code></a></p>
+</div>
+<p>If the original interval duration is not available or
+interval was set with a mix of units, calling <a class="reference internal" href="#qgis.core.QgsInterval.originalUnit" title="qgis.core.QgsInterval.originalUnit"><code class="xref py py-func docutils literal notranslate"><span class="pre">originalUnit()</span></code></a>
+will return QgsUnitTypes.TemporalUnknownUnit</p>
+<p>Returns 0.0 if the original duration was not set.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.18.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qgis.core.QgsInterval.originalUnit">
+<code class="sig-name descname">originalUnit</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="QgsUnitTypes.html#qgis.core.QgsUnitTypes.TemporalUnit" title="qgis.core.QgsUnitTypes.TemporalUnit">QgsUnitTypes.TemporalUnit</a><a class="headerlink" href="#qgis.core.QgsInterval.originalUnit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the original interval temporal unit.</p>
+<p>The interval temporal unit can be set through the
+<a class="reference internal" href="#qgis.core.QgsInterval" title="qgis.core.QgsInterval"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsInterval</span></code></a> constructors or through the available setter methods.</p>
+<p>Returns QgsUnitTypes.TemporalUnknownUnit if unit was not set when creating the
+<a class="reference internal" href="#qgis.core.QgsInterval" title="qgis.core.QgsInterval"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsInterval</span></code></a> instance or interval was set with a mix of units.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsInterval.originalDuration" title="qgis.core.QgsInterval.originalDuration"><code class="xref py py-func docutils literal notranslate"><span class="pre">originalDuration()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.18.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsUnitTypes.html#qgis.core.QgsUnitTypes.TemporalUnit" title="qgis.core.QgsUnitTypes.TemporalUnit">QgsUnitTypes.TemporalUnit</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -2174,6 +2243,9 @@ Constructor for <a class="reference internal" href="#qgis.core.QgsInterval" titl
 <dt id="qgis.core.QgsInterval.setDays">
 <code class="sig-name descname">setDays</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">days</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsInterval.setDays" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets the interval duration in days.</p>
+<p>Replaces the interval size and changes the original interval unit
+and duration, <a class="reference internal" href="#qgis.core.QgsInterval.originalDuration" title="qgis.core.QgsInterval.originalDuration"><code class="xref py py-func docutils literal notranslate"><span class="pre">originalDuration()</span></code></a> and see originalUnit().</p>
+<p>Changes the original unit to QgsUnitTypes.TemporalDays</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>days</strong> (<em>float</em>) – duration in days</p>
@@ -2189,6 +2261,9 @@ Constructor for <a class="reference internal" href="#qgis.core.QgsInterval" titl
 <dt id="qgis.core.QgsInterval.setHours">
 <code class="sig-name descname">setHours</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">hours</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsInterval.setHours" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets the interval duration in hours.</p>
+<p>Replaces the interval size and changes the original interval unit
+and duration, <a class="reference internal" href="#qgis.core.QgsInterval.originalDuration" title="qgis.core.QgsInterval.originalDuration"><code class="xref py py-func docutils literal notranslate"><span class="pre">originalDuration()</span></code></a> and see originalUnit().</p>
+<p>The original unit to QgsUnitTypes.TemporalHours</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>hours</strong> (<em>float</em>) – duration in hours</p>
@@ -2204,6 +2279,9 @@ Constructor for <a class="reference internal" href="#qgis.core.QgsInterval" titl
 <dt id="qgis.core.QgsInterval.setMinutes">
 <code class="sig-name descname">setMinutes</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">minutes</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsInterval.setMinutes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets the interval duration in minutes.</p>
+<p>Replaces the interval size and changes the original interval unit
+and duration, <a class="reference internal" href="#qgis.core.QgsInterval.originalDuration" title="qgis.core.QgsInterval.originalDuration"><code class="xref py py-func docutils literal notranslate"><span class="pre">originalDuration()</span></code></a> and see originalUnit().</p>
+<p>Changes the original unit to QgsUnitTypes.TemporalMinutes</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>minutes</strong> (<em>float</em>) – duration in minutes</p>
@@ -2219,6 +2297,9 @@ Constructor for <a class="reference internal" href="#qgis.core.QgsInterval" titl
 <dt id="qgis.core.QgsInterval.setMonths">
 <code class="sig-name descname">setMonths</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">months</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsInterval.setMonths" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets the interval duration in months.</p>
+<p>Replaces the interval size and changes the original interval unit
+and duration, <a class="reference internal" href="#qgis.core.QgsInterval.originalDuration" title="qgis.core.QgsInterval.originalDuration"><code class="xref py py-func docutils literal notranslate"><span class="pre">originalDuration()</span></code></a> and see originalUnit().</p>
+<p>Changes the original unit to QgsUnitTypes.TemporalMonths</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>months</strong> (<em>float</em>) – duration in months (based on a 30 day month)</p>
@@ -2234,6 +2315,9 @@ Constructor for <a class="reference internal" href="#qgis.core.QgsInterval" titl
 <dt id="qgis.core.QgsInterval.setSeconds">
 <code class="sig-name descname">setSeconds</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">seconds</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsInterval.setSeconds" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets the interval duration in seconds.</p>
+<p>Replaces the interval size and changes the original interval unit
+and duration, <a class="reference internal" href="#qgis.core.QgsInterval.originalDuration" title="qgis.core.QgsInterval.originalDuration"><code class="xref py py-func docutils literal notranslate"><span class="pre">originalDuration()</span></code></a> and see originalUnit().</p>
+<p>Changes the original unit to QgsUnitTypes.TemporalSeconds</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>seconds</strong> (<em>float</em>) – duration in seconds</p>
@@ -2264,6 +2348,9 @@ Constructor for <a class="reference internal" href="#qgis.core.QgsInterval" titl
 <dt id="qgis.core.QgsInterval.setWeeks">
 <code class="sig-name descname">setWeeks</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">weeks</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsInterval.setWeeks" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets the interval duration in weeks.</p>
+<p>Replaces the interval size and changes the original interval unit
+and duration, <a class="reference internal" href="#qgis.core.QgsInterval.originalDuration" title="qgis.core.QgsInterval.originalDuration"><code class="xref py py-func docutils literal notranslate"><span class="pre">originalDuration()</span></code></a> and see originalUnit().</p>
+<p>Changes the original unit to QgsUnitTypes.TemporalWeeks</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>weeks</strong> (<em>float</em>) – duration in weeks</p>
@@ -2279,6 +2366,9 @@ Constructor for <a class="reference internal" href="#qgis.core.QgsInterval" titl
 <dt id="qgis.core.QgsInterval.setYears">
 <code class="sig-name descname">setYears</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">years</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsInterval.setYears" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets the interval duration in years.</p>
+<p>Replaces the interval size and changes the original interval unit
+and duration, <a class="reference internal" href="#qgis.core.QgsInterval.originalDuration" title="qgis.core.QgsInterval.originalDuration"><code class="xref py py-func docutils literal notranslate"><span class="pre">originalDuration()</span></code></a> and see originalUnit().</p>
+<p>Changes the original unit to QgsUnitTypes.TemporalYears</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>years</strong> (<em>float</em>) – duration in years (based on average year length)</p>
@@ -2294,6 +2384,9 @@ Constructor for <a class="reference internal" href="#qgis.core.QgsInterval" titl
 <dt id="qgis.core.QgsInterval.weeks">
 <code class="sig-name descname">weeks</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#qgis.core.QgsInterval.weeks" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the interval duration in weeks.</p>
+<p>If the <a class="reference internal" href="#qgis.core.QgsInterval.originalUnit" title="qgis.core.QgsInterval.originalUnit"><code class="xref py py-func docutils literal notranslate"><span class="pre">originalUnit()</span></code></a> is QgsUnitTypes.TemporalWeeks then this value
+will match the exact number of weeks as returned by <a class="reference internal" href="#qgis.core.QgsInterval.originalDuration" title="qgis.core.QgsInterval.originalDuration"><code class="xref py py-func docutils literal notranslate"><span class="pre">originalDuration()</span></code></a>,
+otherwise it will be calculated using the QgsInterval.WEEKS constant.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsInterval.setWeeks" title="qgis.core.QgsInterval.setWeeks"><code class="xref py py-func docutils literal notranslate"><span class="pre">setWeeks()</span></code></a></p>
@@ -2309,6 +2402,9 @@ Constructor for <a class="reference internal" href="#qgis.core.QgsInterval" titl
 <dt id="qgis.core.QgsInterval.years">
 <code class="sig-name descname">years</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#qgis.core.QgsInterval.years" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the interval duration in years (based on an average year length)</p>
+<p>If the <a class="reference internal" href="#qgis.core.QgsInterval.originalUnit" title="qgis.core.QgsInterval.originalUnit"><code class="xref py py-func docutils literal notranslate"><span class="pre">originalUnit()</span></code></a> is QgsUnitTypes.TemporalYears then this value
+will match the exact number of months as returned by <a class="reference internal" href="#qgis.core.QgsInterval.originalDuration" title="qgis.core.QgsInterval.originalDuration"><code class="xref py py-func docutils literal notranslate"><span class="pre">originalDuration()</span></code></a>,
+otherwise it will be calculated using the average year length (31557600 seconds).</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsInterval.setYears" title="qgis.core.QgsInterval.setYears"><code class="xref py py-func docutils literal notranslate"><span class="pre">setYears()</span></code></a></p>
@@ -2336,7 +2432,7 @@ Constructor for <a class="reference internal" href="#qgis.core.QgsInterval" titl
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 01:02 Dec 19, 2020.
+        Last updated on 03:31 Dec 19, 2020.
       </span>
 
     </p>
