@@ -195,6 +195,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsBearingUtils.html">Class: QgsBearingUtils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsBilinearRasterResampler.html">Class: QgsBilinearRasterResampler</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsBlockingNetworkRequest.html">Class: QgsBlockingNetworkRequest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsBlockingProcess.html">Class: QgsBlockingProcess</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsBlurEffect.html">Class: QgsBlurEffect</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsBookmark.html">Class: QgsBookmark</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsBookmarkManager.html">Class: QgsBookmarkManager</a></li>
@@ -2551,11 +2552,7 @@
 <td><p>Attempts to parse a string as a color using a variety of common formats, including hex codes, rgb and rgba, hsl and hsla strings.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.parseProperties" title="qgis.core.QgsSymbolLayerUtils.parseProperties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parseProperties</span></code></a></p></td>
-<td><p><dl class="field-list simple">
-<dt class="field-odd">param element</dt>
-<dd class="field-odd"><p></p></dd>
-</dl>
-</p></td>
+<td><p>Parses the properties from XML and returns a map</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.pointInPolygon" title="qgis.core.QgsSymbolLayerUtils.pointInPolygon"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pointInPolygon</span></code></a></p></td>
 <td><p>Calculate whether a point is within of a QPolygonF</p></td>
@@ -2604,11 +2601,7 @@
 <td><p>Exports colors to a gpl GIMP palette file</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.saveProperties" title="qgis.core.QgsSymbolLayerUtils.saveProperties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">saveProperties</span></code></a></p></td>
-<td><p><dl class="field-list simple">
-<dt class="field-odd">param props</dt>
-<dd class="field-odd"><p></p></dd>
-</dl>
-</p></td>
+<td><p>Saves the map of properties to XML</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.saveSymbol" title="qgis.core.QgsSymbolLayerUtils.saveSymbol"><code class="xref py py-obj docutils literal notranslate"><span class="pre">saveSymbol</span></code></a></p></td>
 <td><p>Writes a symbol definition to XML</p></td>
@@ -2738,7 +2731,7 @@
 
 <dl class="py method">
 <dt id="qgis.core.QgsSymbolLayerUtils.applyScaleDependency">
-<code class="sig-name descname">applyScaleDependency</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">doc</span><span class="p">:</span> <span class="n">QDomDocument</span></em>, <em class="sig-param"><span class="n">ruleElem</span><span class="p">:</span> <span class="n">QDomElement</span></em>, <em class="sig-param"><span class="n">props</span><span class="p">:</span> <span class="n">Dict<span class="p">[</span>str<span class="p">, </span>str<span class="p">]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsSymbolLayerUtils.applyScaleDependency" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">applyScaleDependency</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">doc</span><span class="p">:</span> <span class="n">QDomDocument</span></em>, <em class="sig-param"><span class="n">ruleElem</span><span class="p">:</span> <span class="n">QDomElement</span></em>, <em class="sig-param"><span class="n">props</span><span class="p">:</span> <span class="n">Dict<span class="p">[</span>str<span class="p">, </span>Any<span class="p">]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsSymbolLayerUtils.applyScaleDependency" title="Permalink to this definition">¶</a></dt>
 <dd><p>Checks if the properties contain scaleMinDenom and scaleMaxDenom, if available, they are added into the SE Rule element</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0.</span></p>
@@ -4278,7 +4271,7 @@ You can use QgsXmlUtils.readVariant to load it from an XML document.</p>
 
 <dl class="py method">
 <dt id="qgis.core.QgsSymbolLayerUtils.mergeScaleDependencies">
-<code class="sig-name descname">mergeScaleDependencies</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mScaleMinDenom</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">mScaleMaxDenom</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">props</span><span class="p">:</span> <span class="n">Dict<span class="p">[</span>str<span class="p">, </span>str<span class="p">]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsSymbolLayerUtils.mergeScaleDependencies" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">mergeScaleDependencies</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mScaleMinDenom</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">mScaleMaxDenom</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">props</span><span class="p">:</span> <span class="n">Dict<span class="p">[</span>str<span class="p">, </span>Any<span class="p">]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsSymbolLayerUtils.mergeScaleDependencies" title="Permalink to this definition">¶</a></dt>
 <dd><p>Merges the local scale limits, if any, with the ones already in the map, if any</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0.</span></p>
@@ -4565,13 +4558,14 @@ codes, rgb and rgba, hsl and hsla strings.</p>
 
 <dl class="py method">
 <dt id="qgis.core.QgsSymbolLayerUtils.parseProperties">
-<code class="sig-name descname">parseProperties</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">element</span><span class="p">:</span> <span class="n">QDomElement</span></em><span class="sig-paren">)</span> &#x2192; Dict<span class="p">[</span>str<span class="p">, </span>str<span class="p">]</span><a class="headerlink" href="#qgis.core.QgsSymbolLayerUtils.parseProperties" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<code class="sig-name descname">parseProperties</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">element</span><span class="p">:</span> <span class="n">QDomElement</span></em><span class="sig-paren">)</span> &#x2192; Dict<span class="p">[</span>str<span class="p">, </span>Any<span class="p">]</span><a class="headerlink" href="#qgis.core.QgsSymbolLayerUtils.parseProperties" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parses the properties from XML and returns a map</p>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>element</strong> (<em>QDomElement</em>) – </p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p>Dict[str, str]</p>
+<dd class="field-even"><p>Dict[str, Any]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -4710,7 +4704,7 @@ The values are chosen so that they are 1, 2 or 5 times a power of 10.</p>
 
 <dl class="py method">
 <dt id="qgis.core.QgsSymbolLayerUtils.rescaleArrayUom">
-<code class="sig-name descname">rescaleArrayUom</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">array</span><span class="p">:</span> <span class="n">Iterable<span class="p">[</span>float<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">unit</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsUnitTypes.html#qgis.core.QgsUnitTypes.RenderUnit" title="qgis.core.QgsUnitTypes.RenderUnit">QgsUnitTypes.RenderUnit</a></span></em>, <em class="sig-param"><span class="n">props</span><span class="p">:</span> <span class="n">Dict<span class="p">[</span>str<span class="p">, </span>str<span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span>float<span class="p">]</span><a class="headerlink" href="#qgis.core.QgsSymbolLayerUtils.rescaleArrayUom" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">rescaleArrayUom</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">array</span><span class="p">:</span> <span class="n">Iterable<span class="p">[</span>float<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">unit</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsUnitTypes.html#qgis.core.QgsUnitTypes.RenderUnit" title="qgis.core.QgsUnitTypes.RenderUnit">QgsUnitTypes.RenderUnit</a></span></em>, <em class="sig-param"><span class="n">props</span><span class="p">:</span> <span class="n">Dict<span class="p">[</span>str<span class="p">, </span>Any<span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span>float<span class="p">]</span><a class="headerlink" href="#qgis.core.QgsSymbolLayerUtils.rescaleArrayUom" title="Permalink to this definition">¶</a></dt>
 <dd><p>Rescales the given array based on the uomScale found in the props, if any is found, otherwise
 returns a copy of the original point</p>
 <div class="versionadded">
@@ -4732,7 +4726,7 @@ returns a copy of the original point</p>
 
 <dl class="py method">
 <dt id="qgis.core.QgsSymbolLayerUtils.rescalePointUom">
-<code class="sig-name descname">rescalePointUom</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">point</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>QPointF<span class="p">, </span>QPoint<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">unit</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsUnitTypes.html#qgis.core.QgsUnitTypes.RenderUnit" title="qgis.core.QgsUnitTypes.RenderUnit">QgsUnitTypes.RenderUnit</a></span></em>, <em class="sig-param"><span class="n">props</span><span class="p">:</span> <span class="n">Dict<span class="p">[</span>str<span class="p">, </span>str<span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; QPointF<a class="headerlink" href="#qgis.core.QgsSymbolLayerUtils.rescalePointUom" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">rescalePointUom</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">point</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>QPointF<span class="p">, </span>QPoint<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">unit</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsUnitTypes.html#qgis.core.QgsUnitTypes.RenderUnit" title="qgis.core.QgsUnitTypes.RenderUnit">QgsUnitTypes.RenderUnit</a></span></em>, <em class="sig-param"><span class="n">props</span><span class="p">:</span> <span class="n">Dict<span class="p">[</span>str<span class="p">, </span>Any<span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; QPointF<a class="headerlink" href="#qgis.core.QgsSymbolLayerUtils.rescalePointUom" title="Permalink to this definition">¶</a></dt>
 <dd><p>Rescales the given point based on the uomScale found in the props, if any is found, otherwise
 returns a copy of the original point</p>
 <div class="versionadded">
@@ -4754,7 +4748,7 @@ returns a copy of the original point</p>
 
 <dl class="py method">
 <dt id="qgis.core.QgsSymbolLayerUtils.rescaleUom">
-<code class="sig-name descname">rescaleUom</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">size</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">unit</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsUnitTypes.html#qgis.core.QgsUnitTypes.RenderUnit" title="qgis.core.QgsUnitTypes.RenderUnit">QgsUnitTypes.RenderUnit</a></span></em>, <em class="sig-param"><span class="n">props</span><span class="p">:</span> <span class="n">Dict<span class="p">[</span>str<span class="p">, </span>str<span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#qgis.core.QgsSymbolLayerUtils.rescaleUom" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">rescaleUom</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">size</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">unit</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsUnitTypes.html#qgis.core.QgsUnitTypes.RenderUnit" title="qgis.core.QgsUnitTypes.RenderUnit">QgsUnitTypes.RenderUnit</a></span></em>, <em class="sig-param"><span class="n">props</span><span class="p">:</span> <span class="n">Dict<span class="p">[</span>str<span class="p">, </span>Any<span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#qgis.core.QgsSymbolLayerUtils.rescaleUom" title="Permalink to this definition">¶</a></dt>
 <dd><p>Rescales the given size based on the uomScale found in the props, if any is found, otherwise
 returns the value un-modified</p>
 <div class="versionadded">
@@ -4866,8 +4860,9 @@ returns the value un-modified</p>
 
 <dl class="py method">
 <dt id="qgis.core.QgsSymbolLayerUtils.saveProperties">
-<code class="sig-name descname">saveProperties</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">props</span><span class="p">:</span> <span class="n">Dict<span class="p">[</span>str<span class="p">, </span>str<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">doc</span><span class="p">:</span> <span class="n">QDomDocument</span></em>, <em class="sig-param"><span class="n">element</span><span class="p">:</span> <span class="n">QDomElement</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsSymbolLayerUtils.saveProperties" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<code class="sig-name descname">saveProperties</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">props</span><span class="p">:</span> <span class="n">Dict<span class="p">[</span>str<span class="p">, </span>Any<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">doc</span><span class="p">:</span> <span class="n">QDomDocument</span></em>, <em class="sig-param"><span class="n">element</span><span class="p">:</span> <span class="n">QDomElement</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsSymbolLayerUtils.saveProperties" title="Permalink to this definition">¶</a></dt>
+<dd><p>Saves the map of properties to XML</p>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>props</strong> (<em>Dict</em><em>[</em><em>str</em>) – </p></li>
@@ -5324,7 +5319,7 @@ can be paste in places where a color is expected.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 01:24 Jan 07, 2021.
+        Last updated on 04:42 Jan 07, 2021.
       </span>
 
     </p>

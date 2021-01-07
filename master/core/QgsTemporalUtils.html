@@ -195,6 +195,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsBearingUtils.html">Class: QgsBearingUtils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsBilinearRasterResampler.html">Class: QgsBilinearRasterResampler</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsBlockingNetworkRequest.html">Class: QgsBlockingNetworkRequest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsBlockingProcess.html">Class: QgsBlockingProcess</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsBlurEffect.html">Class: QgsBlurEffect</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsBookmark.html">Class: QgsBookmark</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsBookmarkManager.html">Class: QgsBookmarkManager</a></li>
@@ -1934,10 +1935,13 @@
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsTemporalUtils.calculateTemporalRangeForProject" title="qgis.core.QgsTemporalUtils.calculateTemporalRangeForProject"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calculateTemporalRangeForProject</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsTemporalUtils.calculateFrameTime" title="qgis.core.QgsTemporalUtils.calculateFrameTime"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calculateFrameTime</span></code></a></p></td>
+<td><p>Calculates the frame time for an animation.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsTemporalUtils.calculateTemporalRangeForProject" title="qgis.core.QgsTemporalUtils.calculateTemporalRangeForProject"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calculateTemporalRangeForProject</span></code></a></p></td>
 <td><p>Calculates the temporal range for a <code class="docutils literal notranslate"><span class="pre">project</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsTemporalUtils.exportAnimation" title="qgis.core.QgsTemporalUtils.exportAnimation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">exportAnimation</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsTemporalUtils.exportAnimation" title="qgis.core.QgsTemporalUtils.exportAnimation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">exportAnimation</span></code></a></p></td>
 <td><p>Exports animation frames by rendering the map to multiple destination images.</p></td>
 </tr>
 </tbody>
@@ -1989,6 +1993,38 @@
 <code class="sig-name descname">outputDirectory</code><a class="headerlink" href="#qgis.core.QgsTemporalUtils.AnimationExportSettings.outputDirectory" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
+</dd></dl>
+
+<dl class="py method">
+<dt id="qgis.core.QgsTemporalUtils.calculateFrameTime">
+<code class="sig-name descname">calculateFrameTime</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">start</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>QDateTime<span class="p">, </span>datetime.datetime<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">frame</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">interval</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsInterval.html#module-QgsInterval" title="QgsInterval">QgsInterval</a></span></em><span class="sig-paren">)</span> &#x2192; QDateTime<a class="headerlink" href="#qgis.core.QgsTemporalUtils.calculateFrameTime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the frame time for an animation.</p>
+<p>If the interval original duration is fractional or interval original unit is
+unknown (QgsUnitTypes.TemporalUnit.TemporalUnknownUnit), then <a class="reference internal" href="QgsInterval.html#qgis.core.QgsInterval" title="qgis.core.QgsInterval"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsInterval</span></code></a> is used
+to determine the duration of the frame. This uses average durations for months and years.</p>
+<p>Otherwise, we use QDateTime to advance by the exact duration of the current
+month or year.
+So a time step of 1.5 months will result in a duration of 45
+days, but a time step of 1 month will result in a duration that depends upon
+the number of days in the current month.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start</strong> (<em>Union</em><em>[</em><em>QDateTime</em>) – time of the animation</p></li>
+<li><p><strong>frame</strong> (<em>int</em>) – number</p></li>
+<li><p><strong>interval</strong> (<a class="reference internal" href="QgsInterval.html#qgis.core.QgsInterval" title="qgis.core.QgsInterval"><em>QgsInterval</em></a>) – duration of the animation</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>QDateTime</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The calculated datetime for the frame.</p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.18.</span></p>
+</div>
 </dd></dl>
 
 <dl class="py method">
@@ -2052,7 +2088,7 @@ support.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 01:24 Jan 07, 2021.
+        Last updated on 04:42 Jan 07, 2021.
       </span>
 
     </p>

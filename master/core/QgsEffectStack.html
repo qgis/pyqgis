@@ -195,6 +195,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsBearingUtils.html">Class: QgsBearingUtils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsBilinearRasterResampler.html">Class: QgsBilinearRasterResampler</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsBlockingNetworkRequest.html">Class: QgsBlockingNetworkRequest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsBlockingProcess.html">Class: QgsBlockingProcess</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsBlurEffect.html">Class: QgsBlurEffect</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsBookmark.html">Class: QgsBookmark</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsBookmarkManager.html">Class: QgsBookmarkManager</a></li>
@@ -2009,7 +2010,7 @@ effect will be drawn using the original picture, not the blurred version.</p>
 <td><p>Unused for <a class="reference internal" href="#qgis.core.QgsEffectStack" title="qgis.core.QgsEffectStack"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsEffectStack</span></code></a>, will always return an empty string map</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsEffectStack.readProperties" title="qgis.core.QgsEffectStack.readProperties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readProperties</span></code></a></p></td>
-<td><p>readProperties(self, props: Dict[str, str]) Unused for <a class="reference internal" href="#qgis.core.QgsEffectStack" title="qgis.core.QgsEffectStack"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsEffectStack</span></code></a>, props parameter will be ignored</p></td>
+<td><p>readProperties(self, props: Dict[str, Any]) Unused for <a class="reference internal" href="#qgis.core.QgsEffectStack" title="qgis.core.QgsEffectStack"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsEffectStack</span></code></a>, props parameter will be ignored</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsEffectStack.saveProperties" title="qgis.core.QgsEffectStack.saveProperties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">saveProperties</span></code></a></p></td>
 <td><p><dl class="field-list simple">
@@ -2137,7 +2138,7 @@ transferred to the stack object.</p></li>
 
 <dl class="py method">
 <dt id="qgis.core.QgsEffectStack.create">
-<code class="sig-name descname">create</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">map</span><span class="p">:</span> <span class="n">Dict<span class="p">[</span>str<span class="p">, </span>str<span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="QgsPaintEffect.html#module-QgsPaintEffect" title="QgsPaintEffect">QgsPaintEffect</a><a class="headerlink" href="#qgis.core.QgsEffectStack.create" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">create</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">map</span><span class="p">:</span> <span class="n">Dict<span class="p">[</span>str<span class="p">, </span>Any<span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="QgsPaintEffect.html#module-QgsPaintEffect" title="QgsPaintEffect">QgsPaintEffect</a><a class="headerlink" href="#qgis.core.QgsEffectStack.create" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates a new <a class="reference internal" href="#qgis.core.QgsEffectStack" title="qgis.core.QgsEffectStack"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsEffectStack</span></code></a> effect. This method ignores
 the map parameter, and always returns an empty effect stack.</p>
 <dl class="field-list simple">
@@ -2273,11 +2274,11 @@ transferred to the stack object.</p></li>
 
 <dl class="py method">
 <dt id="qgis.core.QgsEffectStack.properties">
-<code class="sig-name descname">properties</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; Dict<span class="p">[</span>str<span class="p">, </span>str<span class="p">]</span><a class="headerlink" href="#qgis.core.QgsEffectStack.properties" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">properties</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; Dict<span class="p">[</span>str<span class="p">, </span>Any<span class="p">]</span><a class="headerlink" href="#qgis.core.QgsEffectStack.properties" title="Permalink to this definition">¶</a></dt>
 <dd><p>Unused for <a class="reference internal" href="#qgis.core.QgsEffectStack" title="qgis.core.QgsEffectStack"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsEffectStack</span></code></a>, will always return an empty string map</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>Dict[str, str]</p>
+<dd class="field-odd"><p>Dict[str, Any]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2285,7 +2286,7 @@ transferred to the stack object.</p></li>
 <dl class="py method">
 <dt id="qgis.core.QgsEffectStack.readProperties">
 <code class="sig-name descname">readProperties</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">element</span><span class="p">:</span> <span class="n">QDomElement</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsEffectStack.readProperties" title="Permalink to this definition">¶</a></dt>
-<dd><p>readProperties(self, props: Dict[str, str])
+<dd><p>readProperties(self, props: Dict[str, Any])
 Unused for <a class="reference internal" href="#qgis.core.QgsEffectStack" title="qgis.core.QgsEffectStack"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsEffectStack</span></code></a>, props parameter will be ignored</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2402,7 +2403,7 @@ The result is cached to speed up subsequent calls to sourceAsImage.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 01:24 Jan 07, 2021.
+        Last updated on 04:42 Jan 07, 2021.
       </span>
 
     </p>
