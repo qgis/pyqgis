@@ -43,7 +43,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Class: QgsRelationReferenceSearchWidgetWrapper" href="QgsRelationReferenceSearchWidgetWrapper.html" />
-    <link rel="prev" title="Class: QgsRelationAggregateSearchWidgetWrapper" href="QgsRelationAggregateSearchWidgetWrapper.html" /> 
+    <link rel="prev" title="Class: QgsRelationEditorConfigWidget" href="QgsRelationEditorConfigWidget.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -1148,6 +1148,7 @@
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">gui</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Buttons.html">Class: Buttons</a></li>
 <li class="toctree-l2"><a class="reference internal" href="CadCapacities.html">Class: CadCapacities</a></li>
 <li class="toctree-l2"><a class="reference internal" href="CharacterWidget.html">Class: CharacterWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Filters.html">Class: Filters</a></li>
@@ -1162,6 +1163,9 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsAbstractFileContentSourceLineEdit.html">Class: QgsAbstractFileContentSourceLineEdit</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAbstractMapToolHandler.html">Class: QgsAbstractMapToolHandler</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAbstractProcessingParameterWidgetWrapper.html">Class: QgsAbstractProcessingParameterWidgetWrapper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsAbstractRelationEditorConfigWidget.html">Class: QgsAbstractRelationEditorConfigWidget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsAbstractRelationEditorWidget.html">Class: QgsAbstractRelationEditorWidget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsAbstractRelationEditorWidgetFactory.html">Class: QgsAbstractRelationEditorWidgetFactory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsActionMenu.html">Class: QgsActionMenu</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAdvancedDigitizingCanvasItem.html">Class: QgsAdvancedDigitizingCanvasItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAdvancedDigitizingDockWidget.html">Class: QgsAdvancedDigitizingDockWidget</a></li>
@@ -1603,10 +1607,12 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsRasterTransparencyWidget.html">Class: QgsRasterTransparencyWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsRatioLockButton.html">Class: QgsRatioLockButton</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsRelationAggregateSearchWidgetWrapper.html">Class: QgsRelationAggregateSearchWidgetWrapper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsRelationEditorConfigWidget.html">Class: QgsRelationEditorConfigWidget</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Class: QgsRelationEditorWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsRelationReferenceSearchWidgetWrapper.html">Class: QgsRelationReferenceSearchWidgetWrapper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsRelationReferenceWidget.html">Class: QgsRelationReferenceWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsRelationReferenceWidgetWrapper.html">Class: QgsRelationReferenceWidgetWrapper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsRelationWidgetRegistry.html">Class: QgsRelationWidgetRegistry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsRelationWidgetWrapper.html">Class: QgsRelationWidgetWrapper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsRendererPropertiesDialog.html">Class: QgsRendererPropertiesDialog</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsRendererRasterPropertiesWidget.html">Class: QgsRendererRasterPropertiesWidget</a></li>
@@ -1916,11 +1922,19 @@
 <span id="class-qgsrelationeditorwidget"></span><h1>Class: QgsRelationEditorWidget<a class="headerlink" href="#module-QgsRelationEditorWidget" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt id="qgis.gui.QgsRelationEditorWidget">
-<em class="property">class </em><code class="sig-prename descclassname">qgis.gui.</code><code class="sig-name descname">QgsRelationEditorWidget</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">parent</span><span class="p">:</span> <span class="n">QWidget</span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="QgsCollapsibleGroupBox.html#module-QgsCollapsibleGroupBox" title="QgsCollapsibleGroupBox"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsCollapsibleGroupBox</span></code></a></p>
+<em class="property">class </em><code class="sig-prename descclassname">qgis.gui.</code><code class="sig-name descname">QgsRelationEditorWidget</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">config</span><span class="p">:</span> <span class="n">Dict<span class="p">[</span>str<span class="p">, </span>Any<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">parent</span><span class="p">:</span> <span class="n">QWidget</span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="QgsAbstractRelationEditorWidget.html#module-QgsAbstractRelationEditorWidget" title="QgsAbstractRelationEditorWidget"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsAbstractRelationEditorWidget</span></code></a></p>
+<p>Constructor</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>parent</strong> (<em>QWidget = None</em>) – <p>parent widget</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>config</strong> (<em>Dict</em><em>[</em><em>str</em>) – widget configuration</p></li>
+<li><p><strong>parent</strong> (<em>QWidget = None</em>) – parent widget</p></li>
+</ul>
+</dd>
+</dl>
+<p>The default relation widget in QGIS. Successor of the now deprecated {<a class="reference internal" href="#module-QgsRelationEditorWidget" title="QgsRelationEditorWidget"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsRelationEditorWidget</span></code></a>}.</p>
+<div class="versionadded">
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
@@ -1939,20 +1953,20 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.actionEvent" title="qgis.gui.QgsRelationEditorWidget.actionEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">actionEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.changeEvent" title="qgis.gui.QgsRelationEditorWidget.changeEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">changeEvent</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.addFeature" title="qgis.gui.QgsRelationEditorWidget.addFeature"><code class="xref py py-obj docutils literal notranslate"><span class="pre">addFeature</span></code></a></p></td>
+<td><p>Adds a new feature with given <code class="docutils literal notranslate"><span class="pre">geometry</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.changeEvent" title="qgis.gui.QgsRelationEditorWidget.changeEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">changeEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.childEvent" title="qgis.gui.QgsRelationEditorWidget.childEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">childEvent</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.clearModifiers" title="qgis.gui.QgsRelationEditorWidget.clearModifiers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clearModifiers</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.childEvent" title="qgis.gui.QgsRelationEditorWidget.childEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">childEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.closeEvent" title="qgis.gui.QgsRelationEditorWidget.closeEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">closeEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.collapseExpandFixes" title="qgis.gui.QgsRelationEditorWidget.collapseExpandFixes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">collapseExpandFixes</span></code></a></p></td>
-<td><p>Visual fixes for when group box is collapsed/expanded</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.config" title="qgis.gui.QgsRelationEditorWidget.config"><code class="xref py py-obj docutils literal notranslate"><span class="pre">config</span></code></a></p></td>
+<td><p>Returns the current configuration</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.connectNotify" title="qgis.gui.QgsRelationEditorWidget.connectNotify"><code class="xref py py-obj docutils literal notranslate"><span class="pre">connectNotify</span></code></a></p></td>
 <td><p></p></td>
@@ -1966,35 +1980,47 @@
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.customEvent" title="qgis.gui.QgsRelationEditorWidget.customEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">customEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.destroy" title="qgis.gui.QgsRelationEditorWidget.destroy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">destroy</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.deleteFeature" title="qgis.gui.QgsRelationEditorWidget.deleteFeature"><code class="xref py py-obj docutils literal notranslate"><span class="pre">deleteFeature</span></code></a></p></td>
+<td><p>Delete a feature with given <code class="docutils literal notranslate"><span class="pre">fid</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.deleteFeatures" title="qgis.gui.QgsRelationEditorWidget.deleteFeatures"><code class="xref py py-obj docutils literal notranslate"><span class="pre">deleteFeatures</span></code></a></p></td>
+<td><p>Deletes the features with <code class="docutils literal notranslate"><span class="pre">fids</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.deleteSelectedFeatures" title="qgis.gui.QgsRelationEditorWidget.deleteSelectedFeatures"><code class="xref py py-obj docutils literal notranslate"><span class="pre">deleteSelectedFeatures</span></code></a></p></td>
+<td><p>Deletes the currently selected features</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.destroy" title="qgis.gui.QgsRelationEditorWidget.destroy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">destroy</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.disconnectNotify" title="qgis.gui.QgsRelationEditorWidget.disconnectNotify"><code class="xref py py-obj docutils literal notranslate"><span class="pre">disconnectNotify</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.disconnectNotify" title="qgis.gui.QgsRelationEditorWidget.disconnectNotify"><code class="xref py py-obj docutils literal notranslate"><span class="pre">disconnectNotify</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.dragEnterEvent" title="qgis.gui.QgsRelationEditorWidget.dragEnterEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dragEnterEvent</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.dragEnterEvent" title="qgis.gui.QgsRelationEditorWidget.dragEnterEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dragEnterEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.dragLeaveEvent" title="qgis.gui.QgsRelationEditorWidget.dragLeaveEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dragLeaveEvent</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.dragLeaveEvent" title="qgis.gui.QgsRelationEditorWidget.dragLeaveEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dragLeaveEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.dragMoveEvent" title="qgis.gui.QgsRelationEditorWidget.dragMoveEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dragMoveEvent</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.dragMoveEvent" title="qgis.gui.QgsRelationEditorWidget.dragMoveEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dragMoveEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.dropEvent" title="qgis.gui.QgsRelationEditorWidget.dropEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dropEvent</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.dropEvent" title="qgis.gui.QgsRelationEditorWidget.dropEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dropEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.editorContext" title="qgis.gui.QgsRelationEditorWidget.editorContext"><code class="xref py py-obj docutils literal notranslate"><span class="pre">editorContext</span></code></a></p></td>
-<td><p>Returns the attribute editor context.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.duplicateFeature" title="qgis.gui.QgsRelationEditorWidget.duplicateFeature"><code class="xref py py-obj docutils literal notranslate"><span class="pre">duplicateFeature</span></code></a></p></td>
+<td><p>Duplicates a feature</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.enterEvent" title="qgis.gui.QgsRelationEditorWidget.enterEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">enterEvent</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.duplicateFeatures" title="qgis.gui.QgsRelationEditorWidget.duplicateFeatures"><code class="xref py py-obj docutils literal notranslate"><span class="pre">duplicateFeatures</span></code></a></p></td>
+<td><p>Duplicates features</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.duplicateSelectedFeatures" title="qgis.gui.QgsRelationEditorWidget.duplicateSelectedFeatures"><code class="xref py py-obj docutils literal notranslate"><span class="pre">duplicateSelectedFeatures</span></code></a></p></td>
+<td><p>Duplicates the selected features</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.enterEvent" title="qgis.gui.QgsRelationEditorWidget.enterEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">enterEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.event" title="qgis.gui.QgsRelationEditorWidget.event"><code class="xref py py-obj docutils literal notranslate"><span class="pre">event</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.event" title="qgis.gui.QgsRelationEditorWidget.event"><code class="xref py py-obj docutils literal notranslate"><span class="pre">event</span></code></a></p></td>
 <td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.feature" title="qgis.gui.QgsRelationEditorWidget.feature"><code class="xref py py-obj docutils literal notranslate"><span class="pre">feature</span></code></a></p></td>
-<td><p>Returns the widget’s current feature</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.featureSelectionManager" title="qgis.gui.QgsRelationEditorWidget.featureSelectionManager"><code class="xref py py-obj docutils literal notranslate"><span class="pre">featureSelectionManager</span></code></a></p></td>
 <td><p>The feature selection manager is responsible for the selected features which are currently being edited.</p></td>
@@ -2014,41 +2040,29 @@
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.focusPreviousChild" title="qgis.gui.QgsRelationEditorWidget.focusPreviousChild"><code class="xref py py-obj docutils literal notranslate"><span class="pre">focusPreviousChild</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.forceSuppressFormPopup" title="qgis.gui.QgsRelationEditorWidget.forceSuppressFormPopup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">forceSuppressFormPopup</span></code></a></p></td>
-<td><p>Determines the force suppress form popup status that is configured for this widget</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.hideEvent" title="qgis.gui.QgsRelationEditorWidget.hideEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hideEvent</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.init" title="qgis.gui.QgsRelationEditorWidget.init"><code class="xref py py-obj docutils literal notranslate"><span class="pre">init</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.hideEvent" title="qgis.gui.QgsRelationEditorWidget.hideEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hideEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.initPainter" title="qgis.gui.QgsRelationEditorWidget.initPainter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">initPainter</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.initStyleOption" title="qgis.gui.QgsRelationEditorWidget.initStyleOption"><code class="xref py py-obj docutils literal notranslate"><span class="pre">initStyleOption</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.inputMethodEvent" title="qgis.gui.QgsRelationEditorWidget.inputMethodEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">inputMethodEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.inputMethodEvent" title="qgis.gui.QgsRelationEditorWidget.inputMethodEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">inputMethodEvent</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.isSignalConnected" title="qgis.gui.QgsRelationEditorWidget.isSignalConnected"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isSignalConnected</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.isSignalConnected" title="qgis.gui.QgsRelationEditorWidget.isSignalConnected"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isSignalConnected</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.keyPressEvent" title="qgis.gui.QgsRelationEditorWidget.keyPressEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">keyPressEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.keyPressEvent" title="qgis.gui.QgsRelationEditorWidget.keyPressEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">keyPressEvent</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.keyReleaseEvent" title="qgis.gui.QgsRelationEditorWidget.keyReleaseEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">keyReleaseEvent</span></code></a></p></td>
 <td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.keyReleaseEvent" title="qgis.gui.QgsRelationEditorWidget.keyReleaseEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">keyReleaseEvent</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.label" title="qgis.gui.QgsRelationEditorWidget.label"><code class="xref py py-obj docutils literal notranslate"><span class="pre">label</span></code></a></p></td>
-<td><p>Determines the label of this element</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.leaveEvent" title="qgis.gui.QgsRelationEditorWidget.leaveEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">leaveEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.loadState" title="qgis.gui.QgsRelationEditorWidget.loadState"><code class="xref py py-obj docutils literal notranslate"><span class="pre">loadState</span></code></a></p></td>
-<td><p>Will load the collapsed and checked state</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.linkFeature" title="qgis.gui.QgsRelationEditorWidget.linkFeature"><code class="xref py py-obj docutils literal notranslate"><span class="pre">linkFeature</span></code></a></p></td>
+<td><p>Links a new feature to the relation</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.metric" title="qgis.gui.QgsRelationEditorWidget.metric"><code class="xref py py-obj docutils literal notranslate"><span class="pre">metric</span></code></a></p></td>
 <td><p></p></td>
@@ -2071,14 +2085,18 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.nativeEvent" title="qgis.gui.QgsRelationEditorWidget.nativeEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nativeEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.nmRelationId" title="qgis.gui.QgsRelationEditorWidget.nmRelationId"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nmRelationId</span></code></a></p></td>
-<td><p>Determines the relation id of the second relation involved in an N:M relation.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.onLinkFeatureDlgAccepted" title="qgis.gui.QgsRelationEditorWidget.onLinkFeatureDlgAccepted"><code class="xref py py-obj docutils literal notranslate"><span class="pre">onLinkFeatureDlgAccepted</span></code></a></p></td>
+<td><p>Called when the link feature dialog is confirmed by the user</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.paintEvent" title="qgis.gui.QgsRelationEditorWidget.paintEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">paintEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.parentFormValueChanged" title="qgis.gui.QgsRelationEditorWidget.parentFormValueChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parentFormValueChanged</span></code></a></p></td>
-<td><p>Called when an <code class="docutils literal notranslate"><span class="pre">attribute</span></code> value in the parent widget has changed to <code class="docutils literal notranslate"><span class="pre">newValue</span></code></p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">param attribute</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.receivers" title="qgis.gui.QgsRelationEditorWidget.receivers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">receivers</span></code></a></p></td>
 <td><p></p></td>
@@ -2086,89 +2104,59 @@
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.resizeEvent" title="qgis.gui.QgsRelationEditorWidget.resizeEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">resizeEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.saveKey" title="qgis.gui.QgsRelationEditorWidget.saveKey"><code class="xref py py-obj docutils literal notranslate"><span class="pre">saveKey</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.saveEdits" title="qgis.gui.QgsRelationEditorWidget.saveEdits"><code class="xref py py-obj docutils literal notranslate"><span class="pre">saveEdits</span></code></a></p></td>
+<td><p>Saves the current modifications in the relation</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.sender" title="qgis.gui.QgsRelationEditorWidget.sender"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sender</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.saveState" title="qgis.gui.QgsRelationEditorWidget.saveState"><code class="xref py py-obj docutils literal notranslate"><span class="pre">saveState</span></code></a></p></td>
-<td><p>Will save the collapsed and checked state</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.sender" title="qgis.gui.QgsRelationEditorWidget.sender"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sender</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.senderSignalIndex" title="qgis.gui.QgsRelationEditorWidget.senderSignalIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">senderSignalIndex</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.senderSignalIndex" title="qgis.gui.QgsRelationEditorWidget.senderSignalIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">senderSignalIndex</span></code></a></p></td>
-<td><p></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.setConfig" title="qgis.gui.QgsRelationEditorWidget.setConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setConfig</span></code></a></p></td>
+<td><p>Defines the current configuration</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.setEditorContext" title="qgis.gui.QgsRelationEditorWidget.setEditorContext"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setEditorContext</span></code></a></p></td>
 <td><p>Sets the editor <code class="docutils literal notranslate"><span class="pre">context</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.setFeature" title="qgis.gui.QgsRelationEditorWidget.setFeature"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setFeature</span></code></a></p></td>
-<td><p>Sets the <code class="docutils literal notranslate"><span class="pre">feature</span></code> being edited and updates the UI unless <code class="docutils literal notranslate"><span class="pre">update</span></code> is set to <code class="docutils literal notranslate"><span class="pre">False</span></code></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.setTitle" title="qgis.gui.QgsRelationEditorWidget.setTitle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setTitle</span></code></a></p></td>
+<td><p>Sets the title of the root groupbox</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.setForceSuppressFormPopup" title="qgis.gui.QgsRelationEditorWidget.setForceSuppressFormPopup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setForceSuppressFormPopup</span></code></a></p></td>
-<td><p>Sets force suppress form popup status with <code class="docutils literal notranslate"><span class="pre">forceSuppressFormPopup</span></code> configured for this widget</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.setLabel" title="qgis.gui.QgsRelationEditorWidget.setLabel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setLabel</span></code></a></p></td>
-<td><p>Sets <code class="docutils literal notranslate"><span class="pre">label</span></code> for this element If it’s empty it takes the relation id as label</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.setNmRelationId" title="qgis.gui.QgsRelationEditorWidget.setNmRelationId"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setNmRelationId</span></code></a></p></td>
-<td><p>Sets <code class="docutils literal notranslate"><span class="pre">nmRelationId</span></code> for the relation id of the second relation involved in an N:M relation.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.setRelationFeature" title="qgis.gui.QgsRelationEditorWidget.setRelationFeature"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setRelationFeature</span></code></a></p></td>
-<td><p>Sets the <code class="docutils literal notranslate"><span class="pre">relation</span></code> and the <code class="docutils literal notranslate"><span class="pre">feature</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.setRelations" title="qgis.gui.QgsRelationEditorWidget.setRelations"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setRelations</span></code></a></p></td>
-<td><p>Set the relation(s) for this widget If only one relation is set, it will act as a simple 1:N relation widget If both relations are set, it will act as an N:M relation widget inserting and deleting entries on the intermediate table as required.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.setShowLabel" title="qgis.gui.QgsRelationEditorWidget.setShowLabel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setShowLabel</span></code></a></p></td>
-<td><p>Defines if a title label should be shown for this widget.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.setShowLinkButton" title="qgis.gui.QgsRelationEditorWidget.setShowLinkButton"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setShowLinkButton</span></code></a></p></td>
-<td><p>Determines if the “link feature” button should be shown</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.setShowSaveChildEditsButton" title="qgis.gui.QgsRelationEditorWidget.setShowSaveChildEditsButton"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setShowSaveChildEditsButton</span></code></a></p></td>
-<td><p>Determines if the “Save child layer edits” button should be shown</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.setShowUnlinkButton" title="qgis.gui.QgsRelationEditorWidget.setShowUnlinkButton"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setShowUnlinkButton</span></code></a></p></td>
-<td><p>Determines if the “unlink feature” button should be shown</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.setViewMode" title="qgis.gui.QgsRelationEditorWidget.setViewMode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setViewMode</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.setViewMode" title="qgis.gui.QgsRelationEditorWidget.setViewMode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setViewMode</span></code></a></p></td>
 <td><p>Define the view mode for the dual view</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.setVisibleButtons" title="qgis.gui.QgsRelationEditorWidget.setVisibleButtons"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setVisibleButtons</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.setVisibleButtons" title="qgis.gui.QgsRelationEditorWidget.setVisibleButtons"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setVisibleButtons</span></code></a></p></td>
 <td><p>Defines the buttons which are shown</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.sharedPainter" title="qgis.gui.QgsRelationEditorWidget.sharedPainter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sharedPainter</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.sharedPainter" title="qgis.gui.QgsRelationEditorWidget.sharedPainter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sharedPainter</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.showEvent" title="qgis.gui.QgsRelationEditorWidget.showEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">showEvent</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.showEvent" title="qgis.gui.QgsRelationEditorWidget.showEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">showEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.showLabel" title="qgis.gui.QgsRelationEditorWidget.showLabel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">showLabel</span></code></a></p></td>
-<td><p>Defines if a title label should be shown for this widget.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.showLinkButton" title="qgis.gui.QgsRelationEditorWidget.showLinkButton"><code class="xref py py-obj docutils literal notranslate"><span class="pre">showLinkButton</span></code></a></p></td>
-<td><p>Determines if the “link feature” button should be shown</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.showSaveChildEditsButton" title="qgis.gui.QgsRelationEditorWidget.showSaveChildEditsButton"><code class="xref py py-obj docutils literal notranslate"><span class="pre">showSaveChildEditsButton</span></code></a></p></td>
-<td><p>Determines if the “Save child layer edits” button should be shown</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.showUnlinkButton" title="qgis.gui.QgsRelationEditorWidget.showUnlinkButton"><code class="xref py py-obj docutils literal notranslate"><span class="pre">showUnlinkButton</span></code></a></p></td>
-<td><p>Determines if the “unlink feature” button should be shown</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.tabletEvent" title="qgis.gui.QgsRelationEditorWidget.tabletEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tabletEvent</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.tabletEvent" title="qgis.gui.QgsRelationEditorWidget.tabletEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tabletEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.timerEvent" title="qgis.gui.QgsRelationEditorWidget.timerEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">timerEvent</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.timerEvent" title="qgis.gui.QgsRelationEditorWidget.timerEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">timerEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.titleRect" title="qgis.gui.QgsRelationEditorWidget.titleRect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">titleRect</span></code></a></p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.toggleEditing" title="qgis.gui.QgsRelationEditorWidget.toggleEditing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">toggleEditing</span></code></a></p></td>
+<td><p>Toggles editing state of the widget</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.unlinkFeature" title="qgis.gui.QgsRelationEditorWidget.unlinkFeature"><code class="xref py py-obj docutils literal notranslate"><span class="pre">unlinkFeature</span></code></a></p></td>
+<td><p>Unlinks a feature with given <code class="docutils literal notranslate"><span class="pre">fid</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.unlinkFeatures" title="qgis.gui.QgsRelationEditorWidget.unlinkFeatures"><code class="xref py py-obj docutils literal notranslate"><span class="pre">unlinkFeatures</span></code></a></p></td>
+<td><p>Unlinks the features with <code class="docutils literal notranslate"><span class="pre">fids</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.unlinkSelectedFeatures" title="qgis.gui.QgsRelationEditorWidget.unlinkSelectedFeatures"><code class="xref py py-obj docutils literal notranslate"><span class="pre">unlinkSelectedFeatures</span></code></a></p></td>
+<td><p>Unlinks the selected features from the relation</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.updateMicroFocus" title="qgis.gui.QgsRelationEditorWidget.updateMicroFocus"><code class="xref py py-obj docutils literal notranslate"><span class="pre">updateMicroFocus</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.updateStyle" title="qgis.gui.QgsRelationEditorWidget.updateStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">updateStyle</span></code></a></p></td>
-<td><p></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.updateTitle" title="qgis.gui.QgsRelationEditorWidget.updateTitle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">updateTitle</span></code></a></p></td>
+<td><p>Updates the title contents to reflect the current state of the widget</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.viewMode" title="qgis.gui.QgsRelationEditorWidget.viewMode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">viewMode</span></code></a></p></td>
 <td><p>Gets the view mode for the dual view</p></td>
@@ -2179,6 +2167,9 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.wheelEvent" title="qgis.gui.QgsRelationEditorWidget.wheelEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wheelEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.zoomToSelectedFeatures" title="qgis.gui.QgsRelationEditorWidget.zoomToSelectedFeatures"><code class="xref py py-obj docutils literal notranslate"><span class="pre">zoomToSelectedFeatures</span></code></a></p></td>
+<td><p>Zooms to the selected features</p></td>
+</tr>
 </tbody>
 </table>
 <table class="longtable docutils align-default">
@@ -2189,25 +2180,120 @@
 <tbody>
 </tbody>
 </table>
+<p class="rubric">Attributes</p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
 <col style="width: 90%" />
 </colgroup>
 <tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.AddChildFeature" title="qgis.gui.QgsRelationEditorWidget.AddChildFeature"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AddChildFeature</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.AllButtons" title="qgis.gui.QgsRelationEditorWidget.AllButtons"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AllButtons</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.DeleteChildFeature" title="qgis.gui.QgsRelationEditorWidget.DeleteChildFeature"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DeleteChildFeature</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.DuplicateChildFeature" title="qgis.gui.QgsRelationEditorWidget.DuplicateChildFeature"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DuplicateChildFeature</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.Link" title="qgis.gui.QgsRelationEditorWidget.Link"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Link</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.SaveChildEdits" title="qgis.gui.QgsRelationEditorWidget.SaveChildEdits"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SaveChildEdits</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.Unlink" title="qgis.gui.QgsRelationEditorWidget.Unlink"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Unlink</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.ZoomToChildFeature" title="qgis.gui.QgsRelationEditorWidget.ZoomToChildFeature"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ZoomToChildFeature</span></code></a></p></td>
+<td><p></p></td>
+</tr>
 </tbody>
 </table>
-</p>
-</dd>
-</dl>
+</div>
+<dl class="py attribute">
+<dt id="qgis.gui.QgsRelationEditorWidget.AddChildFeature">
+<code class="sig-name descname">AddChildFeature</code><em class="property"> = 16</em><a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.AddChildFeature" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="qgis.gui.QgsRelationEditorWidget.AllButtons">
+<code class="sig-name descname">AllButtons</code><em class="property"> = 254</em><a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.AllButtons" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt id="qgis.gui.QgsRelationEditorWidget.Button">
+<em class="property">class </em><code class="sig-name descname">Button</code><a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.Button" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
+<dl class="py attribute">
+<dt id="qgis.gui.QgsRelationEditorWidget.Button.baseClass">
+<code class="sig-name descname">baseClass</code><a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.Button.baseClass" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">qgis._gui.QgsRelationEditorWidget</span></code></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="qgis.gui.QgsRelationEditorWidget.Buttons">
+<em class="property">class </em><code class="sig-name descname">Buttons</code><a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.Buttons" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sip.wrapper</span></code></p>
+<p>QgsRelationEditorWidget.Buttons(Union[QgsRelationEditorWidget.Buttons, QgsRelationEditorWidget.Button])
+QgsRelationEditorWidget.Buttons(QgsRelationEditorWidget.Buttons)</p>
+<dl class="py attribute">
+<dt id="qgis.gui.QgsRelationEditorWidget.Buttons.baseClass">
+<code class="sig-name descname">baseClass</code><a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.Buttons.baseClass" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">qgis._gui.QgsRelationEditorWidget</span></code></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="qgis.gui.QgsRelationEditorWidget.DeleteChildFeature">
+<code class="sig-name descname">DeleteChildFeature</code><em class="property"> = 64</em><a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.DeleteChildFeature" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="qgis.gui.QgsRelationEditorWidget.DuplicateChildFeature">
+<code class="sig-name descname">DuplicateChildFeature</code><em class="property"> = 32</em><a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.DuplicateChildFeature" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="qgis.gui.QgsRelationEditorWidget.Link">
+<code class="sig-name descname">Link</code><em class="property"> = 2</em><a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.Link" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="qgis.gui.QgsRelationEditorWidget.SaveChildEdits">
+<code class="sig-name descname">SaveChildEdits</code><em class="property"> = 8</em><a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.SaveChildEdits" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="qgis.gui.QgsRelationEditorWidget.Unlink">
+<code class="sig-name descname">Unlink</code><em class="property"> = 4</em><a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.Unlink" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="qgis.gui.QgsRelationEditorWidget.ZoomToChildFeature">
+<code class="sig-name descname">ZoomToChildFeature</code><em class="property"> = 128</em><a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.ZoomToChildFeature" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="py method">
 <dt id="qgis.gui.QgsRelationEditorWidget.actionEvent">
 <code class="sig-name descname">actionEvent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">QActionEvent</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.actionEvent" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
+<dt id="qgis.gui.QgsRelationEditorWidget.addFeature">
+<code class="sig-name descname">addFeature</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">geometry</span><span class="p">:</span> <span class="n"><a class="reference internal" href="../core/QgsGeometry.html#module-QgsGeometry" title="QgsGeometry">QgsGeometry</a></span> <span class="o">=</span> <span class="default_value">QgsGeometry()</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.addFeature" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a new feature with given <code class="docutils literal notranslate"><span class="pre">geometry</span></code></p>
+</dd></dl>
+
+<dl class="py method">
 <dt id="qgis.gui.QgsRelationEditorWidget.changeEvent">
-<code class="sig-name descname">changeEvent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">event</span><span class="p">:</span> <span class="n">QEvent</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.changeEvent" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">changeEvent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">QEvent</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.changeEvent" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -2216,19 +2302,19 @@
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="qgis.gui.QgsRelationEditorWidget.clearModifiers">
-<code class="sig-name descname">clearModifiers</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.clearModifiers" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
 <dt id="qgis.gui.QgsRelationEditorWidget.closeEvent">
 <code class="sig-name descname">closeEvent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">QCloseEvent</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.closeEvent" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="qgis.gui.QgsRelationEditorWidget.collapseExpandFixes">
-<code class="sig-name descname">collapseExpandFixes</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.collapseExpandFixes" title="Permalink to this definition">¶</a></dt>
-<dd><p>Visual fixes for when group box is collapsed/expanded</p>
+<dt id="qgis.gui.QgsRelationEditorWidget.config">
+<code class="sig-name descname">config</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; Dict<span class="p">[</span>str<span class="p">, </span>Any<span class="p">]</span><a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the current configuration</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Dict[str, Any]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -2250,6 +2336,24 @@
 <dt id="qgis.gui.QgsRelationEditorWidget.customEvent">
 <code class="sig-name descname">customEvent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">QEvent</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.customEvent" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="py method">
+<dt id="qgis.gui.QgsRelationEditorWidget.deleteFeature">
+<code class="sig-name descname">deleteFeature</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">fid: int =  ::QgsFeatureId()</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.deleteFeature" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete a feature with given <code class="docutils literal notranslate"><span class="pre">fid</span></code></p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qgis.gui.QgsRelationEditorWidget.deleteFeatures">
+<code class="sig-name descname">deleteFeatures</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">fids</span><span class="p">:</span> <span class="n">object</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.deleteFeatures" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes the features with <code class="docutils literal notranslate"><span class="pre">fids</span></code></p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qgis.gui.QgsRelationEditorWidget.deleteSelectedFeatures">
+<code class="sig-name descname">deleteSelectedFeatures</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.deleteSelectedFeatures" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes the currently selected features</p>
+</dd></dl>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsRelationEditorWidget.destroy">
@@ -2282,17 +2386,28 @@
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="qgis.gui.QgsRelationEditorWidget.editorContext">
-<code class="sig-name descname">editorContext</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="QgsAttributeEditorContext.html#module-QgsAttributeEditorContext" title="QgsAttributeEditorContext">QgsAttributeEditorContext</a><a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.editorContext" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the attribute editor context.</p>
-<div class="versionadded">
-<p><span class="versionmodified added">New in version 3.14.</span></p>
+<dt id="qgis.gui.QgsRelationEditorWidget.duplicateFeature">
+<code class="sig-name descname">duplicateFeature</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.duplicateFeature" title="Permalink to this definition">¶</a></dt>
+<dd><p>Duplicates a feature</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version QGIS: </span>3.18
+use duplicateSelectedFeatures() instead</p>
 </div>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference internal" href="QgsAttributeEditorContext.html#qgis.gui.QgsAttributeEditorContext" title="qgis.gui.QgsAttributeEditorContext">QgsAttributeEditorContext</a></p>
-</dd>
-</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qgis.gui.QgsRelationEditorWidget.duplicateFeatures">
+<code class="sig-name descname">duplicateFeatures</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">fids</span><span class="p">:</span> <span class="n">object</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.duplicateFeatures" title="Permalink to this definition">¶</a></dt>
+<dd><p>Duplicates features</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qgis.gui.QgsRelationEditorWidget.duplicateSelectedFeatures">
+<code class="sig-name descname">duplicateSelectedFeatures</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.duplicateSelectedFeatures" title="Permalink to this definition">¶</a></dt>
+<dd><p>Duplicates the selected features</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.18.</span></p>
+</div>
 </dd></dl>
 
 <dl class="py method">
@@ -2304,20 +2419,6 @@
 <dt id="qgis.gui.QgsRelationEditorWidget.event">
 <code class="sig-name descname">event</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">QEvent</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.event" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
-<dl class="py method">
-<dt id="qgis.gui.QgsRelationEditorWidget.feature">
-<code class="sig-name descname">feature</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="../core/QgsFeature.html#module-QgsFeature" title="QgsFeature">QgsFeature</a><a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.feature" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the widget’s current feature</p>
-<div class="versionadded">
-<p><span class="versionmodified added">New in version 3.14.</span></p>
-</div>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference internal" href="../core/QgsFeature.html#qgis.core.QgsFeature" title="qgis.core.QgsFeature">QgsFeature</a></p>
-</dd>
-</dl>
-</dd></dl>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsRelationEditorWidget.featureSelectionManager">
@@ -2357,37 +2458,13 @@ which are currently being edited.</p>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="qgis.gui.QgsRelationEditorWidget.forceSuppressFormPopup">
-<code class="sig-name descname">forceSuppressFormPopup</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.forceSuppressFormPopup" title="Permalink to this definition">¶</a></dt>
-<dd><p>Determines the force suppress form popup status that is configured for this widget</p>
-<div class="versionadded">
-<p><span class="versionmodified added">New in version 3.16.</span></p>
-</div>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>bool</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
 <dt id="qgis.gui.QgsRelationEditorWidget.hideEvent">
 <code class="sig-name descname">hideEvent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">QHideEvent</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.hideEvent" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="qgis.gui.QgsRelationEditorWidget.init">
-<code class="sig-name descname">init</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.init" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
 <dt id="qgis.gui.QgsRelationEditorWidget.initPainter">
 <code class="sig-name descname">initPainter</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">QPainter</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.initPainter" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt id="qgis.gui.QgsRelationEditorWidget.initStyleOption">
-<code class="sig-name descname">initStyleOption</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">QStyleOptionGroupBox</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.initStyleOption" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -2411,33 +2488,14 @@ which are currently being edited.</p>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="qgis.gui.QgsRelationEditorWidget.label">
-<code class="sig-name descname">label</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.label" title="Permalink to this definition">¶</a></dt>
-<dd><p>Determines the label of this element</p>
-<div class="versionadded">
-<p><span class="versionmodified added">New in version 3.16.</span></p>
-</div>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>str</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
 <dt id="qgis.gui.QgsRelationEditorWidget.leaveEvent">
 <code class="sig-name descname">leaveEvent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">QEvent</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.leaveEvent" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="qgis.gui.QgsRelationEditorWidget.loadState">
-<code class="sig-name descname">loadState</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.loadState" title="Permalink to this definition">¶</a></dt>
-<dd><p>Will load the collapsed and checked state</p>
-<p>The configuration path from which it is loaded is defined by</p>
-<ul class="simple">
-<li><p>The object name</p></li>
-<li><p>The settingGroup</p></li>
-</ul>
+<dt id="qgis.gui.QgsRelationEditorWidget.linkFeature">
+<code class="sig-name descname">linkFeature</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.linkFeature" title="Permalink to this definition">¶</a></dt>
+<dd><p>Links a new feature to the relation</p>
 </dd></dl>
 
 <dl class="py method">
@@ -2457,12 +2515,12 @@ which are currently being edited.</p>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsRelationEditorWidget.mousePressEvent">
-<code class="sig-name descname">mousePressEvent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">event</span><span class="p">:</span> <span class="n">QMouseEvent</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.mousePressEvent" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">mousePressEvent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">QMouseEvent</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.mousePressEvent" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsRelationEditorWidget.mouseReleaseEvent">
-<code class="sig-name descname">mouseReleaseEvent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">event</span><span class="p">:</span> <span class="n">QMouseEvent</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.mouseReleaseEvent" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">mouseReleaseEvent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">QMouseEvent</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.mouseReleaseEvent" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -2476,17 +2534,9 @@ which are currently being edited.</p>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="qgis.gui.QgsRelationEditorWidget.nmRelationId">
-<code class="sig-name descname">nmRelationId</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; Any<a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.nmRelationId" title="Permalink to this definition">¶</a></dt>
-<dd><p>Determines the relation id of the second relation involved in an N:M relation.</p>
-<div class="versionadded">
-<p><span class="versionmodified added">New in version 3.16.</span></p>
-</div>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>Any</p>
-</dd>
-</dl>
+<dt id="qgis.gui.QgsRelationEditorWidget.onLinkFeatureDlgAccepted">
+<code class="sig-name descname">onLinkFeatureDlgAccepted</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.onLinkFeatureDlgAccepted" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when the link feature dialog is confirmed by the user</p>
 </dd></dl>
 
 <dl class="py method">
@@ -2497,11 +2547,7 @@ which are currently being edited.</p>
 <dl class="py method">
 <dt id="qgis.gui.QgsRelationEditorWidget.parentFormValueChanged">
 <code class="sig-name descname">parentFormValueChanged</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">attribute</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">newValue</span><span class="p">:</span> <span class="n">Any</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.parentFormValueChanged" title="Permalink to this definition">¶</a></dt>
-<dd><p>Called when an <code class="docutils literal notranslate"><span class="pre">attribute</span></code> value in the parent widget has changed to <code class="docutils literal notranslate"><span class="pre">newValue</span></code></p>
-<div class="versionadded">
-<p><span class="versionmodified added">New in version 3.14.</span></p>
-</div>
-<dl class="field-list simple">
+<dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>attribute</strong> (<em>str</em>) – </p></li>
@@ -2522,19 +2568,9 @@ which are currently being edited.</p>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="qgis.gui.QgsRelationEditorWidget.saveKey">
-<code class="sig-name descname">saveKey</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.saveKey" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt id="qgis.gui.QgsRelationEditorWidget.saveState">
-<code class="sig-name descname">saveState</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.saveState" title="Permalink to this definition">¶</a></dt>
-<dd><p>Will save the collapsed and checked state</p>
-<p>The configuration path to which it is saved is defined by</p>
-<ul class="simple">
-<li><p>The object name</p></li>
-<li><p>The settingGroup</p></li>
-</ul>
+<dt id="qgis.gui.QgsRelationEditorWidget.saveEdits">
+<code class="sig-name descname">saveEdits</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.saveEdits" title="Permalink to this definition">¶</a></dt>
+<dd><p>Saves the current modifications in the relation</p>
 </dd></dl>
 
 <dl class="py method">
@@ -2546,6 +2582,17 @@ which are currently being edited.</p>
 <dt id="qgis.gui.QgsRelationEditorWidget.senderSignalIndex">
 <code class="sig-name descname">senderSignalIndex</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.senderSignalIndex" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="py method">
+<dt id="qgis.gui.QgsRelationEditorWidget.setConfig">
+<code class="sig-name descname">setConfig</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">config</span><span class="p">:</span> <span class="n">Dict<span class="p">[</span>str<span class="p">, </span>Any<span class="p">]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.setConfig" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the current configuration</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>config</strong> (<em>Dict</em><em>[</em><em>str</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsRelationEditorWidget.setEditorContext">
@@ -2564,159 +2611,12 @@ the geometry of a referencing feature from this widget</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="qgis.gui.QgsRelationEditorWidget.setFeature">
-<code class="sig-name descname">setFeature</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">feature</span><span class="p">:</span> <span class="n"><a class="reference internal" href="../core/QgsFeature.html#module-QgsFeature" title="QgsFeature">QgsFeature</a></span></em>, <em class="sig-param"><span class="n">update</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.setFeature" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sets the <code class="docutils literal notranslate"><span class="pre">feature</span></code> being edited and updates the UI unless <code class="docutils literal notranslate"><span class="pre">update</span></code> is set to <code class="docutils literal notranslate"><span class="pre">False</span></code></p>
+<dt id="qgis.gui.QgsRelationEditorWidget.setTitle">
+<code class="sig-name descname">setTitle</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">title</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.setTitle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the title of the root groupbox</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>feature</strong> (<a class="reference internal" href="../core/QgsFeature.html#qgis.core.QgsFeature" title="qgis.core.QgsFeature"><em>QgsFeature</em></a>) – </p></li>
-<li><p><strong>update</strong> (<em>bool = True</em>) – </p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="qgis.gui.QgsRelationEditorWidget.setForceSuppressFormPopup">
-<code class="sig-name descname">setForceSuppressFormPopup</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">forceSuppressFormPopup</span><span class="p">:</span> <span class="n">bool</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.setForceSuppressFormPopup" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sets force suppress form popup status with <code class="docutils literal notranslate"><span class="pre">forceSuppressFormPopup</span></code>
-configured for this widget</p>
-<div class="versionadded">
-<p><span class="versionmodified added">New in version 3.16.</span></p>
-</div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>forceSuppressFormPopup</strong> (<em>bool</em>) – </p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="qgis.gui.QgsRelationEditorWidget.setLabel">
-<code class="sig-name descname">setLabel</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">label</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">''</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.setLabel" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sets <code class="docutils literal notranslate"><span class="pre">label</span></code> for this element
-If it’s empty it takes the relation id as label</p>
-<div class="versionadded">
-<p><span class="versionmodified added">New in version 3.16.</span></p>
-</div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>label</strong> (<em>str = ''</em>) – </p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="qgis.gui.QgsRelationEditorWidget.setNmRelationId">
-<code class="sig-name descname">setNmRelationId</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">nmRelationId</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.setNmRelationId" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sets <code class="docutils literal notranslate"><span class="pre">nmRelationId</span></code> for the relation id of the second relation involved in an N:M relation.
-If it’s empty, then it’s considered as a 1:M relationship.</p>
-<div class="versionadded">
-<p><span class="versionmodified added">New in version 3.16.</span></p>
-</div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>nmRelationId</strong> (<em>Any = None</em>) – </p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="qgis.gui.QgsRelationEditorWidget.setRelationFeature">
-<code class="sig-name descname">setRelationFeature</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">relation</span><span class="p">:</span> <span class="n"><a class="reference internal" href="../core/QgsRelation.html#module-QgsRelation" title="QgsRelation">QgsRelation</a></span></em>, <em class="sig-param"><span class="n">feature</span><span class="p">:</span> <span class="n"><a class="reference internal" href="../core/QgsFeature.html#module-QgsFeature" title="QgsFeature">QgsFeature</a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.setRelationFeature" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sets the <code class="docutils literal notranslate"><span class="pre">relation</span></code> and the <code class="docutils literal notranslate"><span class="pre">feature</span></code></p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>relation</strong> (<a class="reference internal" href="../core/QgsRelation.html#qgis.core.QgsRelation" title="qgis.core.QgsRelation"><em>QgsRelation</em></a>) – </p></li>
-<li><p><strong>feature</strong> (<a class="reference internal" href="../core/QgsFeature.html#qgis.core.QgsFeature" title="qgis.core.QgsFeature"><em>QgsFeature</em></a>) – </p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="qgis.gui.QgsRelationEditorWidget.setRelations">
-<code class="sig-name descname">setRelations</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">relation</span><span class="p">:</span> <span class="n"><a class="reference internal" href="../core/QgsRelation.html#module-QgsRelation" title="QgsRelation">QgsRelation</a></span></em>, <em class="sig-param"><span class="n">nmrelation</span><span class="p">:</span> <span class="n"><a class="reference internal" href="../core/QgsRelation.html#module-QgsRelation" title="QgsRelation">QgsRelation</a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.setRelations" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set the relation(s) for this widget
-If only one relation is set, it will act as a simple 1:N relation widget
-If both relations are set, it will act as an N:M relation widget
-inserting and deleting entries on the intermediate table as required.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>relation</strong> (<a class="reference internal" href="../core/QgsRelation.html#qgis.core.QgsRelation" title="qgis.core.QgsRelation"><em>QgsRelation</em></a>) – Relation referencing the edited table</p></li>
-<li><p><strong>nmrelation</strong> (<a class="reference internal" href="../core/QgsRelation.html#qgis.core.QgsRelation" title="qgis.core.QgsRelation"><em>QgsRelation</em></a>) – Optional reference from the referencing table to a 3rd N:M table</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="qgis.gui.QgsRelationEditorWidget.setShowLabel">
-<code class="sig-name descname">setShowLabel</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">showLabel</span><span class="p">:</span> <span class="n">bool</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.setShowLabel" title="Permalink to this definition">¶</a></dt>
-<dd><p>Defines if a title label should be shown for this widget.</p>
-<div class="versionadded">
-<p><span class="versionmodified added">New in version 2.18.</span></p>
-</div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>showLabel</strong> (<em>bool</em>) – </p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="qgis.gui.QgsRelationEditorWidget.setShowLinkButton">
-<code class="sig-name descname">setShowLinkButton</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">showLinkButton</span><span class="p">:</span> <span class="n">bool</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.setShowLinkButton" title="Permalink to this definition">¶</a></dt>
-<dd><p>Determines if the “link feature” button should be shown</p>
-<div class="versionadded">
-<p><span class="versionmodified added">New in version 2.18.</span></p>
-</div>
-<div class="deprecated">
-<p><span class="versionmodified deprecated">Deprecated since version QGIS: </span>3.16
-use setVisibleButtons() instead</p>
-</div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>showLinkButton</strong> (<em>bool</em>) – </p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="qgis.gui.QgsRelationEditorWidget.setShowSaveChildEditsButton">
-<code class="sig-name descname">setShowSaveChildEditsButton</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">showChildEdits</span><span class="p">:</span> <span class="n">bool</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.setShowSaveChildEditsButton" title="Permalink to this definition">¶</a></dt>
-<dd><p>Determines if the “Save child layer edits” button should be shown</p>
-<div class="versionadded">
-<p><span class="versionmodified added">New in version 3.14.</span></p>
-</div>
-<div class="deprecated">
-<p><span class="versionmodified deprecated">Deprecated since version QGIS: </span>3.16
-use setVisibleButtons() instead</p>
-</div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>showChildEdits</strong> (<em>bool</em>) – </p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="qgis.gui.QgsRelationEditorWidget.setShowUnlinkButton">
-<code class="sig-name descname">setShowUnlinkButton</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">showUnlinkButton</span><span class="p">:</span> <span class="n">bool</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.setShowUnlinkButton" title="Permalink to this definition">¶</a></dt>
-<dd><p>Determines if the “unlink feature” button should be shown</p>
-<div class="versionadded">
-<p><span class="versionmodified added">New in version 2.18.</span></p>
-</div>
-<div class="deprecated">
-<p><span class="versionmodified deprecated">Deprecated since version QGIS: </span>3.16
-use setVisibleButtons() instead</p>
-</div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>showUnlinkButton</strong> (<em>bool</em>) – </p>
+<dd class="field-odd"><p><strong>title</strong> (<em>str</em>) – </p>
 </dd>
 </dl>
 </dd></dl>
@@ -2734,14 +2634,11 @@ use setVisibleButtons() instead</p>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsRelationEditorWidget.setVisibleButtons">
-<code class="sig-name descname">setVisibleButtons</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">buttons</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>QgsAttributeEditorRelation.Buttons<span class="p">, </span>QgsAttributeEditorRelation.Button<span class="p">]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.setVisibleButtons" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">setVisibleButtons</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">buttons</span><span class="p">:</span> <span class="n">Union<span class="p">[</span><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.Buttons" title="qgis.gui.QgsRelationEditorWidget.Buttons">QgsRelationEditorWidget.Buttons</a><span class="p">, </span><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.Button" title="qgis.gui.QgsRelationEditorWidget.Button">QgsRelationEditorWidget.Button</a><span class="p">]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.setVisibleButtons" title="Permalink to this definition">¶</a></dt>
 <dd><p>Defines the buttons which are shown</p>
-<div class="versionadded">
-<p><span class="versionmodified added">New in version 3.16.</span></p>
-</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>buttons</strong> (<em>Union</em><em>[</em><a class="reference internal" href="../core/QgsAttributeEditorRelation.html#qgis.core.QgsAttributeEditorRelation.Buttons" title="qgis.core.QgsAttributeEditorRelation.Buttons"><em>QgsAttributeEditorRelation.Buttons</em></a>) – </p>
+<dd class="field-odd"><p><strong>buttons</strong> (<em>Union</em><em>[</em><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.Buttons" title="qgis.gui.QgsRelationEditorWidget.Buttons"><em>QgsRelationEditorWidget.Buttons</em></a>) – </p>
 </dd>
 </dl>
 </dd></dl>
@@ -2753,76 +2650,8 @@ use setVisibleButtons() instead</p>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsRelationEditorWidget.showEvent">
-<code class="sig-name descname">showEvent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">event</span><span class="p">:</span> <span class="n">QShowEvent</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.showEvent" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">showEvent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">QShowEvent</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.showEvent" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
-<dl class="py method">
-<dt id="qgis.gui.QgsRelationEditorWidget.showLabel">
-<code class="sig-name descname">showLabel</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.showLabel" title="Permalink to this definition">¶</a></dt>
-<dd><p>Defines if a title label should be shown for this widget.</p>
-<div class="versionadded">
-<p><span class="versionmodified added">New in version 2.18.</span></p>
-</div>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>bool</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="qgis.gui.QgsRelationEditorWidget.showLinkButton">
-<code class="sig-name descname">showLinkButton</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.showLinkButton" title="Permalink to this definition">¶</a></dt>
-<dd><p>Determines if the “link feature” button should be shown</p>
-<div class="versionadded">
-<p><span class="versionmodified added">New in version 2.18.</span></p>
-</div>
-<div class="deprecated">
-<p><span class="versionmodified deprecated">Deprecated since version QGIS: </span>3.16
-use visibleButtons() instead</p>
-</div>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>bool</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="qgis.gui.QgsRelationEditorWidget.showSaveChildEditsButton">
-<code class="sig-name descname">showSaveChildEditsButton</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.showSaveChildEditsButton" title="Permalink to this definition">¶</a></dt>
-<dd><p>Determines if the “Save child layer edits” button should be shown</p>
-<div class="versionadded">
-<p><span class="versionmodified added">New in version 3.14.</span></p>
-</div>
-<div class="deprecated">
-<p><span class="versionmodified deprecated">Deprecated since version QGIS: </span>3.16
-use visibleButtons() instead</p>
-</div>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>bool</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="qgis.gui.QgsRelationEditorWidget.showUnlinkButton">
-<code class="sig-name descname">showUnlinkButton</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.showUnlinkButton" title="Permalink to this definition">¶</a></dt>
-<dd><p>Determines if the “unlink feature” button should be shown</p>
-<div class="versionadded">
-<p><span class="versionmodified added">New in version 2.18.</span></p>
-</div>
-<div class="deprecated">
-<p><span class="versionmodified deprecated">Deprecated since version QGIS: </span>3.16
-use visibleButtons() instead</p>
-</div>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>bool</p>
-</dd>
-</dl>
-</dd></dl>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsRelationEditorWidget.tabletEvent">
@@ -2835,9 +2664,28 @@ use visibleButtons() instead</p>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="qgis.gui.QgsRelationEditorWidget.titleRect">
-<code class="sig-name descname">titleRect</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; QRect<a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.titleRect" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dt id="qgis.gui.QgsRelationEditorWidget.toggleEditing">
+<code class="sig-name descname">toggleEditing</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">state</span><span class="p">:</span> <span class="n">bool</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.toggleEditing" title="Permalink to this definition">¶</a></dt>
+<dd><p>Toggles editing state of the widget</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qgis.gui.QgsRelationEditorWidget.unlinkFeature">
+<code class="sig-name descname">unlinkFeature</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">fid: int =  ::QgsFeatureId()</em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.unlinkFeature" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unlinks a feature with given <code class="docutils literal notranslate"><span class="pre">fid</span></code></p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qgis.gui.QgsRelationEditorWidget.unlinkFeatures">
+<code class="sig-name descname">unlinkFeatures</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">fids</span><span class="p">:</span> <span class="n">object</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.unlinkFeatures" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unlinks the features with <code class="docutils literal notranslate"><span class="pre">fids</span></code></p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qgis.gui.QgsRelationEditorWidget.unlinkSelectedFeatures">
+<code class="sig-name descname">unlinkSelectedFeatures</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.unlinkSelectedFeatures" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unlinks the selected features from the relation</p>
+</dd></dl>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsRelationEditorWidget.updateMicroFocus">
@@ -2845,9 +2693,10 @@ use visibleButtons() instead</p>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="qgis.gui.QgsRelationEditorWidget.updateStyle">
-<code class="sig-name descname">updateStyle</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.updateStyle" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dt id="qgis.gui.QgsRelationEditorWidget.updateTitle">
+<code class="sig-name descname">updateTitle</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.updateTitle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates the title contents to reflect the current state of the widget</p>
+</dd></dl>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsRelationEditorWidget.viewMode">
@@ -2862,14 +2711,11 @@ use visibleButtons() instead</p>
 
 <dl class="py method">
 <dt id="qgis.gui.QgsRelationEditorWidget.visibleButtons">
-<code class="sig-name descname">visibleButtons</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; QgsAttributeEditorRelation.Buttons<a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.visibleButtons" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">visibleButtons</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.Buttons" title="qgis.gui.QgsRelationEditorWidget.Buttons">QgsRelationEditorWidget.Buttons</a><a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.visibleButtons" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the buttons which are shown</p>
-<div class="versionadded">
-<p><span class="versionmodified added">New in version 3.16.</span></p>
-</div>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference internal" href="../core/QgsAttributeEditorRelation.html#qgis.core.QgsAttributeEditorRelation.Buttons" title="qgis.core.QgsAttributeEditorRelation.Buttons">QgsAttributeEditorRelation.Buttons</a></p>
+<dd class="field-odd"><p><a class="reference internal" href="#qgis.gui.QgsRelationEditorWidget.Buttons" title="qgis.gui.QgsRelationEditorWidget.Buttons">QgsRelationEditorWidget.Buttons</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -2878,6 +2724,12 @@ use visibleButtons() instead</p>
 <dt id="qgis.gui.QgsRelationEditorWidget.wheelEvent">
 <code class="sig-name descname">wheelEvent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">QWheelEvent</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.wheelEvent" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="py method">
+<dt id="qgis.gui.QgsRelationEditorWidget.zoomToSelectedFeatures">
+<code class="sig-name descname">zoomToSelectedFeatures</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsRelationEditorWidget.zoomToSelectedFeatures" title="Permalink to this definition">¶</a></dt>
+<dd><p>Zooms to the selected features</p>
+</dd></dl>
 
 </dd></dl>
 
@@ -2894,7 +2746,7 @@ use visibleButtons() instead</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 01:26 Jan 09, 2021.
+        Last updated on 04:17 Jan 12, 2021.
       </span>
 
     </p>
