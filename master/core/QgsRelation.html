@@ -707,6 +707,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsPointPatternFillSymbolLayer.html">Class: QgsPointPatternFillSymbolLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsPointXY.html">Class: QgsPointXY</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsPolygon.html">Class: QgsPolygon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsPolymorphicRelation.html">Class: QgsPolymorphicRelation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsPostgresStringUtils.html">Class: QgsPostgresStringUtils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsPresetSchemeColorRamp.html">Class: QgsPresetSchemeColorRamp</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsPrintLayout.html">Class: QgsPrintLayout</a></li>
@@ -828,6 +829,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsProxyProgressTask.html">Class: QgsProxyProgressTask</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsPythonRunner.html">Class: QgsPythonRunner</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsQuadrilateral.html">Class: QgsQuadrilateral</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsQueryResultModel.html">Class: QgsQueryResultModel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsRandomColorRamp.html">Class: QgsRandomColorRamp</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsRandomMarkerFillSymbolLayer.html">Class: QgsRandomMarkerFillSymbolLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsRangeFieldFormatter.html">Class: QgsRangeFieldFormatter</a></li>
@@ -1949,7 +1951,7 @@ changed.</p>
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRelation.addFieldPair" title="qgis.core.QgsRelation.addFieldPair"><code class="xref py py-obj docutils literal notranslate"><span class="pre">addFieldPair</span></code></a></p></td>
-<td><p>Add a field pairs which is part of this relation The first element of each pair are the field names of the foreign key.</p></td>
+<td><p>Add a field pair which is part of this relation The first element of each pair are the field names of the foreign key.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRelation.createFromXml" title="qgis.core.QgsRelation.createFromXml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createFromXml</span></code></a></p></td>
 <td><p>Creates a relation from an XML structure.</p></td>
@@ -1987,6 +1989,12 @@ changed.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRelation.name" title="qgis.core.QgsRelation.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code></a></p></td>
 <td><p>Returns a human readable name for this relation.</p></td>
 </tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRelation.polymorphicRelation" title="qgis.core.QgsRelation.polymorphicRelation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">polymorphicRelation</span></code></a></p></td>
+<td><p>Returns the parent polymorphic relation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRelation.polymorphicRelationId" title="qgis.core.QgsRelation.polymorphicRelationId"><code class="xref py py-obj docutils literal notranslate"><span class="pre">polymorphicRelationId</span></code></a></p></td>
+<td><p>Returns the parent polymorphic relation id.</p></td>
+</tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRelation.referencedFields" title="qgis.core.QgsRelation.referencedFields"><code class="xref py py-obj docutils literal notranslate"><span class="pre">referencedFields</span></code></a></p></td>
 <td><p>Returns a list of attributes used to form the referenced fields (most likely primary key) on the referenced (parent) layer.</p></td>
 </tr>
@@ -2017,22 +2025,25 @@ changed.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRelation.setName" title="qgis.core.QgsRelation.setName"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setName</span></code></a></p></td>
 <td><p>Set a name for this relation</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRelation.setReferencedLayer" title="qgis.core.QgsRelation.setReferencedLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setReferencedLayer</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRelation.setPolymorphicRelationId" title="qgis.core.QgsRelation.setPolymorphicRelationId"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setPolymorphicRelationId</span></code></a></p></td>
+<td><p>Sets the parent polymorphic relation id.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRelation.setReferencedLayer" title="qgis.core.QgsRelation.setReferencedLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setReferencedLayer</span></code></a></p></td>
 <td><p>Set the referenced (parent) layer id.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRelation.setReferencingLayer" title="qgis.core.QgsRelation.setReferencingLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setReferencingLayer</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRelation.setReferencingLayer" title="qgis.core.QgsRelation.setReferencingLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setReferencingLayer</span></code></a></p></td>
 <td><p>Set the referencing (child) layer id.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRelation.setStrength" title="qgis.core.QgsRelation.setStrength"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setStrength</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRelation.setStrength" title="qgis.core.QgsRelation.setStrength"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setStrength</span></code></a></p></td>
 <td><p>Set a strength for this relation</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRelation.strength" title="qgis.core.QgsRelation.strength"><code class="xref py py-obj docutils literal notranslate"><span class="pre">strength</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRelation.strength" title="qgis.core.QgsRelation.strength"><code class="xref py py-obj docutils literal notranslate"><span class="pre">strength</span></code></a></p></td>
 <td><p>Returns the relation strength as a string</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRelation.updateRelationStatus" title="qgis.core.QgsRelation.updateRelationStatus"><code class="xref py py-obj docutils literal notranslate"><span class="pre">updateRelationStatus</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRelation.updateRelationStatus" title="qgis.core.QgsRelation.updateRelationStatus"><code class="xref py py-obj docutils literal notranslate"><span class="pre">updateRelationStatus</span></code></a></p></td>
 <td><p>Updates the validity status of this relation.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRelation.writeXml" title="qgis.core.QgsRelation.writeXml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeXml</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRelation.writeXml" title="qgis.core.QgsRelation.writeXml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeXml</span></code></a></p></td>
 <td><p>Writes a relation to an XML structure.</p></td>
 </tr>
 </tbody>
@@ -2089,7 +2100,7 @@ changed.</p>
 <dl class="py method">
 <dt id="qgis.core.QgsRelation.addFieldPair">
 <code class="sig-name descname">addFieldPair</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">referencingField</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">referencedField</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsRelation.addFieldPair" title="Permalink to this definition">¶</a></dt>
-<dd><p>Add a field pairs which is part of this relation
+<dd><p>Add a field pair which is part of this relation
 The first element of each pair are the field names of the foreign key.
 The second element of each pair are the field names of the matching primary key.</p>
 <dl class="field-list simple">
@@ -2344,6 +2355,34 @@ A relation is considered valid if both referenced and referencig layers are vali
 </dd></dl>
 
 <dl class="py method">
+<dt id="qgis.core.QgsRelation.polymorphicRelation">
+<code class="sig-name descname">polymorphicRelation</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="QgsPolymorphicRelation.html#module-QgsPolymorphicRelation" title="QgsPolymorphicRelation">QgsPolymorphicRelation</a><a class="headerlink" href="#qgis.core.QgsRelation.polymorphicRelation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the parent polymorphic relation. If the relation is a normal relation, an invalid polymorphic relation is returned.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.18.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsPolymorphicRelation.html#qgis.core.QgsPolymorphicRelation" title="qgis.core.QgsPolymorphicRelation">QgsPolymorphicRelation</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qgis.core.QgsRelation.polymorphicRelationId">
+<code class="sig-name descname">polymorphicRelationId</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.core.QgsRelation.polymorphicRelationId" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the parent polymorphic relation id. If the relation is a normal relation, a null string is returned.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.18.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt id="qgis.core.QgsRelation.referencedFields">
 <code class="sig-name descname">referencedFields</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span>int<span class="p">]</span><a class="headerlink" href="#qgis.core.QgsRelation.referencedFields" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a list of attributes used to form the referenced fields
@@ -2488,6 +2527,20 @@ This is the layer which has the field(s) which point to another layer</p>
 </dd></dl>
 
 <dl class="py method">
+<dt id="qgis.core.QgsRelation.setPolymorphicRelationId">
+<code class="sig-name descname">setPolymorphicRelationId</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">polymorphicRelationId</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsRelation.setPolymorphicRelationId" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the parent polymorphic relation id.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.18.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>polymorphicRelationId</strong> (<em>str</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt id="qgis.core.QgsRelation.setReferencedLayer">
 <code class="sig-name descname">setReferencedLayer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">id</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsRelation.setReferencedLayer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the referenced (parent) layer id. This layer will be searched in the registry.</p>
@@ -2584,7 +2637,7 @@ Will be called internally whenever a member is changed.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 01:38 Jan 15, 2021.
+        Last updated on 04:35 Jan 15, 2021.
       </span>
 
     </p>

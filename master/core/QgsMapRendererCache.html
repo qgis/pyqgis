@@ -707,6 +707,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsPointPatternFillSymbolLayer.html">Class: QgsPointPatternFillSymbolLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsPointXY.html">Class: QgsPointXY</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsPolygon.html">Class: QgsPolygon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsPolymorphicRelation.html">Class: QgsPolymorphicRelation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsPostgresStringUtils.html">Class: QgsPostgresStringUtils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsPresetSchemeColorRamp.html">Class: QgsPresetSchemeColorRamp</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsPrintLayout.html">Class: QgsPrintLayout</a></li>
@@ -828,6 +829,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsProxyProgressTask.html">Class: QgsProxyProgressTask</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsPythonRunner.html">Class: QgsPythonRunner</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsQuadrilateral.html">Class: QgsQuadrilateral</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsQueryResultModel.html">Class: QgsQueryResultModel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsRandomColorRamp.html">Class: QgsRandomColorRamp</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsRandomMarkerFillSymbolLayer.html">Class: QgsRandomMarkerFillSymbolLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsRangeFieldFormatter.html">Class: QgsRangeFieldFormatter</a></li>
@@ -1931,6 +1933,9 @@ a map rendering job.</p>
 the cache listens to <code class="xref py py-func docutils literal notranslate"><span class="pre">repaintRequested()</span></code> signals from dependent layers.
 If triggered, the cache removes the rendered image (and disconnects from the
 layers).</p>
+<p>When user pans/zooms the canvas, the cache is also used in rendering period
+for particular layers between the first render update and the moment the layer
+actually has partially rendered something in the resulting image.</p>
 <p>The class is thread-safe (multiple classes can access the same instance safely).</p>
 <div class="versionadded">
 <table class="longtable docutils align-default">
@@ -1972,32 +1977,41 @@ layers).</p>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMapRendererCache.disconnectNotify" title="qgis.core.QgsMapRendererCache.disconnectNotify"><code class="xref py py-obj docutils literal notranslate"><span class="pre">disconnectNotify</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMapRendererCache.hasCacheImage" title="qgis.core.QgsMapRendererCache.hasCacheImage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hasCacheImage</span></code></a></p></td>
-<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the cache contains an image with the specified <code class="docutils literal notranslate"><span class="pre">cacheKey</span></code>.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMapRendererCache.hasAnyCacheImage" title="qgis.core.QgsMapRendererCache.hasAnyCacheImage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hasAnyCacheImage</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the cache contains an image with the specified <code class="docutils literal notranslate"><span class="pre">cacheKey</span></code> with any cache’s parameters (extent and scale)</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMapRendererCache.init" title="qgis.core.QgsMapRendererCache.init"><code class="xref py py-obj docutils literal notranslate"><span class="pre">init</span></code></a></p></td>
-<td><p>Initialize cache: set new parameters and clears the cache if any parameters have changed since last initialization.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMapRendererCache.hasCacheImage" title="qgis.core.QgsMapRendererCache.hasCacheImage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hasCacheImage</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the cache contains an image with the specified <code class="docutils literal notranslate"><span class="pre">cacheKey</span></code> that has the same extent and scale as the cache’s global extent and scale</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMapRendererCache.invalidateCacheForLayer" title="qgis.core.QgsMapRendererCache.invalidateCacheForLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">invalidateCacheForLayer</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMapRendererCache.init" title="qgis.core.QgsMapRendererCache.init"><code class="xref py py-obj docutils literal notranslate"><span class="pre">init</span></code></a></p></td>
+<td><p>Initialize cache: sets extent and scale parameters and clears the cache if any parameters have changed since last initialization.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMapRendererCache.invalidateCacheForLayer" title="qgis.core.QgsMapRendererCache.invalidateCacheForLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">invalidateCacheForLayer</span></code></a></p></td>
 <td><p>Invalidates cached images which relate to the specified map <code class="docutils literal notranslate"><span class="pre">layer</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMapRendererCache.isSignalConnected" title="qgis.core.QgsMapRendererCache.isSignalConnected"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isSignalConnected</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMapRendererCache.isSignalConnected" title="qgis.core.QgsMapRendererCache.isSignalConnected"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isSignalConnected</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMapRendererCache.receivers" title="qgis.core.QgsMapRendererCache.receivers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">receivers</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMapRendererCache.receivers" title="qgis.core.QgsMapRendererCache.receivers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">receivers</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMapRendererCache.sender" title="qgis.core.QgsMapRendererCache.sender"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sender</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMapRendererCache.sender" title="qgis.core.QgsMapRendererCache.sender"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sender</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMapRendererCache.senderSignalIndex" title="qgis.core.QgsMapRendererCache.senderSignalIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">senderSignalIndex</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMapRendererCache.senderSignalIndex" title="qgis.core.QgsMapRendererCache.senderSignalIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">senderSignalIndex</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMapRendererCache.setCacheImage" title="qgis.core.QgsMapRendererCache.setCacheImage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setCacheImage</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMapRendererCache.setCacheImage" title="qgis.core.QgsMapRendererCache.setCacheImage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setCacheImage</span></code></a></p></td>
 <td><p>Set the cached <code class="docutils literal notranslate"><span class="pre">image</span></code> for a particular <code class="docutils literal notranslate"><span class="pre">cacheKey</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMapRendererCache.timerEvent" title="qgis.core.QgsMapRendererCache.timerEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">timerEvent</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMapRendererCache.timerEvent" title="qgis.core.QgsMapRendererCache.timerEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">timerEvent</span></code></a></p></td>
 <td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMapRendererCache.transformedCacheImage" title="qgis.core.QgsMapRendererCache.transformedCacheImage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">transformedCacheImage</span></code></a></p></td>
+<td><p>Returns the cached image for the specified <code class="docutils literal notranslate"><span class="pre">cacheKey</span></code> transformed to the particular extent and scale.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMapRendererCache.updateParameters" title="qgis.core.QgsMapRendererCache.updateParameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">updateParameters</span></code></a></p></td>
+<td><p>Sets extent and scale parameters</p></td>
 </tr>
 </tbody>
 </table>
@@ -2105,9 +2119,32 @@ Returns a null image if it is not cached.</p>
 <dd></dd></dl>
 
 <dl class="py method">
+<dt id="qgis.core.QgsMapRendererCache.hasAnyCacheImage">
+<code class="sig-name descname">hasAnyCacheImage</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">cacheKey</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsMapRendererCache.hasAnyCacheImage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the cache contains an image with the specified <code class="docutils literal notranslate"><span class="pre">cacheKey</span></code>
+with any cache’s parameters (extent and scale)</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsMapRendererCache.transformedCacheImage" title="qgis.core.QgsMapRendererCache.transformedCacheImage"><code class="xref py py-func docutils literal notranslate"><span class="pre">transformedCacheImage()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.18.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>cacheKey</strong> (<em>str</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt id="qgis.core.QgsMapRendererCache.hasCacheImage">
 <code class="sig-name descname">hasCacheImage</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">cacheKey</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsMapRendererCache.hasCacheImage" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the cache contains an image with the specified <code class="docutils literal notranslate"><span class="pre">cacheKey</span></code>.</p>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the cache contains an image with the specified <code class="docutils literal notranslate"><span class="pre">cacheKey</span></code>
+that has the same extent and scale as the cache’s global extent and scale</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsMapRendererCache.cacheImage" title="qgis.core.QgsMapRendererCache.cacheImage"><code class="xref py py-func docutils literal notranslate"><span class="pre">cacheImage()</span></code></a></p>
@@ -2128,7 +2165,7 @@ Returns a null image if it is not cached.</p>
 <dl class="py method">
 <dt id="qgis.core.QgsMapRendererCache.init">
 <code class="sig-name descname">init</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">extent</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsRectangle.html#module-QgsRectangle" title="QgsRectangle">QgsRectangle</a></span></em>, <em class="sig-param"><span class="n">scale</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsMapRendererCache.init" title="Permalink to this definition">¶</a></dt>
-<dd><p>Initialize cache: set new parameters and clears the cache if any
+<dd><p>Initialize cache: sets extent and scale parameters and clears the cache if any
 parameters have changed since last initialization.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
@@ -2137,6 +2174,12 @@ parameters have changed since last initialization.</p>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>flag whether the parameters are the same as last time</p>
 </dd>
+</dl>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version QGIS: </span>3.18
+- will be removed in QGIS 4.0. Use the updateParameters() and clear()</p>
+</div>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>extent</strong> (<a class="reference internal" href="QgsRectangle.html#qgis.core.QgsRectangle" title="qgis.core.QgsRectangle"><em>QgsRectangle</em></a>) – </p></li>
@@ -2208,6 +2251,59 @@ repaint then the cache image will be cleared.</p>
 <code class="sig-name descname">timerEvent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">QTimerEvent</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsMapRendererCache.timerEvent" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
+<dl class="py method">
+<dt id="qgis.core.QgsMapRendererCache.transformedCacheImage">
+<code class="sig-name descname">transformedCacheImage</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">cacheKey</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">mtp</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsMapToPixel.html#module-QgsMapToPixel" title="QgsMapToPixel">QgsMapToPixel</a></span></em><span class="sig-paren">)</span> &#x2192; QImage<a class="headerlink" href="#qgis.core.QgsMapRendererCache.transformedCacheImage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the cached image for the specified <code class="docutils literal notranslate"><span class="pre">cacheKey</span></code> transformed
+to the particular extent and scale.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">cacheKey</span></code> usually matches the <a class="reference internal" href="QgsMapLayer.html#qgis.core.QgsMapLayer.id" title="qgis.core.QgsMapLayer.id"><code class="xref py py-func docutils literal notranslate"><span class="pre">QgsMapLayer.id()</span></code></a> which
+the image is a render of.
+Returns a null image if it is not cached.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsMapRendererCache.hasAnyCacheImage" title="qgis.core.QgsMapRendererCache.hasAnyCacheImage"><code class="xref py py-func docutils literal notranslate"><span class="pre">hasAnyCacheImage()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.18.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cacheKey</strong> (<em>str</em>) – </p></li>
+<li><p><strong>mtp</strong> (<a class="reference internal" href="QgsMapToPixel.html#qgis.core.QgsMapToPixel" title="qgis.core.QgsMapToPixel"><em>QgsMapToPixel</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>QImage</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qgis.core.QgsMapRendererCache.updateParameters">
+<code class="sig-name descname">updateParameters</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">extent</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsRectangle.html#module-QgsRectangle" title="QgsRectangle">QgsRectangle</a></span></em>, <em class="sig-param"><span class="n">mtp</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsMapToPixel.html#module-QgsMapToPixel" title="QgsMapToPixel">QgsMapToPixel</a></span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsMapRendererCache.updateParameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets extent and scale parameters</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>flag whether the parameters are the same as last time</p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.18.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>extent</strong> (<a class="reference internal" href="QgsRectangle.html#qgis.core.QgsRectangle" title="qgis.core.QgsRectangle"><em>QgsRectangle</em></a>) – </p></li>
+<li><p><strong>mtp</strong> (<a class="reference internal" href="QgsMapToPixel.html#qgis.core.QgsMapToPixel" title="qgis.core.QgsMapToPixel"><em>QgsMapToPixel</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 </div>
@@ -2223,7 +2319,7 @@ repaint then the cache image will be cleared.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 01:38 Jan 15, 2021.
+        Last updated on 04:35 Jan 15, 2021.
       </span>
 
     </p>

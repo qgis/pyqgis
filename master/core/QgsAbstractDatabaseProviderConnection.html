@@ -707,6 +707,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsPointPatternFillSymbolLayer.html">Class: QgsPointPatternFillSymbolLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsPointXY.html">Class: QgsPointXY</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsPolygon.html">Class: QgsPolygon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsPolymorphicRelation.html">Class: QgsPolymorphicRelation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsPostgresStringUtils.html">Class: QgsPostgresStringUtils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsPresetSchemeColorRamp.html">Class: QgsPresetSchemeColorRamp</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsPrintLayout.html">Class: QgsPrintLayout</a></li>
@@ -828,6 +829,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsProxyProgressTask.html">Class: QgsProxyProgressTask</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsPythonRunner.html">Class: QgsPythonRunner</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsQuadrilateral.html">Class: QgsQuadrilateral</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsQueryResultModel.html">Class: QgsQueryResultModel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsRandomColorRamp.html">Class: QgsRandomColorRamp</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsRandomMarkerFillSymbolLayer.html">Class: QgsRandomMarkerFillSymbolLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsRangeFieldFormatter.html">Class: QgsRangeFieldFormatter</a></li>
@@ -2099,9 +2101,32 @@ QgsAbstractDatabaseProviderConnection.GeometryColumnCapabilities(QgsAbstractData
 </dd></dl>
 
 <dl class="py method">
+<dt id="qgis.core.QgsAbstractDatabaseProviderConnection.QueryResult.fetchedRowCount">
+<code class="sig-name descname">fetchedRowCount</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#qgis.core.QgsAbstractDatabaseProviderConnection.QueryResult.fetchedRowCount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the number of fetched rows</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><code class="xref py py-func docutils literal notranslate"><span class="pre">rowCount()</span></code></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt id="qgis.core.QgsAbstractDatabaseProviderConnection.QueryResult.hasNextRow">
 <code class="sig-name descname">hasNextRow</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#qgis.core.QgsAbstractDatabaseProviderConnection.QueryResult.hasNextRow" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if there are more rows to fetch</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsAbstractDatabaseProviderConnection.QueryResult.nextRow" title="qgis.core.QgsAbstractDatabaseProviderConnection.QueryResult.nextRow"><code class="xref py py-func docutils literal notranslate"><span class="pre">nextRow()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><code class="xref py py-func docutils literal notranslate"><span class="pre">rewind()</span></code></p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>bool</p>
@@ -2113,6 +2138,14 @@ QgsAbstractDatabaseProviderConnection.GeometryColumnCapabilities(QgsAbstractData
 <dt id="qgis.core.QgsAbstractDatabaseProviderConnection.QueryResult.nextRow">
 <code class="sig-name descname">nextRow</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span>Any<span class="p">]</span><a class="headerlink" href="#qgis.core.QgsAbstractDatabaseProviderConnection.QueryResult.nextRow" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the next result row or an empty row if there are no rows left</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsAbstractDatabaseProviderConnection.QueryResult.hasNextRow" title="qgis.core.QgsAbstractDatabaseProviderConnection.QueryResult.hasNextRow"><code class="xref py py-func docutils literal notranslate"><span class="pre">hasNextRow()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><code class="xref py py-func docutils literal notranslate"><span class="pre">rewind()</span></code></p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>List[Any]</p>
@@ -2121,27 +2154,21 @@ QgsAbstractDatabaseProviderConnection.GeometryColumnCapabilities(QgsAbstractData
 </dd></dl>
 
 <dl class="py method">
-<dt id="qgis.core.QgsAbstractDatabaseProviderConnection.QueryResult.rowCount">
-<code class="sig-name descname">rowCount</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#qgis.core.QgsAbstractDatabaseProviderConnection.QueryResult.rowCount" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the row count</p>
+<dt id="qgis.core.QgsAbstractDatabaseProviderConnection.QueryResult.rows">
+<code class="sig-name descname">rows</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">feedback</span><span class="p">:</span> <span class="n"><a class="reference internal" href="QgsFeedback.html#module-QgsFeedback" title="QgsFeedback">QgsFeedback</a></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; object<a class="headerlink" href="#qgis.core.QgsAbstractDatabaseProviderConnection.QueryResult.rows" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the result rows by calling the iterator internally and fetching
+all the rows, an optional <code class="docutils literal notranslate"><span class="pre">feedback</span></code> can be used to interrupt the fetching loop.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>the value may not be exact or it may be -1 if not known</p>
+<p>calling this function more than one time is not supported: the second
+call will always return an empty list.</p>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>int</p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>feedback</strong> (<a class="reference internal" href="QgsFeedback.html#qgis.core.QgsFeedback" title="qgis.core.QgsFeedback"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsFeedback</span></code></a> = None) – </p>
 </dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="qgis.core.QgsAbstractDatabaseProviderConnection.QueryResult.rows">
-<code class="sig-name descname">rows</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; object<a class="headerlink" href="#qgis.core.QgsAbstractDatabaseProviderConnection.QueryResult.rows" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the results rows</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>object</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>object</p>
 </dd>
 </dl>
 </dd></dl>
@@ -3198,7 +3225,7 @@ Raises a <a class="reference internal" href="QgsProviderConnectionException.html
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 01:38 Jan 15, 2021.
+        Last updated on 04:35 Jan 15, 2021.
       </span>
 
     </p>
