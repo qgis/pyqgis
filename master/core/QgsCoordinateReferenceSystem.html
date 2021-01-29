@@ -42,7 +42,7 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Class: QgsCoordinateTransform" href="QgsCoordinateTransform.html" />
+    <link rel="next" title="Class: QgsCoordinateReferenceSystemRegistry" href="QgsCoordinateReferenceSystemRegistry.html" />
     <link rel="prev" title="Class: QgsCoordinateFormatter" href="QgsCoordinateFormatter.html" /> 
 </head>
 
@@ -250,6 +250,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsContrastEnhancementFunction.html">Class: QgsContrastEnhancementFunction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsCoordinateFormatter.html">Class: QgsCoordinateFormatter</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Class: QgsCoordinateReferenceSystem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsCoordinateReferenceSystemRegistry.html">Class: QgsCoordinateReferenceSystemRegistry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsCoordinateTransform.html">Class: QgsCoordinateTransform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsCoordinateTransformContext.html">Class: QgsCoordinateTransformContext</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsCptCityAllRampsItem.html">Class: QgsCptCityAllRampsItem</a></li>
@@ -2206,7 +2207,7 @@ both flavors.</p>
 <td><p>Returns a list of recently used projections</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsCoordinateReferenceSystem.saveAsUserCrs" title="qgis.core.QgsCoordinateReferenceSystem.saveAsUserCrs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">saveAsUserCrs</span></code></a></p></td>
-<td><p>Saves the CRS as a custom (“USER”) CRS.</p></td>
+<td><p>Saves the CRS as a new custom (“USER”) CRS.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsCoordinateReferenceSystem.setValidationHint" title="qgis.core.QgsCoordinateReferenceSystem.setValidationHint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setValidationHint</span></code></a></p></td>
 <td><p>Set user hint for validation</p></td>
@@ -2229,19 +2230,22 @@ both flavors.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsCoordinateReferenceSystem.toWkt" title="qgis.core.QgsCoordinateReferenceSystem.toWkt"><code class="xref py py-obj docutils literal notranslate"><span class="pre">toWkt</span></code></a></p></td>
 <td><p>Returns a WKT representation of this CRS.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsCoordinateReferenceSystem.userFriendlyIdentifier" title="qgis.core.QgsCoordinateReferenceSystem.userFriendlyIdentifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">userFriendlyIdentifier</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsCoordinateReferenceSystem.updateDefinition" title="qgis.core.QgsCoordinateReferenceSystem.updateDefinition"><code class="xref py py-obj docutils literal notranslate"><span class="pre">updateDefinition</span></code></a></p></td>
+<td><p>Updates the definition and parameters of the coordinate reference system to their latest values.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsCoordinateReferenceSystem.userFriendlyIdentifier" title="qgis.core.QgsCoordinateReferenceSystem.userFriendlyIdentifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">userFriendlyIdentifier</span></code></a></p></td>
 <td><p>Returns a user friendly identifier for the CRS.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsCoordinateReferenceSystem.validSrsIds" title="qgis.core.QgsCoordinateReferenceSystem.validSrsIds"><code class="xref py py-obj docutils literal notranslate"><span class="pre">validSrsIds</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsCoordinateReferenceSystem.validSrsIds" title="qgis.core.QgsCoordinateReferenceSystem.validSrsIds"><code class="xref py py-obj docutils literal notranslate"><span class="pre">validSrsIds</span></code></a></p></td>
 <td><p>Returns a list of all valid SRS IDs present in the CRS database.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsCoordinateReferenceSystem.validate" title="qgis.core.QgsCoordinateReferenceSystem.validate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">validate</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsCoordinateReferenceSystem.validate" title="qgis.core.QgsCoordinateReferenceSystem.validate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">validate</span></code></a></p></td>
 <td><p>Perform some validation on this CRS.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsCoordinateReferenceSystem.validationHint" title="qgis.core.QgsCoordinateReferenceSystem.validationHint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">validationHint</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsCoordinateReferenceSystem.validationHint" title="qgis.core.QgsCoordinateReferenceSystem.validationHint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">validationHint</span></code></a></p></td>
 <td><p>Gets user hint for validation</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsCoordinateReferenceSystem.writeXml" title="qgis.core.QgsCoordinateReferenceSystem.writeXml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeXml</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsCoordinateReferenceSystem.writeXml" title="qgis.core.QgsCoordinateReferenceSystem.writeXml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeXml</span></code></a></p></td>
 <td><p>Stores state to the given Dom node in the given document.</p></td>
 </tr>
 </tbody>
@@ -3155,7 +3159,7 @@ If it fails or if the node is empty, a default empty CRS will be returned.</p>
 <dl class="py method">
 <dt id="qgis.core.QgsCoordinateReferenceSystem.saveAsUserCrs">
 <code class="sig-name descname">saveAsUserCrs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">nativeFormat</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#qgis.core.QgsCoordinateReferenceSystem.Format" title="qgis.core.QgsCoordinateReferenceSystem.Format">QgsCoordinateReferenceSystem.Format</a></span> <span class="o">=</span> <span class="default_value">QgsCoordinateReferenceSystem.FormatWkt</span></em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#qgis.core.QgsCoordinateReferenceSystem.saveAsUserCrs" title="Permalink to this definition">¶</a></dt>
-<dd><p>Saves the CRS as a custom (“USER”) CRS.</p>
+<dd><p>Saves the CRS as a new custom (“USER”) CRS.</p>
 <p>Returns the new CRS <a class="reference internal" href="#qgis.core.QgsCoordinateReferenceSystem.srsid" title="qgis.core.QgsCoordinateReferenceSystem.srsid"><code class="xref py py-func docutils literal notranslate"><span class="pre">srsid()</span></code></a>, or -1 if the CRS could not be saved.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">nativeFormat</span></code> argument specifies the format to use when saving the CRS
 definition. FormatWkt is recommended as it is a lossless format.</p>
@@ -3163,6 +3167,10 @@ definition. FormatWkt is recommended as it is a lossless format.</p>
 <p class="admonition-title">Warning</p>
 <p>Not all CRS definitions can be represented as a Proj string, so
 take care when using the FormatProj option.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Since QGIS 3.18, internally this calls <a class="reference internal" href="QgsCoordinateReferenceSystemRegistry.html#qgis.core.QgsCoordinateReferenceSystemRegistry.addUserCrs" title="qgis.core.QgsCoordinateReferenceSystemRegistry.addUserCrs"><code class="xref py py-func docutils literal notranslate"><span class="pre">QgsCoordinateReferenceSystemRegistry.addUserCrs()</span></code></a>.</p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -3332,6 +3340,24 @@ This is only used on builds based on Proj &gt;= 6.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt id="qgis.core.QgsCoordinateReferenceSystem.updateDefinition">
+<code class="sig-name descname">updateDefinition</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsCoordinateReferenceSystem.updateDefinition" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates the definition and parameters of the coordinate reference system to their
+latest values.</p>
+<p>This only has an effect if the CRS is a user defined custom CRS, and the definition
+of that custom CRS has changed. In this case the parameters of the object (such as the
+proj and WKT string definitions, and other related properties) will be updated to
+reflect the current definition of the custom CRS.</p>
+<p>Any objects which store CRS objects should connect to the <a class="reference internal" href="QgsApplication.html#qgis.core.QgsApplication.coordinateReferenceSystemRegistry" title="qgis.core.QgsApplication.coordinateReferenceSystemRegistry"><code class="xref py py-func docutils literal notranslate"><span class="pre">QgsApplication.coordinateReferenceSystemRegistry()</span></code></a>’s
+<a class="reference internal" href="QgsCoordinateReferenceSystemRegistry.html#qgis.core.QgsCoordinateReferenceSystemRegistry.userCrsChanged" title="qgis.core.QgsCoordinateReferenceSystemRegistry.userCrsChanged"><code class="xref py py-func docutils literal notranslate"><span class="pre">QgsCoordinateReferenceSystemRegistry.userCrsChanged()</span></code></a> signal and call this method
+on their stored CRS objects whenever the signal is emitted in order to update these
+CRSes to their new definitions.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.18.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
 <dt id="qgis.core.QgsCoordinateReferenceSystem.userFriendlyIdentifier">
 <code class="sig-name descname">userFriendlyIdentifier</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">type</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#qgis.core.QgsCoordinateReferenceSystem.IdentifierType" title="qgis.core.QgsCoordinateReferenceSystem.IdentifierType">QgsCoordinateReferenceSystem.IdentifierType</a></span> <span class="o">=</span> <span class="default_value">QgsCoordinateReferenceSystem.MediumString</span></em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#qgis.core.QgsCoordinateReferenceSystem.userFriendlyIdentifier" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a user friendly identifier for the CRS.</p>
@@ -3442,7 +3468,7 @@ are trying to force this CRS to be valid.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 01:06 Jan 28, 2021.
+        Last updated on 01:06 Jan 29, 2021.
       </span>
 
     </p>
