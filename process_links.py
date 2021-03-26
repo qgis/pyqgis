@@ -62,7 +62,7 @@ def process_docstring(app, what, name, obj, options, lines):
         lines[i] = create_links(lines[i])
 
     # add return type and param type
-    if not isinstance(obj, enum.EnumMeta) and obj.__doc__:
+    if what != 'class' and not isinstance(obj, enum.EnumMeta) and obj.__doc__:
         signature = obj.__doc__.split('\n')[0]
         if signature != '':
             match = py_ext_sig_re.match(signature)
