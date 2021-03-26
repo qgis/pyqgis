@@ -47,7 +47,6 @@ def create_links(doc: str) -> str:
     doc = re.sub(r'\b(Qgi?s[A-Z]\w+)([, )]|\. )', r':py:class:`.\1`\2', doc)
     return doc
 
-
 def process_docstring(app, what, name, obj, options, lines):
     # print('d', what, name, obj, options)
     bases = show_inheritance(obj)
