@@ -8,6 +8,8 @@
 import re
 import enum
 import yaml
+from sphinx.util.inspect import safe_getattr
+
 
 with open('pyqgis_conf.yml', 'r') as f:
     cfg = yaml.safe_load(f)
@@ -120,3 +122,19 @@ def process_signature(app, what, name, obj, options, signature, return_annotatio
     # we cannot render links in signature for the moment, so do nothing
     # https://github.com/sphinx-doc/sphinx/issues/1059
     return signature, return_annotation
+
+
+def skip_member(app, what, name, obj, skip, options):
+    chobj = safe_getattr(obj, name)
+    # cl = get_class_that_defined_method(chobj)
+    # print(name, chobj.__qualname__, type(chobj), issubclass(chobj, Enum), documenter.objtype)
+    if what == 'attribute':
+        # skip monkey patched enums
+        # the monkeypatched enums coming out of scoped enum inherit Enum
+        # while the standard/old ones do not
+        if hasattr(chobj, '__objclass__') and issubclass(chobj.__objclass__, enum.Enum):
+            if chobj.baseClass != obj:
+                raise Warning(f'skipping enum {chobj.baseClass}: {obj}')
+                return True
+
+        return False

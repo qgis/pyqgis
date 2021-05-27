@@ -203,9 +203,10 @@ def setup(app):
     try:
         from autoautosummary import AutoAutoSummary
         app.add_directive('autoautosummary', AutoAutoSummary)
-        from process_links import process_docstring, process_signature
+        from process_links import process_docstring, process_signature, skip_member
         app.connect('autodoc-process-signature', process_signature)
         app.connect('autodoc-process-docstring', process_docstring)
+        app.connect('autodoc-skip-member', skip_member)
     except BaseException as e:
         raise e
 
