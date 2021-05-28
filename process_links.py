@@ -129,5 +129,4 @@ def skip_member(app, what, name, obj, skip, options):
         if obj.baseClass != obj:
             print(f'skipping old enum {name} (moved to {obj.baseClass})')
             return True
-
-    return False
+    return skip
