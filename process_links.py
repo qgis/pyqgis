@@ -125,16 +125,10 @@ def process_signature(app, what, name, obj, options, signature, return_annotatio
 
 
 def skip_member(app, what, name, obj, skip, options):
-    chobj = safe_getattr(obj, name)
-    # cl = get_class_that_defined_method(chobj)
-    # print(name, chobj.__qualname__, type(chobj), issubclass(chobj, Enum), documenter.objtype)
-    if what == 'attribute':
-        # skip monkey patched enums
-        # the monkeypatched enums coming out of scoped enum inherit Enum
-        # while the standard/old ones do not
-        if hasattr(chobj, '__objclass__') and issubclass(chobj.__objclass__, enum.Enum):
-            if chobj.baseClass != obj:
-                raise Warning(f'skipping enum {chobj.baseClass}: {obj}')
-                return True
+    # skip monkey patched enums (base classes are different)
+    if hasattr(obj, '__objclass__') and issubclass(obj.__objclass__, enum.Enum):
+        if obj.baseClass != obj:
+            print(f'skipping old enum {name} (moved to {obj.baseClass})')
+            return True
 
-        return False
+    return False
