@@ -126,7 +126,7 @@ def process_signature(app, what, name, obj, options, signature, return_annotatio
 def skip_member(app, what, name, obj, skip, options):
     # skip monkey patched enums (base classes are different)
     if hasattr(obj, '__objclass__') and issubclass(obj.__objclass__, enum.Enum):
-        if obj.baseClass != obj:
-            print(f'skipping old enum {name} (moved to {obj.baseClass})')
+        if obj.baseClass != obj.__objclass__:
+            print(f'skipping old enum {name} (moved from {obj.__objclass__} to {obj.baseClass})')
             return True
     return skip
