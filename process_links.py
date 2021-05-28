@@ -8,7 +8,6 @@
 import re
 import enum
 import yaml
-from sphinx.util.inspect import safe_getattr
 
 
 with open('pyqgis_conf.yml', 'r') as f:
