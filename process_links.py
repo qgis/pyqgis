@@ -9,6 +9,7 @@ import re
 import enum
 import yaml
 
+
 with open('pyqgis_conf.yml', 'r') as f:
     cfg = yaml.safe_load(f)
 
@@ -120,3 +121,11 @@ def process_signature(app, what, name, obj, options, signature, return_annotatio
     # we cannot render links in signature for the moment, so do nothing
     # https://github.com/sphinx-doc/sphinx/issues/1059
     return signature, return_annotation
+
+
+def skip_member(app, what, name, obj, skip, options):
+    # skip monkey patched enums (base classes are different)
+    if hasattr(obj, 'is_monkey_patched') and obj.is_monkey_patched:
+        print(f'skipping monkey patched enum {name}')
+        return True
+    return skip
