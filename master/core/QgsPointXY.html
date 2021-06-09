@@ -1973,9 +1973,28 @@
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">qgis.core.</span></code><code class="sig-name descname"><span class="pre">QgsPointXY</span></code><a class="headerlink" href="#qgis.core.QgsPointXY" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sip.wrapper</span></code></p>
 <p>A class to represent a 2D point.</p>
-<p>A <a class="reference internal" href="#module-QgsPointXY" title="QgsPointXY"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsPointXY</span></code></a> represents a position with X and Y coordinates.
-In most scenarios it is preferable to use a <a class="reference internal" href="QgsPoint.html#module-QgsPoint" title="QgsPoint"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsPoint</span></code></a> instead which also
-supports Z and M values.</p>
+<p>A <a class="reference internal" href="#module-QgsPointXY" title="QgsPointXY"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsPointXY</span></code></a> represents a strictly 2-dimensional position, with only X and Y coordinates.
+This is a very lightweight class, designed to minimize the memory requirements of storing
+millions of points.</p>
+<p>In many scenarios it is preferable to use a <a class="reference internal" href="QgsPoint.html#module-QgsPoint" title="QgsPoint"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsPoint</span></code></a> instead which also
+supports optional Z and M values. <a class="reference internal" href="#module-QgsPointXY" title="QgsPointXY"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsPointXY</span></code></a> should only be used for situations where
+a point can only EVER be two dimensional.</p>
+<p>Some valid use cases for <a class="reference internal" href="#module-QgsPointXY" title="QgsPointXY"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsPointXY</span></code></a> include:</p>
+<ul class="simple">
+<li><p>A mouse cursor location</p></li>
+<li><p>A coordinate on a purely 2-dimensional rendered map, e.g. a <a class="reference internal" href="../gui/QgsMapCanvas.html#module-QgsMapCanvas" title="QgsMapCanvas"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMapCanvas</span></code></a></p></li>
+<li><p>A coordinate in a raster, vector tile, or other purely 2-dimensional layer</p></li>
+</ul>
+<p>Use cases for which <a class="reference internal" href="#module-QgsPointXY" title="QgsPointXY"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsPointXY</span></code></a> is NOT a valid choice include:</p>
+<ul class="simple">
+<li><p>Storage of coordinates for a geometry. Since <a class="reference internal" href="#module-QgsPointXY" title="QgsPointXY"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsPointXY</span></code></a> is strictly 2-dimensional</p></li>
+</ul>
+<p>it should never be used to store coordinates for vector geometries, as this will involve
+a loss of any z or m values present in the geometry.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="QgsPoint.html#module-QgsPoint" title="QgsPoint"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsPoint</span></code></a></p>
+</div>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0.</span></p>
 </div>
@@ -2405,7 +2424,7 @@ If  <code class="docutils literal notranslate"><span class="pre">precision</span
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 00:19 Jun 09, 2021.
+        Last updated on 01:56 Jun 09, 2021.
       </span>
 
     </p>
