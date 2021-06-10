@@ -2142,16 +2142,19 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsGeometryUtils.transferFirstMValueToPoint" title="qgis.core.QgsGeometryUtils.transferFirstMValueToPoint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">transferFirstMValueToPoint</span></code></a></p></td>
 <td><p>A M dimension is added to <code class="docutils literal notranslate"><span class="pre">point</span></code> if one of the points in the list <code class="docutils literal notranslate"><span class="pre">points</span></code> contains an M value.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsGeometryUtils.transferFirstZValueToPoint" title="qgis.core.QgsGeometryUtils.transferFirstZValueToPoint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">transferFirstZValueToPoint</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsGeometryUtils.transferFirstZOrMValueToPoint" title="qgis.core.QgsGeometryUtils.transferFirstZOrMValueToPoint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">transferFirstZOrMValueToPoint</span></code></a></p></td>
+<td><p>A Z or M dimension is added to <code class="docutils literal notranslate"><span class="pre">point</span></code> if one of the points in the list <code class="docutils literal notranslate"><span class="pre">points</span></code> contains Z or M value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsGeometryUtils.transferFirstZValueToPoint" title="qgis.core.QgsGeometryUtils.transferFirstZValueToPoint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">transferFirstZValueToPoint</span></code></a></p></td>
 <td><p>A Z dimension is added to <code class="docutils literal notranslate"><span class="pre">point</span></code> if one of the point in the list <code class="docutils literal notranslate"><span class="pre">points</span></code> is in 3D.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsGeometryUtils.triangleArea" title="qgis.core.QgsGeometryUtils.triangleArea"><code class="xref py py-obj docutils literal notranslate"><span class="pre">triangleArea</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsGeometryUtils.triangleArea" title="qgis.core.QgsGeometryUtils.triangleArea"><code class="xref py py-obj docutils literal notranslate"><span class="pre">triangleArea</span></code></a></p></td>
 <td><p>Returns the area of the triangle denoted by the points (<code class="docutils literal notranslate"><span class="pre">aX</span></code>, <code class="docutils literal notranslate"><span class="pre">aY</span></code>), (<code class="docutils literal notranslate"><span class="pre">bX</span></code>, <code class="docutils literal notranslate"><span class="pre">bY</span></code>) and (<code class="docutils literal notranslate"><span class="pre">cX</span></code>, <code class="docutils literal notranslate"><span class="pre">cY</span></code>).</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsGeometryUtils.verticesAtDistance" title="qgis.core.QgsGeometryUtils.verticesAtDistance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">verticesAtDistance</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsGeometryUtils.verticesAtDistance" title="qgis.core.QgsGeometryUtils.verticesAtDistance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">verticesAtDistance</span></code></a></p></td>
 <td><p>Retrieves the vertices which are before and after the interpolated point at a specified distance along a linestring (or polygon boundary).</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsGeometryUtils.weightedPointInTriangle" title="qgis.core.QgsGeometryUtils.weightedPointInTriangle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">weightedPointInTriangle</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsGeometryUtils.weightedPointInTriangle" title="qgis.core.QgsGeometryUtils.weightedPointInTriangle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">weightedPointInTriangle</span></code></a></p></td>
 <td><p>Returns a weighted point inside the triangle denoted by the points (<code class="docutils literal notranslate"><span class="pre">aX</span></code>, <code class="docutils literal notranslate"><span class="pre">aY</span></code>), (<code class="docutils literal notranslate"><span class="pre">bX</span></code>, <code class="docutils literal notranslate"><span class="pre">bY</span></code>) and (<code class="docutils literal notranslate"><span class="pre">cX</span></code>, <code class="docutils literal notranslate"><span class="pre">cY</span></code>).</p></td>
 </tr>
 </tbody>
@@ -3545,6 +3548,61 @@ points whose m value is closest to the original x/y point, but only the first on
 </dd></dl>
 
 <dl class="py method">
+<dt id="qgis.core.QgsGeometryUtils.transferFirstZOrMValueToPoint">
+<code class="sig-name descname"><span class="pre">transferFirstZOrMValueToPoint</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">points</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="QgsPoint.html#module-QgsPoint" title="QgsPoint"><span class="pre">QgsPoint</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">point</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsPoint.html#module-QgsPoint" title="QgsPoint"><span class="pre">QgsPoint</span></a></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">bool</span><a class="headerlink" href="#qgis.core.QgsGeometryUtils.transferFirstZOrMValueToPoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>A Z or M dimension is added to <code class="docutils literal notranslate"><span class="pre">point</span></code> if one of the points in the list
+<code class="docutils literal notranslate"><span class="pre">points</span></code> contains Z or M value.</p>
+<p>This method is equivalent to successively calling Z and M but avoiding
+looping twice over the set of points.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>points</strong> (<em>Iterable</em><em>[</em><a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint"><em>QgsPoint</em></a><em>]</em>) – List of points in which a M point is searched.</p></li>
+<li><p><strong>point</strong> (<a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint"><em>QgsPoint</em></a>) – The point to update with Z or M dimension and value.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the point is updated, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise</p>
+</dd>
+</dl>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This method does not copy the z or m value of the coordinate from the
+points whose z or m value is closest to the original x/y point, but only the first one found.</p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.20.</span></p>
+</div>
+<p>transferFirstZOrMValueToPoint(geom: <a class="reference internal" href="QgsGeometry.html#qgis.core.QgsGeometry" title="qgis.core.QgsGeometry"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsGeometry</span></code></a>, point: <a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsPoint</span></code></a>) -&gt; bool
+A Z or M dimension is added to <code class="docutils literal notranslate"><span class="pre">point</span></code> if one of the points in the list
+<code class="docutils literal notranslate"><span class="pre">points</span></code> contains Z or M value.</p>
+<p>This method is equivalent to successively calling Z and M but avoiding
+looping twice over the set of points.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>geom</strong> – geometry in which a M point is searched.</p></li>
+<li><p><strong>point</strong> – The point to update with Z or M dimension and value.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the point is updated, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise</p>
+</dd>
+</dl>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This method does not copy the z or m value of the coordinate from the
+points whose z or m value is closest to the original x/y point, but only the first one found.</p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.20.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
 <dt id="qgis.core.QgsGeometryUtils.transferFirstZValueToPoint">
 <code class="sig-name descname"><span class="pre">transferFirstZValueToPoint</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">points</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="QgsPoint.html#module-QgsPoint" title="QgsPoint"><span class="pre">QgsPoint</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">point</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsPoint.html#module-QgsPoint" title="QgsPoint"><span class="pre">QgsPoint</span></a></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">bool</span><a class="headerlink" href="#qgis.core.QgsGeometryUtils.transferFirstZValueToPoint" title="Permalink to this definition">¶</a></dt>
 <dd><p>A Z dimension is added to <code class="docutils literal notranslate"><span class="pre">point</span></code> if one of the point in the list
@@ -3682,7 +3740,7 @@ points whose z value is closest to the original x/y point, but only the first on
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 00:22 Jun 10, 2021.
+        Last updated on 01:57 Jun 10, 2021.
       </span>
 
     </p>
