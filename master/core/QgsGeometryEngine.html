@@ -1972,7 +1972,33 @@
 <dt id="qgis.core.QgsGeometryEngine">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">qgis.core.</span></code><code class="sig-name descname"><span class="pre">QgsGeometryEngine</span></code><a class="headerlink" href="#qgis.core.QgsGeometryEngine" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sip.wrapper</span></code></p>
-<p>Contains geometry relation and modification algorithms.</p>
+<p>A geometry engine is a low-level representation of a <a class="reference internal" href="QgsAbstractGeometry.html#module-QgsAbstractGeometry" title="QgsAbstractGeometry"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsAbstractGeometry</span></code></a> object, optimised for use with external
+geometry libraries such as GEOS.</p>
+<p><a class="reference internal" href="#module-QgsGeometryEngine" title="QgsGeometryEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsGeometryEngine</span></code></a> objects provide a mechanism for optimized evaluation of geometric algorithms, including spatial relationships
+between geometries and operations such as buffers or clipping.</p>
+<p><a class="reference internal" href="#module-QgsGeometryEngine" title="QgsGeometryEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsGeometryEngine</span></code></a> objects are not created directly, but are instead created by calling <a class="reference internal" href="QgsGeometry.html#qgis.core.QgsGeometry.createGeometryEngine" title="qgis.core.QgsGeometry.createGeometryEngine"><code class="xref py py-func docutils literal notranslate"><span class="pre">QgsGeometry.createGeometryEngine()</span></code></a>.</p>
+<p>Many methods available in the <a class="reference internal" href="#module-QgsGeometryEngine" title="QgsGeometryEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsGeometryEngine</span></code></a> class can benefit from pre-preparing geometries. For instance, whenever
+a large number of spatial relationships will be tested (such as calling <a class="reference internal" href="#qgis.core.QgsGeometryEngine.intersects" title="qgis.core.QgsGeometryEngine.intersects"><code class="xref py py-func docutils literal notranslate"><span class="pre">intersects()</span></code></a>, <a class="reference internal" href="#qgis.core.QgsGeometryEngine.within" title="qgis.core.QgsGeometryEngine.within"><code class="xref py py-func docutils literal notranslate"><span class="pre">within()</span></code></a>, etc) then the
+geometry should first be prepared by calling <a class="reference internal" href="#qgis.core.QgsGeometryEngine.prepareGeometry" title="qgis.core.QgsGeometryEngine.prepareGeometry"><code class="xref py py-func docutils literal notranslate"><span class="pre">prepareGeometry()</span></code></a> before performing the tests.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># polygon_geometry contains a complex polygon, with many vertices</span>
+<span class="n">polygon_geometry</span> <span class="o">=</span> <span class="n">QgsGeometry</span><span class="o">.</span><span class="n">fromWkt</span><span class="p">(</span><span class="s1">&#39;Polygon((...))&#39;</span><span class="p">)</span>
+
+<span class="c1"># create a :py:class:`.QgsGeometryEngine` representation of the polygon</span>
+<span class="n">polygon_geometry_engine</span> <span class="o">=</span> <span class="n">QgsGeometry</span><span class="o">.</span><span class="n">createGeometryEngine</span><span class="p">(</span><span class="n">polygon_geometry</span><span class="o">.</span><span class="n">constGet</span><span class="p">())</span>
+
+<span class="c1"># since we&#39;ll be performing many intersects tests, we can speed up these tests considerably</span>
+<span class="c1"># by first &quot;preparing&quot; the geometry engine</span>
+<span class="n">polygon_geometry_engine</span><span class="o">.</span><span class="n">prepareGeometry</span><span class="p">()</span>
+
+<span class="c1"># now we are ready to quickly test intersection against many other objects</span>
+<span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">my_layer</span><span class="o">.</span><span class="n">getFeatures</span><span class="p">():</span>
+    <span class="n">feature_geometry</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">geometry</span><span class="p">()</span>
+    <span class="c1"># test whether the feature&#39;s geometry intersects our original complex polygon</span>
+    <span class="k">if</span> <span class="n">polygon_geometry_engine</span><span class="o">.</span><span class="n">intersects</span><span class="p">(</span><span class="n">feature_geometry</span><span class="o">.</span><span class="n">constGet</span><span class="p">()):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;feature intersects the polygon!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="#module-QgsGeometryEngine" title="QgsGeometryEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsGeometryEngine</span></code></a> operations are backed by the GEOS library (<a class="reference external" href="https://trac.osgeo.org/geos/">https://trac.osgeo.org/geos/</a>).</p>
 <div class="versionadded">
 <table class="longtable docutils align-default">
 <colgroup>
@@ -2844,7 +2870,7 @@ param[out] errorMsg error messages emitted, if any
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 00:20 Jun 17, 2021.
+        Last updated on 02:26 Jun 17, 2021.
       </span>
 
     </p>

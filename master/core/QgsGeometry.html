@@ -2145,7 +2145,7 @@ geom is transferred.</p>
 <td><p>Returns the smallest convex polygon that contains all the points in the geometry.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsGeometry.createGeometryEngine" title="qgis.core.QgsGeometry.createGeometryEngine"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createGeometryEngine</span></code></a></p></td>
-<td><p>Creates and returns a new geometry engine</p></td>
+<td><p>Creates and returns a new geometry engine representing the specified <code class="docutils literal notranslate"><span class="pre">geometry</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsGeometry.createPolygonFromQPolygonF" title="qgis.core.QgsGeometry.createPolygonFromQPolygonF"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createPolygonFromQPolygonF</span></code></a></p></td>
 <td><p>Creates a <code class="xref py py-class docutils literal notranslate"><span class="pre">QgsPolygonXYfrom</span></code> a QPolygonF.</p></td>
@@ -3606,6 +3606,13 @@ iteration only is required.</p>
 <dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the geometry contains the point <code class="docutils literal notranslate"><span class="pre">p</span></code>.</p>
 <p>contains(self, geometry: <a class="reference internal" href="#qgis.core.QgsGeometry" title="qgis.core.QgsGeometry"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsGeometry</span></code></a>) -&gt; bool
 Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the geometry completely contains another <code class="docutils literal notranslate"><span class="pre">geometry</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For performance critical code, or when testing for contains against many different
+geometries, consider using <a class="reference internal" href="QgsGeometryEngine.html#module-QgsGeometryEngine" title="QgsGeometryEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsGeometryEngine</span></code></a> instead. This approach can be many orders of magnitude
+faster than calling <a class="reference internal" href="#qgis.core.QgsGeometry.contains" title="qgis.core.QgsGeometry.contains"><code class="xref py py-func docutils literal notranslate"><span class="pre">contains()</span></code></a> directly. See <a class="reference internal" href="#qgis.core.QgsGeometry.createGeometryEngine" title="qgis.core.QgsGeometry.createGeometryEngine"><code class="xref py py-func docutils literal notranslate"><span class="pre">createGeometryEngine()</span></code></a> for details on how to use the
+<a class="reference internal" href="QgsGeometryEngine.html#module-QgsGeometryEngine" title="QgsGeometryEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsGeometryEngine</span></code></a> class.</p>
+</div>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 1.5.</span></p>
 </div>
@@ -3800,7 +3807,34 @@ by calling <a class="reference internal" href="#qgis.core.QgsGeometry.lastError"
 <dl class="py method">
 <dt id="qgis.core.QgsGeometry.createGeometryEngine">
 <code class="sig-name descname"><span class="pre">createGeometryEngine</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">geometry</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsAbstractGeometry.html#module-QgsAbstractGeometry" title="QgsAbstractGeometry"><span class="pre">QgsAbstractGeometry</span></a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="QgsGeometryEngine.html#module-QgsGeometryEngine" title="QgsGeometryEngine"><span class="pre">QgsGeometryEngine</span></a><a class="headerlink" href="#qgis.core.QgsGeometry.createGeometryEngine" title="Permalink to this definition">¶</a></dt>
-<dd><p>Creates and returns a new geometry engine</p>
+<dd><p>Creates and returns a new geometry engine representing the specified <code class="docutils literal notranslate"><span class="pre">geometry</span></code>.</p>
+<p>A geometry engine is a low-level representation of a <a class="reference internal" href="QgsAbstractGeometry.html#module-QgsAbstractGeometry" title="QgsAbstractGeometry"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsAbstractGeometry</span></code></a> object, optimised for use with external
+geometry libraries such as GEOS.</p>
+<p><a class="reference internal" href="QgsGeometryEngine.html#module-QgsGeometryEngine" title="QgsGeometryEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsGeometryEngine</span></code></a> objects provide a mechanism for optimized evaluation of geometric algorithms, including spatial relationships
+between geometries and operations such as buffers or clipping. <a class="reference internal" href="QgsGeometryEngine.html#module-QgsGeometryEngine" title="QgsGeometryEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsGeometryEngine</span></code></a> is recommended for use in any
+performance critical code instead of directly using the equivalent <a class="reference internal" href="#qgis.core.QgsGeometry" title="qgis.core.QgsGeometry"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsGeometry</span></code></a> methods such as <a class="reference internal" href="#qgis.core.QgsGeometry.intersects" title="qgis.core.QgsGeometry.intersects"><code class="xref py py-func docutils literal notranslate"><span class="pre">QgsGeometry.intersects()</span></code></a>.</p>
+<p>Many methods available in the <a class="reference internal" href="QgsGeometryEngine.html#module-QgsGeometryEngine" title="QgsGeometryEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsGeometryEngine</span></code></a> class can benefit from pre-preparing geometries. For instance, whenever
+a large number of spatial relationships will be tested (such as calling <a class="reference internal" href="#qgis.core.QgsGeometry.intersects" title="qgis.core.QgsGeometry.intersects"><code class="xref py py-func docutils literal notranslate"><span class="pre">intersects()</span></code></a>, <a class="reference internal" href="#qgis.core.QgsGeometry.within" title="qgis.core.QgsGeometry.within"><code class="xref py py-func docutils literal notranslate"><span class="pre">within()</span></code></a>, etc) then the
+geometry should first be prepared by calling <code class="xref py py-func docutils literal notranslate"><span class="pre">prepareGeometry()</span></code> before performing the tests.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># polygon_geometry contains a complex polygon, with many vertices</span>
+<span class="n">polygon_geometry</span> <span class="o">=</span> <span class="n">QgsGeometry</span><span class="o">.</span><span class="n">fromWkt</span><span class="p">(</span><span class="s1">&#39;Polygon((...))&#39;</span><span class="p">)</span>
+
+<span class="c1"># create a :py:class:`.QgsGeometryEngine` representation of the polygon</span>
+<span class="n">polygon_geometry_engine</span> <span class="o">=</span> <span class="n">QgsGeometry</span><span class="o">.</span><span class="n">createGeometryEngine</span><span class="p">(</span><span class="n">polygon_geometry</span><span class="o">.</span><span class="n">constGet</span><span class="p">())</span>
+
+<span class="c1"># since we&#39;ll be performing many intersects tests, we can speed up these tests considerably</span>
+<span class="c1"># by first &quot;preparing&quot; the geometry engine</span>
+<span class="n">polygon_geometry_engine</span><span class="o">.</span><span class="n">prepareGeometry</span><span class="p">()</span>
+
+<span class="c1"># now we are ready to quickly test intersection against many other objects</span>
+<span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">my_layer</span><span class="o">.</span><span class="n">getFeatures</span><span class="p">():</span>
+    <span class="n">feature_geometry</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">geometry</span><span class="p">()</span>
+    <span class="c1"># test whether the feature&#39;s geometry intersects our original complex polygon</span>
+    <span class="k">if</span> <span class="n">polygon_geometry_engine</span><span class="o">.</span><span class="n">intersects</span><span class="p">(</span><span class="n">feature_geometry</span><span class="o">.</span><span class="n">constGet</span><span class="p">()):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;feature intersects the polygon!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="QgsGeometryEngine.html#module-QgsGeometryEngine" title="QgsGeometryEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsGeometryEngine</span></code></a> operations are backed by the GEOS library (<a class="reference external" href="https://trac.osgeo.org/geos/">https://trac.osgeo.org/geos/</a>).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>geometry</strong> (<a class="reference internal" href="QgsAbstractGeometry.html#qgis.core.QgsAbstractGeometry" title="qgis.core.QgsAbstractGeometry"><em>QgsAbstractGeometry</em></a>) – </p>
@@ -3893,6 +3927,13 @@ need to be segmentized to convert to a standard Polygon geometry.</p>
 <dt id="qgis.core.QgsGeometry.crosses">
 <code class="sig-name descname"><span class="pre">crosses</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">geometry</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#module-QgsGeometry" title="QgsGeometry"><span class="pre">QgsGeometry</span></a></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">bool</span><a class="headerlink" href="#qgis.core.QgsGeometry.crosses" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the geometry crosses another <code class="docutils literal notranslate"><span class="pre">geometry</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For performance critical code, or when testing for crosses against many different
+geometries, consider using <a class="reference internal" href="QgsGeometryEngine.html#module-QgsGeometryEngine" title="QgsGeometryEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsGeometryEngine</span></code></a> instead. This approach can be many orders of magnitude
+faster than calling <a class="reference internal" href="#qgis.core.QgsGeometry.crosses" title="qgis.core.QgsGeometry.crosses"><code class="xref py py-func docutils literal notranslate"><span class="pre">crosses()</span></code></a> directly. See <a class="reference internal" href="#qgis.core.QgsGeometry.createGeometryEngine" title="qgis.core.QgsGeometry.createGeometryEngine"><code class="xref py py-func docutils literal notranslate"><span class="pre">createGeometryEngine()</span></code></a> for details on how to use the
+<a class="reference internal" href="QgsGeometryEngine.html#module-QgsGeometryEngine" title="QgsGeometryEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsGeometryEngine</span></code></a> class.</p>
+</div>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 1.5.</span></p>
 </div>
@@ -4079,6 +4120,13 @@ by calling <a class="reference internal" href="#qgis.core.QgsGeometry.lastError"
 <dt id="qgis.core.QgsGeometry.disjoint">
 <code class="sig-name descname"><span class="pre">disjoint</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">geometry</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#module-QgsGeometry" title="QgsGeometry"><span class="pre">QgsGeometry</span></a></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">bool</span><a class="headerlink" href="#qgis.core.QgsGeometry.disjoint" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the geometry is disjoint of another <code class="docutils literal notranslate"><span class="pre">geometry</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For performance critical code, or when testing for disjoint against many different
+geometries, consider using <a class="reference internal" href="QgsGeometryEngine.html#module-QgsGeometryEngine" title="QgsGeometryEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsGeometryEngine</span></code></a> instead. This approach can be many orders of magnitude
+faster than calling <a class="reference internal" href="#qgis.core.QgsGeometry.disjoint" title="qgis.core.QgsGeometry.disjoint"><code class="xref py py-func docutils literal notranslate"><span class="pre">disjoint()</span></code></a> directly. See <a class="reference internal" href="#qgis.core.QgsGeometry.createGeometryEngine" title="qgis.core.QgsGeometry.createGeometryEngine"><code class="xref py py-func docutils literal notranslate"><span class="pre">createGeometryEngine()</span></code></a> for details on how to use the
+<a class="reference internal" href="QgsGeometryEngine.html#module-QgsGeometryEngine" title="QgsGeometryEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsGeometryEngine</span></code></a> class.</p>
+</div>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 1.5.</span></p>
 </div>
@@ -4711,6 +4759,13 @@ Returns <code class="docutils literal notranslate"><span class="pre">True</span>
 and can be slow for complex geometries.</p>
 <p>The GEOS library is used to perform the intersection test. Geometries which are not
 valid may return incorrect results.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For performance critical code, or when testing for intersection against many different
+geometries, consider using <a class="reference internal" href="QgsGeometryEngine.html#module-QgsGeometryEngine" title="QgsGeometryEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsGeometryEngine</span></code></a> instead. This approach can be many orders of magnitude
+faster than calling <a class="reference internal" href="#qgis.core.QgsGeometry.intersects" title="qgis.core.QgsGeometry.intersects"><code class="xref py py-func docutils literal notranslate"><span class="pre">intersects()</span></code></a> directly. See <a class="reference internal" href="#qgis.core.QgsGeometry.createGeometryEngine" title="qgis.core.QgsGeometry.createGeometryEngine"><code class="xref py py-func docutils literal notranslate"><span class="pre">createGeometryEngine()</span></code></a> for details on how to use the
+<a class="reference internal" href="QgsGeometryEngine.html#module-QgsGeometryEngine" title="QgsGeometryEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsGeometryEngine</span></code></a> class.</p>
+</div>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsGeometry.boundingBoxIntersects" title="qgis.core.QgsGeometry.boundingBoxIntersects"><code class="xref py py-func docutils literal notranslate"><span class="pre">boundingBoxIntersects()</span></code></a></p>
@@ -5305,6 +5360,13 @@ straight line an angle must be before it is attempted to be straightened.</p>
 <dt id="qgis.core.QgsGeometry.overlaps">
 <code class="sig-name descname"><span class="pre">overlaps</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">geometry</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#module-QgsGeometry" title="QgsGeometry"><span class="pre">QgsGeometry</span></a></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">bool</span><a class="headerlink" href="#qgis.core.QgsGeometry.overlaps" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the geometry overlaps another <code class="docutils literal notranslate"><span class="pre">geometry</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For performance critical code, or when testing for overlaps against many different
+geometries, consider using <a class="reference internal" href="QgsGeometryEngine.html#module-QgsGeometryEngine" title="QgsGeometryEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsGeometryEngine</span></code></a> instead. This approach can be many orders of magnitude
+faster than calling <a class="reference internal" href="#qgis.core.QgsGeometry.overlaps" title="qgis.core.QgsGeometry.overlaps"><code class="xref py py-func docutils literal notranslate"><span class="pre">overlaps()</span></code></a> directly. See <a class="reference internal" href="#qgis.core.QgsGeometry.createGeometryEngine" title="qgis.core.QgsGeometry.createGeometryEngine"><code class="xref py py-func docutils literal notranslate"><span class="pre">createGeometryEngine()</span></code></a> for details on how to use the
+<a class="reference internal" href="QgsGeometryEngine.html#module-QgsGeometryEngine" title="QgsGeometryEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsGeometryEngine</span></code></a> class.</p>
+</div>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 1.5.</span></p>
 </div>
@@ -5949,6 +6011,13 @@ curves in the buffer.</p>
 <dt id="qgis.core.QgsGeometry.touches">
 <code class="sig-name descname"><span class="pre">touches</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">geometry</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#module-QgsGeometry" title="QgsGeometry"><span class="pre">QgsGeometry</span></a></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">bool</span><a class="headerlink" href="#qgis.core.QgsGeometry.touches" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the geometry touches another <code class="docutils literal notranslate"><span class="pre">geometry</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For performance critical code, or when testing for touches against many different
+geometries, consider using <a class="reference internal" href="QgsGeometryEngine.html#module-QgsGeometryEngine" title="QgsGeometryEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsGeometryEngine</span></code></a> instead. This approach can be many orders of magnitude
+faster than calling <a class="reference internal" href="#qgis.core.QgsGeometry.touches" title="qgis.core.QgsGeometry.touches"><code class="xref py py-func docutils literal notranslate"><span class="pre">touches()</span></code></a> directly. See <a class="reference internal" href="#qgis.core.QgsGeometry.createGeometryEngine" title="qgis.core.QgsGeometry.createGeometryEngine"><code class="xref py py-func docutils literal notranslate"><span class="pre">createGeometryEngine()</span></code></a> for details on how to use the
+<a class="reference internal" href="QgsGeometryEngine.html#module-QgsGeometryEngine" title="QgsGeometryEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsGeometryEngine</span></code></a> class.</p>
+</div>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 1.5.</span></p>
 </div>
@@ -6240,6 +6309,13 @@ An empty geometry will be returned if the diagram could not be calculated.</p>
 <dt id="qgis.core.QgsGeometry.within">
 <code class="sig-name descname"><span class="pre">within</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">geometry</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#module-QgsGeometry" title="QgsGeometry"><span class="pre">QgsGeometry</span></a></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">bool</span><a class="headerlink" href="#qgis.core.QgsGeometry.within" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the geometry is completely within another <code class="docutils literal notranslate"><span class="pre">geometry</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For performance critical code, or when testing for within against many different
+geometries, consider using <a class="reference internal" href="QgsGeometryEngine.html#module-QgsGeometryEngine" title="QgsGeometryEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsGeometryEngine</span></code></a> instead. This approach can be many orders of magnitude
+faster than calling <a class="reference internal" href="#qgis.core.QgsGeometry.within" title="qgis.core.QgsGeometry.within"><code class="xref py py-func docutils literal notranslate"><span class="pre">within()</span></code></a> directly. See <a class="reference internal" href="#qgis.core.QgsGeometry.createGeometryEngine" title="qgis.core.QgsGeometry.createGeometryEngine"><code class="xref py py-func docutils literal notranslate"><span class="pre">createGeometryEngine()</span></code></a> for details on how to use the
+<a class="reference internal" href="QgsGeometryEngine.html#module-QgsGeometryEngine" title="QgsGeometryEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsGeometryEngine</span></code></a> class.</p>
+</div>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 1.5.</span></p>
 </div>
@@ -6301,7 +6377,7 @@ An empty geometry will be returned if the diagram could not be calculated.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 00:20 Jun 17, 2021.
+        Last updated on 02:26 Jun 17, 2021.
       </span>
 
     </p>
