@@ -13,6 +13,8 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
 
   
   
@@ -33,6 +35,7 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
@@ -849,6 +852,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsProxyFeatureSink.html">Class: QgsProxyFeatureSink</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProxyProgressTask.html">Class: QgsProxyProgressTask</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsPythonRunner.html">Class: QgsPythonRunner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsQtLocationConnection.html">Class: QgsQtLocationConnection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsQuadrilateral.html">Class: QgsQuadrilateral</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsQueryResultModel.html">Class: QgsQueryResultModel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsRandomColorRamp.html">Class: QgsRandomColorRamp</a></li>
@@ -1969,8 +1973,8 @@
   <div class="section" id="module-QgsExpressionContext">
 <span id="class-qgsexpressioncontext"></span><h1>Class: QgsExpressionContext<a class="headerlink" href="#module-QgsExpressionContext" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
-<dt id="qgis.core.QgsExpressionContext">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">qgis.core.</span></code><code class="sig-name descname"><span class="pre">QgsExpressionContext</span></code><a class="headerlink" href="#qgis.core.QgsExpressionContext" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="qgis.core.QgsExpressionContext">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">qgis.core.</span></span><span class="sig-name descname"><span class="pre">QgsExpressionContext</span></span><a class="headerlink" href="#qgis.core.QgsExpressionContext" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sip.wrapper</span></code></p>
 <p>Expression contexts are used to encapsulate the parameters around which a <a class="reference internal" href="QgsExpression.html#module-QgsExpression" title="QgsExpression"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsExpression</span></code></a> should
 be evaluated. <code class="xref py py-class docutils literal notranslate"><span class="pre">QgsExpressions</span></code> can then utilize the information stored within a context to contextualise
@@ -2028,65 +2032,71 @@ Copy constructor</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContext.feature" title="qgis.core.QgsExpressionContext.feature"><code class="xref py py-obj docutils literal notranslate"><span class="pre">feature</span></code></a></p></td>
 <td><p>Convenience function for retrieving the feature for the context, if set.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContext.fields" title="qgis.core.QgsExpressionContext.fields"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fields</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContext.feedback" title="qgis.core.QgsExpressionContext.feedback"><code class="xref py py-obj docutils literal notranslate"><span class="pre">feedback</span></code></a></p></td>
+<td><p>Returns the feedback object that can be queried regularly by the expression to check if evaluation should be canceled, if set.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContext.fields" title="qgis.core.QgsExpressionContext.fields"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fields</span></code></a></p></td>
 <td><p>Convenience function for retrieving the fields for the context, if set.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContext.filteredVariableNames" title="qgis.core.QgsExpressionContext.filteredVariableNames"><code class="xref py py-obj docutils literal notranslate"><span class="pre">filteredVariableNames</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContext.filteredVariableNames" title="qgis.core.QgsExpressionContext.filteredVariableNames"><code class="xref py py-obj docutils literal notranslate"><span class="pre">filteredVariableNames</span></code></a></p></td>
 <td><p>Returns a filtered list of variables names set by all scopes in the context.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContext.function" title="qgis.core.QgsExpressionContext.function"><code class="xref py py-obj docutils literal notranslate"><span class="pre">function</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContext.function" title="qgis.core.QgsExpressionContext.function"><code class="xref py py-obj docutils literal notranslate"><span class="pre">function</span></code></a></p></td>
 <td><p>Fetches a matching function from the context.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContext.functionNames" title="qgis.core.QgsExpressionContext.functionNames"><code class="xref py py-obj docutils literal notranslate"><span class="pre">functionNames</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContext.functionNames" title="qgis.core.QgsExpressionContext.functionNames"><code class="xref py py-obj docutils literal notranslate"><span class="pre">functionNames</span></code></a></p></td>
 <td><p>Retrieves a list of function names contained in the context.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContext.hasCachedValue" title="qgis.core.QgsExpressionContext.hasCachedValue"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hasCachedValue</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContext.hasCachedValue" title="qgis.core.QgsExpressionContext.hasCachedValue"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hasCachedValue</span></code></a></p></td>
 <td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the expression context contains a cached value with a matching key.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContext.hasFeature" title="qgis.core.QgsExpressionContext.hasFeature"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hasFeature</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContext.hasFeature" title="qgis.core.QgsExpressionContext.hasFeature"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hasFeature</span></code></a></p></td>
 <td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the context has a feature associated with it.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContext.hasFunction" title="qgis.core.QgsExpressionContext.hasFunction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hasFunction</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContext.hasFunction" title="qgis.core.QgsExpressionContext.hasFunction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hasFunction</span></code></a></p></td>
 <td><p>Checks whether a specified function is contained in the context.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContext.hasVariable" title="qgis.core.QgsExpressionContext.hasVariable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hasVariable</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContext.hasVariable" title="qgis.core.QgsExpressionContext.hasVariable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hasVariable</span></code></a></p></td>
 <td><p>Check whether a variable is specified by any scope within the context.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContext.highlightedVariables" title="qgis.core.QgsExpressionContext.highlightedVariables"><code class="xref py py-obj docutils literal notranslate"><span class="pre">highlightedVariables</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContext.highlightedVariables" title="qgis.core.QgsExpressionContext.highlightedVariables"><code class="xref py py-obj docutils literal notranslate"><span class="pre">highlightedVariables</span></code></a></p></td>
 <td><p>Returns the current list of variables highlighted within the context.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContext.indexOfScope" title="qgis.core.QgsExpressionContext.indexOfScope"><code class="xref py py-obj docutils literal notranslate"><span class="pre">indexOfScope</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContext.indexOfScope" title="qgis.core.QgsExpressionContext.indexOfScope"><code class="xref py py-obj docutils literal notranslate"><span class="pre">indexOfScope</span></code></a></p></td>
 <td><p>Returns the index of the specified scope if it exists within the context.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContext.isHighlightedFunction" title="qgis.core.QgsExpressionContext.isHighlightedFunction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isHighlightedFunction</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContext.isHighlightedFunction" title="qgis.core.QgsExpressionContext.isHighlightedFunction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isHighlightedFunction</span></code></a></p></td>
 <td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the specified function <code class="docutils literal notranslate"><span class="pre">name</span></code> is intended to be highlighted to the user.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContext.isHighlightedVariable" title="qgis.core.QgsExpressionContext.isHighlightedVariable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isHighlightedVariable</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContext.isHighlightedVariable" title="qgis.core.QgsExpressionContext.isHighlightedVariable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isHighlightedVariable</span></code></a></p></td>
 <td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the specified variable <code class="docutils literal notranslate"><span class="pre">name</span></code> is intended to be highlighted to the user.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContext.isReadOnly" title="qgis.core.QgsExpressionContext.isReadOnly"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isReadOnly</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContext.isReadOnly" title="qgis.core.QgsExpressionContext.isReadOnly"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isReadOnly</span></code></a></p></td>
 <td><p>Returns whether a variable is read only, and should not be modifiable by users.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContext.lastScope" title="qgis.core.QgsExpressionContext.lastScope"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lastScope</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContext.lastScope" title="qgis.core.QgsExpressionContext.lastScope"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lastScope</span></code></a></p></td>
 <td><p>Returns the last scope added to the context.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContext.popScope" title="qgis.core.QgsExpressionContext.popScope"><code class="xref py py-obj docutils literal notranslate"><span class="pre">popScope</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContext.popScope" title="qgis.core.QgsExpressionContext.popScope"><code class="xref py py-obj docutils literal notranslate"><span class="pre">popScope</span></code></a></p></td>
 <td><p>Removes the last scope from the expression context and return it.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContext.scope" title="qgis.core.QgsExpressionContext.scope"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scope</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContext.scope" title="qgis.core.QgsExpressionContext.scope"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scope</span></code></a></p></td>
 <td><p>Returns the scope at the specified index within the context.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContext.scopeCount" title="qgis.core.QgsExpressionContext.scopeCount"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scopeCount</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContext.scopeCount" title="qgis.core.QgsExpressionContext.scopeCount"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scopeCount</span></code></a></p></td>
 <td><p>Returns the number of scopes contained in the context.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContext.scopes" title="qgis.core.QgsExpressionContext.scopes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scopes</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContext.scopes" title="qgis.core.QgsExpressionContext.scopes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scopes</span></code></a></p></td>
 <td><p>Returns a list of scopes contained within the stack.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContext.setCachedValue" title="qgis.core.QgsExpressionContext.setCachedValue"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setCachedValue</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContext.setCachedValue" title="qgis.core.QgsExpressionContext.setCachedValue"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setCachedValue</span></code></a></p></td>
 <td><p>Sets a value to cache within the expression context.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContext.setFeature" title="qgis.core.QgsExpressionContext.setFeature"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setFeature</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContext.setFeature" title="qgis.core.QgsExpressionContext.setFeature"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setFeature</span></code></a></p></td>
 <td><p>Convenience function for setting a feature for the context.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContext.setFeedback" title="qgis.core.QgsExpressionContext.setFeedback"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setFeedback</span></code></a></p></td>
+<td><p>Attach a <code class="docutils literal notranslate"><span class="pre">feedback</span></code> object that can be queried regularly by the expression engine to check if expression evaluation should be canceled.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContext.setFields" title="qgis.core.QgsExpressionContext.setFields"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setFields</span></code></a></p></td>
 <td><p>Convenience function for setting a fields for the context.</p></td>
@@ -2163,63 +2173,63 @@ Copy constructor</p>
 </table>
 </div></blockquote>
 <dl class="py attribute">
-<dt id="qgis.core.QgsExpressionContext.EXPR_CLUSTER_COLOR">
-<code class="sig-name descname"><span class="pre">EXPR_CLUSTER_COLOR</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'cluster_color'</span></em><a class="headerlink" href="#qgis.core.QgsExpressionContext.EXPR_CLUSTER_COLOR" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="qgis.core.QgsExpressionContext.EXPR_CLUSTER_COLOR">
+<span class="sig-name descname"><span class="pre">EXPR_CLUSTER_COLOR</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'cluster_color'</span></em><a class="headerlink" href="#qgis.core.QgsExpressionContext.EXPR_CLUSTER_COLOR" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt id="qgis.core.QgsExpressionContext.EXPR_CLUSTER_SIZE">
-<code class="sig-name descname"><span class="pre">EXPR_CLUSTER_SIZE</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'cluster_size'</span></em><a class="headerlink" href="#qgis.core.QgsExpressionContext.EXPR_CLUSTER_SIZE" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="qgis.core.QgsExpressionContext.EXPR_CLUSTER_SIZE">
+<span class="sig-name descname"><span class="pre">EXPR_CLUSTER_SIZE</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'cluster_size'</span></em><a class="headerlink" href="#qgis.core.QgsExpressionContext.EXPR_CLUSTER_SIZE" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt id="qgis.core.QgsExpressionContext.EXPR_FIELDS">
-<code class="sig-name descname"><span class="pre">EXPR_FIELDS</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'_fields_'</span></em><a class="headerlink" href="#qgis.core.QgsExpressionContext.EXPR_FIELDS" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="qgis.core.QgsExpressionContext.EXPR_FIELDS">
+<span class="sig-name descname"><span class="pre">EXPR_FIELDS</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'_fields_'</span></em><a class="headerlink" href="#qgis.core.QgsExpressionContext.EXPR_FIELDS" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt id="qgis.core.QgsExpressionContext.EXPR_GEOMETRY_PART_COUNT">
-<code class="sig-name descname"><span class="pre">EXPR_GEOMETRY_PART_COUNT</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'geometry_part_count'</span></em><a class="headerlink" href="#qgis.core.QgsExpressionContext.EXPR_GEOMETRY_PART_COUNT" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="qgis.core.QgsExpressionContext.EXPR_GEOMETRY_PART_COUNT">
+<span class="sig-name descname"><span class="pre">EXPR_GEOMETRY_PART_COUNT</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'geometry_part_count'</span></em><a class="headerlink" href="#qgis.core.QgsExpressionContext.EXPR_GEOMETRY_PART_COUNT" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt id="qgis.core.QgsExpressionContext.EXPR_GEOMETRY_PART_NUM">
-<code class="sig-name descname"><span class="pre">EXPR_GEOMETRY_PART_NUM</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'geometry_part_num'</span></em><a class="headerlink" href="#qgis.core.QgsExpressionContext.EXPR_GEOMETRY_PART_NUM" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="qgis.core.QgsExpressionContext.EXPR_GEOMETRY_PART_NUM">
+<span class="sig-name descname"><span class="pre">EXPR_GEOMETRY_PART_NUM</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'geometry_part_num'</span></em><a class="headerlink" href="#qgis.core.QgsExpressionContext.EXPR_GEOMETRY_PART_NUM" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt id="qgis.core.QgsExpressionContext.EXPR_GEOMETRY_POINT_COUNT">
-<code class="sig-name descname"><span class="pre">EXPR_GEOMETRY_POINT_COUNT</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'geometry_point_count'</span></em><a class="headerlink" href="#qgis.core.QgsExpressionContext.EXPR_GEOMETRY_POINT_COUNT" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="qgis.core.QgsExpressionContext.EXPR_GEOMETRY_POINT_COUNT">
+<span class="sig-name descname"><span class="pre">EXPR_GEOMETRY_POINT_COUNT</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'geometry_point_count'</span></em><a class="headerlink" href="#qgis.core.QgsExpressionContext.EXPR_GEOMETRY_POINT_COUNT" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt id="qgis.core.QgsExpressionContext.EXPR_GEOMETRY_POINT_NUM">
-<code class="sig-name descname"><span class="pre">EXPR_GEOMETRY_POINT_NUM</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'geometry_point_num'</span></em><a class="headerlink" href="#qgis.core.QgsExpressionContext.EXPR_GEOMETRY_POINT_NUM" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="qgis.core.QgsExpressionContext.EXPR_GEOMETRY_POINT_NUM">
+<span class="sig-name descname"><span class="pre">EXPR_GEOMETRY_POINT_NUM</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'geometry_point_num'</span></em><a class="headerlink" href="#qgis.core.QgsExpressionContext.EXPR_GEOMETRY_POINT_NUM" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt id="qgis.core.QgsExpressionContext.EXPR_GEOMETRY_RING_NUM">
-<code class="sig-name descname"><span class="pre">EXPR_GEOMETRY_RING_NUM</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'geometry_ring_num'</span></em><a class="headerlink" href="#qgis.core.QgsExpressionContext.EXPR_GEOMETRY_RING_NUM" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="qgis.core.QgsExpressionContext.EXPR_GEOMETRY_RING_NUM">
+<span class="sig-name descname"><span class="pre">EXPR_GEOMETRY_RING_NUM</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'geometry_ring_num'</span></em><a class="headerlink" href="#qgis.core.QgsExpressionContext.EXPR_GEOMETRY_RING_NUM" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt id="qgis.core.QgsExpressionContext.EXPR_ORIGINAL_VALUE">
-<code class="sig-name descname"><span class="pre">EXPR_ORIGINAL_VALUE</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'value'</span></em><a class="headerlink" href="#qgis.core.QgsExpressionContext.EXPR_ORIGINAL_VALUE" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="qgis.core.QgsExpressionContext.EXPR_ORIGINAL_VALUE">
+<span class="sig-name descname"><span class="pre">EXPR_ORIGINAL_VALUE</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'value'</span></em><a class="headerlink" href="#qgis.core.QgsExpressionContext.EXPR_ORIGINAL_VALUE" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt id="qgis.core.QgsExpressionContext.EXPR_SYMBOL_ANGLE">
-<code class="sig-name descname"><span class="pre">EXPR_SYMBOL_ANGLE</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'symbol_angle'</span></em><a class="headerlink" href="#qgis.core.QgsExpressionContext.EXPR_SYMBOL_ANGLE" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="qgis.core.QgsExpressionContext.EXPR_SYMBOL_ANGLE">
+<span class="sig-name descname"><span class="pre">EXPR_SYMBOL_ANGLE</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'symbol_angle'</span></em><a class="headerlink" href="#qgis.core.QgsExpressionContext.EXPR_SYMBOL_ANGLE" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt id="qgis.core.QgsExpressionContext.EXPR_SYMBOL_COLOR">
-<code class="sig-name descname"><span class="pre">EXPR_SYMBOL_COLOR</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'symbol_color'</span></em><a class="headerlink" href="#qgis.core.QgsExpressionContext.EXPR_SYMBOL_COLOR" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="qgis.core.QgsExpressionContext.EXPR_SYMBOL_COLOR">
+<span class="sig-name descname"><span class="pre">EXPR_SYMBOL_COLOR</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'symbol_color'</span></em><a class="headerlink" href="#qgis.core.QgsExpressionContext.EXPR_SYMBOL_COLOR" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="qgis.core.QgsExpressionContext.activeScopeForVariable">
-<code class="sig-name descname"><span class="pre">activeScopeForVariable</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="QgsExpressionContextScope.html#module-QgsExpressionContextScope" title="QgsExpressionContextScope"><span class="pre">QgsExpressionContextScope</span></a><a class="headerlink" href="#qgis.core.QgsExpressionContext.activeScopeForVariable" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="qgis.core.QgsExpressionContext.activeScopeForVariable">
+<span class="sig-name descname"><span class="pre">activeScopeForVariable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="QgsExpressionContextScope.html#module-QgsExpressionContextScope" title="QgsExpressionContextScope"><span class="pre">QgsExpressionContextScope</span></a><a class="headerlink" href="#qgis.core.QgsExpressionContext.activeScopeForVariable" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the currently active scope from the context for a specified variable name.
 As scopes later in the stack override earlier contexts, this will be the last matching
 scope which contains a matching variable.</p>
@@ -2237,8 +2247,8 @@ scope which contains a matching variable.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="qgis.core.QgsExpressionContext.appendScope">
-<code class="sig-name descname"><span class="pre">appendScope</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scope</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsExpressionContextScope.html#module-QgsExpressionContextScope" title="QgsExpressionContextScope"><span class="pre">QgsExpressionContextScope</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsExpressionContext.appendScope" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="qgis.core.QgsExpressionContext.appendScope">
+<span class="sig-name descname"><span class="pre">appendScope</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scope</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsExpressionContextScope.html#module-QgsExpressionContextScope" title="QgsExpressionContextScope"><span class="pre">QgsExpressionContextScope</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsExpressionContext.appendScope" title="Permalink to this definition">¶</a></dt>
 <dd><p>Appends a scope to the end of the context. This scope will override
 any matching variables or functions provided by existing scopes within the
 context. Ownership of the scope is transferred to the stack.</p>
@@ -2250,8 +2260,8 @@ context. Ownership of the scope is transferred to the stack.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="qgis.core.QgsExpressionContext.appendScopes">
-<code class="sig-name descname"><span class="pre">appendScopes</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scopes</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="QgsExpressionContextScope.html#module-QgsExpressionContextScope" title="QgsExpressionContextScope"><span class="pre">QgsExpressionContextScope</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsExpressionContext.appendScopes" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="qgis.core.QgsExpressionContext.appendScopes">
+<span class="sig-name descname"><span class="pre">appendScopes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scopes</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="QgsExpressionContextScope.html#module-QgsExpressionContextScope" title="QgsExpressionContextScope"><span class="pre">QgsExpressionContextScope</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsExpressionContext.appendScopes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Appends a list of scopes to the end of the context. This scopes will override
 any matching variables or functions provided by existing scopes within the
 context. Ownership of the scopes is transferred to the stack.</p>
@@ -2266,8 +2276,8 @@ context. Ownership of the scopes is transferred to the stack.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="qgis.core.QgsExpressionContext.cachedValue">
-<code class="sig-name descname"><span class="pre">cachedValue</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Any</span><a class="headerlink" href="#qgis.core.QgsExpressionContext.cachedValue" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="qgis.core.QgsExpressionContext.cachedValue">
+<span class="sig-name descname"><span class="pre">cachedValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Any</span><a class="headerlink" href="#qgis.core.QgsExpressionContext.cachedValue" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the matching cached value, if set. This can be used to retrieve the previously stored results
 of an expensive expression sub-calculation.</p>
 <dl class="field-list simple">
@@ -2299,8 +2309,8 @@ of an expensive expression sub-calculation.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="qgis.core.QgsExpressionContext.clearCachedValues">
-<code class="sig-name descname"><span class="pre">clearCachedValues</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsExpressionContext.clearCachedValues" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="qgis.core.QgsExpressionContext.clearCachedValues">
+<span class="sig-name descname"><span class="pre">clearCachedValues</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsExpressionContext.clearCachedValues" title="Permalink to this definition">¶</a></dt>
 <dd><p>Clears all cached values from the context.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -2320,8 +2330,8 @@ of an expensive expression sub-calculation.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="qgis.core.QgsExpressionContext.description">
-<code class="sig-name descname"><span class="pre">description</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">str</span><a class="headerlink" href="#qgis.core.QgsExpressionContext.description" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="qgis.core.QgsExpressionContext.description">
+<span class="sig-name descname"><span class="pre">description</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">str</span><a class="headerlink" href="#qgis.core.QgsExpressionContext.description" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a translated description string for the variable with specified <code class="docutils literal notranslate"><span class="pre">name</span></code>.</p>
 <p>If no specific description has been provided for the variable, the value from
 <a class="reference internal" href="QgsExpression.html#qgis.core.QgsExpression.variableHelpText" title="qgis.core.QgsExpression.variableHelpText"><code class="xref py py-func docutils literal notranslate"><span class="pre">QgsExpression.variableHelpText()</span></code></a> will be returned.</p>
@@ -2339,8 +2349,8 @@ of an expensive expression sub-calculation.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="qgis.core.QgsExpressionContext.feature">
-<code class="sig-name descname"><span class="pre">feature</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="QgsFeature.html#module-QgsFeature" title="QgsFeature"><span class="pre">QgsFeature</span></a><a class="headerlink" href="#qgis.core.QgsExpressionContext.feature" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="qgis.core.QgsExpressionContext.feature">
+<span class="sig-name descname"><span class="pre">feature</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="QgsFeature.html#module-QgsFeature" title="QgsFeature"><span class="pre">QgsFeature</span></a><a class="headerlink" href="#qgis.core.QgsExpressionContext.feature" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convenience function for retrieving the feature for the context, if set.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -2354,8 +2364,27 @@ of an expensive expression sub-calculation.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="qgis.core.QgsExpressionContext.fields">
-<code class="sig-name descname"><span class="pre">fields</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="QgsFields.html#module-QgsFields" title="QgsFields"><span class="pre">QgsFields</span></a><a class="headerlink" href="#qgis.core.QgsExpressionContext.fields" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="qgis.core.QgsExpressionContext.feedback">
+<span class="sig-name descname"><span class="pre">feedback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="QgsFeedback.html#module-QgsFeedback" title="QgsFeedback"><span class="pre">QgsFeedback</span></a><a class="headerlink" href="#qgis.core.QgsExpressionContext.feedback" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the feedback object that can be queried regularly by the expression to check
+if evaluation should be canceled, if set.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsExpressionContext.setFeedback" title="qgis.core.QgsExpressionContext.setFeedback"><code class="xref py py-func docutils literal notranslate"><span class="pre">setFeedback()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.20.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsFeedback.html#qgis.core.QgsFeedback" title="qgis.core.QgsFeedback">QgsFeedback</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsExpressionContext.fields">
+<span class="sig-name descname"><span class="pre">fields</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="QgsFields.html#module-QgsFields" title="QgsFields"><span class="pre">QgsFields</span></a><a class="headerlink" href="#qgis.core.QgsExpressionContext.fields" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convenience function for retrieving the fields for the context, if set.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -2369,8 +2398,8 @@ of an expensive expression sub-calculation.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="qgis.core.QgsExpressionContext.filteredVariableNames">
-<code class="sig-name descname"><span class="pre">filteredVariableNames</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#qgis.core.QgsExpressionContext.filteredVariableNames" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="qgis.core.QgsExpressionContext.filteredVariableNames">
+<span class="sig-name descname"><span class="pre">filteredVariableNames</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#qgis.core.QgsExpressionContext.filteredVariableNames" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a filtered list of variables names set by all scopes in the context. The included
 variables are those which should be seen by users.</p>
 <dl class="field-list simple">
@@ -2388,8 +2417,8 @@ variables are those which should be seen by users.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="qgis.core.QgsExpressionContext.function">
-<code class="sig-name descname"><span class="pre">function</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="QgsExpressionFunction.html#module-QgsExpressionFunction" title="QgsExpressionFunction"><span class="pre">QgsExpressionFunction</span></a><a class="headerlink" href="#qgis.core.QgsExpressionContext.function" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="qgis.core.QgsExpressionContext.function">
+<span class="sig-name descname"><span class="pre">function</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="QgsExpressionFunction.html#module-QgsExpressionFunction" title="QgsExpressionFunction"><span class="pre">QgsExpressionFunction</span></a><a class="headerlink" href="#qgis.core.QgsExpressionContext.function" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fetches a matching function from the context. The function will be fetched
 from the last scope contained within the context which has a matching
 function set.</p>
@@ -2411,8 +2440,8 @@ function set.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="qgis.core.QgsExpressionContext.functionNames">
-<code class="sig-name descname"><span class="pre">functionNames</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#qgis.core.QgsExpressionContext.functionNames" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="qgis.core.QgsExpressionContext.functionNames">
+<span class="sig-name descname"><span class="pre">functionNames</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#qgis.core.QgsExpressionContext.functionNames" title="Permalink to this definition">¶</a></dt>
 <dd><p>Retrieves a list of function names contained in the context.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -2430,8 +2459,8 @@ function set.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="qgis.core.QgsExpressionContext.hasCachedValue">
-<code class="sig-name descname"><span class="pre">hasCachedValue</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">bool</span><a class="headerlink" href="#qgis.core.QgsExpressionContext.hasCachedValue" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="qgis.core.QgsExpressionContext.hasCachedValue">
+<span class="sig-name descname"><span class="pre">hasCachedValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">bool</span><a class="headerlink" href="#qgis.core.QgsExpressionContext.hasCachedValue" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the expression context contains a cached value with a matching key.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2461,8 +2490,8 @@ function set.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="qgis.core.QgsExpressionContext.hasFeature">
-<code class="sig-name descname"><span class="pre">hasFeature</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">bool</span><a class="headerlink" href="#qgis.core.QgsExpressionContext.hasFeature" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="qgis.core.QgsExpressionContext.hasFeature">
+<span class="sig-name descname"><span class="pre">hasFeature</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">bool</span><a class="headerlink" href="#qgis.core.QgsExpressionContext.hasFeature" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the context has a feature associated with it.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -2479,8 +2508,8 @@ function set.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="qgis.core.QgsExpressionContext.hasFunction">
-<code class="sig-name descname"><span class="pre">hasFunction</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">bool</span><a class="headerlink" href="#qgis.core.QgsExpressionContext.hasFunction" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="qgis.core.QgsExpressionContext.hasFunction">
+<span class="sig-name descname"><span class="pre">hasFunction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">bool</span><a class="headerlink" href="#qgis.core.QgsExpressionContext.hasFunction" title="Permalink to this definition">¶</a></dt>
 <dd><p>Checks whether a specified function is contained in the context.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2500,8 +2529,8 @@ function set.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="qgis.core.QgsExpressionContext.hasVariable">
-<code class="sig-name descname"><span class="pre">hasVariable</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">bool</span><a class="headerlink" href="#qgis.core.QgsExpressionContext.hasVariable" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="qgis.core.QgsExpressionContext.hasVariable">
+<span class="sig-name descname"><span class="pre">hasVariable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">bool</span><a class="headerlink" href="#qgis.core.QgsExpressionContext.hasVariable" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check whether a variable is specified by any scope within the context.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2525,8 +2554,8 @@ function set.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="qgis.core.QgsExpressionContext.highlightedVariables">
-<code class="sig-name descname"><span class="pre">highlightedVariables</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#qgis.core.QgsExpressionContext.highlightedVariables" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="qgis.core.QgsExpressionContext.highlightedVariables">
+<span class="sig-name descname"><span class="pre">highlightedVariables</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#qgis.core.QgsExpressionContext.highlightedVariables" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the current list of variables highlighted within the context.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -2543,8 +2572,8 @@ function set.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="qgis.core.QgsExpressionContext.indexOfScope">
-<code class="sig-name descname"><span class="pre">indexOfScope</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scope</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsExpressionContextScope.html#module-QgsExpressionContextScope" title="QgsExpressionContextScope"><span class="pre">QgsExpressionContextScope</span></a></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">int</span><a class="headerlink" href="#qgis.core.QgsExpressionContext.indexOfScope" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="qgis.core.QgsExpressionContext.indexOfScope">
+<span class="sig-name descname"><span class="pre">indexOfScope</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scope</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsExpressionContextScope.html#module-QgsExpressionContextScope" title="QgsExpressionContextScope"><span class="pre">QgsExpressionContextScope</span></a></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">int</span><a class="headerlink" href="#qgis.core.QgsExpressionContext.indexOfScope" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the index of the specified scope if it exists within the context.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2573,8 +2602,8 @@ Returns the index of the first scope with a matching name within the context.</p
 </dd></dl>
 
 <dl class="py method">
-<dt id="qgis.core.QgsExpressionContext.isHighlightedFunction">
-<code class="sig-name descname"><span class="pre">isHighlightedFunction</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">bool</span><a class="headerlink" href="#qgis.core.QgsExpressionContext.isHighlightedFunction" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="qgis.core.QgsExpressionContext.isHighlightedFunction">
+<span class="sig-name descname"><span class="pre">isHighlightedFunction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">bool</span><a class="headerlink" href="#qgis.core.QgsExpressionContext.isHighlightedFunction" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the specified function <code class="docutils literal notranslate"><span class="pre">name</span></code> is intended to be highlighted to the
 user. This is used by the expression builder to more prominently display the
 function.</p>
@@ -2600,8 +2629,8 @@ function.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="qgis.core.QgsExpressionContext.isHighlightedVariable">
-<code class="sig-name descname"><span class="pre">isHighlightedVariable</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">bool</span><a class="headerlink" href="#qgis.core.QgsExpressionContext.isHighlightedVariable" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="qgis.core.QgsExpressionContext.isHighlightedVariable">
+<span class="sig-name descname"><span class="pre">isHighlightedVariable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">bool</span><a class="headerlink" href="#qgis.core.QgsExpressionContext.isHighlightedVariable" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the specified variable <code class="docutils literal notranslate"><span class="pre">name</span></code> is intended to be highlighted to the
 user. This is used by the expression builder to more prominently display the
 variable.</p>
@@ -2624,8 +2653,8 @@ variable.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="qgis.core.QgsExpressionContext.isReadOnly">
-<code class="sig-name descname"><span class="pre">isReadOnly</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">bool</span><a class="headerlink" href="#qgis.core.QgsExpressionContext.isReadOnly" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="qgis.core.QgsExpressionContext.isReadOnly">
+<span class="sig-name descname"><span class="pre">isReadOnly</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">bool</span><a class="headerlink" href="#qgis.core.QgsExpressionContext.isReadOnly" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns whether a variable is read only, and should not be modifiable by users.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2642,8 +2671,8 @@ matching scope which contains a matching variable.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="qgis.core.QgsExpressionContext.lastScope">
-<code class="sig-name descname"><span class="pre">lastScope</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="QgsExpressionContextScope.html#module-QgsExpressionContextScope" title="QgsExpressionContextScope"><span class="pre">QgsExpressionContextScope</span></a><a class="headerlink" href="#qgis.core.QgsExpressionContext.lastScope" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="qgis.core.QgsExpressionContext.lastScope">
+<span class="sig-name descname"><span class="pre">lastScope</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="QgsExpressionContextScope.html#module-QgsExpressionContextScope" title="QgsExpressionContextScope"><span class="pre">QgsExpressionContextScope</span></a><a class="headerlink" href="#qgis.core.QgsExpressionContext.lastScope" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the last scope added to the context.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -2657,8 +2686,8 @@ matching scope which contains a matching variable.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="qgis.core.QgsExpressionContext.popScope">
-<code class="sig-name descname"><span class="pre">popScope</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="QgsExpressionContextScope.html#module-QgsExpressionContextScope" title="QgsExpressionContextScope"><span class="pre">QgsExpressionContextScope</span></a><a class="headerlink" href="#qgis.core.QgsExpressionContext.popScope" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="qgis.core.QgsExpressionContext.popScope">
+<span class="sig-name descname"><span class="pre">popScope</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="QgsExpressionContextScope.html#module-QgsExpressionContextScope" title="QgsExpressionContextScope"><span class="pre">QgsExpressionContextScope</span></a><a class="headerlink" href="#qgis.core.QgsExpressionContext.popScope" title="Permalink to this definition">¶</a></dt>
 <dd><p>Removes the last scope from the expression context and return it.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
@@ -2668,8 +2697,8 @@ matching scope which contains a matching variable.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="qgis.core.QgsExpressionContext.scope">
-<code class="sig-name descname"><span class="pre">scope</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="QgsExpressionContextScope.html#module-QgsExpressionContextScope" title="QgsExpressionContextScope"><span class="pre">QgsExpressionContextScope</span></a><a class="headerlink" href="#qgis.core.QgsExpressionContext.scope" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="qgis.core.QgsExpressionContext.scope">
+<span class="sig-name descname"><span class="pre">scope</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="QgsExpressionContextScope.html#module-QgsExpressionContextScope" title="QgsExpressionContextScope"><span class="pre">QgsExpressionContextScope</span></a><a class="headerlink" href="#qgis.core.QgsExpressionContext.scope" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the scope at the specified index within the context.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2689,8 +2718,8 @@ matching scope which contains a matching variable.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="qgis.core.QgsExpressionContext.scopeCount">
-<code class="sig-name descname"><span class="pre">scopeCount</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">int</span><a class="headerlink" href="#qgis.core.QgsExpressionContext.scopeCount" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="qgis.core.QgsExpressionContext.scopeCount">
+<span class="sig-name descname"><span class="pre">scopeCount</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">int</span><a class="headerlink" href="#qgis.core.QgsExpressionContext.scopeCount" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the number of scopes contained in the context.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
@@ -2700,8 +2729,8 @@ matching scope which contains a matching variable.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="qgis.core.QgsExpressionContext.scopes">
-<code class="sig-name descname"><span class="pre">scopes</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="QgsExpressionContextScope.html#module-QgsExpressionContextScope" title="QgsExpressionContextScope"><span class="pre">QgsExpressionContextScope</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#qgis.core.QgsExpressionContext.scopes" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="qgis.core.QgsExpressionContext.scopes">
+<span class="sig-name descname"><span class="pre">scopes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="QgsExpressionContextScope.html#module-QgsExpressionContextScope" title="QgsExpressionContextScope"><span class="pre">QgsExpressionContextScope</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#qgis.core.QgsExpressionContext.scopes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a list of scopes contained within the stack.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
@@ -2714,8 +2743,8 @@ matching scope which contains a matching variable.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="qgis.core.QgsExpressionContext.setCachedValue">
-<code class="sig-name descname"><span class="pre">setCachedValue</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsExpressionContext.setCachedValue" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="qgis.core.QgsExpressionContext.setCachedValue">
+<span class="sig-name descname"><span class="pre">setCachedValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsExpressionContext.setCachedValue" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets a value to cache within the expression context. This can be used to cache the results
 of expensive expression sub-calculations, to speed up future evaluations using the same
 expression context.</p>
@@ -2745,8 +2774,8 @@ expression context.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="qgis.core.QgsExpressionContext.setFeature">
-<code class="sig-name descname"><span class="pre">setFeature</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsFeature.html#module-QgsFeature" title="QgsFeature"><span class="pre">QgsFeature</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsExpressionContext.setFeature" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="qgis.core.QgsExpressionContext.setFeature">
+<span class="sig-name descname"><span class="pre">setFeature</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsFeature.html#module-QgsFeature" title="QgsFeature"><span class="pre">QgsFeature</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsExpressionContext.setFeature" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convenience function for setting a feature for the context. The feature
 will be set within the last scope of the context, so will override any
 existing features within the context.</p>
@@ -2762,8 +2791,29 @@ existing features within the context.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="qgis.core.QgsExpressionContext.setFields">
-<code class="sig-name descname"><span class="pre">setFields</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fields</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsFields.html#module-QgsFields" title="QgsFields"><span class="pre">QgsFields</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsExpressionContext.setFields" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="qgis.core.QgsExpressionContext.setFeedback">
+<span class="sig-name descname"><span class="pre">setFeedback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feedback</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsFeedback.html#module-QgsFeedback" title="QgsFeedback"><span class="pre">QgsFeedback</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsExpressionContext.setFeedback" title="Permalink to this definition">¶</a></dt>
+<dd><p>Attach a <code class="docutils literal notranslate"><span class="pre">feedback</span></code> object that can be queried regularly by the expression engine to check
+if expression evaluation should be canceled.</p>
+<p>Ownership of <code class="docutils literal notranslate"><span class="pre">feedback</span></code> is NOT transferred, and the caller must take care that it exists
+for the lifetime of the expression context.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsExpressionContext.feedback" title="qgis.core.QgsExpressionContext.feedback"><code class="xref py py-func docutils literal notranslate"><span class="pre">feedback()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.20.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>feedback</strong> (<a class="reference internal" href="QgsFeedback.html#qgis.core.QgsFeedback" title="qgis.core.QgsFeedback"><em>QgsFeedback</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsExpressionContext.setFields">
+<span class="sig-name descname"><span class="pre">setFields</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fields</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsFields.html#module-QgsFields" title="QgsFields"><span class="pre">QgsFields</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsExpressionContext.setFields" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convenience function for setting a fields for the context. The fields
 will be set within the last scope of the context, so will override any
 existing fields within the context.</p>
@@ -2779,8 +2829,8 @@ existing fields within the context.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="qgis.core.QgsExpressionContext.setHighlightedFunctions">
-<code class="sig-name descname"><span class="pre">setHighlightedFunctions</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsExpressionContext.setHighlightedFunctions" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="qgis.core.QgsExpressionContext.setHighlightedFunctions">
+<span class="sig-name descname"><span class="pre">setHighlightedFunctions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsExpressionContext.setHighlightedFunctions" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets the list of function <code class="docutils literal notranslate"><span class="pre">names</span></code> intended to be highlighted to the user. This
 is used by the expression builder to more prominently display these functions.</p>
 <p>Note that these function names may include standard functions which are not functions
@@ -2804,8 +2854,8 @@ specific to this context, and these standard functions will also be highlighted 
 </dd></dl>
 
 <dl class="py method">
-<dt id="qgis.core.QgsExpressionContext.setHighlightedVariables">
-<code class="sig-name descname"><span class="pre">setHighlightedVariables</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variableNames</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsExpressionContext.setHighlightedVariables" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="qgis.core.QgsExpressionContext.setHighlightedVariables">
+<span class="sig-name descname"><span class="pre">setHighlightedVariables</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variableNames</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsExpressionContext.setHighlightedVariables" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets the list of variable names within the context intended to be highlighted to the user. This
 is used by the expression builder to more prominently display these variables.</p>
 <dl class="field-list simple">
@@ -2824,8 +2874,8 @@ is used by the expression builder to more prominently display these variables.</
 </dd></dl>
 
 <dl class="py method">
-<dt id="qgis.core.QgsExpressionContext.setOriginalValueVariable">
-<code class="sig-name descname"><span class="pre">setOriginalValueVariable</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsExpressionContext.setOriginalValueVariable" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="qgis.core.QgsExpressionContext.setOriginalValueVariable">
+<span class="sig-name descname"><span class="pre">setOriginalValueVariable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsExpressionContext.setOriginalValueVariable" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets the original value variable value for the context.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2839,8 +2889,8 @@ value before any data defined overrides have been applied.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="qgis.core.QgsExpressionContext.variable">
-<code class="sig-name descname"><span class="pre">variable</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Any</span><a class="headerlink" href="#qgis.core.QgsExpressionContext.variable" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="qgis.core.QgsExpressionContext.variable">
+<span class="sig-name descname"><span class="pre">variable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Any</span><a class="headerlink" href="#qgis.core.QgsExpressionContext.variable" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fetches a matching variable from the context. The variable will be fetched
 from the last scope contained within the context which has a matching
 variable set.</p>
@@ -2866,8 +2916,8 @@ variable set.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="qgis.core.QgsExpressionContext.variableNames">
-<code class="sig-name descname"><span class="pre">variableNames</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#qgis.core.QgsExpressionContext.variableNames" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="qgis.core.QgsExpressionContext.variableNames">
+<span class="sig-name descname"><span class="pre">variableNames</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#qgis.core.QgsExpressionContext.variableNames" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a list of variables names set by all scopes in the context.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
@@ -2896,8 +2946,8 @@ variable set.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="qgis.core.QgsExpressionContext.variablesToMap">
-<code class="sig-name descname"><span class="pre">variablesToMap</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#qgis.core.QgsExpressionContext.variablesToMap" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="qgis.core.QgsExpressionContext.variablesToMap">
+<span class="sig-name descname"><span class="pre">variablesToMap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#qgis.core.QgsExpressionContext.variablesToMap" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a map of variable name to value representing all the expression variables
 contained by the context.</p>
 <div class="versionadded">
@@ -2925,7 +2975,7 @@ contained by the context.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 00:19 Jun 19, 2021.
+        Last updated on 02:06 Jun 19, 2021.
       </span>
 
     </p>

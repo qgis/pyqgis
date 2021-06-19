@@ -13,6 +13,8 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
 
   
   
@@ -33,6 +35,7 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
@@ -849,6 +852,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsProxyFeatureSink.html">Class: QgsProxyFeatureSink</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProxyProgressTask.html">Class: QgsProxyProgressTask</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsPythonRunner.html">Class: QgsPythonRunner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsQtLocationConnection.html">Class: QgsQtLocationConnection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsQuadrilateral.html">Class: QgsQuadrilateral</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsQueryResultModel.html">Class: QgsQueryResultModel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsRandomColorRamp.html">Class: QgsRandomColorRamp</a></li>
@@ -1969,8 +1973,8 @@
   <div class="section" id="module-QgsPathResolver">
 <span id="class-qgspathresolver"></span><h1>Class: QgsPathResolver<a class="headerlink" href="#module-QgsPathResolver" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
-<dt id="qgis.core.QgsPathResolver">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">qgis.core.</span></code><code class="sig-name descname"><span class="pre">QgsPathResolver</span></code><a class="headerlink" href="#qgis.core.QgsPathResolver" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="qgis.core.QgsPathResolver">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">qgis.core.</span></span><span class="sig-name descname"><span class="pre">QgsPathResolver</span></span><a class="headerlink" href="#qgis.core.QgsPathResolver" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sip.wrapper</span></code></p>
 <p>Resolves relative paths into absolute paths and vice versa. Used for writing</p>
 <div class="versionadded">
@@ -2001,8 +2005,14 @@ Initialize path resolver with a base filename. Null filename means no conversion
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsPathResolver.removePathPreprocessor" title="qgis.core.QgsPathResolver.removePathPreprocessor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removePathPreprocessor</span></code></a></p></td>
 <td><p>Removes the custom pre-processor function with matching <code class="docutils literal notranslate"><span class="pre">id</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsPathResolver.setPathPreprocessor" title="qgis.core.QgsPathResolver.setPathPreprocessor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setPathPreprocessor</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsPathResolver.removePathWriter" title="qgis.core.QgsPathResolver.removePathWriter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removePathWriter</span></code></a></p></td>
+<td><p>Removes the custom writer function with matching <code class="docutils literal notranslate"><span class="pre">id</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsPathResolver.setPathPreprocessor" title="qgis.core.QgsPathResolver.setPathPreprocessor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setPathPreprocessor</span></code></a></p></td>
 <td><p>Sets a path pre-processor function, which allows for manipulation of paths and data sources prior to resolving them to file references or layer sources.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsPathResolver.setPathWriter" title="qgis.core.QgsPathResolver.setPathWriter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setPathWriter</span></code></a></p></td>
+<td><p>Sets a path writer function, which allows for manipulation of paths and data sources prior to writing them to the project file.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsPathResolver.writePath" title="qgis.core.QgsPathResolver.writePath"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writePath</span></code></a></p></td>
 <td><p>Prepare a filename to save it to the project file.</p></td>
@@ -2027,8 +2037,8 @@ Initialize path resolver with a base filename. Null filename means no conversion
 </table>
 </div></blockquote>
 <dl class="py method">
-<dt id="qgis.core.QgsPathResolver.readPath">
-<code class="sig-name descname"><span class="pre">readPath</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">str</span><a class="headerlink" href="#qgis.core.QgsPathResolver.readPath" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="qgis.core.QgsPathResolver.readPath">
+<span class="sig-name descname"><span class="pre">readPath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">str</span><a class="headerlink" href="#qgis.core.QgsPathResolver.readPath" title="Permalink to this definition">¶</a></dt>
 <dd><p>Turn filename read from the project file to an absolute path</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2041,8 +2051,8 @@ Initialize path resolver with a base filename. Null filename means no conversion
 </dd></dl>
 
 <dl class="py method">
-<dt id="qgis.core.QgsPathResolver.removePathPreprocessor">
-<code class="sig-name descname"><span class="pre">removePathPreprocessor</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsPathResolver.removePathPreprocessor" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="qgis.core.QgsPathResolver.removePathPreprocessor">
+<span class="sig-name descname"><span class="pre">removePathPreprocessor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsPathResolver.removePathPreprocessor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Removes the custom pre-processor function with matching <code class="docutils literal notranslate"><span class="pre">id</span></code>.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">id</span></code> must correspond to a pre-processor previously added via a call to <a class="reference internal" href="#qgis.core.QgsPathResolver.setPathPreprocessor" title="qgis.core.QgsPathResolver.setPathPreprocessor"><code class="xref py py-func docutils literal notranslate"><span class="pre">setPathPreprocessor()</span></code></a>.</p>
 <p>:raises <cite>KeyError</cite> if no processor with the specified <code class="docutils literal notranslate"><span class="pre">id</span></code> exists.</p>
@@ -2061,17 +2071,35 @@ Initialize path resolver with a base filename. Null filename means no conversion
 </dd></dl>
 
 <dl class="py method">
-<dt id="qgis.core.QgsPathResolver.setPathPreprocessor">
-<code class="sig-name descname"><span class="pre">setPathPreprocessor</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">Callable[...,</span> <span class="pre">None]</span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">str</span><a class="headerlink" href="#qgis.core.QgsPathResolver.setPathPreprocessor" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="qgis.core.QgsPathResolver.removePathWriter">
+<span class="sig-name descname"><span class="pre">removePathWriter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsPathResolver.removePathWriter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes the custom writer function with matching <code class="docutils literal notranslate"><span class="pre">id</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">id</span></code> must correspond to a writer previously added via a call to <a class="reference internal" href="#qgis.core.QgsPathResolver.setPathWriter" title="qgis.core.QgsPathResolver.setPathWriter"><code class="xref py py-func docutils literal notranslate"><span class="pre">setPathWriter()</span></code></a>.
+An KeyError will be raised if no processor with the specified <code class="docutils literal notranslate"><span class="pre">id</span></code> exists.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsPathResolver.setPathWriter" title="qgis.core.QgsPathResolver.setPathWriter"><code class="xref py py-func docutils literal notranslate"><span class="pre">setPathWriter()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.22.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>str</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsPathResolver.setPathPreprocessor">
+<span class="sig-name descname"><span class="pre">setPathPreprocessor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">Callable[...,</span> <span class="pre">None]</span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">str</span><a class="headerlink" href="#qgis.core.QgsPathResolver.setPathPreprocessor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets a path pre-processor function, which allows for manipulation of paths and data sources prior
 to resolving them to file references or layer sources.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">processor</span></code> function must accept a single string argument (representing the original file path
 or data source), and return a processed version of this path.</p>
 <p>The path pre-processor function is called before any bad layer handler.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Setting a new <code class="docutils literal notranslate"><span class="pre">processor</span></code> replaces any existing processor.</p>
-</div>
+<p>If multiple preprocessors are set, they will be called in sequence based on the order in which
+they were originally set.</p>
 <p>Example - replace an outdated folder path with a new one:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">my_processor</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
    <span class="k">return</span> <span class="n">path</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;c:/Users/ClintBarton/Documents/Projects&#39;</span><span class="p">,</span> <span class="s1">&#39;x:/Projects/&#39;</span><span class="p">)</span>
@@ -2106,8 +2134,35 @@ or data source), and return a processed version of this path.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="qgis.core.QgsPathResolver.writePath">
-<code class="sig-name descname"><span class="pre">writePath</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">str</span><a class="headerlink" href="#qgis.core.QgsPathResolver.writePath" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="qgis.core.QgsPathResolver.setPathWriter">
+<span class="sig-name descname"><span class="pre">setPathWriter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">Callable[...,</span> <span class="pre">None]</span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">str</span><a class="headerlink" href="#qgis.core.QgsPathResolver.setPathWriter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets a path writer function, which allows for manipulation of paths and data sources prior
+to writing them to the project file.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">writer</span></code> function must accept a single string argument (representing the original file path
+or data source), and return a processed version of this path.</p>
+<p>The path writer function is called before any bad layer handler.</p>
+<p>If multiple writers are set, they will be called in sequence based on the order in which
+they were originally set.</p>
+<p>Example - replace path with a variable:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">my_processor</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+   <span class="k">return</span> <span class="n">path</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;c:/Users/ClintBarton/Documents/Projects&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+<span class="n">QgsPathResolver</span><span class="o">.</span><span class="n">setPathWriter</span><span class="p">(</span><span class="n">my_processor</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.22.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsPathResolver.writePath">
+<span class="sig-name descname"><span class="pre">writePath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">str</span><a class="headerlink" href="#qgis.core.QgsPathResolver.writePath" title="Permalink to this definition">¶</a></dt>
 <dd><p>Prepare a filename to save it to the project file.
 Creates an absolute or relative path according to the project settings.
 Paths written to the project file should be prepared with this method.</p>
@@ -2136,7 +2191,7 @@ Paths written to the project file should be prepared with this method.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 00:19 Jun 19, 2021.
+        Last updated on 02:06 Jun 19, 2021.
       </span>
 
     </p>
