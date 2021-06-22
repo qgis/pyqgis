@@ -849,6 +849,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsProviderConnectionModel.html">Class: QgsProviderConnectionModel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProviderMetadata.html">Class: QgsProviderMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProviderRegistry.html">Class: QgsProviderRegistry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsProviderSublayerDetails.html">Class: QgsProviderSublayerDetails</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProxyFeatureSink.html">Class: QgsProxyFeatureSink</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProxyProgressTask.html">Class: QgsProxyProgressTask</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsPythonRunner.html">Class: QgsPythonRunner</a></li>
@@ -2044,7 +2045,7 @@
 <td><p>Returns all field names referenced by the configuration (e.g.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsPalLayerSettings.registerFeature" title="qgis.core.QgsPalLayerSettings.registerFeature"><code class="xref py py-obj docutils literal notranslate"><span class="pre">registerFeature</span></code></a></p></td>
-<td><p>Register a feature for labeling.</p></td>
+<td><p>Registers a feature for labeling.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsPalLayerSettings.setCallout" title="qgis.core.QgsPalLayerSettings.setCallout"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setCallout</span></code></a></p></td>
 <td><p>Sets the label <code class="docutils literal notranslate"><span class="pre">callout</span></code> renderer, responsible for drawing label callouts.</p></td>
@@ -4131,18 +4132,21 @@ names which the labeling requires for the rendering.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsPalLayerSettings.registerFeature">
 <span class="sig-name descname"><span class="pre">registerFeature</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsFeature.html#module-QgsFeature" title="QgsFeature"><span class="pre">QgsFeature</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsRenderContext.html#module-QgsRenderContext" title="QgsRenderContext"><span class="pre">QgsRenderContext</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsPalLayerSettings.registerFeature" title="Permalink to this definition">¶</a></dt>
-<dd><p>Register a feature for labeling.</p>
+<dd><p>Registers a feature for labeling.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>f</strong> (<a class="reference internal" href="QgsFeature.html#qgis.core.QgsFeature" title="qgis.core.QgsFeature"><em>QgsFeature</em></a>) – feature to label</p></li>
 <li><p><strong>context</strong> (<a class="reference internal" href="QgsRenderContext.html#qgis.core.QgsRenderContext" title="qgis.core.QgsRenderContext"><em>QgsRenderContext</em></a>) – render context. The <a class="reference internal" href="QgsExpressionContext.html#module-QgsExpressionContext" title="QgsExpressionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsExpressionContext</span></code></a> contained within the render context
 must have already had the feature and fields sets prior to calling this method.</p></li>
-<li><p><strong>labelFeature</strong> – if using <code class="xref py py-class docutils literal notranslate"><span class="pre">QgsLabelingEngine</span></code>, this will receive the label feature. Not available
-in Python bindings.</p></li>
 </ul>
 </dd>
 </dl>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This method is designed for use by PyQGIS clients only. C++ code should use the
+variant with additional arguments.</p>
+</div>
 </dd></dl>
 
 <dl class="py attribute">
@@ -4497,7 +4501,7 @@ followed by a call to <a class="reference internal" href="#qgis.core.QgsPalLayer
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 00:21 Jun 22, 2021.
+        Last updated on 02:18 Jun 22, 2021.
       </span>
 
     </p>
