@@ -627,6 +627,8 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsMeshDatasetSourceInterface.html">Class: QgsMeshDatasetSourceInterface</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsMeshDatasetValue.html">Class: QgsMeshDatasetValue</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsMeshDriverMetadata.html">Class: QgsMeshDriverMetadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsMeshEditingError.html">Class: QgsMeshEditingError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsMeshEditor.html">Class: QgsMeshEditor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsMeshElevationAveragingMethod.html">Class: QgsMeshElevationAveragingMethod</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsMeshLayer.html">Class: QgsMeshLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsMeshLayerTemporalProperties.html">Class: QgsMeshLayerTemporalProperties</a></li>
@@ -2034,7 +2036,7 @@ Copy constructor</p>
 <td><p>Removes any geometry associated with the feature.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsFeature.deleteAttribute" title="qgis.core.QgsFeature.deleteAttribute"><code class="xref py py-obj docutils literal notranslate"><span class="pre">deleteAttribute</span></code></a></p></td>
-<td><p>Deletes an attribute and its value.</p></td>
+<td><p>Clear’s an attribute’s value by its index.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsFeature.embeddedSymbol" title="qgis.core.QgsFeature.embeddedSymbol"><code class="xref py py-obj docutils literal notranslate"><span class="pre">embeddedSymbol</span></code></a></p></td>
 <td><p>Returns the feature’s embedded symbology, or <code class="docutils literal notranslate"><span class="pre">None</span></code> if the feature has no embedded symbol.</p></td>
@@ -2132,6 +2134,19 @@ bound estimation.</p>
 <span class="sig-name descname"><span class="pre">attribute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">object</span><a class="headerlink" href="#qgis.core.QgsFeature.attribute" title="Permalink to this definition">¶</a></dt>
 <dd><p>Lookup attribute value by attribute <code class="docutils literal notranslate"><span class="pre">name</span></code>.</p>
 <p>Field map must be associated using <a class="reference internal" href="#qgis.core.QgsFeature.setFields" title="qgis.core.QgsFeature.setFields"><code class="xref py py-func docutils literal notranslate"><span class="pre">setFields()</span></code></a> before this method can be used.</p>
+<p>Alternatively, in Python it is possible to directly retrieve a field’s value via the field’s name:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fields</span> <span class="o">=</span> <span class="n">QgsFields</span><span class="p">()</span>
+<span class="n">fields</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">QgsField</span><span class="p">(</span><span class="s1">&#39;my_id&#39;</span><span class="p">,</span> <span class="n">QVariant</span><span class="o">.</span><span class="n">Int</span><span class="p">))</span>
+<span class="n">fields</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">QgsField</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="n">QVariant</span><span class="o">.</span><span class="n">String</span><span class="p">))</span>
+<span class="n">feature</span> <span class="o">=</span> <span class="n">QgsFeature</span><span class="p">(</span><span class="n">fields</span><span class="p">)</span>
+<span class="n">feature</span><span class="o">.</span><span class="n">setAttributes</span><span class="p">([</span><span class="mi">11</span><span class="p">,</span> <span class="s1">&#39;my feature&#39;</span><span class="p">])</span>
+
+<span class="c1"># print the &quot;name&quot; field value</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">feature</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])</span>
+<span class="c1"># print the &quot;my_id&quot; field value</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">feature</span><span class="p">[</span><span class="s1">&#39;my_id&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – The name of the attribute to get</p>
@@ -2139,19 +2154,30 @@ bound estimation.</p>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>The value of the attribute</p>
 </dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>KeyError</strong> – if the field is not found</p>
+</dd>
 </dl>
-<p>:raises <cite>KeyError</cite> if the field is not found</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Alternatively in Python: &#64;code feature[name] &#64;endcode</p>
-</div>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsFeature.setFields" title="qgis.core.QgsFeature.setFields"><code class="xref py py-func docutils literal notranslate"><span class="pre">setFields()</span></code></a></p>
 </div>
 <p>attribute(self, fieldIdx: int) -&gt; object
 Lookup attribute value from its index.</p>
-<p>Field map must be associated using <a class="reference internal" href="#qgis.core.QgsFeature.setFields" title="qgis.core.QgsFeature.setFields"><code class="xref py py-func docutils literal notranslate"><span class="pre">setFields()</span></code></a> before this method can be used.</p>
+<p>Alternatively, in Python it is possible to directly retrieve a field’s value via its index:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">feature</span> <span class="o">=</span> <span class="n">QgsFeature</span><span class="p">()</span>
+<span class="n">feature</span><span class="o">.</span><span class="n">setAttributes</span><span class="p">([</span><span class="mi">11</span><span class="p">,</span> <span class="s1">&#39;my feature&#39;</span><span class="p">,</span> <span class="mf">55.5</span><span class="p">])</span>
+
+<span class="c1"># will print 11</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">feature</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="c1"># will print &#39;my feature&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">feature</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="c1"># will print 55.5</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">feature</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+</pre></div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>fieldIdx</strong> – The index of the attribute to get</p>
@@ -2162,12 +2188,10 @@ Lookup attribute value from its index.</p>
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>The value of the attribute</p>
 </dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>KeyError</strong> – if the field is not found</p>
+</dd>
 </dl>
-<p>:raises <cite>KeyError</cite> if the field is not found</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Alternatively in Python: &#64;code feature[fieldIdx] &#64;endcode</p>
-</div>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsFeature.setFields" title="qgis.core.QgsFeature.setFields"><code class="xref py py-func docutils literal notranslate"><span class="pre">setFields()</span></code></a></p>
@@ -2192,13 +2216,17 @@ Lookup attribute value from its index.</p>
 <dt class="sig sig-object py" id="qgis.core.QgsFeature.attributes">
 <span class="sig-name descname"><span class="pre">attributes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">object</span><a class="headerlink" href="#qgis.core.QgsFeature.attributes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the feature’s attributes.</p>
+<p>Alternatively, in Python it is possible to directly iterate over a feature in order to retrieve
+its attributes:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">feature</span> <span class="o">=</span> <span class="n">QgsFeature</span><span class="p">()</span>
+<span class="n">feature</span><span class="o">.</span><span class="n">setAttributes</span><span class="p">([</span><span class="mi">11</span><span class="p">,</span> <span class="s1">&#39;string value&#39;</span><span class="p">,</span> <span class="mf">55.5</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">attr</span> <span class="ow">in</span> <span class="n">feature</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">attr</span><span class="p">)</span>
+</pre></div>
+</div>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsFeature.setAttributes" title="qgis.core.QgsFeature.setAttributes"><code class="xref py py-func docutils literal notranslate"><span class="pre">setAttributes()</span></code></a></p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Alternatively in Python: iterate feature, eg. &#64;code [attr for attr in feature] &#64;endcode</p>
 </div>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 2.9.</span></p>
@@ -2230,34 +2258,64 @@ Lookup attribute value from its index.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsFeature.deleteAttribute">
 <span class="sig-name descname"><span class="pre">deleteAttribute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsFeature.deleteAttribute" title="Permalink to this definition">¶</a></dt>
-<dd><p>Deletes an attribute and its value.</p>
+<dd><p>Clear’s an attribute’s value by its index.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>field</strong> (<em>int</em>) – the index of the field</p>
 </dd>
 </dl>
-<p>:raises <cite>KeyError</cite> if the field is not found</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Alternatively in Python: &#64;code del feature[field] &#64;endcode</p>
+<p>Alternatively, in Python it is possible to directly <cite>del</cite> an attribute via its index:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">feature</span> <span class="o">=</span> <span class="n">QgsFeature</span><span class="p">()</span>
+<span class="n">feature</span><span class="o">.</span><span class="n">setAttributes</span><span class="p">([</span><span class="mi">11</span><span class="p">,</span> <span class="s1">&#39;my feature&#39;</span><span class="p">,</span> <span class="mf">55.5</span><span class="p">])</span>
+
+<span class="c1"># will print [11, &#39;my feature&#39;, 55.5]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">feature</span><span class="o">.</span><span class="n">attributes</span><span class="p">())</span>
+
+<span class="c1"># clear the second attribute</span>
+<span class="k">del</span> <span class="n">feature</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># will now print [11, NONE]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">feature</span><span class="o">.</span><span class="n">attributes</span><span class="p">())</span>
+</pre></div>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>KeyError</strong> – if the field is not found</p>
+</dd>
+</dl>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsFeature.setAttribute" title="qgis.core.QgsFeature.setAttribute"><code class="xref py py-func docutils literal notranslate"><span class="pre">setAttribute()</span></code></a></p>
 </div>
 <p>deleteAttribute(self, name: str) -&gt; bool
-Removes an attribute value by field <code class="docutils literal notranslate"><span class="pre">name</span></code>.</p>
-<p>Field map must be associated using setFields()before this method can be used.</p>
+Clear’s an attribute’s value by its field <code class="docutils literal notranslate"><span class="pre">name</span></code>.</p>
+<p>Field map must be associated using <a class="reference internal" href="#qgis.core.QgsFeature.setFields" title="qgis.core.QgsFeature.setFields"><code class="xref py py-func docutils literal notranslate"><span class="pre">setFields()</span></code></a> before this method can be used.</p>
+<p>Alternatively, in Python it is possible to directly <cite>del</cite> an attribute via its name:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fields</span> <span class="o">=</span> <span class="n">QgsFields</span><span class="p">()</span>
+<span class="n">fields</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">QgsField</span><span class="p">(</span><span class="s1">&#39;my_id&#39;</span><span class="p">,</span> <span class="n">QVariant</span><span class="o">.</span><span class="n">Int</span><span class="p">))</span>
+<span class="n">fields</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">QgsField</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="n">QVariant</span><span class="o">.</span><span class="n">String</span><span class="p">))</span>
+
+<span class="n">feature</span> <span class="o">=</span> <span class="n">QgsFeature</span><span class="p">(</span><span class="n">fields</span><span class="p">)</span>
+<span class="n">feature</span><span class="o">.</span><span class="n">setAttributes</span><span class="p">([</span><span class="mi">11</span><span class="p">,</span> <span class="s1">&#39;my feature&#39;</span><span class="p">])</span>
+
+<span class="c1"># will print [11, &#39;my feature&#39;]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">feature</span><span class="o">.</span><span class="n">attributes</span><span class="p">())</span>
+
+<span class="c1"># clear the &#39;name&#39; attribute</span>
+<span class="k">del</span> <span class="n">feature</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
+
+<span class="c1"># will now print [11, NULL]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">feature</span><span class="o">.</span><span class="n">attributes</span><span class="p">())</span>
+</pre></div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>name</strong> – The name of the field to delete</p>
+<dd class="field-odd"><p><strong>name</strong> – The name of the field to clear</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>KeyError</strong> – if attribute name could not be converted to index</p>
 </dd>
 </dl>
-<p>:raises <cite>KeyError</cite> if attribute name could not be converted to index</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Alternatively in Python: &#64;code del feature[name] &#64;endcode</p>
-</div>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsFeature.setFields" title="qgis.core.QgsFeature.setFields"><code class="xref py py-func docutils literal notranslate"><span class="pre">setFields()</span></code></a></p>
@@ -2450,6 +2508,18 @@ end of the existing attributes.</p>
 <span class="sig-name descname"><span class="pre">setAttribute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attr</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">bool</span><a class="headerlink" href="#qgis.core.QgsFeature.setAttribute" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets an attribute’s value by field index.</p>
 <p>If the attribute was successfully set then the feature will be automatically marked as valid (see <a class="reference internal" href="#qgis.core.QgsFeature.isValid" title="qgis.core.QgsFeature.isValid"><code class="xref py py-func docutils literal notranslate"><span class="pre">isValid()</span></code></a>).</p>
+<p>Alternatively, in Python it is possible to directly set a field’s value via the field’s index:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fields</span> <span class="o">=</span> <span class="n">QgsFields</span><span class="p">()</span>
+<span class="n">fields</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">QgsField</span><span class="p">(</span><span class="s1">&#39;my_id&#39;</span><span class="p">,</span> <span class="n">QVariant</span><span class="o">.</span><span class="n">Int</span><span class="p">))</span>
+<span class="n">fields</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">QgsField</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="n">QVariant</span><span class="o">.</span><span class="n">String</span><span class="p">))</span>
+<span class="n">feature</span> <span class="o">=</span> <span class="n">QgsFeature</span><span class="p">(</span><span class="n">fields</span><span class="p">)</span>
+
+<span class="c1"># set the &quot;name&quot; field value</span>
+<span class="n">feature</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;my name&quot;</span>
+<span class="c1"># set the &quot;my_id&quot; field value</span>
+<span class="n">feature</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">55</span>
+</pre></div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -2457,12 +2527,10 @@ end of the existing attributes.</p>
 <li><p><strong>attr</strong> (<em>Any</em>) – the value of the attribute</p></li>
 </ul>
 </dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>KeyError</strong> – if the field index does not exist</p>
+</dd>
 </dl>
-<p>:raises <cite>KeyError</cite> if the field index does not exist</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Alternatively in Python: &#64;code feature[field] = attr &#64;endcode</p>
-</div>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsFeature.setAttributes" title="qgis.core.QgsFeature.setAttributes"><code class="xref py py-func docutils literal notranslate"><span class="pre">setAttributes()</span></code></a></p>
@@ -2472,6 +2540,18 @@ Insert a value into attribute, by field <code class="docutils literal notranslat
 <p>Returns <code class="docutils literal notranslate"><span class="pre">False</span></code> if field <code class="docutils literal notranslate"><span class="pre">name</span></code> could not be matched.</p>
 <p>Field map must be associated using <a class="reference internal" href="#qgis.core.QgsFeature.setFields" title="qgis.core.QgsFeature.setFields"><code class="xref py py-func docutils literal notranslate"><span class="pre">setFields()</span></code></a> before this method can be used.</p>
 <p>Calling this method will automatically set the feature as valid (see <a class="reference internal" href="#qgis.core.QgsFeature.isValid" title="qgis.core.QgsFeature.isValid"><code class="xref py py-func docutils literal notranslate"><span class="pre">isValid()</span></code></a>).</p>
+<p>Alternatively, in Python it is possible to directly set a field’s value via the field’s name:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fields</span> <span class="o">=</span> <span class="n">QgsFields</span><span class="p">()</span>
+<span class="n">fields</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">QgsField</span><span class="p">(</span><span class="s1">&#39;my_id&#39;</span><span class="p">,</span> <span class="n">QVariant</span><span class="o">.</span><span class="n">Int</span><span class="p">))</span>
+<span class="n">fields</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">QgsField</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="n">QVariant</span><span class="o">.</span><span class="n">String</span><span class="p">))</span>
+<span class="n">feature</span> <span class="o">=</span> <span class="n">QgsFeature</span><span class="p">(</span><span class="n">fields</span><span class="p">)</span>
+
+<span class="c1"># set the &quot;name&quot; field value</span>
+<span class="n">feature</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;my name&quot;</span>
+<span class="c1"># set the &quot;my_id&quot; field value</span>
+<span class="n">feature</span><span class="p">[</span><span class="s1">&#39;my_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">55</span>
+</pre></div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -2479,12 +2559,10 @@ Insert a value into attribute, by field <code class="docutils literal notranslat
 <li><p><strong>value</strong> – The value to set</p></li>
 </ul>
 </dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>KeyError</strong> – if the attribute name could not be converted to an index</p>
+</dd>
 </dl>
-<p>:raises <cite>KeyError</cite> if the attribute name could not be converted to an index</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Alternatively in Python: &#64;code feature[name] = attr &#64;endcode</p>
-</div>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsFeature.setFields" title="qgis.core.QgsFeature.setFields"><code class="xref py py-func docutils literal notranslate"><span class="pre">setFields()</span></code></a></p>
@@ -2659,7 +2737,7 @@ Set the feature’s <code class="docutils literal notranslate"><span class="pre"
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 00:20 Jun 26, 2021.
+        Last updated on 02:09 Jun 26, 2021.
       </span>
 
     </p>

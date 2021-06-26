@@ -627,6 +627,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsMeshDatasetSourceInterface.html">Class: QgsMeshDatasetSourceInterface</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsMeshDatasetValue.html">Class: QgsMeshDatasetValue</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsMeshDriverMetadata.html">Class: QgsMeshDriverMetadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../core/QgsMeshEditingError.html">Class: QgsMeshEditingError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../core/QgsMeshEditor.html">Class: QgsMeshEditor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsMeshElevationAveragingMethod.html">Class: QgsMeshElevationAveragingMethod</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsMeshLayer.html">Class: QgsMeshLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsMeshLayerTemporalProperties.html">Class: QgsMeshLayerTemporalProperties</a></li>
@@ -2146,13 +2148,15 @@ returns an empty string if there are not matches.</p>
 <p>The path file extension is examined first and checked for known mime types,
 the “Accept” HTTP header is examined next.
 Fallback to the default content type of the handler if none of the above matches.</p>
-<p>:raises <cite>QgsServerApiBadRequestError</cite> if the content type of the request is not compatible with the handler (<code class="xref py py-func docutils literal notranslate"><span class="pre">contentTypes()</span></code> member)</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>request</strong> (<a class="reference internal" href="QgsServerRequest.html#qgis.server.QgsServerRequest" title="qgis.server.QgsServerRequest"><em>QgsServerRequest</em></a>) – </p>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>QgsServerApiBadRequestError</strong> – if the content type of the request is not compatible with the handler (<code class="xref py py-func docutils literal notranslate"><span class="pre">contentTypes()</span></code> member)</p>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference internal" href="QgsServerOgcApi.html#qgis.server.QgsServerOgcApi.ContentType" title="qgis.server.QgsServerOgcApi.ContentType">QgsServerOgcApi.ContentType</a></p>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>request</strong> (<a class="reference internal" href="QgsServerRequest.html#qgis.server.QgsServerRequest" title="qgis.server.QgsServerRequest"><em>QgsServerRequest</em></a>) – </p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsServerOgcApi.html#qgis.server.QgsServerOgcApi.ContentType" title="qgis.server.QgsServerOgcApi.ContentType">QgsServerOgcApi.ContentType</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -2188,10 +2192,12 @@ The default implementation returns the first content type returned by
 <dd><p>Handles the request within its <code class="docutils literal notranslate"><span class="pre">context</span></code></p>
 <p>Subclasses must implement this methods, and call <code class="xref py py-func docutils literal notranslate"><span class="pre">validate()</span></code> to
 extract validated parameters from the request.</p>
-<p>:raises <cite>QgsServerApiBadRequestError</cite> if the method encounters any error</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>context</strong> (<a class="reference internal" href="QgsServerApiContext.html#qgis.server.QgsServerApiContext" title="qgis.server.QgsServerApiContext"><em>QgsServerApiContext</em></a>) – </p>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>QgsServerApiBadRequestError</strong> – if the method encounters any error</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>context</strong> (<a class="reference internal" href="QgsServerApiContext.html#qgis.server.QgsServerApiContext" title="qgis.server.QgsServerApiContext"><em>QgsServerApiContext</em></a>) – </p>
 </dd>
 </dl>
 </dd></dl>
@@ -2218,16 +2224,18 @@ extract validated parameters from the request.</p>
 <dt class="sig sig-object py" id="qgis.server.QgsServerOgcApiHandler.layerFromCollectionId">
 <span class="sig-name descname"><span class="pre">layerFromCollectionId</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsServerApiContext.html#module-QgsServerApiContext" title="QgsServerApiContext"><span class="pre">QgsServerApiContext</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">collectionId</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="../core/QgsVectorLayer.html#module-QgsVectorLayer" title="QgsVectorLayer"><span class="pre">QgsVectorLayer</span></a><a class="headerlink" href="#qgis.server.QgsServerOgcApiHandler.layerFromCollectionId" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a vector layer from the <code class="docutils literal notranslate"><span class="pre">collectionId</span></code> in the given <code class="docutils literal notranslate"><span class="pre">context</span></code>.</p>
-<p>:raises <cite>QgsServerApiNotFoundError</cite> if the layer could not be found.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>QgsServerApiNotFoundError</strong> – if the layer could not be found.</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
 <li><p><strong>context</strong> (<a class="reference internal" href="QgsServerApiContext.html#qgis.server.QgsServerApiContext" title="qgis.server.QgsServerApiContext"><em>QgsServerApiContext</em></a>) – </p></li>
 <li><p><strong>collectionId</strong> (<em>str</em>) – </p></li>
 </ul>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference internal" href="../core/QgsVectorLayer.html#qgis.core.QgsVectorLayer" title="qgis.core.QgsVectorLayer">QgsVectorLayer</a></p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="../core/QgsVectorLayer.html#qgis.core.QgsVectorLayer" title="qgis.core.QgsVectorLayer">QgsVectorLayer</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -2409,10 +2417,12 @@ and the query string parameters.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.server.QgsServerOgcApiHandler.parameters" title="qgis.server.QgsServerOgcApiHandler.parameters"><code class="xref py py-func docutils literal notranslate"><span class="pre">parameters()</span></code></a></p>
 </div>
-<p>:raises <cite>QgsServerApiBadRequestError</cite> if validation fails</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>context</strong> (<a class="reference internal" href="QgsServerApiContext.html#qgis.server.QgsServerApiContext" title="qgis.server.QgsServerApiContext"><em>QgsServerApiContext</em></a>) – </p>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>QgsServerApiBadRequestError</strong> – if validation fails</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>context</strong> (<a class="reference internal" href="QgsServerApiContext.html#qgis.server.QgsServerApiContext" title="qgis.server.QgsServerApiContext"><em>QgsServerApiContext</em></a>) – </p>
 </dd>
 </dl>
 </dd></dl>
@@ -2462,7 +2472,7 @@ static(“/style/black.css”) will return something like “/wfs3/static/style/
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 00:20 Jun 26, 2021.
+        Last updated on 02:09 Jun 26, 2021.
       </span>
 
     </p>
