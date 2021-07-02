@@ -852,6 +852,8 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsProviderMetadata.html">Class: QgsProviderMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProviderRegistry.html">Class: QgsProviderRegistry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProviderSublayerDetails.html">Class: QgsProviderSublayerDetails</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsProviderSublayerTask.html">Class: QgsProviderSublayerTask</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsProviderUtils.html">Class: QgsProviderUtils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProxyFeatureSink.html">Class: QgsProxyFeatureSink</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProxyProgressTask.html">Class: QgsProxyProgressTask</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsPythonRunner.html">Class: QgsPythonRunner</a></li>
@@ -2072,8 +2074,14 @@ parameters used by the data provider as url query items.</p></li>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.connectNotify" title="qgis.core.QgsMeshLayer.connectNotify"><code class="xref py py-obj docutils literal notranslate"><span class="pre">connectNotify</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.commitFrameEditing" title="qgis.core.QgsMeshLayer.commitFrameEditing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">commitFrameEditing</span></code></a></p></td>
+<td><p>Commits edition of the mesh frame, Rebuilds the triangular mesh and its spatial index with <code class="docutils literal notranslate"><span class="pre">transform</span></code>, Continue editing with the same mesh editor if <code class="docutils literal notranslate"><span class="pre">continueEditing</span></code> is True</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.connectNotify" title="qgis.core.QgsMeshLayer.connectNotify"><code class="xref py py-obj docutils literal notranslate"><span class="pre">connectNotify</span></code></a></p></td>
 <td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.contains" title="qgis.core.QgsMeshLayer.contains"><code class="xref py py-obj docutils literal notranslate"><span class="pre">contains</span></code></a></p></td>
+<td><p>Returns whether the mesh contains at mesh elements of given type</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.createMapRenderer" title="qgis.core.QgsMeshLayer.createMapRenderer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createMapRenderer</span></code></a></p></td>
 <td><p><dl class="field-list simple">
@@ -2189,8 +2197,19 @@ parameters used by the data provider as url query items.</p></li>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.invalidateWgs84Extent" title="qgis.core.QgsMeshLayer.invalidateWgs84Extent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">invalidateWgs84Extent</span></code></a></p></td>
 <td><p>Invalidates the WGS84 extent.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.isFaceActive" title="qgis.core.QgsMeshLayer.isFaceActive"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isFaceActive</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.isEditable" title="qgis.core.QgsMeshLayer.isEditable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isEditable</span></code></a></p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">rtype</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.isFaceActive" title="qgis.core.QgsMeshLayer.isFaceActive"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isFaceActive</span></code></a></p></td>
 <td><p>Returns N vector/scalar values from the face index from the dataset for 3d stacked meshes</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.isModified" title="qgis.core.QgsMeshLayer.isModified"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isModified</span></code></a></p></td>
+<td><p>Returns whether the mesh frame has been modified since the last save</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.isSignalConnected" title="qgis.core.QgsMeshLayer.isSignalConnected"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isSignalConnected</span></code></a></p></td>
 <td><p></p></td>
@@ -2201,10 +2220,10 @@ parameters used by the data provider as url query items.</p></li>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.meshEditor" title="qgis.core.QgsMeshLayer.meshEditor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">meshEditor</span></code></a></p></td>
 <td><p>Returns a pointer to the mesh editor own by the mesh layer</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.meshFacesCount" title="qgis.core.QgsMeshLayer.meshFacesCount"><code class="xref py py-obj docutils literal notranslate"><span class="pre">meshFacesCount</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.meshFaceCount" title="qgis.core.QgsMeshLayer.meshFaceCount"><code class="xref py py-obj docutils literal notranslate"><span class="pre">meshFaceCount</span></code></a></p></td>
 <td><p>Returns the faces count of the mesh frame</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.meshVerticesCount" title="qgis.core.QgsMeshLayer.meshVerticesCount"><code class="xref py py-obj docutils literal notranslate"><span class="pre">meshVerticesCount</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.meshVertexCount" title="qgis.core.QgsMeshLayer.meshVertexCount"><code class="xref py py-obj docutils literal notranslate"><span class="pre">meshVertexCount</span></code></a></p></td>
 <td><p>Returns the vertices count of the mesh frame</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.providerType" title="qgis.core.QgsMeshLayer.providerType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">providerType</span></code></a></p></td>
@@ -2252,64 +2271,75 @@ parameters used by the data provider as url query items.</p></li>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.resetDatasetGroupTreeItem" title="qgis.core.QgsMeshLayer.resetDatasetGroupTreeItem"><code class="xref py py-obj docutils literal notranslate"><span class="pre">resetDatasetGroupTreeItem</span></code></a></p></td>
 <td><p>Reset the dataset group tree item to default from provider</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.saveDataset" title="qgis.core.QgsMeshLayer.saveDataset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">saveDataset</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.rollBackFrameEditing" title="qgis.core.QgsMeshLayer.rollBackFrameEditing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rollBackFrameEditing</span></code></a></p></td>
+<td><p>Rolls Back edition of the mesh frame.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.saveDataset" title="qgis.core.QgsMeshLayer.saveDataset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">saveDataset</span></code></a></p></td>
 <td><p>Saves datasets group on file with the specified <code class="docutils literal notranslate"><span class="pre">driver</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.sender" title="qgis.core.QgsMeshLayer.sender"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sender</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.sender" title="qgis.core.QgsMeshLayer.sender"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sender</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.senderSignalIndex" title="qgis.core.QgsMeshLayer.senderSignalIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">senderSignalIndex</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.senderSignalIndex" title="qgis.core.QgsMeshLayer.senderSignalIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">senderSignalIndex</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.setDatasetGroupTreeRootItem" title="qgis.core.QgsMeshLayer.setDatasetGroupTreeRootItem"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setDatasetGroupTreeRootItem</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.setDatasetGroupTreeRootItem" title="qgis.core.QgsMeshLayer.setDatasetGroupTreeRootItem"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setDatasetGroupTreeRootItem</span></code></a></p></td>
 <td><p>Sets the root items of the dataset group tree item.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.setError" title="qgis.core.QgsMeshLayer.setError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setError</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.setError" title="qgis.core.QgsMeshLayer.setError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setError</span></code></a></p></td>
 <td><p>Sets error message</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.setExtent" title="qgis.core.QgsMeshLayer.setExtent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setExtent</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.setExtent" title="qgis.core.QgsMeshLayer.setExtent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setExtent</span></code></a></p></td>
 <td><p>Sets the extent</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.setProviderType" title="qgis.core.QgsMeshLayer.setProviderType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setProviderType</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.setProviderType" title="qgis.core.QgsMeshLayer.setProviderType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setProviderType</span></code></a></p></td>
 <td><p>Sets the <code class="docutils literal notranslate"><span class="pre">providerType</span></code> (provider key)</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.setReferenceTime" title="qgis.core.QgsMeshLayer.setReferenceTime"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setReferenceTime</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.setReferenceTime" title="qgis.core.QgsMeshLayer.setReferenceTime"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setReferenceTime</span></code></a></p></td>
 <td><p>Sets the reference time of the layer</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.setRendererSettings" title="qgis.core.QgsMeshLayer.setRendererSettings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setRendererSettings</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.setRendererSettings" title="qgis.core.QgsMeshLayer.setRendererSettings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setRendererSettings</span></code></a></p></td>
 <td><p>Sets new renderer settings</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.setTemporalMatchingMethod" title="qgis.core.QgsMeshLayer.setTemporalMatchingMethod"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setTemporalMatchingMethod</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.setTemporalMatchingMethod" title="qgis.core.QgsMeshLayer.setTemporalMatchingMethod"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setTemporalMatchingMethod</span></code></a></p></td>
 <td><p>Sets the method used to match the temporal dataset from a requested time, see <a class="reference internal" href="#qgis.core.QgsMeshLayer.activeVectorDatasetAtTime" title="qgis.core.QgsMeshLayer.activeVectorDatasetAtTime"><code class="xref py py-func docutils literal notranslate"><span class="pre">activeVectorDatasetAtTime()</span></code></a></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.setTimeSettings" title="qgis.core.QgsMeshLayer.setTimeSettings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setTimeSettings</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.setTimeSettings" title="qgis.core.QgsMeshLayer.setTimeSettings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setTimeSettings</span></code></a></p></td>
 <td><p>Sets time format settings</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.setTransformContext" title="qgis.core.QgsMeshLayer.setTransformContext"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setTransformContext</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.setTransformContext" title="qgis.core.QgsMeshLayer.setTransformContext"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setTransformContext</span></code></a></p></td>
 <td><p>Sets the coordinate transform context to <code class="docutils literal notranslate"><span class="pre">transformContext</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.setValid" title="qgis.core.QgsMeshLayer.setValid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setValid</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.setValid" title="qgis.core.QgsMeshLayer.setValid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setValid</span></code></a></p></td>
 <td><p>Sets whether layer is valid or not</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.snapOnElement" title="qgis.core.QgsMeshLayer.snapOnElement"><code class="xref py py-obj docutils literal notranslate"><span class="pre">snapOnElement</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.snapOnElement" title="qgis.core.QgsMeshLayer.snapOnElement"><code class="xref py py-obj docutils literal notranslate"><span class="pre">snapOnElement</span></code></a></p></td>
 <td><p>Returns the position of the snapped point on the mesh element closest to <code class="docutils literal notranslate"><span class="pre">point</span></code> intersecting with the searching area defined by <code class="docutils literal notranslate"><span class="pre">point</span></code> and <code class="docutils literal notranslate"><span class="pre">searchRadius</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.startFrameEditing" title="qgis.core.QgsMeshLayer.startFrameEditing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">startFrameEditing</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.startFrameEditing" title="qgis.core.QgsMeshLayer.startFrameEditing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">startFrameEditing</span></code></a></p></td>
 <td><p>Starts edition of the mesh frame.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.staticScalarDatasetIndex" title="qgis.core.QgsMeshLayer.staticScalarDatasetIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">staticScalarDatasetIndex</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.staticScalarDatasetIndex" title="qgis.core.QgsMeshLayer.staticScalarDatasetIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">staticScalarDatasetIndex</span></code></a></p></td>
 <td><p>Returns the static scalar dataset index that is rendered if the temporal properties is not active</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.staticVectorDatasetIndex" title="qgis.core.QgsMeshLayer.staticVectorDatasetIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">staticVectorDatasetIndex</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.staticVectorDatasetIndex" title="qgis.core.QgsMeshLayer.staticVectorDatasetIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">staticVectorDatasetIndex</span></code></a></p></td>
 <td><p>Returns the static vector dataset index that is rendered if the temporal properties is not active</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.stopFrameEditing" title="qgis.core.QgsMeshLayer.stopFrameEditing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stopFrameEditing</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.stopFrameEditing" title="qgis.core.QgsMeshLayer.stopFrameEditing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stopFrameEditing</span></code></a></p></td>
 <td><p>Stops edition of the mesh, re-indexes the faces and vertices, rebuilds the triangular mesh and its spatial index with <code class="docutils literal notranslate"><span class="pre">transform</span></code>, clean the undostack</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.subLayers" title="qgis.core.QgsMeshLayer.subLayers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">subLayers</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.subLayers" title="qgis.core.QgsMeshLayer.subLayers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">subLayers</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">rtype</dt>
 <dd class="field-odd"><p>List[str]</p>
+</dd>
+</dl>
+</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.supportsEditing" title="qgis.core.QgsMeshLayer.supportsEditing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">supportsEditing</span></code></a></p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">rtype</dt>
+<dd class="field-odd"><p>bool</p>
 </dd>
 </dl>
 </p></td>
@@ -2579,9 +2609,53 @@ In the layer scope, those indexes are different from the data provider indexes.<
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsMeshLayer.commitFrameEditing">
+<span class="sig-name descname"><span class="pre">commitFrameEditing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsCoordinateTransform.html#module-QgsCoordinateTransform" title="QgsCoordinateTransform"><span class="pre">QgsCoordinateTransform</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">continueEditing</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">bool</span><a class="headerlink" href="#qgis.core.QgsMeshLayer.commitFrameEditing" title="Permalink to this definition">¶</a></dt>
+<dd><p>Commits edition of the mesh frame,
+Rebuilds the triangular mesh and its spatial index with <code class="docutils literal notranslate"><span class="pre">transform</span></code>,
+Continue editing with the same mesh editor if <code class="docutils literal notranslate"><span class="pre">continueEditing</span></code> is True</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the commit succeeds</p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.22.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>transform</strong> (<a class="reference internal" href="QgsCoordinateTransform.html#qgis.core.QgsCoordinateTransform" title="qgis.core.QgsCoordinateTransform"><em>QgsCoordinateTransform</em></a>) – </p></li>
+<li><p><strong>continueEditing</strong> (<em>bool = True</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsMeshLayer.connectNotify">
 <span class="sig-name descname"><span class="pre">connectNotify</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">QMetaMethod</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsMeshLayer.connectNotify" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsMeshLayer.contains">
+<span class="sig-name descname"><span class="pre">contains</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsMesh.html#qgis.core.QgsMesh.ElementType" title="qgis.core.QgsMesh.ElementType"><span class="pre">QgsMesh.ElementType</span></a></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">bool</span><a class="headerlink" href="#qgis.core.QgsMeshLayer.contains" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns whether the mesh contains at mesh elements of given type</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.22.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>type</strong> (<a class="reference internal" href="QgsMesh.html#qgis.core.QgsMesh.ElementType" title="qgis.core.QgsMesh.ElementType"><em>QgsMesh.ElementType</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsMeshLayer.createMapRenderer">
@@ -3185,6 +3259,16 @@ happens.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsMeshLayer.isEditable">
+<span class="sig-name descname"><span class="pre">isEditable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">bool</span><a class="headerlink" href="#qgis.core.QgsMeshLayer.isEditable" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsMeshLayer.isFaceActive">
 <span class="sig-name descname"><span class="pre">isFaceActive</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsMeshDatasetIndex.html#module-QgsMeshDatasetIndex" title="QgsMeshDatasetIndex"><span class="pre">QgsMeshDatasetIndex</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">faceIndex</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">bool</span><a class="headerlink" href="#qgis.core.QgsMeshLayer.isFaceActive" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns N vector/scalar values from the face index from the dataset for 3d stacked meshes</p>
@@ -3199,6 +3283,20 @@ happens.</p>
 </dd>
 <dt class="field-even">Return type</dt>
 <dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsMeshLayer.isModified">
+<span class="sig-name descname"><span class="pre">isModified</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">bool</span><a class="headerlink" href="#qgis.core.QgsMeshLayer.isModified" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns whether the mesh frame has been modified since the last save</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.22.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
 </dd>
 </dl>
 </dd></dl>
@@ -3237,8 +3335,8 @@ happens.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="qgis.core.QgsMeshLayer.meshFacesCount">
-<span class="sig-name descname"><span class="pre">meshFacesCount</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">int</span><a class="headerlink" href="#qgis.core.QgsMeshLayer.meshFacesCount" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="qgis.core.QgsMeshLayer.meshFaceCount">
+<span class="sig-name descname"><span class="pre">meshFaceCount</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">int</span><a class="headerlink" href="#qgis.core.QgsMeshLayer.meshFaceCount" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the faces count of the mesh frame</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.22.</span></p>
@@ -3251,8 +3349,8 @@ happens.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="qgis.core.QgsMeshLayer.meshVerticesCount">
-<span class="sig-name descname"><span class="pre">meshVerticesCount</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">int</span><a class="headerlink" href="#qgis.core.QgsMeshLayer.meshVerticesCount" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="qgis.core.QgsMeshLayer.meshVertexCount">
+<span class="sig-name descname"><span class="pre">meshVertexCount</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">int</span><a class="headerlink" href="#qgis.core.QgsMeshLayer.meshVertexCount" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the vertices count of the mesh frame</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.22.</span></p>
@@ -3384,6 +3482,33 @@ happens.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.14.</span></p>
 </div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsMeshLayer.rollBackFrameEditing">
+<span class="sig-name descname"><span class="pre">rollBackFrameEditing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsCoordinateTransform.html#module-QgsCoordinateTransform" title="QgsCoordinateTransform"><span class="pre">QgsCoordinateTransform</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">continueEditing</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">bool</span><a class="headerlink" href="#qgis.core.QgsMeshLayer.rollBackFrameEditing" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rolls Back edition of the mesh frame.
+Reload mesh from file, rebuilds the triangular mesh and its spatial index with <code class="docutils literal notranslate"><span class="pre">transform</span></code>,
+Continue editing with the same mesh editor if <code class="docutils literal notranslate"><span class="pre">continueEditing</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the rollback succeeds</p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.22.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>transform</strong> (<a class="reference internal" href="QgsCoordinateTransform.html#qgis.core.QgsCoordinateTransform" title="qgis.core.QgsCoordinateTransform"><em>QgsCoordinateTransform</em></a>) – </p></li>
+<li><p><strong>continueEditing</strong> (<em>bool = True</em>) – </p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -3643,6 +3768,16 @@ clean the undostack</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsMeshLayer.supportsEditing">
+<span class="sig-name descname"><span class="pre">supportsEditing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">bool</span><a class="headerlink" href="#qgis.core.QgsMeshLayer.supportsEditing" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsMeshLayer.temporalProperties">
 <span class="sig-name descname"><span class="pre">temporalProperties</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="QgsMapLayerTemporalProperties.html#module-QgsMapLayerTemporalProperties" title="QgsMapLayerTemporalProperties"><span class="pre">QgsMapLayerTemporalProperties</span></a><a class="headerlink" href="#qgis.core.QgsMeshLayer.temporalProperties" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
@@ -3785,7 +3920,7 @@ clean the undostack</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 00:22 Jul 02, 2021.
+        Last updated on 01:56 Jul 02, 2021.
       </span>
 
     </p>
