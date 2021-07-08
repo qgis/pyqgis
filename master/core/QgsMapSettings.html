@@ -248,6 +248,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsColorRampTransformer.html">Class: QgsColorRampTransformer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsColorScheme.html">Class: QgsColorScheme</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsColorSchemeRegistry.html">Class: QgsColorSchemeRegistry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsCommandLineUtils.html">Class: QgsCommandLineUtils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsCompoundCurve.html">Class: QgsCompoundCurve</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsConditionalLayerStyles.html">Class: QgsConditionalLayerStyles</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsConditionalStyle.html">Class: QgsConditionalStyle</a></li>
@@ -334,6 +335,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsErrorItem.html">Class: QgsErrorItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsErrorMessage.html">Class: QgsErrorMessage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsException.html">Class: QgsException</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsExifTools.html">Class: QgsExifTools</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsExpression.html">Class: QgsExpression</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsExpressionContext.html">Class: QgsExpressionContext</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsExpressionContextGenerator.html">Class: QgsExpressionContextGenerator</a></li>
@@ -2024,6 +2026,12 @@ ratio shall be set accordingly.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMapSettings.clippingRegions" title="qgis.core.QgsMapSettings.clippingRegions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clippingRegions</span></code></a></p></td>
 <td><p>Returns the list of clipping regions to apply to the map.</p></td>
 </tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMapSettings.computeExtentForScale" title="qgis.core.QgsMapSettings.computeExtentForScale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">computeExtentForScale</span></code></a></p></td>
+<td><p>Compute the extent such that its <code class="docutils literal notranslate"><span class="pre">center</span></code> is at the specified position (mapped to the destinatonCrs) and the zoom factor corresponds to the specified <code class="docutils literal notranslate"><span class="pre">scale</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMapSettings.computeScaleForExtent" title="qgis.core.QgsMapSettings.computeScaleForExtent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">computeScaleForExtent</span></code></a></p></td>
+<td><p>Compute the scale that corresponds to the specified <code class="docutils literal notranslate"><span class="pre">extent</span></code></p></td>
+</tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMapSettings.customRenderFlags" title="qgis.core.QgsMapSettings.customRenderFlags"><code class="xref py py-obj docutils literal notranslate"><span class="pre">customRenderFlags</span></code></a></p></td>
 <td><p>Returns custom rendering flags.</p></td>
 </tr>
@@ -2516,6 +2524,63 @@ that the handler exists for the lifetime of the map render job.</p>
 <dd class="field-odd"><p>List[<a class="reference internal" href="QgsMapClippingRegion.html#qgis.core.QgsMapClippingRegion" title="qgis.core.QgsMapClippingRegion">QgsMapClippingRegion</a>]</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsMapSettings.computeExtentForScale">
+<span class="sig-name descname"><span class="pre">computeExtentForScale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsPointXY.html#module-QgsPointXY" title="QgsPointXY"><span class="pre">QgsPointXY</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="QgsRectangle.html#module-QgsRectangle" title="QgsRectangle"><span class="pre">QgsRectangle</span></a><a class="headerlink" href="#qgis.core.QgsMapSettings.computeExtentForScale" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the extent such that its <code class="docutils literal notranslate"><span class="pre">center</span></code> is at the specified
+position (mapped to the destinatonCrs) and the zoom factor corresponds
+to the specified <code class="docutils literal notranslate"><span class="pre">scale</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>center</strong> (<a class="reference internal" href="QgsPointXY.html#qgis.core.QgsPointXY" title="qgis.core.QgsPointXY"><em>QgsPointXY</em></a>) – the center, in map coordinates</p></li>
+<li><p><strong>scale</strong> (<em>float</em>) – the desired zoom factor (the x part of 1:x)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsRectangle.html#qgis.core.QgsRectangle" title="qgis.core.QgsRectangle">QgsRectangle</a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>an extent which can be passed to <a class="reference internal" href="../gui/QgsMapCanvas.html#module-QgsMapCanvas" title="QgsMapCanvas"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMapCanvas</span></code></a>.setExtent</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsMapSettings.computeScaleForExtent" title="qgis.core.QgsMapSettings.computeScaleForExtent"><code class="xref py py-func docutils literal notranslate"><span class="pre">computeScaleForExtent()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.22.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsMapSettings.computeScaleForExtent">
+<span class="sig-name descname"><span class="pre">computeScaleForExtent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extent</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsRectangle.html#module-QgsRectangle" title="QgsRectangle"><span class="pre">QgsRectangle</span></a></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">float</span><a class="headerlink" href="#qgis.core.QgsMapSettings.computeScaleForExtent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the scale that corresponds to the specified <code class="docutils literal notranslate"><span class="pre">extent</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>extent</strong> (<a class="reference internal" href="QgsRectangle.html#qgis.core.QgsRectangle" title="qgis.core.QgsRectangle"><em>QgsRectangle</em></a>) – the extent, as passed to <code class="xref py py-func docutils literal notranslate"><span class="pre">QgsMapCanvas.setExtent()</span></code></p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>float</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the scale denominator</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsMapSettings.computeExtentForScale" title="qgis.core.QgsMapSettings.computeExtentForScale"><code class="xref py py-func docutils literal notranslate"><span class="pre">computeExtentForScale()</span></code></a></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This function does not consider any map rotation</p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.22.</span></p>
+</div>
 </dd></dl>
 
 <dl class="py method">
@@ -3984,7 +4049,7 @@ from a source to destination coordinate reference system.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 00:21 Jul 08, 2021.
+        Last updated on 02:27 Jul 08, 2021.
       </span>
 
     </p>
