@@ -1647,6 +1647,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsProxyStyle.html">Class: QgsProxyStyle</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsQmlWidgetWrapper.html">Class: QgsQmlWidgetWrapper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsQueryBuilder.html">Class: QgsQueryBuilder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui/QgsQueryResultWidget.html">Class: QgsQueryResultWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsRandomMarkerFillSymbolLayerWidget.html">Class: QgsRandomMarkerFillSymbolLayerWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsRangeSlider.html">Class: QgsRangeSlider</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsRasterBandComboBox.html">Class: QgsRasterBandComboBox</a></li>
@@ -2037,70 +2038,79 @@ Creates a new connection from the given <code class="docutils literal notranslat
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractDatabaseProviderConnection.createSpatialIndex" title="qgis.core.QgsAbstractDatabaseProviderConnection.createSpatialIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createSpatialIndex</span></code></a></p></td>
 <td><p>Creates a spatial index for the database table with given <code class="docutils literal notranslate"><span class="pre">schema</span></code> and <code class="docutils literal notranslate"><span class="pre">name</span></code> (schema is ignored if not supported by the backend).</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractDatabaseProviderConnection.createVectorTable" title="qgis.core.QgsAbstractDatabaseProviderConnection.createVectorTable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createVectorTable</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractDatabaseProviderConnection.createSqlVectorLayer" title="qgis.core.QgsAbstractDatabaseProviderConnection.createSqlVectorLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createSqlVectorLayer</span></code></a></p></td>
+<td><p>Creates and returns a (possibly invalid) vector layer based on the <code class="docutils literal notranslate"><span class="pre">sql</span></code> statement and optional <code class="docutils literal notranslate"><span class="pre">options</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractDatabaseProviderConnection.createVectorTable" title="qgis.core.QgsAbstractDatabaseProviderConnection.createVectorTable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createVectorTable</span></code></a></p></td>
 <td><p>Creates an empty table with <code class="docutils literal notranslate"><span class="pre">name</span></code> in the given <code class="docutils literal notranslate"><span class="pre">schema</span></code> (schema is ignored if not supported by the backend).</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractDatabaseProviderConnection.deleteField" title="qgis.core.QgsAbstractDatabaseProviderConnection.deleteField"><code class="xref py py-obj docutils literal notranslate"><span class="pre">deleteField</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractDatabaseProviderConnection.deleteField" title="qgis.core.QgsAbstractDatabaseProviderConnection.deleteField"><code class="xref py py-obj docutils literal notranslate"><span class="pre">deleteField</span></code></a></p></td>
 <td><p>Deletes the field with the specified name.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractDatabaseProviderConnection.deleteSpatialIndex" title="qgis.core.QgsAbstractDatabaseProviderConnection.deleteSpatialIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">deleteSpatialIndex</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractDatabaseProviderConnection.deleteSpatialIndex" title="qgis.core.QgsAbstractDatabaseProviderConnection.deleteSpatialIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">deleteSpatialIndex</span></code></a></p></td>
 <td><p>Deletes the existing spatial index for the database table with given <code class="docutils literal notranslate"><span class="pre">schema</span></code>, <code class="docutils literal notranslate"><span class="pre">name</span></code> and <code class="docutils literal notranslate"><span class="pre">geometryColumn</span></code> (<code class="docutils literal notranslate"><span class="pre">schema</span></code> and <code class="docutils literal notranslate"><span class="pre">geometryColumn</span></code> are ignored if not supported by the backend).</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractDatabaseProviderConnection.dropRasterTable" title="qgis.core.QgsAbstractDatabaseProviderConnection.dropRasterTable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dropRasterTable</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractDatabaseProviderConnection.dropRasterTable" title="qgis.core.QgsAbstractDatabaseProviderConnection.dropRasterTable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dropRasterTable</span></code></a></p></td>
 <td><p>Drops a raster table with given <code class="docutils literal notranslate"><span class="pre">schema</span></code> (schema is ignored if not supported by the backend) and <code class="docutils literal notranslate"><span class="pre">name</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractDatabaseProviderConnection.dropSchema" title="qgis.core.QgsAbstractDatabaseProviderConnection.dropSchema"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dropSchema</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractDatabaseProviderConnection.dropSchema" title="qgis.core.QgsAbstractDatabaseProviderConnection.dropSchema"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dropSchema</span></code></a></p></td>
 <td><p>Drops an entire schema with the specified name.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractDatabaseProviderConnection.dropVectorTable" title="qgis.core.QgsAbstractDatabaseProviderConnection.dropVectorTable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dropVectorTable</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractDatabaseProviderConnection.dropVectorTable" title="qgis.core.QgsAbstractDatabaseProviderConnection.dropVectorTable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dropVectorTable</span></code></a></p></td>
 <td><p>Drops a vector (or aspatial) table with given <code class="docutils literal notranslate"><span class="pre">schema</span></code> (schema is ignored if not supported by the backend) and <code class="docutils literal notranslate"><span class="pre">name</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractDatabaseProviderConnection.execSql" title="qgis.core.QgsAbstractDatabaseProviderConnection.execSql"><code class="xref py py-obj docutils literal notranslate"><span class="pre">execSql</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractDatabaseProviderConnection.execSql" title="qgis.core.QgsAbstractDatabaseProviderConnection.execSql"><code class="xref py py-obj docutils literal notranslate"><span class="pre">execSql</span></code></a></p></td>
 <td><p>Executes raw <code class="docutils literal notranslate"><span class="pre">sql</span></code> and returns the (possibly empty) query results, optionally <code class="docutils literal notranslate"><span class="pre">feedback</span></code> can be provided.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractDatabaseProviderConnection.executeSql" title="qgis.core.QgsAbstractDatabaseProviderConnection.executeSql"><code class="xref py py-obj docutils literal notranslate"><span class="pre">executeSql</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractDatabaseProviderConnection.executeSql" title="qgis.core.QgsAbstractDatabaseProviderConnection.executeSql"><code class="xref py py-obj docutils literal notranslate"><span class="pre">executeSql</span></code></a></p></td>
 <td><p>Executes raw <code class="docutils literal notranslate"><span class="pre">sql</span></code> and returns the (possibly empty) list of results in a multi-dimensional array, optionally <code class="docutils literal notranslate"><span class="pre">feedback</span></code> can be provided.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractDatabaseProviderConnection.fields" title="qgis.core.QgsAbstractDatabaseProviderConnection.fields"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fields</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractDatabaseProviderConnection.fields" title="qgis.core.QgsAbstractDatabaseProviderConnection.fields"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fields</span></code></a></p></td>
 <td><p>Returns the fields of a <code class="docutils literal notranslate"><span class="pre">table</span></code> and <code class="docutils literal notranslate"><span class="pre">schema</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractDatabaseProviderConnection.geometryColumnCapabilities" title="qgis.core.QgsAbstractDatabaseProviderConnection.geometryColumnCapabilities"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geometryColumnCapabilities</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractDatabaseProviderConnection.geometryColumnCapabilities" title="qgis.core.QgsAbstractDatabaseProviderConnection.geometryColumnCapabilities"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geometryColumnCapabilities</span></code></a></p></td>
 <td><p>Returns connection geometry column capabilities (Z, M, SinglePart, Curves).</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractDatabaseProviderConnection.nativeTypes" title="qgis.core.QgsAbstractDatabaseProviderConnection.nativeTypes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nativeTypes</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractDatabaseProviderConnection.nativeTypes" title="qgis.core.QgsAbstractDatabaseProviderConnection.nativeTypes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nativeTypes</span></code></a></p></td>
 <td><p>Returns a list of native types supported by the connection.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractDatabaseProviderConnection.providerKey" title="qgis.core.QgsAbstractDatabaseProviderConnection.providerKey"><code class="xref py py-obj docutils literal notranslate"><span class="pre">providerKey</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractDatabaseProviderConnection.providerKey" title="qgis.core.QgsAbstractDatabaseProviderConnection.providerKey"><code class="xref py py-obj docutils literal notranslate"><span class="pre">providerKey</span></code></a></p></td>
 <td><p>Returns the provider key.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractDatabaseProviderConnection.renameRasterTable" title="qgis.core.QgsAbstractDatabaseProviderConnection.renameRasterTable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">renameRasterTable</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractDatabaseProviderConnection.renameRasterTable" title="qgis.core.QgsAbstractDatabaseProviderConnection.renameRasterTable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">renameRasterTable</span></code></a></p></td>
 <td><p>Renames a raster table with given <code class="docutils literal notranslate"><span class="pre">schema</span></code> (schema is ignored if not supported by the backend) and <code class="docutils literal notranslate"><span class="pre">name</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractDatabaseProviderConnection.renameSchema" title="qgis.core.QgsAbstractDatabaseProviderConnection.renameSchema"><code class="xref py py-obj docutils literal notranslate"><span class="pre">renameSchema</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractDatabaseProviderConnection.renameSchema" title="qgis.core.QgsAbstractDatabaseProviderConnection.renameSchema"><code class="xref py py-obj docutils literal notranslate"><span class="pre">renameSchema</span></code></a></p></td>
 <td><p>Renames a schema with the specified <code class="docutils literal notranslate"><span class="pre">name</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractDatabaseProviderConnection.renameVectorTable" title="qgis.core.QgsAbstractDatabaseProviderConnection.renameVectorTable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">renameVectorTable</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractDatabaseProviderConnection.renameVectorTable" title="qgis.core.QgsAbstractDatabaseProviderConnection.renameVectorTable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">renameVectorTable</span></code></a></p></td>
 <td><p>Renames a vector or aspatial table with given <code class="docutils literal notranslate"><span class="pre">schema</span></code> (schema is ignored if not supported by the backend) and <code class="docutils literal notranslate"><span class="pre">name</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractDatabaseProviderConnection.schemas" title="qgis.core.QgsAbstractDatabaseProviderConnection.schemas"><code class="xref py py-obj docutils literal notranslate"><span class="pre">schemas</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractDatabaseProviderConnection.schemas" title="qgis.core.QgsAbstractDatabaseProviderConnection.schemas"><code class="xref py py-obj docutils literal notranslate"><span class="pre">schemas</span></code></a></p></td>
 <td><p>Returns information about the existing schemas.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractDatabaseProviderConnection.spatialIndexExists" title="qgis.core.QgsAbstractDatabaseProviderConnection.spatialIndexExists"><code class="xref py py-obj docutils literal notranslate"><span class="pre">spatialIndexExists</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractDatabaseProviderConnection.spatialIndexExists" title="qgis.core.QgsAbstractDatabaseProviderConnection.spatialIndexExists"><code class="xref py py-obj docutils literal notranslate"><span class="pre">spatialIndexExists</span></code></a></p></td>
 <td><p>Determines whether a spatial index exists for the database table with given <code class="docutils literal notranslate"><span class="pre">schema</span></code>, <code class="docutils literal notranslate"><span class="pre">name</span></code> and <code class="docutils literal notranslate"><span class="pre">geometryColumn</span></code> (<code class="docutils literal notranslate"><span class="pre">schema</span></code> and <code class="docutils literal notranslate"><span class="pre">geometryColumn</span></code> are ignored if not supported by the backend).</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractDatabaseProviderConnection.table" title="qgis.core.QgsAbstractDatabaseProviderConnection.table"><code class="xref py py-obj docutils literal notranslate"><span class="pre">table</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractDatabaseProviderConnection.sqlDictionary" title="qgis.core.QgsAbstractDatabaseProviderConnection.sqlDictionary"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sqlDictionary</span></code></a></p></td>
+<td><p>Returns a dictionary of SQL keywords supported by the provider.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractDatabaseProviderConnection.sqlLayerDefinitionCapabilities" title="qgis.core.QgsAbstractDatabaseProviderConnection.sqlLayerDefinitionCapabilities"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sqlLayerDefinitionCapabilities</span></code></a></p></td>
+<td><p>Returns SQL layer definition capabilities (Filters, GeometryColumn, PrimaryKeys).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractDatabaseProviderConnection.table" title="qgis.core.QgsAbstractDatabaseProviderConnection.table"><code class="xref py py-obj docutils literal notranslate"><span class="pre">table</span></code></a></p></td>
 <td><p>Returns information on a <code class="docutils literal notranslate"><span class="pre">table</span></code> in the given <code class="docutils literal notranslate"><span class="pre">schema</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractDatabaseProviderConnection.tableExists" title="qgis.core.QgsAbstractDatabaseProviderConnection.tableExists"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tableExists</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractDatabaseProviderConnection.tableExists" title="qgis.core.QgsAbstractDatabaseProviderConnection.tableExists"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tableExists</span></code></a></p></td>
 <td><p>Checks whether a table <code class="docutils literal notranslate"><span class="pre">name</span></code> exists in the given <code class="docutils literal notranslate"><span class="pre">schema</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractDatabaseProviderConnection.tableUri" title="qgis.core.QgsAbstractDatabaseProviderConnection.tableUri"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tableUri</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractDatabaseProviderConnection.tableUri" title="qgis.core.QgsAbstractDatabaseProviderConnection.tableUri"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tableUri</span></code></a></p></td>
 <td><p>Returns the URI string for the given <code class="docutils literal notranslate"><span class="pre">table</span></code> and <code class="docutils literal notranslate"><span class="pre">schema</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractDatabaseProviderConnection.tables" title="qgis.core.QgsAbstractDatabaseProviderConnection.tables"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tables</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractDatabaseProviderConnection.tables" title="qgis.core.QgsAbstractDatabaseProviderConnection.tables"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tables</span></code></a></p></td>
 <td><p>Returns information on the tables in the given schema.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractDatabaseProviderConnection.vacuum" title="qgis.core.QgsAbstractDatabaseProviderConnection.vacuum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">vacuum</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractDatabaseProviderConnection.vacuum" title="qgis.core.QgsAbstractDatabaseProviderConnection.vacuum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">vacuum</span></code></a></p></td>
 <td><p>Vacuum the database table with given <code class="docutils literal notranslate"><span class="pre">schema</span></code> and <code class="docutils literal notranslate"><span class="pre">name</span></code> (schema is ignored if not supported by the backend).</p></td>
 </tr>
 </tbody>
@@ -2378,7 +2388,7 @@ Creates a new connection from the given <code class="docutils literal notranslat
 <dd><p>Returns the number of fetched rows.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
-<p><code class="xref py py-func docutils literal notranslate"><span class="pre">rowCount()</span></code></p>
+<p><a class="reference internal" href="#qgis.core.QgsAbstractDatabaseProviderConnection.QueryResult.rowCount" title="qgis.core.QgsAbstractDatabaseProviderConnection.QueryResult.rowCount"><code class="xref py py-func docutils literal notranslate"><span class="pre">rowCount()</span></code></a></p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
@@ -2426,6 +2436,32 @@ Creates a new connection from the given <code class="docutils literal notranslat
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsAbstractDatabaseProviderConnection.QueryResult.queryExecutionTime">
+<span class="sig-name descname"><span class="pre">queryExecutionTime</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">float</span><a class="headerlink" href="#qgis.core.QgsAbstractDatabaseProviderConnection.QueryResult.queryExecutionTime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the query execution time in milliseconds.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsAbstractDatabaseProviderConnection.QueryResult.rowCount">
+<span class="sig-name descname"><span class="pre">rowCount</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">int</span><a class="headerlink" href="#qgis.core.QgsAbstractDatabaseProviderConnection.QueryResult.rowCount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the number of rows returned by a SELECT query or Qgis.FeatureCountState.UnknownCount if unknown.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsAbstractDatabaseProviderConnection.QueryResult.fetchedRowCount" title="qgis.core.QgsAbstractDatabaseProviderConnection.QueryResult.fetchedRowCount"><code class="xref py py-func docutils literal notranslate"><span class="pre">fetchedRowCount()</span></code></a></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsAbstractDatabaseProviderConnection.QueryResult.rows">
 <span class="sig-name descname"><span class="pre">rows</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feedback</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsFeedback.html#module-QgsFeedback" title="QgsFeedback"><span class="pre">QgsFeedback</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">object</span><a class="headerlink" href="#qgis.core.QgsAbstractDatabaseProviderConnection.QueryResult.rows" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the result rows by calling the iterator internally and fetching
@@ -2441,6 +2477,17 @@ call will always return an empty list.</p>
 </dd>
 <dt class="field-even">Return type</dt>
 <dd class="field-even"><p>object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsAbstractDatabaseProviderConnection.QueryResult.setQueryExecutionTime">
+<span class="sig-name descname"><span class="pre">setQueryExecutionTime</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">queryExecutionTime</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsAbstractDatabaseProviderConnection.QueryResult.setQueryExecutionTime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the query execution time to <code class="docutils literal notranslate"><span class="pre">queryExecutionTime</span></code> milliseconds.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>queryExecutionTime</strong> (<em>float</em>) – </p>
 </dd>
 </dl>
 </dd></dl>
@@ -2504,6 +2551,44 @@ call will always return an empty list.</p>
 <dt class="sig sig-object py" id="qgis.core.QgsAbstractDatabaseProviderConnection.SqlLayers">
 <span class="sig-name descname"><span class="pre">SqlLayers</span></span><em class="property"> <span class="pre">=</span> <span class="pre">8192</span></em><a class="headerlink" href="#qgis.core.QgsAbstractDatabaseProviderConnection.SqlLayers" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="qgis.core.QgsAbstractDatabaseProviderConnection.SqlVectorLayerOptions">
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">SqlVectorLayerOptions</span></span><a class="headerlink" href="#qgis.core.QgsAbstractDatabaseProviderConnection.SqlVectorLayerOptions" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">SqlVectorLayerOptions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">QgsAbstractDatabaseProviderConnection.SqlVectorLayerOptions</span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sip.wrapper</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.QgsAbstractDatabaseProviderConnection.SqlVectorLayerOptions.disableSelectAtId">
+<span class="sig-name descname"><span class="pre">disableSelectAtId</span></span><a class="headerlink" href="#qgis.core.QgsAbstractDatabaseProviderConnection.SqlVectorLayerOptions.disableSelectAtId" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.QgsAbstractDatabaseProviderConnection.SqlVectorLayerOptions.filter">
+<span class="sig-name descname"><span class="pre">filter</span></span><a class="headerlink" href="#qgis.core.QgsAbstractDatabaseProviderConnection.SqlVectorLayerOptions.filter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.QgsAbstractDatabaseProviderConnection.SqlVectorLayerOptions.geometryColumn">
+<span class="sig-name descname"><span class="pre">geometryColumn</span></span><a class="headerlink" href="#qgis.core.QgsAbstractDatabaseProviderConnection.SqlVectorLayerOptions.geometryColumn" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.QgsAbstractDatabaseProviderConnection.SqlVectorLayerOptions.layerName">
+<span class="sig-name descname"><span class="pre">layerName</span></span><a class="headerlink" href="#qgis.core.QgsAbstractDatabaseProviderConnection.SqlVectorLayerOptions.layerName" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.QgsAbstractDatabaseProviderConnection.SqlVectorLayerOptions.primaryKeyColumns">
+<span class="sig-name descname"><span class="pre">primaryKeyColumns</span></span><a class="headerlink" href="#qgis.core.QgsAbstractDatabaseProviderConnection.SqlVectorLayerOptions.primaryKeyColumns" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.QgsAbstractDatabaseProviderConnection.SqlVectorLayerOptions.sql">
+<span class="sig-name descname"><span class="pre">sql</span></span><a class="headerlink" href="#qgis.core.QgsAbstractDatabaseProviderConnection.SqlVectorLayerOptions.sql" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.core.QgsAbstractDatabaseProviderConnection.TableExists">
@@ -2943,7 +3028,7 @@ to store custom bits of information.</p>
 <dd><p>Creates a new schema with the specified <code class="docutils literal notranslate"><span class="pre">name</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Raises</dt>
-<dd class="field-odd"><p><a class="reference internal" href="QgsProviderConnectionException.html#qgis.core.QgsProviderConnectionException" title="qgis.core.QgsProviderConnectionException"><strong>QgsProviderConnectionException</strong></a> – </p>
+<dd class="field-odd"><p><a class="reference internal" href="QgsProviderConnectionException.html#qgis.core.QgsProviderConnectionException" title="qgis.core.QgsProviderConnectionException"><strong>QgsProviderConnectionException</strong></a> – if any errors are encountered.</p>
 </dd>
 <dt class="field-even">Parameters</dt>
 <dd class="field-even"><p><strong>name</strong> (<em>str</em>) – </p>
@@ -2971,6 +3056,28 @@ to store custom bits of information.</p>
 <li><p><strong>name</strong> (<em>str</em>) – </p></li>
 <li><p><strong>options</strong> (<em>QgsAbstractDatabaseProviderConnection.SpatialIndexOptions = QgsAbstractDatabaseProviderConnection.SpatialIndexOptions</em><em>(</em><em>)</em>) – </p></li>
 </ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsAbstractDatabaseProviderConnection.createSqlVectorLayer">
+<span class="sig-name descname"><span class="pre">createSqlVectorLayer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#qgis.core.QgsAbstractDatabaseProviderConnection.SqlVectorLayerOptions" title="qgis.core.QgsAbstractDatabaseProviderConnection.SqlVectorLayerOptions"><span class="pre">QgsAbstractDatabaseProviderConnection.SqlVectorLayerOptions</span></a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="QgsVectorLayer.html#module-QgsVectorLayer" title="QgsVectorLayer"><span class="pre">QgsVectorLayer</span></a><a class="headerlink" href="#qgis.core.QgsAbstractDatabaseProviderConnection.createSqlVectorLayer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates and returns a (possibly invalid) vector layer based on the <code class="docutils literal notranslate"><span class="pre">sql</span></code> statement and optional <code class="docutils literal notranslate"><span class="pre">options</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsProviderConnectionException.html#qgis.core.QgsProviderConnectionException" title="qgis.core.QgsProviderConnectionException"><strong>QgsProviderConnectionException</strong></a> – if any errors are encountered or if SQL layer creation is not supported.</p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.22.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>options</strong> (<a class="reference internal" href="#qgis.core.QgsAbstractDatabaseProviderConnection.SqlVectorLayerOptions" title="qgis.core.QgsAbstractDatabaseProviderConnection.SqlVectorLayerOptions"><em>QgsAbstractDatabaseProviderConnection.SqlVectorLayerOptions</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsVectorLayer.html#qgis.core.QgsVectorLayer" title="qgis.core.QgsVectorLayer">QgsVectorLayer</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -3173,8 +3280,10 @@ ignored if not supported by the backend).</p>
 <dd><p>Returns the fields of a <code class="docutils literal notranslate"><span class="pre">table</span></code> and <code class="docutils literal notranslate"><span class="pre">schema</span></code>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The default implementation creates a temporary vector layer, providers may
-choose to override this method for a greater efficiency.</p>
+<p>the default implementation creates a temporary vector layer, providers may
+choose to override this method for a greater efficiency of to overcome provider’s
+behavior when the layer does not expose all fields (GPKG for example hides geometry
+and primary key column).</p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Raises</dt>
@@ -3217,7 +3326,7 @@ choose to override this method for a greater efficiency.</p>
 <dd><p>Returns a list of native types supported by the connection.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Raises</dt>
-<dd class="field-odd"><p><a class="reference internal" href="QgsProviderConnectionException.html#qgis.core.QgsProviderConnectionException" title="qgis.core.QgsProviderConnectionException"><strong>QgsProviderConnectionException</strong></a> – </p>
+<dd class="field-odd"><p><a class="reference internal" href="QgsProviderConnectionException.html#qgis.core.QgsProviderConnectionException" title="qgis.core.QgsProviderConnectionException"><strong>QgsProviderConnectionException</strong></a> – if any errors are encountered.</p>
 </dd>
 </dl>
 <div class="versionadded">
@@ -3277,7 +3386,7 @@ Raises a <a class="reference internal" href="QgsProviderConnectionException.html
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Raises</dt>
-<dd class="field-odd"><p><a class="reference internal" href="QgsProviderConnectionException.html#qgis.core.QgsProviderConnectionException" title="qgis.core.QgsProviderConnectionException"><strong>QgsProviderConnectionException</strong></a> – </p>
+<dd class="field-odd"><p><a class="reference internal" href="QgsProviderConnectionException.html#qgis.core.QgsProviderConnectionException" title="qgis.core.QgsProviderConnectionException"><strong>QgsProviderConnectionException</strong></a> – if any errors are encountered.</p>
 </dd>
 <dt class="field-even">Parameters</dt>
 <dd class="field-even"><ul class="simple">
@@ -3347,6 +3456,37 @@ ignored if not supported by the backend).</p>
 </dd>
 <dt class="field-even">Return type</dt>
 <dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsAbstractDatabaseProviderConnection.sqlDictionary">
+<span class="sig-name descname"><span class="pre">sqlDictionary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="Qgis.html#qgis.core.Qgis.SqlKeywordCategory" title="qgis.core.Qgis.SqlKeywordCategory"><span class="pre">Qgis.SqlKeywordCategory</span></a><span class="p"><span class="pre">,</span> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#qgis.core.QgsAbstractDatabaseProviderConnection.sqlDictionary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a dictionary of SQL keywords supported by the provider.
+The default implementation returns an list of common reserved words under the
+“Keyword” and “Constant” categories.</p>
+<p>Subclasses should add provider- and/or connection- specific words.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.22.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Dict[<a class="reference internal" href="Qgis.html#qgis.core.Qgis.SqlKeywordCategory" title="qgis.core.Qgis.SqlKeywordCategory">Qgis.SqlKeywordCategory</a>, List[str]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsAbstractDatabaseProviderConnection.sqlLayerDefinitionCapabilities">
+<span class="sig-name descname"><span class="pre">sqlLayerDefinitionCapabilities</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="Qgis.html#qgis.core.Qgis.SqlLayerDefinitionCapabilities" title="qgis.core.Qgis.SqlLayerDefinitionCapabilities"><span class="pre">Qgis.SqlLayerDefinitionCapabilities</span></a><a class="headerlink" href="#qgis.core.QgsAbstractDatabaseProviderConnection.sqlLayerDefinitionCapabilities" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns SQL layer definition capabilities (Filters, GeometryColumn, PrimaryKeys).</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.22.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="Qgis.html#qgis.core.Qgis.SqlLayerDefinitionCapabilities" title="qgis.core.Qgis.SqlLayerDefinitionCapabilities">Qgis.SqlLayerDefinitionCapabilities</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -3482,7 +3622,7 @@ ignored if not supported by the backend).</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 00:21 Jul 11, 2021.
+        Last updated on 02:30 Jul 11, 2021.
       </span>
 
     </p>
