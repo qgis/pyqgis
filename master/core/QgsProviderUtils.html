@@ -2006,6 +2006,9 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProviderUtils.sublayerDetailsAreIncomplete" title="qgis.core.QgsProviderUtils.sublayerDetailsAreIncomplete"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sublayerDetailsAreIncomplete</span></code></a></p></td>
 <td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the sublayer <code class="docutils literal notranslate"><span class="pre">details</span></code> are incomplete, and require a more in-depth scan.</p></td>
 </tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProviderUtils.suggestLayerNameFromFilePath" title="qgis.core.QgsProviderUtils.suggestLayerNameFromFilePath"><code class="xref py py-obj docutils literal notranslate"><span class="pre">suggestLayerNameFromFilePath</span></code></a></p></td>
+<td><p>Suggests a suitable layer name given only a file <code class="docutils literal notranslate"><span class="pre">path</span></code>.</p></td>
+</tr>
 </tbody>
 </table>
 <table class="longtable docutils align-default">
@@ -2027,17 +2030,41 @@
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsProviderUtils.sublayerDetailsAreIncomplete">
-<span class="sig-name descname"><span class="pre">sublayerDetailsAreIncomplete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">details</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="QgsProviderSublayerDetails.html#module-QgsProviderSublayerDetails" title="QgsProviderSublayerDetails"><span class="pre">QgsProviderSublayerDetails</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">bool</span><a class="headerlink" href="#qgis.core.QgsProviderUtils.sublayerDetailsAreIncomplete" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">sublayerDetailsAreIncomplete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">details</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="QgsProviderSublayerDetails.html#module-QgsProviderSublayerDetails" title="QgsProviderSublayerDetails"><span class="pre">QgsProviderSublayerDetails</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignoreUnknownFeatureCount</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">bool</span><a class="headerlink" href="#qgis.core.QgsProviderUtils.sublayerDetailsAreIncomplete" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the sublayer <code class="docutils literal notranslate"><span class="pre">details</span></code> are incomplete, and require a more in-depth
 scan.</p>
 <p>For instance, if the details contain any vector sublayers with unknown geometry types
 then a query with the Qgis.SublayerQueryFlag.ResolveGeometryType flag is required.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">ignoreUnknownFeatureCount</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code> then sublayers with an unknown feature count
+will not be considered as incomplete.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>details</strong> (<em>Iterable</em><em>[</em><a class="reference internal" href="QgsProviderSublayerDetails.html#qgis.core.QgsProviderSublayerDetails" title="qgis.core.QgsProviderSublayerDetails"><em>QgsProviderSublayerDetails</em></a><em>]</em>) – </p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>details</strong> (<em>Iterable</em><em>[</em><a class="reference internal" href="QgsProviderSublayerDetails.html#qgis.core.QgsProviderSublayerDetails" title="qgis.core.QgsProviderSublayerDetails"><em>QgsProviderSublayerDetails</em></a><em>]</em>) – </p></li>
+<li><p><strong>ignoreUnknownFeatureCount</strong> (<em>bool</em>) – </p></li>
+</ul>
 </dd>
 <dt class="field-even">Return type</dt>
 <dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProviderUtils.suggestLayerNameFromFilePath">
+<span class="sig-name descname"><span class="pre">suggestLayerNameFromFilePath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">str</span><a class="headerlink" href="#qgis.core.QgsProviderUtils.suggestLayerNameFromFilePath" title="Permalink to this definition">¶</a></dt>
+<dd><p>Suggests a suitable layer name given only a file <code class="docutils literal notranslate"><span class="pre">path</span></code>.</p>
+<p>Usually this corresponds to the base file name of <code class="docutils literal notranslate"><span class="pre">path</span></code> (e.g.
+“rivers” for a path of “c:/my data/water/rivers.shp”). However
+some data formats which use fixed file paths (such as aigrid files)
+will instead return the parent directory name (e.g. “rivers” for
+a path of “c:/my data/water/rivers/hdr.adf”).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2057,7 +2084,7 @@ then a query with the Qgis.SublayerQueryFlag.ResolveGeometryType flag is require
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 00:19 Jul 13, 2021.
+        Last updated on 02:14 Jul 13, 2021.
       </span>
 
     </p>
