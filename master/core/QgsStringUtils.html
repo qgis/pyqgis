@@ -615,6 +615,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsMesh.html">Class: QgsMesh</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsMesh3dAveragingMethod.html">Class: QgsMesh3dAveragingMethod</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsMesh3dDataBlock.html">Class: QgsMesh3dDataBlock</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsMeshAdvancedEditing.html">Class: QgsMeshAdvancedEditing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsMeshCalculator.html">Class: QgsMeshCalculator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsMeshDataBlock.html">Class: QgsMeshDataBlock</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsMeshDataProvider.html">Class: QgsMeshDataProvider</a></li>
@@ -629,6 +630,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsMeshDatasetSourceInterface.html">Class: QgsMeshDatasetSourceInterface</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsMeshDatasetValue.html">Class: QgsMeshDatasetValue</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsMeshDriverMetadata.html">Class: QgsMeshDriverMetadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsMeshEditRefineFaces.html">Class: QgsMeshEditRefineFaces</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsMeshEditingError.html">Class: QgsMeshEditingError</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsMeshEditor.html">Class: QgsMeshEditor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsMeshElevationAveragingMethod.html">Class: QgsMeshElevationAveragingMethod</a></li>
@@ -1805,6 +1807,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../analysis/QgsInterpolatorVertexData.html">Class: QgsInterpolatorVertexData</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../analysis/QgsKernelDensityEstimation.html">Class: QgsKernelDensityEstimation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../analysis/QgsMeshContours.html">Class: QgsMeshContours</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../analysis/QgsMeshEditingDelaunayTriangulation.html">Class: QgsMeshEditingDelaunayTriangulation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../analysis/QgsMeshTriangulation.html">Class: QgsMeshTriangulation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../analysis/QgsMeshZValueDatasetGroup.html">Class: QgsMeshZValueDatasetGroup</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../analysis/QgsNativeAlgorithms.html">Class: QgsNativeAlgorithms</a></li>
@@ -2037,7 +2040,10 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsStringUtils.substituteVerticalCharacters" title="qgis.core.QgsStringUtils.substituteVerticalCharacters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">substituteVerticalCharacters</span></code></a></p></td>
 <td><p>Returns a string with characters having vertical representation form substituted.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsStringUtils.wordWrap" title="qgis.core.QgsStringUtils.wordWrap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wordWrap</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsStringUtils.truncateMiddleOfString" title="qgis.core.QgsStringUtils.truncateMiddleOfString"><code class="xref py py-obj docutils literal notranslate"><span class="pre">truncateMiddleOfString</span></code></a></p></td>
+<td><p>Truncates a <code class="docutils literal notranslate"><span class="pre">string</span></code> to the specified maximum character length.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsStringUtils.wordWrap" title="qgis.core.QgsStringUtils.wordWrap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wordWrap</span></code></a></p></td>
 <td><p>Automatically wraps a <code class="docutils literal notranslate"><span class="pre">string</span></code> by inserting new line characters at appropriate locations in the string.</p></td>
 </tr>
 </tbody>
@@ -2357,6 +2363,29 @@ so strings with similar sounds should be represented by the same Soundex code.</
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsStringUtils.truncateMiddleOfString">
+<span class="sig-name descname"><span class="pre">truncateMiddleOfString</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxLength</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">str</span><a class="headerlink" href="#qgis.core.QgsStringUtils.truncateMiddleOfString" title="Permalink to this definition">¶</a></dt>
+<dd><p>Truncates a <code class="docutils literal notranslate"><span class="pre">string</span></code> to the specified maximum character length.</p>
+<p>If the <code class="docutils literal notranslate"><span class="pre">string</span></code> exceeds the maximum character length, then the string
+will be truncated by removing characters from the middle of the string
+and replacing them with a horizontal ellipsis character.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.22.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> (<em>str</em>) – </p></li>
+<li><p><strong>maxLength</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsStringUtils.wordWrap">
 <span class="sig-name descname"><span class="pre">wordWrap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">useMaxLineLength</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">customDelimiter</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">str</span><a class="headerlink" href="#qgis.core.QgsStringUtils.wordWrap" title="Permalink to this definition">¶</a></dt>
 <dd><p>Automatically wraps a <code class="docutils literal notranslate"><span class="pre">string</span></code> by inserting new line characters at appropriate locations in the string.</p>
@@ -2398,7 +2427,7 @@ the string will be wrapped so that each line will ideally exceed <code class="do
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 00:19 Jul 20, 2021.
+        Last updated on 02:18 Jul 20, 2021.
       </span>
 
     </p>

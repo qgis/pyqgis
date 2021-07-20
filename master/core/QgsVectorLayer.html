@@ -615,6 +615,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsMesh.html">Class: QgsMesh</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsMesh3dAveragingMethod.html">Class: QgsMesh3dAveragingMethod</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsMesh3dDataBlock.html">Class: QgsMesh3dDataBlock</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsMeshAdvancedEditing.html">Class: QgsMeshAdvancedEditing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsMeshCalculator.html">Class: QgsMeshCalculator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsMeshDataBlock.html">Class: QgsMeshDataBlock</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsMeshDataProvider.html">Class: QgsMeshDataProvider</a></li>
@@ -629,6 +630,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsMeshDatasetSourceInterface.html">Class: QgsMeshDatasetSourceInterface</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsMeshDatasetValue.html">Class: QgsMeshDatasetValue</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsMeshDriverMetadata.html">Class: QgsMeshDriverMetadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsMeshEditRefineFaces.html">Class: QgsMeshEditRefineFaces</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsMeshEditingError.html">Class: QgsMeshEditingError</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsMeshEditor.html">Class: QgsMeshEditor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsMeshElevationAveragingMethod.html">Class: QgsMeshElevationAveragingMethod</a></li>
@@ -1805,6 +1807,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../analysis/QgsInterpolatorVertexData.html">Class: QgsInterpolatorVertexData</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../analysis/QgsKernelDensityEstimation.html">Class: QgsKernelDensityEstimation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../analysis/QgsMeshContours.html">Class: QgsMeshContours</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../analysis/QgsMeshEditingDelaunayTriangulation.html">Class: QgsMeshEditingDelaunayTriangulation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../analysis/QgsMeshTriangulation.html">Class: QgsMeshTriangulation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../analysis/QgsMeshZValueDatasetGroup.html">Class: QgsMeshZValueDatasetGroup</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../analysis/QgsNativeAlgorithms.html">Class: QgsNativeAlgorithms</a></li>
@@ -2257,12 +2260,22 @@ parameters used by the data provider as url query items.</p></li>
 <li><p><strong>baseName</strong> – The name used to represent the layer in the legend</p></li>
 <li><p><strong>providerLib</strong> – The name of the data provider, e.g., “memory”, “postgres”</p></li>
 <li><p><strong>options</strong> – <p>layer load options</p>
+<p class="rubric">Enums</p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
 <col style="width: 90%" />
 </colgroup>
 <tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.EditResult" title="qgis.core.QgsVectorLayer.EditResult"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EditResult</span></code></a></p></td>
+<td><p>alias of <a class="reference internal" href="Qgis.html#qgis.core.Qgis.VectorEditResult" title="qgis._core.Qgis.VectorEditResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">qgis._core.Qgis.VectorEditResult</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.SelectBehavior" title="qgis.core.QgsVectorLayer.SelectBehavior"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SelectBehavior</span></code></a></p></td>
+<td><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.IntEnum</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.VertexMarkerType" title="qgis.core.QgsVectorLayer.VertexMarkerType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">VertexMarkerType</span></code></a></p></td>
+<td><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.IntEnum</span></code></p></td>
+</tr>
 </tbody>
 </table>
 <p class="rubric">Methods</p>
@@ -3136,65 +3149,18 @@ parameters used by the data provider as url query items.</p></li>
 </tr>
 </tbody>
 </table>
-<p class="rubric">Attributes</p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.AddToSelection" title="qgis.core.QgsVectorLayer.AddToSelection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AddToSelection</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.Cross" title="qgis.core.QgsVectorLayer.Cross"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Cross</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.EditFailed" title="qgis.core.QgsVectorLayer.EditFailed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EditFailed</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.EmptyGeometry" title="qgis.core.QgsVectorLayer.EmptyGeometry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EmptyGeometry</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.FetchFeatureFailed" title="qgis.core.QgsVectorLayer.FetchFeatureFailed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FetchFeatureFailed</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.IntersectSelection" title="qgis.core.QgsVectorLayer.IntersectSelection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IntersectSelection</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.InvalidLayer" title="qgis.core.QgsVectorLayer.InvalidLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InvalidLayer</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.NoMarker" title="qgis.core.QgsVectorLayer.NoMarker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NoMarker</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.RemoveFromSelection" title="qgis.core.QgsVectorLayer.RemoveFromSelection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RemoveFromSelection</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.SemiTransparentCircle" title="qgis.core.QgsVectorLayer.SemiTransparentCircle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SemiTransparentCircle</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.SetSelection" title="qgis.core.QgsVectorLayer.SetSelection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SetSelection</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.Success" title="qgis.core.QgsVectorLayer.Success"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Success</span></code></a></p></td>
-<td><p></p></td>
-</tr>
 </tbody>
 </table>
 </p></li>
 </ul>
 </dd>
 </dl>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="qgis.core.QgsVectorLayer.AddToSelection">
-<span class="sig-name descname"><span class="pre">AddToSelection</span></span><em class="property"> <span class="pre">=</span> <span class="pre">1</span></em><a class="headerlink" href="#qgis.core.QgsVectorLayer.AddToSelection" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="qgis.core.QgsVectorLayer.Cross">
-<span class="sig-name descname"><span class="pre">Cross</span></span><em class="property"> <span class="pre">=</span> <span class="pre">1</span></em><a class="headerlink" href="#qgis.core.QgsVectorLayer.Cross" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
 <dl class="py class">
 <dt class="sig sig-object py" id="qgis.core.QgsVectorLayer.DeleteContext">
 <em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">DeleteContext</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cascade</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsProject.html#module-QgsProject" title="QgsProject"><span class="pre">QgsProject</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsVectorLayer.DeleteContext" title="Permalink to this definition">¶</a></dt>
@@ -3244,41 +3210,10 @@ returned list.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="qgis.core.QgsVectorLayer.EditFailed">
-<span class="sig-name descname"><span class="pre">EditFailed</span></span><em class="property"> <span class="pre">=</span> <span class="pre">2</span></em><a class="headerlink" href="#qgis.core.QgsVectorLayer.EditFailed" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py class">
 <dt class="sig sig-object py" id="qgis.core.QgsVectorLayer.EditResult">
-<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">EditResult</span></span><a class="headerlink" href="#qgis.core.QgsVectorLayer.EditResult" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="qgis.core.QgsVectorLayer.EditResult.baseClass">
-<span class="sig-name descname"><span class="pre">baseClass</span></span><a class="headerlink" href="#qgis.core.QgsVectorLayer.EditResult.baseClass" title="Permalink to this definition">¶</a></dt>
-<dd><p>alias of <a class="reference internal" href="#qgis.core.QgsVectorLayer" title="qgis._core.QgsVectorLayer"><code class="xref py py-class docutils literal notranslate"><span class="pre">qgis._core.QgsVectorLayer</span></code></a></p>
+<span class="sig-name descname"><span class="pre">EditResult</span></span><a class="headerlink" href="#qgis.core.QgsVectorLayer.EditResult" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="Qgis.html#qgis.core.Qgis.VectorEditResult" title="qgis._core.Qgis.VectorEditResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">qgis._core.Qgis.VectorEditResult</span></code></a></p>
 </dd></dl>
-
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="qgis.core.QgsVectorLayer.EmptyGeometry">
-<span class="sig-name descname"><span class="pre">EmptyGeometry</span></span><em class="property"> <span class="pre">=</span> <span class="pre">1</span></em><a class="headerlink" href="#qgis.core.QgsVectorLayer.EmptyGeometry" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="qgis.core.QgsVectorLayer.FetchFeatureFailed">
-<span class="sig-name descname"><span class="pre">FetchFeatureFailed</span></span><em class="property"> <span class="pre">=</span> <span class="pre">3</span></em><a class="headerlink" href="#qgis.core.QgsVectorLayer.FetchFeatureFailed" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="qgis.core.QgsVectorLayer.IntersectSelection">
-<span class="sig-name descname"><span class="pre">IntersectSelection</span></span><em class="property"> <span class="pre">=</span> <span class="pre">2</span></em><a class="headerlink" href="#qgis.core.QgsVectorLayer.IntersectSelection" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="qgis.core.QgsVectorLayer.InvalidLayer">
-<span class="sig-name descname"><span class="pre">InvalidLayer</span></span><em class="property"> <span class="pre">=</span> <span class="pre">4</span></em><a class="headerlink" href="#qgis.core.QgsVectorLayer.InvalidLayer" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="qgis.core.QgsVectorLayer.LayerOptions">
@@ -3323,47 +3258,47 @@ Constructor for LayerOptions.</p>
 
 </dd></dl>
 
-<dl class="py attribute">
-<dt class="sig sig-object py" id="qgis.core.QgsVectorLayer.NoMarker">
-<span class="sig-name descname"><span class="pre">NoMarker</span></span><em class="property"> <span class="pre">=</span> <span class="pre">2</span></em><a class="headerlink" href="#qgis.core.QgsVectorLayer.NoMarker" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="qgis.core.QgsVectorLayer.RemoveFromSelection">
-<span class="sig-name descname"><span class="pre">RemoveFromSelection</span></span><em class="property"> <span class="pre">=</span> <span class="pre">3</span></em><a class="headerlink" href="#qgis.core.QgsVectorLayer.RemoveFromSelection" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
 <dl class="py class">
 <dt class="sig sig-object py" id="qgis.core.QgsVectorLayer.SelectBehavior">
-<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">SelectBehavior</span></span><a class="headerlink" href="#qgis.core.QgsVectorLayer.SelectBehavior" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">SelectBehavior</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsVectorLayer.SelectBehavior" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.IntEnum</span></code></p>
+<p>Specifies how a selection should be applied.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.22.</span></p>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">SetSelection</span></code>: Set selection, removing any existing selection</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">AddToSelection</span></code>: Add selection to current selection</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">IntersectSelection</span></code>: Modify current selection to include only select features which match</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RemoveFromSelection</span></code>: Remove from current selection</p></li>
+</ul>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.core.QgsVectorLayer.SelectBehavior.baseClass">
 <span class="sig-name descname"><span class="pre">baseClass</span></span><a class="headerlink" href="#qgis.core.QgsVectorLayer.SelectBehavior.baseClass" title="Permalink to this definition">¶</a></dt>
-<dd><p>alias of <a class="reference internal" href="#qgis.core.QgsVectorLayer" title="qgis._core.QgsVectorLayer"><code class="xref py py-class docutils literal notranslate"><span class="pre">qgis._core.QgsVectorLayer</span></code></a></p>
+<dd><p>alias of <a class="reference internal" href="Qgis.html#qgis.core.Qgis" title="qgis._core.Qgis"><code class="xref py py-class docutils literal notranslate"><span class="pre">qgis._core.Qgis</span></code></a></p>
 </dd></dl>
 
 </dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="qgis.core.QgsVectorLayer.SemiTransparentCircle">
-<span class="sig-name descname"><span class="pre">SemiTransparentCircle</span></span><em class="property"> <span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#qgis.core.QgsVectorLayer.SemiTransparentCircle" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="qgis.core.QgsVectorLayer.SetSelection">
-<span class="sig-name descname"><span class="pre">SetSelection</span></span><em class="property"> <span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#qgis.core.QgsVectorLayer.SetSelection" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="qgis.core.QgsVectorLayer.Success">
-<span class="sig-name descname"><span class="pre">Success</span></span><em class="property"> <span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#qgis.core.QgsVectorLayer.Success" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="qgis.core.QgsVectorLayer.VertexMarkerType">
-<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">VertexMarkerType</span></span><a class="headerlink" href="#qgis.core.QgsVectorLayer.VertexMarkerType" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">VertexMarkerType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsVectorLayer.VertexMarkerType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.IntEnum</span></code></p>
+<p>Editing vertex markers, used for showing vertices during a edit operation.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.22.</span></p>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">SemiTransparentCircle</span></code>: Semi-transparent circle marker</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Cross</span></code>: Cross marker</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NoMarker</span></code>: No marker</p></li>
+</ul>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.QgsVectorLayer.VertexMarkerType.baseClass">
+<span class="sig-name descname"><span class="pre">baseClass</span></span><a class="headerlink" href="#qgis.core.QgsVectorLayer.VertexMarkerType.baseClass" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="Qgis.html#qgis.core.Qgis" title="qgis._core.Qgis"><code class="xref py py-class docutils literal notranslate"><span class="pre">qgis._core.Qgis</span></code></a></p>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="py method">
@@ -4904,7 +4839,7 @@ changes can be discarded by calling <a class="reference internal" href="#qgis.co
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsVectorLayer.deleteVertex">
-<span class="sig-name descname"><span class="pre">deleteVertex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">featureId</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vertex</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#qgis.core.QgsVectorLayer.EditResult" title="qgis.core.QgsVectorLayer.EditResult"><span class="pre">QgsVectorLayer.EditResult</span></a><a class="headerlink" href="#qgis.core.QgsVectorLayer.deleteVertex" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">deleteVertex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">featureId</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vertex</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="Qgis.html#qgis.core.Qgis.VectorEditResult" title="qgis.core.Qgis.VectorEditResult"><span class="pre">Qgis.VectorEditResult</span></a><a class="headerlink" href="#qgis.core.QgsVectorLayer.deleteVertex" title="Permalink to this definition">¶</a></dt>
 <dd><p>Deletes a vertex from a feature.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -4926,7 +4861,7 @@ changes can be discarded by calling <a class="reference internal" href="#qgis.co
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.EditResult" title="qgis.core.QgsVectorLayer.EditResult">QgsVectorLayer.EditResult</a></p>
+<dd class="field-odd"><p><a class="reference internal" href="Qgis.html#qgis.core.Qgis.VectorEditResult" title="qgis.core.Qgis.VectorEditResult">Qgis.VectorEditResult</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -5066,7 +5001,7 @@ be returned.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsVectorLayer.drawVertexMarker">
-<span class="sig-name descname"><span class="pre">drawVertexMarker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">QPainter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#qgis.core.QgsVectorLayer.VertexMarkerType" title="qgis.core.QgsVectorLayer.VertexMarkerType"><span class="pre">QgsVectorLayer.VertexMarkerType</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">vertexSize</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsVectorLayer.drawVertexMarker" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">drawVertexMarker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">QPainter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="Qgis.html#qgis.core.Qgis.VertexMarkerType" title="qgis.core.Qgis.VertexMarkerType"><span class="pre">Qgis.VertexMarkerType</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">vertexSize</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsVectorLayer.drawVertexMarker" title="Permalink to this definition">¶</a></dt>
 <dd><p>Draws a vertex symbol at (screen) coordinates x, y. (Useful to assist vertex editing.)</p>
 <div class="deprecated">
 <p><span class="versionmodified deprecated">Deprecated since version Use: </span>the equivalent <a class="reference internal" href="QgsSymbolLayerUtils.html#module-QgsSymbolLayerUtils" title="QgsSymbolLayerUtils"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsSymbolLayerUtils</span></code></a>.drawVertexMarker function instead</p>
@@ -5077,7 +5012,7 @@ be returned.</p>
 <li><p><strong>x</strong> (<em>float</em>) – </p></li>
 <li><p><strong>y</strong> (<em>float</em>) – </p></li>
 <li><p><strong>p</strong> (<em>QPainter</em>) – </p></li>
-<li><p><strong>type</strong> (<a class="reference internal" href="#qgis.core.QgsVectorLayer.VertexMarkerType" title="qgis.core.QgsVectorLayer.VertexMarkerType"><em>QgsVectorLayer.VertexMarkerType</em></a>) – </p></li>
+<li><p><strong>type</strong> (<a class="reference internal" href="Qgis.html#qgis.core.Qgis.VertexMarkerType" title="qgis.core.Qgis.VertexMarkerType"><em>Qgis.VertexMarkerType</em></a>) – </p></li>
 <li><p><strong>vertexSize</strong> (<em>int</em>) – </p></li>
 </ul>
 </dd>
@@ -6593,13 +6528,13 @@ Selects features by their ID</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsVectorLayer.selectByExpression">
-<span class="sig-name descname"><span class="pre">selectByExpression</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expression</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">behavior</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#qgis.core.QgsVectorLayer.SelectBehavior" title="qgis.core.QgsVectorLayer.SelectBehavior"><span class="pre">QgsVectorLayer.SelectBehavior</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">QgsVectorLayer.SetSelection</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsVectorLayer.selectByExpression" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">selectByExpression</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expression</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">behavior</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="Qgis.html#qgis.core.Qgis.SelectBehavior" title="qgis.core.Qgis.SelectBehavior"><span class="pre">Qgis.SelectBehavior</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">Qgis.SelectBehavior.SetSelection</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsVectorLayer.selectByExpression" title="Permalink to this definition">¶</a></dt>
 <dd><p>Selects matching features using an expression.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>expression</strong> (<em>str</em>) – expression to evaluate to select features</p></li>
-<li><p><strong>behavior</strong> (<em>QgsVectorLayer.SelectBehavior = QgsVectorLayer.SetSelection</em>) – selection type, allows adding to current selection, removing
+<li><p><strong>behavior</strong> (<em>Qgis.SelectBehavior = Qgis.SelectBehavior.SetSelection</em>) – selection type, allows adding to current selection, removing
 from selection, etc.</p></li>
 </ul>
 </dd>
@@ -6619,14 +6554,14 @@ from selection, etc.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsVectorLayer.selectByIds">
-<span class="sig-name descname"><span class="pre">selectByIds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ids</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">object</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">behavior</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#qgis.core.QgsVectorLayer.SelectBehavior" title="qgis.core.QgsVectorLayer.SelectBehavior"><span class="pre">QgsVectorLayer.SelectBehavior</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">QgsVectorLayer.SetSelection</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsVectorLayer.selectByIds" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">selectByIds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ids</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">object</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">behavior</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="Qgis.html#qgis.core.Qgis.SelectBehavior" title="qgis.core.Qgis.SelectBehavior"><span class="pre">Qgis.SelectBehavior</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">Qgis.SelectBehavior.SetSelection</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsVectorLayer.selectByIds" title="Permalink to this definition">¶</a></dt>
 <dd><p>Selects matching features using a list of feature IDs. Will emit the
 <a class="reference internal" href="#qgis.core.QgsVectorLayer.selectionChanged" title="qgis.core.QgsVectorLayer.selectionChanged"><code class="xref py py-func docutils literal notranslate"><span class="pre">selectionChanged()</span></code></a> signal with the clearAndSelect flag set.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>ids</strong> (<em>object</em>) – feature IDs to select</p></li>
-<li><p><strong>behavior</strong> (<em>QgsVectorLayer.SelectBehavior = QgsVectorLayer.SetSelection</em>) – selection type, allows adding to current selection, removing
+<li><p><strong>behavior</strong> (<em>Qgis.SelectBehavior = Qgis.SelectBehavior.SetSelection</em>) – selection type, allows adding to current selection, removing
 from selection, etc.</p></li>
 </ul>
 </dd>
@@ -6646,13 +6581,13 @@ from selection, etc.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsVectorLayer.selectByRect">
-<span class="sig-name descname"><span class="pre">selectByRect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rect</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsRectangle.html#module-QgsRectangle" title="QgsRectangle"><span class="pre">QgsRectangle</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">behavior</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#qgis.core.QgsVectorLayer.SelectBehavior" title="qgis.core.QgsVectorLayer.SelectBehavior"><span class="pre">QgsVectorLayer.SelectBehavior</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">QgsVectorLayer.SetSelection</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsVectorLayer.selectByRect" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">selectByRect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rect</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsRectangle.html#module-QgsRectangle" title="QgsRectangle"><span class="pre">QgsRectangle</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">behavior</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="Qgis.html#qgis.core.Qgis.SelectBehavior" title="qgis.core.Qgis.SelectBehavior"><span class="pre">Qgis.SelectBehavior</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">Qgis.SelectBehavior.SetSelection</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsVectorLayer.selectByRect" title="Permalink to this definition">¶</a></dt>
 <dd><p>Selects features found within the search rectangle (in layer’s coordinates)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>rect</strong> (<a class="reference internal" href="QgsRectangle.html#qgis.core.QgsRectangle" title="qgis.core.QgsRectangle"><em>QgsRectangle</em></a>) – search rectangle</p></li>
-<li><p><strong>behavior</strong> (<em>QgsVectorLayer.SelectBehavior = QgsVectorLayer.SetSelection</em>) – selection type, allows adding to current selection, removing
+<li><p><strong>behavior</strong> (<em>Qgis.SelectBehavior = Qgis.SelectBehavior.SetSelection</em>) – selection type, allows adding to current selection, removing
 from selection, etc.</p></li>
 </ul>
 </dd>
@@ -7980,7 +7915,7 @@ to this signal and update the element accordingly.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 00:19 Jul 20, 2021.
+        Last updated on 02:18 Jul 20, 2021.
       </span>
 
     </p>
