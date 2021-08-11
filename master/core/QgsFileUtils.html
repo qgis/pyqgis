@@ -2047,8 +2047,14 @@
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsFileUtils.pathIsSlowDevice" title="qgis.core.QgsFileUtils.pathIsSlowDevice"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pathIsSlowDevice</span></code></a></p></td>
 <td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the specified <code class="docutils literal notranslate"><span class="pre">path</span></code> is assumed to reside on a slow device, e.g.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsFileUtils.representFileSize" title="qgis.core.QgsFileUtils.representFileSize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">representFileSize</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsFileUtils.renameDataset" title="qgis.core.QgsFileUtils.renameDataset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">renameDataset</span></code></a></p></td>
+<td><p>Renames the dataset at <code class="docutils literal notranslate"><span class="pre">oldPath</span></code> to <code class="docutils literal notranslate"><span class="pre">newPath</span></code>, renaming both the file at <code class="docutils literal notranslate"><span class="pre">oldPath</span></code> and all associated sidecar files which exist for it.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsFileUtils.representFileSize" title="qgis.core.QgsFileUtils.representFileSize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">representFileSize</span></code></a></p></td>
 <td><p>Returns the human size from bytes</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsFileUtils.sidecarFilesForPath" title="qgis.core.QgsFileUtils.sidecarFilesForPath"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sidecarFilesForPath</span></code></a></p></td>
+<td><p>Returns a list of the sidecar files which exist for the dataset a the specified <code class="docutils literal notranslate"><span class="pre">path</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsFileUtils.stringToSafeFilename" title="qgis.core.QgsFileUtils.stringToSafeFilename"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stringToSafeFilename</span></code></a></p></td>
 <td><p>Converts a <code class="docutils literal notranslate"><span class="pre">string</span></code> to a safe filename, replacing characters which are not safe for filenames with an ‘_’ character.</p></td>
@@ -2264,6 +2270,42 @@ network drive or other non-fixed device.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsFileUtils.renameDataset">
+<span class="sig-name descname"><span class="pre">renameDataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">oldPath</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">newPath</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flags</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="Qgis.html#qgis.core.Qgis.FileOperationFlags" title="qgis.core.Qgis.FileOperationFlags"><span class="pre">Qgis.FileOperationFlags</span></a><span class="p"><span class="pre">,</span> </span><a class="reference internal" href="Qgis.html#qgis.core.Qgis.FileOperationFlag" title="qgis.core.Qgis.FileOperationFlag"><span class="pre">Qgis.FileOperationFlag</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">Qgis.FileOperationFlag.IncludeMetadataFile</span> <span class="pre">|</span> <span class="pre">Qgis.FileOperationFlag.IncludeStyleFile</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qgis.core.QgsFileUtils.renameDataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Renames the dataset at <code class="docutils literal notranslate"><span class="pre">oldPath</span></code> to <code class="docutils literal notranslate"><span class="pre">newPath</span></code>, renaming both the file at <code class="docutils literal notranslate"><span class="pre">oldPath</span></code> and
+all associated sidecar files which exist for it.</p>
+<p>For instance, if <code class="docutils literal notranslate"><span class="pre">oldPath</span></code> specified a .shp file then the corresponding .dbf, .idx
+and .prj files would be renamed (amongst others).</p>
+<p>The destination directory must already exist.</p>
+<p>The optional <code class="docutils literal notranslate"><span class="pre">flags</span></code> argument can be used to control whether QMD metadata files and
+QML styling files should also be renamed accordingly. By default these will be renamed,
+but manually specifying a different set of flags allows callers to avoid this when
+desired.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>oldPath</strong> (<em>str</em>) – original path to dataset</p></li>
+<li><p><strong>newPath</strong> (<em>str</em>) – new path for dataset</p></li>
+<li><p><strong>flags</strong> (<em>Union</em><em>[</em><a class="reference internal" href="Qgis.html#qgis.core.Qgis.FileOperationFlags" title="qgis.core.Qgis.FileOperationFlags"><em>Qgis.FileOperationFlags</em></a>) – optional flags to control file operation behavior</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Tuple[bool, str]</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the dataset was successfully renamed, or <code class="docutils literal notranslate"><span class="pre">False</span></code> if an error occurred</p></li>
+<li><p>error: will be set to a descriptive error message if the rename operation fails</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.22.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsFileUtils.representFileSize">
 <span class="sig-name descname"><span class="pre">representFileSize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bytes</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#qgis.core.QgsFileUtils.representFileSize" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the human size from bytes</p>
@@ -2273,6 +2315,34 @@ network drive or other non-fixed device.</p>
 </dd>
 <dt class="field-even">Return type</dt>
 <dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsFileUtils.sidecarFilesForPath">
+<span class="sig-name descname"><span class="pre">sidecarFilesForPath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Set</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qgis.core.QgsFileUtils.sidecarFilesForPath" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of the sidecar files which exist for the dataset a the specified <code class="docutils literal notranslate"><span class="pre">path</span></code>.</p>
+<p>In this context a sidecar file is defined as a file which shares the same base filename
+as a dataset, but which differs in file extension. It defines the list of additional
+files which must be renamed or deleted alongside the main file associated with the
+dataset in order to completely rename/delete the dataset.</p>
+<p>For instance, if <code class="docutils literal notranslate"><span class="pre">path</span></code> specified a .shp file then the corresponding .dbf, .idx
+and .prj files would be returned (amongst others).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>QGIS metadata files (.qmd) and map layer styling files (.qml) are NOT included
+in the returned list.</p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.22.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Set[str]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2329,7 +2399,7 @@ the wildcard portion of this filter (i.e. “</em>.tiff <a href="#id19"><span cl
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 00:29 Aug 11, 2021.
+        Last updated on 02:31 Aug 11, 2021.
       </span>
 
     </p>
