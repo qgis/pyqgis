@@ -2029,15 +2029,21 @@ Constructor for QgsRasterCalcNode.</p>
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.analysis.QgsRasterCalcNode.findNodes" title="qgis.analysis.QgsRasterCalcNode.findNodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">findNodes</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.analysis.QgsRasterCalcNode.cleanRasterReferences" title="qgis.analysis.QgsRasterCalcNode.cleanRasterReferences"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cleanRasterReferences</span></code></a></p></td>
+<td><p>Returns a list of raster layer references that are addressed in the formula, without quotation marks.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.analysis.QgsRasterCalcNode.findNodes" title="qgis.analysis.QgsRasterCalcNode.findNodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">findNodes</span></code></a></p></td>
 <td><p>Returns a list of nodes of a specific <code class="docutils literal notranslate"><span class="pre">type</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.analysis.QgsRasterCalcNode.parseRasterCalcString" title="qgis.analysis.QgsRasterCalcNode.parseRasterCalcString"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parseRasterCalcString</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.analysis.QgsRasterCalcNode.parseRasterCalcString" title="qgis.analysis.QgsRasterCalcNode.parseRasterCalcString"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parseRasterCalcString</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param str</dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.analysis.QgsRasterCalcNode.referencedLayerNames" title="qgis.analysis.QgsRasterCalcNode.referencedLayerNames"><code class="xref py py-obj docutils literal notranslate"><span class="pre">referencedLayerNames</span></code></a></p></td>
+<td><p>Returns a list of raster layer names that are referenced in the formula without the quotation marks.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.analysis.QgsRasterCalcNode.setLeft" title="qgis.analysis.QgsRasterCalcNode.setLeft"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setLeft</span></code></a></p></td>
 <td><p><dl class="field-list simple">
@@ -2182,6 +2188,21 @@ Constructor for QgsRasterCalcNode.</p>
 <dt class="sig sig-object py" id="qgis.analysis.QgsRasterCalcNode.Type">
 <em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">Type</span></span><a class="headerlink" href="#qgis.analysis.QgsRasterCalcNode.Type" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.analysis.QgsRasterCalcNode.cleanRasterReferences">
+<span class="sig-name descname"><span class="pre">cleanRasterReferences</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qgis.analysis.QgsRasterCalcNode.cleanRasterReferences" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of raster layer references that are addressed in the formula, without quotation marks.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>since QGIS 3.22</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List[str]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -2353,6 +2374,22 @@ Constructor for QgsRasterCalcNode.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.analysis.QgsRasterCalcNode.referencedLayerNames">
+<span class="sig-name descname"><span class="pre">referencedLayerNames</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qgis.analysis.QgsRasterCalcNode.referencedLayerNames" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of raster layer names that are referenced in the formula without the quotation marks.
+It uses QgsRasterCalcNode.cleanRasterReferences</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>since QGIS 3.22</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.analysis.QgsRasterCalcNode.setLeft">
 <span class="sig-name descname"><span class="pre">setLeft</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">left</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#module-QgsRasterCalcNode" title="QgsRasterCalcNode"><span class="pre">QgsRasterCalcNode</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.analysis.QgsRasterCalcNode.setLeft" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
@@ -2437,7 +2474,7 @@ Constructor for QgsRasterCalcNode.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 00:23 Aug 18, 2021.
+        Last updated on 01:57 Aug 18, 2021.
       </span>
 
     </p>
