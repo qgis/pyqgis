@@ -3386,6 +3386,13 @@ directly from a <a class="reference internal" href="QgsVectorDataProvider.html#m
 <dd><p>Set that no attributes will be fetched.</p>
 <p>To revert a call to setNoAttributes and fetch all or some available attributes,
 the SubsetOfAttributes flag should be removed from the request.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is intended as hint to data providers for optimising feature retrieval. Depending
+on the provider, it may be trivial for the provider to always return all attributes instead of
+removing them. In these cases the provider may ignore this hint and return all attributes
+regardless of whether this method has been called.</p>
+</div>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsFeatureRequest.setSubsetOfAttributes" title="qgis.core.QgsFeatureRequest.setSubsetOfAttributes"><code class="xref py py-func docutils literal notranslate"><span class="pre">setSubsetOfAttributes()</span></code></a></p>
@@ -3471,6 +3478,14 @@ expression function.</p>
 <p>An empty attributes list indicates that no attributes will be fetched.
 To revert a call to setSubsetOfAttributes and fetch all available attributes,
 the SubsetOfAttributes flag should be removed from the request.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is intended as hint to data providers for optimising feature retrieval. Depending
+on the provider, it may be trivial for the provider to always return all attributes instead of
+the requested subset, or actually result in slower retrieval when the attributes are filtered out.
+In these cases the provider may ignore this hint and return all attributes regardless of the
+requested attributes.</p>
+</div>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsFeatureRequest.subsetOfAttributes" title="qgis.core.QgsFeatureRequest.subsetOfAttributes"><code class="xref py py-func docutils literal notranslate"><span class="pre">subsetOfAttributes()</span></code></a></p>
@@ -3481,12 +3496,28 @@ the SubsetOfAttributes flag should be removed from the request.</p>
 </div>
 <p>setSubsetOfAttributes(self, attrNames: Iterable[str], fields: <a class="reference internal" href="QgsFields.html#qgis.core.QgsFields" title="qgis.core.QgsFields"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsFields</span></code></a>) -&gt; QgsFeatureRequest
 Sets a subset of attributes by names that will be fetched.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is intended as hint to data providers for optimising feature retrieval. Depending
+on the provider, it may be trivial for the provider to always return all attributes instead of
+the requested subset, or actually result in slower retrieval when the attributes are filtered out.
+In these cases the provider may ignore this hint and return all attributes regardless of the
+requested attributes.</p>
+</div>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsFeatureRequest.subsetOfAttributes" title="qgis.core.QgsFeatureRequest.subsetOfAttributes"><code class="xref py py-func docutils literal notranslate"><span class="pre">subsetOfAttributes()</span></code></a></p>
 </div>
 <p>setSubsetOfAttributes(self, attrNames: Iterable[str], fields: <a class="reference internal" href="QgsFields.html#qgis.core.QgsFields" title="qgis.core.QgsFields"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsFields</span></code></a>) -&gt; QgsFeatureRequest
 Sets a subset of attributes by names that will be fetched.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is intended as hint to data providers for optimising feature retrieval. Depending
+on the provider, it may be trivial for the provider to always return all attributes instead of
+the requested subset, or actually result in slower retrieval when the attributes are filtered out.
+In these cases the provider may ignore this hint and return all attributes regardless of the
+requested attributes.</p>
+</div>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsFeatureRequest.subsetOfAttributes" title="qgis.core.QgsFeatureRequest.subsetOfAttributes"><code class="xref py py-func docutils literal notranslate"><span class="pre">subsetOfAttributes()</span></code></a></p>
@@ -3606,6 +3637,14 @@ set. See <a class="reference internal" href="#qgis.core.QgsFeatureRequest.filter
 <dd class="field-even"><p>A list of attributes to be fetched</p>
 </dd>
 </dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is intended as hint to data providers for optimising feature retrieval. Depending
+on the provider, it may be trivial for the provider to always return all attributes instead of
+the requested subset, or actually result in slower retrieval when the attributes are filtered out.
+In these cases the provider may ignore this hint and return all attributes regardless of the
+requested attributes.</p>
+</div>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsFeatureRequest.setSubsetOfAttributes" title="qgis.core.QgsFeatureRequest.setSubsetOfAttributes"><code class="xref py py-func docutils literal notranslate"><span class="pre">setSubsetOfAttributes()</span></code></a></p>
@@ -3677,7 +3716,7 @@ and reprojection is required</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 00:21 Aug 26, 2021.
+        Last updated on 02:11 Aug 26, 2021.
       </span>
 
     </p>

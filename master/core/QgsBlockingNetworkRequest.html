@@ -2110,6 +2110,12 @@ Constructor for QgsBlockingNetworkRequest</p>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsBlockingNetworkRequest.downloadProgress" title="qgis.core.QgsBlockingNetworkRequest.downloadProgress"><code class="xref py py-obj docutils literal notranslate"><span class="pre">downloadProgress</span></code></a></p></td>
 <td><p>Emitted when when data arrives during a request.</p></td>
 </tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsBlockingNetworkRequest.finished" title="qgis.core.QgsBlockingNetworkRequest.finished"><code class="xref py py-obj docutils literal notranslate"><span class="pre">finished</span></code></a></p></td>
+<td><p>Emitted once a request has finished.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsBlockingNetworkRequest.uploadProgress" title="qgis.core.QgsBlockingNetworkRequest.uploadProgress"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uploadProgress</span></code></a></p></td>
+<td><p>Emitted when when data are sent during a request.</p></td>
+</tr>
 </tbody>
 </table>
 <p class="rubric">Attributes</p>
@@ -2232,7 +2238,10 @@ can be retrieved by calling <a class="reference internal" href="#qgis.core.QgsBl
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.core.QgsBlockingNetworkRequest.downloadFinished">
 <span class="sig-name descname"><span class="pre">downloadFinished</span></span><a class="headerlink" href="#qgis.core.QgsBlockingNetworkRequest.downloadFinished" title="Permalink to this definition">¶</a></dt>
-<dd><p>Emitted once a request has finished downloading. [signal]</p>
+<dd><p>Emitted once a request has finished downloading.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version Use: </span>the <a class="reference internal" href="#qgis.core.QgsBlockingNetworkRequest.finished" title="qgis.core.QgsBlockingNetworkRequest.finished"><code class="xref py py-func docutils literal notranslate"><span class="pre">finished()</span></code></a> signal instead. [signal]</p>
+</div>
 </dd></dl>
 
 <dl class="py attribute">
@@ -2250,6 +2259,12 @@ can be retrieved by calling <a class="reference internal" href="#qgis.core.QgsBl
 <dd class="field-odd"><p>str</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.QgsBlockingNetworkRequest.finished">
+<span class="sig-name descname"><span class="pre">finished</span></span><a class="headerlink" href="#qgis.core.QgsBlockingNetworkRequest.finished" title="Permalink to this definition">¶</a></dt>
+<dd><p>Emitted once a request has finished. [signal]</p>
 </dd></dl>
 
 <dl class="py method">
@@ -2322,7 +2337,7 @@ can be retrieved by calling <a class="reference internal" href="#qgis.core.QgsBl
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsBlockingNetworkRequest.post">
-<span class="sig-name descname"><span class="pre">post</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">request</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">QNetworkRequest</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">QByteArray</span><span class="p"><span class="pre">,</span> </span><span class="pre">bytes</span><span class="p"><span class="pre">,</span> </span><span class="pre">bytearray</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">forceRefresh</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feedback</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsFeedback.html#module-QgsFeedback" title="QgsFeedback"><span class="pre">QgsFeedback</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#qgis.core.QgsBlockingNetworkRequest.ErrorCode" title="qgis.core.QgsBlockingNetworkRequest.ErrorCode"><span class="pre">QgsBlockingNetworkRequest.ErrorCode</span></a></span></span><a class="headerlink" href="#qgis.core.QgsBlockingNetworkRequest.post" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">post</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">request</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">QNetworkRequest</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">QIODevice</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">forceRefresh</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feedback</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsFeedback.html#module-QgsFeedback" title="QgsFeedback"><span class="pre">QgsFeedback</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#qgis.core.QgsBlockingNetworkRequest.ErrorCode" title="qgis.core.QgsBlockingNetworkRequest.ErrorCode"><span class="pre">QgsBlockingNetworkRequest.ErrorCode</span></a></span></span><a class="headerlink" href="#qgis.core.QgsBlockingNetworkRequest.post" title="Permalink to this definition">¶</a></dt>
 <dd><p>Performs a “post” operation on the specified <code class="docutils literal notranslate"><span class="pre">request</span></code>, using the given <code class="docutils literal notranslate"><span class="pre">data</span></code>.</p>
 <p>If <code class="docutils literal notranslate"><span class="pre">forceRefresh</span></code> is <code class="docutils literal notranslate"><span class="pre">False</span></code> then previously cached replies may be used for the request. If
 it is set to <code class="docutils literal notranslate"><span class="pre">True</span></code> then a new query is always performed.</p>
@@ -2338,11 +2353,17 @@ can be retrieved by calling <a class="reference internal" href="#qgis.core.QgsBl
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsBlockingNetworkRequest.get" title="qgis.core.QgsBlockingNetworkRequest.get"><code class="xref py py-func docutils literal notranslate"><span class="pre">get()</span></code></a></p>
 </div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.22.</span></p>
+</div>
+<p>post(self, request: QNetworkRequest, data: Union[QByteArray, bytes, bytearray], forceRefresh: bool = False, feedback: <a class="reference internal" href="QgsFeedback.html#qgis.core.QgsFeedback" title="qgis.core.QgsFeedback"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsFeedback</span></code></a> = None) -&gt; QgsBlockingNetworkRequest.ErrorCode
+This is an overloaded function.</p>
+<p>Performs a “post” operation on the specified <code class="docutils literal notranslate"><span class="pre">request</span></code>, using the given <code class="docutils literal notranslate"><span class="pre">data</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>request</strong> (<em>QNetworkRequest</em>) – </p></li>
-<li><p><strong>data</strong> (<em>Union</em><em>[</em><em>QByteArray</em>) – </p></li>
+<li><p><strong>data</strong> (<em>QIODevice</em>) – </p></li>
 <li><p><strong>forceRefresh</strong> (<em>bool = False</em>) – </p></li>
 <li><p><strong>feedback</strong> (<a class="reference internal" href="QgsFeedback.html#qgis.core.QgsFeedback" title="qgis.core.QgsFeedback"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsFeedback</span></code></a> = None) – </p></li>
 </ul>
@@ -2355,7 +2376,7 @@ can be retrieved by calling <a class="reference internal" href="#qgis.core.QgsBl
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsBlockingNetworkRequest.put">
-<span class="sig-name descname"><span class="pre">put</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">request</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">QNetworkRequest</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">QByteArray</span><span class="p"><span class="pre">,</span> </span><span class="pre">bytes</span><span class="p"><span class="pre">,</span> </span><span class="pre">bytearray</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feedback</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsFeedback.html#module-QgsFeedback" title="QgsFeedback"><span class="pre">QgsFeedback</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#qgis.core.QgsBlockingNetworkRequest.ErrorCode" title="qgis.core.QgsBlockingNetworkRequest.ErrorCode"><span class="pre">QgsBlockingNetworkRequest.ErrorCode</span></a></span></span><a class="headerlink" href="#qgis.core.QgsBlockingNetworkRequest.put" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">put</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">request</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">QNetworkRequest</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">QIODevice</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feedback</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsFeedback.html#module-QgsFeedback" title="QgsFeedback"><span class="pre">QgsFeedback</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#qgis.core.QgsBlockingNetworkRequest.ErrorCode" title="qgis.core.QgsBlockingNetworkRequest.ErrorCode"><span class="pre">QgsBlockingNetworkRequest.ErrorCode</span></a></span></span><a class="headerlink" href="#qgis.core.QgsBlockingNetworkRequest.put" title="Permalink to this definition">¶</a></dt>
 <dd><p>Performs a “put” operation on the specified <code class="docutils literal notranslate"><span class="pre">request</span></code>, using the given <code class="docutils literal notranslate"><span class="pre">data</span></code>.</p>
 <p>If an <a class="reference internal" href="#qgis.core.QgsBlockingNetworkRequest.authCfg" title="qgis.core.QgsBlockingNetworkRequest.authCfg"><code class="xref py py-func docutils literal notranslate"><span class="pre">authCfg()</span></code></a> has been set, then any authentication configuration required will automatically be applied to
 <code class="docutils literal notranslate"><span class="pre">request</span></code>. There is no need to manually apply the authentication to the request prior to calling
@@ -2366,13 +2387,19 @@ by calling <a class="reference internal" href="#qgis.core.QgsBlockingNetworkRequ
 <p>If an error was encountered then a specific ErrorCode will be returned, and a detailed error message
 can be retrieved by calling <a class="reference internal" href="#qgis.core.QgsBlockingNetworkRequest.errorMessage" title="qgis.core.QgsBlockingNetworkRequest.errorMessage"><code class="xref py py-func docutils literal notranslate"><span class="pre">errorMessage()</span></code></a>.</p>
 <div class="versionadded">
+<p><span class="versionmodified added">New in version 3.22.</span></p>
+</div>
+<p>put(self, request: QNetworkRequest, data: Union[QByteArray, bytes, bytearray], feedback: <a class="reference internal" href="QgsFeedback.html#qgis.core.QgsFeedback" title="qgis.core.QgsFeedback"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsFeedback</span></code></a> = None) -&gt; QgsBlockingNetworkRequest.ErrorCode
+This is an overloaded function.</p>
+<p>Performs a “put” operation on the specified <code class="docutils literal notranslate"><span class="pre">request</span></code>, using the given <code class="docutils literal notranslate"><span class="pre">data</span></code>.</p>
+<div class="versionadded">
 <p><span class="versionmodified added">New in version 3.18.</span></p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>request</strong> (<em>QNetworkRequest</em>) – </p></li>
-<li><p><strong>data</strong> (<em>Union</em><em>[</em><em>QByteArray</em>) – </p></li>
+<li><p><strong>data</strong> (<em>QIODevice</em>) – </p></li>
 <li><p><strong>feedback</strong> (<a class="reference internal" href="QgsFeedback.html#qgis.core.QgsFeedback" title="qgis.core.QgsFeedback"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsFeedback</span></code></a> = None) – </p></li>
 </ul>
 </dd>
@@ -2428,6 +2455,15 @@ can be retrieved by calling <a class="reference internal" href="#qgis.core.QgsBl
 <span class="sig-name descname"><span class="pre">timerEvent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">QTimerEvent</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsBlockingNetworkRequest.timerEvent" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.QgsBlockingNetworkRequest.uploadProgress">
+<span class="sig-name descname"><span class="pre">uploadProgress</span></span><a class="headerlink" href="#qgis.core.QgsBlockingNetworkRequest.uploadProgress" title="Permalink to this definition">¶</a></dt>
+<dd><p>Emitted when when data are sent during a request.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.22: </span>[signal]</p>
+</div>
+</dd></dl>
+
 </dd></dl>
 
 </div>
@@ -2443,7 +2479,7 @@ can be retrieved by calling <a class="reference internal" href="#qgis.core.QgsBl
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 00:21 Aug 26, 2021.
+        Last updated on 02:11 Aug 26, 2021.
       </span>
 
     </p>
