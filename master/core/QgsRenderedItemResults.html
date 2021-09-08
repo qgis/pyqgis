@@ -1248,6 +1248,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsAggregateMappingWidget.html">Class: QgsAggregateMappingWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsAggregateToolButton.html">Class: QgsAggregateToolButton</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsAlignmentComboBox.html">Class: QgsAlignmentComboBox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui/QgsAnnotationItemAbstractGuiMetadata.html">Class: QgsAnnotationItemAbstractGuiMetadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui/QgsAnnotationItemBaseWidget.html">Class: QgsAnnotationItemBaseWidget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui/QgsAnnotationItemCommonPropertiesWidget.html">Class: QgsAnnotationItemCommonPropertiesWidget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui/QgsAnnotationItemGuiGroup.html">Class: QgsAnnotationItemGuiGroup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui/QgsAnnotationItemGuiRegistry.html">Class: QgsAnnotationItemGuiRegistry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsApplicationExitBlockerInterface.html">Class: QgsApplicationExitBlockerInterface</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsArrowSymbolLayerWidget.html">Class: QgsArrowSymbolLayerWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsAttributeDialog.html">Class: QgsAttributeDialog</a></li>
@@ -1529,6 +1534,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsMapLayerActionRegistry.html">Class: QgsMapLayerActionRegistry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsMapLayerComboBox.html">Class: QgsMapLayerComboBox</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsMapLayerConfigWidget.html">Class: QgsMapLayerConfigWidget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui/QgsMapLayerConfigWidgetContext.html">Class: QgsMapLayerConfigWidgetContext</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsMapLayerConfigWidgetFactory.html">Class: QgsMapLayerConfigWidgetFactory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsMapLayerStyleManagerWidget.html">Class: QgsMapLayerStyleManagerWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsMapMouseEvent.html">Class: QgsMapMouseEvent</a></li>
@@ -1543,6 +1549,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsMapToolExtent.html">Class: QgsMapToolExtent</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsMapToolIdentify.html">Class: QgsMapToolIdentify</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsMapToolIdentifyFeature.html">Class: QgsMapToolIdentifyFeature</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui/QgsMapToolModifyAnnotation.html">Class: QgsMapToolModifyAnnotation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsMapToolPan.html">Class: QgsMapToolPan</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsMapToolZoom.html">Class: QgsMapToolZoom</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsMapUnitScaleDialog.html">Class: QgsMapUnitScaleDialog</a></li>
@@ -2015,8 +2022,14 @@
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sip.wrapper</span></code></p>
 <p>Stores collated details of rendered items during a map rendering operation.</p>
 <div class="versionadded">
-<p><span class="versionmodified added">New in version 3.22: </span></p>
-<table class="longtable docutils align-default">
+<p><span class="versionmodified added">New in version 3.22.</span></p>
+</div>
+<p>QgsRenderedItemResults(extent: <a class="reference internal" href="QgsRectangle.html#qgis.core.QgsRectangle" title="qgis.core.QgsRectangle"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsRectangle</span></code></a> = QgsRectangle())
+Constructor for QgsRenderedItemResults.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">extent</span></code> argument can be used to specify an expected maximal extent for items which
+will be stored in the results. This helps to optimise the spatial indices used by the object.</p>
+<blockquote>
+<div><table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
 <col style="width: 90%" />
@@ -2034,13 +2047,16 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRenderedItemResults.appendResults" title="qgis.core.QgsRenderedItemResults.appendResults"><code class="xref py py-obj docutils literal notranslate"><span class="pre">appendResults</span></code></a></p></td>
 <td><p>Appends rendered item details to the results object.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRenderedItemResults.renderedAnnotationItemsInBounds" title="qgis.core.QgsRenderedItemResults.renderedAnnotationItemsInBounds"><code class="xref py py-obj docutils literal notranslate"><span class="pre">renderedAnnotationItemsInBounds</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRenderedItemResults.eraseResultsFromLayers" title="qgis.core.QgsRenderedItemResults.eraseResultsFromLayers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">eraseResultsFromLayers</span></code></a></p></td>
+<td><p>Erases results from layers matching those in the specified list of layers IDs.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRenderedItemResults.renderedAnnotationItemsInBounds" title="qgis.core.QgsRenderedItemResults.renderedAnnotationItemsInBounds"><code class="xref py py-obj docutils literal notranslate"><span class="pre">renderedAnnotationItemsInBounds</span></code></a></p></td>
 <td><p>Returns a list with details of the rendered annotation items within the specified <code class="docutils literal notranslate"><span class="pre">bounds</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRenderedItemResults.renderedItems" title="qgis.core.QgsRenderedItemResults.renderedItems"><code class="xref py py-obj docutils literal notranslate"><span class="pre">renderedItems</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRenderedItemResults.renderedItems" title="qgis.core.QgsRenderedItemResults.renderedItems"><code class="xref py py-obj docutils literal notranslate"><span class="pre">renderedItems</span></code></a></p></td>
 <td><p>Returns a list of all rendered items.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRenderedItemResults.transferResults" title="qgis.core.QgsRenderedItemResults.transferResults"><code class="xref py py-obj docutils literal notranslate"><span class="pre">transferResults</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRenderedItemResults.transferResults" title="qgis.core.QgsRenderedItemResults.transferResults"><code class="xref py py-obj docutils literal notranslate"><span class="pre">transferResults</span></code></a></p></td>
 <td><p>Transfers all results from an <code class="docutils literal notranslate"><span class="pre">other</span></code> <a class="reference internal" href="#qgis.core.QgsRenderedItemResults" title="qgis.core.QgsRenderedItemResults"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsRenderedItemResults</span></code></a> object where the items have layer IDs matching the specified list.</p></td>
 </tr>
 </tbody>
@@ -2061,7 +2077,7 @@
 <tbody>
 </tbody>
 </table>
-</div>
+</div></blockquote>
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsRenderedItemResults.appendResults">
 <span class="sig-name descname"><span class="pre">appendResults</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">results</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="QgsRenderedItemDetails.html#module-QgsRenderedItemDetails" title="QgsRenderedItemDetails"><span class="pre">QgsRenderedItemDetails</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsRenderContext.html#module-QgsRenderContext" title="QgsRenderContext"><span class="pre">QgsRenderContext</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsRenderedItemResults.appendResults" title="Permalink to this definition">¶</a></dt>
@@ -2075,6 +2091,17 @@ to transform the details to the destination map CRS.</p>
 <li><p><strong>results</strong> (<em>Iterable</em><em>[</em><a class="reference internal" href="QgsRenderedItemDetails.html#qgis.core.QgsRenderedItemDetails" title="qgis.core.QgsRenderedItemDetails"><em>QgsRenderedItemDetails</em></a><em>]</em>) – </p></li>
 <li><p><strong>context</strong> (<a class="reference internal" href="QgsRenderContext.html#qgis.core.QgsRenderContext" title="qgis.core.QgsRenderContext"><em>QgsRenderContext</em></a>) – </p></li>
 </ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsRenderedItemResults.eraseResultsFromLayers">
+<span class="sig-name descname"><span class="pre">eraseResultsFromLayers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">layerIds</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsRenderedItemResults.eraseResultsFromLayers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Erases results from layers matching those in the specified list of layers IDs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>layerIds</strong> (<em>Iterable</em><em>[</em><em>str</em><em>]</em>) – </p>
 </dd>
 </dl>
 </dd></dl>
@@ -2149,7 +2176,7 @@ Transfers all results from an <code class="docutils literal notranslate"><span c
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 00:23 Sep 08, 2021.
+        Last updated on 02:31 Sep 08, 2021.
       </span>
 
     </p>
