@@ -140,6 +140,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../core/Qgs3DSymbolRegistry.html">Class: Qgs3DSymbolRegistry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsAbstract3DRenderer.html">Class: QgsAbstract3DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsAbstract3DSymbol.html">Class: QgsAbstract3DSymbol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../core/QgsAbstractAnnotationItemEditOperation.html">Class: QgsAbstractAnnotationItemEditOperation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsAbstractBabelFormat.html">Class: QgsAbstractBabelFormat</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsAbstractCacheIndex.html">Class: QgsAbstractCacheIndex</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsAbstractContentCacheBase.html">Class: QgsAbstractContentCacheBase</a></li>
@@ -170,6 +171,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsAnnotation.html">Class: QgsAnnotation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsAnnotationItem.html">Class: QgsAnnotationItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsAnnotationItemAbstractMetadata.html">Class: QgsAnnotationItemAbstractMetadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../core/QgsAnnotationItemEditOperationAddNode.html">Class: QgsAnnotationItemEditOperationAddNode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../core/QgsAnnotationItemEditOperationDeleteNode.html">Class: QgsAnnotationItemEditOperationDeleteNode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../core/QgsAnnotationItemEditOperationMoveNode.html">Class: QgsAnnotationItemEditOperationMoveNode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../core/QgsAnnotationItemEditOperationTransientResults.html">Class: QgsAnnotationItemEditOperationTransientResults</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../core/QgsAnnotationItemEditOperationTranslateItem.html">Class: QgsAnnotationItemEditOperationTranslateItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsAnnotationItemNode.html">Class: QgsAnnotationItemNode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsAnnotationItemRegistry.html">Class: QgsAnnotationItemRegistry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsAnnotationLayer.html">Class: QgsAnnotationLayer</a></li>
@@ -789,6 +795,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsProcessingOutputString.html">Class: QgsProcessingOutputString</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsProcessingOutputVectorLayer.html">Class: QgsProcessingOutputVectorLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsProcessingParameterAggregate.html">Class: QgsProcessingParameterAggregate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../core/QgsProcessingParameterAnnotationLayer.html">Class: QgsProcessingParameterAnnotationLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsProcessingParameterAuthConfig.html">Class: QgsProcessingParameterAuthConfig</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsProcessingParameterBand.html">Class: QgsProcessingParameterBand</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsProcessingParameterBoolean.html">Class: QgsProcessingParameterBoolean</a></li>
@@ -1553,7 +1560,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsMapToolExtent.html">Class: QgsMapToolExtent</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsMapToolIdentify.html">Class: QgsMapToolIdentify</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsMapToolIdentifyFeature.html">Class: QgsMapToolIdentifyFeature</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../gui/QgsMapToolModifyAnnotation.html">Class: QgsMapToolModifyAnnotation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsMapToolPan.html">Class: QgsMapToolPan</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsMapToolZoom.html">Class: QgsMapToolZoom</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsMapUnitScaleDialog.html">Class: QgsMapUnitScaleDialog</a></li>
@@ -2069,135 +2075,143 @@
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.AUTH_CFG" title="qgis.processing.ProcessingAlgFactory.AUTH_CFG"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AUTH_CFG</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.ANNOTATION_LAYER" title="qgis.processing.ProcessingAlgFactory.ANNOTATION_LAYER"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ANNOTATION_LAYER</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.BAND" title="qgis.processing.ProcessingAlgFactory.BAND"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BAND</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.AUTH_CFG" title="qgis.processing.ProcessingAlgFactory.AUTH_CFG"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AUTH_CFG</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.BOOL" title="qgis.processing.ProcessingAlgFactory.BOOL"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BOOL</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.BAND" title="qgis.processing.ProcessingAlgFactory.BAND"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BAND</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.COLOR" title="qgis.processing.ProcessingAlgFactory.COLOR"><code class="xref py py-obj docutils literal notranslate"><span class="pre">COLOR</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.BOOL" title="qgis.processing.ProcessingAlgFactory.BOOL"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BOOL</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.COORDINATE_OPERATION" title="qgis.processing.ProcessingAlgFactory.COORDINATE_OPERATION"><code class="xref py py-obj docutils literal notranslate"><span class="pre">COORDINATE_OPERATION</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.COLOR" title="qgis.processing.ProcessingAlgFactory.COLOR"><code class="xref py py-obj docutils literal notranslate"><span class="pre">COLOR</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.CRS" title="qgis.processing.ProcessingAlgFactory.CRS"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CRS</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.COORDINATE_OPERATION" title="qgis.processing.ProcessingAlgFactory.COORDINATE_OPERATION"><code class="xref py py-obj docutils literal notranslate"><span class="pre">COORDINATE_OPERATION</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.DATABASE_SCHEMA" title="qgis.processing.ProcessingAlgFactory.DATABASE_SCHEMA"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DATABASE_SCHEMA</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.CRS" title="qgis.processing.ProcessingAlgFactory.CRS"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CRS</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.DATABASE_TABLE" title="qgis.processing.ProcessingAlgFactory.DATABASE_TABLE"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DATABASE_TABLE</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.DATABASE_SCHEMA" title="qgis.processing.ProcessingAlgFactory.DATABASE_SCHEMA"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DATABASE_SCHEMA</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.DATETIME" title="qgis.processing.ProcessingAlgFactory.DATETIME"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DATETIME</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.DATABASE_TABLE" title="qgis.processing.ProcessingAlgFactory.DATABASE_TABLE"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DATABASE_TABLE</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.DISTANCE" title="qgis.processing.ProcessingAlgFactory.DISTANCE"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DISTANCE</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.DATETIME" title="qgis.processing.ProcessingAlgFactory.DATETIME"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DATETIME</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.ENUM" title="qgis.processing.ProcessingAlgFactory.ENUM"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ENUM</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.DISTANCE" title="qgis.processing.ProcessingAlgFactory.DISTANCE"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DISTANCE</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.EXPRESSION" title="qgis.processing.ProcessingAlgFactory.EXPRESSION"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EXPRESSION</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.ENUM" title="qgis.processing.ProcessingAlgFactory.ENUM"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ENUM</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.EXTENT" title="qgis.processing.ProcessingAlgFactory.EXTENT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EXTENT</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.EXPRESSION" title="qgis.processing.ProcessingAlgFactory.EXPRESSION"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EXPRESSION</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.FIELD" title="qgis.processing.ProcessingAlgFactory.FIELD"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FIELD</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.EXTENT" title="qgis.processing.ProcessingAlgFactory.EXTENT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EXTENT</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.FILE" title="qgis.processing.ProcessingAlgFactory.FILE"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FILE</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.FIELD" title="qgis.processing.ProcessingAlgFactory.FIELD"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FIELD</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.FILE_DEST" title="qgis.processing.ProcessingAlgFactory.FILE_DEST"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FILE_DEST</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.FILE" title="qgis.processing.ProcessingAlgFactory.FILE"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FILE</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.FOLDER" title="qgis.processing.ProcessingAlgFactory.FOLDER"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FOLDER</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.FILE_DEST" title="qgis.processing.ProcessingAlgFactory.FILE_DEST"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FILE_DEST</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.FOLDER_DEST" title="qgis.processing.ProcessingAlgFactory.FOLDER_DEST"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FOLDER_DEST</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.FOLDER" title="qgis.processing.ProcessingAlgFactory.FOLDER"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FOLDER</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.GEOMETRY" title="qgis.processing.ProcessingAlgFactory.GEOMETRY"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GEOMETRY</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.FOLDER_DEST" title="qgis.processing.ProcessingAlgFactory.FOLDER_DEST"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FOLDER_DEST</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.HTML" title="qgis.processing.ProcessingAlgFactory.HTML"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HTML</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.GEOMETRY" title="qgis.processing.ProcessingAlgFactory.GEOMETRY"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GEOMETRY</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.INT" title="qgis.processing.ProcessingAlgFactory.INT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">INT</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.HTML" title="qgis.processing.ProcessingAlgFactory.HTML"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HTML</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.LAYERDEF" title="qgis.processing.ProcessingAlgFactory.LAYERDEF"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LAYERDEF</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.INT" title="qgis.processing.ProcessingAlgFactory.INT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">INT</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.LAYOUT" title="qgis.processing.ProcessingAlgFactory.LAYOUT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LAYOUT</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.LAYERDEF" title="qgis.processing.ProcessingAlgFactory.LAYERDEF"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LAYERDEF</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.LAYOUT_ITEM" title="qgis.processing.ProcessingAlgFactory.LAYOUT_ITEM"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LAYOUT_ITEM</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.LAYOUT" title="qgis.processing.ProcessingAlgFactory.LAYOUT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LAYOUT</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.MAPLAYER" title="qgis.processing.ProcessingAlgFactory.MAPLAYER"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MAPLAYER</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.LAYOUT_ITEM" title="qgis.processing.ProcessingAlgFactory.LAYOUT_ITEM"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LAYOUT_ITEM</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.MAP_THEME" title="qgis.processing.ProcessingAlgFactory.MAP_THEME"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MAP_THEME</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.MAPLAYER" title="qgis.processing.ProcessingAlgFactory.MAPLAYER"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MAPLAYER</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.MATRIX" title="qgis.processing.ProcessingAlgFactory.MATRIX"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MATRIX</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.MAP_THEME" title="qgis.processing.ProcessingAlgFactory.MAP_THEME"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MAP_THEME</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.MESH_LAYER" title="qgis.processing.ProcessingAlgFactory.MESH_LAYER"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MESH_LAYER</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.MATRIX" title="qgis.processing.ProcessingAlgFactory.MATRIX"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MATRIX</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.MULTILAYER" title="qgis.processing.ProcessingAlgFactory.MULTILAYER"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MULTILAYER</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.MESH_LAYER" title="qgis.processing.ProcessingAlgFactory.MESH_LAYER"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MESH_LAYER</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.NUMBER" title="qgis.processing.ProcessingAlgFactory.NUMBER"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NUMBER</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.MULTILAYER" title="qgis.processing.ProcessingAlgFactory.MULTILAYER"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MULTILAYER</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.POINT" title="qgis.processing.ProcessingAlgFactory.POINT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">POINT</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.NUMBER" title="qgis.processing.ProcessingAlgFactory.NUMBER"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NUMBER</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.POINT_CLOUD_LAYER" title="qgis.processing.ProcessingAlgFactory.POINT_CLOUD_LAYER"><code class="xref py py-obj docutils literal notranslate"><span class="pre">POINT_CLOUD_LAYER</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.POINT" title="qgis.processing.ProcessingAlgFactory.POINT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">POINT</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.PROVIDER_CONNECTION" title="qgis.processing.ProcessingAlgFactory.PROVIDER_CONNECTION"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PROVIDER_CONNECTION</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.POINT_CLOUD_LAYER" title="qgis.processing.ProcessingAlgFactory.POINT_CLOUD_LAYER"><code class="xref py py-obj docutils literal notranslate"><span class="pre">POINT_CLOUD_LAYER</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.RANGE" title="qgis.processing.ProcessingAlgFactory.RANGE"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RANGE</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.PROVIDER_CONNECTION" title="qgis.processing.ProcessingAlgFactory.PROVIDER_CONNECTION"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PROVIDER_CONNECTION</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.RASTER_LAYER" title="qgis.processing.ProcessingAlgFactory.RASTER_LAYER"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RASTER_LAYER</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.RANGE" title="qgis.processing.ProcessingAlgFactory.RANGE"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RANGE</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.RASTER_LAYER_DEST" title="qgis.processing.ProcessingAlgFactory.RASTER_LAYER_DEST"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RASTER_LAYER_DEST</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.RASTER_LAYER" title="qgis.processing.ProcessingAlgFactory.RASTER_LAYER"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RASTER_LAYER</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.SCALE" title="qgis.processing.ProcessingAlgFactory.SCALE"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SCALE</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.RASTER_LAYER_DEST" title="qgis.processing.ProcessingAlgFactory.RASTER_LAYER_DEST"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RASTER_LAYER_DEST</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.SINK" title="qgis.processing.ProcessingAlgFactory.SINK"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SINK</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.SCALE" title="qgis.processing.ProcessingAlgFactory.SCALE"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SCALE</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.SOURCE" title="qgis.processing.ProcessingAlgFactory.SOURCE"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SOURCE</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.SINK" title="qgis.processing.ProcessingAlgFactory.SINK"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SINK</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.STRING" title="qgis.processing.ProcessingAlgFactory.STRING"><code class="xref py py-obj docutils literal notranslate"><span class="pre">STRING</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.SOURCE" title="qgis.processing.ProcessingAlgFactory.SOURCE"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SOURCE</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.VECTOR_LAYER" title="qgis.processing.ProcessingAlgFactory.VECTOR_LAYER"><code class="xref py py-obj docutils literal notranslate"><span class="pre">VECTOR_LAYER</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.STRING" title="qgis.processing.ProcessingAlgFactory.STRING"><code class="xref py py-obj docutils literal notranslate"><span class="pre">STRING</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.VECTOR_LAYER_DEST" title="qgis.processing.ProcessingAlgFactory.VECTOR_LAYER_DEST"><code class="xref py py-obj docutils literal notranslate"><span class="pre">VECTOR_LAYER_DEST</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.VECTOR_LAYER" title="qgis.processing.ProcessingAlgFactory.VECTOR_LAYER"><code class="xref py py-obj docutils literal notranslate"><span class="pre">VECTOR_LAYER</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.VECTOR_LAYER_DEST" title="qgis.processing.ProcessingAlgFactory.VECTOR_LAYER_DEST"><code class="xref py py-obj docutils literal notranslate"><span class="pre">VECTOR_LAYER_DEST</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 </tbody>
 </table>
 </div></blockquote>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.processing.ProcessingAlgFactory.ANNOTATION_LAYER">
+<span class="sig-name descname"><span class="pre">ANNOTATION_LAYER</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'ANNOTATION_LAYER'</span></em><a class="headerlink" href="#qgis.processing.ProcessingAlgFactory.ANNOTATION_LAYER" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.processing.ProcessingAlgFactory.AUTH_CFG">
 <span class="sig-name descname"><span class="pre">AUTH_CFG</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'AUTH_CFG'</span></em><a class="headerlink" href="#qgis.processing.ProcessingAlgFactory.AUTH_CFG" title="Permalink to this definition">¶</a></dt>
@@ -2484,7 +2498,8 @@ alg.PROVIDER_CONNECTION: QgsProcessingParameterProviderConnection
 alg.DATABASE_SCHEMA: QgsProcessingParameterDatabaseSchema
 alg.DATABASE_TABLE: QgsProcessingParameterDatabaseTable
 alg.COORDINATE_OPERATION: QgsProcessingParameterCoordinateOperation
-alg.POINT_CLOUD_LAYER: QgsProcessingParameterPointCloudLayer</p>
+alg.POINT_CLOUD_LAYER: QgsProcessingParameterPointCloudLayer
+alg.ANNOTATION_LAYER: QgsProcessingParameterAnnotationLayer</p>
 </div></blockquote>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2554,7 +2569,7 @@ alg.BOOL: QgsProcessingOutputBoolean</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 00:23 Sep 11, 2021.
+        Last updated on 02:28 Sep 11, 2021.
       </span>
 
     </p>

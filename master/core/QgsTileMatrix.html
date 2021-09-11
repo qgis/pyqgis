@@ -140,6 +140,7 @@
 <li class="toctree-l2"><a class="reference internal" href="Qgs3DSymbolRegistry.html">Class: Qgs3DSymbolRegistry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAbstract3DRenderer.html">Class: QgsAbstract3DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAbstract3DSymbol.html">Class: QgsAbstract3DSymbol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsAbstractAnnotationItemEditOperation.html">Class: QgsAbstractAnnotationItemEditOperation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAbstractBabelFormat.html">Class: QgsAbstractBabelFormat</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAbstractCacheIndex.html">Class: QgsAbstractCacheIndex</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAbstractContentCacheBase.html">Class: QgsAbstractContentCacheBase</a></li>
@@ -170,6 +171,11 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsAnnotation.html">Class: QgsAnnotation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAnnotationItem.html">Class: QgsAnnotationItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAnnotationItemAbstractMetadata.html">Class: QgsAnnotationItemAbstractMetadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsAnnotationItemEditOperationAddNode.html">Class: QgsAnnotationItemEditOperationAddNode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsAnnotationItemEditOperationDeleteNode.html">Class: QgsAnnotationItemEditOperationDeleteNode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsAnnotationItemEditOperationMoveNode.html">Class: QgsAnnotationItemEditOperationMoveNode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsAnnotationItemEditOperationTransientResults.html">Class: QgsAnnotationItemEditOperationTransientResults</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsAnnotationItemEditOperationTranslateItem.html">Class: QgsAnnotationItemEditOperationTranslateItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAnnotationItemNode.html">Class: QgsAnnotationItemNode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAnnotationItemRegistry.html">Class: QgsAnnotationItemRegistry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAnnotationLayer.html">Class: QgsAnnotationLayer</a></li>
@@ -789,6 +795,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingOutputString.html">Class: QgsProcessingOutputString</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingOutputVectorLayer.html">Class: QgsProcessingOutputVectorLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingParameterAggregate.html">Class: QgsProcessingParameterAggregate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsProcessingParameterAnnotationLayer.html">Class: QgsProcessingParameterAnnotationLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingParameterAuthConfig.html">Class: QgsProcessingParameterAuthConfig</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingParameterBand.html">Class: QgsProcessingParameterBand</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingParameterBoolean.html">Class: QgsProcessingParameterBoolean</a></li>
@@ -1553,7 +1560,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsMapToolExtent.html">Class: QgsMapToolExtent</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsMapToolIdentify.html">Class: QgsMapToolIdentify</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsMapToolIdentifyFeature.html">Class: QgsMapToolIdentifyFeature</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../gui/QgsMapToolModifyAnnotation.html">Class: QgsMapToolModifyAnnotation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsMapToolPan.html">Class: QgsMapToolPan</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsMapToolZoom.html">Class: QgsMapToolZoom</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsMapUnitScaleDialog.html">Class: QgsMapUnitScaleDialog</a></li>
@@ -2045,11 +2051,23 @@ and map extent that it covers.</p>
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsTileMatrix.extent" title="qgis.core.QgsTileMatrix.extent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">extent</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsTileMatrix.crs" title="qgis.core.QgsTileMatrix.crs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">crs</span></code></a></p></td>
+<td><p>Returns the authority identifier for the CRS of the tile matrix</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsTileMatrix.extent" title="qgis.core.QgsTileMatrix.extent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">extent</span></code></a></p></td>
 <td><p>Returns extent of the tile matrix</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsTileMatrix.fromWebMercator" title="qgis.core.QgsTileMatrix.fromWebMercator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fromWebMercator</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsTileMatrix.fromCustomDef" title="qgis.core.QgsTileMatrix.fromCustomDef"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fromCustomDef</span></code></a></p></td>
+<td><p>Returns a tile matrix for a specific CRS, top left point, zoom level 0 dimension in CRS units</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsTileMatrix.fromTileMatrix" title="qgis.core.QgsTileMatrix.fromTileMatrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fromTileMatrix</span></code></a></p></td>
+<td><p>Returns a tile matrix based on another one</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsTileMatrix.fromWebMercator" title="qgis.core.QgsTileMatrix.fromWebMercator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fromWebMercator</span></code></a></p></td>
 <td><p>Returns a tile matrix for the usual web mercator</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsTileMatrix.isRootTileMatrix" title="qgis.core.QgsTileMatrix.isRootTileMatrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isRootTileMatrix</span></code></a></p></td>
+<td><p>Returns the root status of the tile matrix (zoom level == 0)</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsTileMatrix.mapToTileCoordinates" title="qgis.core.QgsTileMatrix.mapToTileCoordinates"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mapToTileCoordinates</span></code></a></p></td>
 <td><p>Returns row/column coordinates (floating point number) from the given point in map coordinates</p></td>
@@ -2095,6 +2113,17 @@ and map extent that it covers.</p>
 </table>
 </div>
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsTileMatrix.crs">
+<span class="sig-name descname"><span class="pre">crs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="QgsCoordinateReferenceSystem.html#module-QgsCoordinateReferenceSystem" title="QgsCoordinateReferenceSystem"><span class="pre">QgsCoordinateReferenceSystem</span></a></span></span><a class="headerlink" href="#qgis.core.QgsTileMatrix.crs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the authority identifier for the CRS of the tile matrix</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsCoordinateReferenceSystem.html#qgis.core.QgsCoordinateReferenceSystem" title="qgis.core.QgsCoordinateReferenceSystem">QgsCoordinateReferenceSystem</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsTileMatrix.extent">
 <span class="sig-name descname"><span class="pre">extent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="QgsRectangle.html#module-QgsRectangle" title="QgsRectangle"><span class="pre">QgsRectangle</span></a></span></span><a class="headerlink" href="#qgis.core.QgsTileMatrix.extent" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns extent of the tile matrix</p>
@@ -2106,15 +2135,64 @@ and map extent that it covers.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="qgis.core.QgsTileMatrix.fromWebMercator">
-<span class="sig-name descname"><span class="pre">fromWebMercator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mZoomLevel</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#module-QgsTileMatrix" title="QgsTileMatrix"><span class="pre">QgsTileMatrix</span></a></span></span><a class="headerlink" href="#qgis.core.QgsTileMatrix.fromWebMercator" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns a tile matrix for the usual web mercator</p>
+<dt class="sig sig-object py" id="qgis.core.QgsTileMatrix.fromCustomDef">
+<span class="sig-name descname"><span class="pre">fromCustomDef</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">zoomLevel</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsCoordinateReferenceSystem.html#module-QgsCoordinateReferenceSystem" title="QgsCoordinateReferenceSystem"><span class="pre">QgsCoordinateReferenceSystem</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">z0TopLeftPoint</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsPointXY.html#module-QgsPointXY" title="QgsPointXY"><span class="pre">QgsPointXY</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">z0Dimension</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z0MatrixWidth</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z0MatrixHeight</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#module-QgsTileMatrix" title="QgsTileMatrix"><span class="pre">QgsTileMatrix</span></a></span></span><a class="headerlink" href="#qgis.core.QgsTileMatrix.fromCustomDef" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a tile matrix for a specific CRS, top left point, zoom level 0 dimension in CRS units</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>mZoomLevel</strong> (<em>int</em>) – </p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>zoomLevel</strong> (<em>int</em>) – </p></li>
+<li><p><strong>crs</strong> (<a class="reference internal" href="QgsCoordinateReferenceSystem.html#qgis.core.QgsCoordinateReferenceSystem" title="qgis.core.QgsCoordinateReferenceSystem"><em>QgsCoordinateReferenceSystem</em></a>) – </p></li>
+<li><p><strong>z0TopLeftPoint</strong> (<a class="reference internal" href="QgsPointXY.html#qgis.core.QgsPointXY" title="qgis.core.QgsPointXY"><em>QgsPointXY</em></a>) – </p></li>
+<li><p><strong>z0Dimension</strong> (<em>float</em>) – </p></li>
+<li><p><strong>z0MatrixWidth</strong> (<em>int = 1</em>) – </p></li>
+<li><p><strong>z0MatrixHeight</strong> (<em>int = 1</em>) – </p></li>
+</ul>
 </dd>
 <dt class="field-even">Return type</dt>
 <dd class="field-even"><p><a class="reference internal" href="#qgis.core.QgsTileMatrix" title="qgis.core.QgsTileMatrix">QgsTileMatrix</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsTileMatrix.fromTileMatrix">
+<span class="sig-name descname"><span class="pre">fromTileMatrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">zoomLevel</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tileMatrix</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#module-QgsTileMatrix" title="QgsTileMatrix"><span class="pre">QgsTileMatrix</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#module-QgsTileMatrix" title="QgsTileMatrix"><span class="pre">QgsTileMatrix</span></a></span></span><a class="headerlink" href="#qgis.core.QgsTileMatrix.fromTileMatrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a tile matrix based on another one</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>zoomLevel</strong> (<em>int</em>) – </p></li>
+<li><p><strong>tileMatrix</strong> (<a class="reference internal" href="#qgis.core.QgsTileMatrix" title="qgis.core.QgsTileMatrix"><em>QgsTileMatrix</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#qgis.core.QgsTileMatrix" title="qgis.core.QgsTileMatrix">QgsTileMatrix</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsTileMatrix.fromWebMercator">
+<span class="sig-name descname"><span class="pre">fromWebMercator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">zoomLevel</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#module-QgsTileMatrix" title="QgsTileMatrix"><span class="pre">QgsTileMatrix</span></a></span></span><a class="headerlink" href="#qgis.core.QgsTileMatrix.fromWebMercator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a tile matrix for the usual web mercator</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>zoomLevel</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#qgis.core.QgsTileMatrix" title="qgis.core.QgsTileMatrix">QgsTileMatrix</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsTileMatrix.isRootTileMatrix">
+<span class="sig-name descname"><span class="pre">isRootTileMatrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#qgis.core.QgsTileMatrix.isRootTileMatrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the root status of the tile matrix (zoom level == 0)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2234,7 +2312,7 @@ and map extent that it covers.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 00:23 Sep 11, 2021.
+        Last updated on 02:28 Sep 11, 2021.
       </span>
 
     </p>

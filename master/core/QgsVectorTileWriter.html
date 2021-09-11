@@ -140,6 +140,7 @@
 <li class="toctree-l2"><a class="reference internal" href="Qgs3DSymbolRegistry.html">Class: Qgs3DSymbolRegistry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAbstract3DRenderer.html">Class: QgsAbstract3DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAbstract3DSymbol.html">Class: QgsAbstract3DSymbol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsAbstractAnnotationItemEditOperation.html">Class: QgsAbstractAnnotationItemEditOperation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAbstractBabelFormat.html">Class: QgsAbstractBabelFormat</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAbstractCacheIndex.html">Class: QgsAbstractCacheIndex</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAbstractContentCacheBase.html">Class: QgsAbstractContentCacheBase</a></li>
@@ -170,6 +171,11 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsAnnotation.html">Class: QgsAnnotation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAnnotationItem.html">Class: QgsAnnotationItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAnnotationItemAbstractMetadata.html">Class: QgsAnnotationItemAbstractMetadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsAnnotationItemEditOperationAddNode.html">Class: QgsAnnotationItemEditOperationAddNode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsAnnotationItemEditOperationDeleteNode.html">Class: QgsAnnotationItemEditOperationDeleteNode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsAnnotationItemEditOperationMoveNode.html">Class: QgsAnnotationItemEditOperationMoveNode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsAnnotationItemEditOperationTransientResults.html">Class: QgsAnnotationItemEditOperationTransientResults</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsAnnotationItemEditOperationTranslateItem.html">Class: QgsAnnotationItemEditOperationTranslateItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAnnotationItemNode.html">Class: QgsAnnotationItemNode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAnnotationItemRegistry.html">Class: QgsAnnotationItemRegistry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAnnotationLayer.html">Class: QgsAnnotationLayer</a></li>
@@ -789,6 +795,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingOutputString.html">Class: QgsProcessingOutputString</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingOutputVectorLayer.html">Class: QgsProcessingOutputVectorLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingParameterAggregate.html">Class: QgsProcessingParameterAggregate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsProcessingParameterAnnotationLayer.html">Class: QgsProcessingParameterAnnotationLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingParameterAuthConfig.html">Class: QgsProcessingParameterAuthConfig</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingParameterBand.html">Class: QgsProcessingParameterBand</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingParameterBoolean.html">Class: QgsProcessingParameterBoolean</a></li>
@@ -1553,7 +1560,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsMapToolExtent.html">Class: QgsMapToolExtent</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsMapToolIdentify.html">Class: QgsMapToolIdentify</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsMapToolIdentifyFeature.html">Class: QgsMapToolIdentifyFeature</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../gui/QgsMapToolModifyAnnotation.html">Class: QgsMapToolModifyAnnotation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsMapToolPan.html">Class: QgsMapToolPan</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsMapToolZoom.html">Class: QgsMapToolZoom</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsMapUnitScaleDialog.html">Class: QgsMapUnitScaleDialog</a></li>
@@ -2100,13 +2106,16 @@ and “maxzoom”.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileWriter.setMinZoom" title="qgis.core.QgsVectorTileWriter.setMinZoom"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setMinZoom</span></code></a></p></td>
 <td><p>Sets the minimum zoom level of tiles.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileWriter.setTransformContext" title="qgis.core.QgsVectorTileWriter.setTransformContext"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setTransformContext</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileWriter.setRootTileMatrix" title="qgis.core.QgsVectorTileWriter.setRootTileMatrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setRootTileMatrix</span></code></a></p></td>
+<td><p>Sets zoom level 0 tile matrix</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileWriter.setTransformContext" title="qgis.core.QgsVectorTileWriter.setTransformContext"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setTransformContext</span></code></a></p></td>
 <td><p>Sets coordinate transform context for transforms between layers and tile matrix CRS</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileWriter.writeSingleTile" title="qgis.core.QgsVectorTileWriter.writeSingleTile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeSingleTile</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileWriter.writeSingleTile" title="qgis.core.QgsVectorTileWriter.writeSingleTile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeSingleTile</span></code></a></p></td>
 <td><p>Encodes single MVT tile</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileWriter.writeTiles" title="qgis.core.QgsVectorTileWriter.writeTiles"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeTiles</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileWriter.writeTiles" title="qgis.core.QgsVectorTileWriter.writeTiles"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeTiles</span></code></a></p></td>
 <td><p>Writes vector tiles according to the configuration.</p></td>
 </tr>
 </tbody>
@@ -2278,7 +2287,7 @@ See the class description about the syntax of destination URIs.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsVectorTileWriter.setExtent">
 <span class="sig-name descname"><span class="pre">setExtent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extent</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsRectangle.html#module-QgsRectangle" title="QgsRectangle"><span class="pre">QgsRectangle</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsVectorTileWriter.setExtent" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sets extent of vector tile output. Currently always in EPSG:3857.
+<dd><p>Sets extent of vector tile output.
 If unset, it will use the full extent of all input layers combined</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2327,6 +2336,20 @@ If unset, it will use the full extent of all input layers combined</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>minZoom</strong> (<em>int</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsVectorTileWriter.setRootTileMatrix">
+<span class="sig-name descname"><span class="pre">setRootTileMatrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tileMatrix</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsTileMatrix.html#module-QgsTileMatrix" title="QgsTileMatrix"><span class="pre">QgsTileMatrix</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#qgis.core.QgsVectorTileWriter.setRootTileMatrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets zoom level 0 tile matrix</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>tileMatrix</strong> (<a class="reference internal" href="QgsTileMatrix.html#qgis.core.QgsTileMatrix" title="qgis.core.QgsTileMatrix"><em>QgsTileMatrix</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2399,7 +2422,7 @@ provide cancellation functionality.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 00:23 Sep 11, 2021.
+        Last updated on 02:28 Sep 11, 2021.
       </span>
 
     </p>

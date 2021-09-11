@@ -140,6 +140,7 @@
 <li class="toctree-l2"><a class="reference internal" href="Qgs3DSymbolRegistry.html">Class: Qgs3DSymbolRegistry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAbstract3DRenderer.html">Class: QgsAbstract3DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAbstract3DSymbol.html">Class: QgsAbstract3DSymbol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsAbstractAnnotationItemEditOperation.html">Class: QgsAbstractAnnotationItemEditOperation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAbstractBabelFormat.html">Class: QgsAbstractBabelFormat</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAbstractCacheIndex.html">Class: QgsAbstractCacheIndex</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAbstractContentCacheBase.html">Class: QgsAbstractContentCacheBase</a></li>
@@ -170,6 +171,11 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsAnnotation.html">Class: QgsAnnotation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAnnotationItem.html">Class: QgsAnnotationItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAnnotationItemAbstractMetadata.html">Class: QgsAnnotationItemAbstractMetadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsAnnotationItemEditOperationAddNode.html">Class: QgsAnnotationItemEditOperationAddNode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsAnnotationItemEditOperationDeleteNode.html">Class: QgsAnnotationItemEditOperationDeleteNode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsAnnotationItemEditOperationMoveNode.html">Class: QgsAnnotationItemEditOperationMoveNode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsAnnotationItemEditOperationTransientResults.html">Class: QgsAnnotationItemEditOperationTransientResults</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsAnnotationItemEditOperationTranslateItem.html">Class: QgsAnnotationItemEditOperationTranslateItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAnnotationItemNode.html">Class: QgsAnnotationItemNode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAnnotationItemRegistry.html">Class: QgsAnnotationItemRegistry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAnnotationLayer.html">Class: QgsAnnotationLayer</a></li>
@@ -789,6 +795,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingOutputString.html">Class: QgsProcessingOutputString</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingOutputVectorLayer.html">Class: QgsProcessingOutputVectorLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingParameterAggregate.html">Class: QgsProcessingParameterAggregate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsProcessingParameterAnnotationLayer.html">Class: QgsProcessingParameterAnnotationLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingParameterAuthConfig.html">Class: QgsProcessingParameterAuthConfig</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingParameterBand.html">Class: QgsProcessingParameterBand</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingParameterBoolean.html">Class: QgsProcessingParameterBoolean</a></li>
@@ -1553,7 +1560,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsMapToolExtent.html">Class: QgsMapToolExtent</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsMapToolIdentify.html">Class: QgsMapToolIdentify</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsMapToolIdentifyFeature.html">Class: QgsMapToolIdentifyFeature</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../gui/QgsMapToolModifyAnnotation.html">Class: QgsMapToolModifyAnnotation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsMapToolPan.html">Class: QgsMapToolPan</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsMapToolZoom.html">Class: QgsMapToolZoom</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsMapUnitScaleDialog.html">Class: QgsMapUnitScaleDialog</a></li>
@@ -2055,145 +2061,148 @@ the evaluation to understand available map layers and expression contexts
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.isDynamic" title="qgis.core.QgsProcessingParameters.isDynamic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isDynamic</span></code></a></p></td>
 <td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> is a dynamic parameter, and must be evaluated once for every input feature processed.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsBool" title="qgis.core.QgsProcessingParameters.parameterAsBool"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsBool</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsAnnotationLayer" title="qgis.core.QgsProcessingParameters.parameterAsAnnotationLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsAnnotationLayer</span></code></a></p></td>
+<td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">definition</span></code> to an annotation layer.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsBool" title="qgis.core.QgsProcessingParameters.parameterAsBool"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsBool</span></code></a></p></td>
 <td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">definition</span></code> to a static boolean value.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsBoolean" title="qgis.core.QgsProcessingParameters.parameterAsBoolean"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsBoolean</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsBoolean" title="qgis.core.QgsProcessingParameters.parameterAsBoolean"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsBoolean</span></code></a></p></td>
 <td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">definition</span></code> to a static boolean value.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsColor" title="qgis.core.QgsProcessingParameters.parameterAsColor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsColor</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsColor" title="qgis.core.QgsProcessingParameters.parameterAsColor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsColor</span></code></a></p></td>
 <td><p>Returns the color associated with an point parameter value, or an invalid color if the parameter was not set.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsCompatibleSourceLayerPath" title="qgis.core.QgsProcessingParameters.parameterAsCompatibleSourceLayerPath"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsCompatibleSourceLayerPath</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsCompatibleSourceLayerPath" title="qgis.core.QgsProcessingParameters.parameterAsCompatibleSourceLayerPath"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsCompatibleSourceLayerPath</span></code></a></p></td>
 <td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">definition</span></code> to a source vector layer file path of compatible format.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsCompatibleSourceLayerPathAndLayerName" title="qgis.core.QgsProcessingParameters.parameterAsCompatibleSourceLayerPathAndLayerName"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsCompatibleSourceLayerPathAndLayerName</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsCompatibleSourceLayerPathAndLayerName" title="qgis.core.QgsProcessingParameters.parameterAsCompatibleSourceLayerPathAndLayerName"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsCompatibleSourceLayerPathAndLayerName</span></code></a></p></td>
 <td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">definition</span></code> to a source vector layer file path and layer name of compatible format.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsConnectionName" title="qgis.core.QgsProcessingParameters.parameterAsConnectionName"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsConnectionName</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsConnectionName" title="qgis.core.QgsProcessingParameters.parameterAsConnectionName"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsConnectionName</span></code></a></p></td>
 <td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">definition</span></code> to a connection name string.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsCrs" title="qgis.core.QgsProcessingParameters.parameterAsCrs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsCrs</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsCrs" title="qgis.core.QgsProcessingParameters.parameterAsCrs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsCrs</span></code></a></p></td>
 <td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">definition</span></code> to a coordinate reference system.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsDatabaseTableName" title="qgis.core.QgsProcessingParameters.parameterAsDatabaseTableName"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsDatabaseTableName</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsDatabaseTableName" title="qgis.core.QgsProcessingParameters.parameterAsDatabaseTableName"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsDatabaseTableName</span></code></a></p></td>
 <td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">definition</span></code> to a database table name.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsDate" title="qgis.core.QgsProcessingParameters.parameterAsDate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsDate</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsDate" title="qgis.core.QgsProcessingParameters.parameterAsDate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsDate</span></code></a></p></td>
 <td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">definition</span></code> to a static date value.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsDateTime" title="qgis.core.QgsProcessingParameters.parameterAsDateTime"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsDateTime</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsDateTime" title="qgis.core.QgsProcessingParameters.parameterAsDateTime"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsDateTime</span></code></a></p></td>
 <td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">definition</span></code> to a static datetime value.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsDouble" title="qgis.core.QgsProcessingParameters.parameterAsDouble"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsDouble</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsDouble" title="qgis.core.QgsProcessingParameters.parameterAsDouble"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsDouble</span></code></a></p></td>
 <td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">definition</span></code> to a static double value.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsEnum" title="qgis.core.QgsProcessingParameters.parameterAsEnum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsEnum</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsEnum" title="qgis.core.QgsProcessingParameters.parameterAsEnum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsEnum</span></code></a></p></td>
 <td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">definition</span></code> to a enum value.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsEnumString" title="qgis.core.QgsProcessingParameters.parameterAsEnumString"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsEnumString</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsEnumString" title="qgis.core.QgsProcessingParameters.parameterAsEnumString"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsEnumString</span></code></a></p></td>
 <td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">definition</span></code> to a static enum string.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsEnumStrings" title="qgis.core.QgsProcessingParameters.parameterAsEnumStrings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsEnumStrings</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsEnumStrings" title="qgis.core.QgsProcessingParameters.parameterAsEnumStrings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsEnumStrings</span></code></a></p></td>
 <td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">definition</span></code> to list of static enum strings.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsEnums" title="qgis.core.QgsProcessingParameters.parameterAsEnums"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsEnums</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsEnums" title="qgis.core.QgsProcessingParameters.parameterAsEnums"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsEnums</span></code></a></p></td>
 <td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">definition</span></code> to list of enum values.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsExpression" title="qgis.core.QgsProcessingParameters.parameterAsExpression"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsExpression</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsExpression" title="qgis.core.QgsProcessingParameters.parameterAsExpression"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsExpression</span></code></a></p></td>
 <td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">definition</span></code> to an expression.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsExtent" title="qgis.core.QgsProcessingParameters.parameterAsExtent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsExtent</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsExtent" title="qgis.core.QgsProcessingParameters.parameterAsExtent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsExtent</span></code></a></p></td>
 <td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">definition</span></code> to a rectangular extent.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsExtentCrs" title="qgis.core.QgsProcessingParameters.parameterAsExtentCrs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsExtentCrs</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsExtentCrs" title="qgis.core.QgsProcessingParameters.parameterAsExtentCrs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsExtentCrs</span></code></a></p></td>
 <td><p>Returns the coordinate reference system associated with an extent parameter value.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsExtentGeometry" title="qgis.core.QgsProcessingParameters.parameterAsExtentGeometry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsExtentGeometry</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsExtentGeometry" title="qgis.core.QgsProcessingParameters.parameterAsExtentGeometry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsExtentGeometry</span></code></a></p></td>
 <td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">definition</span></code> to a rectangular extent, and returns a geometry covering this extent.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsFields" title="qgis.core.QgsProcessingParameters.parameterAsFields"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsFields</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsFields" title="qgis.core.QgsProcessingParameters.parameterAsFields"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsFields</span></code></a></p></td>
 <td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">definition</span></code> to a list of fields.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsFile" title="qgis.core.QgsProcessingParameters.parameterAsFile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsFile</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsFile" title="qgis.core.QgsProcessingParameters.parameterAsFile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsFile</span></code></a></p></td>
 <td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">definition</span></code> to a file/folder name.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsFileList" title="qgis.core.QgsProcessingParameters.parameterAsFileList"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsFileList</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsFileList" title="qgis.core.QgsProcessingParameters.parameterAsFileList"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsFileList</span></code></a></p></td>
 <td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">definition</span></code> to a list of files (for <a class="reference internal" href="QgsProcessingParameterMultipleLayers.html#module-QgsProcessingParameterMultipleLayers" title="QgsProcessingParameterMultipleLayers"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingParameterMultipleLayers</span></code></a> in <a class="reference internal" href="QgsProcessing.html#module-QgsProcessing" title="QgsProcessing"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessing</span></code></a>:TypeFile mode).</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsFileOutput" title="qgis.core.QgsProcessingParameters.parameterAsFileOutput"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsFileOutput</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsFileOutput" title="qgis.core.QgsProcessingParameters.parameterAsFileOutput"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsFileOutput</span></code></a></p></td>
 <td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">definition</span></code> to a file based output destination.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsGeometry" title="qgis.core.QgsProcessingParameters.parameterAsGeometry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsGeometry</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsGeometry" title="qgis.core.QgsProcessingParameters.parameterAsGeometry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsGeometry</span></code></a></p></td>
 <td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">definition</span></code> to a geometry.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsGeometryCrs" title="qgis.core.QgsProcessingParameters.parameterAsGeometryCrs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsGeometryCrs</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsGeometryCrs" title="qgis.core.QgsProcessingParameters.parameterAsGeometryCrs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsGeometryCrs</span></code></a></p></td>
 <td><p>Returns the coordinate reference system associated with a geometry parameter value.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsInt" title="qgis.core.QgsProcessingParameters.parameterAsInt"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsInt</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsInt" title="qgis.core.QgsProcessingParameters.parameterAsInt"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsInt</span></code></a></p></td>
 <td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">definition</span></code> to a static integer value.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsInts" title="qgis.core.QgsProcessingParameters.parameterAsInts"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsInts</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsInts" title="qgis.core.QgsProcessingParameters.parameterAsInts"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsInts</span></code></a></p></td>
 <td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">definition</span></code> to a list of integer values.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsLayer" title="qgis.core.QgsProcessingParameters.parameterAsLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsLayer</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsLayer" title="qgis.core.QgsProcessingParameters.parameterAsLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsLayer</span></code></a></p></td>
 <td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">definition</span></code> to a map layer.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsLayerList" title="qgis.core.QgsProcessingParameters.parameterAsLayerList"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsLayerList</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsLayerList" title="qgis.core.QgsProcessingParameters.parameterAsLayerList"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsLayerList</span></code></a></p></td>
 <td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">definition</span></code> to a list of map layers.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsLayout" title="qgis.core.QgsProcessingParameters.parameterAsLayout"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsLayout</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsLayout" title="qgis.core.QgsProcessingParameters.parameterAsLayout"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsLayout</span></code></a></p></td>
 <td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">definition</span></code> to a print layout.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsLayoutItem" title="qgis.core.QgsProcessingParameters.parameterAsLayoutItem"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsLayoutItem</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsLayoutItem" title="qgis.core.QgsProcessingParameters.parameterAsLayoutItem"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsLayoutItem</span></code></a></p></td>
 <td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">definition</span></code> to a print layout item, taken from the specified <code class="docutils literal notranslate"><span class="pre">layout</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsMatrix" title="qgis.core.QgsProcessingParameters.parameterAsMatrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsMatrix</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsMatrix" title="qgis.core.QgsProcessingParameters.parameterAsMatrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsMatrix</span></code></a></p></td>
 <td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">definition</span></code> to a matrix/table of values.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsMeshLayer" title="qgis.core.QgsProcessingParameters.parameterAsMeshLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsMeshLayer</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsMeshLayer" title="qgis.core.QgsProcessingParameters.parameterAsMeshLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsMeshLayer</span></code></a></p></td>
 <td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">definition</span></code> and <code class="docutils literal notranslate"><span class="pre">value</span></code> to a mesh layer.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsOutputLayer" title="qgis.core.QgsProcessingParameters.parameterAsOutputLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsOutputLayer</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsOutputLayer" title="qgis.core.QgsProcessingParameters.parameterAsOutputLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsOutputLayer</span></code></a></p></td>
 <td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">definition</span></code> to a output layer destination.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsPoint" title="qgis.core.QgsProcessingParameters.parameterAsPoint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsPoint</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsPoint" title="qgis.core.QgsProcessingParameters.parameterAsPoint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsPoint</span></code></a></p></td>
 <td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">definition</span></code> to a point.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsPointCloudLayer" title="qgis.core.QgsProcessingParameters.parameterAsPointCloudLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsPointCloudLayer</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsPointCloudLayer" title="qgis.core.QgsProcessingParameters.parameterAsPointCloudLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsPointCloudLayer</span></code></a></p></td>
 <td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">definition</span></code> to a point cloud layer.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsPointCrs" title="qgis.core.QgsProcessingParameters.parameterAsPointCrs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsPointCrs</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsPointCrs" title="qgis.core.QgsProcessingParameters.parameterAsPointCrs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsPointCrs</span></code></a></p></td>
 <td><p>Returns the coordinate reference system associated with an point parameter value.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsRange" title="qgis.core.QgsProcessingParameters.parameterAsRange"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsRange</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsRange" title="qgis.core.QgsProcessingParameters.parameterAsRange"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsRange</span></code></a></p></td>
 <td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">definition</span></code> to a range of values.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsRasterLayer" title="qgis.core.QgsProcessingParameters.parameterAsRasterLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsRasterLayer</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsRasterLayer" title="qgis.core.QgsProcessingParameters.parameterAsRasterLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsRasterLayer</span></code></a></p></td>
 <td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">definition</span></code> to a raster layer.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsSchema" title="qgis.core.QgsProcessingParameters.parameterAsSchema"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsSchema</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsSchema" title="qgis.core.QgsProcessingParameters.parameterAsSchema"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsSchema</span></code></a></p></td>
 <td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">definition</span></code> to a database schema name.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsSink" title="qgis.core.QgsProcessingParameters.parameterAsSink"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsSink</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsSink" title="qgis.core.QgsProcessingParameters.parameterAsSink"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsSink</span></code></a></p></td>
 <td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">definition</span></code> to a feature sink.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsSource" title="qgis.core.QgsProcessingParameters.parameterAsSource"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsSource</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsSource" title="qgis.core.QgsProcessingParameters.parameterAsSource"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsSource</span></code></a></p></td>
 <td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">definition</span></code> to a feature source.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsString" title="qgis.core.QgsProcessingParameters.parameterAsString"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsString</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsString" title="qgis.core.QgsProcessingParameters.parameterAsString"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsString</span></code></a></p></td>
 <td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">definition</span></code> to a static string value.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsTime" title="qgis.core.QgsProcessingParameters.parameterAsTime"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsTime</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsTime" title="qgis.core.QgsProcessingParameters.parameterAsTime"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsTime</span></code></a></p></td>
 <td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">definition</span></code> to a static time value.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsVectorLayer" title="qgis.core.QgsProcessingParameters.parameterAsVectorLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsVectorLayer</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterAsVectorLayer" title="qgis.core.QgsProcessingParameters.parameterAsVectorLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsVectorLayer</span></code></a></p></td>
 <td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">definition</span></code> to a vector layer.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterFromScriptCode" title="qgis.core.QgsProcessingParameters.parameterFromScriptCode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterFromScriptCode</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterFromScriptCode" title="qgis.core.QgsProcessingParameters.parameterFromScriptCode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterFromScriptCode</span></code></a></p></td>
 <td><p>Creates a new <a class="reference internal" href="QgsProcessingParameterDefinition.html#module-QgsProcessingParameterDefinition" title="QgsProcessingParameterDefinition"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingParameterDefinition</span></code></a> using the configuration from a supplied script <code class="docutils literal notranslate"><span class="pre">code</span></code> string.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterFromVariantMap" title="qgis.core.QgsProcessingParameters.parameterFromVariantMap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterFromVariantMap</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingParameters.parameterFromVariantMap" title="qgis.core.QgsProcessingParameters.parameterFromVariantMap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterFromVariantMap</span></code></a></p></td>
 <td><p>Creates a new <a class="reference internal" href="QgsProcessingParameterDefinition.html#module-QgsProcessingParameterDefinition" title="QgsProcessingParameterDefinition"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingParameterDefinition</span></code></a> using the configuration from a supplied variant <code class="docutils literal notranslate"><span class="pre">map</span></code>.</p></td>
 </tr>
 </tbody>
@@ -2243,6 +2252,50 @@ be evaluated once for every input feature processed.</p>
 </dd>
 <dt class="field-even">Return type</dt>
 <dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProcessingParameters.parameterAsAnnotationLayer">
+<span class="sig-name descname"><span class="pre">parameterAsAnnotationLayer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">definition</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsProcessingParameterDefinition.html#module-QgsProcessingParameterDefinition" title="QgsProcessingParameterDefinition"><span class="pre">QgsProcessingParameterDefinition</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsProcessingContext.html#module-QgsProcessingContext" title="QgsProcessingContext"><span class="pre">QgsProcessingContext</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="QgsAnnotationLayer.html#module-QgsAnnotationLayer" title="QgsAnnotationLayer"><span class="pre">QgsAnnotationLayer</span></a></span></span><a class="headerlink" href="#qgis.core.QgsProcessingParameters.parameterAsAnnotationLayer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">definition</span></code> to an annotation layer.</p>
+<p>Layers will be taken from <code class="docutils literal notranslate"><span class="pre">context</span></code>’s active project. Callers do not
+need to handle deletion of the returned layer.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Working with annotation layers is generally not thread safe (unless the layers are from
+a <a class="reference internal" href="QgsProject.html#module-QgsProject" title="QgsProject"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProject</span></code></a> loaded directly in a background thread). Ensure your algorithm returns the
+<a class="reference internal" href="QgsProcessingAlgorithm.html#module-QgsProcessingAlgorithm" title="QgsProcessingAlgorithm"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingAlgorithm</span></code></a>.FlagNoThreading flag or only accesses annotation layers from a <code class="xref py py-func docutils literal notranslate"><span class="pre">prepareAlgorithm()</span></code>
+or <code class="xref py py-func docutils literal notranslate"><span class="pre">postProcessAlgorithm()</span></code> step.</p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.22.</span></p>
+</div>
+<p>parameterAsAnnotationLayer(definition: <a class="reference internal" href="QgsProcessingParameterDefinition.html#qgis.core.QgsProcessingParameterDefinition" title="qgis.core.QgsProcessingParameterDefinition"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingParameterDefinition</span></code></a>, value: Any, context: <a class="reference internal" href="QgsProcessingContext.html#qgis.core.QgsProcessingContext" title="qgis.core.QgsProcessingContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingContext</span></code></a>) -&gt; QgsAnnotationLayer
+Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">definition</span></code> and <code class="docutils literal notranslate"><span class="pre">value</span></code> to an annotation layer.</p>
+<p>Layers will be taken from <code class="docutils literal notranslate"><span class="pre">context</span></code>’s active project. Callers do not
+need to handle deletion of the returned layer.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Working with annotation layers is generally not thread safe (unless the layers are from
+a <a class="reference internal" href="QgsProject.html#module-QgsProject" title="QgsProject"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProject</span></code></a> loaded directly in a background thread). Ensure your algorithm returns the
+<a class="reference internal" href="QgsProcessingAlgorithm.html#module-QgsProcessingAlgorithm" title="QgsProcessingAlgorithm"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingAlgorithm</span></code></a>.FlagNoThreading flag or only accesses annotation layers from a <code class="xref py py-func docutils literal notranslate"><span class="pre">prepareAlgorithm()</span></code>
+or <code class="xref py py-func docutils literal notranslate"><span class="pre">postProcessAlgorithm()</span></code> step.</p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.22.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>definition</strong> (<a class="reference internal" href="QgsProcessingParameterDefinition.html#qgis.core.QgsProcessingParameterDefinition" title="qgis.core.QgsProcessingParameterDefinition"><em>QgsProcessingParameterDefinition</em></a>) – </p></li>
+<li><p><strong>parameters</strong> (<em>Dict</em><em>[</em><em>str</em>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsProcessingContext.html#qgis.core.QgsProcessingContext" title="qgis.core.QgsProcessingContext"><em>QgsProcessingContext</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsAnnotationLayer.html#qgis.core.QgsAnnotationLayer" title="qgis.core.QgsAnnotationLayer">QgsAnnotationLayer</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -3610,7 +3663,7 @@ The caller takes responsibility for deleting the returned object.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on 00:23 Sep 11, 2021.
+        Last updated on 02:28 Sep 11, 2021.
       </span>
 
     </p>
