@@ -2384,9 +2384,12 @@ specified by the optional scale parameter.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsRenderContext.convertToPainterUnits">
-<span class="sig-name descname"><span class="pre">convertToPainterUnits</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unit</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsUnitTypes.html#qgis.core.QgsUnitTypes.RenderUnit" title="qgis.core.QgsUnitTypes.RenderUnit"><span class="pre">QgsUnitTypes.RenderUnit</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsMapUnitScale.html#module-QgsMapUnitScale" title="QgsMapUnitScale"><span class="pre">QgsMapUnitScale</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">QgsMapUnitScale()</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#qgis.core.QgsRenderContext.convertToPainterUnits" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">convertToPainterUnits</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unit</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsUnitTypes.html#qgis.core.QgsUnitTypes.RenderUnit" title="qgis.core.QgsUnitTypes.RenderUnit"><span class="pre">QgsUnitTypes.RenderUnit</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsMapUnitScale.html#module-QgsMapUnitScale" title="QgsMapUnitScale"><span class="pre">QgsMapUnitScale</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">QgsMapUnitScale()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">property</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="Qgis.html#qgis.core.Qgis.RenderSubcomponentProperty" title="qgis.core.Qgis.RenderSubcomponentProperty"><span class="pre">Qgis.RenderSubcomponentProperty</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">Qgis.RenderSubcomponentProperty.Generic</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#qgis.core.QgsRenderContext.convertToPainterUnits" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts a size from the specified units to painter units (pixels). The conversion respects the limits
 specified by the optional scale parameter.</p>
+<p>Since QGIS 3.22 the optional <code class="docutils literal notranslate"><span class="pre">property</span></code> argument can be used to specify the associated property. This
+is used in some contexts to refine the converted size. For example, a Qgis.RenderSubcomponentProperty.BlurSize
+property will be limited to a suitably fast range when the render context has the Qgis.RenderContextFlag.RenderSymbolPreview set.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsRenderContext.convertToMapUnits" title="qgis.core.QgsRenderContext.convertToMapUnits"><code class="xref py py-func docutils literal notranslate"><span class="pre">convertToMapUnits()</span></code></a></p>
@@ -2400,6 +2403,7 @@ specified by the optional scale parameter.</p>
 <li><p><strong>size</strong> (<em>float</em>) – </p></li>
 <li><p><strong>unit</strong> (<a class="reference internal" href="QgsUnitTypes.html#qgis.core.QgsUnitTypes.RenderUnit" title="qgis.core.QgsUnitTypes.RenderUnit"><em>QgsUnitTypes.RenderUnit</em></a>) – </p></li>
 <li><p><strong>scale</strong> (<a class="reference internal" href="QgsMapUnitScale.html#qgis.core.QgsMapUnitScale" title="qgis.core.QgsMapUnitScale"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMapUnitScale</span></code></a> = QgsMapUnitScale()) – </p></li>
+<li><p><strong>property</strong> (<em>Qgis.RenderSubcomponentProperty = Qgis.RenderSubcomponentProperty.Generic</em>) – </p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type</dt>
@@ -3994,7 +3998,7 @@ from a source to destination coordinate reference system.</p>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:23 Sep 28, 2021.
+      <span class="lastupdated">Last updated on 02:17 Sep 28, 2021.
       </span></p>
   </div>
 
