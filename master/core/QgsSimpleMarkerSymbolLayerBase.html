@@ -1977,11 +1977,23 @@ Constructor for QgsSimpleMarkerSymbolLayerBase.</p>
 </dl>
 </p></td>
 </tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSimpleMarkerSymbolLayerBase.calculateOffsetAndRotation" title="qgis.core.QgsSimpleMarkerSymbolLayerBase.calculateOffsetAndRotation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calculateOffsetAndRotation</span></code></a></p></td>
+<td><p>Calculates the marker offset and rotation.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSimpleMarkerSymbolLayerBase.calculateSize" title="qgis.core.QgsSimpleMarkerSymbolLayerBase.calculateSize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calculateSize</span></code></a></p></td>
+<td><p>Calculates the desired size of the marker, considering data defined size overrides.</p></td>
+</tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSimpleMarkerSymbolLayerBase.decodeShape" title="qgis.core.QgsSimpleMarkerSymbolLayerBase.decodeShape"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decodeShape</span></code></a></p></td>
 <td><p>Attempts to decode a string representation of a shape name to the corresponding shape.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSimpleMarkerSymbolLayerBase.encodeShape" title="qgis.core.QgsSimpleMarkerSymbolLayerBase.encodeShape"><code class="xref py py-obj docutils literal notranslate"><span class="pre">encodeShape</span></code></a></p></td>
 <td><p>Encodes a shape to its string representation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSimpleMarkerSymbolLayerBase.prepareMarkerPath" title="qgis.core.QgsSimpleMarkerSymbolLayerBase.prepareMarkerPath"><code class="xref py py-obj docutils literal notranslate"><span class="pre">prepareMarkerPath</span></code></a></p></td>
+<td><p>Prepares the layer for drawing the specified shape (QPainterPath version)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSimpleMarkerSymbolLayerBase.prepareMarkerShape" title="qgis.core.QgsSimpleMarkerSymbolLayerBase.prepareMarkerShape"><code class="xref py py-obj docutils literal notranslate"><span class="pre">prepareMarkerShape</span></code></a></p></td>
+<td><p>Prepares the layer for drawing the specified shape (QPolygonF version)</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSimpleMarkerSymbolLayerBase.renderPoint" title="qgis.core.QgsSimpleMarkerSymbolLayerBase.renderPoint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">renderPoint</span></code></a></p></td>
 <td><p><dl class="field-list simple">
@@ -1999,14 +2011,17 @@ Constructor for QgsSimpleMarkerSymbolLayerBase.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSimpleMarkerSymbolLayerBase.shapeIsFilled" title="qgis.core.QgsSimpleMarkerSymbolLayerBase.shapeIsFilled"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shapeIsFilled</span></code></a></p></td>
 <td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if a symbol shape has a fill.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSimpleMarkerSymbolLayerBase.startRender" title="qgis.core.QgsSimpleMarkerSymbolLayerBase.startRender"><code class="xref py py-obj docutils literal notranslate"><span class="pre">startRender</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSimpleMarkerSymbolLayerBase.shapeToPolygon" title="qgis.core.QgsSimpleMarkerSymbolLayerBase.shapeToPolygon"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shapeToPolygon</span></code></a></p></td>
+<td><p>Creates a polygon representing the specified shape.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSimpleMarkerSymbolLayerBase.startRender" title="qgis.core.QgsSimpleMarkerSymbolLayerBase.startRender"><code class="xref py py-obj docutils literal notranslate"><span class="pre">startRender</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param context</dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSimpleMarkerSymbolLayerBase.stopRender" title="qgis.core.QgsSimpleMarkerSymbolLayerBase.stopRender"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stopRender</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSimpleMarkerSymbolLayerBase.stopRender" title="qgis.core.QgsSimpleMarkerSymbolLayerBase.stopRender"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stopRender</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param context</dt>
 <dd class="field-odd"><p></p></dd>
@@ -2302,6 +2317,46 @@ Constructor for QgsSimpleMarkerSymbolLayerBase.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsSimpleMarkerSymbolLayerBase.calculateOffsetAndRotation">
+<span class="sig-name descname"><span class="pre">calculateOffsetAndRotation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsSymbolRenderContext.html#module-QgsSymbolRenderContext" title="QgsSymbolRenderContext"><span class="pre">QgsSymbolRenderContext</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">scaledSize</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">QPointF</span><span class="p"><span class="pre">,</span> </span><span class="pre">QPoint</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qgis.core.QgsSimpleMarkerSymbolLayerBase.calculateOffsetAndRotation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the marker offset and rotation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsSymbolRenderContext.html#qgis.core.QgsSymbolRenderContext" title="qgis.core.QgsSymbolRenderContext"><em>QgsSymbolRenderContext</em></a>) – symbol render context</p></li>
+<li><p><strong>scaledSize</strong> (<em>float</em>) – size of symbol to render</p></li>
+<li><p><strong>hasDataDefinedRotation</strong> – will be set to <code class="docutils literal notranslate"><span class="pre">True</span></code> if marker has data defined rotation</p></li>
+<li><p><strong>offset</strong> (<em>Union</em><em>[</em><em>QPointF</em>) – will be set to calculated marker offset (in painter units)</p></li>
+<li><p><strong>angle</strong> – will be set to calculated marker angle</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Tuple[bool, float]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsSimpleMarkerSymbolLayerBase.calculateSize">
+<span class="sig-name descname"><span class="pre">calculateSize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsSymbolRenderContext.html#module-QgsSymbolRenderContext" title="QgsSymbolRenderContext"><span class="pre">QgsSymbolRenderContext</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span> </span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qgis.core.QgsSimpleMarkerSymbolLayerBase.calculateSize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the desired size of the marker, considering data defined size overrides.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsSymbolRenderContext.html#qgis.core.QgsSymbolRenderContext" title="qgis.core.QgsSymbolRenderContext"><em>QgsSymbolRenderContext</em></a>) – symbol render context</p></li>
+<li><p><strong>hasDataDefinedSize</strong> – will be set to <code class="docutils literal notranslate"><span class="pre">True</span></code> if marker uses data defined sizes</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Tuple[float, bool]</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>marker size, in original size units</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsSimpleMarkerSymbolLayerBase.decodeShape">
 <span class="sig-name descname"><span class="pre">decodeShape</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#qgis.core.QgsSimpleMarkerSymbolLayerBase.Shape" title="qgis.core.QgsSimpleMarkerSymbolLayerBase.Shape"><span class="pre">QgsSimpleMarkerSymbolLayerBase.Shape</span></a><span class="p"><span class="pre">,</span> </span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qgis.core.QgsSimpleMarkerSymbolLayerBase.decodeShape" title="Permalink to this definition">¶</a></dt>
 <dd><p>Attempts to decode a string representation of a shape name to the corresponding
@@ -2345,6 +2400,34 @@ shape.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsSimpleMarkerSymbolLayerBase.decodeShape" title="qgis.core.QgsSimpleMarkerSymbolLayerBase.decodeShape"><code class="xref py py-func docutils literal notranslate"><span class="pre">decodeShape()</span></code></a></p>
 </div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsSimpleMarkerSymbolLayerBase.prepareMarkerPath">
+<span class="sig-name descname"><span class="pre">prepareMarkerPath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">symbol</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#qgis.core.QgsSimpleMarkerSymbolLayerBase.Shape" title="qgis.core.QgsSimpleMarkerSymbolLayerBase.Shape"><span class="pre">QgsSimpleMarkerSymbolLayerBase.Shape</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#qgis.core.QgsSimpleMarkerSymbolLayerBase.prepareMarkerPath" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prepares the layer for drawing the specified shape (QPainterPath version)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>symbol</strong> (<a class="reference internal" href="#qgis.core.QgsSimpleMarkerSymbolLayerBase.Shape" title="qgis.core.QgsSimpleMarkerSymbolLayerBase.Shape"><em>QgsSimpleMarkerSymbolLayerBase.Shape</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsSimpleMarkerSymbolLayerBase.prepareMarkerShape">
+<span class="sig-name descname"><span class="pre">prepareMarkerShape</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#qgis.core.QgsSimpleMarkerSymbolLayerBase.Shape" title="qgis.core.QgsSimpleMarkerSymbolLayerBase.Shape"><span class="pre">QgsSimpleMarkerSymbolLayerBase.Shape</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#qgis.core.QgsSimpleMarkerSymbolLayerBase.prepareMarkerShape" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prepares the layer for drawing the specified shape (QPolygonF version)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>shape</strong> (<a class="reference internal" href="#qgis.core.QgsSimpleMarkerSymbolLayerBase.Shape" title="qgis.core.QgsSimpleMarkerSymbolLayerBase.Shape"><em>QgsSimpleMarkerSymbolLayerBase.Shape</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -2408,6 +2491,26 @@ shape.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsSimpleMarkerSymbolLayerBase.shapeToPolygon">
+<span class="sig-name descname"><span class="pre">shapeToPolygon</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#qgis.core.QgsSimpleMarkerSymbolLayerBase.Shape" title="qgis.core.QgsSimpleMarkerSymbolLayerBase.Shape"><span class="pre">QgsSimpleMarkerSymbolLayerBase.Shape</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">polygon</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">QPolygonF</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#qgis.core.QgsSimpleMarkerSymbolLayerBase.shapeToPolygon" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a polygon representing the specified shape.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shape</strong> (<a class="reference internal" href="#qgis.core.QgsSimpleMarkerSymbolLayerBase.Shape" title="qgis.core.QgsSimpleMarkerSymbolLayerBase.Shape"><em>QgsSimpleMarkerSymbolLayerBase.Shape</em></a>) – shape to create</p></li>
+<li><p><strong>polygon</strong> (<em>QPolygonF</em>) – destination polygon for shape</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if shape was successfully stored in polygon</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsSimpleMarkerSymbolLayerBase.startRender">
 <span class="sig-name descname"><span class="pre">startRender</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsSymbolRenderContext.html#module-QgsSymbolRenderContext" title="QgsSymbolRenderContext"><span class="pre">QgsSymbolRenderContext</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsSimpleMarkerSymbolLayerBase.startRender" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
@@ -2440,7 +2543,7 @@ shape.</p>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:25 Oct 13, 2021.
+      <span class="lastupdated">Last updated on 02:36 Oct 13, 2021.
       </span></p>
   </div>
 
