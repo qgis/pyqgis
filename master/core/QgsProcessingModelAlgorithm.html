@@ -1972,6 +1972,12 @@ Constructor for QgsProcessingModelAlgorithm.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.addModelParameter" title="qgis.core.QgsProcessingModelAlgorithm.addModelParameter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">addModelParameter</span></code></a></p></td>
 <td><p>Adds a new parameter to the model, with the specified <code class="docutils literal notranslate"><span class="pre">definition</span></code> and graphical <code class="docutils literal notranslate"><span class="pre">component</span></code>.</p></td>
 </tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.addOutput" title="qgis.core.QgsProcessingModelAlgorithm.addOutput"><code class="xref py py-obj docutils literal notranslate"><span class="pre">addOutput</span></code></a></p></td>
+<td><p>Adds an output <code class="docutils literal notranslate"><span class="pre">definition</span></code> to the algorithm.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.addParameter" title="qgis.core.QgsProcessingModelAlgorithm.addParameter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">addParameter</span></code></a></p></td>
+<td><p>Adds a parameter <code class="docutils literal notranslate"><span class="pre">definition</span></code> to the algorithm.</p></td>
+</tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.asPythonCode" title="qgis.core.QgsProcessingModelAlgorithm.asPythonCode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">asPythonCode</span></code></a></p></td>
 <td><p>Attempts to convert the model to executable Python code, and returns the generated lines of code.</p></td>
 </tr>
@@ -2099,10 +2105,19 @@ Constructor for QgsProcessingModelAlgorithm.</p>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.loadVariant" title="qgis.core.QgsProcessingModelAlgorithm.loadVariant"><code class="xref py py-obj docutils literal notranslate"><span class="pre">loadVariant</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.invalidRasterError" title="qgis.core.QgsProcessingModelAlgorithm.invalidRasterError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">invalidRasterError</span></code></a></p></td>
+<td><p>Returns a user-friendly string to use as an error when a raster layer input could not be loaded.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.invalidSinkError" title="qgis.core.QgsProcessingModelAlgorithm.invalidSinkError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">invalidSinkError</span></code></a></p></td>
+<td><p>Returns a user-friendly string to use as an error when a sink parameter could not be created.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.invalidSourceError" title="qgis.core.QgsProcessingModelAlgorithm.invalidSourceError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">invalidSourceError</span></code></a></p></td>
+<td><p>Returns a user-friendly string to use as an error when a source parameter could not be loaded.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.loadVariant" title="qgis.core.QgsProcessingModelAlgorithm.loadVariant"><code class="xref py py-obj docutils literal notranslate"><span class="pre">loadVariant</span></code></a></p></td>
 <td><p>Loads this model from a QVariantMap, wrapped in a QVariant <code class="docutils literal notranslate"><span class="pre">variant</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.name" title="qgis.core.QgsProcessingModelAlgorithm.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.name" title="qgis.core.QgsProcessingModelAlgorithm.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">rtype</dt>
 <dd class="field-odd"><p>str</p>
@@ -2110,33 +2125,174 @@ Constructor for QgsProcessingModelAlgorithm.</p>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.orderedParameters" title="qgis.core.QgsProcessingModelAlgorithm.orderedParameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">orderedParameters</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.orderedParameters" title="qgis.core.QgsProcessingModelAlgorithm.orderedParameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">orderedParameters</span></code></a></p></td>
 <td><p>Returns an ordered list of parameters for the model.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.otherParametersDependOnParameter" title="qgis.core.QgsProcessingModelAlgorithm.otherParametersDependOnParameter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">otherParametersDependOnParameter</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.otherParametersDependOnParameter" title="qgis.core.QgsProcessingModelAlgorithm.otherParametersDependOnParameter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">otherParametersDependOnParameter</span></code></a></p></td>
 <td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if any other model parameters depend on the parameter with the specified <code class="docutils literal notranslate"><span class="pre">name</span></code> (e.g.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.parameterComponent" title="qgis.core.QgsProcessingModelAlgorithm.parameterComponent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterComponent</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsAnnotationLayer" title="qgis.core.QgsProcessingModelAlgorithm.parameterAsAnnotationLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsAnnotationLayer</span></code></a></p></td>
+<td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to an annotation layer.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsBool" title="qgis.core.QgsProcessingModelAlgorithm.parameterAsBool"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsBool</span></code></a></p></td>
+<td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a static boolean value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsBoolean" title="qgis.core.QgsProcessingModelAlgorithm.parameterAsBoolean"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsBoolean</span></code></a></p></td>
+<td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a static boolean value.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsColor" title="qgis.core.QgsProcessingModelAlgorithm.parameterAsColor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsColor</span></code></a></p></td>
+<td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a color, or returns an invalid color if the parameter was not set.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsCompatibleSourceLayerPath" title="qgis.core.QgsProcessingModelAlgorithm.parameterAsCompatibleSourceLayerPath"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsCompatibleSourceLayerPath</span></code></a></p></td>
+<td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a source vector layer file path of compatible format.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsCompatibleSourceLayerPathAndLayerName" title="qgis.core.QgsProcessingModelAlgorithm.parameterAsCompatibleSourceLayerPathAndLayerName"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsCompatibleSourceLayerPathAndLayerName</span></code></a></p></td>
+<td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a source vector layer file path and layer name of compatible format.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsConnectionName" title="qgis.core.QgsProcessingModelAlgorithm.parameterAsConnectionName"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsConnectionName</span></code></a></p></td>
+<td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a connection name string.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsCrs" title="qgis.core.QgsProcessingModelAlgorithm.parameterAsCrs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsCrs</span></code></a></p></td>
+<td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a coordinate reference system.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsDatabaseTableName" title="qgis.core.QgsProcessingModelAlgorithm.parameterAsDatabaseTableName"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsDatabaseTableName</span></code></a></p></td>
+<td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a database table name string.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsDateTime" title="qgis.core.QgsProcessingModelAlgorithm.parameterAsDateTime"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsDateTime</span></code></a></p></td>
+<td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a DateTime, or returns an invalid date time if the parameter was not set.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsDouble" title="qgis.core.QgsProcessingModelAlgorithm.parameterAsDouble"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsDouble</span></code></a></p></td>
+<td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a static double value.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsEnum" title="qgis.core.QgsProcessingModelAlgorithm.parameterAsEnum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsEnum</span></code></a></p></td>
+<td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a enum value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsEnumString" title="qgis.core.QgsProcessingModelAlgorithm.parameterAsEnumString"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsEnumString</span></code></a></p></td>
+<td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a static enum string.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsEnumStrings" title="qgis.core.QgsProcessingModelAlgorithm.parameterAsEnumStrings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsEnumStrings</span></code></a></p></td>
+<td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to list of static enum strings.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsEnums" title="qgis.core.QgsProcessingModelAlgorithm.parameterAsEnums"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsEnums</span></code></a></p></td>
+<td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to list of enum values.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsExpression" title="qgis.core.QgsProcessingModelAlgorithm.parameterAsExpression"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsExpression</span></code></a></p></td>
+<td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to an expression.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsExtent" title="qgis.core.QgsProcessingModelAlgorithm.parameterAsExtent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsExtent</span></code></a></p></td>
+<td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a rectangular extent.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsExtentCrs" title="qgis.core.QgsProcessingModelAlgorithm.parameterAsExtentCrs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsExtentCrs</span></code></a></p></td>
+<td><p>Returns the coordinate reference system associated with an extent parameter value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsExtentGeometry" title="qgis.core.QgsProcessingModelAlgorithm.parameterAsExtentGeometry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsExtentGeometry</span></code></a></p></td>
+<td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a rectangular extent, and returns a geometry covering this extent.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsFields" title="qgis.core.QgsProcessingModelAlgorithm.parameterAsFields"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsFields</span></code></a></p></td>
+<td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a list of fields.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsFile" title="qgis.core.QgsProcessingModelAlgorithm.parameterAsFile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsFile</span></code></a></p></td>
+<td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a file/folder name.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsFileList" title="qgis.core.QgsProcessingModelAlgorithm.parameterAsFileList"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsFileList</span></code></a></p></td>
+<td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a list of files (for <a class="reference internal" href="QgsProcessingParameterMultipleLayers.html#module-QgsProcessingParameterMultipleLayers" title="QgsProcessingParameterMultipleLayers"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingParameterMultipleLayers</span></code></a> in <a class="reference internal" href="QgsProcessing.html#module-QgsProcessing" title="QgsProcessing"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessing</span></code></a>:TypeFile mode).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsFileOutput" title="qgis.core.QgsProcessingModelAlgorithm.parameterAsFileOutput"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsFileOutput</span></code></a></p></td>
+<td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a file based output destination.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsGeometry" title="qgis.core.QgsProcessingModelAlgorithm.parameterAsGeometry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsGeometry</span></code></a></p></td>
+<td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a geometry.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsGeometryCrs" title="qgis.core.QgsProcessingModelAlgorithm.parameterAsGeometryCrs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsGeometryCrs</span></code></a></p></td>
+<td><p>Returns the coordinate reference system associated with a geometry parameter value.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsInt" title="qgis.core.QgsProcessingModelAlgorithm.parameterAsInt"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsInt</span></code></a></p></td>
+<td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a static integer value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsInts" title="qgis.core.QgsProcessingModelAlgorithm.parameterAsInts"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsInts</span></code></a></p></td>
+<td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a list of integer values.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsLayer" title="qgis.core.QgsProcessingModelAlgorithm.parameterAsLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsLayer</span></code></a></p></td>
+<td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a map layer.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsLayerList" title="qgis.core.QgsProcessingModelAlgorithm.parameterAsLayerList"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsLayerList</span></code></a></p></td>
+<td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a list of map layers.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsLayout" title="qgis.core.QgsProcessingModelAlgorithm.parameterAsLayout"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsLayout</span></code></a></p></td>
+<td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a print layout.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsLayoutItem" title="qgis.core.QgsProcessingModelAlgorithm.parameterAsLayoutItem"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsLayoutItem</span></code></a></p></td>
+<td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a print layout item, taken from the specified <code class="docutils literal notranslate"><span class="pre">layout</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsMatrix" title="qgis.core.QgsProcessingModelAlgorithm.parameterAsMatrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsMatrix</span></code></a></p></td>
+<td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a matrix/table of values.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsMeshLayer" title="qgis.core.QgsProcessingModelAlgorithm.parameterAsMeshLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsMeshLayer</span></code></a></p></td>
+<td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a mesh layer.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsOutputLayer" title="qgis.core.QgsProcessingModelAlgorithm.parameterAsOutputLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsOutputLayer</span></code></a></p></td>
+<td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a output layer destination.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsPoint" title="qgis.core.QgsProcessingModelAlgorithm.parameterAsPoint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsPoint</span></code></a></p></td>
+<td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a point.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsPointCloudLayer" title="qgis.core.QgsProcessingModelAlgorithm.parameterAsPointCloudLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsPointCloudLayer</span></code></a></p></td>
+<td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a point cloud layer.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsPointCrs" title="qgis.core.QgsProcessingModelAlgorithm.parameterAsPointCrs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsPointCrs</span></code></a></p></td>
+<td><p>Returns the coordinate reference system associated with an point parameter value.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsRange" title="qgis.core.QgsProcessingModelAlgorithm.parameterAsRange"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsRange</span></code></a></p></td>
+<td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a range of values.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsRasterLayer" title="qgis.core.QgsProcessingModelAlgorithm.parameterAsRasterLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsRasterLayer</span></code></a></p></td>
+<td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a raster layer.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsSchema" title="qgis.core.QgsProcessingModelAlgorithm.parameterAsSchema"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsSchema</span></code></a></p></td>
+<td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a database schema name string.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsSink" title="qgis.core.QgsProcessingModelAlgorithm.parameterAsSink"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsSink</span></code></a></p></td>
+<td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a feature sink.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsSource" title="qgis.core.QgsProcessingModelAlgorithm.parameterAsSource"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsSource</span></code></a></p></td>
+<td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a feature source.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsString" title="qgis.core.QgsProcessingModelAlgorithm.parameterAsString"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsString</span></code></a></p></td>
+<td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a static string value.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsVectorLayer" title="qgis.core.QgsProcessingModelAlgorithm.parameterAsVectorLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterAsVectorLayer</span></code></a></p></td>
+<td><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a vector layer.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.parameterComponent" title="qgis.core.QgsProcessingModelAlgorithm.parameterComponent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterComponent</span></code></a></p></td>
 <td><p>Returns the parameter component with matching <code class="docutils literal notranslate"><span class="pre">name</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.parameterComponents" title="qgis.core.QgsProcessingModelAlgorithm.parameterComponents"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterComponents</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.parameterComponents" title="qgis.core.QgsProcessingModelAlgorithm.parameterComponents"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameterComponents</span></code></a></p></td>
 <td><p>Returns the map of parameter components used by the model.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.processAlgorithm" title="qgis.core.QgsProcessingModelAlgorithm.processAlgorithm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">processAlgorithm</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.postProcessAlgorithm" title="qgis.core.QgsProcessingModelAlgorithm.postProcessAlgorithm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">postProcessAlgorithm</span></code></a></p></td>
+<td><p>Allows the algorithm to perform any required cleanup tasks.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.prepareAlgorithm" title="qgis.core.QgsProcessingModelAlgorithm.prepareAlgorithm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">prepareAlgorithm</span></code></a></p></td>
+<td><p>Prepares the algorithm to run using the specified <code class="docutils literal notranslate"><span class="pre">parameters</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.processAlgorithm" title="qgis.core.QgsProcessingModelAlgorithm.processAlgorithm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">processAlgorithm</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param parameters</dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.removeChildAlgorithm" title="qgis.core.QgsProcessingModelAlgorithm.removeChildAlgorithm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeChildAlgorithm</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.removeChildAlgorithm" title="qgis.core.QgsProcessingModelAlgorithm.removeChildAlgorithm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeChildAlgorithm</span></code></a></p></td>
 <td><p>Attempts to remove the child algorithm with matching <code class="docutils literal notranslate"><span class="pre">id</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.removeGroupBox" title="qgis.core.QgsProcessingModelAlgorithm.removeGroupBox"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeGroupBox</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.removeGroupBox" title="qgis.core.QgsProcessingModelAlgorithm.removeGroupBox"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeGroupBox</span></code></a></p></td>
 <td><p>Removes the group box with matching <code class="docutils literal notranslate"><span class="pre">uuid</span></code> from the model.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.removeModelParameter" title="qgis.core.QgsProcessingModelAlgorithm.removeModelParameter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeModelParameter</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.removeModelParameter" title="qgis.core.QgsProcessingModelAlgorithm.removeModelParameter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeModelParameter</span></code></a></p></td>
 <td><p>Removes an existing model parameter by <code class="docutils literal notranslate"><span class="pre">name</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.removeParameter" title="qgis.core.QgsProcessingModelAlgorithm.removeParameter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeParameter</span></code></a></p></td>
+<td><p>Removes the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> from the algorithm, and deletes any existing definition.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.setChildAlgorithm" title="qgis.core.QgsProcessingModelAlgorithm.setChildAlgorithm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setChildAlgorithm</span></code></a></p></td>
 <td><p>Sets the child <code class="docutils literal notranslate"><span class="pre">algorithm</span></code> within the model.</p></td>
@@ -2190,7 +2346,10 @@ Constructor for QgsProcessingModelAlgorithm.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.sourceFilePath" title="qgis.core.QgsProcessingModelAlgorithm.sourceFilePath"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sourceFilePath</span></code></a></p></td>
 <td><p>Returns the source file path for the model, if available.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.svgIconPath" title="qgis.core.QgsProcessingModelAlgorithm.svgIconPath"><code class="xref py py-obj docutils literal notranslate"><span class="pre">svgIconPath</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.supportInPlaceEdit" title="qgis.core.QgsProcessingModelAlgorithm.supportInPlaceEdit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">supportInPlaceEdit</span></code></a></p></td>
+<td><p>Checks whether this algorithm supports in-place editing on the given <code class="docutils literal notranslate"><span class="pre">layer</span></code> Default implementation returns <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.svgIconPath" title="qgis.core.QgsProcessingModelAlgorithm.svgIconPath"><code class="xref py py-obj docutils literal notranslate"><span class="pre">svgIconPath</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">rtype</dt>
 <dd class="field-odd"><p>str</p>
@@ -2198,29 +2357,32 @@ Constructor for QgsProcessingModelAlgorithm.</p>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.toFile" title="qgis.core.QgsProcessingModelAlgorithm.toFile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">toFile</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.toFile" title="qgis.core.QgsProcessingModelAlgorithm.toFile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">toFile</span></code></a></p></td>
 <td><p>Writes the model to a file, at the specified <code class="docutils literal notranslate"><span class="pre">path</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.toVariant" title="qgis.core.QgsProcessingModelAlgorithm.toVariant"><code class="xref py py-obj docutils literal notranslate"><span class="pre">toVariant</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.toVariant" title="qgis.core.QgsProcessingModelAlgorithm.toVariant"><code class="xref py py-obj docutils literal notranslate"><span class="pre">toVariant</span></code></a></p></td>
 <td><p>Saves this model to a QVariantMap, wrapped in a QVariant.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.updateDestinationParameters" title="qgis.core.QgsProcessingModelAlgorithm.updateDestinationParameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">updateDestinationParameters</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.updateDestinationParameters" title="qgis.core.QgsProcessingModelAlgorithm.updateDestinationParameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">updateDestinationParameters</span></code></a></p></td>
 <td><p>Updates the model's parameter definitions to include all relevant destination parameters as required by child algorithm ModelOutputs.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.updateModelParameter" title="qgis.core.QgsProcessingModelAlgorithm.updateModelParameter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">updateModelParameter</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.updateModelParameter" title="qgis.core.QgsProcessingModelAlgorithm.updateModelParameter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">updateModelParameter</span></code></a></p></td>
 <td><p>Replaces the definition of an existing parameter (by parameter name) with a new <code class="docutils literal notranslate"><span class="pre">definition</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.validate" title="qgis.core.QgsProcessingModelAlgorithm.validate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">validate</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.validate" title="qgis.core.QgsProcessingModelAlgorithm.validate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">validate</span></code></a></p></td>
 <td><p>Validates the model, returning <code class="docutils literal notranslate"><span class="pre">True</span></code> if all child algorithms in the model are valid.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.validateChildAlgorithm" title="qgis.core.QgsProcessingModelAlgorithm.validateChildAlgorithm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">validateChildAlgorithm</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.validateChildAlgorithm" title="qgis.core.QgsProcessingModelAlgorithm.validateChildAlgorithm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">validateChildAlgorithm</span></code></a></p></td>
 <td><p>Validates the child algorithm with matching ID, returning <code class="docutils literal notranslate"><span class="pre">True</span></code> if all mandatory inputs to the algorithm have valid values.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.variables" title="qgis.core.QgsProcessingModelAlgorithm.variables"><code class="xref py py-obj docutils literal notranslate"><span class="pre">variables</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.variables" title="qgis.core.QgsProcessingModelAlgorithm.variables"><code class="xref py py-obj docutils literal notranslate"><span class="pre">variables</span></code></a></p></td>
 <td><p>Returns the map of custom expression context variables defined for this model.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.variablesForChildAlgorithm" title="qgis.core.QgsProcessingModelAlgorithm.variablesForChildAlgorithm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">variablesForChildAlgorithm</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.variablesForChildAlgorithm" title="qgis.core.QgsProcessingModelAlgorithm.variablesForChildAlgorithm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">variablesForChildAlgorithm</span></code></a></p></td>
 <td><p>Returns a map of variable name to variable definition for expression context variables which are available for use by child algorithm during model execution.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.writeFeatureError" title="qgis.core.QgsProcessingModelAlgorithm.writeFeatureError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeFeatureError</span></code></a></p></td>
+<td><p>Returns a user-friendly string to use as an error when a feature cannot be written into a sink.</p></td>
 </tr>
 </tbody>
 </table>
@@ -2363,6 +2525,48 @@ Ownership of <code class="docutils literal notranslate"><span class="pre">defini
 </ul>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProcessingModelAlgorithm.addOutput">
+<span class="sig-name descname"><span class="pre">addOutput</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputDefinition</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsProcessingOutputDefinition.html#module-QgsProcessingOutputDefinition" title="QgsProcessingOutputDefinition"><span class="pre">QgsProcessingOutputDefinition</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#qgis.core.QgsProcessingModelAlgorithm.addOutput" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds an output <code class="docutils literal notranslate"><span class="pre">definition</span></code> to the algorithm. Ownership of the definition is transferred to the algorithm.
+Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the output could be successfully added, or <code class="docutils literal notranslate"><span class="pre">False</span></code> if the output could not be added (e.g.
+as a result of a duplicate name).</p>
+<p>This should usually be called from a subclass’ <a class="reference internal" href="QgsProcessingAlgorithm.html#qgis.core.QgsProcessingAlgorithm.initAlgorithm" title="qgis.core.QgsProcessingAlgorithm.initAlgorithm"><code class="xref py py-func docutils literal notranslate"><span class="pre">initAlgorithm()</span></code></a> implementation.</p>
+<p>Note that in some cases output creation can be automatically performed when calling <a class="reference internal" href="QgsProcessingAlgorithm.html#qgis.core.QgsProcessingAlgorithm.addParameter" title="qgis.core.QgsProcessingAlgorithm.addParameter"><code class="xref py py-func docutils literal notranslate"><span class="pre">addParameter()</span></code></a>.
+See the notes in <a class="reference internal" href="QgsProcessingAlgorithm.html#qgis.core.QgsProcessingAlgorithm.addParameter" title="qgis.core.QgsProcessingAlgorithm.addParameter"><code class="xref py py-func docutils literal notranslate"><span class="pre">addParameter()</span></code></a> for a description of when this occurs.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.addParameter" title="qgis.core.QgsProcessingModelAlgorithm.addParameter"><code class="xref py py-func docutils literal notranslate"><span class="pre">addParameter()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.initAlgorithm" title="qgis.core.QgsProcessingModelAlgorithm.initAlgorithm"><code class="xref py py-func docutils literal notranslate"><span class="pre">initAlgorithm()</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProcessingModelAlgorithm.addParameter">
+<span class="sig-name descname"><span class="pre">addParameter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameterDefinition</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsProcessingParameterDefinition.html#module-QgsProcessingParameterDefinition" title="QgsProcessingParameterDefinition"><span class="pre">QgsProcessingParameterDefinition</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">createOutput</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#qgis.core.QgsProcessingModelAlgorithm.addParameter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a parameter <code class="docutils literal notranslate"><span class="pre">definition</span></code> to the algorithm. Ownership of the definition is transferred to the algorithm.
+Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if parameter could be successfully added, or <code class="docutils literal notranslate"><span class="pre">False</span></code> if the parameter could not be added (e.g.
+as a result of a duplicate name).</p>
+<p>This should usually be called from a subclass’ <a class="reference internal" href="QgsProcessingAlgorithm.html#qgis.core.QgsProcessingAlgorithm.initAlgorithm" title="qgis.core.QgsProcessingAlgorithm.initAlgorithm"><code class="xref py py-func docutils literal notranslate"><span class="pre">initAlgorithm()</span></code></a> implementation.</p>
+<p>If the <code class="docutils literal notranslate"><span class="pre">createOutput</span></code> argument is <code class="docutils literal notranslate"><span class="pre">True</span></code>, then a corresponding output definition will also be created
+(and added to the algorithm) where appropriate. E.g. when adding a <a class="reference internal" href="QgsProcessingParameterVectorDestination.html#module-QgsProcessingParameterVectorDestination" title="QgsProcessingParameterVectorDestination"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingParameterVectorDestination</span></code></a>
+and <code class="docutils literal notranslate"><span class="pre">createOutput</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code>, then a <a class="reference internal" href="QgsProcessingOutputVectorLayer.html#module-QgsProcessingOutputVectorLayer" title="QgsProcessingOutputVectorLayer"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingOutputVectorLayer</span></code></a> output will be created and
+added to the algorithm. There is no need to call <a class="reference internal" href="QgsProcessingAlgorithm.html#qgis.core.QgsProcessingAlgorithm.addOutput" title="qgis.core.QgsProcessingAlgorithm.addOutput"><code class="xref py py-func docutils literal notranslate"><span class="pre">addOutput()</span></code></a> to manually add a corresponding output
+for this vector. If <code class="docutils literal notranslate"><span class="pre">createOutput</span></code> is <code class="docutils literal notranslate"><span class="pre">False</span></code> then this automatic output creation will not
+occur.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.initAlgorithm" title="qgis.core.QgsProcessingModelAlgorithm.initAlgorithm"><code class="xref py py-func docutils literal notranslate"><span class="pre">initAlgorithm()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.addOutput" title="qgis.core.QgsProcessingModelAlgorithm.addOutput"><code class="xref py py-func docutils literal notranslate"><span class="pre">addOutput()</span></code></a></p>
+</div>
 </dd></dl>
 
 <dl class="py method">
@@ -2776,6 +2980,66 @@ use and metadata).</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProcessingModelAlgorithm.invalidRasterError">
+<span class="sig-name descname"><span class="pre">invalidRasterError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#qgis.core.QgsProcessingModelAlgorithm.invalidRasterError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a user-friendly string to use as an error when a raster layer input could
+not be loaded.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">parameters</span></code> argument should give the algorithms parameter map, and the <code class="docutils literal notranslate"><span class="pre">name</span></code>
+should correspond to the invalid source parameter name.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.invalidSourceError" title="qgis.core.QgsProcessingModelAlgorithm.invalidSourceError"><code class="xref py py-func docutils literal notranslate"><span class="pre">invalidSourceError()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.invalidSinkError" title="qgis.core.QgsProcessingModelAlgorithm.invalidSinkError"><code class="xref py py-func docutils literal notranslate"><span class="pre">invalidSinkError()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.2.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProcessingModelAlgorithm.invalidSinkError">
+<span class="sig-name descname"><span class="pre">invalidSinkError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#qgis.core.QgsProcessingModelAlgorithm.invalidSinkError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a user-friendly string to use as an error when a sink parameter could
+not be created.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">parameters</span></code> argument should give the algorithms parameter map, and the <code class="docutils literal notranslate"><span class="pre">name</span></code>
+should correspond to the invalid source parameter name.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.invalidSourceError" title="qgis.core.QgsProcessingModelAlgorithm.invalidSourceError"><code class="xref py py-func docutils literal notranslate"><span class="pre">invalidSourceError()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.invalidRasterError" title="qgis.core.QgsProcessingModelAlgorithm.invalidRasterError"><code class="xref py py-func docutils literal notranslate"><span class="pre">invalidRasterError()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.2.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProcessingModelAlgorithm.invalidSourceError">
+<span class="sig-name descname"><span class="pre">invalidSourceError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#qgis.core.QgsProcessingModelAlgorithm.invalidSourceError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a user-friendly string to use as an error when a source parameter could
+not be loaded.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">parameters</span></code> argument should give the algorithms parameter map, and the <code class="docutils literal notranslate"><span class="pre">name</span></code>
+should correspond to the invalid source parameter name.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.invalidRasterError" title="qgis.core.QgsProcessingModelAlgorithm.invalidRasterError"><code class="xref py py-func docutils literal notranslate"><span class="pre">invalidRasterError()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.invalidSinkError" title="qgis.core.QgsProcessingModelAlgorithm.invalidSinkError"><code class="xref py py-func docutils literal notranslate"><span class="pre">invalidSinkError()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.2.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsProcessingModelAlgorithm.loadVariant">
 <span class="sig-name descname"><span class="pre">loadVariant</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variant</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#qgis.core.QgsProcessingModelAlgorithm.loadVariant" title="Permalink to this definition">¶</a></dt>
 <dd><p>Loads this model from a QVariantMap, wrapped in a QVariant <code class="docutils literal notranslate"><span class="pre">variant</span></code>.
@@ -2846,6 +3110,448 @@ is the parent layer parameter).</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProcessingModelAlgorithm.parameterAsAnnotationLayer">
+<span class="sig-name descname"><span class="pre">parameterAsAnnotationLayer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsProcessingContext.html#module-QgsProcessingContext" title="QgsProcessingContext"><span class="pre">QgsProcessingContext</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="QgsAnnotationLayer.html#module-QgsAnnotationLayer" title="QgsAnnotationLayer"><span class="pre">QgsAnnotationLayer</span></a></span></span><a class="headerlink" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsAnnotationLayer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to an annotation layer.</p>
+<p>Annotation layers will be taken from <code class="docutils literal notranslate"><span class="pre">context</span></code>’s active project. Callers do not
+need to handle deletion of the returned layer.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Working with annotation layers is generally not thread safe (unless the layers are from
+a <a class="reference internal" href="QgsProject.html#module-QgsProject" title="QgsProject"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProject</span></code></a> loaded directly in a background thread). Ensure your algorithm returns the
+QgsProcessingAlgorithm.FlagNoThreading flag or only accesses annotation layers from a <a class="reference internal" href="QgsProcessingAlgorithm.html#qgis.core.QgsProcessingAlgorithm.prepareAlgorithm" title="qgis.core.QgsProcessingAlgorithm.prepareAlgorithm"><code class="xref py py-func docutils literal notranslate"><span class="pre">prepareAlgorithm()</span></code></a>
+or <a class="reference internal" href="QgsProcessingAlgorithm.html#qgis.core.QgsProcessingAlgorithm.postProcessAlgorithm" title="qgis.core.QgsProcessingAlgorithm.postProcessAlgorithm"><code class="xref py py-func docutils literal notranslate"><span class="pre">postProcessAlgorithm()</span></code></a> step.</p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.22.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProcessingModelAlgorithm.parameterAsBool">
+<span class="sig-name descname"><span class="pre">parameterAsBool</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsProcessingContext.html#module-QgsProcessingContext" title="QgsProcessingContext"><span class="pre">QgsProcessingContext</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsBool" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a static boolean value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProcessingModelAlgorithm.parameterAsBoolean">
+<span class="sig-name descname"><span class="pre">parameterAsBoolean</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsProcessingContext.html#module-QgsProcessingContext" title="QgsProcessingContext"><span class="pre">QgsProcessingContext</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsBoolean" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a static boolean value.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.8.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProcessingModelAlgorithm.parameterAsColor">
+<span class="sig-name descname"><span class="pre">parameterAsColor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsProcessingContext.html#module-QgsProcessingContext" title="QgsProcessingContext"><span class="pre">QgsProcessingContext</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">QColor</span></span></span><a class="headerlink" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsColor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a color, or returns an invalid color if the parameter was not set.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.10.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProcessingModelAlgorithm.parameterAsCompatibleSourceLayerPath">
+<span class="sig-name descname"><span class="pre">parameterAsCompatibleSourceLayerPath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsProcessingContext.html#module-QgsProcessingContext" title="QgsProcessingContext"><span class="pre">QgsProcessingContext</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">compatibleFormats</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">preferredFormat</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feedback</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsProcessingFeedback.html#module-QgsProcessingFeedback" title="QgsProcessingFeedback"><span class="pre">QgsProcessingFeedback</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsCompatibleSourceLayerPath" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a source vector layer file path of compatible format.</p>
+<p>If the parameter is evaluated to an existing layer, and that layer is not of the format listed in the
+<code class="docutils literal notranslate"><span class="pre">compatibleFormats</span></code> argument, then the layer will first be exported to a compatible format
+in a temporary location. The function will then return the path to that temporary file.</p>
+<p><code class="docutils literal notranslate"><span class="pre">compatibleFormats</span></code> should consist entirely of lowercase file extensions, e.g. ‘shp’.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">preferredFormat</span></code> argument is used to specify to desired file extension to use when a temporary
+layer export is required.</p>
+<p>When an algorithm is capable of handling multi-layer input files (such as Geopackage), it is preferable
+to use <a class="reference internal" href="QgsProcessingAlgorithm.html#qgis.core.QgsProcessingAlgorithm.parameterAsCompatibleSourceLayerPathAndLayerName" title="qgis.core.QgsProcessingAlgorithm.parameterAsCompatibleSourceLayerPathAndLayerName"><code class="xref py py-func docutils literal notranslate"><span class="pre">parameterAsCompatibleSourceLayerPathAndLayerName()</span></code></a> which may avoid conversion in more situations.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProcessingModelAlgorithm.parameterAsCompatibleSourceLayerPathAndLayerName">
+<span class="sig-name descname"><span class="pre">parameterAsCompatibleSourceLayerPathAndLayerName</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsProcessingContext.html#module-QgsProcessingContext" title="QgsProcessingContext"><span class="pre">QgsProcessingContext</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">compatibleFormats</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">preferredFormat</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feedback</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsProcessingFeedback.html#module-QgsProcessingFeedback" title="QgsProcessingFeedback"><span class="pre">QgsProcessingFeedback</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsCompatibleSourceLayerPathAndLayerName" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a source vector layer file path and layer name of compatible format.</p>
+<p>If the parameter is evaluated to an existing layer, and that layer is not of the format listed in the
+<code class="docutils literal notranslate"><span class="pre">compatibleFormats</span></code> argument, then the layer will first be exported to a compatible format
+in a temporary location. The function will then return the path to that temporary file.</p>
+<p><code class="docutils literal notranslate"><span class="pre">compatibleFormats</span></code> should consist entirely of lowercase file extensions, e.g. ‘shp’.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">preferredFormat</span></code> argument is used to specify to desired file extension to use when a temporary
+layer export is required. This defaults to shapefiles, because shapefiles are the future (don’t believe the geopackage hype!).</p>
+<p>This method should be preferred over <a class="reference internal" href="QgsProcessingAlgorithm.html#qgis.core.QgsProcessingAlgorithm.parameterAsCompatibleSourceLayerPath" title="qgis.core.QgsProcessingAlgorithm.parameterAsCompatibleSourceLayerPath"><code class="xref py py-func docutils literal notranslate"><span class="pre">parameterAsCompatibleSourceLayerPath()</span></code></a> when an algorithm is able
+to correctly handle files with multiple layers. Unlike <a class="reference internal" href="QgsProcessingAlgorithm.html#qgis.core.QgsProcessingAlgorithm.parameterAsCompatibleSourceLayerPath" title="qgis.core.QgsProcessingAlgorithm.parameterAsCompatibleSourceLayerPath"><code class="xref py py-func docutils literal notranslate"><span class="pre">parameterAsCompatibleSourceLayerPath()</span></code></a>, it will not force
+a conversion in this case and will return the target layer name in the <code class="docutils literal notranslate"><span class="pre">layerName</span></code> argument.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parameters</strong> – input parameter value map</p></li>
+<li><p><strong>name</strong> – name of target parameter</p></li>
+<li><p><strong>context</strong> – processing context</p></li>
+<li><p><strong>compatibleFormats</strong> – a list of lowercase file extensions compatible with the algorithm</p></li>
+<li><p><strong>preferredFormat</strong> – preferred format extension to use if conversion if required</p></li>
+<li><p><strong>feedback</strong> – feedback object</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>path to source layer, or nearly converted compatible layer</p></li>
+<li><p>layerName: will be set to the target layer name for multi-layer sources (e.g. Geopackage)</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsCompatibleSourceLayerPath" title="qgis.core.QgsProcessingModelAlgorithm.parameterAsCompatibleSourceLayerPath"><code class="xref py py-func docutils literal notranslate"><span class="pre">parameterAsCompatibleSourceLayerPath()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.10.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProcessingModelAlgorithm.parameterAsConnectionName">
+<span class="sig-name descname"><span class="pre">parameterAsConnectionName</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsProcessingContext.html#module-QgsProcessingContext" title="QgsProcessingContext"><span class="pre">QgsProcessingContext</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsConnectionName" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a connection name string.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.14.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProcessingModelAlgorithm.parameterAsCrs">
+<span class="sig-name descname"><span class="pre">parameterAsCrs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsProcessingContext.html#module-QgsProcessingContext" title="QgsProcessingContext"><span class="pre">QgsProcessingContext</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="QgsCoordinateReferenceSystem.html#module-QgsCoordinateReferenceSystem" title="QgsCoordinateReferenceSystem"><span class="pre">QgsCoordinateReferenceSystem</span></a></span></span><a class="headerlink" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsCrs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a coordinate reference system.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProcessingModelAlgorithm.parameterAsDatabaseTableName">
+<span class="sig-name descname"><span class="pre">parameterAsDatabaseTableName</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsProcessingContext.html#module-QgsProcessingContext" title="QgsProcessingContext"><span class="pre">QgsProcessingContext</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsDatabaseTableName" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a database table name string.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.14.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProcessingModelAlgorithm.parameterAsDateTime">
+<span class="sig-name descname"><span class="pre">parameterAsDateTime</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsProcessingContext.html#module-QgsProcessingContext" title="QgsProcessingContext"><span class="pre">QgsProcessingContext</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">QDateTime</span></span></span><a class="headerlink" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsDateTime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a DateTime, or returns an invalid date time if the parameter was not set.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.14.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProcessingModelAlgorithm.parameterAsDouble">
+<span class="sig-name descname"><span class="pre">parameterAsDouble</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsProcessingContext.html#module-QgsProcessingContext" title="QgsProcessingContext"><span class="pre">QgsProcessingContext</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsDouble" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a static double value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProcessingModelAlgorithm.parameterAsEnum">
+<span class="sig-name descname"><span class="pre">parameterAsEnum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsProcessingContext.html#module-QgsProcessingContext" title="QgsProcessingContext"><span class="pre">QgsProcessingContext</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsEnum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a enum value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProcessingModelAlgorithm.parameterAsEnumString">
+<span class="sig-name descname"><span class="pre">parameterAsEnumString</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsProcessingContext.html#module-QgsProcessingContext" title="QgsProcessingContext"><span class="pre">QgsProcessingContext</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsEnumString" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a static enum string.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.18.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProcessingModelAlgorithm.parameterAsEnumStrings">
+<span class="sig-name descname"><span class="pre">parameterAsEnumStrings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsProcessingContext.html#module-QgsProcessingContext" title="QgsProcessingContext"><span class="pre">QgsProcessingContext</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsEnumStrings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to list of static enum strings.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.18.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProcessingModelAlgorithm.parameterAsEnums">
+<span class="sig-name descname"><span class="pre">parameterAsEnums</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsProcessingContext.html#module-QgsProcessingContext" title="QgsProcessingContext"><span class="pre">QgsProcessingContext</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsEnums" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to list of enum values.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProcessingModelAlgorithm.parameterAsExpression">
+<span class="sig-name descname"><span class="pre">parameterAsExpression</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsProcessingContext.html#module-QgsProcessingContext" title="QgsProcessingContext"><span class="pre">QgsProcessingContext</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsExpression" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to an expression.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProcessingModelAlgorithm.parameterAsExtent">
+<span class="sig-name descname"><span class="pre">parameterAsExtent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsProcessingContext.html#module-QgsProcessingContext" title="QgsProcessingContext"><span class="pre">QgsProcessingContext</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">crs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsCoordinateReferenceSystem.html#module-QgsCoordinateReferenceSystem" title="QgsCoordinateReferenceSystem"><span class="pre">QgsCoordinateReferenceSystem</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">QgsCoordinateReferenceSystem()</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="QgsRectangle.html#module-QgsRectangle" title="QgsRectangle"><span class="pre">QgsRectangle</span></a></span></span><a class="headerlink" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsExtent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a rectangular extent.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">crs</span></code> is set, and the original coordinate reference system of the parameter can be determined, then the extent will be automatically
+reprojected so that it is in the specified <code class="docutils literal notranslate"><span class="pre">crs</span></code>. In this case the extent of the reproject rectangle will be returned.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsExtentGeometry" title="qgis.core.QgsProcessingModelAlgorithm.parameterAsExtentGeometry"><code class="xref py py-func docutils literal notranslate"><span class="pre">parameterAsExtentGeometry()</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProcessingModelAlgorithm.parameterAsExtentCrs">
+<span class="sig-name descname"><span class="pre">parameterAsExtentCrs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsProcessingContext.html#module-QgsProcessingContext" title="QgsProcessingContext"><span class="pre">QgsProcessingContext</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="QgsCoordinateReferenceSystem.html#module-QgsCoordinateReferenceSystem" title="QgsCoordinateReferenceSystem"><span class="pre">QgsCoordinateReferenceSystem</span></a></span></span><a class="headerlink" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsExtentCrs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the coordinate reference system associated with an extent parameter value.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsExtent" title="qgis.core.QgsProcessingModelAlgorithm.parameterAsExtent"><code class="xref py py-func docutils literal notranslate"><span class="pre">parameterAsExtent()</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProcessingModelAlgorithm.parameterAsExtentGeometry">
+<span class="sig-name descname"><span class="pre">parameterAsExtentGeometry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsProcessingContext.html#module-QgsProcessingContext" title="QgsProcessingContext"><span class="pre">QgsProcessingContext</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">crs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsCoordinateReferenceSystem.html#module-QgsCoordinateReferenceSystem" title="QgsCoordinateReferenceSystem"><span class="pre">QgsCoordinateReferenceSystem</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">QgsCoordinateReferenceSystem()</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="QgsGeometry.html#module-QgsGeometry" title="QgsGeometry"><span class="pre">QgsGeometry</span></a></span></span><a class="headerlink" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsExtentGeometry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a rectangular extent, and returns a geometry covering this extent.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">crs</span></code> is set, and the original coordinate reference system of the parameter can be determined, then the extent will be automatically
+reprojected so that it is in the specified <code class="docutils literal notranslate"><span class="pre">crs</span></code>. Unlike <a class="reference internal" href="QgsProcessingAlgorithm.html#qgis.core.QgsProcessingAlgorithm.parameterAsExtent" title="qgis.core.QgsProcessingAlgorithm.parameterAsExtent"><code class="xref py py-func docutils literal notranslate"><span class="pre">parameterAsExtent()</span></code></a>, the reprojected rectangle returned by this function
+will no longer be a rectangle itself (i.e. this method returns the geometry of the actual reprojected rectangle, while <a class="reference internal" href="QgsProcessingAlgorithm.html#qgis.core.QgsProcessingAlgorithm.parameterAsExtent" title="qgis.core.QgsProcessingAlgorithm.parameterAsExtent"><code class="xref py py-func docutils literal notranslate"><span class="pre">parameterAsExtent()</span></code></a> returns
+just the extent of the reprojected rectangle).</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsExtent" title="qgis.core.QgsProcessingModelAlgorithm.parameterAsExtent"><code class="xref py py-func docutils literal notranslate"><span class="pre">parameterAsExtent()</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProcessingModelAlgorithm.parameterAsFields">
+<span class="sig-name descname"><span class="pre">parameterAsFields</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsProcessingContext.html#module-QgsProcessingContext" title="QgsProcessingContext"><span class="pre">QgsProcessingContext</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsFields" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a list of fields.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProcessingModelAlgorithm.parameterAsFile">
+<span class="sig-name descname"><span class="pre">parameterAsFile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsProcessingContext.html#module-QgsProcessingContext" title="QgsProcessingContext"><span class="pre">QgsProcessingContext</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a file/folder name.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProcessingModelAlgorithm.parameterAsFileList">
+<span class="sig-name descname"><span class="pre">parameterAsFileList</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsProcessingContext.html#module-QgsProcessingContext" title="QgsProcessingContext"><span class="pre">QgsProcessingContext</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsFileList" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a list of files (for <a class="reference internal" href="QgsProcessingParameterMultipleLayers.html#module-QgsProcessingParameterMultipleLayers" title="QgsProcessingParameterMultipleLayers"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingParameterMultipleLayers</span></code></a> in <a class="reference internal" href="QgsProcessing.html#module-QgsProcessing" title="QgsProcessing"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessing</span></code></a>:TypeFile mode).</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.10.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProcessingModelAlgorithm.parameterAsFileOutput">
+<span class="sig-name descname"><span class="pre">parameterAsFileOutput</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsProcessingContext.html#module-QgsProcessingContext" title="QgsProcessingContext"><span class="pre">QgsProcessingContext</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsFileOutput" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a file based output destination.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProcessingModelAlgorithm.parameterAsGeometry">
+<span class="sig-name descname"><span class="pre">parameterAsGeometry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsProcessingContext.html#module-QgsProcessingContext" title="QgsProcessingContext"><span class="pre">QgsProcessingContext</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">crs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsCoordinateReferenceSystem.html#module-QgsCoordinateReferenceSystem" title="QgsCoordinateReferenceSystem"><span class="pre">QgsCoordinateReferenceSystem</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">QgsCoordinateReferenceSystem()</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="QgsGeometry.html#module-QgsGeometry" title="QgsGeometry"><span class="pre">QgsGeometry</span></a></span></span><a class="headerlink" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsGeometry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a geometry.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">crs</span></code> is set then the geometry will be automatically
+reprojected so that it is in the specified <code class="docutils literal notranslate"><span class="pre">crs</span></code>.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsGeometryCrs" title="qgis.core.QgsProcessingModelAlgorithm.parameterAsGeometryCrs"><code class="xref py py-func docutils literal notranslate"><span class="pre">parameterAsGeometryCrs()</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProcessingModelAlgorithm.parameterAsGeometryCrs">
+<span class="sig-name descname"><span class="pre">parameterAsGeometryCrs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsProcessingContext.html#module-QgsProcessingContext" title="QgsProcessingContext"><span class="pre">QgsProcessingContext</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="QgsCoordinateReferenceSystem.html#module-QgsCoordinateReferenceSystem" title="QgsCoordinateReferenceSystem"><span class="pre">QgsCoordinateReferenceSystem</span></a></span></span><a class="headerlink" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsGeometryCrs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the coordinate reference system associated with a geometry parameter value.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsGeometry" title="qgis.core.QgsProcessingModelAlgorithm.parameterAsGeometry"><code class="xref py py-func docutils literal notranslate"><span class="pre">parameterAsGeometry()</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProcessingModelAlgorithm.parameterAsInt">
+<span class="sig-name descname"><span class="pre">parameterAsInt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsProcessingContext.html#module-QgsProcessingContext" title="QgsProcessingContext"><span class="pre">QgsProcessingContext</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsInt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a static integer value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProcessingModelAlgorithm.parameterAsInts">
+<span class="sig-name descname"><span class="pre">parameterAsInts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsProcessingContext.html#module-QgsProcessingContext" title="QgsProcessingContext"><span class="pre">QgsProcessingContext</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsInts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a list of integer values.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.4.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProcessingModelAlgorithm.parameterAsLayer">
+<span class="sig-name descname"><span class="pre">parameterAsLayer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsProcessingContext.html#module-QgsProcessingContext" title="QgsProcessingContext"><span class="pre">QgsProcessingContext</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="QgsMapLayer.html#module-QgsMapLayer" title="QgsMapLayer"><span class="pre">QgsMapLayer</span></a></span></span><a class="headerlink" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsLayer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a map layer.</p>
+<p>Layers will either be taken from <code class="docutils literal notranslate"><span class="pre">context</span></code>’s active project, or loaded from external
+sources and stored temporarily in the <code class="docutils literal notranslate"><span class="pre">context</span></code>. In either case, callers do not
+need to handle deletion of the returned layer.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProcessingModelAlgorithm.parameterAsLayerList">
+<span class="sig-name descname"><span class="pre">parameterAsLayerList</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsProcessingContext.html#module-QgsProcessingContext" title="QgsProcessingContext"><span class="pre">QgsProcessingContext</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="QgsMapLayer.html#module-QgsMapLayer" title="QgsMapLayer"><span class="pre">QgsMapLayer</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsLayerList" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a list of map layers.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProcessingModelAlgorithm.parameterAsLayout">
+<span class="sig-name descname"><span class="pre">parameterAsLayout</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsProcessingContext.html#module-QgsProcessingContext" title="QgsProcessingContext"><span class="pre">QgsProcessingContext</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="QgsPrintLayout.html#module-QgsPrintLayout" title="QgsPrintLayout"><span class="pre">QgsPrintLayout</span></a></span></span><a class="headerlink" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsLayout" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a print layout.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This method is not safe to run in a background thread, so it must either be used within a prepareAlgorithm
+implementation (which runs in the main thread), or the algorithm must return the FlagNoThreading flag.</p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.8.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProcessingModelAlgorithm.parameterAsLayoutItem">
+<span class="sig-name descname"><span class="pre">parameterAsLayoutItem</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsProcessingContext.html#module-QgsProcessingContext" title="QgsProcessingContext"><span class="pre">QgsProcessingContext</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">layout</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsPrintLayout.html#module-QgsPrintLayout" title="QgsPrintLayout"><span class="pre">QgsPrintLayout</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="QgsLayoutItem.html#module-QgsLayoutItem" title="QgsLayoutItem"><span class="pre">QgsLayoutItem</span></a></span></span><a class="headerlink" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsLayoutItem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a print layout item, taken from the specified <code class="docutils literal notranslate"><span class="pre">layout</span></code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This method is not safe to run in a background thread, so it must either be used within a prepareAlgorithm
+implementation (which runs in the main thread), or the algorithm must return the FlagNoThreading flag.</p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.8.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProcessingModelAlgorithm.parameterAsMatrix">
+<span class="sig-name descname"><span class="pre">parameterAsMatrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsProcessingContext.html#module-QgsProcessingContext" title="QgsProcessingContext"><span class="pre">QgsProcessingContext</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsMatrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a matrix/table of values.
+Tables are collapsed to a 1 dimensional list.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProcessingModelAlgorithm.parameterAsMeshLayer">
+<span class="sig-name descname"><span class="pre">parameterAsMeshLayer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsProcessingContext.html#module-QgsProcessingContext" title="QgsProcessingContext"><span class="pre">QgsProcessingContext</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="QgsMeshLayer.html#module-QgsMeshLayer" title="QgsMeshLayer"><span class="pre">QgsMeshLayer</span></a></span></span><a class="headerlink" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsMeshLayer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a mesh layer.</p>
+<p>Layers will either be taken from <code class="docutils literal notranslate"><span class="pre">context</span></code>’s active project, or loaded from external
+sources and stored temporarily in the <code class="docutils literal notranslate"><span class="pre">context</span></code>. In either case, callers do not
+need to handle deletion of the returned layer.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.6.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProcessingModelAlgorithm.parameterAsOutputLayer">
+<span class="sig-name descname"><span class="pre">parameterAsOutputLayer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsProcessingContext.html#module-QgsProcessingContext" title="QgsProcessingContext"><span class="pre">QgsProcessingContext</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsOutputLayer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a output layer destination.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProcessingModelAlgorithm.parameterAsPoint">
+<span class="sig-name descname"><span class="pre">parameterAsPoint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsProcessingContext.html#module-QgsProcessingContext" title="QgsProcessingContext"><span class="pre">QgsProcessingContext</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">crs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsCoordinateReferenceSystem.html#module-QgsCoordinateReferenceSystem" title="QgsCoordinateReferenceSystem"><span class="pre">QgsCoordinateReferenceSystem</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">QgsCoordinateReferenceSystem()</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="QgsPointXY.html#module-QgsPointXY" title="QgsPointXY"><span class="pre">QgsPointXY</span></a></span></span><a class="headerlink" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsPoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a point.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">crs</span></code> is set then the point will be automatically
+reprojected so that it is in the specified <code class="docutils literal notranslate"><span class="pre">crs</span></code>.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsPointCrs" title="qgis.core.QgsProcessingModelAlgorithm.parameterAsPointCrs"><code class="xref py py-func docutils literal notranslate"><span class="pre">parameterAsPointCrs()</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProcessingModelAlgorithm.parameterAsPointCloudLayer">
+<span class="sig-name descname"><span class="pre">parameterAsPointCloudLayer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsProcessingContext.html#module-QgsProcessingContext" title="QgsProcessingContext"><span class="pre">QgsProcessingContext</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="QgsPointCloudLayer.html#module-QgsPointCloudLayer" title="QgsPointCloudLayer"><span class="pre">QgsPointCloudLayer</span></a></span></span><a class="headerlink" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsPointCloudLayer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a point cloud layer.</p>
+<p>Layers will either be taken from <code class="docutils literal notranslate"><span class="pre">context</span></code>’s active project, or loaded from external
+sources and stored temporarily in the <code class="docutils literal notranslate"><span class="pre">context</span></code>. In either case, callers do not
+need to handle deletion of the returned layer.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.22.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProcessingModelAlgorithm.parameterAsPointCrs">
+<span class="sig-name descname"><span class="pre">parameterAsPointCrs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsProcessingContext.html#module-QgsProcessingContext" title="QgsProcessingContext"><span class="pre">QgsProcessingContext</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="QgsCoordinateReferenceSystem.html#module-QgsCoordinateReferenceSystem" title="QgsCoordinateReferenceSystem"><span class="pre">QgsCoordinateReferenceSystem</span></a></span></span><a class="headerlink" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsPointCrs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the coordinate reference system associated with an point parameter value.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsPoint" title="qgis.core.QgsProcessingModelAlgorithm.parameterAsPoint"><code class="xref py py-func docutils literal notranslate"><span class="pre">parameterAsPoint()</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProcessingModelAlgorithm.parameterAsRange">
+<span class="sig-name descname"><span class="pre">parameterAsRange</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsProcessingContext.html#module-QgsProcessingContext" title="QgsProcessingContext"><span class="pre">QgsProcessingContext</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsRange" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a range of values.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProcessingModelAlgorithm.parameterAsRasterLayer">
+<span class="sig-name descname"><span class="pre">parameterAsRasterLayer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsProcessingContext.html#module-QgsProcessingContext" title="QgsProcessingContext"><span class="pre">QgsProcessingContext</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="QgsRasterLayer.html#module-QgsRasterLayer" title="QgsRasterLayer"><span class="pre">QgsRasterLayer</span></a></span></span><a class="headerlink" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsRasterLayer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a raster layer.</p>
+<p>Layers will either be taken from <code class="docutils literal notranslate"><span class="pre">context</span></code>’s active project, or loaded from external
+sources and stored temporarily in the <code class="docutils literal notranslate"><span class="pre">context</span></code>. In either case, callers do not
+need to handle deletion of the returned layer.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProcessingModelAlgorithm.parameterAsSchema">
+<span class="sig-name descname"><span class="pre">parameterAsSchema</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsProcessingContext.html#module-QgsProcessingContext" title="QgsProcessingContext"><span class="pre">QgsProcessingContext</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsSchema" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a database schema name string.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.14.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProcessingModelAlgorithm.parameterAsSink">
+<span class="sig-name descname"><span class="pre">parameterAsSink</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsProcessingContext.html#module-QgsProcessingContext" title="QgsProcessingContext"><span class="pre">QgsProcessingContext</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">fields</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsFields.html#module-QgsFields" title="QgsFields"><span class="pre">QgsFields</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">geometryType</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsWkbTypes.html#qgis.core.QgsWkbTypes.Type" title="qgis.core.QgsWkbTypes.Type"><span class="pre">QgsWkbTypes.Type</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">QgsWkbTypes.NoGeometry</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsCoordinateReferenceSystem.html#module-QgsCoordinateReferenceSystem" title="QgsCoordinateReferenceSystem"><span class="pre">QgsCoordinateReferenceSystem</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">QgsCoordinateReferenceSystem()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sinkFlags</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="QgsFeatureSink.html#qgis.core.QgsFeatureSink.SinkFlags" title="qgis.core.QgsFeatureSink.SinkFlags"><span class="pre">QgsFeatureSink.SinkFlags</span></a><span class="p"><span class="pre">,</span> </span><a class="reference internal" href="QgsFeatureSink.html#qgis.core.QgsFeatureSink.SinkFlag" title="qgis.core.QgsFeatureSink.SinkFlag"><span class="pre">QgsFeatureSink.SinkFlag</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">QgsFeatureSink.SinkFlags()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">createOptions</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">datasourceOptions</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">layerOptions</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="QgsFeatureSink.html#module-QgsFeatureSink" title="QgsFeatureSink"><span class="pre">QgsFeatureSink</span></a><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsSink" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a feature sink.</p>
+<p>Sinks will either be taken from <code class="docutils literal notranslate"><span class="pre">context</span></code>’s active project, or created from external
+providers and stored temporarily in the <code class="docutils literal notranslate"><span class="pre">context</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">fields</span></code>, <code class="docutils literal notranslate"><span class="pre">geometryType</span></code> and <code class="docutils literal notranslate"><span class="pre">crs</span></code> parameters dictate the properties
+of the resulting feature sink.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">destinationIdentifier</span></code> argument will be set to a string which can be used to retrieve the layer corresponding
+to the sink, e.g. via calling <a class="reference internal" href="QgsProcessingUtils.html#qgis.core.QgsProcessingUtils.mapLayerFromString" title="qgis.core.QgsProcessingUtils.mapLayerFromString"><code class="xref py py-func docutils literal notranslate"><span class="pre">QgsProcessingUtils.mapLayerFromString()</span></code></a>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">createOptions</span></code> argument is used to pass on creation options such as layer name.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">datasourceOptions</span></code> and <code class="docutils literal notranslate"><span class="pre">layerOptions</span></code> arguments is used to pass on GDAL-specific format driver options.</p>
+<p>This function creates a new object and the caller takes responsibility for deleting the returned object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsProcessingException.html#qgis.core.QgsProcessingException" title="qgis.core.QgsProcessingException"><strong>QgsProcessingException</strong></a> – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProcessingModelAlgorithm.parameterAsSource">
+<span class="sig-name descname"><span class="pre">parameterAsSource</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsProcessingContext.html#module-QgsProcessingContext" title="QgsProcessingContext"><span class="pre">QgsProcessingContext</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="QgsProcessingFeatureSource.html#module-QgsProcessingFeatureSource" title="QgsProcessingFeatureSource"><span class="pre">QgsProcessingFeatureSource</span></a></span></span><a class="headerlink" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsSource" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a feature source.</p>
+<p>Sources will either be taken from <code class="docutils literal notranslate"><span class="pre">context</span></code>’s active project, or loaded from external
+sources and stored temporarily in the <code class="docutils literal notranslate"><span class="pre">context</span></code>.</p>
+<p>This function creates a new object and the caller takes responsibility for deleting the returned object.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProcessingModelAlgorithm.parameterAsString">
+<span class="sig-name descname"><span class="pre">parameterAsString</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsProcessingContext.html#module-QgsProcessingContext" title="QgsProcessingContext"><span class="pre">QgsProcessingContext</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsString" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a static string value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProcessingModelAlgorithm.parameterAsVectorLayer">
+<span class="sig-name descname"><span class="pre">parameterAsVectorLayer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsProcessingContext.html#module-QgsProcessingContext" title="QgsProcessingContext"><span class="pre">QgsProcessingContext</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="QgsVectorLayer.html#module-QgsVectorLayer" title="QgsVectorLayer"><span class="pre">QgsVectorLayer</span></a></span></span><a class="headerlink" href="#qgis.core.QgsProcessingModelAlgorithm.parameterAsVectorLayer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluates the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> to a vector layer.</p>
+<p>Layers will either be taken from <code class="docutils literal notranslate"><span class="pre">context</span></code>’s active project, or loaded from external
+sources and stored temporarily in the <code class="docutils literal notranslate"><span class="pre">context</span></code>. In either case, callers do not
+need to handle deletion of the returned layer.</p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsProcessingModelAlgorithm.parameterComponent">
 <span class="sig-name descname"><span class="pre">parameterComponent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="QgsProcessingModelParameter.html#module-QgsProcessingModelParameter" title="QgsProcessingModelParameter"><span class="pre">QgsProcessingModelParameter</span></a></span></span><a class="headerlink" href="#qgis.core.QgsProcessingModelAlgorithm.parameterComponent" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the parameter component with matching <code class="docutils literal notranslate"><span class="pre">name</span></code>. If no parameter component exists with
@@ -2890,6 +3596,77 @@ should match the algorithm’s parameter names (see <code class="xref py py-func
 <dd class="field-odd"><p>Dict[str, <a class="reference internal" href="QgsProcessingModelParameter.html#qgis.core.QgsProcessingModelParameter" title="qgis.core.QgsProcessingModelParameter">QgsProcessingModelParameter</a>]</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProcessingModelAlgorithm.postProcessAlgorithm">
+<span class="sig-name descname"><span class="pre">postProcessAlgorithm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsProcessingContext.html#module-QgsProcessingContext" title="QgsProcessingContext"><span class="pre">QgsProcessingContext</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">feedback</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsProcessingFeedback.html#module-QgsProcessingFeedback" title="QgsProcessingFeedback"><span class="pre">QgsProcessingFeedback</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qgis.core.QgsProcessingModelAlgorithm.postProcessAlgorithm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Allows the algorithm to perform any required cleanup tasks. The returned variant map
+includes the results evaluated by the algorithm. These may be output layer references, or calculated
+values such as statistical calculations.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">context</span></code> argument specifies the context in which the algorithm was run.</p>
+<p>Postprocess progress should be reported using the supplied <code class="docutils literal notranslate"><span class="pre">feedback</span></code> object. Additionally,
+well-behaved algorithms should periodically check <code class="docutils literal notranslate"><span class="pre">feedback</span></code> to determine whether the
+post processing should be canceled and exited early.</p>
+<p>postProcessAlgorithm should be used to handle any thread-sensitive cleanup which is required
+by the algorithm. It will always be called from the same thread that <code class="docutils literal notranslate"><span class="pre">context</span></code> has thread
+affinity with. While this will generally be the main thread, it is not guaranteed. For instance,
+algorithms which are run as a step in a larger model or as a subcomponent of a script-based algorithm
+will call postProcessAlgorithm from the same thread as that model/script it being executed in.</p>
+<p>postProcessAlgorithm will not be called if the <a class="reference internal" href="QgsProcessingAlgorithm.html#qgis.core.QgsProcessingAlgorithm.prepareAlgorithm" title="qgis.core.QgsProcessingAlgorithm.prepareAlgorithm"><code class="xref py py-func docutils literal notranslate"><span class="pre">prepareAlgorithm()</span></code></a> step failed (returned <code class="docutils literal notranslate"><span class="pre">False</span></code>),
+or if an exception was raised by the <a class="reference internal" href="QgsProcessingAlgorithm.html#qgis.core.QgsProcessingAlgorithm.processAlgorithm" title="qgis.core.QgsProcessingAlgorithm.processAlgorithm"><code class="xref py py-func docutils literal notranslate"><span class="pre">processAlgorithm()</span></code></a> step.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A map of algorithm outputs. These may be output layer references, or calculated
+values such as statistical calculations. Implementations which return a non-empty
+map will override any results returned by <a class="reference internal" href="QgsProcessingAlgorithm.html#qgis.core.QgsProcessingAlgorithm.processAlgorithm" title="qgis.core.QgsProcessingAlgorithm.processAlgorithm"><code class="xref py py-func docutils literal notranslate"><span class="pre">processAlgorithm()</span></code></a>.</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.prepareAlgorithm" title="qgis.core.QgsProcessingModelAlgorithm.prepareAlgorithm"><code class="xref py py-func docutils literal notranslate"><span class="pre">prepareAlgorithm()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.processAlgorithm" title="qgis.core.QgsProcessingModelAlgorithm.processAlgorithm"><code class="xref py py-func docutils literal notranslate"><span class="pre">processAlgorithm()</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProcessingModelAlgorithm.prepareAlgorithm">
+<span class="sig-name descname"><span class="pre">prepareAlgorithm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsProcessingContext.html#module-QgsProcessingContext" title="QgsProcessingContext"><span class="pre">QgsProcessingContext</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">feedback</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsProcessingFeedback.html#module-QgsProcessingFeedback" title="QgsProcessingFeedback"><span class="pre">QgsProcessingFeedback</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#qgis.core.QgsProcessingModelAlgorithm.prepareAlgorithm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prepares the algorithm to run using the specified <code class="docutils literal notranslate"><span class="pre">parameters</span></code>. Algorithms should implement
+their logic for evaluating parameter values here. The evaluated parameter results should
+be stored in member variables ready for a call to <a class="reference internal" href="QgsProcessingAlgorithm.html#qgis.core.QgsProcessingAlgorithm.processAlgorithm" title="qgis.core.QgsProcessingAlgorithm.processAlgorithm"><code class="xref py py-func docutils literal notranslate"><span class="pre">processAlgorithm()</span></code></a>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">context</span></code> argument specifies the context in which the algorithm is being run.</p>
+<p>prepareAlgorithm should be used to handle any thread-sensitive preparation which is required
+by the algorithm. It will always be called from the same thread that <code class="docutils literal notranslate"><span class="pre">context</span></code> has thread
+affinity with. While this will generally be the main thread, it is not guaranteed. For instance,
+algorithms which are run as a step in a larger model or as a subcomponent of a script-based algorithm
+will call prepareAlgorithm from the same thread as that model/script it being executed in.</p>
+<p>Note that the processAlgorithm step uses a temporary context with affinity for the thread in
+which the algorithm is executed, making it safe for processAlgorithm implementations to load
+sources and sinks without issue. Implementing prepareAlgorithm is only required if special
+thread safe handling is required by the algorithm.</p>
+<p>Algorithm preparation progress should be reported using the supplied <code class="docutils literal notranslate"><span class="pre">feedback</span></code> object. Additionally,
+well-behaved algorithms should periodically check <code class="docutils literal notranslate"><span class="pre">feedback</span></code> to determine whether the
+algorithm should be canceled and exited early.</p>
+<p>If the preparation was successful algorithms must return <code class="docutils literal notranslate"><span class="pre">True</span></code>. If a <code class="docutils literal notranslate"><span class="pre">False</span></code> value is returned
+this indicates that the preparation could not be completed, and the algorithm execution
+will be canceled.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if preparation was successful.</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.processAlgorithm" title="qgis.core.QgsProcessingModelAlgorithm.processAlgorithm"><code class="xref py py-func docutils literal notranslate"><span class="pre">processAlgorithm()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm.postProcessAlgorithm" title="qgis.core.QgsProcessingModelAlgorithm.postProcessAlgorithm"><code class="xref py py-func docutils literal notranslate"><span class="pre">postProcessAlgorithm()</span></code></a></p>
+</div>
 </dd></dl>
 
 <dl class="py method">
@@ -2970,6 +3747,13 @@ is deleted.</p>
 <dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – </p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProcessingModelAlgorithm.removeParameter">
+<span class="sig-name descname"><span class="pre">removeParameter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsProcessingModelAlgorithm.removeParameter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes the parameter with matching <code class="docutils literal notranslate"><span class="pre">name</span></code> from the algorithm, and deletes any existing
+definition.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -3228,6 +4012,21 @@ model <a class="reference internal" href="#qgis.core.QgsProcessingModelAlgorithm
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProcessingModelAlgorithm.supportInPlaceEdit">
+<span class="sig-name descname"><span class="pre">supportInPlaceEdit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">layer</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsMapLayer.html#module-QgsMapLayer" title="QgsMapLayer"><span class="pre">QgsMapLayer</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#qgis.core.QgsProcessingModelAlgorithm.supportInPlaceEdit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks whether this algorithm supports in-place editing on the given <code class="docutils literal notranslate"><span class="pre">layer</span></code>
+Default implementation returns <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the algorithm supports in-place editing</p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.4.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsProcessingModelAlgorithm.svgIconPath">
 <span class="sig-name descname"><span class="pre">svgIconPath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#qgis.core.QgsProcessingModelAlgorithm.svgIconPath" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
@@ -3398,6 +4197,19 @@ algorithm <code class="docutils literal notranslate"><span class="pre">results</
 </dl>
 </dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProcessingModelAlgorithm.writeFeatureError">
+<span class="sig-name descname"><span class="pre">writeFeatureError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sink</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsFeatureSink.html#module-QgsFeatureSink" title="QgsFeatureSink"><span class="pre">QgsFeatureSink</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#qgis.core.QgsProcessingModelAlgorithm.writeFeatureError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a user-friendly string to use as an error when a feature cannot be
+written into a sink.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">sink</span></code> argument is the sink into which the feature cannot be written.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">parameters</span></code> argument should give the algorithms parameter map, and the <code class="docutils literal notranslate"><span class="pre">name</span></code>
+should correspond to the sink parameter name.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.22.</span></p>
+</div>
+</dd></dl>
+
 </dd></dl>
 
 </section>
@@ -3411,7 +4223,7 @@ algorithm <code class="docutils literal notranslate"><span class="pre">results</
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:23 Oct 22, 2021.
+      <span class="lastupdated">Last updated on 02:17 Oct 22, 2021.
       </span></p>
   </div>
 

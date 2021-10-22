@@ -1963,8 +1963,26 @@
 </dl>
 </p></td>
 </tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSurface.calculateBoundingBox" title="qgis.core.QgsSurface.calculateBoundingBox"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calculateBoundingBox</span></code></a></p></td>
+<td><p>Default calculator for the minimal bounding box for the geometry.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSurface.childCount" title="qgis.core.QgsSurface.childCount"><code class="xref py py-obj docutils literal notranslate"><span class="pre">childCount</span></code></a></p></td>
+<td><p>Returns number of child geometries (for geometries with child geometries) or child points (for geometries without child geometries - i.e. curve / point).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSurface.childGeometry" title="qgis.core.QgsSurface.childGeometry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">childGeometry</span></code></a></p></td>
+<td><p>Returns pointer to child geometry (for geometries with child geometries - i.e. geom.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSurface.childPoint" title="qgis.core.QgsSurface.childPoint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">childPoint</span></code></a></p></td>
+<td><p>Returns point at index (for geometries without child geometries - i.e. curve / point).</p></td>
+</tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSurface.clearCache" title="qgis.core.QgsSurface.clearCache"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clearCache</span></code></a></p></td>
 <td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSurface.compareToSameClass" title="qgis.core.QgsSurface.compareToSameClass"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compareToSameClass</span></code></a></p></td>
+<td><p>Compares to an <code class="docutils literal notranslate"><span class="pre">other</span></code> geometry of the same class, and returns a integer for sorting of the two geometries.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSurface.hasChildGeometries" title="qgis.core.QgsSurface.hasChildGeometries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hasChildGeometries</span></code></a></p></td>
+<td><p>Returns whether the geometry has any child geometries (<code class="docutils literal notranslate"><span class="pre">False</span></code> for point / curve, <code class="docutils literal notranslate"><span class="pre">True</span></code> otherwise)</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSurface.isValid" title="qgis.core.QgsSurface.isValid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isValid</span></code></a></p></td>
 <td><p><dl class="field-list simple">
@@ -1972,6 +1990,12 @@
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSurface.setZMTypeFromSubGeometry" title="qgis.core.QgsSurface.setZMTypeFromSubGeometry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setZMTypeFromSubGeometry</span></code></a></p></td>
+<td><p>Updates the geometry type based on whether sub geometries contain z or m values.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSurface.sortIndex" title="qgis.core.QgsSurface.sortIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sortIndex</span></code></a></p></td>
+<td><p>Returns the sort index for the geometry, used in the <a class="reference internal" href="QgsAbstractGeometry.html#qgis.core.QgsAbstractGeometry.compareTo" title="qgis.core.QgsAbstractGeometry.compareTo"><code class="xref py py-func docutils literal notranslate"><span class="pre">compareTo()</span></code></a> method to compare geometries of different types.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSurface.surfaceToPolygon" title="qgis.core.QgsSurface.surfaceToPolygon"><code class="xref py py-obj docutils literal notranslate"><span class="pre">surfaceToPolygon</span></code></a></p></td>
 <td><p>Gets a polygon representation of this surface.</p></td>
@@ -2006,9 +2030,84 @@
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsSurface.calculateBoundingBox">
+<span class="sig-name descname"><span class="pre">calculateBoundingBox</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="QgsRectangle.html#module-QgsRectangle" title="QgsRectangle"><span class="pre">QgsRectangle</span></a></span></span><a class="headerlink" href="#qgis.core.QgsSurface.calculateBoundingBox" title="Permalink to this definition">¶</a></dt>
+<dd><p>Default calculator for the minimal bounding box for the geometry. Derived classes should override this method
+if a more efficient bounding box calculation is available.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsSurface.childCount">
+<span class="sig-name descname"><span class="pre">childCount</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#qgis.core.QgsSurface.childCount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns number of child geometries (for geometries with child geometries) or child points (for geometries without child geometries - i.e. curve / point)</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>used for vertex_iterator implementation</p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.0.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsSurface.childGeometry">
+<span class="sig-name descname"><span class="pre">childGeometry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="QgsAbstractGeometry.html#module-QgsAbstractGeometry" title="QgsAbstractGeometry"><span class="pre">QgsAbstractGeometry</span></a></span></span><a class="headerlink" href="#qgis.core.QgsSurface.childGeometry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns pointer to child geometry (for geometries with child geometries - i.e. geom. collection / polygon)</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>used for vertex_iterator implementation</p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.0.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsSurface.childPoint">
+<span class="sig-name descname"><span class="pre">childPoint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="QgsPoint.html#module-QgsPoint" title="QgsPoint"><span class="pre">QgsPoint</span></a></span></span><a class="headerlink" href="#qgis.core.QgsSurface.childPoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns point at index (for geometries without child geometries - i.e. curve / point)</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>used for vertex_iterator implementation</p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.0.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsSurface.clearCache">
 <span class="sig-name descname"><span class="pre">clearCache</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsSurface.clearCache" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsSurface.compareToSameClass">
+<span class="sig-name descname"><span class="pre">compareToSameClass</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">other</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsAbstractGeometry.html#module-QgsAbstractGeometry" title="QgsAbstractGeometry"><span class="pre">QgsAbstractGeometry</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#qgis.core.QgsSurface.compareToSameClass" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compares to an <code class="docutils literal notranslate"><span class="pre">other</span></code> geometry of the same class, and returns a integer
+for sorting of the two geometries.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The actual logic for the sorting is an internal detail only and is subject to change
+between QGIS versions. The result should only be used for direct comparison of geometries
+and not stored for later use.</p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.20.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsSurface.hasChildGeometries">
+<span class="sig-name descname"><span class="pre">hasChildGeometries</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#qgis.core.QgsSurface.hasChildGeometries" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns whether the geometry has any child geometries (<code class="docutils literal notranslate"><span class="pre">False</span></code> for point / curve, <code class="docutils literal notranslate"><span class="pre">True</span></code> otherwise)</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>used for vertex_iterator implementation</p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.0.</span></p>
+</div>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsSurface.isValid">
@@ -2021,6 +2120,22 @@
 <dd class="field-even"><p>Tuple[bool, str]</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsSurface.setZMTypeFromSubGeometry">
+<span class="sig-name descname"><span class="pre">setZMTypeFromSubGeometry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subggeom</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsAbstractGeometry.html#module-QgsAbstractGeometry" title="QgsAbstractGeometry"><span class="pre">QgsAbstractGeometry</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">baseGeomType</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsWkbTypes.html#qgis.core.QgsWkbTypes.Type" title="qgis.core.QgsWkbTypes.Type"><span class="pre">QgsWkbTypes.Type</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsSurface.setZMTypeFromSubGeometry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates the geometry type based on whether sub geometries contain z or m values.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsSurface.sortIndex">
+<span class="sig-name descname"><span class="pre">sortIndex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#qgis.core.QgsSurface.sortIndex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the sort index for the geometry, used in the <a class="reference internal" href="QgsAbstractGeometry.html#qgis.core.QgsAbstractGeometry.compareTo" title="qgis.core.QgsAbstractGeometry.compareTo"><code class="xref py py-func docutils literal notranslate"><span class="pre">compareTo()</span></code></a> method to compare
+geometries of different types.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.20.</span></p>
+</div>
 </dd></dl>
 
 <dl class="py method">
@@ -2048,7 +2163,7 @@ Ownership is transferred to the caller.</p>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:23 Oct 22, 2021.
+      <span class="lastupdated">Last updated on 02:17 Oct 22, 2021.
       </span></p>
   </div>
 

@@ -1978,6 +1978,12 @@ Creates a task that copy <code class="docutils literal notranslate"><span class=
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsCopyFileTask.errorString" title="qgis.core.QgsCopyFileTask.errorString"><code class="xref py py-obj docutils literal notranslate"><span class="pre">errorString</span></code></a></p></td>
 <td><p>Returns errorString if an error occurred, else returns null QString</p></td>
 </tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsCopyFileTask.finished" title="qgis.core.QgsCopyFileTask.finished"><code class="xref py py-obj docutils literal notranslate"><span class="pre">finished</span></code></a></p></td>
+<td><p>If the task is managed by a <a class="reference internal" href="QgsTaskManager.html#module-QgsTaskManager" title="QgsTaskManager"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsTaskManager</span></code></a>, this will be called after the task has finished (whether through successful completion or via early termination).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsCopyFileTask.isCanceled" title="qgis.core.QgsCopyFileTask.isCanceled"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isCanceled</span></code></a></p></td>
+<td><p>Will return <code class="docutils literal notranslate"><span class="pre">True</span></code> if task should terminate ASAP.</p></td>
+</tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsCopyFileTask.isSignalConnected" title="qgis.core.QgsCopyFileTask.isSignalConnected"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isSignalConnected</span></code></a></p></td>
 <td><p></p></td>
 </tr>
@@ -2067,6 +2073,27 @@ the returned destination is now the absolute file path of the copied file</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsCopyFileTask.finished">
+<span class="sig-name descname"><span class="pre">finished</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">result</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsCopyFileTask.finished" title="Permalink to this definition">¶</a></dt>
+<dd><p>If the task is managed by a <a class="reference internal" href="QgsTaskManager.html#module-QgsTaskManager" title="QgsTaskManager"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsTaskManager</span></code></a>, this will be called after the
+task has finished (whether through successful completion or via early
+termination). The result argument reflects whether
+the task was successfully completed or not. This method is always called
+from the main thread, so it is safe to create widgets and perform other
+operations which require the main thread. However, the GUI will be blocked
+for the duration of this method so tasks should avoid performing any
+lengthy operations here.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsCopyFileTask.isCanceled">
+<span class="sig-name descname"><span class="pre">isCanceled</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#qgis.core.QgsCopyFileTask.isCanceled" title="Permalink to this definition">¶</a></dt>
+<dd><p>Will return <code class="docutils literal notranslate"><span class="pre">True</span></code> if task should terminate ASAP. If the task reports the CanCancel
+flag, then derived classes’ <a class="reference internal" href="QgsTask.html#qgis.core.QgsTask.run" title="qgis.core.QgsTask.run"><code class="xref py py-func docutils literal notranslate"><span class="pre">run()</span></code></a> methods should periodically check this and
+terminate in a safe manner.</p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsCopyFileTask.isSignalConnected">
 <span class="sig-name descname"><span class="pre">isSignalConnected</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">QMetaMethod</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#qgis.core.QgsCopyFileTask.isSignalConnected" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -2126,7 +2153,7 @@ the task wants to update its progress. Calling will automatically emit the progr
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:23 Oct 22, 2021.
+      <span class="lastupdated">Last updated on 02:17 Oct 22, 2021.
       </span></p>
   </div>
 

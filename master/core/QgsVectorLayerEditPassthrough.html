@@ -2032,6 +2032,12 @@
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayerEditPassthrough.disconnectNotify" title="qgis.core.QgsVectorLayerEditPassthrough.disconnectNotify"><code class="xref py py-obj docutils literal notranslate"><span class="pre">disconnectNotify</span></code></a></p></td>
 <td><p></p></td>
 </tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayerEditPassthrough.handleAttributeAdded" title="qgis.core.QgsVectorLayerEditPassthrough.handleAttributeAdded"><code class="xref py py-obj docutils literal notranslate"><span class="pre">handleAttributeAdded</span></code></a></p></td>
+<td><p>Update added and changed features after addition of an attribute</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayerEditPassthrough.handleAttributeDeleted" title="qgis.core.QgsVectorLayerEditPassthrough.handleAttributeDeleted"><code class="xref py py-obj docutils literal notranslate"><span class="pre">handleAttributeDeleted</span></code></a></p></td>
+<td><p>Update added and changed features after removal of an attribute</p></td>
+</tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayerEditPassthrough.isModified" title="qgis.core.QgsVectorLayerEditPassthrough.isModified"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isModified</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">rtype</dt>
@@ -2070,6 +2076,18 @@
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayerEditPassthrough.update" title="qgis.core.QgsVectorLayerEditPassthrough.update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update</span></code></a></p></td>
 <td><p>Update underlying data with a SQL query embedded in a transaction.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayerEditPassthrough.updateAttributeMapIndex" title="qgis.core.QgsVectorLayerEditPassthrough.updateAttributeMapIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">updateAttributeMapIndex</span></code></a></p></td>
+<td><p>Updates an index in an attribute map to a new value (for updates of changed attributes)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayerEditPassthrough.updateChangedAttributes" title="qgis.core.QgsVectorLayerEditPassthrough.updateChangedAttributes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">updateChangedAttributes</span></code></a></p></td>
+<td><p>Update feature with uncommitted attribute updates</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayerEditPassthrough.updateFeatureGeometry" title="qgis.core.QgsVectorLayerEditPassthrough.updateFeatureGeometry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">updateFeatureGeometry</span></code></a></p></td>
+<td><p>Update feature with uncommitted geometry updates</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayerEditPassthrough.updateLayerFields" title="qgis.core.QgsVectorLayerEditPassthrough.updateLayerFields"><code class="xref py py-obj docutils literal notranslate"><span class="pre">updateLayerFields</span></code></a></p></td>
+<td><p></p></td>
 </tr>
 </tbody>
 </table>
@@ -2262,6 +2280,18 @@
 <dd></dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsVectorLayerEditPassthrough.handleAttributeAdded">
+<span class="sig-name descname"><span class="pre">handleAttributeAdded</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsVectorLayerEditPassthrough.handleAttributeAdded" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update added and changed features after addition of an attribute</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsVectorLayerEditPassthrough.handleAttributeDeleted">
+<span class="sig-name descname"><span class="pre">handleAttributeDeleted</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsVectorLayerEditPassthrough.handleAttributeDeleted" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update added and changed features after removal of an attribute</p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsVectorLayerEditPassthrough.isModified">
 <span class="sig-name descname"><span class="pre">isModified</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#qgis.core.QgsVectorLayerEditPassthrough.isModified" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
@@ -2346,6 +2376,29 @@
 </div>
 </dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsVectorLayerEditPassthrough.updateAttributeMapIndex">
+<span class="sig-name descname"><span class="pre">updateAttributeMapIndex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attrs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsVectorLayerEditPassthrough.updateAttributeMapIndex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates an index in an attribute map to a new value (for updates of changed attributes)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsVectorLayerEditPassthrough.updateChangedAttributes">
+<span class="sig-name descname"><span class="pre">updateChangedAttributes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsFeature.html#module-QgsFeature" title="QgsFeature"><span class="pre">QgsFeature</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsVectorLayerEditPassthrough.updateChangedAttributes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update feature with uncommitted attribute updates</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsVectorLayerEditPassthrough.updateFeatureGeometry">
+<span class="sig-name descname"><span class="pre">updateFeatureGeometry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsFeature.html#module-QgsFeature" title="QgsFeature"><span class="pre">QgsFeature</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsVectorLayerEditPassthrough.updateFeatureGeometry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update feature with uncommitted geometry updates</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsVectorLayerEditPassthrough.updateLayerFields">
+<span class="sig-name descname"><span class="pre">updateLayerFields</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsVectorLayerEditPassthrough.updateLayerFields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 </section>
@@ -2359,7 +2412,7 @@
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:23 Oct 22, 2021.
+      <span class="lastupdated">Last updated on 02:17 Oct 22, 2021.
       </span></p>
   </div>
 
