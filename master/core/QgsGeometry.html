@@ -2367,6 +2367,12 @@ geom is transferred.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsGeometry.rotate" title="qgis.core.QgsGeometry.rotate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rotate</span></code></a></p></td>
 <td><p>Rotate this geometry around the Z axis</p></td>
 </tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsGeometry.roundWaves" title="qgis.core.QgsGeometry.roundWaves"><code class="xref py py-obj docutils literal notranslate"><span class="pre">roundWaves</span></code></a></p></td>
+<td><p>Constructs rounded (sine-like) waves along the boundary of the geometry, with the specified <code class="docutils literal notranslate"><span class="pre">wavelength</span></code> and <code class="docutils literal notranslate"><span class="pre">amplitude</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsGeometry.roundWavesRandomized" title="qgis.core.QgsGeometry.roundWavesRandomized"><code class="xref py py-obj docutils literal notranslate"><span class="pre">roundWavesRandomized</span></code></a></p></td>
+<td><p>Constructs randomized rounded (sine-like) waves along the boundary of the geometry, with the specified wavelength and amplitude ranges.</p></td>
+</tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsGeometry.set" title="qgis.core.QgsGeometry.set"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set</span></code></a></p></td>
 <td><p>Sets the underlying geometry store.</p></td>
 </tr>
@@ -2394,6 +2400,12 @@ geom is transferred.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsGeometry.sqrDistToVertexAt" title="qgis.core.QgsGeometry.sqrDistToVertexAt"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sqrDistToVertexAt</span></code></a></p></td>
 <td><p>Returns the squared Cartesian distance between the given point to the given vertex index (vertex at the given position number, ring and item (first number is index 0))</p></td>
 </tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsGeometry.squareWaves" title="qgis.core.QgsGeometry.squareWaves"><code class="xref py py-obj docutils literal notranslate"><span class="pre">squareWaves</span></code></a></p></td>
+<td><p>Constructs square waves along the boundary of the geometry, with the specified <code class="docutils literal notranslate"><span class="pre">wavelength</span></code> and <code class="docutils literal notranslate"><span class="pre">amplitude</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsGeometry.squareWavesRandomized" title="qgis.core.QgsGeometry.squareWavesRandomized"><code class="xref py py-obj docutils literal notranslate"><span class="pre">squareWavesRandomized</span></code></a></p></td>
+<td><p>Constructs randomized square waves along the boundary of the geometry, with the specified wavelength and amplitude ranges.</p></td>
+</tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsGeometry.subdivide" title="qgis.core.QgsGeometry.subdivide"><code class="xref py py-obj docutils literal notranslate"><span class="pre">subdivide</span></code></a></p></td>
 <td><p>Subdivides the geometry.</p></td>
 </tr>
@@ -2414,6 +2426,12 @@ geom is transferred.</p>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsGeometry.translate" title="qgis.core.QgsGeometry.translate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">translate</span></code></a></p></td>
 <td><p>Translates this geometry by dx, dy, dz and dm.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsGeometry.triangularWaves" title="qgis.core.QgsGeometry.triangularWaves"><code class="xref py py-obj docutils literal notranslate"><span class="pre">triangularWaves</span></code></a></p></td>
+<td><p>Constructs triangular waves along the boundary of the geometry, with the specified <code class="docutils literal notranslate"><span class="pre">wavelength</span></code> and <code class="docutils literal notranslate"><span class="pre">amplitude</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsGeometry.triangularWavesRandomized" title="qgis.core.QgsGeometry.triangularWavesRandomized"><code class="xref py py-obj docutils literal notranslate"><span class="pre">triangularWavesRandomized</span></code></a></p></td>
+<td><p>Constructs randomized triangular waves along the boundary of the geometry, with the specified wavelength and amplitude ranges.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsGeometry.type" title="qgis.core.QgsGeometry.type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a></p></td>
 <td><p>Returns type of the geometry as a <a class="reference internal" href="QgsWkbTypes.html#module-QgsWkbTypes" title="QgsWkbTypes"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsWkbTypes</span></code></a>.GeometryType</p></td>
@@ -2879,7 +2897,7 @@ celestial body).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Raises</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>TypeError</strong> – if the geometry is not a single-point type</p></li>
+<li><p><strong>TypeError</strong> – if the geometry is not a single-point type (or a multipoint containing a single point)</p></li>
 <li><p><strong>ValueError</strong> – if the geometry is null</p></li>
 </ul>
 </dd>
@@ -5498,6 +5516,72 @@ display as straight line segments.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsGeometry.roundWaves">
+<span class="sig-name descname"><span class="pre">roundWaves</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wavelength</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amplitude</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strictWavelength</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#module-QgsGeometry" title="QgsGeometry"><span class="pre">QgsGeometry</span></a></span></span><a class="headerlink" href="#qgis.core.QgsGeometry.roundWaves" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs rounded (sine-like) waves along the boundary of the geometry, with the
+specified <code class="docutils literal notranslate"><span class="pre">wavelength</span></code> and <code class="docutils literal notranslate"><span class="pre">amplitude</span></code>.</p>
+<p>By default the <code class="docutils literal notranslate"><span class="pre">wavelength</span></code> argument is treated as a “maximum wavelength”, where the actual
+wavelength will be dynamically adjusted so that an exact number of waves are created
+along the boundaries of the geometry. If <code class="docutils literal notranslate"><span class="pre">strictWavelength</span></code> is set to <code class="docutils literal notranslate"><span class="pre">True</span></code> then the <code class="docutils literal notranslate"><span class="pre">wavelength</span></code>
+will be used exactly and an incomplete pattern may be used for the final waveform.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsGeometry.roundWavesRandomized" title="qgis.core.QgsGeometry.roundWavesRandomized"><code class="xref py py-func docutils literal notranslate"><span class="pre">roundWavesRandomized()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.24.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>wavelength</strong> (<em>float</em>) – </p></li>
+<li><p><strong>amplitude</strong> (<em>float</em>) – </p></li>
+<li><p><strong>strictWavelength</strong> (<em>bool = False</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#qgis.core.QgsGeometry" title="qgis.core.QgsGeometry">QgsGeometry</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsGeometry.roundWavesRandomized">
+<span class="sig-name descname"><span class="pre">roundWavesRandomized</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">minimumWavelength</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maximumWavelength</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">minimumAmplitude</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maximumAmplitude</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#module-QgsGeometry" title="QgsGeometry"><span class="pre">QgsGeometry</span></a></span></span><a class="headerlink" href="#qgis.core.QgsGeometry.roundWavesRandomized" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs randomized rounded (sine-like) waves along the boundary of the geometry, with the
+specified wavelength and amplitude ranges.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">minimumWavelength</span></code> and <code class="docutils literal notranslate"><span class="pre">maximumWavelength</span></code> arguments set the range for the randomized
+wavelength. This is evaluated for each individual waveform created along the geometry
+boundaries, so the resultant geometry will consist of many different wavelengths.</p>
+<p>Similarly, the <code class="docutils literal notranslate"><span class="pre">minimumAmplitude</span></code> and <code class="docutils literal notranslate"><span class="pre">maximumAmplitude</span></code> arguments define the range for the
+randomized amplitude of the square components. Randomized amplitude values will be calculated
+individually for waves placed on each either side of the input geometry boundaries.</p>
+<p>Optionally, a specific random <code class="docutils literal notranslate"><span class="pre">seed</span></code> can be used when generating points. If <code class="docutils literal notranslate"><span class="pre">seed</span></code>
+is 0, then a completely random sequence of points will be generated.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsGeometry.squareWaves" title="qgis.core.QgsGeometry.squareWaves"><code class="xref py py-func docutils literal notranslate"><span class="pre">squareWaves()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.24.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>minimumWavelength</strong> (<em>float</em>) – </p></li>
+<li><p><strong>maximumWavelength</strong> (<em>float</em>) – </p></li>
+<li><p><strong>minimumAmplitude</strong> (<em>float</em>) – </p></li>
+<li><p><strong>maximumAmplitude</strong> (<em>float</em>) – </p></li>
+<li><p><strong>seed</strong> (<em>int = 0</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#qgis.core.QgsGeometry" title="qgis.core.QgsGeometry">QgsGeometry</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsGeometry.set">
 <span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">geometry</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsAbstractGeometry.html#module-QgsAbstractGeometry" title="QgsAbstractGeometry"><span class="pre">QgsAbstractGeometry</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsGeometry.set" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets the underlying geometry store. Ownership of geometry is transferred.</p>
@@ -5783,6 +5867,72 @@ ring and item (first number is index 0))</p>
 </dl>
 </dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsGeometry.squareWaves">
+<span class="sig-name descname"><span class="pre">squareWaves</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wavelength</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amplitude</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strictWavelength</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#module-QgsGeometry" title="QgsGeometry"><span class="pre">QgsGeometry</span></a></span></span><a class="headerlink" href="#qgis.core.QgsGeometry.squareWaves" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs square waves along the boundary of the geometry, with the
+specified <code class="docutils literal notranslate"><span class="pre">wavelength</span></code> and <code class="docutils literal notranslate"><span class="pre">amplitude</span></code>.</p>
+<p>By default the <code class="docutils literal notranslate"><span class="pre">wavelength</span></code> argument is treated as a “maximum wavelength”, where the actual
+wavelength will be dynamically adjusted so that an exact number of square waves are created
+along the boundaries of the geometry. If <code class="docutils literal notranslate"><span class="pre">strictWavelength</span></code> is set to <code class="docutils literal notranslate"><span class="pre">True</span></code> then the <code class="docutils literal notranslate"><span class="pre">wavelength</span></code>
+will be used exactly and an incomplete pattern may be used for the final waveform.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsGeometry.squareWavesRandomized" title="qgis.core.QgsGeometry.squareWavesRandomized"><code class="xref py py-func docutils literal notranslate"><span class="pre">squareWavesRandomized()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.24.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>wavelength</strong> (<em>float</em>) – </p></li>
+<li><p><strong>amplitude</strong> (<em>float</em>) – </p></li>
+<li><p><strong>strictWavelength</strong> (<em>bool = False</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#qgis.core.QgsGeometry" title="qgis.core.QgsGeometry">QgsGeometry</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsGeometry.squareWavesRandomized">
+<span class="sig-name descname"><span class="pre">squareWavesRandomized</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">minimumWavelength</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maximumWavelength</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">minimumAmplitude</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maximumAmplitude</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#module-QgsGeometry" title="QgsGeometry"><span class="pre">QgsGeometry</span></a></span></span><a class="headerlink" href="#qgis.core.QgsGeometry.squareWavesRandomized" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs randomized square waves along the boundary of the geometry, with the
+specified wavelength and amplitude ranges.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">minimumWavelength</span></code> and <code class="docutils literal notranslate"><span class="pre">maximumWavelength</span></code> arguments set the range for the randomized
+wavelength. This is evaluated for each individual square waveform created along the geometry
+boundaries, so the resultant geometry will consist of many different wavelengths.</p>
+<p>Similarly, the <code class="docutils literal notranslate"><span class="pre">minimumAmplitude</span></code> and <code class="docutils literal notranslate"><span class="pre">maximumAmplitude</span></code> arguments define the range for the
+randomized amplitude of the square components. Randomized amplitude values will be calculated
+individually for squares placed on each either side of the input geometry boundaries.</p>
+<p>Optionally, a specific random <code class="docutils literal notranslate"><span class="pre">seed</span></code> can be used when generating points. If <code class="docutils literal notranslate"><span class="pre">seed</span></code>
+is 0, then a completely random sequence of points will be generated.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsGeometry.squareWaves" title="qgis.core.QgsGeometry.squareWaves"><code class="xref py py-func docutils literal notranslate"><span class="pre">squareWaves()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.24.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>minimumWavelength</strong> (<em>float</em>) – </p></li>
+<li><p><strong>maximumWavelength</strong> (<em>float</em>) – </p></li>
+<li><p><strong>minimumAmplitude</strong> (<em>float</em>) – </p></li>
+<li><p><strong>maximumAmplitude</strong> (<em>float</em>) – </p></li>
+<li><p><strong>seed</strong> (<em>int = 0</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#qgis.core.QgsGeometry" title="qgis.core.QgsGeometry">QgsGeometry</a></p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.core.QgsGeometry.staticMetaObject">
 <span class="sig-name descname"><span class="pre">staticMetaObject</span></span><em class="property"> <span class="pre">=</span> <span class="pre">&lt;PyQt5.QtCore.QMetaObject</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#qgis.core.QgsGeometry.staticMetaObject" title="Permalink to this definition">¶</a></dt>
@@ -5973,6 +6123,72 @@ Similarly, m-values can be scaled via <code class="docutils literal notranslate"
 <li><p><strong>dz</strong> (<em>float = 0</em>) – </p></li>
 <li><p><strong>dm</strong> (<em>float = 0</em>) – </p></li>
 </ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsGeometry.triangularWaves">
+<span class="sig-name descname"><span class="pre">triangularWaves</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wavelength</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amplitude</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strictWavelength</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#module-QgsGeometry" title="QgsGeometry"><span class="pre">QgsGeometry</span></a></span></span><a class="headerlink" href="#qgis.core.QgsGeometry.triangularWaves" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs triangular waves along the boundary of the geometry, with the
+specified <code class="docutils literal notranslate"><span class="pre">wavelength</span></code> and <code class="docutils literal notranslate"><span class="pre">amplitude</span></code>.</p>
+<p>By default the <code class="docutils literal notranslate"><span class="pre">wavelength</span></code> argument is treated as a “maximum wavelength”, where the actual
+wavelength will be dynamically adjusted so that an exact number of triangular waves are created
+along the boundaries of the geometry. If <code class="docutils literal notranslate"><span class="pre">strictWavelength</span></code> is set to <code class="docutils literal notranslate"><span class="pre">True</span></code> then the <code class="docutils literal notranslate"><span class="pre">wavelength</span></code>
+will be used exactly and an incomplete pattern may be used for the final waveform.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsGeometry.triangularWavesRandomized" title="qgis.core.QgsGeometry.triangularWavesRandomized"><code class="xref py py-func docutils literal notranslate"><span class="pre">triangularWavesRandomized()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.24.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>wavelength</strong> (<em>float</em>) – </p></li>
+<li><p><strong>amplitude</strong> (<em>float</em>) – </p></li>
+<li><p><strong>strictWavelength</strong> (<em>bool = False</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#qgis.core.QgsGeometry" title="qgis.core.QgsGeometry">QgsGeometry</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsGeometry.triangularWavesRandomized">
+<span class="sig-name descname"><span class="pre">triangularWavesRandomized</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">minimumWavelength</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maximumWavelength</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">minimumAmplitude</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maximumAmplitude</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#module-QgsGeometry" title="QgsGeometry"><span class="pre">QgsGeometry</span></a></span></span><a class="headerlink" href="#qgis.core.QgsGeometry.triangularWavesRandomized" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs randomized triangular waves along the boundary of the geometry, with the
+specified wavelength and amplitude ranges.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">minimumWavelength</span></code> and <code class="docutils literal notranslate"><span class="pre">maximumWavelength</span></code> arguments set the range for the randomized
+wavelength. This is evaluated for each individual triangular waveform created along the geometry
+boundaries, so the resultant geometry will consist of many different wavelengths.</p>
+<p>Similarly, the <code class="docutils literal notranslate"><span class="pre">minimumAmplitude</span></code> and <code class="docutils literal notranslate"><span class="pre">maximumAmplitude</span></code> arguments define the range for the
+randomized amplitude of the triangular components. Randomized amplitude values will be calculated
+individually for triangles placed on each either side of the input geometry boundaries.</p>
+<p>Optionally, a specific random <code class="docutils literal notranslate"><span class="pre">seed</span></code> can be used when generating points. If <code class="docutils literal notranslate"><span class="pre">seed</span></code>
+is 0, then a completely random sequence of points will be generated.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsGeometry.triangularWaves" title="qgis.core.QgsGeometry.triangularWaves"><code class="xref py py-func docutils literal notranslate"><span class="pre">triangularWaves()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.24.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>minimumWavelength</strong> (<em>float</em>) – </p></li>
+<li><p><strong>maximumWavelength</strong> (<em>float</em>) – </p></li>
+<li><p><strong>minimumAmplitude</strong> (<em>float</em>) – </p></li>
+<li><p><strong>maximumAmplitude</strong> (<em>float</em>) – </p></li>
+<li><p><strong>seed</strong> (<em>int = 0</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#qgis.core.QgsGeometry" title="qgis.core.QgsGeometry">QgsGeometry</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -6262,7 +6478,7 @@ faster than calling <a class="reference internal" href="#qgis.core.QgsGeometry.w
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:23 Oct 23, 2021.
+      <span class="lastupdated">Last updated on 02:46 Oct 23, 2021.
       </span></p>
   </div>
 
