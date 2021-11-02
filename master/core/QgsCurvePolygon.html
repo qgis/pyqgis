@@ -2162,6 +2162,12 @@
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsCurvePolygon.exteriorRing" title="qgis.core.QgsCurvePolygon.exteriorRing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">exteriorRing</span></code></a></p></td>
 <td><p>Returns the curve polygon's exterior ring.</p></td>
 </tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsCurvePolygon.forceClockwise" title="qgis.core.QgsCurvePolygon.forceClockwise"><code class="xref py py-obj docutils literal notranslate"><span class="pre">forceClockwise</span></code></a></p></td>
+<td><p>Forces the polygon to respect the exterior ring is clockwise, interior rings are counter-clockwise convention.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsCurvePolygon.forceCounterClockwise" title="qgis.core.QgsCurvePolygon.forceCounterClockwise"><code class="xref py py-obj docutils literal notranslate"><span class="pre">forceCounterClockwise</span></code></a></p></td>
+<td><p>Forces the polygon to respect the exterior ring is counter-clockwise, interior rings are clockwise convention.</p></td>
+</tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsCurvePolygon.forceRHR" title="qgis.core.QgsCurvePolygon.forceRHR"><code class="xref py py-obj docutils literal notranslate"><span class="pre">forceRHR</span></code></a></p></td>
 <td><p>Forces the geometry to respect the Right-Hand-Rule, in which the area that is bounded by the polygon is to the right of the boundary.</p></td>
 </tr>
@@ -2743,12 +2749,53 @@
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsCurvePolygon.forceClockwise">
+<span class="sig-name descname"><span class="pre">forceClockwise</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsCurvePolygon.forceClockwise" title="Permalink to this definition">¶</a></dt>
+<dd><p>Forces the polygon to respect the exterior ring is clockwise, interior rings are counter-clockwise convention.</p>
+<p>This convention is used primarily by ESRI software.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsCurvePolygon.forceCounterClockwise" title="qgis.core.QgsCurvePolygon.forceCounterClockwise"><code class="xref py py-func docutils literal notranslate"><span class="pre">forceCounterClockwise()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.24.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsCurvePolygon.forceCounterClockwise">
+<span class="sig-name descname"><span class="pre">forceCounterClockwise</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsCurvePolygon.forceCounterClockwise" title="Permalink to this definition">¶</a></dt>
+<dd><p>Forces the polygon to respect the exterior ring is counter-clockwise, interior rings are clockwise convention.</p>
+<p>This convention matches the OGC Simple Features specification.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsCurvePolygon.forceClockwise" title="qgis.core.QgsCurvePolygon.forceClockwise"><code class="xref py py-func docutils literal notranslate"><span class="pre">forceClockwise()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.24.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsCurvePolygon.forceRHR">
 <span class="sig-name descname"><span class="pre">forceRHR</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsCurvePolygon.forceRHR" title="Permalink to this definition">¶</a></dt>
 <dd><p>Forces the geometry to respect the Right-Hand-Rule, in which the area that is
 bounded by the polygon is to the right of the boundary. In particular, the exterior
 ring is oriented in a clockwise direction and the interior rings in a counter-clockwise
 direction.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Due to the conflicting definitions of the right-hand-rule in general use, it is recommended
+to use the explicit <a class="reference internal" href="#qgis.core.QgsCurvePolygon.forceClockwise" title="qgis.core.QgsCurvePolygon.forceClockwise"><code class="xref py py-func docutils literal notranslate"><span class="pre">forceClockwise()</span></code></a> or <a class="reference internal" href="#qgis.core.QgsCurvePolygon.forceCounterClockwise" title="qgis.core.QgsCurvePolygon.forceCounterClockwise"><code class="xref py py-func docutils literal notranslate"><span class="pre">forceCounterClockwise()</span></code></a> methods instead.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsCurvePolygon.forceClockwise" title="qgis.core.QgsCurvePolygon.forceClockwise"><code class="xref py py-func docutils literal notranslate"><span class="pre">forceClockwise()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsCurvePolygon.forceCounterClockwise" title="qgis.core.QgsCurvePolygon.forceCounterClockwise"><code class="xref py py-func docutils literal notranslate"><span class="pre">forceCounterClockwise()</span></code></a></p>
+</div>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.6.</span></p>
 </div>
@@ -3271,7 +3318,7 @@ of the curve.</p>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:23 Nov 02, 2021.
+      <span class="lastupdated">Last updated on 02:33 Nov 02, 2021.
       </span></p>
   </div>
 
