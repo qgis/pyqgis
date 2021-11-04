@@ -1973,16 +1973,25 @@ and must be passed to <a class="reference internal" href="#qgis.server.QgsServer
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.server.QgsServerFilter.requestReady" title="qgis.server.QgsServerFilter.requestReady"><code class="xref py py-obj docutils literal notranslate"><span class="pre">requestReady</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.server.QgsServerFilter.onRequestReady" title="qgis.server.QgsServerFilter.onRequestReady"><code class="xref py py-obj docutils literal notranslate"><span class="pre">onRequestReady</span></code></a></p></td>
 <td><p>Method called when the <a class="reference internal" href="QgsRequestHandler.html#module-QgsRequestHandler" title="QgsRequestHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsRequestHandler</span></code></a> is ready and populated with parameters, just before entering the main switch for core services.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.server.QgsServerFilter.responseComplete" title="qgis.server.QgsServerFilter.responseComplete"><code class="xref py py-obj docutils literal notranslate"><span class="pre">responseComplete</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.server.QgsServerFilter.onResponseComplete" title="qgis.server.QgsServerFilter.onResponseComplete"><code class="xref py py-obj docutils literal notranslate"><span class="pre">onResponseComplete</span></code></a></p></td>
 <td><p>Method called when the <a class="reference internal" href="QgsRequestHandler.html#module-QgsRequestHandler" title="QgsRequestHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsRequestHandler</span></code></a> processing has done and the response is ready, just after the main switch for core services and before final sending response to FCGI stdout.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.server.QgsServerFilter.sendResponse" title="qgis.server.QgsServerFilter.sendResponse"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sendResponse</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.server.QgsServerFilter.onSendResponse" title="qgis.server.QgsServerFilter.onSendResponse"><code class="xref py py-obj docutils literal notranslate"><span class="pre">onSendResponse</span></code></a></p></td>
 <td><p>Method called when the <a class="reference internal" href="QgsRequestHandler.html#module-QgsRequestHandler" title="QgsRequestHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsRequestHandler</span></code></a> sends its data to FCGI stdout.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.server.QgsServerFilter.serverInterface" title="qgis.server.QgsServerFilter.serverInterface"><code class="xref py py-obj docutils literal notranslate"><span class="pre">serverInterface</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.server.QgsServerFilter.requestReady" title="qgis.server.QgsServerFilter.requestReady"><code class="xref py py-obj docutils literal notranslate"><span class="pre">requestReady</span></code></a></p></td>
+<td><p>Method called when the <a class="reference internal" href="QgsRequestHandler.html#module-QgsRequestHandler" title="QgsRequestHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsRequestHandler</span></code></a> is ready and populated with parameters, just before entering the main switch for core services.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.server.QgsServerFilter.responseComplete" title="qgis.server.QgsServerFilter.responseComplete"><code class="xref py py-obj docutils literal notranslate"><span class="pre">responseComplete</span></code></a></p></td>
+<td><p>Method called when the <a class="reference internal" href="QgsRequestHandler.html#module-QgsRequestHandler" title="QgsRequestHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsRequestHandler</span></code></a> processing has done and the response is ready, just after the main switch for core services and before final sending response.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.server.QgsServerFilter.sendResponse" title="qgis.server.QgsServerFilter.sendResponse"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sendResponse</span></code></a></p></td>
+<td><p>Method called when the <a class="reference internal" href="QgsRequestHandler.html#module-QgsRequestHandler" title="QgsRequestHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsRequestHandler</span></code></a> sends its data to FCGI stdout.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.server.QgsServerFilter.serverInterface" title="qgis.server.QgsServerFilter.serverInterface"><code class="xref py py-obj docutils literal notranslate"><span class="pre">serverInterface</span></code></a></p></td>
 <td><p>Returns the <a class="reference internal" href="QgsServerInterface.html#module-QgsServerInterface" title="QgsServerInterface"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsServerInterface</span></code></a> instance</p></td>
 </tr>
 </tbody>
@@ -2005,10 +2014,74 @@ and must be passed to <a class="reference internal" href="#qgis.server.QgsServer
 </table>
 </div></blockquote>
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.server.QgsServerFilter.onRequestReady">
+<span class="sig-name descname"><span class="pre">onRequestReady</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#qgis.server.QgsServerFilter.onRequestReady" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method called when the <a class="reference internal" href="QgsRequestHandler.html#module-QgsRequestHandler" title="QgsRequestHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsRequestHandler</span></code></a> is ready and populated with
+parameters, just before entering the main switch for core services.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>true if the call must propagate to the subsequent filters, false otherwise</p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.24.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.server.QgsServerFilter.onResponseComplete">
+<span class="sig-name descname"><span class="pre">onResponseComplete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#qgis.server.QgsServerFilter.onResponseComplete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method called when the <a class="reference internal" href="QgsRequestHandler.html#module-QgsRequestHandler" title="QgsRequestHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsRequestHandler</span></code></a> processing has done and
+the response is ready, just after the main switch for core services
+and before final sending response to FCGI stdout.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>true if the call must propagate to the subsequent filters, false otherwise</p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.24.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.server.QgsServerFilter.onSendResponse">
+<span class="sig-name descname"><span class="pre">onSendResponse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#qgis.server.QgsServerFilter.onSendResponse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method called when the <a class="reference internal" href="QgsRequestHandler.html#module-QgsRequestHandler" title="QgsRequestHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsRequestHandler</span></code></a> sends its data to FCGI stdout.
+This normally occurs at the end of core services processing just after
+the <a class="reference internal" href="#qgis.server.QgsServerFilter.responseComplete" title="qgis.server.QgsServerFilter.responseComplete"><code class="xref py py-func docutils literal notranslate"><span class="pre">responseComplete()</span></code></a> plugin hook. For streaming services (like WFS on
+getFeature requests, <a class="reference internal" href="#qgis.server.QgsServerFilter.sendResponse" title="qgis.server.QgsServerFilter.sendResponse"><code class="xref py py-func docutils literal notranslate"><span class="pre">sendResponse()</span></code></a> might have been called several times
+before the response is complete: in this particular case, <a class="reference internal" href="#qgis.server.QgsServerFilter.sendResponse" title="qgis.server.QgsServerFilter.sendResponse"><code class="xref py py-func docutils literal notranslate"><span class="pre">sendResponse()</span></code></a>
+is called once for each feature before hitting <a class="reference internal" href="#qgis.server.QgsServerFilter.responseComplete" title="qgis.server.QgsServerFilter.responseComplete"><code class="xref py py-func docutils literal notranslate"><span class="pre">responseComplete()</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>true if the call must propagate to the subsequent filters, false otherwise</p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.22.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.server.QgsServerFilter.requestReady">
 <span class="sig-name descname"><span class="pre">requestReady</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.server.QgsServerFilter.requestReady" title="Permalink to this definition">¶</a></dt>
 <dd><p>Method called when the <a class="reference internal" href="QgsRequestHandler.html#module-QgsRequestHandler" title="QgsRequestHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsRequestHandler</span></code></a> is ready and populated with
 parameters, just before entering the main switch for core services.</p>
+<p>This method is considered as deprecated and <a class="reference internal" href="#qgis.server.QgsServerFilter.onRequestReady" title="qgis.server.QgsServerFilter.onRequestReady"><code class="xref py py-func docutils literal notranslate"><span class="pre">onRequestReady()</span></code></a> should
+be used instead.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version Will: </span>be removed in QGIS 4.0</p>
+</div>
 </dd></dl>
 
 <dl class="py method">
@@ -2016,7 +2089,12 @@ parameters, just before entering the main switch for core services.</p>
 <span class="sig-name descname"><span class="pre">responseComplete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.server.QgsServerFilter.responseComplete" title="Permalink to this definition">¶</a></dt>
 <dd><p>Method called when the <a class="reference internal" href="QgsRequestHandler.html#module-QgsRequestHandler" title="QgsRequestHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsRequestHandler</span></code></a> processing has done and
 the response is ready, just after the main switch for core services
-and before final sending response to FCGI stdout.</p>
+and before final sending response.</p>
+<p>This method is considered as deprecated and <a class="reference internal" href="#qgis.server.QgsServerFilter.onResponseComplete" title="qgis.server.QgsServerFilter.onResponseComplete"><code class="xref py py-func docutils literal notranslate"><span class="pre">onResponseComplete()</span></code></a> should
+be used instead.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version Will: </span>be removed in QGIS 4.0</p>
+</div>
 </dd></dl>
 
 <dl class="py method">
@@ -2028,6 +2106,11 @@ the <a class="reference internal" href="#qgis.server.QgsServerFilter.responseCom
 getFeature requests, <a class="reference internal" href="#qgis.server.QgsServerFilter.sendResponse" title="qgis.server.QgsServerFilter.sendResponse"><code class="xref py py-func docutils literal notranslate"><span class="pre">sendResponse()</span></code></a> might have been called several times
 before the response is complete: in this particular case, <a class="reference internal" href="#qgis.server.QgsServerFilter.sendResponse" title="qgis.server.QgsServerFilter.sendResponse"><code class="xref py py-func docutils literal notranslate"><span class="pre">sendResponse()</span></code></a>
 is called once for each feature before hitting <a class="reference internal" href="#qgis.server.QgsServerFilter.responseComplete" title="qgis.server.QgsServerFilter.responseComplete"><code class="xref py py-func docutils literal notranslate"><span class="pre">responseComplete()</span></code></a></p>
+<p>This method is considered as deprecated and <a class="reference internal" href="#qgis.server.QgsServerFilter.onSendResponse" title="qgis.server.QgsServerFilter.onSendResponse"><code class="xref py py-func docutils literal notranslate"><span class="pre">onSendResponse()</span></code></a> should
+be used instead.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version Will: </span>be removed in QGIS 4.0</p>
+</div>
 </dd></dl>
 
 <dl class="py method">
@@ -2054,7 +2137,7 @@ is called once for each feature before hitting <a class="reference internal" hre
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:22 Nov 04, 2021.
+      <span class="lastupdated">Last updated on 02:15 Nov 04, 2021.
       </span></p>
   </div>
 
