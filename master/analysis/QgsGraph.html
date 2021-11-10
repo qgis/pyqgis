@@ -1974,18 +1974,27 @@ Constructor for QgsGraph.</p>
 <td><p>Add a vertex to the graph</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.analysis.QgsGraph.edge" title="qgis.analysis.QgsGraph.edge"><code class="xref py py-obj docutils literal notranslate"><span class="pre">edge</span></code></a></p></td>
-<td><p>Returns edge at given index</p></td>
+<td><p>Returns the edge at the given index.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.analysis.QgsGraph.edgeCount" title="qgis.analysis.QgsGraph.edgeCount"><code class="xref py py-obj docutils literal notranslate"><span class="pre">edgeCount</span></code></a></p></td>
 <td><p>Returns number of graph edges</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.analysis.QgsGraph.findVertex" title="qgis.analysis.QgsGraph.findVertex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">findVertex</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.analysis.QgsGraph.findOppositeEdge" title="qgis.analysis.QgsGraph.findOppositeEdge"><code class="xref py py-obj docutils literal notranslate"><span class="pre">findOppositeEdge</span></code></a></p></td>
+<td><p>Finds the first edge which is the opposite of the edge with the specified index.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.analysis.QgsGraph.findVertex" title="qgis.analysis.QgsGraph.findVertex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">findVertex</span></code></a></p></td>
 <td><p>Find vertex by associated point</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.analysis.QgsGraph.vertex" title="qgis.analysis.QgsGraph.vertex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">vertex</span></code></a></p></td>
-<td><p>Returns vertex at given index</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.analysis.QgsGraph.removeEdge" title="qgis.analysis.QgsGraph.removeEdge"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeEdge</span></code></a></p></td>
+<td><p>Removes the edge at specified <code class="docutils literal notranslate"><span class="pre">index</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.analysis.QgsGraph.vertexCount" title="qgis.analysis.QgsGraph.vertexCount"><code class="xref py py-obj docutils literal notranslate"><span class="pre">vertexCount</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.analysis.QgsGraph.removeVertex" title="qgis.analysis.QgsGraph.removeVertex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeVertex</span></code></a></p></td>
+<td><p>Removes the vertex at specified <code class="docutils literal notranslate"><span class="pre">index</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.analysis.QgsGraph.vertex" title="qgis.analysis.QgsGraph.vertex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">vertex</span></code></a></p></td>
+<td><p>Returns the vertex at the given index.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.analysis.QgsGraph.vertexCount" title="qgis.analysis.QgsGraph.vertexCount"><code class="xref py py-obj docutils literal notranslate"><span class="pre">vertexCount</span></code></a></p></td>
 <td><p>Returns number of graph vertices</p></td>
 </tr>
 </tbody>
@@ -2043,13 +2052,16 @@ to <code class="docutils literal notranslate"><span class="pre">toVertexIdx</spa
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.analysis.QgsGraph.edge">
 <span class="sig-name descname"><span class="pre">edge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">idx</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="QgsGraphEdge.html#module-QgsGraphEdge" title="QgsGraphEdge"><span class="pre">QgsGraphEdge</span></a></span></span><a class="headerlink" href="#qgis.analysis.QgsGraph.edge" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns edge at given index</p>
+<dd><p>Returns the edge at the given index.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>idx</strong> (<em>int</em>) – </p>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>IndexError</strong> – if the edge is not found.</p>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference internal" href="QgsGraphEdge.html#qgis.analysis.QgsGraphEdge" title="qgis.analysis.QgsGraphEdge">QgsGraphEdge</a></p>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>idx</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsGraphEdge.html#qgis.analysis.QgsGraphEdge" title="qgis.analysis.QgsGraphEdge">QgsGraphEdge</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -2061,6 +2073,32 @@ to <code class="docutils literal notranslate"><span class="pre">toVertexIdx</spa
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.analysis.QgsGraph.findOppositeEdge">
+<span class="sig-name descname"><span class="pre">findOppositeEdge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#qgis.analysis.QgsGraph.findOppositeEdge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds the first edge which is the opposite of the edge with the specified index.</p>
+<p>This represents the edge which has the same vertices as the specified edge, but
+the opposite direction in the graph.(I.e. the edge which starts at the “from” vertex
+of the specified edge and ends at the “to” vertex.)</p>
+<p>Returns -1 if no opposite edge exists.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>IndexError</strong> – if the edge with the specified <code class="docutils literal notranslate"><span class="pre">index</span></code> is not found.</p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.24.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>index</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2083,15 +2121,59 @@ to <code class="docutils literal notranslate"><span class="pre">toVertexIdx</spa
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="qgis.analysis.QgsGraph.vertex">
-<span class="sig-name descname"><span class="pre">vertex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">idx</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="QgsGraphVertex.html#module-QgsGraphVertex" title="QgsGraphVertex"><span class="pre">QgsGraphVertex</span></a></span></span><a class="headerlink" href="#qgis.analysis.QgsGraph.vertex" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns vertex at given index</p>
+<dt class="sig sig-object py" id="qgis.analysis.QgsGraph.removeEdge">
+<span class="sig-name descname"><span class="pre">removeEdge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.analysis.QgsGraph.removeEdge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes the edge at specified <code class="docutils literal notranslate"><span class="pre">index</span></code>.</p>
+<p>The incoming and outgoing edges for all graph vertices will be updated accordingly. Vertices which
+no longer have any incoming or outgoing edges as a result will be removed from the graph automatically.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>IndexError</strong> – if the vertex is not found.</p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.24.</span></p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>idx</strong> (<em>int</em>) – </p>
+<dd class="field-odd"><p><strong>index</strong> (<em>int</em>) – </p>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference internal" href="QgsGraphVertex.html#qgis.analysis.QgsGraphVertex" title="qgis.analysis.QgsGraphVertex">QgsGraphVertex</a></p>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.analysis.QgsGraph.removeVertex">
+<span class="sig-name descname"><span class="pre">removeVertex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.analysis.QgsGraph.removeVertex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes the vertex at specified <code class="docutils literal notranslate"><span class="pre">index</span></code>.</p>
+<p>All edges which are incoming or outgoing edges for the vertex will also be removed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>IndexError</strong> – if the vertex is not found.</p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.24.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>index</strong> (<em>int</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.analysis.QgsGraph.vertex">
+<span class="sig-name descname"><span class="pre">vertex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">idx</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="QgsGraphVertex.html#module-QgsGraphVertex" title="QgsGraphVertex"><span class="pre">QgsGraphVertex</span></a></span></span><a class="headerlink" href="#qgis.analysis.QgsGraph.vertex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the vertex at the given index.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>IndexError</strong> – if the vertex is not found.</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>idx</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsGraphVertex.html#qgis.analysis.QgsGraphVertex" title="qgis.analysis.QgsGraphVertex">QgsGraphVertex</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -2120,7 +2202,7 @@ to <code class="docutils literal notranslate"><span class="pre">toVertexIdx</spa
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:22 Nov 10, 2021.
+      <span class="lastupdated">Last updated on 02:29 Nov 10, 2021.
       </span></p>
   </div>
 
