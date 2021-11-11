@@ -92,6 +92,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsAbstractContentCacheBase.html">Class: QgsAbstractContentCacheBase</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAbstractContentCacheEntry.html">Class: QgsAbstractContentCacheEntry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAbstractDatabaseProviderConnection.html">Class: QgsAbstractDatabaseProviderConnection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsAbstractDbTableModel.html">Class: QgsAbstractDbTableModel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAbstractFeatureIterator.html">Class: QgsAbstractFeatureIterator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAbstractFeatureIteratorFromSourceQgsVectorLayerFeatureSourceBase.html">Class: QgsAbstractFeatureIteratorFromSourceQgsVectorLayerFeatureSourceBase</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAbstractFeatureSource.html">Class: QgsAbstractFeatureSource</a></li>
@@ -1333,6 +1334,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsDateEdit.html">Class: QgsDateEdit</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsDateTimeEdit.html">Class: QgsDateTimeEdit</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsDateTimeSearchWidgetWrapper.html">Class: QgsDateTimeSearchWidgetWrapper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui/QgsDbSourceSelectBase.html">Class: QgsDbSourceSelectBase</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsDefaultSearchWidgetWrapper.html">Class: QgsDefaultSearchWidgetWrapper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsDetailedItemData.html">Class: QgsDetailedItemData</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsDetailedItemDelegate.html">Class: QgsDetailedItemDelegate</a></li>
@@ -2003,10 +2005,13 @@ interpolating between colors</p></li>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsGradientColorRamp.color2" title="qgis.core.QgsGradientColorRamp.color2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">color2</span></code></a></p></td>
 <td><p>Returns the gradient end color.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsGradientColorRamp.convertToDiscrete" title="qgis.core.QgsGradientColorRamp.convertToDiscrete"><code class="xref py py-obj docutils literal notranslate"><span class="pre">convertToDiscrete</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsGradientColorRamp.colorSpec" title="qgis.core.QgsGradientColorRamp.colorSpec"><code class="xref py py-obj docutils literal notranslate"><span class="pre">colorSpec</span></code></a></p></td>
+<td><p>Returns the color specification in which the color component interpolation will occur.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsGradientColorRamp.convertToDiscrete" title="qgis.core.QgsGradientColorRamp.convertToDiscrete"><code class="xref py py-obj docutils literal notranslate"><span class="pre">convertToDiscrete</span></code></a></p></td>
 <td><p>Converts a gradient with existing color stops to or from discrete interpolation.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsGradientColorRamp.count" title="qgis.core.QgsGradientColorRamp.count"><code class="xref py py-obj docutils literal notranslate"><span class="pre">count</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsGradientColorRamp.count" title="qgis.core.QgsGradientColorRamp.count"><code class="xref py py-obj docutils literal notranslate"><span class="pre">count</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">rtype</dt>
 <dd class="field-odd"><p>int</p>
@@ -2014,8 +2019,11 @@ interpolating between colors</p></li>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsGradientColorRamp.create" title="qgis.core.QgsGradientColorRamp.create"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsGradientColorRamp.create" title="qgis.core.QgsGradientColorRamp.create"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create</span></code></a></p></td>
 <td><p>Creates a new <a class="reference internal" href="QgsColorRamp.html#module-QgsColorRamp" title="QgsColorRamp"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsColorRamp</span></code></a> from a map of properties</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsGradientColorRamp.direction" title="qgis.core.QgsGradientColorRamp.direction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">direction</span></code></a></p></td>
+<td><p>Returns the direction to traverse the color wheel using when interpolating hue-based color specifications.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsGradientColorRamp.info" title="qgis.core.QgsGradientColorRamp.info"><code class="xref py py-obj docutils literal notranslate"><span class="pre">info</span></code></a></p></td>
 <td><p>Returns any additional info attached to the gradient ramp (e.g., authorship notes)</p></td>
@@ -2039,6 +2047,12 @@ interpolating between colors</p></li>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsGradientColorRamp.setColor2" title="qgis.core.QgsGradientColorRamp.setColor2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setColor2</span></code></a></p></td>
 <td><p>Sets the gradient end color.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsGradientColorRamp.setColorSpec" title="qgis.core.QgsGradientColorRamp.setColorSpec"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setColorSpec</span></code></a></p></td>
+<td><p>Sets the color specification in which the color component interpolation will occur.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsGradientColorRamp.setDirection" title="qgis.core.QgsGradientColorRamp.setDirection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setDirection</span></code></a></p></td>
+<td><p>Sets the <code class="docutils literal notranslate"><span class="pre">direction</span></code> to traverse the color wheel using when interpolating hue-based color specifications.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsGradientColorRamp.setDiscrete" title="qgis.core.QgsGradientColorRamp.setDiscrete"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setDiscrete</span></code></a></p></td>
 <td><p>Sets whether the gradient should use discrete interpolation, rather than smoothly interpolating between colors.</p></td>
@@ -2169,6 +2183,26 @@ by this factor before adding to the gradient.</p></li>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsGradientColorRamp.colorSpec">
+<span class="sig-name descname"><span class="pre">colorSpec</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">QColor.Spec</span></span></span><a class="headerlink" href="#qgis.core.QgsGradientColorRamp.colorSpec" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the color specification in which the color component interpolation will occur.</p>
+<p>For multi-stop gradients this color spec will be used for the portion of the color ramp
+leading into the final stop (i.e. <a class="reference internal" href="#qgis.core.QgsGradientColorRamp.color2" title="qgis.core.QgsGradientColorRamp.color2"><code class="xref py py-func docutils literal notranslate"><span class="pre">color2()</span></code></a>).</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsGradientColorRamp.setColorSpec" title="qgis.core.QgsGradientColorRamp.setColorSpec"><code class="xref py py-func docutils literal notranslate"><span class="pre">setColorSpec()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.24.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>QColor.Spec</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsGradientColorRamp.convertToDiscrete">
 <span class="sig-name descname"><span class="pre">convertToDiscrete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discrete</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsGradientColorRamp.convertToDiscrete" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts a gradient with existing color stops to or from discrete
@@ -2205,6 +2239,27 @@ or <code class="docutils literal notranslate"><span class="pre">False</span></co
 </dd>
 <dt class="field-even">Return type</dt>
 <dd class="field-even"><p><a class="reference internal" href="QgsColorRamp.html#qgis.core.QgsColorRamp" title="qgis.core.QgsColorRamp">QgsColorRamp</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsGradientColorRamp.direction">
+<span class="sig-name descname"><span class="pre">direction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="Qgis.html#qgis.core.Qgis.AngularDirection" title="qgis.core.Qgis.AngularDirection"><span class="pre">Qgis.AngularDirection</span></a></span></span><a class="headerlink" href="#qgis.core.QgsGradientColorRamp.direction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the direction to traverse the color wheel using when interpolating hue-based color
+specifications.</p>
+<p>For multi-stop gradients this direction will be used for the portion of the color ramp
+leading into the final stop (i.e. <a class="reference internal" href="#qgis.core.QgsGradientColorRamp.color2" title="qgis.core.QgsGradientColorRamp.color2"><code class="xref py py-func docutils literal notranslate"><span class="pre">color2()</span></code></a>).</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsGradientColorRamp.setDirection" title="qgis.core.QgsGradientColorRamp.setDirection"><code class="xref py py-func docutils literal notranslate"><span class="pre">setDirection()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.24.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="Qgis.html#qgis.core.Qgis.AngularDirection" title="qgis.core.Qgis.AngularDirection">Qgis.AngularDirection</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -2291,6 +2346,48 @@ smoothly interpolating between colors.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsGradientColorRamp.setColor1" title="qgis.core.QgsGradientColorRamp.setColor1"><code class="xref py py-func docutils literal notranslate"><span class="pre">setColor1()</span></code></a></p>
 </div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsGradientColorRamp.setColorSpec">
+<span class="sig-name descname"><span class="pre">setColorSpec</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spec</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">QColor.Spec</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsGradientColorRamp.setColorSpec" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the color specification in which the color component interpolation will occur.</p>
+<p>Only QColor.Spec.Rgb, QColor.Spec.Hsv and QColor.Spec.Hsl are currently supported.</p>
+<p>For multi-stop gradients this color spec will be used for the portion of the color ramp
+leading into the final stop (i.e. <a class="reference internal" href="#qgis.core.QgsGradientColorRamp.color2" title="qgis.core.QgsGradientColorRamp.color2"><code class="xref py py-func docutils literal notranslate"><span class="pre">color2()</span></code></a>).</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsGradientColorRamp.colorSpec" title="qgis.core.QgsGradientColorRamp.colorSpec"><code class="xref py py-func docutils literal notranslate"><span class="pre">colorSpec()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.24.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>spec</strong> (<em>QColor.Spec</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsGradientColorRamp.setDirection">
+<span class="sig-name descname"><span class="pre">setDirection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="Qgis.html#qgis.core.Qgis.AngularDirection" title="qgis.core.Qgis.AngularDirection"><span class="pre">Qgis.AngularDirection</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsGradientColorRamp.setDirection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the <code class="docutils literal notranslate"><span class="pre">direction</span></code> to traverse the color wheel using when interpolating hue-based color
+specifications.</p>
+<p>For multi-stop gradients this direction will be used for the portion of the color ramp
+leading into the final stop (i.e. <a class="reference internal" href="#qgis.core.QgsGradientColorRamp.color2" title="qgis.core.QgsGradientColorRamp.color2"><code class="xref py py-func docutils literal notranslate"><span class="pre">color2()</span></code></a>).</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsGradientColorRamp.direction" title="qgis.core.QgsGradientColorRamp.direction"><code class="xref py py-func docutils literal notranslate"><span class="pre">direction()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.24.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>direction</strong> (<a class="reference internal" href="Qgis.html#qgis.core.Qgis.AngularDirection" title="qgis.core.Qgis.AngularDirection"><em>Qgis.AngularDirection</em></a>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -2410,7 +2507,7 @@ order.</p>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:24 Nov 11, 2021.
+      <span class="lastupdated">Last updated on 02:12 Nov 11, 2021.
       </span></p>
   </div>
 
