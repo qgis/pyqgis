@@ -1196,6 +1196,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../gui/Qgs3DSymbolDialog.html">Class: Qgs3DSymbolDialog</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/Qgs3DSymbolWidget.html">Class: Qgs3DSymbolWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsAbstractDataSourceWidget.html">Class: QgsAbstractDataSourceWidget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui/QgsAbstractDbSourceSelect.html">Class: QgsAbstractDbSourceSelect</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsAbstractFileContentSourceLineEdit.html">Class: QgsAbstractFileContentSourceLineEdit</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsAbstractMapToolHandler.html">Class: QgsAbstractMapToolHandler</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsAbstractProcessingParameterWidgetWrapper.html">Class: QgsAbstractProcessingParameterWidgetWrapper</a></li>
@@ -1335,7 +1336,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsDateEdit.html">Class: QgsDateEdit</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsDateTimeEdit.html">Class: QgsDateTimeEdit</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsDateTimeSearchWidgetWrapper.html">Class: QgsDateTimeSearchWidgetWrapper</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../gui/QgsDbSourceSelectBase.html">Class: QgsDbSourceSelectBase</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsDefaultSearchWidgetWrapper.html">Class: QgsDefaultSearchWidgetWrapper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsDetailedItemData.html">Class: QgsDetailedItemData</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsDetailedItemDelegate.html">Class: QgsDetailedItemDelegate</a></li>
@@ -2068,54 +2068,60 @@ should be rotated to match the line segment alignment.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsTemplatedLineSymbolLayerBase.renderSymbol" title="qgis.core.QgsTemplatedLineSymbolLayerBase.renderSymbol"><code class="xref py py-obj docutils literal notranslate"><span class="pre">renderSymbol</span></code></a></p></td>
 <td><p>Renders the templated symbol at the specified <code class="docutils literal notranslate"><span class="pre">point</span></code>, using the given render <code class="docutils literal notranslate"><span class="pre">context</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsTemplatedLineSymbolLayerBase.restoreOldDataDefinedProperties" title="qgis.core.QgsTemplatedLineSymbolLayerBase.restoreOldDataDefinedProperties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">restoreOldDataDefinedProperties</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsTemplatedLineSymbolLayerBase.respectMultipart" title="qgis.core.QgsTemplatedLineSymbolLayerBase.respectMultipart"><code class="xref py py-obj docutils literal notranslate"><span class="pre">respectMultipart</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the placement respects multi-part feature geometries.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsTemplatedLineSymbolLayerBase.restoreOldDataDefinedProperties" title="qgis.core.QgsTemplatedLineSymbolLayerBase.restoreOldDataDefinedProperties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">restoreOldDataDefinedProperties</span></code></a></p></td>
 <td><p>Restores older data defined properties from string map.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsTemplatedLineSymbolLayerBase.rotateSymbols" title="qgis.core.QgsTemplatedLineSymbolLayerBase.rotateSymbols"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rotateSymbols</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsTemplatedLineSymbolLayerBase.rotateSymbols" title="qgis.core.QgsTemplatedLineSymbolLayerBase.rotateSymbols"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rotateSymbols</span></code></a></p></td>
 <td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the repeating symbols be rotated to match their line segment orientation.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsTemplatedLineSymbolLayerBase.setAverageAngleLength" title="qgis.core.QgsTemplatedLineSymbolLayerBase.setAverageAngleLength"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setAverageAngleLength</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsTemplatedLineSymbolLayerBase.setAverageAngleLength" title="qgis.core.QgsTemplatedLineSymbolLayerBase.setAverageAngleLength"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setAverageAngleLength</span></code></a></p></td>
 <td><p>Sets the <code class="docutils literal notranslate"><span class="pre">length</span></code> of line over which the line's direction is averaged when calculating individual symbol angles.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsTemplatedLineSymbolLayerBase.setAverageAngleMapUnitScale" title="qgis.core.QgsTemplatedLineSymbolLayerBase.setAverageAngleMapUnitScale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setAverageAngleMapUnitScale</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsTemplatedLineSymbolLayerBase.setAverageAngleMapUnitScale" title="qgis.core.QgsTemplatedLineSymbolLayerBase.setAverageAngleMapUnitScale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setAverageAngleMapUnitScale</span></code></a></p></td>
 <td><p>Sets the map unit <code class="docutils literal notranslate"><span class="pre">scale</span></code> for the length over which the line's direction is averaged when calculating individual symbol angles.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsTemplatedLineSymbolLayerBase.setAverageAngleUnit" title="qgis.core.QgsTemplatedLineSymbolLayerBase.setAverageAngleUnit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setAverageAngleUnit</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsTemplatedLineSymbolLayerBase.setAverageAngleUnit" title="qgis.core.QgsTemplatedLineSymbolLayerBase.setAverageAngleUnit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setAverageAngleUnit</span></code></a></p></td>
 <td><p>Sets the <code class="docutils literal notranslate"><span class="pre">unit</span></code> for the length over which the line's direction is averaged when calculating individual symbol angles.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsTemplatedLineSymbolLayerBase.setCommonProperties" title="qgis.core.QgsTemplatedLineSymbolLayerBase.setCommonProperties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setCommonProperties</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsTemplatedLineSymbolLayerBase.setCommonProperties" title="qgis.core.QgsTemplatedLineSymbolLayerBase.setCommonProperties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setCommonProperties</span></code></a></p></td>
 <td><p>Sets all common symbol properties in the <code class="docutils literal notranslate"><span class="pre">destLayer</span></code>, using the settings serialized in the <code class="docutils literal notranslate"><span class="pre">properties</span></code> map.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsTemplatedLineSymbolLayerBase.setInterval" title="qgis.core.QgsTemplatedLineSymbolLayerBase.setInterval"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setInterval</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsTemplatedLineSymbolLayerBase.setInterval" title="qgis.core.QgsTemplatedLineSymbolLayerBase.setInterval"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setInterval</span></code></a></p></td>
 <td><p>Sets the interval between individual symbols.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsTemplatedLineSymbolLayerBase.setIntervalMapUnitScale" title="qgis.core.QgsTemplatedLineSymbolLayerBase.setIntervalMapUnitScale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setIntervalMapUnitScale</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsTemplatedLineSymbolLayerBase.setIntervalMapUnitScale" title="qgis.core.QgsTemplatedLineSymbolLayerBase.setIntervalMapUnitScale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setIntervalMapUnitScale</span></code></a></p></td>
 <td><p>Sets the map unit <code class="docutils literal notranslate"><span class="pre">scale</span></code> for the interval between symbols.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsTemplatedLineSymbolLayerBase.setIntervalUnit" title="qgis.core.QgsTemplatedLineSymbolLayerBase.setIntervalUnit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setIntervalUnit</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsTemplatedLineSymbolLayerBase.setIntervalUnit" title="qgis.core.QgsTemplatedLineSymbolLayerBase.setIntervalUnit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setIntervalUnit</span></code></a></p></td>
 <td><p>Sets the units for the interval between symbols.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsTemplatedLineSymbolLayerBase.setMapUnitScale" title="qgis.core.QgsTemplatedLineSymbolLayerBase.setMapUnitScale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setMapUnitScale</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsTemplatedLineSymbolLayerBase.setMapUnitScale" title="qgis.core.QgsTemplatedLineSymbolLayerBase.setMapUnitScale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setMapUnitScale</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param scale</dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsTemplatedLineSymbolLayerBase.setOffsetAlongLine" title="qgis.core.QgsTemplatedLineSymbolLayerBase.setOffsetAlongLine"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setOffsetAlongLine</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsTemplatedLineSymbolLayerBase.setOffsetAlongLine" title="qgis.core.QgsTemplatedLineSymbolLayerBase.setOffsetAlongLine"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setOffsetAlongLine</span></code></a></p></td>
 <td><p>Sets the the offset along the line for the symbol placement.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsTemplatedLineSymbolLayerBase.setOffsetAlongLineMapUnitScale" title="qgis.core.QgsTemplatedLineSymbolLayerBase.setOffsetAlongLineMapUnitScale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setOffsetAlongLineMapUnitScale</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsTemplatedLineSymbolLayerBase.setOffsetAlongLineMapUnitScale" title="qgis.core.QgsTemplatedLineSymbolLayerBase.setOffsetAlongLineMapUnitScale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setOffsetAlongLineMapUnitScale</span></code></a></p></td>
 <td><p>Sets the map unit <code class="docutils literal notranslate"><span class="pre">scale</span></code> used for calculating the offset in map units along line for symbols.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsTemplatedLineSymbolLayerBase.setOffsetAlongLineUnit" title="qgis.core.QgsTemplatedLineSymbolLayerBase.setOffsetAlongLineUnit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setOffsetAlongLineUnit</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsTemplatedLineSymbolLayerBase.setOffsetAlongLineUnit" title="qgis.core.QgsTemplatedLineSymbolLayerBase.setOffsetAlongLineUnit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setOffsetAlongLineUnit</span></code></a></p></td>
 <td><p>Sets the unit used for calculating the offset along line for symbols.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsTemplatedLineSymbolLayerBase.setPlacement" title="qgis.core.QgsTemplatedLineSymbolLayerBase.setPlacement"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setPlacement</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsTemplatedLineSymbolLayerBase.setPlacement" title="qgis.core.QgsTemplatedLineSymbolLayerBase.setPlacement"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setPlacement</span></code></a></p></td>
 <td><p>Sets the <code class="docutils literal notranslate"><span class="pre">placement</span></code> of the symbols.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsTemplatedLineSymbolLayerBase.setPlacements" title="qgis.core.QgsTemplatedLineSymbolLayerBase.setPlacements"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setPlacements</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsTemplatedLineSymbolLayerBase.setPlacements" title="qgis.core.QgsTemplatedLineSymbolLayerBase.setPlacements"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setPlacements</span></code></a></p></td>
 <td><p>Sets the <code class="docutils literal notranslate"><span class="pre">placement</span></code> of the symbols.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsTemplatedLineSymbolLayerBase.setRespectMultipart" title="qgis.core.QgsTemplatedLineSymbolLayerBase.setRespectMultipart"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setRespectMultipart</span></code></a></p></td>
+<td><p>Sets whether the placement respects multi-part feature geometries.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsTemplatedLineSymbolLayerBase.setRotateSymbols" title="qgis.core.QgsTemplatedLineSymbolLayerBase.setRotateSymbols"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setRotateSymbols</span></code></a></p></td>
 <td><p>Sets whether the repeating symbols should be rotated to match their line segment orientation.</p></td>
@@ -2125,6 +2131,20 @@ should be rotated to match the line segment alignment.</p>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsTemplatedLineSymbolLayerBase.setSymbolLineAngle" title="qgis.core.QgsTemplatedLineSymbolLayerBase.setSymbolLineAngle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setSymbolLineAngle</span></code></a></p></td>
 <td><p>Sets the line <code class="docutils literal notranslate"><span class="pre">angle</span></code> modification for the symbol's angle.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsTemplatedLineSymbolLayerBase.startFeatureRender" title="qgis.core.QgsTemplatedLineSymbolLayerBase.startFeatureRender"><code class="xref py py-obj docutils literal notranslate"><span class="pre">startFeatureRender</span></code></a></p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">param feature</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsTemplatedLineSymbolLayerBase.stopFeatureRender" title="qgis.core.QgsTemplatedLineSymbolLayerBase.stopFeatureRender"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stopFeatureRender</span></code></a></p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">param feature</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsTemplatedLineSymbolLayerBase.symbolAngle" title="qgis.core.QgsTemplatedLineSymbolLayerBase.symbolAngle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">symbolAngle</span></code></a></p></td>
 <td><p>Returns the symbol's current angle, in degrees clockwise.</p></td>
@@ -2517,6 +2537,30 @@ style and colors instead of the symbol’s normal style.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsTemplatedLineSymbolLayerBase.respectMultipart">
+<span class="sig-name descname"><span class="pre">respectMultipart</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#qgis.core.QgsTemplatedLineSymbolLayerBase.respectMultipart" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the placement respects multi-part feature geometries.</p>
+<p>The default is <code class="docutils literal notranslate"><span class="pre">False</span></code>, which means that Qgis.MarkerLinePlacement.FirstVertex or
+Qgis.MarkerLinePlacement.LastVertex placements will result in a symbol on
+the first/last vertex of EVERY part of a multipart feature.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">True</span></code>, then Qgis.MarkerLinePlacement.FirstVertex or
+Qgis.MarkerLinePlacement.LastVertex placements will result in a symbol on
+the first/last vertex of the overall multipart geometry only.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsTemplatedLineSymbolLayerBase.setRespectMultipart" title="qgis.core.QgsTemplatedLineSymbolLayerBase.setRespectMultipart"><code class="xref py py-func docutils literal notranslate"><span class="pre">setRespectMultipart()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.24.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsTemplatedLineSymbolLayerBase.restoreOldDataDefinedProperties">
 <span class="sig-name descname"><span class="pre">restoreOldDataDefinedProperties</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stringMap</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsTemplatedLineSymbolLayerBase.restoreOldDataDefinedProperties" title="Permalink to this definition">¶</a></dt>
 <dd><p>Restores older data defined properties from string map.</p>
@@ -2797,6 +2841,30 @@ unit is set via setOffsetAlongLineUnit.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsTemplatedLineSymbolLayerBase.setRespectMultipart">
+<span class="sig-name descname"><span class="pre">setRespectMultipart</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">respect</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsTemplatedLineSymbolLayerBase.setRespectMultipart" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets whether the placement respects multi-part feature geometries.</p>
+<p>The default is <code class="docutils literal notranslate"><span class="pre">False</span></code>, which means that Qgis.MarkerLinePlacement.FirstVertex or
+Qgis.MarkerLinePlacement.LastVertex placements will result in a symbol on
+the first/last vertex of EVERY part of a multipart feature.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">True</span></code>, then Qgis.MarkerLinePlacement.FirstVertex or
+Qgis.MarkerLinePlacement.LastVertex placements will result in a symbol on
+the first/last vertex of the overall multipart geometry only.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsTemplatedLineSymbolLayerBase.respectMultipart" title="qgis.core.QgsTemplatedLineSymbolLayerBase.respectMultipart"><code class="xref py py-func docutils literal notranslate"><span class="pre">respectMultipart()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.24.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>respect</strong> (<em>bool</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsTemplatedLineSymbolLayerBase.setRotateSymbols">
 <span class="sig-name descname"><span class="pre">setRotateSymbols</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotate</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsTemplatedLineSymbolLayerBase.setRotateSymbols" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets whether the repeating symbols should be rotated to match their line segment orientation.</p>
@@ -2836,6 +2904,32 @@ is used for orienting symbols to match the line’s angle.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsTemplatedLineSymbolLayerBase.startFeatureRender">
+<span class="sig-name descname"><span class="pre">startFeatureRender</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsFeature.html#module-QgsFeature" title="QgsFeature"><span class="pre">QgsFeature</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsRenderContext.html#module-QgsRenderContext" title="QgsRenderContext"><span class="pre">QgsRenderContext</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsTemplatedLineSymbolLayerBase.startFeatureRender" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>feature</strong> (<a class="reference internal" href="QgsFeature.html#qgis.core.QgsFeature" title="qgis.core.QgsFeature"><em>QgsFeature</em></a>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsRenderContext.html#qgis.core.QgsRenderContext" title="qgis.core.QgsRenderContext"><em>QgsRenderContext</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsTemplatedLineSymbolLayerBase.stopFeatureRender">
+<span class="sig-name descname"><span class="pre">stopFeatureRender</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsFeature.html#module-QgsFeature" title="QgsFeature"><span class="pre">QgsFeature</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsRenderContext.html#module-QgsRenderContext" title="QgsRenderContext"><span class="pre">QgsRenderContext</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsTemplatedLineSymbolLayerBase.stopFeatureRender" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>feature</strong> (<a class="reference internal" href="QgsFeature.html#qgis.core.QgsFeature" title="qgis.core.QgsFeature"><em>QgsFeature</em></a>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsRenderContext.html#qgis.core.QgsRenderContext" title="qgis.core.QgsRenderContext"><em>QgsRenderContext</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsTemplatedLineSymbolLayerBase.symbolAngle">
 <span class="sig-name descname"><span class="pre">symbolAngle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#qgis.core.QgsTemplatedLineSymbolLayerBase.symbolAngle" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the symbol’s current angle, in degrees clockwise.</p>
@@ -2859,7 +2953,7 @@ is used for orienting symbols to match the line’s angle.</p>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:22 Nov 13, 2021.
+      <span class="lastupdated">Last updated on 02:45 Nov 13, 2021.
       </span></p>
   </div>
 
