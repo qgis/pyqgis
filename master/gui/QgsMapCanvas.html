@@ -387,6 +387,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsGradientFillSymbolLayer.html">Class: QgsGradientFillSymbolLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsGradientStop.html">Class: QgsGradientStop</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsGraduatedSymbolRenderer.html">Class: QgsGraduatedSymbolRenderer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../core/QgsGroupLayer.html">Class: QgsGroupLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsHashedLineSymbolLayer.html">Class: QgsHashedLineSymbolLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsHeatmapRenderer.html">Class: QgsHeatmapRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsHillshadeRenderer.html">Class: QgsHillshadeRenderer</a></li>
@@ -2172,7 +2173,7 @@ Constructor</p>
 <td><p>Returns the map layer at position index in the layer stack</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsMapCanvas.layerCount" title="qgis.gui.QgsMapCanvas.layerCount"><code class="xref py py-obj docutils literal notranslate"><span class="pre">layerCount</span></code></a></p></td>
-<td><p>Returns number of layers on the map</p></td>
+<td><p>Returns number of layers on the map.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsMapCanvas.layerStateChange" title="qgis.gui.QgsMapCanvas.layerStateChange"><code class="xref py py-obj docutils literal notranslate"><span class="pre">layerStateChange</span></code></a></p></td>
 <td><p>This slot is connected to the visibility change of one or more layers</p></td>
@@ -3404,7 +3405,7 @@ layers which may be visible in the canvas, but not associated with a <a class="r
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.gui.QgsMapCanvas.layerCount">
 <span class="sig-name descname"><span class="pre">layerCount</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#qgis.gui.QgsMapCanvas.layerCount" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns number of layers on the map</p>
+<dd><p>Returns number of layers on the map.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>int</p>
@@ -3447,15 +3448,20 @@ layers which may be visible in the canvas, but not associated with a <a class="r
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.gui.QgsMapCanvas.layers">
-<span class="sig-name descname"><span class="pre">layers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../core/QgsMapLayer.html#module-QgsMapLayer" title="QgsMapLayer"><span class="pre">QgsMapLayer</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qgis.gui.QgsMapCanvas.layers" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">layers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expandGroupLayers</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../core/QgsMapLayer.html#module-QgsMapLayer" title="QgsMapLayer"><span class="pre">QgsMapLayer</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qgis.gui.QgsMapCanvas.layers" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the list of layers shown within the map canvas.</p>
+<p>Since QGIS 3.24, if the <code class="docutils literal notranslate"><span class="pre">expandGroupLayers</span></code> option is <code class="docutils literal notranslate"><span class="pre">True</span></code> then group layers will be converted to
+all their child layers.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.gui.QgsMapCanvas.setLayers" title="qgis.gui.QgsMapCanvas.setLayers"><code class="xref py py-func docutils literal notranslate"><span class="pre">setLayers()</span></code></a></p>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>List[<a class="reference internal" href="../core/QgsMapLayer.html#qgis.core.QgsMapLayer" title="qgis.core.QgsMapLayer">QgsMapLayer</a>]</p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>expandGroupLayers</strong> (<em>bool = False</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>List[<a class="reference internal" href="../core/QgsMapLayer.html#qgis.core.QgsMapLayer" title="qgis.core.QgsMapLayer">QgsMapLayer</a>]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -5268,7 +5274,7 @@ Zoom to the combined extent of the selected features of all provided (vector) la
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:27 Nov 24, 2021.
+      <span class="lastupdated">Last updated on 02:19 Nov 24, 2021.
       </span></p>
   </div>
 
