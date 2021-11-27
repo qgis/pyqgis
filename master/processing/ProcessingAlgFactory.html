@@ -742,6 +742,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsProcessingOutputMapLayer.html">Class: QgsProcessingOutputMapLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsProcessingOutputMultipleLayers.html">Class: QgsProcessingOutputMultipleLayers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsProcessingOutputNumber.html">Class: QgsProcessingOutputNumber</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../core/QgsProcessingOutputPointCloudLayer.html">Class: QgsProcessingOutputPointCloudLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsProcessingOutputRasterLayer.html">Class: QgsProcessingOutputRasterLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsProcessingOutputString.html">Class: QgsProcessingOutputString</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsProcessingOutputVectorLayer.html">Class: QgsProcessingOutputVectorLayer</a></li>
@@ -783,6 +784,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsProcessingParameterMultipleLayers.html">Class: QgsProcessingParameterMultipleLayers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsProcessingParameterNumber.html">Class: QgsProcessingParameterNumber</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsProcessingParameterPoint.html">Class: QgsProcessingParameterPoint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../core/QgsProcessingParameterPointCloudDestination.html">Class: QgsProcessingParameterPointCloudDestination</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsProcessingParameterPointCloudLayer.html">Class: QgsProcessingParameterPointCloudLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsProcessingParameterProviderConnection.html">Class: QgsProcessingParameterProviderConnection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsProcessingParameterRange.html">Class: QgsProcessingParameterRange</a></li>
@@ -2089,6 +2091,12 @@
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.POINT" title="qgis.processing.ProcessingAlgFactory.POINT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">POINT</span></code></a></p></td>
 <td><p></p></td>
 </tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.POINTCLOUD_LAYER" title="qgis.processing.ProcessingAlgFactory.POINTCLOUD_LAYER"><code class="xref py py-obj docutils literal notranslate"><span class="pre">POINTCLOUD_LAYER</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.POINTCLOUD_LAYER_DEST" title="qgis.processing.ProcessingAlgFactory.POINTCLOUD_LAYER_DEST"><code class="xref py py-obj docutils literal notranslate"><span class="pre">POINTCLOUD_LAYER_DEST</span></code></a></p></td>
+<td><p></p></td>
+</tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.processing.ProcessingAlgFactory.POINT_CLOUD_LAYER" title="qgis.processing.ProcessingAlgFactory.POINT_CLOUD_LAYER"><code class="xref py py-obj docutils literal notranslate"><span class="pre">POINT_CLOUD_LAYER</span></code></a></p></td>
 <td><p></p></td>
 </tr>
@@ -2286,8 +2294,18 @@
 <dd></dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.processing.ProcessingAlgFactory.POINTCLOUD_LAYER">
+<span class="sig-name descname"><span class="pre">POINTCLOUD_LAYER</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'POINTCLOUD_LAYER'</span></em><a class="headerlink" href="#qgis.processing.ProcessingAlgFactory.POINTCLOUD_LAYER" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.processing.ProcessingAlgFactory.POINTCLOUD_LAYER_DEST">
+<span class="sig-name descname"><span class="pre">POINTCLOUD_LAYER_DEST</span></span><em class="property"> <span class="pre">=</span> <span class="pre">('POINTCLOUD_LAYER_DEST',)</span></em><a class="headerlink" href="#qgis.processing.ProcessingAlgFactory.POINTCLOUD_LAYER_DEST" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.processing.ProcessingAlgFactory.POINT_CLOUD_LAYER">
-<span class="sig-name descname"><span class="pre">POINT_CLOUD_LAYER</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'POINT_CLOUD_LAYER'</span></em><a class="headerlink" href="#qgis.processing.ProcessingAlgFactory.POINT_CLOUD_LAYER" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">POINT_CLOUD_LAYER</span></span><em class="property"> <span class="pre">=</span> <span class="pre">('POINT_CLOUD_LAYER',)</span></em><a class="headerlink" href="#qgis.processing.ProcessingAlgFactory.POINT_CLOUD_LAYER" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -2389,6 +2407,7 @@ alg.FOLDER_DEST: QgsProcessingParameterFolderDestination
 alg.RASTER_LAYER: QgsProcessingParameterRasterLayer
 alg.RASTER_LAYER_DEST: QgsProcessingParameterRasterDestination
 alg.VECTOR_LAYER_DEST: QgsProcessingParameterVectorDestination
+alg.POINTCLOUD_LAYER_DEST: QgsProcessingParameterPointCloudDestination
 alg.BAND: QgsProcessingParameterBand
 alg.BOOL: QgsProcessingParameterBoolean
 alg.CRS: QgsProcessingParameterCrs
@@ -2452,6 +2471,7 @@ alg.MAPLAYER:  QgsProcessingOutputMapLayer
 alg.MULTILAYER:  QgsProcessingOutputMultipleLayers
 alg.RASTER_LAYER: QgsProcessingOutputRasterLayer
 alg.VECTOR_LAYER: QgsProcessingOutputVectorLayer
+alg.POINT_CLOUD_LAYER: QgsProcessingOutputPointCloudLayer
 alg.BOOL: QgsProcessingOutputBoolean</p>
 </dd>
 </dl>
@@ -2485,7 +2505,7 @@ alg.BOOL: QgsProcessingOutputBoolean</p>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:23 Nov 27, 2021.
+      <span class="lastupdated">Last updated on 02:23 Nov 27, 2021.
       </span></p>
   </div>
 
