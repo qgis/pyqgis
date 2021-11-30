@@ -1148,6 +1148,7 @@
 <li class="toctree-l2"><a class="reference internal" href="TextFormatName.html">Class: TextFormatName</a></li>
 <li class="toctree-l2"><a class="reference internal" href="TextFormatTable.html">Class: TextFormatTable</a></li>
 <li class="toctree-l2"><a class="reference internal" href="TextFormatXML.html">Class: TextFormatXML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TextRendererFlags.html">Class: TextRendererFlags</a></li>
 <li class="toctree-l2"><a class="reference internal" href="USER_CRS_START_ID.html">Class: USER_CRS_START_ID</a></li>
 <li class="toctree-l2"><a class="reference internal" href="additions.html">Class: additions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="check.html">Class: check</a></li>
@@ -1990,8 +1991,14 @@ and background shapes.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsTextRenderer.textHeight" title="qgis.core.QgsTextRenderer.textHeight"><code class="xref py py-obj docutils literal notranslate"><span class="pre">textHeight</span></code></a></p></td>
 <td><p>Returns the height of a text based on a given format.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsTextRenderer.textWidth" title="qgis.core.QgsTextRenderer.textWidth"><code class="xref py py-obj docutils literal notranslate"><span class="pre">textWidth</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsTextRenderer.textRequiresWrapping" title="qgis.core.QgsTextRenderer.textRequiresWrapping"><code class="xref py py-obj docutils literal notranslate"><span class="pre">textRequiresWrapping</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the specified <code class="docutils literal notranslate"><span class="pre">text</span></code> requires line wrapping in order to fit within the specified <code class="docutils literal notranslate"><span class="pre">width</span></code> (in painter units).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsTextRenderer.textWidth" title="qgis.core.QgsTextRenderer.textWidth"><code class="xref py py-obj docutils literal notranslate"><span class="pre">textWidth</span></code></a></p></td>
 <td><p>Returns the width of a text based on a given format.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsTextRenderer.wrappedText" title="qgis.core.QgsTextRenderer.wrappedText"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wrappedText</span></code></a></p></td>
+<td><p>Wraps a <code class="docutils literal notranslate"><span class="pre">text</span></code> string to multiple lines, such that each individual line will fit within the specified <code class="docutils literal notranslate"><span class="pre">width</span></code> (in painter units).</p></td>
 </tr>
 </tbody>
 </table>
@@ -2253,7 +2260,7 @@ as of QGIS 3.4.3 and the text format should be set using <a class="reference int
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsTextRenderer.drawText">
-<span class="sig-name descname"><span class="pre">drawText</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rect</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">QRectF</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alignment</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#qgis.core.QgsTextRenderer.HAlignment" title="qgis.core.QgsTextRenderer.HAlignment"><span class="pre">QgsTextRenderer.HAlignment</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">textLines</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsRenderContext.html#module-QgsRenderContext" title="QgsRenderContext"><span class="pre">QgsRenderContext</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsTextFormat.html#module-QgsTextFormat" title="QgsTextFormat"><span class="pre">QgsTextFormat</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">drawAsOutlines</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vAlignment</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#qgis.core.QgsTextRenderer.VAlignment" title="qgis.core.QgsTextRenderer.VAlignment"><span class="pre">QgsTextRenderer.VAlignment</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">QgsTextRenderer.AlignTop</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsTextRenderer.drawText" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">drawText</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rect</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">QRectF</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alignment</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#qgis.core.QgsTextRenderer.HAlignment" title="qgis.core.QgsTextRenderer.HAlignment"><span class="pre">QgsTextRenderer.HAlignment</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">textLines</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsRenderContext.html#module-QgsRenderContext" title="QgsRenderContext"><span class="pre">QgsRenderContext</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsTextFormat.html#module-QgsTextFormat" title="QgsTextFormat"><span class="pre">QgsTextFormat</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">drawAsOutlines</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vAlignment</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#qgis.core.QgsTextRenderer.VAlignment" title="qgis.core.QgsTextRenderer.VAlignment"><span class="pre">QgsTextRenderer.VAlignment</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">QgsTextRenderer.AlignTop</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flags</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="Qgis.html#qgis.core.Qgis.TextRendererFlags" title="qgis.core.Qgis.TextRendererFlags"><span class="pre">Qgis.TextRendererFlags</span></a><span class="p"><span class="pre">,</span> </span><a class="reference internal" href="Qgis.html#qgis.core.Qgis.TextRendererFlag" title="qgis.core.Qgis.TextRendererFlag"><span class="pre">Qgis.TextRendererFlag</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">Qgis.TextRendererFlags()</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsTextRenderer.drawText" title="Permalink to this definition">¶</a></dt>
 <dd><p>Draws text within a rectangle using the specified settings.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2269,6 +2276,7 @@ formats like SVG to maintain text as text objects, but at the cost of degraded
 rendering and may result in side effects like misaligned text buffers. This setting is deprecated and has no effect
 as of QGIS 3.4.3 and the text format should be set using <a class="reference internal" href="QgsRenderContext.html#qgis.core.QgsRenderContext.setTextRenderFormat" title="qgis.core.QgsRenderContext.setTextRenderFormat"><code class="xref py py-func docutils literal notranslate"><span class="pre">QgsRenderContext.setTextRenderFormat()</span></code></a> instead.</p></li>
 <li><p><strong>vAlignment</strong> (<em>QgsTextRenderer.VAlignment = QgsTextRenderer.AlignTop</em>) – vertical alignment (since QGIS 3.16)</p></li>
+<li><p><strong>flags</strong> (<em>Union</em><em>[</em><a class="reference internal" href="Qgis.html#qgis.core.Qgis.TextRendererFlags" title="qgis.core.Qgis.TextRendererFlags"><em>Qgis.TextRendererFlags</em></a>) – text rendering flags (since QGIS 3.24)</p></li>
 </ul>
 </dd>
 </dl>
@@ -2343,7 +2351,7 @@ at small font sizes.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsTextRenderer.textHeight">
-<span class="sig-name descname"><span class="pre">textHeight</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsRenderContext.html#module-QgsRenderContext" title="QgsRenderContext"><span class="pre">QgsRenderContext</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsTextFormat.html#module-QgsTextFormat" title="QgsTextFormat"><span class="pre">QgsTextFormat</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">textLines</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#qgis.core.QgsTextRenderer.DrawMode" title="qgis.core.QgsTextRenderer.DrawMode"><span class="pre">QgsTextRenderer.DrawMode</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">QgsTextRenderer.Point</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fontMetrics</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">QFontMetricsF</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#qgis.core.QgsTextRenderer.textHeight" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">textHeight</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsRenderContext.html#module-QgsRenderContext" title="QgsRenderContext"><span class="pre">QgsRenderContext</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsTextFormat.html#module-QgsTextFormat" title="QgsTextFormat"><span class="pre">QgsTextFormat</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">textLines</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#qgis.core.QgsTextRenderer.DrawMode" title="qgis.core.QgsTextRenderer.DrawMode"><span class="pre">QgsTextRenderer.DrawMode</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">QgsTextRenderer.Point</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fontMetrics</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">QFontMetricsF</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flags</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="Qgis.html#qgis.core.Qgis.TextRendererFlags" title="qgis.core.Qgis.TextRendererFlags"><span class="pre">Qgis.TextRendererFlags</span></a><span class="p"><span class="pre">,</span> </span><a class="reference internal" href="Qgis.html#qgis.core.Qgis.TextRendererFlag" title="qgis.core.Qgis.TextRendererFlag"><span class="pre">Qgis.TextRendererFlag</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">Qgis.TextRendererFlags()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxLineWidth</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#qgis.core.QgsTextRenderer.textHeight" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the height of a text based on a given format.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2353,6 +2361,8 @@ at small font sizes.</p>
 <li><p><strong>textLines</strong> (<em>Iterable</em><em>[</em><em>str</em><em>]</em>) – list of lines of text to calculate width from</p></li>
 <li><p><strong>mode</strong> (<em>QgsTextRenderer.DrawMode = QgsTextRenderer.Point</em>) – draw mode</p></li>
 <li><p><strong>fontMetrics</strong> (<em>QFontMetricsF = None</em>) – font metrics</p></li>
+<li><p><strong>flags</strong> (<em>Union</em><em>[</em><a class="reference internal" href="Qgis.html#qgis.core.Qgis.TextRendererFlags" title="qgis.core.Qgis.TextRendererFlags"><em>Qgis.TextRendererFlags</em></a>) – text renderer flags (since QGIS 3.24)</p></li>
+<li><p><strong>maxLineWidth</strong> (<em>float = 0</em>) – maximum line width, in painter units. Used when the Qgis.TextRendererFlag.WrapLines flag is used (since QGIS 3.24)</p></li>
 </ul>
 </dd>
 </dl>
@@ -2380,6 +2390,32 @@ returned height. If <code class="docutils literal notranslate"><span class="pre"
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsTextRenderer.textRequiresWrapping">
+<span class="sig-name descname"><span class="pre">textRequiresWrapping</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsRenderContext.html#module-QgsRenderContext" title="QgsRenderContext"><span class="pre">QgsRenderContext</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsTextFormat.html#module-QgsTextFormat" title="QgsTextFormat"><span class="pre">QgsTextFormat</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#qgis.core.QgsTextRenderer.textRequiresWrapping" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the specified <code class="docutils literal notranslate"><span class="pre">text</span></code> requires line wrapping in order to fit within the specified <code class="docutils literal notranslate"><span class="pre">width</span></code> (in painter units).</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsTextRenderer.wrappedText" title="qgis.core.QgsTextRenderer.wrappedText"><code class="xref py py-func docutils literal notranslate"><span class="pre">wrappedText()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.24.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsRenderContext.html#qgis.core.QgsRenderContext" title="qgis.core.QgsRenderContext"><em>QgsRenderContext</em></a>) – </p></li>
+<li><p><strong>text</strong> (<em>str</em>) – </p></li>
+<li><p><strong>width</strong> (<em>float</em>) – </p></li>
+<li><p><strong>format</strong> (<a class="reference internal" href="QgsTextFormat.html#qgis.core.QgsTextFormat" title="qgis.core.QgsTextFormat"><em>QgsTextFormat</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsTextRenderer.textWidth">
 <span class="sig-name descname"><span class="pre">textWidth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsRenderContext.html#module-QgsRenderContext" title="QgsRenderContext"><span class="pre">QgsRenderContext</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsTextFormat.html#module-QgsTextFormat" title="QgsTextFormat"><span class="pre">QgsTextFormat</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">textLines</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fontMetrics</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">QFontMetricsF</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#qgis.core.QgsTextRenderer.textWidth" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the width of a text based on a given format.</p>
@@ -2398,6 +2434,32 @@ returned height. If <code class="docutils literal notranslate"><span class="pre"
 </dl>
 </dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsTextRenderer.wrappedText">
+<span class="sig-name descname"><span class="pre">wrappedText</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsRenderContext.html#module-QgsRenderContext" title="QgsRenderContext"><span class="pre">QgsRenderContext</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="QgsTextFormat.html#module-QgsTextFormat" title="QgsTextFormat"><span class="pre">QgsTextFormat</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qgis.core.QgsTextRenderer.wrappedText" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wraps a <code class="docutils literal notranslate"><span class="pre">text</span></code> string to multiple lines, such that each individual line will fit within the specified <code class="docutils literal notranslate"><span class="pre">width</span></code> (in painter units).</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsTextRenderer.textRequiresWrapping" title="qgis.core.QgsTextRenderer.textRequiresWrapping"><code class="xref py py-func docutils literal notranslate"><span class="pre">textRequiresWrapping()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.24.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsRenderContext.html#qgis.core.QgsRenderContext" title="qgis.core.QgsRenderContext"><em>QgsRenderContext</em></a>) – </p></li>
+<li><p><strong>text</strong> (<em>str</em>) – </p></li>
+<li><p><strong>width</strong> (<em>float</em>) – </p></li>
+<li><p><strong>format</strong> (<a class="reference internal" href="QgsTextFormat.html#qgis.core.QgsTextFormat" title="qgis.core.QgsTextFormat"><em>QgsTextFormat</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>List[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 </section>
@@ -2411,7 +2473,7 @@ returned height. If <code class="docutils literal notranslate"><span class="pre"
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:22 Nov 30, 2021.
+      <span class="lastupdated">Last updated on 02:12 Nov 30, 2021.
       </span></p>
   </div>
 
