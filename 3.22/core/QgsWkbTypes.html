@@ -2010,19 +2010,22 @@
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsWkbTypes.parseType" title="qgis.core.QgsWkbTypes.parseType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parseType</span></code></a></p></td>
 <td><p>Attempts to extract the WKB type from a WKT string.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsWkbTypes.singleType" title="qgis.core.QgsWkbTypes.singleType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">singleType</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsWkbTypes.promoteNonPointTypesToMulti" title="qgis.core.QgsWkbTypes.promoteNonPointTypesToMulti"><code class="xref py py-obj docutils literal notranslate"><span class="pre">promoteNonPointTypesToMulti</span></code></a></p></td>
+<td><p>Promotes a WKB geometry type to its multi-type equivalent, with the exception of point geometry types.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsWkbTypes.singleType" title="qgis.core.QgsWkbTypes.singleType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">singleType</span></code></a></p></td>
 <td><p>Returns the single type for a WKB type.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsWkbTypes.to25D" title="qgis.core.QgsWkbTypes.to25D"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to25D</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsWkbTypes.to25D" title="qgis.core.QgsWkbTypes.to25D"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to25D</span></code></a></p></td>
 <td><p>Will convert the 25D version of the flat type if supported or Unknown if not supported.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsWkbTypes.translatedDisplayString" title="qgis.core.QgsWkbTypes.translatedDisplayString"><code class="xref py py-obj docutils literal notranslate"><span class="pre">translatedDisplayString</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsWkbTypes.translatedDisplayString" title="qgis.core.QgsWkbTypes.translatedDisplayString"><code class="xref py py-obj docutils literal notranslate"><span class="pre">translatedDisplayString</span></code></a></p></td>
 <td><p>Returns a translated display string type for a WKB type, e.g., the geometry name used in WKT geometry representations.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsWkbTypes.wkbDimensions" title="qgis.core.QgsWkbTypes.wkbDimensions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wkbDimensions</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsWkbTypes.wkbDimensions" title="qgis.core.QgsWkbTypes.wkbDimensions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wkbDimensions</span></code></a></p></td>
 <td><p>Returns the inherent dimension of the geometry type as an integer.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsWkbTypes.zmType" title="qgis.core.QgsWkbTypes.zmType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">zmType</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsWkbTypes.zmType" title="qgis.core.QgsWkbTypes.zmType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">zmType</span></code></a></p></td>
 <td><p>Returns the modified input geometry type according to hasZ / hasM</p></td>
 </tr>
 </tbody>
@@ -3021,6 +3024,10 @@ GeometryCollections are reported as QgsWkbTypes.UnknownGeometry.</p>
 <dd><p>Returns the multi type for a WKB type. For example, for Polygon WKB types the multi type would be MultiPolygon.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsWkbTypes.promoteNonPointTypesToMulti" title="qgis.core.QgsWkbTypes.promoteNonPointTypesToMulti"><code class="xref py py-func docutils literal notranslate"><span class="pre">promoteNonPointTypesToMulti()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsWkbTypes.isMultiType" title="qgis.core.QgsWkbTypes.isMultiType"><code class="xref py py-func docutils literal notranslate"><span class="pre">isMultiType()</span></code></a></p>
 </div>
 <div class="admonition seealso">
@@ -3052,6 +3059,35 @@ GeometryCollections are reported as QgsWkbTypes.UnknownGeometry.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>wktStr</strong> (<em>str</em>) – a valid WKT string</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#qgis.core.QgsWkbTypes.Type" title="qgis.core.QgsWkbTypes.Type">QgsWkbTypes.Type</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsWkbTypes.promoteNonPointTypesToMulti">
+<span class="sig-name descname"><span class="pre">promoteNonPointTypesToMulti</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#qgis.core.QgsWkbTypes.Type" title="qgis.core.QgsWkbTypes.Type"><span class="pre">QgsWkbTypes.Type</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#qgis.core.QgsWkbTypes.Type" title="qgis.core.QgsWkbTypes.Type"><span class="pre">QgsWkbTypes.Type</span></a></span></span><a class="headerlink" href="#qgis.core.QgsWkbTypes.promoteNonPointTypesToMulti" title="Permalink to this definition">¶</a></dt>
+<dd><p>Promotes a WKB geometry type to its multi-type equivalent, with the exception of point geometry types.</p>
+<p>Specifically, this method should be used to determine the most-permissive possible resultant WKB type which can result
+from subtracting parts of a geometry. A single-point geometry type can never become a multi-point geometry type as
+a result of a subtraction, but a single-line or single-polygon geometry CAN become a multipart geometry as a result of subtracting
+portions of the geometry.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsWkbTypes.multiType" title="qgis.core.QgsWkbTypes.multiType"><code class="xref py py-func docutils literal notranslate"><span class="pre">multiType()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsWkbTypes.singleType" title="qgis.core.QgsWkbTypes.singleType"><code class="xref py py-func docutils literal notranslate"><span class="pre">singleType()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.24.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>type</strong> (<a class="reference internal" href="#qgis.core.QgsWkbTypes.Type" title="qgis.core.QgsWkbTypes.Type"><em>QgsWkbTypes.Type</em></a>) – </p>
 </dd>
 <dt class="field-even">Return type</dt>
 <dd class="field-even"><p><a class="reference internal" href="#qgis.core.QgsWkbTypes.Type" title="qgis.core.QgsWkbTypes.Type">QgsWkbTypes.Type</a></p>
@@ -3184,7 +3220,7 @@ Invalid geometry types will return a dimension of 0.</p>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 02:18 Dec 16, 2021.
+      <span class="lastupdated">Last updated on 02:37 Dec 17, 2021.
       </span></p>
   </div>
 
