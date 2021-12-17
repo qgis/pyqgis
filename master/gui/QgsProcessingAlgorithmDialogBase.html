@@ -1952,7 +1952,7 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="qgis.gui.QgsProcessingAlgorithmDialogBase">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">qgis.gui.</span></span><span class="sig-name descname"><span class="pre">QgsProcessingAlgorithmDialogBase</span></span><a class="headerlink" href="#qgis.gui.QgsProcessingAlgorithmDialogBase" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">PyQt5.QtWidgets.QDialog</span></code>, <a class="reference internal" href="QgsProcessingParametersGenerator.html#module-QgsProcessingParametersGenerator" title="QgsProcessingParametersGenerator"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingParametersGenerator</span></code></a></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">PyQt5.QtWidgets.QDialog</span></code>, <a class="reference internal" href="QgsProcessingParametersGenerator.html#module-QgsProcessingParametersGenerator" title="QgsProcessingParametersGenerator"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingParametersGenerator</span></code></a>, <a class="reference internal" href="QgsProcessingContextGenerator.html#module-QgsProcessingContextGenerator" title="QgsProcessingContextGenerator"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingContextGenerator</span></code></a></p>
 <p>Base class for processing algorithm dialogs.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1961,15 +1961,19 @@
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0.</span></p>
 </div>
-<p>QgsProcessingAlgorithmDialogBase(parent: QWidget = None, flags: Union[Qt.WindowFlags, Qt.WindowType] = Qt.WindowFlags())
+<p>QgsProcessingAlgorithmDialogBase(parent: QWidget = None, flags: Union[Qt.WindowFlags, Qt.WindowType] = Qt.WindowFlags(), mode: QgsProcessingAlgorithmDialogBase.DialogMode = QgsProcessingAlgorithmDialogBase.DialogMode.Single)
 Constructor for QgsProcessingAlgorithmDialogBase.</p>
 <blockquote>
-<div><table class="longtable docutils align-default">
+<div><p class="rubric">Enums</p>
+<table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
 <col style="width: 90%" />
 </colgroup>
 <tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.DialogMode" title="qgis.gui.QgsProcessingAlgorithmDialogBase.DialogMode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DialogMode</span></code></a></p></td>
+<td><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.IntEnum</span></code></p></td>
+</tr>
 </tbody>
 </table>
 <p class="rubric">Methods</p>
@@ -2220,46 +2224,49 @@ Constructor for QgsProcessingAlgorithmDialogBase.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.setMainWidget" title="qgis.gui.QgsProcessingAlgorithmDialogBase.setMainWidget"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setMainWidget</span></code></a></p></td>
 <td><p>Sets the main <code class="docutils literal notranslate"><span class="pre">widget</span></code> for the dialog, usually a panel for configuring algorithm parameters.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.setPercentage" title="qgis.gui.QgsProcessingAlgorithmDialogBase.setPercentage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setPercentage</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.setParameters" title="qgis.gui.QgsProcessingAlgorithmDialogBase.setParameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setParameters</span></code></a></p></td>
+<td><p>Sets the parameter <code class="docutils literal notranslate"><span class="pre">values</span></code> to show in the dialog.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.setPercentage" title="qgis.gui.QgsProcessingAlgorithmDialogBase.setPercentage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setPercentage</span></code></a></p></td>
 <td><p>Sets the percentage progress for the dialog, between 0 and 100.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.setProgressText" title="qgis.gui.QgsProcessingAlgorithmDialogBase.setProgressText"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setProgressText</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.setProgressText" title="qgis.gui.QgsProcessingAlgorithmDialogBase.setProgressText"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setProgressText</span></code></a></p></td>
 <td><p>Sets a progress text message.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.setResults" title="qgis.gui.QgsProcessingAlgorithmDialogBase.setResults"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setResults</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.setResults" title="qgis.gui.QgsProcessingAlgorithmDialogBase.setResults"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setResults</span></code></a></p></td>
 <td><p>Sets the algorithm results.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.sharedPainter" title="qgis.gui.QgsProcessingAlgorithmDialogBase.sharedPainter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sharedPainter</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.sharedPainter" title="qgis.gui.QgsProcessingAlgorithmDialogBase.sharedPainter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sharedPainter</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.showEvent" title="qgis.gui.QgsProcessingAlgorithmDialogBase.showEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">showEvent</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.showEvent" title="qgis.gui.QgsProcessingAlgorithmDialogBase.showEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">showEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.showLog" title="qgis.gui.QgsProcessingAlgorithmDialogBase.showLog"><code class="xref py py-obj docutils literal notranslate"><span class="pre">showLog</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.showLog" title="qgis.gui.QgsProcessingAlgorithmDialogBase.showLog"><code class="xref py py-obj docutils literal notranslate"><span class="pre">showLog</span></code></a></p></td>
 <td><p>Switches the dialog to the log page.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.showParameters" title="qgis.gui.QgsProcessingAlgorithmDialogBase.showParameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">showParameters</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.showParameters" title="qgis.gui.QgsProcessingAlgorithmDialogBase.showParameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">showParameters</span></code></a></p></td>
 <td><p>Switches the dialog to the parameters page.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.tabWidget" title="qgis.gui.QgsProcessingAlgorithmDialogBase.tabWidget"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tabWidget</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.tabWidget" title="qgis.gui.QgsProcessingAlgorithmDialogBase.tabWidget"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tabWidget</span></code></a></p></td>
 <td><p>Returns the dialog's tab widget.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.tabletEvent" title="qgis.gui.QgsProcessingAlgorithmDialogBase.tabletEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tabletEvent</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.tabletEvent" title="qgis.gui.QgsProcessingAlgorithmDialogBase.tabletEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tabletEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.timerEvent" title="qgis.gui.QgsProcessingAlgorithmDialogBase.timerEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">timerEvent</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.timerEvent" title="qgis.gui.QgsProcessingAlgorithmDialogBase.timerEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">timerEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.updateMicroFocus" title="qgis.gui.QgsProcessingAlgorithmDialogBase.updateMicroFocus"><code class="xref py py-obj docutils literal notranslate"><span class="pre">updateMicroFocus</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.updateMicroFocus" title="qgis.gui.QgsProcessingAlgorithmDialogBase.updateMicroFocus"><code class="xref py py-obj docutils literal notranslate"><span class="pre">updateMicroFocus</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.updateRunButtonVisibility" title="qgis.gui.QgsProcessingAlgorithmDialogBase.updateRunButtonVisibility"><code class="xref py py-obj docutils literal notranslate"><span class="pre">updateRunButtonVisibility</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.updateRunButtonVisibility" title="qgis.gui.QgsProcessingAlgorithmDialogBase.updateRunButtonVisibility"><code class="xref py py-obj docutils literal notranslate"><span class="pre">updateRunButtonVisibility</span></code></a></p></td>
 <td><p>Sets visibility for mutually exclusive buttons Run and Change Parameters.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.wasExecuted" title="qgis.gui.QgsProcessingAlgorithmDialogBase.wasExecuted"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wasExecuted</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.wasExecuted" title="qgis.gui.QgsProcessingAlgorithmDialogBase.wasExecuted"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wasExecuted</span></code></a></p></td>
 <td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if an algorithm was executed in the dialog.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.wheelEvent" title="qgis.gui.QgsProcessingAlgorithmDialogBase.wheelEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wheelEvent</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.wheelEvent" title="qgis.gui.QgsProcessingAlgorithmDialogBase.wheelEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wheelEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -2292,6 +2299,23 @@ Constructor for QgsProcessingAlgorithmDialogBase.</p>
 </tbody>
 </table>
 </div></blockquote>
+<dl class="py class">
+<dt class="sig sig-object py" id="qgis.gui.QgsProcessingAlgorithmDialogBase.DialogMode">
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">DialogMode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.DialogMode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.IntEnum</span></code></p>
+<p>An enumeration.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.gui.QgsProcessingAlgorithmDialogBase.DialogMode.Batch">
+<span class="sig-name descname"><span class="pre">Batch</span></span><em class="property"> <span class="pre">=</span> <span class="pre">1</span></em><a class="headerlink" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.DialogMode.Batch" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.gui.QgsProcessingAlgorithmDialogBase.DialogMode.Single">
+<span class="sig-name descname"><span class="pre">Single</span></span><em class="property"> <span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.DialogMode.Single" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.gui.QgsProcessingAlgorithmDialogBase.FormatHtml">
 <span class="sig-name descname"><span class="pre">FormatHtml</span></span><em class="property"> <span class="pre">=</span> <span class="pre">1</span></em><a class="headerlink" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.FormatHtml" title="Permalink to this definition">¶</a></dt>
@@ -2995,6 +3019,20 @@ by the dialog. Ownership of <code class="docutils literal notranslate"><span cla
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.gui.QgsProcessingAlgorithmDialogBase.setParameters">
+<span class="sig-name descname"><span class="pre">setParameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">values</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.setParameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the parameter <code class="docutils literal notranslate"><span class="pre">values</span></code> to show in the dialog.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.24.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>values</strong> (<em>Dict</em><em>[</em><em>str</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.gui.QgsProcessingAlgorithmDialogBase.setPercentage">
 <span class="sig-name descname"><span class="pre">setPercentage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percent</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.setPercentage" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets the percentage progress for the dialog, between 0 and 100.</p>
@@ -3126,7 +3164,7 @@ by the dialog. Ownership of <code class="docutils literal notranslate"><span cla
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:28 Dec 17, 2021.
+      <span class="lastupdated">Last updated on 02:33 Dec 17, 2021.
       </span></p>
   </div>
 
