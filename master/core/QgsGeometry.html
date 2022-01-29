@@ -3321,7 +3321,7 @@ and the indices of the vertices before and after the closest vertex.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsGeometry.coerceToType">
-<span class="sig-name descname"><span class="pre">coerceToType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsWkbTypes.html#qgis.core.QgsWkbTypes.Type" title="qgis.core.QgsWkbTypes.Type"><span class="pre">QgsWkbTypes.Type</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#module-QgsGeometry" title="QgsGeometry"><span class="pre">QgsGeometry</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qgis.core.QgsGeometry.coerceToType" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">coerceToType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsWkbTypes.html#qgis.core.QgsWkbTypes.Type" title="qgis.core.QgsWkbTypes.Type"><span class="pre">QgsWkbTypes.Type</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">defaultZ</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">defaultM</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#module-QgsGeometry" title="QgsGeometry"><span class="pre">QgsGeometry</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qgis.core.QgsGeometry.coerceToType" title="Permalink to this definition">¶</a></dt>
 <dd><p>Attempts to coerce this geometry into the specified destination <code class="docutils literal notranslate"><span class="pre">type</span></code>.</p>
 <p>This method will do anything possible to force the current geometry into the specified type. E.g.</p>
 <ul class="simple">
@@ -3335,6 +3335,9 @@ either a multilinestring or multiple single line strings as dictated by <code cl
 <li><p>single geometries will be upgraded to multi geometries</p></li>
 <li><p>z or m values will be added or dropped as required.</p></li>
 </ul>
+<p>Since QGIS 3.24, the parameters <code class="docutils literal notranslate"><span class="pre">defaultZ</span></code> and <code class="docutils literal notranslate"><span class="pre">defaultM</span></code> control the dimension value added when promoting geometries
+to Z, M or ZM versions.
+By default 0.0 is used for Z and M.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This method is much stricter than <a class="reference internal" href="#qgis.core.QgsGeometry.convertToType" title="qgis.core.QgsGeometry.convertToType"><code class="xref py py-func docutils literal notranslate"><span class="pre">convertToType()</span></code></a>, as it considers the exact WKB type
@@ -3347,7 +3350,11 @@ wherever appropriate.</p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>type</strong> (<a class="reference internal" href="QgsWkbTypes.html#qgis.core.QgsWkbTypes.Type" title="qgis.core.QgsWkbTypes.Type"><em>QgsWkbTypes.Type</em></a>) – </p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>type</strong> (<a class="reference internal" href="QgsWkbTypes.html#qgis.core.QgsWkbTypes.Type" title="qgis.core.QgsWkbTypes.Type"><em>QgsWkbTypes.Type</em></a>) – </p></li>
+<li><p><strong>defaultZ</strong> (<em>float = 0</em>) – </p></li>
+<li><p><strong>defaultM</strong> (<em>float = 0</em>) – </p></li>
+</ul>
 </dd>
 <dt class="field-even">Return type</dt>
 <dd class="field-even"><p>List[<a class="reference internal" href="#qgis.core.QgsGeometry" title="qgis.core.QgsGeometry">QgsGeometry</a>]</p>
@@ -6593,7 +6600,7 @@ faster than calling <a class="reference internal" href="#qgis.core.QgsGeometry.w
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:22 Jan 29, 2022.
+      <span class="lastupdated">Last updated on 02:31 Jan 29, 2022.
       </span></p>
   </div>
 
