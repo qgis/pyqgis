@@ -1060,6 +1060,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsValidityCheckResult.html">Class: QgsValidityCheckResult</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsValueMapFieldFormatter.html">Class: QgsValueMapFieldFormatter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsValueRelationFieldFormatter.html">Class: QgsValueRelationFieldFormatter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsVariantUtils.html">Class: QgsVariantUtils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsVector.html">Class: QgsVector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsVector3D.html">Class: QgsVector3D</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsVectorDataProvider.html">Class: QgsVectorDataProvider</a></li>
@@ -1968,12 +1969,16 @@
 base class constructor - stores the iteration parameters</p>
 <p>QgsAbstractFeatureIterator(<a class="reference internal" href="#qgis.core.QgsAbstractFeatureIterator" title="qgis.core.QgsAbstractFeatureIterator"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsAbstractFeatureIterator</span></code></a>)</p>
 <blockquote>
-<div><table class="longtable docutils align-default">
+<div><p class="rubric">Enums</p>
+<table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
 <col style="width: 90%" />
 </colgroup>
 <tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractFeatureIterator.RequestToSourceCrsResult" title="qgis.core.QgsAbstractFeatureIterator.RequestToSourceCrsResult"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RequestToSourceCrsResult</span></code></a></p></td>
+<td><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.IntEnum</span></code></p></td>
+</tr>
 </tbody>
 </table>
 <p class="rubric">Methods</p>
@@ -2025,6 +2030,9 @@ base class constructor - stores the iteration parameters</p>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractFeatureIterator.rewind" title="qgis.core.QgsAbstractFeatureIterator.rewind"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rewind</span></code></a></p></td>
 <td><p>reset the iterator to the starting position</p></td>
 </tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractFeatureIterator.updateRequestToSourceCrs" title="qgis.core.QgsAbstractFeatureIterator.updateRequestToSourceCrs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">updateRequestToSourceCrs</span></code></a></p></td>
+<td><p>Update a <a class="reference internal" href="QgsFeatureRequest.html#module-QgsFeatureRequest" title="QgsFeatureRequest"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsFeatureRequest</span></code></a> so that spatial filters are transformed to the source's coordinate reference system.</p></td>
+</tr>
 </tbody>
 </table>
 <table class="longtable docutils align-default">
@@ -2074,6 +2082,30 @@ base class constructor - stores the iteration parameters</p>
 <dt class="sig sig-object py" id="qgis.core.QgsAbstractFeatureIterator.PartiallyCompiled">
 <span class="sig-name descname"><span class="pre">PartiallyCompiled</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#qgis.core.QgsAbstractFeatureIterator.PartiallyCompiled" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="qgis.core.QgsAbstractFeatureIterator.RequestToSourceCrsResult">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">RequestToSourceCrsResult</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsAbstractFeatureIterator.RequestToSourceCrsResult" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.IntEnum</span></code></p>
+<p>Possible results from the <a class="reference internal" href="#qgis.core.QgsAbstractFeatureIterator.updateRequestToSourceCrs" title="qgis.core.QgsAbstractFeatureIterator.updateRequestToSourceCrs"><code class="xref py py-func docutils literal notranslate"><span class="pre">updateRequestToSourceCrs()</span></code></a> method.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.22.</span></p>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Success</span></code>: Request was successfully updated to the source CRS, or no changes were required</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DistanceWithinMustBeCheckedManually</span></code>: The distance within request cannot be losslessly updated to the source CRS, and callers will need to take appropriate steps to handle the distance within requirement manually during feature iteration</p></li>
+</ul>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.QgsAbstractFeatureIterator.RequestToSourceCrsResult.DistanceWithinMustBeCheckedManually">
+<span class="sig-name descname"><span class="pre">DistanceWithinMustBeCheckedManually</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#qgis.core.QgsAbstractFeatureIterator.RequestToSourceCrsResult.DistanceWithinMustBeCheckedManually" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.QgsAbstractFeatureIterator.RequestToSourceCrsResult.Success">
+<span class="sig-name descname"><span class="pre">Success</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#qgis.core.QgsAbstractFeatureIterator.RequestToSourceCrsResult.Success" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsAbstractFeatureIterator.close">
@@ -2288,6 +2320,37 @@ so the default check will be omitted.</p>
 </dl>
 </dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsAbstractFeatureIterator.updateRequestToSourceCrs">
+<span class="sig-name descname"><span class="pre">updateRequestToSourceCrs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">request</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsFeatureRequest.html#module-QgsFeatureRequest" title="QgsFeatureRequest"><span class="pre">QgsFeatureRequest</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsCoordinateTransform.html#module-QgsCoordinateTransform" title="QgsCoordinateTransform"><span class="pre">QgsCoordinateTransform</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#qgis.core.QgsAbstractFeatureIterator.RequestToSourceCrsResult" title="qgis.core.QgsAbstractFeatureIterator.RequestToSourceCrsResult"><span class="pre">QgsAbstractFeatureIterator.RequestToSourceCrsResult</span></a></span></span><a class="headerlink" href="#qgis.core.QgsAbstractFeatureIterator.updateRequestToSourceCrs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update a <a class="reference internal" href="QgsFeatureRequest.html#module-QgsFeatureRequest" title="QgsFeatureRequest"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsFeatureRequest</span></code></a> so that spatial filters are
+transformed to the source’s coordinate reference system.
+Iterators should call this method against the request used for filtering
+features to ensure that any <a class="reference internal" href="QgsFeatureRequest.html#qgis.core.QgsFeatureRequest.destinationCrs" title="qgis.core.QgsFeatureRequest.destinationCrs"><code class="xref py py-func docutils literal notranslate"><span class="pre">QgsFeatureRequest.destinationCrs()</span></code></a> set on the request is respected.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#qgis.core.QgsAbstractFeatureIterator.RequestToSourceCrsResult" title="qgis.core.QgsAbstractFeatureIterator.RequestToSourceCrsResult">QgsAbstractFeatureIterator.RequestToSourceCrsResult</a></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>result of operation. See QgsAbstractFeatureIterator.RequestToSourceCrsResult for interpretation.</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsCsException.html#qgis.core.QgsCsException" title="qgis.core.QgsCsException"><strong>QgsCsException</strong></a> – if the rect cannot be transformed from the destination CRS.</p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.22.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> (<a class="reference internal" href="QgsFeatureRequest.html#qgis.core.QgsFeatureRequest" title="qgis.core.QgsFeatureRequest"><em>QgsFeatureRequest</em></a>) – </p></li>
+<li><p><strong>transform</strong> (<a class="reference internal" href="QgsCoordinateTransform.html#qgis.core.QgsCoordinateTransform" title="qgis.core.QgsCoordinateTransform"><em>QgsCoordinateTransform</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 </section>
@@ -2301,7 +2364,7 @@ so the default check will be omitted.</p>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:27 Feb 01, 2022.
+      <span class="lastupdated">Last updated on 02:57 Feb 01, 2022.
       </span></p>
   </div>
 

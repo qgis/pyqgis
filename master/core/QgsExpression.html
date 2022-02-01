@@ -1060,6 +1060,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsValidityCheckResult.html">Class: QgsValidityCheckResult</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsValueMapFieldFormatter.html">Class: QgsValueMapFieldFormatter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsValueRelationFieldFormatter.html">Class: QgsValueRelationFieldFormatter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsVariantUtils.html">Class: QgsVariantUtils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsVector.html">Class: QgsVector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsVector3D.html">Class: QgsVector3D</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsVectorDataProvider.html">Class: QgsVectorDataProvider</a></li>
@@ -2134,58 +2135,61 @@ Create an empty expression.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.prepare" title="qgis.core.QgsExpression.prepare"><code class="xref py py-obj docutils literal notranslate"><span class="pre">prepare</span></code></a></p></td>
 <td><p>Gets the expression ready for evaluation - find out column indexes.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.quotedColumnRef" title="qgis.core.QgsExpression.quotedColumnRef"><code class="xref py py-obj docutils literal notranslate"><span class="pre">quotedColumnRef</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.quoteFieldExpression" title="qgis.core.QgsExpression.quoteFieldExpression"><code class="xref py py-obj docutils literal notranslate"><span class="pre">quoteFieldExpression</span></code></a></p></td>
+<td><p>Validate if the expression is a field in the <code class="docutils literal notranslate"><span class="pre">layer</span></code> and ensure it is quoted.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.quotedColumnRef" title="qgis.core.QgsExpression.quotedColumnRef"><code class="xref py py-obj docutils literal notranslate"><span class="pre">quotedColumnRef</span></code></a></p></td>
 <td><p>Returns a quoted column reference (in double quotes)</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.quotedString" title="qgis.core.QgsExpression.quotedString"><code class="xref py py-obj docutils literal notranslate"><span class="pre">quotedString</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.quotedString" title="qgis.core.QgsExpression.quotedString"><code class="xref py py-obj docutils literal notranslate"><span class="pre">quotedString</span></code></a></p></td>
 <td><p>Returns a quoted version of a string (in single quotes)</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.quotedValue" title="qgis.core.QgsExpression.quotedValue"><code class="xref py py-obj docutils literal notranslate"><span class="pre">quotedValue</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.quotedValue" title="qgis.core.QgsExpression.quotedValue"><code class="xref py py-obj docutils literal notranslate"><span class="pre">quotedValue</span></code></a></p></td>
 <td><p>Returns a string representation of a literal value, including appropriate quotations where required.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.referencedAttributeIndexes" title="qgis.core.QgsExpression.referencedAttributeIndexes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">referencedAttributeIndexes</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.referencedAttributeIndexes" title="qgis.core.QgsExpression.referencedAttributeIndexes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">referencedAttributeIndexes</span></code></a></p></td>
 <td><p>Returns a list of field name indexes obtained from the provided fields.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.referencedColumns" title="qgis.core.QgsExpression.referencedColumns"><code class="xref py py-obj docutils literal notranslate"><span class="pre">referencedColumns</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.referencedColumns" title="qgis.core.QgsExpression.referencedColumns"><code class="xref py py-obj docutils literal notranslate"><span class="pre">referencedColumns</span></code></a></p></td>
 <td><p>Gets list of columns referenced by the expression.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.referencedFunctions" title="qgis.core.QgsExpression.referencedFunctions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">referencedFunctions</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.referencedFunctions" title="qgis.core.QgsExpression.referencedFunctions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">referencedFunctions</span></code></a></p></td>
 <td><p>Returns a list of the names of all functions which are used in this expression.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.referencedVariables" title="qgis.core.QgsExpression.referencedVariables"><code class="xref py py-obj docutils literal notranslate"><span class="pre">referencedVariables</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.referencedVariables" title="qgis.core.QgsExpression.referencedVariables"><code class="xref py py-obj docutils literal notranslate"><span class="pre">referencedVariables</span></code></a></p></td>
 <td><p>Returns a list of all variables which are used in this expression.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.registerFunction" title="qgis.core.QgsExpression.registerFunction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">registerFunction</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.registerFunction" title="qgis.core.QgsExpression.registerFunction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">registerFunction</span></code></a></p></td>
 <td><p>Registers a function to the expression engine.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.replaceExpressionText" title="qgis.core.QgsExpression.replaceExpressionText"><code class="xref py py-obj docutils literal notranslate"><span class="pre">replaceExpressionText</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.replaceExpressionText" title="qgis.core.QgsExpression.replaceExpressionText"><code class="xref py py-obj docutils literal notranslate"><span class="pre">replaceExpressionText</span></code></a></p></td>
 <td><p>This function replaces each expression between [% and %] in the string with the result of its evaluation with the specified context</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.rootNode" title="qgis.core.QgsExpression.rootNode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rootNode</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.rootNode" title="qgis.core.QgsExpression.rootNode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rootNode</span></code></a></p></td>
 <td><p>Returns the root node of the expression.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.setAreaUnits" title="qgis.core.QgsExpression.setAreaUnits"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setAreaUnits</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.setAreaUnits" title="qgis.core.QgsExpression.setAreaUnits"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setAreaUnits</span></code></a></p></td>
 <td><p>Sets the desired areal units for calculations involving <a class="reference internal" href="#qgis.core.QgsExpression.geomCalculator" title="qgis.core.QgsExpression.geomCalculator"><code class="xref py py-func docutils literal notranslate"><span class="pre">geomCalculator()</span></code></a>, e.g., &quot;$area&quot;.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.setDistanceUnits" title="qgis.core.QgsExpression.setDistanceUnits"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setDistanceUnits</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.setDistanceUnits" title="qgis.core.QgsExpression.setDistanceUnits"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setDistanceUnits</span></code></a></p></td>
 <td><p>Sets the desired distance units for calculations involving <a class="reference internal" href="#qgis.core.QgsExpression.geomCalculator" title="qgis.core.QgsExpression.geomCalculator"><code class="xref py py-func docutils literal notranslate"><span class="pre">geomCalculator()</span></code></a>, e.g., &quot;$length&quot; and &quot;$perimeter&quot;.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.setEvalErrorString" title="qgis.core.QgsExpression.setEvalErrorString"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setEvalErrorString</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.setEvalErrorString" title="qgis.core.QgsExpression.setEvalErrorString"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setEvalErrorString</span></code></a></p></td>
 <td><p>Sets evaluation error (used internally by evaluation functions)</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.setExpression" title="qgis.core.QgsExpression.setExpression"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setExpression</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.setExpression" title="qgis.core.QgsExpression.setExpression"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setExpression</span></code></a></p></td>
 <td><p>Set the expression string, will reset the whole internal structure.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.setGeomCalculator" title="qgis.core.QgsExpression.setGeomCalculator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setGeomCalculator</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.setGeomCalculator" title="qgis.core.QgsExpression.setGeomCalculator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setGeomCalculator</span></code></a></p></td>
 <td><p>Sets the geometry calculator used for distance and area calculations in expressions.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.tags" title="qgis.core.QgsExpression.tags"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tags</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.tags" title="qgis.core.QgsExpression.tags"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tags</span></code></a></p></td>
 <td><p>Returns a string list of search tags for a specified function.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.unregisterFunction" title="qgis.core.QgsExpression.unregisterFunction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">unregisterFunction</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.unregisterFunction" title="qgis.core.QgsExpression.unregisterFunction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">unregisterFunction</span></code></a></p></td>
 <td><p>Unregisters a function from the expression engine.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.variableHelpText" title="qgis.core.QgsExpression.variableHelpText"><code class="xref py py-obj docutils literal notranslate"><span class="pre">variableHelpText</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpression.variableHelpText" title="qgis.core.QgsExpression.variableHelpText"><code class="xref py py-obj docutils literal notranslate"><span class="pre">variableHelpText</span></code></a></p></td>
 <td><p>Returns the help text for a specified variable.</p></td>
 </tr>
 </tbody>
@@ -2926,6 +2930,38 @@ A valid expression could be parsed but does not necessarily evaluate properly.</
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsExpression.quoteFieldExpression">
+<span class="sig-name descname"><span class="pre">quoteFieldExpression</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expression</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">layer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsVectorLayer.html#module-QgsVectorLayer" title="QgsVectorLayer"><span class="pre">QgsVectorLayer</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#qgis.core.QgsExpression.quoteFieldExpression" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validate if the expression is a field in the <code class="docutils literal notranslate"><span class="pre">layer</span></code> and ensure it is quoted.</p>
+<p>Given a string which may either directly match a field name from a layer, OR may
+be an expression which consists only of a single field reference for that layer, this
+method will return the quoted field.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the <code class="docutils literal notranslate"><span class="pre">expression</span></code> if not a field or quotes are not required, otherwise returns a quoted field.</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsExpression.expressionToLayerFieldIndex" title="qgis.core.QgsExpression.expressionToLayerFieldIndex"><code class="xref py py-func docutils literal notranslate"><span class="pre">expressionToLayerFieldIndex()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.24.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>expression</strong> (<em>str</em>) – </p></li>
+<li><p><strong>layer</strong> (<a class="reference internal" href="QgsVectorLayer.html#qgis.core.QgsVectorLayer" title="qgis.core.QgsVectorLayer"><em>QgsVectorLayer</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsExpression.quotedColumnRef">
 <span class="sig-name descname"><span class="pre">quotedColumnRef</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#qgis.core.QgsExpression.quotedColumnRef" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a quoted column reference (in double quotes)</p>
@@ -3419,7 +3455,7 @@ Cartesian calculations.</p>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:27 Feb 01, 2022.
+      <span class="lastupdated">Last updated on 02:57 Feb 01, 2022.
       </span></p>
   </div>
 
