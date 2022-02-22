@@ -1991,6 +1991,9 @@ This constructor creates a feature iterator, that delivers all cached features. 
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsCachedFeatureIterator.rewind" title="qgis.core.QgsCachedFeatureIterator.rewind"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rewind</span></code></a></p></td>
 <td><p>Rewind to the beginning of the iterator</p></td>
 </tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsCachedFeatureIterator.updateRequestToSourceCrs" title="qgis.core.QgsCachedFeatureIterator.updateRequestToSourceCrs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">updateRequestToSourceCrs</span></code></a></p></td>
+<td><p>Update a <a class="reference internal" href="QgsFeatureRequest.html#module-QgsFeatureRequest" title="QgsFeatureRequest"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsFeatureRequest</span></code></a> so that spatial filters are transformed to the source's coordinate reference system.</p></td>
+</tr>
 </tbody>
 </table>
 <table class="longtable docutils align-default">
@@ -2142,6 +2145,26 @@ redirect this call to fetchFeature so the default check will be omitted.</p>
 </dl>
 </dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsCachedFeatureIterator.updateRequestToSourceCrs">
+<span class="sig-name descname"><span class="pre">updateRequestToSourceCrs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">request</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsFeatureRequest.html#qgis.core.QgsFeatureRequest" title="qgis.core.QgsFeatureRequest"><span class="pre">QgsFeatureRequest</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsCoordinateTransform.html#qgis.core.QgsCoordinateTransform" title="qgis.core.QgsCoordinateTransform"><span class="pre">QgsCoordinateTransform</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="QgsAbstractFeatureIterator.html#qgis.core.QgsAbstractFeatureIterator.RequestToSourceCrsResult" title="qgis.core.QgsAbstractFeatureIterator.RequestToSourceCrsResult"><span class="pre">QgsAbstractFeatureIterator.RequestToSourceCrsResult</span></a></span></span><a class="headerlink" href="#qgis.core.QgsCachedFeatureIterator.updateRequestToSourceCrs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update a <a class="reference internal" href="QgsFeatureRequest.html#module-QgsFeatureRequest" title="QgsFeatureRequest"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsFeatureRequest</span></code></a> so that spatial filters are
+transformed to the source’s coordinate reference system.
+Iterators should call this method against the request used for filtering
+features to ensure that any <a class="reference internal" href="QgsFeatureRequest.html#qgis.core.QgsFeatureRequest.destinationCrs" title="qgis.core.QgsFeatureRequest.destinationCrs"><code class="xref py py-func docutils literal notranslate"><span class="pre">QgsFeatureRequest.destinationCrs()</span></code></a> set on the request is respected.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>result of operation. See QgsAbstractFeatureIterator.RequestToSourceCrsResult for interpretation.</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsCsException.html#qgis.core.QgsCsException" title="qgis.core.QgsCsException"><strong>QgsCsException</strong></a> – if the rect cannot be transformed from the destination CRS.</p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.22.</span></p>
+</div>
+</dd></dl>
+
 </dd></dl>
 
 </section>
@@ -2155,7 +2178,7 @@ redirect this call to fetchFeature so the default check will be omitted.</p>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 04:40 Feb 21, 2022.
+      <span class="lastupdated">Last updated on 03:59 Feb 22, 2022.
       </span></p>
   </div>
 
