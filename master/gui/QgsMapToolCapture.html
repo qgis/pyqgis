@@ -20,7 +20,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Class: QgsMapToolDigitizeFeature" href="QgsMapToolDigitizeFeature.html" />
+    <link rel="next" title="Class: QgsMapToolCaptureLayerGeometry" href="QgsMapToolCaptureLayerGeometry.html" />
     <link rel="prev" title="Class: QgsMapToolAdvancedDigitizing" href="QgsMapToolAdvancedDigitizing.html" /> 
 </head>
 
@@ -1535,6 +1535,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsMapTool.html">Class: QgsMapTool</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsMapToolAdvancedDigitizing.html">Class: QgsMapToolAdvancedDigitizing</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Class: QgsMapToolCapture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsMapToolCaptureLayerGeometry.html">Class: QgsMapToolCaptureLayerGeometry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsMapToolDigitizeFeature.html">Class: QgsMapToolDigitizeFeature</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsMapToolEdit.html">Class: QgsMapToolEdit</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsMapToolEmitPoint.html">Class: QgsMapToolEmitPoint</a></li>
@@ -1971,9 +1972,14 @@
 <span id="class-qgsmaptoolcapture"></span><h1>Class: QgsMapToolCapture<a class="headerlink" href="#module-QgsMapToolCapture" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="qgis.gui.QgsMapToolCapture">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qgis.gui.</span></span><span class="sig-name descname"><span class="pre">QgsMapToolCapture</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">canvas</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsMapCanvas.html#qgis.gui.QgsMapCanvas" title="qgis.gui.QgsMapCanvas"><span class="pre">QgsMapCanvas</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">cadDockWidget</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsAdvancedDigitizingDockWidget.html#qgis.gui.QgsAdvancedDigitizingDockWidget" title="qgis.gui.QgsAdvancedDigitizingDockWidget"><span class="pre">QgsAdvancedDigitizingDockWidget</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.CaptureMode" title="qgis.gui.QgsMapToolCapture.CaptureMode"><span class="pre">QgsMapToolCapture.CaptureMode</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsMapToolCapture" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qgis.gui.</span></span><span class="sig-name descname"><span class="pre">QgsMapToolCapture</span></span><a class="headerlink" href="#qgis.gui.QgsMapToolCapture" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="QgsMapToolAdvancedDigitizing.html#module-QgsMapToolAdvancedDigitizing" title="QgsMapToolAdvancedDigitizing"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMapToolAdvancedDigitizing</span></code></a></p>
-<p>constructor</p>
+<p><a class="reference internal" href="#module-QgsMapToolCapture" title="QgsMapToolCapture"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMapToolCapture</span></code></a> is a base class capable of capturing point, lines and polygons.
+The tool supports different techniques: straight segments, curves, streaming and shapes
+Once the the geometry is captured the virtual private handler geometryCaptured is called
+as well as a more specific handler (pointCaptured, lineCaptured or polygonCaptured)</p>
+<p>QgsMapToolCapture(canvas: <a class="reference internal" href="QgsMapCanvas.html#qgis.gui.QgsMapCanvas" title="qgis.gui.QgsMapCanvas"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMapCanvas</span></code></a>, cadDockWidget: <a class="reference internal" href="QgsAdvancedDigitizingDockWidget.html#qgis.gui.QgsAdvancedDigitizingDockWidget" title="qgis.gui.QgsAdvancedDigitizingDockWidget"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsAdvancedDigitizingDockWidget</span></code></a>, mode: QgsMapToolCapture.CaptureMode)
+constructor</p>
 <blockquote>
 <div><table class="longtable docutils align-default">
 <colgroup>
@@ -2009,28 +2015,32 @@
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.capabilities" title="qgis.gui.QgsMapToolCapture.capabilities"><code class="xref py py-obj docutils literal notranslate"><span class="pre">capabilities</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.cadCanvasReleaseEvent" title="qgis.gui.QgsMapToolCapture.cadCanvasReleaseEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cadCanvasReleaseEvent</span></code></a></p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">param e</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.capabilities" title="qgis.gui.QgsMapToolCapture.capabilities"><code class="xref py py-obj docutils literal notranslate"><span class="pre">capabilities</span></code></a></p></td>
 <td><p>Returns flags containing the supported capabilities</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.captureCurve" title="qgis.gui.QgsMapToolCapture.captureCurve"><code class="xref py py-obj docutils literal notranslate"><span class="pre">captureCurve</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.captureCurve" title="qgis.gui.QgsMapToolCapture.captureCurve"><code class="xref py py-obj docutils literal notranslate"><span class="pre">captureCurve</span></code></a></p></td>
 <td><p>Gets the capture curve</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.childEvent" title="qgis.gui.QgsMapToolCapture.childEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">childEvent</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.childEvent" title="qgis.gui.QgsMapToolCapture.childEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">childEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.clean" title="qgis.gui.QgsMapToolCapture.clean"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clean</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.clean" title="qgis.gui.QgsMapToolCapture.clean"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clean</span></code></a></p></td>
 <td><p>convenient method to clean members</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.clearCurve" title="qgis.gui.QgsMapToolCapture.clearCurve"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clearCurve</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.clearCurve" title="qgis.gui.QgsMapToolCapture.clearCurve"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clearCurve</span></code></a></p></td>
 <td><p>Clear capture curve.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.closePolygon" title="qgis.gui.QgsMapToolCapture.closePolygon"><code class="xref py py-obj docutils literal notranslate"><span class="pre">closePolygon</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.closePolygon" title="qgis.gui.QgsMapToolCapture.closePolygon"><code class="xref py py-obj docutils literal notranslate"><span class="pre">closePolygon</span></code></a></p></td>
 <td><p>Close an open polygon</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.connectNotify" title="qgis.gui.QgsMapToolCapture.connectNotify"><code class="xref py py-obj docutils literal notranslate"><span class="pre">connectNotify</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.createGeometryRubberBand" title="qgis.gui.QgsMapToolCapture.createGeometryRubberBand"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createGeometryRubberBand</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.connectNotify" title="qgis.gui.QgsMapToolCapture.connectNotify"><code class="xref py py-obj docutils literal notranslate"><span class="pre">connectNotify</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.createRubberBand" title="qgis.gui.QgsMapToolCapture.createRubberBand"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createRubberBand</span></code></a></p></td>
@@ -2063,14 +2073,20 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.fetchLayerPoint" title="qgis.gui.QgsMapToolCapture.fetchLayerPoint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fetchLayerPoint</span></code></a></p></td>
 <td><p>Fetches the original point from the source layer if it has the same CRS as the current layer.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.isCapturing" title="qgis.gui.QgsMapToolCapture.isCapturing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isCapturing</span></code></a></p></td>
-<td><p>Are we currently capturing?</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.isSignalConnected" title="qgis.gui.QgsMapToolCapture.isSignalConnected"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isSignalConnected</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.geometryCaptured" title="qgis.gui.QgsMapToolCapture.geometryCaptured"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geometryCaptured</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.keyPressEvent" title="qgis.gui.QgsMapToolCapture.keyPressEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">keyPressEvent</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.isCapturing" title="qgis.gui.QgsMapToolCapture.isCapturing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isCapturing</span></code></a></p></td>
+<td><p>Are we currently capturing?</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.isSignalConnected" title="qgis.gui.QgsMapToolCapture.isSignalConnected"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isSignalConnected</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.keyPressEvent" title="qgis.gui.QgsMapToolCapture.keyPressEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">keyPressEvent</span></code></a></p></td>
 <td><p>Intercept key events like Esc or Del to delete the last point</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.lineCaptured" title="qgis.gui.QgsMapToolCapture.lineCaptured"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lineCaptured</span></code></a></p></td>
+<td><p></p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.mapPoint" title="qgis.gui.QgsMapToolCapture.mapPoint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mapPoint</span></code></a></p></td>
 <td><p>Creates a <a class="reference internal" href="../core/QgsPoint.html#module-QgsPoint" title="QgsPoint"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsPoint</span></code></a> with ZM support if necessary (according to the WkbType of the current layer).</p></td>
@@ -2087,11 +2103,17 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.notifyNotVectorLayer" title="qgis.gui.QgsMapToolCapture.notifyNotVectorLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">notifyNotVectorLayer</span></code></a></p></td>
 <td><p>Display a timed message bar noting the active layer is not vector.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.points" title="qgis.gui.QgsMapToolCapture.points"><code class="xref py py-obj docutils literal notranslate"><span class="pre">points</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.pointCaptured" title="qgis.gui.QgsMapToolCapture.pointCaptured"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pointCaptured</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.points" title="qgis.gui.QgsMapToolCapture.points"><code class="xref py py-obj docutils literal notranslate"><span class="pre">points</span></code></a></p></td>
 <td><p>List of digitized points</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.pointsZM" title="qgis.gui.QgsMapToolCapture.pointsZM"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pointsZM</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.pointsZM" title="qgis.gui.QgsMapToolCapture.pointsZM"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pointsZM</span></code></a></p></td>
 <td><p>List of digitized points</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.polygonCaptured" title="qgis.gui.QgsMapToolCapture.polygonCaptured"><code class="xref py py-obj docutils literal notranslate"><span class="pre">polygonCaptured</span></code></a></p></td>
+<td><p></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.receivers" title="qgis.gui.QgsMapToolCapture.receivers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">receivers</span></code></a></p></td>
 <td><p></p></td>
@@ -2111,52 +2133,55 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.setCircularDigitizingEnabled" title="qgis.gui.QgsMapToolCapture.setCircularDigitizingEnabled"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setCircularDigitizingEnabled</span></code></a></p></td>
 <td><p>Enable the digitizing with curve</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.setPoints" title="qgis.gui.QgsMapToolCapture.setPoints"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setPoints</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.setCurrentCaptureTechnique" title="qgis.gui.QgsMapToolCapture.setCurrentCaptureTechnique"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setCurrentCaptureTechnique</span></code></a></p></td>
+<td><p>Sets the current capture if it is supported by the map tool</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.setPoints" title="qgis.gui.QgsMapToolCapture.setPoints"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setPoints</span></code></a></p></td>
 <td><p>Set the points on which to work</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.setStreamDigitizingEnabled" title="qgis.gui.QgsMapToolCapture.setStreamDigitizingEnabled"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setStreamDigitizingEnabled</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.setStreamDigitizingEnabled" title="qgis.gui.QgsMapToolCapture.setStreamDigitizingEnabled"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setStreamDigitizingEnabled</span></code></a></p></td>
 <td><p>Toggles the stream digitizing mode.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.setToolName" title="qgis.gui.QgsMapToolCapture.setToolName"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setToolName</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.setToolName" title="qgis.gui.QgsMapToolCapture.setToolName"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setToolName</span></code></a></p></td>
 <td><p>Sets the tool's <code class="docutils literal notranslate"><span class="pre">name</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.size" title="qgis.gui.QgsMapToolCapture.size"><code class="xref py py-obj docutils literal notranslate"><span class="pre">size</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.size" title="qgis.gui.QgsMapToolCapture.size"><code class="xref py py-obj docutils literal notranslate"><span class="pre">size</span></code></a></p></td>
 <td><p>Number of points digitized</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.snappingMatches" title="qgis.gui.QgsMapToolCapture.snappingMatches"><code class="xref py py-obj docutils literal notranslate"><span class="pre">snappingMatches</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.snappingMatches" title="qgis.gui.QgsMapToolCapture.snappingMatches"><code class="xref py py-obj docutils literal notranslate"><span class="pre">snappingMatches</span></code></a></p></td>
 <td><p>Returns a list of matches for each point on the captureCurve.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.startCapturing" title="qgis.gui.QgsMapToolCapture.startCapturing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">startCapturing</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.startCapturing" title="qgis.gui.QgsMapToolCapture.startCapturing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">startCapturing</span></code></a></p></td>
 <td><p>Start capturing</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.stopCapturing" title="qgis.gui.QgsMapToolCapture.stopCapturing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stopCapturing</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.stopCapturing" title="qgis.gui.QgsMapToolCapture.stopCapturing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stopCapturing</span></code></a></p></td>
 <td><p>Stop capturing</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.supportsTechnique" title="qgis.gui.QgsMapToolCapture.supportsTechnique"><code class="xref py py-obj docutils literal notranslate"><span class="pre">supportsTechnique</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.supportsTechnique" title="qgis.gui.QgsMapToolCapture.supportsTechnique"><code class="xref py py-obj docutils literal notranslate"><span class="pre">supportsTechnique</span></code></a></p></td>
 <td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the tool supports the specified capture <code class="docutils literal notranslate"><span class="pre">technique</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.takeRubberBand" title="qgis.gui.QgsMapToolCapture.takeRubberBand"><code class="xref py py-obj docutils literal notranslate"><span class="pre">takeRubberBand</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.takeRubberBand" title="qgis.gui.QgsMapToolCapture.takeRubberBand"><code class="xref py py-obj docutils literal notranslate"><span class="pre">takeRubberBand</span></code></a></p></td>
 <td><p>Returns the rubberBand currently owned by this map tool and transfers ownership to the caller.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.timerEvent" title="qgis.gui.QgsMapToolCapture.timerEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">timerEvent</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.timerEvent" title="qgis.gui.QgsMapToolCapture.timerEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">timerEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.toCanvasCoordinates" title="qgis.gui.QgsMapToolCapture.toCanvasCoordinates"><code class="xref py py-obj docutils literal notranslate"><span class="pre">toCanvasCoordinates</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.toCanvasCoordinates" title="qgis.gui.QgsMapToolCapture.toCanvasCoordinates"><code class="xref py py-obj docutils literal notranslate"><span class="pre">toCanvasCoordinates</span></code></a></p></td>
 <td><p>Transforms a <code class="docutils literal notranslate"><span class="pre">point</span></code> from map coordinates to screen coordinates.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.toLayerCoordinates" title="qgis.gui.QgsMapToolCapture.toLayerCoordinates"><code class="xref py py-obj docutils literal notranslate"><span class="pre">toLayerCoordinates</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.toLayerCoordinates" title="qgis.gui.QgsMapToolCapture.toLayerCoordinates"><code class="xref py py-obj docutils literal notranslate"><span class="pre">toLayerCoordinates</span></code></a></p></td>
 <td><p>Transforms a <code class="docutils literal notranslate"><span class="pre">point</span></code> from screen coordinates to <code class="docutils literal notranslate"><span class="pre">layer</span></code> coordinates.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.toLayerCoordinatesV2" title="qgis.gui.QgsMapToolCapture.toLayerCoordinatesV2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">toLayerCoordinatesV2</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.toLayerCoordinatesV2" title="qgis.gui.QgsMapToolCapture.toLayerCoordinatesV2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">toLayerCoordinatesV2</span></code></a></p></td>
 <td><p>Transforms a <code class="docutils literal notranslate"><span class="pre">point</span></code> from map coordinates to <code class="docutils literal notranslate"><span class="pre">layer</span></code> coordinates.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.toMapCoordinates" title="qgis.gui.QgsMapToolCapture.toMapCoordinates"><code class="xref py py-obj docutils literal notranslate"><span class="pre">toMapCoordinates</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.toMapCoordinates" title="qgis.gui.QgsMapToolCapture.toMapCoordinates"><code class="xref py py-obj docutils literal notranslate"><span class="pre">toMapCoordinates</span></code></a></p></td>
 <td><p>Transforms a <code class="docutils literal notranslate"><span class="pre">point</span></code> from screen coordinates to map coordinates.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.toMapCoordinatesV2" title="qgis.gui.QgsMapToolCapture.toMapCoordinatesV2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">toMapCoordinatesV2</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.toMapCoordinatesV2" title="qgis.gui.QgsMapToolCapture.toMapCoordinatesV2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">toMapCoordinatesV2</span></code></a></p></td>
 <td><p>Transforms a <code class="docutils literal notranslate"><span class="pre">point</span></code> from <code class="docutils literal notranslate"><span class="pre">layer</span></code> coordinates to map coordinates (which is different in case reprojection is used).</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.undo" title="qgis.gui.QgsMapToolCapture.undo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">undo</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.undo" title="qgis.gui.QgsMapToolCapture.undo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">undo</span></code></a></p></td>
 <td><p>Removes the last vertex from mRubberBand and mCaptureList.</p></td>
 </tr>
 </tbody>
@@ -2194,16 +2219,19 @@
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.NoCapabilities" title="qgis.gui.QgsMapToolCapture.NoCapabilities"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NoCapabilities</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.StraightSegments" title="qgis.gui.QgsMapToolCapture.StraightSegments"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StraightSegments</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.Shape" title="qgis.gui.QgsMapToolCapture.Shape"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Shape</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.Streaming" title="qgis.gui.QgsMapToolCapture.Streaming"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Streaming</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.StraightSegments" title="qgis.gui.QgsMapToolCapture.StraightSegments"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StraightSegments</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.SupportsCurves" title="qgis.gui.QgsMapToolCapture.SupportsCurves"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SupportsCurves</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.Streaming" title="qgis.gui.QgsMapToolCapture.Streaming"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Streaming</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.ValidateGeometries" title="qgis.gui.QgsMapToolCapture.ValidateGeometries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ValidateGeometries</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.SupportsCurves" title="qgis.gui.QgsMapToolCapture.SupportsCurves"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SupportsCurves</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.ValidateGeometries" title="qgis.gui.QgsMapToolCapture.ValidateGeometries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ValidateGeometries</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -2255,6 +2283,12 @@
 <dt class="sig sig-object py" id="qgis.gui.QgsMapToolCapture.CaptureTechnique">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">CaptureTechnique</span></span><a class="headerlink" href="#qgis.gui.QgsMapToolCapture.CaptureTechnique" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.gui.QgsMapToolCapture.CaptureTechnique.baseClass">
+<span class="sig-name descname"><span class="pre">baseClass</span></span><a class="headerlink" href="#qgis.gui.QgsMapToolCapture.CaptureTechnique.baseClass" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#qgis.gui.QgsMapToolCapture" title="qgis._gui.QgsMapToolCapture"><code class="xref py py-class docutils literal notranslate"><span class="pre">qgis._gui.QgsMapToolCapture</span></code></a></p>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="py attribute">
@@ -2265,6 +2299,11 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.gui.QgsMapToolCapture.NoCapabilities">
 <span class="sig-name descname"><span class="pre">NoCapabilities</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#qgis.gui.QgsMapToolCapture.NoCapabilities" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.gui.QgsMapToolCapture.Shape">
+<span class="sig-name descname"><span class="pre">Shape</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></em><a class="headerlink" href="#qgis.gui.QgsMapToolCapture.Shape" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -2366,6 +2405,16 @@ Variant to supply more information in the case of snapping</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.gui.QgsMapToolCapture.cadCanvasReleaseEvent">
+<span class="sig-name descname"><span class="pre">cadCanvasReleaseEvent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsMapMouseEvent.html#qgis.gui.QgsMapMouseEvent" title="qgis.gui.QgsMapMouseEvent"><span class="pre">QgsMapMouseEvent</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsMapToolCapture.cadCanvasReleaseEvent" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>e</strong> (<a class="reference internal" href="QgsMapMouseEvent.html#qgis.gui.QgsMapMouseEvent" title="qgis.gui.QgsMapMouseEvent"><em>QgsMapMouseEvent</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.gui.QgsMapToolCapture.capabilities">
 <span class="sig-name descname"><span class="pre">capabilities</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.Capabilities" title="qgis.gui.QgsMapToolCapture.Capabilities"><span class="pre">QgsMapToolCapture.Capabilities</span></a></span></span><a class="headerlink" href="#qgis.gui.QgsMapToolCapture.capabilities" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns flags containing the supported capabilities</p>
@@ -2419,11 +2468,6 @@ Variant to supply more information in the case of snapping</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.gui.QgsMapToolCapture.connectNotify">
 <span class="sig-name descname"><span class="pre">connectNotify</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">QMetaMethod</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsMapToolCapture.connectNotify" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="qgis.gui.QgsMapToolCapture.createGeometryRubberBand">
-<span class="sig-name descname"><span class="pre">createGeometryRubberBand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">geometryType</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../core/QgsWkbTypes.html#qgis.core.QgsWkbTypes.GeometryType" title="qgis.core.QgsWkbTypes.GeometryType"><span class="pre">QgsWkbTypes.GeometryType</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">QgsWkbTypes.LineGeometry</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alternativeBand</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="QgsGeometryRubberBand.html#qgis.gui.QgsGeometryRubberBand" title="qgis.gui.QgsGeometryRubberBand"><span class="pre">QgsGeometryRubberBand</span></a></span></span><a class="headerlink" href="#qgis.gui.QgsMapToolCapture.createGeometryRubberBand" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -2514,6 +2558,11 @@ CRS as the current layer.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.gui.QgsMapToolCapture.geometryCaptured">
+<span class="sig-name descname"><span class="pre">geometryCaptured</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsMapToolCapture.geometryCaptured" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.gui.QgsMapToolCapture.isCapturing">
 <span class="sig-name descname"><span class="pre">isCapturing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#qgis.gui.QgsMapToolCapture.isCapturing" title="Permalink to this definition">¶</a></dt>
 <dd><p>Are we currently capturing?</p>
@@ -2544,11 +2593,16 @@ CRS as the current layer.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.gui.QgsMapToolCapture.lineCaptured">
+<span class="sig-name descname"><span class="pre">lineCaptured</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsMapToolCapture.lineCaptured" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.gui.QgsMapToolCapture.mapPoint">
 <span class="sig-name descname"><span class="pre">mapPoint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsMapMouseEvent.html#qgis.gui.QgsMapMouseEvent" title="qgis.gui.QgsMapMouseEvent"><span class="pre">QgsMapMouseEvent</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../core/QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint"><span class="pre">QgsPoint</span></a></span></span><a class="headerlink" href="#qgis.gui.QgsMapToolCapture.mapPoint" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates a <a class="reference internal" href="../core/QgsPoint.html#module-QgsPoint" title="QgsPoint"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsPoint</span></code></a> with ZM support if necessary (according to the
 WkbType of the current layer). If the point is snapped, then the Z
-value is took from the snapped point.</p>
+value is derived from the snapped point.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>e</strong> (<a class="reference internal" href="QgsMapMouseEvent.html#qgis.gui.QgsMapMouseEvent" title="qgis.gui.QgsMapMouseEvent"><em>QgsMapMouseEvent</em></a>) – A mouse event</p>
@@ -2647,6 +2701,11 @@ param[in,out] mapPoint the point in map coordinates</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.gui.QgsMapToolCapture.pointCaptured">
+<span class="sig-name descname"><span class="pre">pointCaptured</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsMapToolCapture.pointCaptured" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.gui.QgsMapToolCapture.points">
 <span class="sig-name descname"><span class="pre">points</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../core/QgsPointXY.html#qgis.core.QgsPointXY" title="qgis.core.QgsPointXY"><span class="pre">QgsPointXY</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qgis.gui.QgsMapToolCapture.points" title="Permalink to this definition">¶</a></dt>
 <dd><p>List of digitized points</p>
@@ -2680,6 +2739,11 @@ param[in,out] mapPoint the point in map coordinates</p>
 <p><span class="versionmodified added">New in version 3.12.</span></p>
 </div>
 </dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.gui.QgsMapToolCapture.polygonCaptured">
+<span class="sig-name descname"><span class="pre">polygonCaptured</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsMapToolCapture.polygonCaptured" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.gui.QgsMapToolCapture.receivers">
@@ -2722,9 +2786,27 @@ sa <a class="reference internal" href="QgsMapToolAdvancedDigitizing.html#qgis.gu
 <dt class="sig sig-object py" id="qgis.gui.QgsMapToolCapture.setCircularDigitizingEnabled">
 <span class="sig-name descname"><span class="pre">setCircularDigitizingEnabled</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enable</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsMapToolCapture.setCircularDigitizingEnabled" title="Permalink to this definition">¶</a></dt>
 <dd><p>Enable the digitizing with curve</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version QGIS: </span>3.26
+use <a class="reference internal" href="#qgis.gui.QgsMapToolCapture.setCurrentCaptureTechnique" title="qgis.gui.QgsMapToolCapture.setCurrentCaptureTechnique"><code class="xref py py-func docutils literal notranslate"><span class="pre">setCurrentCaptureTechnique()</span></code></a> instead</p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>enable</strong> (<em>bool</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.gui.QgsMapToolCapture.setCurrentCaptureTechnique">
+<span class="sig-name descname"><span class="pre">setCurrentCaptureTechnique</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">technique</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#qgis.gui.QgsMapToolCapture.CaptureTechnique" title="qgis.gui.QgsMapToolCapture.CaptureTechnique"><span class="pre">QgsMapToolCapture.CaptureTechnique</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsMapToolCapture.setCurrentCaptureTechnique" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the current capture if it is supported by the map tool</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.26.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>technique</strong> (<a class="reference internal" href="#qgis.gui.QgsMapToolCapture.CaptureTechnique" title="qgis.gui.QgsMapToolCapture.CaptureTechnique"><em>QgsMapToolCapture.CaptureTechnique</em></a>) – </p>
 </dd>
 </dl>
 </dd></dl>
@@ -2760,6 +2842,10 @@ Set the points on which to work</p>
 <dd><p>Toggles the stream digitizing mode.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.20.</span></p>
+</div>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version QGIS: </span>3.26
+use <a class="reference internal" href="#qgis.gui.QgsMapToolCapture.setCurrentCaptureTechnique" title="qgis.gui.QgsMapToolCapture.setCurrentCaptureTechnique"><code class="xref py py-func docutils literal notranslate"><span class="pre">setCurrentCaptureTechnique()</span></code></a> instead</p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2928,7 +3014,7 @@ as a auto repeated undo as if the user has held down the undo key for an extende
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:30 Feb 23, 2022.
+      <span class="lastupdated">Last updated on 02:59 Feb 23, 2022.
       </span></p>
   </div>
 

@@ -1535,6 +1535,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsMapTool.html">Class: QgsMapTool</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsMapToolAdvancedDigitizing.html">Class: QgsMapToolAdvancedDigitizing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsMapToolCapture.html">Class: QgsMapToolCapture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsMapToolCaptureLayerGeometry.html">Class: QgsMapToolCaptureLayerGeometry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsMapToolDigitizeFeature.html">Class: QgsMapToolDigitizeFeature</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Class: QgsMapToolEdit</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsMapToolEmitPoint.html">Class: QgsMapToolEmitPoint</a></li>
@@ -2000,11 +2001,7 @@
 <td><p></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolEdit.createGeometryRubberBand" title="qgis.gui.QgsMapToolEdit.createGeometryRubberBand"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createGeometryRubberBand</span></code></a></p></td>
-<td><p><dl class="field-list simple">
-<dt class="field-odd">param geometryType</dt>
-<dd class="field-odd"><p></p></dd>
-</dl>
-</p></td>
+<td><p>Creates a  geometry rubber band with the color/line width from the QGIS settings.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsMapToolEdit.createRubberBand" title="qgis.gui.QgsMapToolEdit.createRubberBand"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createRubberBand</span></code></a></p></td>
 <td><p>Creates a rubber band with the color/line width from the QGIS settings.</p></td>
@@ -2171,11 +2168,14 @@ The <code class="docutils literal notranslate"><span class="pre">vertices</span>
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.gui.QgsMapToolEdit.createGeometryRubberBand">
 <span class="sig-name descname"><span class="pre">createGeometryRubberBand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">geometryType</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../core/QgsWkbTypes.html#qgis.core.QgsWkbTypes.GeometryType" title="qgis.core.QgsWkbTypes.GeometryType"><span class="pre">QgsWkbTypes.GeometryType</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">QgsWkbTypes.LineGeometry</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alternativeBand</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="QgsGeometryRubberBand.html#qgis.gui.QgsGeometryRubberBand" title="qgis.gui.QgsGeometryRubberBand"><span class="pre">QgsGeometryRubberBand</span></a></span></span><a class="headerlink" href="#qgis.gui.QgsMapToolEdit.createGeometryRubberBand" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>Creates a  geometry rubber band with the color/line width from
+the QGIS settings. The caller takes ownership of the
+returned object</p>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>geometryType</strong> (<em>QgsWkbTypes.GeometryType = QgsWkbTypes.LineGeometry</em>) – </p></li>
-<li><p><strong>alternativeBand</strong> (<em>bool = False</em>) – </p></li>
+<li><p><strong>alternativeBand</strong> (<em>bool = False</em>) – if <code class="docutils literal notranslate"><span class="pre">True</span></code>, rubber band will be set with more transparency and a dash pattern. default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type</dt>
@@ -2221,7 +2221,7 @@ returned object</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.gui.QgsMapToolEdit.defaultMValue">
-<span class="sig-name descname"><span class="pre">defaultMValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#qgis.gui.QgsMapToolEdit.defaultMValue" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">defaultMValue</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#qgis.gui.QgsMapToolEdit.defaultMValue" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns default M value.
 Used for setting M coordinate to new vertex.</p>
 <div class="versionadded">
@@ -2236,7 +2236,7 @@ Used for setting M coordinate to new vertex.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.gui.QgsMapToolEdit.defaultZValue">
-<span class="sig-name descname"><span class="pre">defaultZValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#qgis.gui.QgsMapToolEdit.defaultZValue" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">defaultZValue</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#qgis.gui.QgsMapToolEdit.defaultZValue" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns default Z value.
 Used for setting Z coordinate to new vertex.</p>
 <dl class="field-list simple">
@@ -2413,7 +2413,7 @@ Transforms a <code class="docutils literal notranslate"><span class="pre">point<
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:30 Feb 23, 2022.
+      <span class="lastupdated">Last updated on 02:59 Feb 23, 2022.
       </span></p>
   </div>
 
