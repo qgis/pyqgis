@@ -953,6 +953,13 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsSettings.html">Class: QgsSettings</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Class: QgsSettingsEntryBase</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsSettingsEntryBool.html">Class: QgsSettingsEntryBool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsSettingsEntryByReferenceQColorBase.html">Class: QgsSettingsEntryByReferenceQColorBase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsSettingsEntryByReferenceQStringBase.html">Class: QgsSettingsEntryByReferenceQStringBase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsSettingsEntryByReferenceQStringListBase.html">Class: QgsSettingsEntryByReferenceQStringListBase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsSettingsEntryByReferenceQVariantBase.html">Class: QgsSettingsEntryByReferenceQVariantBase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsSettingsEntryByValueboolBase.html">Class: QgsSettingsEntryByValueboolBase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsSettingsEntryByValuedoubleBase.html">Class: QgsSettingsEntryByValuedoubleBase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsSettingsEntryByValueqlonglongBase.html">Class: QgsSettingsEntryByValueqlonglongBase</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsSettingsEntryColor.html">Class: QgsSettingsEntryColor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsSettingsEntryDouble.html">Class: QgsSettingsEntryDouble</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsSettingsEntryEnumFlag.html">Class: QgsSettingsEntryEnumFlag</a></li>
@@ -1136,12 +1143,13 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsZipUtils.html">Class: QgsZipUtils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ReadWriteContextEnterCategory.html">Class: ReadWriteContextEnterCategory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ScopedRuntimeProfileContextManager.html">Class: ScopedRuntimeProfileContextManager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SettingsOptions.html">Class: SettingsOptions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="SimplifyHints.html">Class: SimplifyHints</a></li>
 <li class="toctree-l2"><a class="reference internal" href="SmartgroupId.html">Class: SmartgroupId</a></li>
 <li class="toctree-l2"><a class="reference internal" href="SmartgroupName.html">Class: SmartgroupName</a></li>
 <li class="toctree-l2"><a class="reference internal" href="SmartgroupTable.html">Class: SmartgroupTable</a></li>
 <li class="toctree-l2"><a class="reference internal" href="SmartgroupXML.html">Class: SmartgroupXML</a></li>
-<li class="toctree-l2"><a class="reference internal" href="SnappingTypeFlag.html">Class: SnappingTypeFlag</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SnappingTypes.html">Class: SnappingTypes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="StyleCategories.html">Class: StyleCategories</a></li>
 <li class="toctree-l2"><a class="reference internal" href="SymbolFavoriteId.html">Class: SymbolFavoriteId</a></li>
 <li class="toctree-l2"><a class="reference internal" href="SymbolId.html">Class: SymbolId</a></li>
@@ -1980,13 +1988,14 @@ to validate set values and provide more accurate settings description for the gu
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.20.</span></p>
 </div>
-<p>QgsSettingsEntryBase(key: str, pluginName: str, defaultValue: Any = None, description: str = ‘’)
+<p>QgsSettingsEntryBase(key: str, pluginName: str, defaultValue: Any = None, description: str = ‘’, options: Union[Qgis.SettingsOptions, Qgis.SettingsOption] = Qgis.SettingsOptions())
 Constructor for QgsSettingsEntryBase.
 This constructor is intended to be used from plugins.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">key</span></code> argument specifies the key of the settings.
 The <code class="docutils literal notranslate"><span class="pre">pluginName</span></code> argument is inserted in the key after the section.
 The <code class="docutils literal notranslate"><span class="pre">defaultValue</span></code> argument specifies the default value for the settings entry.
-The <code class="docutils literal notranslate"><span class="pre">description</span></code> argument specifies a description for the settings entry.</p>
+The <code class="docutils literal notranslate"><span class="pre">description</span></code> argument specifies a description for the settings entry.
+The <code class="docutils literal notranslate"><span class="pre">options</span></code> arguments specifies the options for the settings entry.</p>
 <p>QgsSettingsEntryBase(<a class="reference internal" href="#qgis.core.QgsSettingsEntryBase" title="qgis.core.QgsSettingsEntryBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsSettingsEntryBase</span></code></a>)</p>
 <blockquote>
 <div><p class="rubric">Enums</p>
@@ -2017,8 +2026,14 @@ The <code class="docutils literal notranslate"><span class="pre">description</sp
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSettingsEntryBase.description" title="qgis.core.QgsSettingsEntryBase.description"><code class="xref py py-obj docutils literal notranslate"><span class="pre">description</span></code></a></p></td>
 <td><p>Returns the settings entry description.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSettingsEntryBase.exists" title="qgis.core.QgsSettingsEntryBase.exists"><code class="xref py py-obj docutils literal notranslate"><span class="pre">exists</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSettingsEntryBase.dynamicKeyPartToList" title="qgis.core.QgsSettingsEntryBase.dynamicKeyPartToList"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dynamicKeyPartToList</span></code></a></p></td>
+<td><p>Transforms a dynamic key part string to list</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSettingsEntryBase.exists" title="qgis.core.QgsSettingsEntryBase.exists"><code class="xref py py-obj docutils literal notranslate"><span class="pre">exists</span></code></a></p></td>
 <td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the settings is contained in the underlying QSettings.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSettingsEntryBase.formerValueAsVariant" title="qgis.core.QgsSettingsEntryBase.formerValueAsVariant"><code class="xref py py-obj docutils literal notranslate"><span class="pre">formerValueAsVariant</span></code></a></p></td>
+<td><p>Returns the former value of the settings if it has been enabled in the options.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSettingsEntryBase.hasDynamicKey" title="qgis.core.QgsSettingsEntryBase.hasDynamicKey"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hasDynamicKey</span></code></a></p></td>
 <td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if a part of the settings key is built dynamically.</p></td>
@@ -2038,11 +2053,17 @@ The <code class="docutils literal notranslate"><span class="pre">description</sp
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSettingsEntryBase.setVariantValue" title="qgis.core.QgsSettingsEntryBase.setVariantValue"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setVariantValue</span></code></a></p></td>
 <td><p>Set settings value.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSettingsEntryBase.settingsType" title="qgis.core.QgsSettingsEntryBase.settingsType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">settingsType</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSettingsEntryBase.setVariantValuePrivate" title="qgis.core.QgsSettingsEntryBase.setVariantValuePrivate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setVariantValuePrivate</span></code></a></p></td>
+<td><p>Sets the settings value with a variant value.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSettingsEntryBase.settingsType" title="qgis.core.QgsSettingsEntryBase.settingsType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">settingsType</span></code></a></p></td>
 <td><p>Returns the settings entry type.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSettingsEntryBase.valueAsVariant" title="qgis.core.QgsSettingsEntryBase.valueAsVariant"><code class="xref py py-obj docutils literal notranslate"><span class="pre">valueAsVariant</span></code></a></p></td>
-<td><p>Returns settings value.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSettingsEntryBase.valueAsVariant" title="qgis.core.QgsSettingsEntryBase.valueAsVariant"><code class="xref py py-obj docutils literal notranslate"><span class="pre">valueAsVariant</span></code></a></p></td>
+<td><p>Returns settings value with the <code class="docutils literal notranslate"><span class="pre">dynamicKeyPart</span></code> argument specifying the dynamic part of the settings key.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSettingsEntryBase.valueAsVariantWithDefaultOverride" title="qgis.core.QgsSettingsEntryBase.valueAsVariantWithDefaultOverride"><code class="xref py py-obj docutils literal notranslate"><span class="pre">valueAsVariantWithDefaultOverride</span></code></a></p></td>
+<td><p>Returns settings value with a <code class="docutils literal notranslate"><span class="pre">defaultValueOverride</span></code></p></td>
 </tr>
 </tbody>
 </table>
@@ -2068,55 +2089,24 @@ The <code class="docutils literal notranslate"><span class="pre">description</sp
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">SettingsType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsSettingsEntryBase.SettingsType" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.IntEnum</span></code></p>
 <p>Types of settings entries</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.26.</span></p>
+</div>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">Variant</span></code>: Generic variant</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">String</span></code>: String</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">StringList</span></code>: List of strings</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Bool</span></code>: Boolean</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Integer</span></code>: Integer</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Double</span></code>: Double precision numer</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Double</span></code>: Double precision number</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">EnumFlag</span></code>: Enum or Flag</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Color</span></code>: Color</p></li>
 </ul>
 <dl class="py attribute">
-<dt class="sig sig-object py" id="qgis.core.QgsSettingsEntryBase.SettingsType.Bool">
-<span class="sig-name descname"><span class="pre">Bool</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></em><a class="headerlink" href="#qgis.core.QgsSettingsEntryBase.SettingsType.Bool" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="qgis.core.QgsSettingsEntryBase.SettingsType.Color">
-<span class="sig-name descname"><span class="pre">Color</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">7</span></em><a class="headerlink" href="#qgis.core.QgsSettingsEntryBase.SettingsType.Color" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="qgis.core.QgsSettingsEntryBase.SettingsType.Double">
-<span class="sig-name descname"><span class="pre">Double</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">5</span></em><a class="headerlink" href="#qgis.core.QgsSettingsEntryBase.SettingsType.Double" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="qgis.core.QgsSettingsEntryBase.SettingsType.EnumFlag">
-<span class="sig-name descname"><span class="pre">EnumFlag</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">6</span></em><a class="headerlink" href="#qgis.core.QgsSettingsEntryBase.SettingsType.EnumFlag" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="qgis.core.QgsSettingsEntryBase.SettingsType.Integer">
-<span class="sig-name descname"><span class="pre">Integer</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">4</span></em><a class="headerlink" href="#qgis.core.QgsSettingsEntryBase.SettingsType.Integer" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="qgis.core.QgsSettingsEntryBase.SettingsType.String">
-<span class="sig-name descname"><span class="pre">String</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#qgis.core.QgsSettingsEntryBase.SettingsType.String" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="qgis.core.QgsSettingsEntryBase.SettingsType.StringList">
-<span class="sig-name descname"><span class="pre">StringList</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#qgis.core.QgsSettingsEntryBase.SettingsType.StringList" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="qgis.core.QgsSettingsEntryBase.SettingsType.Variant">
-<span class="sig-name descname"><span class="pre">Variant</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#qgis.core.QgsSettingsEntryBase.SettingsType.Variant" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dt class="sig sig-object py" id="qgis.core.QgsSettingsEntryBase.SettingsType.baseClass">
+<span class="sig-name descname"><span class="pre">baseClass</span></span><a class="headerlink" href="#qgis.core.QgsSettingsEntryBase.SettingsType.baseClass" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="Qgis.html#qgis.core.Qgis" title="qgis._core.Qgis"><code class="xref py py-class docutils literal notranslate"><span class="pre">qgis._core.Qgis</span></code></a></p>
+</dd></dl>
 
 </dd></dl>
 
@@ -2156,6 +2146,23 @@ included. For non-dynamic settings returns the same as <a class="reference inter
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsSettingsEntryBase.dynamicKeyPartToList">
+<span class="sig-name descname"><span class="pre">dynamicKeyPartToList</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dynamicKeyPart</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qgis.core.QgsSettingsEntryBase.dynamicKeyPartToList" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transforms a dynamic key part string to list</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.26.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>dynamicKeyPart</strong> (<em>str</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>List[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsSettingsEntryBase.exists">
 <span class="sig-name descname"><span class="pre">exists</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dynamicKeyPart</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#qgis.core.QgsSettingsEntryBase.exists" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the settings is contained in the underlying QSettings.</p>
@@ -2169,6 +2176,30 @@ Returns <code class="docutils literal notranslate"><span class="pre">True</span>
 </dd>
 <dt class="field-even">Return type</dt>
 <dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsSettingsEntryBase.formerValueAsVariant">
+<span class="sig-name descname"><span class="pre">formerValueAsVariant</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dynamicKeyPart</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="headerlink" href="#qgis.core.QgsSettingsEntryBase.formerValueAsVariant" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the former value of the settings if it has been enabled in the options.
+Returns the current value (or default) if there is no former value.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.26.</span></p>
+</div>
+<p>formerValueAsVariant(self, dynamicKeyPartList: Iterable[str]) -&gt; Any
+Returns the former value of the settings if it has been enabled in the options
+Returns the current value (or default) if there is no former value.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.26.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>dynamicKeyPart</strong> (<em>str</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Any</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2252,10 +2283,18 @@ Removes the settings from the underlying QSettings.</p>
 <dd><p>Set settings value.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">value</span></code> to set.
 The <code class="docutils literal notranslate"><span class="pre">dynamicKeyPart</span></code> argument specifies the dynamic part of the settings key.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version QGIS: </span>3.26
+use setVariantValuePrivate or an implementation setValue instead</p>
+</div>
 <p>setVariantValue(self, value: Any, dynamicKeyPartList: Iterable[str]) -&gt; bool
 Set settings value.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">value</span></code> to set.
 The <code class="docutils literal notranslate"><span class="pre">dynamicKeyParts</span></code> argument specifies the list of dynamic parts of the settings key.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version QGIS: </span>3.26
+use setVariantValuePrivate or an implementation setValue instead</p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -2270,34 +2309,84 @@ The <code class="docutils literal notranslate"><span class="pre">dynamicKeyParts
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsSettingsEntryBase.setVariantValuePrivate">
+<span class="sig-name descname"><span class="pre">setVariantValuePrivate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dynamicKeyPartList</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#qgis.core.QgsSettingsEntryBase.setVariantValuePrivate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the settings value with a variant value.
+This should be called from any implementation as it takes care of actually calling QSettings</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.26.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>value</strong> (<em>Any</em>) – </p></li>
+<li><p><strong>dynamicKeyPartList</strong> (<em>Iterable</em><em>[</em><em>str</em><em>] </em><em>=</em><em> [</em><em>]</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsSettingsEntryBase.settingsType">
-<span class="sig-name descname"><span class="pre">settingsType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#qgis.core.QgsSettingsEntryBase.SettingsType" title="qgis.core.QgsSettingsEntryBase.SettingsType"><span class="pre">QgsSettingsEntryBase.SettingsType</span></a></span></span><a class="headerlink" href="#qgis.core.QgsSettingsEntryBase.settingsType" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">settingsType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="Qgis.html#qgis.core.Qgis.SettingsType" title="qgis.core.Qgis.SettingsType"><span class="pre">Qgis.SettingsType</span></a></span></span><a class="headerlink" href="#qgis.core.QgsSettingsEntryBase.settingsType" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the settings entry type.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference internal" href="#qgis.core.QgsSettingsEntryBase.SettingsType" title="qgis.core.QgsSettingsEntryBase.SettingsType">QgsSettingsEntryBase.SettingsType</a></p>
+<dd class="field-odd"><p><a class="reference internal" href="Qgis.html#qgis.core.Qgis.SettingsType" title="qgis.core.Qgis.SettingsType">Qgis.SettingsType</a></p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsSettingsEntryBase.valueAsVariant">
-<span class="sig-name descname"><span class="pre">valueAsVariant</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dynamicKeyPart</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">useDefaultValueOverride</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">defaultValueOverride</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="headerlink" href="#qgis.core.QgsSettingsEntryBase.valueAsVariant" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns settings value.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">dynamicKeyPart</span></code> argument specifies the dynamic part of the settings key.
-The <code class="docutils literal notranslate"><span class="pre">useDefaultValueOverride</span></code> argument specifies if defaultValueOverride should be used.
-The <code class="docutils literal notranslate"><span class="pre">defaultValueOverride</span></code> argument if valid is used instead of the normal default value.</p>
-<p>valueAsVariant(self, dynamicKeyPartList: Iterable[str], useDefaultValueOverride: bool = False, defaultValueOverride: Any = None) -&gt; Any
+<span class="sig-name descname"><span class="pre">valueAsVariant</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dynamicKeyPart</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="headerlink" href="#qgis.core.QgsSettingsEntryBase.valueAsVariant" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns settings value with the <code class="docutils literal notranslate"><span class="pre">dynamicKeyPart</span></code> argument specifying the dynamic part of the settings key.</p>
+<p>valueAsVariant(self, dynamicKeyPartList: Iterable[str]) -&gt; Any
+Returns settings value with the <code class="docutils literal notranslate"><span class="pre">dynamicKeyPart</span></code> argument specifying the dynamic part of the settings key.</p>
+<p>valueAsVariant(self, dynamicKeyPart: str, useDefaultValueOverride: bool, defaultValueOverride: Any) -&gt; Any
+Returns settings value with an optional default value override</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version QGIS: </span>3.26
+use valueAsVariantWithDefaultOverride instead</p>
+</div>
+<p>valueAsVariant(self, dynamicKeyPartList: Iterable[str], useDefaultValueOverride: bool, defaultValueOverride: Any) -&gt; Any
+Returns settings value with an optional default value override</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version QGIS: </span>3.26
+use valueAsVariantWithDefaultOverride instead</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>dynamicKeyPart</strong> (<em>str = ''</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Any</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsSettingsEntryBase.valueAsVariantWithDefaultOverride">
+<span class="sig-name descname"><span class="pre">valueAsVariantWithDefaultOverride</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">defaultValueOverride</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dynamicKeyPart</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="headerlink" href="#qgis.core.QgsSettingsEntryBase.valueAsVariantWithDefaultOverride" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns settings value with a <code class="docutils literal notranslate"><span class="pre">defaultValueOverride</span></code></p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.26.</span></p>
+</div>
+<p>valueAsVariantWithDefaultOverride(self, defaultValueOverride: Any, dynamicKeyPartList: Iterable[str]) -&gt; Any
 Returns settings value.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">dynamicKeyParts</span></code> argument specifies the list of dynamic parts of the settings key.
-The <code class="docutils literal notranslate"><span class="pre">useDefaultValueOverride</span></code> argument specifies if defaultValueOverride should be used.
+<p>The <code class="docutils literal notranslate"><span class="pre">dynamicKeyPartList</span></code> argument specifies the list of dynamic parts of the settings key.
 The <code class="docutils literal notranslate"><span class="pre">defaultValueOverride</span></code> argument if valid is used instead of the normal default value.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.26.</span></p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
+<li><p><strong>defaultValueOverride</strong> (<em>Any</em>) – </p></li>
 <li><p><strong>dynamicKeyPart</strong> (<em>str = ''</em>) – </p></li>
-<li><p><strong>useDefaultValueOverride</strong> (<em>bool = False</em>) – </p></li>
-<li><p><strong>defaultValueOverride</strong> (<em>Any = None</em>) – </p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type</dt>
@@ -2319,7 +2408,7 @@ The <code class="docutils literal notranslate"><span class="pre">defaultValueOve
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:35 Mar 02, 2022.
+      <span class="lastupdated">Last updated on 02:15 Mar 02, 2022.
       </span></p>
   </div>
 
