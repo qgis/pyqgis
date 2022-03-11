@@ -1087,6 +1087,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsVectorLayer.html">Class: QgsVectorLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsVectorLayerCache.html">Class: QgsVectorLayerCache</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsVectorLayerEditBuffer.html">Class: QgsVectorLayerEditBuffer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsVectorLayerEditBufferGroup.html">Class: QgsVectorLayerEditBufferGroup</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsVectorLayerEditPassthrough.html">Class: QgsVectorLayerEditPassthrough</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsVectorLayerEditUtils.html">Class: QgsVectorLayerEditUtils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsVectorLayerElevationProperties.html">Class: QgsVectorLayerElevationProperties</a></li>
@@ -2080,19 +2081,22 @@ Create a new QgsProject.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.clear" title="qgis.core.QgsProject.clear"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clear</span></code></a></p></td>
 <td><p>Clears the project, removing all settings and resetting it back to an empty, default state.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.connectNotify" title="qgis.core.QgsProject.connectNotify"><code class="xref py py-obj docutils literal notranslate"><span class="pre">connectNotify</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.commitChanges" title="qgis.core.QgsProject.commitChanges"><code class="xref py py-obj docutils literal notranslate"><span class="pre">commitChanges</span></code></a></p></td>
+<td><p>Attempts to commit to the underlying data provider any buffered changes made since the last to call to <a class="reference internal" href="#qgis.core.QgsProject.startEditing" title="qgis.core.QgsProject.startEditing"><code class="xref py py-func docutils literal notranslate"><span class="pre">startEditing()</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.connectNotify" title="qgis.core.QgsProject.connectNotify"><code class="xref py py-obj docutils literal notranslate"><span class="pre">connectNotify</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.count" title="qgis.core.QgsProject.count"><code class="xref py py-obj docutils literal notranslate"><span class="pre">count</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.count" title="qgis.core.QgsProject.count"><code class="xref py py-obj docutils literal notranslate"><span class="pre">count</span></code></a></p></td>
 <td><p>Returns the number of registered layers.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.createAttachedFile" title="qgis.core.QgsProject.createAttachedFile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createAttachedFile</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.createAttachedFile" title="qgis.core.QgsProject.createAttachedFile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createAttachedFile</span></code></a></p></td>
 <td><p>Attaches a file to the project</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.createEmbeddedGroup" title="qgis.core.QgsProject.createEmbeddedGroup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createEmbeddedGroup</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.createEmbeddedGroup" title="qgis.core.QgsProject.createEmbeddedGroup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createEmbeddedGroup</span></code></a></p></td>
 <td><p>Create layer group instance defined in an arbitrary project file.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.createExpressionContext" title="qgis.core.QgsProject.createExpressionContext"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createExpressionContext</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.createExpressionContext" title="qgis.core.QgsProject.createExpressionContext"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createExpressionContext</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">rtype</dt>
 <dd class="field-odd"><p>QgsExpressionContext</p>
@@ -2100,7 +2104,7 @@ Create a new QgsProject.</p>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.createExpressionContextScope" title="qgis.core.QgsProject.createExpressionContextScope"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createExpressionContextScope</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.createExpressionContextScope" title="qgis.core.QgsProject.createExpressionContextScope"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createExpressionContextScope</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">rtype</dt>
 <dd class="field-odd"><p>QgsExpressionContextScope</p>
@@ -2108,32 +2112,35 @@ Create a new QgsProject.</p>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.crs" title="qgis.core.QgsProject.crs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">crs</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.crs" title="qgis.core.QgsProject.crs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">crs</span></code></a></p></td>
 <td><p>Returns the project's native coordinate reference system.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.customEvent" title="qgis.core.QgsProject.customEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">customEvent</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.customEvent" title="qgis.core.QgsProject.customEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">customEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.customVariables" title="qgis.core.QgsProject.customVariables"><code class="xref py py-obj docutils literal notranslate"><span class="pre">customVariables</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.customVariables" title="qgis.core.QgsProject.customVariables"><code class="xref py py-obj docutils literal notranslate"><span class="pre">customVariables</span></code></a></p></td>
 <td><p>A map of custom project variables.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.dataDefinedServerProperties" title="qgis.core.QgsProject.dataDefinedServerProperties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dataDefinedServerProperties</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.dataDefinedServerProperties" title="qgis.core.QgsProject.dataDefinedServerProperties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dataDefinedServerProperties</span></code></a></p></td>
 <td><p>Returns the data defined properties used for overrides in user defined server parameters</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.defaultCrsForNewLayers" title="qgis.core.QgsProject.defaultCrsForNewLayers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">defaultCrsForNewLayers</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.defaultCrsForNewLayers" title="qgis.core.QgsProject.defaultCrsForNewLayers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">defaultCrsForNewLayers</span></code></a></p></td>
 <td><p>Returns the default CRS for new layers based on the settings and the current project CRS</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.disconnectNotify" title="qgis.core.QgsProject.disconnectNotify"><code class="xref py py-obj docutils literal notranslate"><span class="pre">disconnectNotify</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.disconnectNotify" title="qgis.core.QgsProject.disconnectNotify"><code class="xref py py-obj docutils literal notranslate"><span class="pre">disconnectNotify</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.displaySettings" title="qgis.core.QgsProject.displaySettings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">displaySettings</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.displaySettings" title="qgis.core.QgsProject.displaySettings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">displaySettings</span></code></a></p></td>
 <td><p>Returns the project's display settings, which settings and properties relating to how a <a class="reference internal" href="#qgis.core.QgsProject" title="qgis.core.QgsProject"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProject</span></code></a> should display values such as map coordinates and bearings.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.distanceUnits" title="qgis.core.QgsProject.distanceUnits"><code class="xref py py-obj docutils literal notranslate"><span class="pre">distanceUnits</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.distanceUnits" title="qgis.core.QgsProject.distanceUnits"><code class="xref py py-obj docutils literal notranslate"><span class="pre">distanceUnits</span></code></a></p></td>
 <td><p>Convenience function to query default distance measurement units for project.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.dumpProperties" title="qgis.core.QgsProject.dumpProperties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dumpProperties</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.dumpProperties" title="qgis.core.QgsProject.dumpProperties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dumpProperties</span></code></a></p></td>
 <td><p>Dump out current project properties to stderr</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.editBufferGroup" title="qgis.core.QgsProject.editBufferGroup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">editBufferGroup</span></code></a></p></td>
+<td><p>Returns the edit buffer group</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.ellipsoid" title="qgis.core.QgsProject.ellipsoid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ellipsoid</span></code></a></p></td>
 <td><p>Returns a proj string representing the project's ellipsoid setting, e.g., &quot;WGS84&quot;.</p></td>
@@ -2305,104 +2312,110 @@ Create a new QgsProject.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.resolveAttachmentIdentifier" title="qgis.core.QgsProject.resolveAttachmentIdentifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">resolveAttachmentIdentifier</span></code></a></p></td>
 <td><p>Resolves an attachment identifier to a attachment file path</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.saveUser" title="qgis.core.QgsProject.saveUser"><code class="xref py py-obj docutils literal notranslate"><span class="pre">saveUser</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.rollBack" title="qgis.core.QgsProject.rollBack"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rollBack</span></code></a></p></td>
+<td><p>Stops a current editing operation on vectorLayer and discards any uncommitted edits.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.saveUser" title="qgis.core.QgsProject.saveUser"><code class="xref py py-obj docutils literal notranslate"><span class="pre">saveUser</span></code></a></p></td>
 <td><p>Returns the user name that did the last save.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.saveUserFullName" title="qgis.core.QgsProject.saveUserFullName"><code class="xref py py-obj docutils literal notranslate"><span class="pre">saveUserFullName</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.saveUserFullName" title="qgis.core.QgsProject.saveUserFullName"><code class="xref py py-obj docutils literal notranslate"><span class="pre">saveUserFullName</span></code></a></p></td>
 <td><p>Returns the full user name that did the last save.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.selectionColor" title="qgis.core.QgsProject.selectionColor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">selectionColor</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.selectionColor" title="qgis.core.QgsProject.selectionColor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">selectionColor</span></code></a></p></td>
 <td><p>Returns the color used to highlight selected features</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.sender" title="qgis.core.QgsProject.sender"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sender</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.sender" title="qgis.core.QgsProject.sender"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sender</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.senderSignalIndex" title="qgis.core.QgsProject.senderSignalIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">senderSignalIndex</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.senderSignalIndex" title="qgis.core.QgsProject.senderSignalIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">senderSignalIndex</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setAreaUnits" title="qgis.core.QgsProject.setAreaUnits"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setAreaUnits</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setAreaUnits" title="qgis.core.QgsProject.setAreaUnits"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setAreaUnits</span></code></a></p></td>
 <td><p>Sets the default area measurement units for the project.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setAutoTransaction" title="qgis.core.QgsProject.setAutoTransaction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setAutoTransaction</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setAutoTransaction" title="qgis.core.QgsProject.setAutoTransaction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setAutoTransaction</span></code></a></p></td>
 <td><p>Transactional editing means that on supported datasources (postgres databases) the edit state of all tables that originate from the same database are synchronized and executed in a server side transaction.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setAvoidIntersectionsLayers" title="qgis.core.QgsProject.setAvoidIntersectionsLayers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setAvoidIntersectionsLayers</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setAvoidIntersectionsLayers" title="qgis.core.QgsProject.setAvoidIntersectionsLayers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setAvoidIntersectionsLayers</span></code></a></p></td>
 <td><p>Sets the list of layers with which intersections should be avoided.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setAvoidIntersectionsMode" title="qgis.core.QgsProject.setAvoidIntersectionsMode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setAvoidIntersectionsMode</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setAvoidIntersectionsMode" title="qgis.core.QgsProject.setAvoidIntersectionsMode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setAvoidIntersectionsMode</span></code></a></p></td>
 <td><p>Sets the avoid intersections mode.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setBackgroundColor" title="qgis.core.QgsProject.setBackgroundColor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setBackgroundColor</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setBackgroundColor" title="qgis.core.QgsProject.setBackgroundColor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setBackgroundColor</span></code></a></p></td>
 <td><p>Sets the default background <code class="docutils literal notranslate"><span class="pre">color</span></code> used by default map canvases.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setBadLayerHandler" title="qgis.core.QgsProject.setBadLayerHandler"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setBadLayerHandler</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setBadLayerHandler" title="qgis.core.QgsProject.setBadLayerHandler"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setBadLayerHandler</span></code></a></p></td>
 <td><p>Change handler for missing layers.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setCrs" title="qgis.core.QgsProject.setCrs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setCrs</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setCrs" title="qgis.core.QgsProject.setCrs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setCrs</span></code></a></p></td>
 <td><p>Sets the project's native coordinate reference system.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setCustomVariables" title="qgis.core.QgsProject.setCustomVariables"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setCustomVariables</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setCustomVariables" title="qgis.core.QgsProject.setCustomVariables"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setCustomVariables</span></code></a></p></td>
 <td><p>A map of custom project variables.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setDataDefinedServerProperties" title="qgis.core.QgsProject.setDataDefinedServerProperties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setDataDefinedServerProperties</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setDataDefinedServerProperties" title="qgis.core.QgsProject.setDataDefinedServerProperties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setDataDefinedServerProperties</span></code></a></p></td>
 <td><p>Sets the data defined properties used for overrides in user defined server parameters to <code class="docutils literal notranslate"><span class="pre">properties</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setDirty" title="qgis.core.QgsProject.setDirty"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setDirty</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setDirty" title="qgis.core.QgsProject.setDirty"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setDirty</span></code></a></p></td>
 <td><p>Flag the project as dirty (modified).</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setDistanceUnits" title="qgis.core.QgsProject.setDistanceUnits"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setDistanceUnits</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setDistanceUnits" title="qgis.core.QgsProject.setDistanceUnits"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setDistanceUnits</span></code></a></p></td>
 <td><p>Sets the default distance measurement units for the project.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setEllipsoid" title="qgis.core.QgsProject.setEllipsoid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setEllipsoid</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setEllipsoid" title="qgis.core.QgsProject.setEllipsoid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setEllipsoid</span></code></a></p></td>
 <td><p>Sets the project's ellipsoid from a proj string representation, e.g., &quot;WGS84&quot;.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setEvaluateDefaultValues" title="qgis.core.QgsProject.setEvaluateDefaultValues"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setEvaluateDefaultValues</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setEvaluateDefaultValues" title="qgis.core.QgsProject.setEvaluateDefaultValues"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setEvaluateDefaultValues</span></code></a></p></td>
 <td><p>Defines if default values should be evaluated on provider side when requested and not when committed.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setFileName" title="qgis.core.QgsProject.setFileName"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setFileName</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setFileName" title="qgis.core.QgsProject.setFileName"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setFileName</span></code></a></p></td>
 <td><p>Sets the file name associated with the project.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setFilePathStorage" title="qgis.core.QgsProject.setFilePathStorage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setFilePathStorage</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setFilePathStorage" title="qgis.core.QgsProject.setFilePathStorage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setFilePathStorage</span></code></a></p></td>
 <td><p>Sets the <code class="docutils literal notranslate"><span class="pre">type</span></code> of paths used when storing file paths in a QGS/QGZ project file.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setInstance" title="qgis.core.QgsProject.setInstance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setInstance</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setInstance" title="qgis.core.QgsProject.setInstance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setInstance</span></code></a></p></td>
 <td><p>Set the current project singleton instance to <code class="docutils literal notranslate"><span class="pre">project</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setLabelingEngineSettings" title="qgis.core.QgsProject.setLabelingEngineSettings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setLabelingEngineSettings</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setLabelingEngineSettings" title="qgis.core.QgsProject.setLabelingEngineSettings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setLabelingEngineSettings</span></code></a></p></td>
 <td><p>Sets project's global labeling engine settings</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setMapScales" title="qgis.core.QgsProject.setMapScales"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setMapScales</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setMapScales" title="qgis.core.QgsProject.setMapScales"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setMapScales</span></code></a></p></td>
 <td><p>Sets the list of custom project map <code class="docutils literal notranslate"><span class="pre">scales</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setMetadata" title="qgis.core.QgsProject.setMetadata"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setMetadata</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setMetadata" title="qgis.core.QgsProject.setMetadata"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setMetadata</span></code></a></p></td>
 <td><p>Sets the project's <code class="docutils literal notranslate"><span class="pre">metadata</span></code> store.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setNonIdentifiableLayers" title="qgis.core.QgsProject.setNonIdentifiableLayers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setNonIdentifiableLayers</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setNonIdentifiableLayers" title="qgis.core.QgsProject.setNonIdentifiableLayers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setNonIdentifiableLayers</span></code></a></p></td>
 <td><p>Set a list of layers which should not be taken into account on map identification</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setOriginalPath" title="qgis.core.QgsProject.setOriginalPath"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setOriginalPath</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setOriginalPath" title="qgis.core.QgsProject.setOriginalPath"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setOriginalPath</span></code></a></p></td>
 <td><p>Sets the original <code class="docutils literal notranslate"><span class="pre">path</span></code> associated with the project.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setPresetHomePath" title="qgis.core.QgsProject.setPresetHomePath"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setPresetHomePath</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setPresetHomePath" title="qgis.core.QgsProject.setPresetHomePath"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setPresetHomePath</span></code></a></p></td>
 <td><p>Sets the project's home <code class="docutils literal notranslate"><span class="pre">path</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setProjectColors" title="qgis.core.QgsProject.setProjectColors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setProjectColors</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setProjectColors" title="qgis.core.QgsProject.setProjectColors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setProjectColors</span></code></a></p></td>
 <td><p>Sets the <code class="docutils literal notranslate"><span class="pre">colors</span></code> for the project's color scheme (see <a class="reference internal" href="QgsProjectColorScheme.html#module-QgsProjectColorScheme" title="QgsProjectColorScheme"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProjectColorScheme</span></code></a>).</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setRequiredLayers" title="qgis.core.QgsProject.setRequiredLayers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setRequiredLayers</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setRequiredLayers" title="qgis.core.QgsProject.setRequiredLayers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setRequiredLayers</span></code></a></p></td>
 <td><p>Configures a set of map layers that are required in the project and therefore they should not get removed from the project.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setSelectionColor" title="qgis.core.QgsProject.setSelectionColor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setSelectionColor</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setSelectionColor" title="qgis.core.QgsProject.setSelectionColor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setSelectionColor</span></code></a></p></td>
 <td><p>Sets the <code class="docutils literal notranslate"><span class="pre">color</span></code> used to highlight selected features.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setSnappingConfig" title="qgis.core.QgsProject.setSnappingConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setSnappingConfig</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setSnappingConfig" title="qgis.core.QgsProject.setSnappingConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setSnappingConfig</span></code></a></p></td>
 <td><p>The snapping configuration for this project.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setTitle" title="qgis.core.QgsProject.setTitle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setTitle</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setTitle" title="qgis.core.QgsProject.setTitle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setTitle</span></code></a></p></td>
 <td><p>Sets the project's title.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setTopologicalEditing" title="qgis.core.QgsProject.setTopologicalEditing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setTopologicalEditing</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setTopologicalEditing" title="qgis.core.QgsProject.setTopologicalEditing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setTopologicalEditing</span></code></a></p></td>
 <td><p>Convenience function to set topological editing</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setTransactionMode" title="qgis.core.QgsProject.setTransactionMode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setTransactionMode</span></code></a></p></td>
+<td><p>Set transaction mode</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setTransformContext" title="qgis.core.QgsProject.setTransformContext"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setTransformContext</span></code></a></p></td>
 <td><p>Sets the project's coordinate transform <code class="docutils literal notranslate"><span class="pre">context</span></code>, which stores various information regarding which datum transforms should be used when transforming points from a source to destination coordinate reference system.</p></td>
@@ -2416,26 +2429,32 @@ Create a new QgsProject.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.snappingConfig" title="qgis.core.QgsProject.snappingConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">snappingConfig</span></code></a></p></td>
 <td><p>The snapping configuration for this project.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.subkeyList" title="qgis.core.QgsProject.subkeyList"><code class="xref py py-obj docutils literal notranslate"><span class="pre">subkeyList</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.startEditing" title="qgis.core.QgsProject.startEditing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">startEditing</span></code></a></p></td>
+<td><p>Makes the layer editable.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.subkeyList" title="qgis.core.QgsProject.subkeyList"><code class="xref py py-obj docutils literal notranslate"><span class="pre">subkeyList</span></code></a></p></td>
 <td><p>Returns a list of child keys which contain other keys that exist within the the specified <code class="docutils literal notranslate"><span class="pre">scope</span></code> and <code class="docutils literal notranslate"><span class="pre">key</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.takeMapLayer" title="qgis.core.QgsProject.takeMapLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">takeMapLayer</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.takeMapLayer" title="qgis.core.QgsProject.takeMapLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">takeMapLayer</span></code></a></p></td>
 <td><p>Takes a layer from the registry.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.timeSettings" title="qgis.core.QgsProject.timeSettings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">timeSettings</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.timeSettings" title="qgis.core.QgsProject.timeSettings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">timeSettings</span></code></a></p></td>
 <td><p>Returns the project's time settings, which contains the project's temporal range and other time based settings.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.timerEvent" title="qgis.core.QgsProject.timerEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">timerEvent</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.timerEvent" title="qgis.core.QgsProject.timerEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">timerEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.title" title="qgis.core.QgsProject.title"><code class="xref py py-obj docutils literal notranslate"><span class="pre">title</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.title" title="qgis.core.QgsProject.title"><code class="xref py py-obj docutils literal notranslate"><span class="pre">title</span></code></a></p></td>
 <td><p>Returns the project's title.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.topologicalEditing" title="qgis.core.QgsProject.topologicalEditing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">topologicalEditing</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.topologicalEditing" title="qgis.core.QgsProject.topologicalEditing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">topologicalEditing</span></code></a></p></td>
 <td><p>Convenience function to query topological editing status</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.transactionGroup" title="qgis.core.QgsProject.transactionGroup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">transactionGroup</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.transactionGroup" title="qgis.core.QgsProject.transactionGroup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">transactionGroup</span></code></a></p></td>
 <td><p>Returns the matching transaction group from a provider key and connection string.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.transactionMode" title="qgis.core.QgsProject.transactionMode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">transactionMode</span></code></a></p></td>
+<td><p>Returns the transaction mode</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.transformContext" title="qgis.core.QgsProject.transformContext"><code class="xref py py-obj docutils literal notranslate"><span class="pre">transformContext</span></code></a></p></td>
 <td><p>Returns a copy of the project's coordinate transform context, which stores various information regarding which datum transforms should be used when transforming points from a source to destination coordinate reference system.</p></td>
@@ -2581,28 +2600,31 @@ Create a new QgsProject.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.readProjectWithContext" title="qgis.core.QgsProject.readProjectWithContext"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readProjectWithContext</span></code></a></p></td>
 <td><p>Emitted when a project is being read.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.removeAll" title="qgis.core.QgsProject.removeAll"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeAll</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.readVersionMismatchOccurred" title="qgis.core.QgsProject.readVersionMismatchOccurred"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readVersionMismatchOccurred</span></code></a></p></td>
+<td><p>Emitted when a project is read and the version of QGIS used to save the project differs from the current QGIS version.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.removeAll" title="qgis.core.QgsProject.removeAll"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeAll</span></code></a></p></td>
 <td><p>Emitted when all layers are removed, before <a class="reference internal" href="#qgis.core.QgsProject.layersWillBeRemoved" title="qgis.core.QgsProject.layersWillBeRemoved"><code class="xref py py-func docutils literal notranslate"><span class="pre">layersWillBeRemoved()</span></code></a> and <a class="reference internal" href="#qgis.core.QgsProject.layerWillBeRemoved" title="qgis.core.QgsProject.layerWillBeRemoved"><code class="xref py py-func docutils literal notranslate"><span class="pre">layerWillBeRemoved()</span></code></a> signals are emitted.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.selectionColorChanged" title="qgis.core.QgsProject.selectionColorChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">selectionColorChanged</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.selectionColorChanged" title="qgis.core.QgsProject.selectionColorChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">selectionColorChanged</span></code></a></p></td>
 <td><p>Emitted whenever the project's selection color has been changed.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.snappingConfigChanged" title="qgis.core.QgsProject.snappingConfigChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">snappingConfigChanged</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.snappingConfigChanged" title="qgis.core.QgsProject.snappingConfigChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">snappingConfigChanged</span></code></a></p></td>
 <td><p>Emitted whenever the configuration for snapping has changed.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.topologicalEditingChanged" title="qgis.core.QgsProject.topologicalEditingChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">topologicalEditingChanged</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.topologicalEditingChanged" title="qgis.core.QgsProject.topologicalEditingChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">topologicalEditingChanged</span></code></a></p></td>
 <td><p>Emitted when the topological editing flag has changed.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.transactionGroupsChanged" title="qgis.core.QgsProject.transactionGroupsChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">transactionGroupsChanged</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.transactionGroupsChanged" title="qgis.core.QgsProject.transactionGroupsChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">transactionGroupsChanged</span></code></a></p></td>
 <td><p>Emitted whenever a new transaction group has been created or a transaction group has been removed.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.transformContextChanged" title="qgis.core.QgsProject.transformContextChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">transformContextChanged</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.transformContextChanged" title="qgis.core.QgsProject.transformContextChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">transformContextChanged</span></code></a></p></td>
 <td><p>Emitted when the project <a class="reference internal" href="#qgis.core.QgsProject.transformContext" title="qgis.core.QgsProject.transformContext"><code class="xref py py-func docutils literal notranslate"><span class="pre">transformContext()</span></code></a> is changed.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.writeMapLayer" title="qgis.core.QgsProject.writeMapLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeMapLayer</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.writeMapLayer" title="qgis.core.QgsProject.writeMapLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeMapLayer</span></code></a></p></td>
 <td><p>Emitted when a layer is being saved.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.writeProject" title="qgis.core.QgsProject.writeProject"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeProject</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.writeProject" title="qgis.core.QgsProject.writeProject"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeProject</span></code></a></p></td>
 <td><p>Emitted when the project is being written.</p></td>
 </tr>
 </tbody>
@@ -2960,6 +2982,9 @@ transaction.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 2.16.</span></p>
 </div>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version QGIS: </span>3.26 use transactionMode instead</p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>bool</p>
@@ -3123,6 +3148,47 @@ just before a new project is read).</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.2: </span>[signal]</p>
 </div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProject.commitChanges">
+<span class="sig-name descname"><span class="pre">commitChanges</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stopEditing</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vectorLayer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsVectorLayer.html#qgis.core.QgsVectorLayer" title="qgis.core.QgsVectorLayer"><span class="pre">QgsVectorLayer</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qgis.core.QgsProject.commitChanges" title="Permalink to this definition">¶</a></dt>
+<dd><p>Attempts to commit to the underlying data provider any buffered changes made since the
+last to call to <a class="reference internal" href="#qgis.core.QgsProject.startEditing" title="qgis.core.QgsProject.startEditing"><code class="xref py py-func docutils literal notranslate"><span class="pre">startEditing()</span></code></a>.</p>
+<p>Returns the result of the attempt. If a commit fails (i.e. <code class="docutils literal notranslate"><span class="pre">False</span></code> is returned), the
+in-memory changes are left untouched and are not discarded. This allows editing to
+continue if the commit failed on e.g. a disallowed value in a Postgres
+database - the user can re-edit and try again.</p>
+<p>The commits occur in distinct stages,
+(add attributes, add features, change attribute values, change
+geometries, delete features, delete attributes)
+so if a stage fails, it can be difficult to roll back cleanly.
+Therefore any error message returned by commitErrors also includes which stage failed so
+that the user has some chance of repairing the damage cleanly.</p>
+<p>By setting <code class="docutils literal notranslate"><span class="pre">stopEditing</span></code> to <code class="docutils literal notranslate"><span class="pre">False</span></code>, the layer will stay in editing mode.
+Otherwise the layer editing mode will be disabled if the commit is successful.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsProject.startEditing" title="qgis.core.QgsProject.startEditing"><code class="xref py py-func docutils literal notranslate"><span class="pre">startEditing()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsProject.rollBack" title="qgis.core.QgsProject.rollBack"><code class="xref py py-func docutils literal notranslate"><span class="pre">rollBack()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.26.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>stopEditing</strong> (<em>bool = True</em>) – </p></li>
+<li><p><strong>vectorLayer</strong> (<a class="reference internal" href="QgsVectorLayer.html#qgis.core.QgsVectorLayer" title="qgis.core.QgsVectorLayer"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsVectorLayer</span></code></a> = None) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Tuple[bool, List[str]]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -3354,6 +3420,20 @@ to how a <a class="reference internal" href="#qgis.core.QgsProject" title="qgis.
 <dt class="sig sig-object py" id="qgis.core.QgsProject.dumpProperties">
 <span class="sig-name descname"><span class="pre">dumpProperties</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsProject.dumpProperties" title="Permalink to this definition">¶</a></dt>
 <dd><p>Dump out current project properties to stderr</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProject.editBufferGroup">
+<span class="sig-name descname"><span class="pre">editBufferGroup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="QgsVectorLayerEditBufferGroup.html#qgis.core.QgsVectorLayerEditBufferGroup" title="qgis.core.QgsVectorLayerEditBufferGroup"><span class="pre">QgsVectorLayerEditBufferGroup</span></a></span></span><a class="headerlink" href="#qgis.core.QgsProject.editBufferGroup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the edit buffer group</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.26.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsVectorLayerEditBufferGroup.html#qgis.core.QgsVectorLayerEditBufferGroup" title="qgis.core.QgsVectorLayerEditBufferGroup">QgsVectorLayerEditBufferGroup</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -4255,7 +4335,10 @@ use <a class="reference internal" href="QgsMapLayer.html#qgis.core.QgsMapLayer.s
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.core.QgsProject.oldProjectVersionWarning">
 <span class="sig-name descname"><span class="pre">oldProjectVersionWarning</span></span><a class="headerlink" href="#qgis.core.QgsProject.oldProjectVersionWarning" title="Permalink to this definition">¶</a></dt>
-<dd><p>Emitted when an old project file is read. [signal]</p>
+<dd><p>Emitted when an old project file is read.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version use: </span><a class="reference internal" href="#qgis.core.QgsProject.readVersionMismatchOccurred" title="qgis.core.QgsProject.readVersionMismatchOccurred"><code class="xref py py-func docutils literal notranslate"><span class="pre">readVersionMismatchOccurred()</span></code></a> instead. [signal]</p>
+</div>
 </dd></dl>
 
 <dl class="py method">
@@ -4587,6 +4670,27 @@ from the project file.</p>
 </dl>
 </dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.QgsProject.readVersionMismatchOccurred">
+<span class="sig-name descname"><span class="pre">readVersionMismatchOccurred</span></span><a class="headerlink" href="#qgis.core.QgsProject.readVersionMismatchOccurred" title="Permalink to this definition">¶</a></dt>
+<dd><p>Emitted when a project is read and the version of QGIS used to save
+the project differs from the current QGIS version.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">fileVersion</span></code> argument indicates the version of QGIS used to save
+the project.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Not available in Python bindings</p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.26: </span>[signal]</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>fileVersion</strong> (<em>str</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsProject.receivers">
 <span class="sig-name descname"><span class="pre">receivers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">PYQT_SIGNAL</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#qgis.core.QgsProject.receivers" title="Permalink to this definition">¶</a></dt>
@@ -4858,6 +4962,34 @@ use <a class="reference internal" href="QgsMapLayer.html#qgis.core.QgsMapLayer.f
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProject.rollBack">
+<span class="sig-name descname"><span class="pre">rollBack</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stopEditing</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vectorLayer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsVectorLayer.html#qgis.core.QgsVectorLayer" title="qgis.core.QgsVectorLayer"><span class="pre">QgsVectorLayer</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qgis.core.QgsProject.rollBack" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stops a current editing operation on vectorLayer and discards any uncommitted edits.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsProject.startEditing" title="qgis.core.QgsProject.startEditing"><code class="xref py py-func docutils literal notranslate"><span class="pre">startEditing()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsProject.commitChanges" title="qgis.core.QgsProject.commitChanges"><code class="xref py py-func docutils literal notranslate"><span class="pre">commitChanges()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.26.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>stopEditing</strong> (<em>bool = True</em>) – </p></li>
+<li><p><strong>vectorLayer</strong> (<a class="reference internal" href="QgsVectorLayer.html#qgis.core.QgsVectorLayer" title="qgis.core.QgsVectorLayer"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsVectorLayer</span></code></a> = None) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Tuple[bool, List[str]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsProject.saveUser">
 <span class="sig-name descname"><span class="pre">saveUser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#qgis.core.QgsProject.saveUser" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the user name that did the last save.</p>
@@ -4962,9 +5094,15 @@ use <a class="reference internal" href="QgsMapLayer.html#qgis.core.QgsMapLayer.f
 <dd><p>Transactional editing means that on supported datasources (postgres databases) the edit state of
 all tables that originate from the same database are synchronized and executed in a server side
 transaction.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
 <p>Make sure that this is only called when all layers are not in edit mode.</p>
+</div>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 2.16.</span></p>
+</div>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version QGIS: </span>3.26 use setTransactionMode instead</p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -5458,6 +5596,36 @@ use <a class="reference internal" href="QgsMapLayer.html#qgis.core.QgsMapLayer.s
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProject.setTransactionMode">
+<span class="sig-name descname"><span class="pre">setTransactionMode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transactionMode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="Qgis.html#qgis.core.Qgis.TransactionMode" title="qgis.core.Qgis.TransactionMode"><span class="pre">Qgis.TransactionMode</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#qgis.core.QgsProject.setTransactionMode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set transaction mode</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the transaction mode could be changed</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Transaction mode can be changed only when all layers are not in edit mode.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>Qgis.TransactionMode</p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.26.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>transactionMode</strong> (<a class="reference internal" href="Qgis.html#qgis.core.Qgis.TransactionMode" title="qgis.core.Qgis.TransactionMode"><em>Qgis.TransactionMode</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsProject.setTransformContext">
 <span class="sig-name descname"><span class="pre">setTransformContext</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsCoordinateTransformContext.html#qgis.core.QgsCoordinateTransformContext" title="qgis.core.QgsCoordinateTransformContext"><span class="pre">QgsCoordinateTransformContext</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsProject.setTransformContext" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets the project’s coordinate transform <code class="docutils literal notranslate"><span class="pre">context</span></code>, which stores various
@@ -5542,6 +5710,41 @@ materialized views with Postgres provider.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="QgsSnappingConfig.html#qgis.core.QgsSnappingConfig" title="qgis.core.QgsSnappingConfig"><em>QgsSnappingConfig</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProject.startEditing">
+<span class="sig-name descname"><span class="pre">startEditing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vectorLayer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsVectorLayer.html#qgis.core.QgsVectorLayer" title="qgis.core.QgsVectorLayer"><span class="pre">QgsVectorLayer</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#qgis.core.QgsProject.startEditing" title="Permalink to this definition">¶</a></dt>
+<dd><p>Makes the layer editable.</p>
+<p>This starts an edit session on vectorLayer. Changes made in this edit session will not
+be made persistent until <a class="reference internal" href="#qgis.core.QgsProject.commitChanges" title="qgis.core.QgsProject.commitChanges"><code class="xref py py-func docutils literal notranslate"><span class="pre">commitChanges()</span></code></a> is called, and can be reverted by calling
+<a class="reference internal" href="#qgis.core.QgsProject.rollBack" title="qgis.core.QgsProject.rollBack"><code class="xref py py-func docutils literal notranslate"><span class="pre">rollBack()</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the layer was successfully made editable, or <code class="docutils literal notranslate"><span class="pre">False</span></code> if the operation
+failed (e.g. due to an underlying read-only data source, or lack of edit support
+by the backend data provider).</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsProject.commitChanges" title="qgis.core.QgsProject.commitChanges"><code class="xref py py-func docutils literal notranslate"><span class="pre">commitChanges()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsProject.rollBack" title="qgis.core.QgsProject.rollBack"><code class="xref py py-func docutils literal notranslate"><span class="pre">rollBack()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.26.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>vectorLayer</strong> (<a class="reference internal" href="QgsVectorLayer.html#qgis.core.QgsVectorLayer" title="qgis.core.QgsVectorLayer"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsVectorLayer</span></code></a> = None) – </p>
 </dd>
 </dl>
 </dd></dl>
@@ -5680,6 +5883,24 @@ transaction group has been removed.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0: </span>[signal]</p>
 </div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProject.transactionMode">
+<span class="sig-name descname"><span class="pre">transactionMode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="Qgis.html#qgis.core.Qgis.TransactionMode" title="qgis.core.Qgis.TransactionMode"><span class="pre">Qgis.TransactionMode</span></a></span></span><a class="headerlink" href="#qgis.core.QgsProject.transactionMode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the transaction mode</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>Qgis.TransactionMode</p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.26.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="Qgis.html#qgis.core.Qgis.TransactionMode" title="qgis.core.Qgis.TransactionMode">Qgis.TransactionMode</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -6033,7 +6254,7 @@ Paths written to the project file should be prepared with this method.</p>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:32 Mar 11, 2022.
+      <span class="lastupdated">Last updated on 03:22 Mar 11, 2022.
       </span></p>
   </div>
 

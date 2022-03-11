@@ -20,7 +20,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Class: QgsVectorLayerEditPassthrough" href="QgsVectorLayerEditPassthrough.html" />
+    <link rel="next" title="Class: QgsVectorLayerEditBufferGroup" href="QgsVectorLayerEditBufferGroup.html" />
     <link rel="prev" title="Class: QgsVectorLayerCache" href="QgsVectorLayerCache.html" /> 
 </head>
 
@@ -1087,6 +1087,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsVectorLayer.html">Class: QgsVectorLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsVectorLayerCache.html">Class: QgsVectorLayerCache</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Class: QgsVectorLayerEditBuffer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsVectorLayerEditBufferGroup.html">Class: QgsVectorLayerEditBufferGroup</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsVectorLayerEditPassthrough.html">Class: QgsVectorLayerEditPassthrough</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsVectorLayerEditUtils.html">Class: QgsVectorLayerEditUtils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsVectorLayerElevationProperties.html">Class: QgsVectorLayerElevationProperties</a></li>
@@ -2068,47 +2069,53 @@ Constructor for QgsVectorLayerEditBuffer</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayerEditBuffer.disconnectNotify" title="qgis.core.QgsVectorLayerEditBuffer.disconnectNotify"><code class="xref py py-obj docutils literal notranslate"><span class="pre">disconnectNotify</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayerEditBuffer.handleAttributeAdded" title="qgis.core.QgsVectorLayerEditBuffer.handleAttributeAdded"><code class="xref py py-obj docutils literal notranslate"><span class="pre">handleAttributeAdded</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayerEditBuffer.editBufferGroup" title="qgis.core.QgsVectorLayerEditBuffer.editBufferGroup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">editBufferGroup</span></code></a></p></td>
+<td><p>Returns the parent edit buffer group for this edit buffer, or None if not part of a group.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayerEditBuffer.handleAttributeAdded" title="qgis.core.QgsVectorLayerEditBuffer.handleAttributeAdded"><code class="xref py py-obj docutils literal notranslate"><span class="pre">handleAttributeAdded</span></code></a></p></td>
 <td><p>Update added and changed features after addition of an attribute</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayerEditBuffer.handleAttributeDeleted" title="qgis.core.QgsVectorLayerEditBuffer.handleAttributeDeleted"><code class="xref py py-obj docutils literal notranslate"><span class="pre">handleAttributeDeleted</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayerEditBuffer.handleAttributeDeleted" title="qgis.core.QgsVectorLayerEditBuffer.handleAttributeDeleted"><code class="xref py py-obj docutils literal notranslate"><span class="pre">handleAttributeDeleted</span></code></a></p></td>
 <td><p>Update added and changed features after removal of an attribute</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayerEditBuffer.isAttributeDeleted" title="qgis.core.QgsVectorLayerEditBuffer.isAttributeDeleted"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isAttributeDeleted</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayerEditBuffer.isAttributeDeleted" title="qgis.core.QgsVectorLayerEditBuffer.isAttributeDeleted"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isAttributeDeleted</span></code></a></p></td>
 <td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the specified attribute has been deleted but not committed.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayerEditBuffer.isFeatureAdded" title="qgis.core.QgsVectorLayerEditBuffer.isFeatureAdded"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isFeatureAdded</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayerEditBuffer.isFeatureAdded" title="qgis.core.QgsVectorLayerEditBuffer.isFeatureAdded"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isFeatureAdded</span></code></a></p></td>
 <td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the specified feature ID has been added but not committed.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayerEditBuffer.isFeatureAttributesChanged" title="qgis.core.QgsVectorLayerEditBuffer.isFeatureAttributesChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isFeatureAttributesChanged</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayerEditBuffer.isFeatureAttributesChanged" title="qgis.core.QgsVectorLayerEditBuffer.isFeatureAttributesChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isFeatureAttributesChanged</span></code></a></p></td>
 <td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the specified feature ID has had an attribute changed but not committed.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayerEditBuffer.isFeatureDeleted" title="qgis.core.QgsVectorLayerEditBuffer.isFeatureDeleted"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isFeatureDeleted</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayerEditBuffer.isFeatureDeleted" title="qgis.core.QgsVectorLayerEditBuffer.isFeatureDeleted"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isFeatureDeleted</span></code></a></p></td>
 <td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the specified feature ID has been deleted but not committed.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayerEditBuffer.isFeatureGeometryChanged" title="qgis.core.QgsVectorLayerEditBuffer.isFeatureGeometryChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isFeatureGeometryChanged</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayerEditBuffer.isFeatureGeometryChanged" title="qgis.core.QgsVectorLayerEditBuffer.isFeatureGeometryChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isFeatureGeometryChanged</span></code></a></p></td>
 <td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the specified feature ID has had its geometry changed but not committed.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayerEditBuffer.isModified" title="qgis.core.QgsVectorLayerEditBuffer.isModified"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isModified</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayerEditBuffer.isModified" title="qgis.core.QgsVectorLayerEditBuffer.isModified"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isModified</span></code></a></p></td>
 <td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the provider has been modified since the last commit</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayerEditBuffer.isSignalConnected" title="qgis.core.QgsVectorLayerEditBuffer.isSignalConnected"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isSignalConnected</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayerEditBuffer.isSignalConnected" title="qgis.core.QgsVectorLayerEditBuffer.isSignalConnected"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isSignalConnected</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayerEditBuffer.receivers" title="qgis.core.QgsVectorLayerEditBuffer.receivers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">receivers</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayerEditBuffer.receivers" title="qgis.core.QgsVectorLayerEditBuffer.receivers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">receivers</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayerEditBuffer.renameAttribute" title="qgis.core.QgsVectorLayerEditBuffer.renameAttribute"><code class="xref py py-obj docutils literal notranslate"><span class="pre">renameAttribute</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayerEditBuffer.renameAttribute" title="qgis.core.QgsVectorLayerEditBuffer.renameAttribute"><code class="xref py py-obj docutils literal notranslate"><span class="pre">renameAttribute</span></code></a></p></td>
 <td><p>Renames an attribute field (but does not commit it)</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayerEditBuffer.rollBack" title="qgis.core.QgsVectorLayerEditBuffer.rollBack"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rollBack</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayerEditBuffer.rollBack" title="qgis.core.QgsVectorLayerEditBuffer.rollBack"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rollBack</span></code></a></p></td>
 <td><p>Stop editing and discard the edits</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayerEditBuffer.sender" title="qgis.core.QgsVectorLayerEditBuffer.sender"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sender</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayerEditBuffer.sender" title="qgis.core.QgsVectorLayerEditBuffer.sender"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sender</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayerEditBuffer.senderSignalIndex" title="qgis.core.QgsVectorLayerEditBuffer.senderSignalIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">senderSignalIndex</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayerEditBuffer.senderSignalIndex" title="qgis.core.QgsVectorLayerEditBuffer.senderSignalIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">senderSignalIndex</span></code></a></p></td>
 <td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayerEditBuffer.setEditBufferGroup" title="qgis.core.QgsVectorLayerEditBuffer.setEditBufferGroup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setEditBufferGroup</span></code></a></p></td>
+<td><p>Set the parent edit buffer group for this edit buffer.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayerEditBuffer.timerEvent" title="qgis.core.QgsVectorLayerEditBuffer.timerEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">timerEvent</span></code></a></p></td>
 <td><p></p></td>
@@ -2647,6 +2654,20 @@ that the user has some chance of repairing the damage cleanly.</p>
 <span class="sig-name descname"><span class="pre">disconnectNotify</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">QMetaMethod</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsVectorLayerEditBuffer.disconnectNotify" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsVectorLayerEditBuffer.editBufferGroup">
+<span class="sig-name descname"><span class="pre">editBufferGroup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="QgsVectorLayerEditBufferGroup.html#qgis.core.QgsVectorLayerEditBufferGroup" title="qgis.core.QgsVectorLayerEditBufferGroup"><span class="pre">QgsVectorLayerEditBufferGroup</span></a></span></span><a class="headerlink" href="#qgis.core.QgsVectorLayerEditBuffer.editBufferGroup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the parent edit buffer group for this edit buffer, or None if not part of a group.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.26.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsVectorLayerEditBufferGroup.html#qgis.core.QgsVectorLayerEditBufferGroup" title="qgis.core.QgsVectorLayerEditBufferGroup">QgsVectorLayerEditBufferGroup</a></p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.core.QgsVectorLayerEditBuffer.featureAdded">
 <span class="sig-name descname"><span class="pre">featureAdded</span></span><a class="headerlink" href="#qgis.core.QgsVectorLayerEditBuffer.featureAdded" title="Permalink to this definition">¶</a></dt>
@@ -2886,6 +2907,20 @@ that the user has some chance of repairing the damage cleanly.</p>
 <dd></dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsVectorLayerEditBuffer.setEditBufferGroup">
+<span class="sig-name descname"><span class="pre">setEditBufferGroup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">editBufferGroup</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsVectorLayerEditBufferGroup.html#qgis.core.QgsVectorLayerEditBufferGroup" title="qgis.core.QgsVectorLayerEditBufferGroup"><span class="pre">QgsVectorLayerEditBufferGroup</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsVectorLayerEditBuffer.setEditBufferGroup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the parent edit buffer group for this edit buffer.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.26.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>editBufferGroup</strong> (<a class="reference internal" href="QgsVectorLayerEditBufferGroup.html#qgis.core.QgsVectorLayerEditBufferGroup" title="qgis.core.QgsVectorLayerEditBufferGroup"><em>QgsVectorLayerEditBufferGroup</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsVectorLayerEditBuffer.timerEvent">
 <span class="sig-name descname"><span class="pre">timerEvent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">QTimerEvent</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsVectorLayerEditBuffer.timerEvent" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -2955,7 +2990,7 @@ that the user has some chance of repairing the damage cleanly.</p>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:32 Mar 11, 2022.
+      <span class="lastupdated">Last updated on 03:22 Mar 11, 2022.
       </span></p>
   </div>
 
