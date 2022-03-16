@@ -724,6 +724,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessing.html">Class: QgsProcessing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingAlgRunnerTask.html">Class: QgsProcessingAlgRunnerTask</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingAlgorithm.html">Class: QgsProcessingAlgorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsProcessingBatchFeedback.html">Class: QgsProcessingBatchFeedback</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingContext.html">Class: QgsProcessingContext</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingDestinationParameter.html">Class: QgsProcessingDestinationParameter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingException.html">Class: QgsProcessingException</a></li>
@@ -1643,6 +1644,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsProcessingAlgorithmConfigurationWidget.html">Class: QgsProcessingAlgorithmConfigurationWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsProcessingAlgorithmConfigurationWidgetFactory.html">Class: QgsProcessingAlgorithmConfigurationWidgetFactory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsProcessingAlgorithmDialogBase.html">Class: QgsProcessingAlgorithmDialogBase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui/QgsProcessingBatchAlgorithmDialogBase.html">Class: QgsProcessingBatchAlgorithmDialogBase</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsProcessingContextGenerator.html">Class: QgsProcessingContextGenerator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsProcessingGui.html">Class: QgsProcessingGui</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsProcessingGuiRegistry.html">Class: QgsProcessingGuiRegistry</a></li>
@@ -1779,6 +1781,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsTabWidget.html">Class: QgsTabWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsTableEditorDialog.html">Class: QgsTableEditorDialog</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsTableEditorWidget.html">Class: QgsTableEditorWidget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui/QgsTableView.html">Class: QgsTableView</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsTableWidgetBase.html">Class: QgsTableWidgetBase</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsTableWidgetItem.html">Class: QgsTableWidgetItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsTaskManagerWidget.html">Class: QgsTaskManagerWidget</a></li>
@@ -2006,10 +2009,13 @@ a “perimeter” style mode).</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLabelLineSettings.AnchorClipping" title="qgis.core.QgsLabelLineSettings.AnchorClipping"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AnchorClipping</span></code></a></p></td>
 <td><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.IntEnum</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLabelLineSettings.AnchorType" title="qgis.core.QgsLabelLineSettings.AnchorType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AnchorType</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLabelLineSettings.AnchorTextPoint" title="qgis.core.QgsLabelLineSettings.AnchorTextPoint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AnchorTextPoint</span></code></a></p></td>
 <td><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.IntEnum</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLabelLineSettings.DirectionSymbolPlacement" title="qgis.core.QgsLabelLineSettings.DirectionSymbolPlacement"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DirectionSymbolPlacement</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLabelLineSettings.AnchorType" title="qgis.core.QgsLabelLineSettings.AnchorType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AnchorType</span></code></a></p></td>
+<td><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.IntEnum</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLabelLineSettings.DirectionSymbolPlacement" title="qgis.core.QgsLabelLineSettings.DirectionSymbolPlacement"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DirectionSymbolPlacement</span></code></a></p></td>
 <td><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.IntEnum</span></code></p></td>
 </tr>
 </tbody>
@@ -2027,44 +2033,50 @@ a “perimeter” style mode).</p>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLabelLineSettings.anchorClipping" title="qgis.core.QgsLabelLineSettings.anchorClipping"><code class="xref py py-obj docutils literal notranslate"><span class="pre">anchorClipping</span></code></a></p></td>
 <td><p>Returns the line anchor clipping mode, which dictates how line strings are clipped before calculating the line anchor placement.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLabelLineSettings.anchorType" title="qgis.core.QgsLabelLineSettings.anchorType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">anchorType</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLabelLineSettings.anchorTextPoint" title="qgis.core.QgsLabelLineSettings.anchorTextPoint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">anchorTextPoint</span></code></a></p></td>
+<td><p>Returns the line anchor text point, which dictates which part of the label text should be placed at the <a class="reference internal" href="#qgis.core.QgsLabelLineSettings.lineAnchorPercent" title="qgis.core.QgsLabelLineSettings.lineAnchorPercent"><code class="xref py py-func docutils literal notranslate"><span class="pre">lineAnchorPercent()</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLabelLineSettings.anchorType" title="qgis.core.QgsLabelLineSettings.anchorType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">anchorType</span></code></a></p></td>
 <td><p>Returns the line anchor type, which dictates how the <a class="reference internal" href="#qgis.core.QgsLabelLineSettings.lineAnchorPercent" title="qgis.core.QgsLabelLineSettings.lineAnchorPercent"><code class="xref py py-func docutils literal notranslate"><span class="pre">lineAnchorPercent()</span></code></a> setting is handled.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLabelLineSettings.directionSymbolPlacement" title="qgis.core.QgsLabelLineSettings.directionSymbolPlacement"><code class="xref py py-obj docutils literal notranslate"><span class="pre">directionSymbolPlacement</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLabelLineSettings.directionSymbolPlacement" title="qgis.core.QgsLabelLineSettings.directionSymbolPlacement"><code class="xref py py-obj docutils literal notranslate"><span class="pre">directionSymbolPlacement</span></code></a></p></td>
 <td><p>Returns the placement for direction symbols.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLabelLineSettings.leftDirectionSymbol" title="qgis.core.QgsLabelLineSettings.leftDirectionSymbol"><code class="xref py py-obj docutils literal notranslate"><span class="pre">leftDirectionSymbol</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLabelLineSettings.leftDirectionSymbol" title="qgis.core.QgsLabelLineSettings.leftDirectionSymbol"><code class="xref py py-obj docutils literal notranslate"><span class="pre">leftDirectionSymbol</span></code></a></p></td>
 <td><p>Returns the string to use for left direction arrows.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLabelLineSettings.lineAnchorPercent" title="qgis.core.QgsLabelLineSettings.lineAnchorPercent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lineAnchorPercent</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLabelLineSettings.lineAnchorPercent" title="qgis.core.QgsLabelLineSettings.lineAnchorPercent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lineAnchorPercent</span></code></a></p></td>
 <td><p>Returns the percent along the line at which labels should be placed.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLabelLineSettings.mergeLines" title="qgis.core.QgsLabelLineSettings.mergeLines"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mergeLines</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLabelLineSettings.mergeLines" title="qgis.core.QgsLabelLineSettings.mergeLines"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mergeLines</span></code></a></p></td>
 <td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if connected line features with identical label text should be merged prior to generating label positions.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLabelLineSettings.overrunDistance" title="qgis.core.QgsLabelLineSettings.overrunDistance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">overrunDistance</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLabelLineSettings.overrunDistance" title="qgis.core.QgsLabelLineSettings.overrunDistance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">overrunDistance</span></code></a></p></td>
 <td><p>Returns the distance which labels are allowed to overrun past the start or end of line features.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLabelLineSettings.overrunDistanceMapUnitScale" title="qgis.core.QgsLabelLineSettings.overrunDistanceMapUnitScale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">overrunDistanceMapUnitScale</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLabelLineSettings.overrunDistanceMapUnitScale" title="qgis.core.QgsLabelLineSettings.overrunDistanceMapUnitScale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">overrunDistanceMapUnitScale</span></code></a></p></td>
 <td><p>Returns the map unit scale for label overrun distance.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLabelLineSettings.overrunDistanceUnit" title="qgis.core.QgsLabelLineSettings.overrunDistanceUnit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">overrunDistanceUnit</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLabelLineSettings.overrunDistanceUnit" title="qgis.core.QgsLabelLineSettings.overrunDistanceUnit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">overrunDistanceUnit</span></code></a></p></td>
 <td><p>Returns the units for label overrun distance.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLabelLineSettings.placementFlags" title="qgis.core.QgsLabelLineSettings.placementFlags"><code class="xref py py-obj docutils literal notranslate"><span class="pre">placementFlags</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLabelLineSettings.placementFlags" title="qgis.core.QgsLabelLineSettings.placementFlags"><code class="xref py py-obj docutils literal notranslate"><span class="pre">placementFlags</span></code></a></p></td>
 <td><p>Returns the line placement flags, which dictate how line labels can be placed above or below the lines.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLabelLineSettings.reverseDirectionSymbol" title="qgis.core.QgsLabelLineSettings.reverseDirectionSymbol"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reverseDirectionSymbol</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLabelLineSettings.reverseDirectionSymbol" title="qgis.core.QgsLabelLineSettings.reverseDirectionSymbol"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reverseDirectionSymbol</span></code></a></p></td>
 <td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if direction symbols should be reversed.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLabelLineSettings.rightDirectionSymbol" title="qgis.core.QgsLabelLineSettings.rightDirectionSymbol"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rightDirectionSymbol</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLabelLineSettings.rightDirectionSymbol" title="qgis.core.QgsLabelLineSettings.rightDirectionSymbol"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rightDirectionSymbol</span></code></a></p></td>
 <td><p>Returns the string to use for right direction arrows.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLabelLineSettings.setAddDirectionSymbol" title="qgis.core.QgsLabelLineSettings.setAddDirectionSymbol"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setAddDirectionSymbol</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLabelLineSettings.setAddDirectionSymbol" title="qgis.core.QgsLabelLineSettings.setAddDirectionSymbol"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setAddDirectionSymbol</span></code></a></p></td>
 <td><p>Sets whether '&lt;' or '&gt;' (or custom strings set via leftDirectionSymbol and rightDirectionSymbol) will be automatically added to the label text, pointing in the direction of the line or polygon ring.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLabelLineSettings.setAnchorClipping" title="qgis.core.QgsLabelLineSettings.setAnchorClipping"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setAnchorClipping</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLabelLineSettings.setAnchorClipping" title="qgis.core.QgsLabelLineSettings.setAnchorClipping"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setAnchorClipping</span></code></a></p></td>
 <td><p>Sets the line anchor <code class="docutils literal notranslate"><span class="pre">clipping</span></code> mode, which dictates how line strings are clipped before calculating the line anchor placement.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLabelLineSettings.setAnchorTextPoint" title="qgis.core.QgsLabelLineSettings.setAnchorTextPoint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setAnchorTextPoint</span></code></a></p></td>
+<td><p>Sets the line anchor text <code class="docutils literal notranslate"><span class="pre">point</span></code>, which dictates which part of the label text should be placed at the <a class="reference internal" href="#qgis.core.QgsLabelLineSettings.lineAnchorPercent" title="qgis.core.QgsLabelLineSettings.lineAnchorPercent"><code class="xref py py-func docutils literal notranslate"><span class="pre">lineAnchorPercent()</span></code></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLabelLineSettings.setAnchorType" title="qgis.core.QgsLabelLineSettings.setAnchorType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setAnchorType</span></code></a></p></td>
 <td><p>Sets the line anchor <code class="docutils literal notranslate"><span class="pre">type</span></code>, which dictates how the <a class="reference internal" href="#qgis.core.QgsLabelLineSettings.lineAnchorPercent" title="qgis.core.QgsLabelLineSettings.lineAnchorPercent"><code class="xref py py-func docutils literal notranslate"><span class="pre">lineAnchorPercent()</span></code></a> setting is handled.</p></td>
@@ -2112,12 +2124,16 @@ a “perimeter” style mode).</p>
 <tbody>
 </tbody>
 </table>
+<p class="rubric">Attributes</p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
 <col style="width: 90%" />
 </colgroup>
 <tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLabelLineSettings.staticMetaObject" title="qgis.core.QgsLabelLineSettings.staticMetaObject"><code class="xref py py-obj docutils literal notranslate"><span class="pre">staticMetaObject</span></code></a></p></td>
+<td><p></p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -2143,6 +2159,54 @@ a “perimeter” style mode).</p>
 <span class="sig-name descname"><span class="pre">UseVisiblePartsOfLine</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#qgis.core.QgsLabelLineSettings.AnchorClipping.UseVisiblePartsOfLine" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.QgsLabelLineSettings.AnchorClipping.baseClass">
+<span class="sig-name descname"><span class="pre">baseClass</span></span><a class="headerlink" href="#qgis.core.QgsLabelLineSettings.AnchorClipping.baseClass" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#qgis.core.QgsLabelLineSettings" title="qgis._core.QgsLabelLineSettings"><code class="xref py py-class docutils literal notranslate"><span class="pre">qgis._core.QgsLabelLineSettings</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="qgis.core.QgsLabelLineSettings.AnchorTextPoint">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">AnchorTextPoint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsLabelLineSettings.AnchorTextPoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.IntEnum</span></code></p>
+<p>Anchor point of label text.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.26.</span></p>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">StartOfText</span></code>: Anchor using start of text</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CenterOfText</span></code>: Anchor using center of text</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EndOfText</span></code>: Anchor using end of text</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FollowPlacement</span></code>: Automatically set the anchor point based on the lineAnchorPercent() value. Values &lt;25% will use the start of text, values &gt; 75% will use the end of text, and values in between will use the center of the text</p></li>
+</ul>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.QgsLabelLineSettings.AnchorTextPoint.CenterOfText">
+<span class="sig-name descname"><span class="pre">CenterOfText</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#qgis.core.QgsLabelLineSettings.AnchorTextPoint.CenterOfText" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.QgsLabelLineSettings.AnchorTextPoint.EndOfText">
+<span class="sig-name descname"><span class="pre">EndOfText</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#qgis.core.QgsLabelLineSettings.AnchorTextPoint.EndOfText" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.QgsLabelLineSettings.AnchorTextPoint.FollowPlacement">
+<span class="sig-name descname"><span class="pre">FollowPlacement</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></em><a class="headerlink" href="#qgis.core.QgsLabelLineSettings.AnchorTextPoint.FollowPlacement" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.QgsLabelLineSettings.AnchorTextPoint.StartOfText">
+<span class="sig-name descname"><span class="pre">StartOfText</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#qgis.core.QgsLabelLineSettings.AnchorTextPoint.StartOfText" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.QgsLabelLineSettings.AnchorTextPoint.baseClass">
+<span class="sig-name descname"><span class="pre">baseClass</span></span><a class="headerlink" href="#qgis.core.QgsLabelLineSettings.AnchorTextPoint.baseClass" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#qgis.core.QgsLabelLineSettings" title="qgis._core.QgsLabelLineSettings"><code class="xref py py-class docutils literal notranslate"><span class="pre">qgis._core.QgsLabelLineSettings</span></code></a></p>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
@@ -2163,6 +2227,12 @@ a “perimeter” style mode).</p>
 <dt class="sig sig-object py" id="qgis.core.QgsLabelLineSettings.AnchorType.Strict">
 <span class="sig-name descname"><span class="pre">Strict</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#qgis.core.QgsLabelLineSettings.AnchorType.Strict" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.QgsLabelLineSettings.AnchorType.baseClass">
+<span class="sig-name descname"><span class="pre">baseClass</span></span><a class="headerlink" href="#qgis.core.QgsLabelLineSettings.AnchorType.baseClass" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#qgis.core.QgsLabelLineSettings" title="qgis._core.QgsLabelLineSettings"><code class="xref py py-class docutils literal notranslate"><span class="pre">qgis._core.QgsLabelLineSettings</span></code></a></p>
+</dd></dl>
 
 </dd></dl>
 
@@ -2190,6 +2260,12 @@ a “perimeter” style mode).</p>
 <dt class="sig sig-object py" id="qgis.core.QgsLabelLineSettings.DirectionSymbolPlacement.SymbolLeftRight">
 <span class="sig-name descname"><span class="pre">SymbolLeftRight</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#qgis.core.QgsLabelLineSettings.DirectionSymbolPlacement.SymbolLeftRight" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.QgsLabelLineSettings.DirectionSymbolPlacement.baseClass">
+<span class="sig-name descname"><span class="pre">baseClass</span></span><a class="headerlink" href="#qgis.core.QgsLabelLineSettings.DirectionSymbolPlacement.baseClass" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#qgis.core.QgsLabelLineSettings" title="qgis._core.QgsLabelLineSettings"><code class="xref py py-class docutils literal notranslate"><span class="pre">qgis._core.QgsLabelLineSettings</span></code></a></p>
+</dd></dl>
 
 </dd></dl>
 
@@ -2249,6 +2325,25 @@ before calculating the line anchor placement.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><a class="reference internal" href="#qgis.core.QgsLabelLineSettings.AnchorClipping" title="qgis.core.QgsLabelLineSettings.AnchorClipping">QgsLabelLineSettings.AnchorClipping</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsLabelLineSettings.anchorTextPoint">
+<span class="sig-name descname"><span class="pre">anchorTextPoint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#qgis.core.QgsLabelLineSettings.AnchorTextPoint" title="qgis.core.QgsLabelLineSettings.AnchorTextPoint"><span class="pre">QgsLabelLineSettings.AnchorTextPoint</span></a></span></span><a class="headerlink" href="#qgis.core.QgsLabelLineSettings.anchorTextPoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the line anchor text point, which dictates which part of the label text
+should be placed at the <a class="reference internal" href="#qgis.core.QgsLabelLineSettings.lineAnchorPercent" title="qgis.core.QgsLabelLineSettings.lineAnchorPercent"><code class="xref py py-func docutils literal notranslate"><span class="pre">lineAnchorPercent()</span></code></a>.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsLabelLineSettings.setAnchorTextPoint" title="qgis.core.QgsLabelLineSettings.setAnchorTextPoint"><code class="xref py py-func docutils literal notranslate"><span class="pre">setAnchorTextPoint()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.26.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#qgis.core.QgsLabelLineSettings.AnchorTextPoint" title="qgis.core.QgsLabelLineSettings.AnchorTextPoint">QgsLabelLineSettings.AnchorTextPoint</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -2331,6 +2426,10 @@ the end of the line.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsLabelLineSettings.setLineAnchorPercent" title="qgis.core.QgsLabelLineSettings.setLineAnchorPercent"><code class="xref py py-func docutils literal notranslate"><span class="pre">setLineAnchorPercent()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsLabelLineSettings.anchorTextPoint" title="qgis.core.QgsLabelLineSettings.anchorTextPoint"><code class="xref py py-func docutils literal notranslate"><span class="pre">anchorTextPoint()</span></code></a></p>
 </div>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -2547,6 +2646,25 @@ before calculating the line anchor placement.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsLabelLineSettings.setAnchorTextPoint">
+<span class="sig-name descname"><span class="pre">setAnchorTextPoint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">point</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#qgis.core.QgsLabelLineSettings.AnchorTextPoint" title="qgis.core.QgsLabelLineSettings.AnchorTextPoint"><span class="pre">QgsLabelLineSettings.AnchorTextPoint</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsLabelLineSettings.setAnchorTextPoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the line anchor text <code class="docutils literal notranslate"><span class="pre">point</span></code>, which dictates which part of the label text
+should be placed at the <a class="reference internal" href="#qgis.core.QgsLabelLineSettings.lineAnchorPercent" title="qgis.core.QgsLabelLineSettings.lineAnchorPercent"><code class="xref py py-func docutils literal notranslate"><span class="pre">lineAnchorPercent()</span></code></a>.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsLabelLineSettings.anchorTextPoint" title="qgis.core.QgsLabelLineSettings.anchorTextPoint"><code class="xref py py-func docutils literal notranslate"><span class="pre">anchorTextPoint()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.26.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>point</strong> (<a class="reference internal" href="#qgis.core.QgsLabelLineSettings.AnchorTextPoint" title="qgis.core.QgsLabelLineSettings.AnchorTextPoint"><em>QgsLabelLineSettings.AnchorTextPoint</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsLabelLineSettings.setAnchorType">
 <span class="sig-name descname"><span class="pre">setAnchorType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#qgis.core.QgsLabelLineSettings.AnchorType" title="qgis.core.QgsLabelLineSettings.AnchorType"><span class="pre">QgsLabelLineSettings.AnchorType</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsLabelLineSettings.setAnchorType" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets the line anchor <code class="docutils literal notranslate"><span class="pre">type</span></code>, which dictates how the <a class="reference internal" href="#qgis.core.QgsLabelLineSettings.lineAnchorPercent" title="qgis.core.QgsLabelLineSettings.lineAnchorPercent"><code class="xref py py-func docutils literal notranslate"><span class="pre">lineAnchorPercent()</span></code></a> setting is
@@ -2624,6 +2742,10 @@ the end of the line.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsLabelLineSettings.lineAnchorPercent" title="qgis.core.QgsLabelLineSettings.lineAnchorPercent"><code class="xref py py-func docutils literal notranslate"><span class="pre">lineAnchorPercent()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsLabelLineSettings.setAnchorTextPoint" title="qgis.core.QgsLabelLineSettings.setAnchorTextPoint"><code class="xref py py-func docutils literal notranslate"><span class="pre">setAnchorTextPoint()</span></code></a></p>
 </div>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -2779,6 +2901,11 @@ above or below the lines.</p>
 </dl>
 </dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.QgsLabelLineSettings.staticMetaObject">
+<span class="sig-name descname"><span class="pre">staticMetaObject</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;PyQt5.QtCore.QMetaObject</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#qgis.core.QgsLabelLineSettings.staticMetaObject" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsLabelLineSettings.updateDataDefinedProperties">
 <span class="sig-name descname"><span class="pre">updateDataDefinedProperties</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">properties</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsPropertyCollection.html#qgis.core.QgsPropertyCollection" title="qgis.core.QgsPropertyCollection"><span class="pre">QgsPropertyCollection</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsExpressionContext.html#qgis.core.QgsExpressionContext" title="qgis.core.QgsExpressionContext"><span class="pre">QgsExpressionContext</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsLabelLineSettings.updateDataDefinedProperties" title="Permalink to this definition">¶</a></dt>
@@ -2807,7 +2934,7 @@ set within the specified <code class="docutils literal notranslate"><span class=
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:31 Mar 16, 2022.
+      <span class="lastupdated">Last updated on 02:21 Mar 16, 2022.
       </span></p>
   </div>
 

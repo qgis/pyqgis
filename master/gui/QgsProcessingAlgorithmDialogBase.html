@@ -20,7 +20,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Class: QgsProcessingContextGenerator" href="QgsProcessingContextGenerator.html" />
+    <link rel="next" title="Class: QgsProcessingBatchAlgorithmDialogBase" href="QgsProcessingBatchAlgorithmDialogBase.html" />
     <link rel="prev" title="Class: QgsProcessingAlgorithmConfigurationWidgetFactory" href="QgsProcessingAlgorithmConfigurationWidgetFactory.html" /> 
 </head>
 
@@ -724,6 +724,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsProcessing.html">Class: QgsProcessing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsProcessingAlgRunnerTask.html">Class: QgsProcessingAlgRunnerTask</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsProcessingAlgorithm.html">Class: QgsProcessingAlgorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../core/QgsProcessingBatchFeedback.html">Class: QgsProcessingBatchFeedback</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsProcessingContext.html">Class: QgsProcessingContext</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsProcessingDestinationParameter.html">Class: QgsProcessingDestinationParameter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsProcessingException.html">Class: QgsProcessingException</a></li>
@@ -1643,6 +1644,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingAlgorithmConfigurationWidget.html">Class: QgsProcessingAlgorithmConfigurationWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingAlgorithmConfigurationWidgetFactory.html">Class: QgsProcessingAlgorithmConfigurationWidgetFactory</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Class: QgsProcessingAlgorithmDialogBase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsProcessingBatchAlgorithmDialogBase.html">Class: QgsProcessingBatchAlgorithmDialogBase</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingContextGenerator.html">Class: QgsProcessingContextGenerator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingGui.html">Class: QgsProcessingGui</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingGuiRegistry.html">Class: QgsProcessingGuiRegistry</a></li>
@@ -1779,6 +1781,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsTabWidget.html">Class: QgsTabWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsTableEditorDialog.html">Class: QgsTableEditorDialog</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsTableEditorWidget.html">Class: QgsTableEditorWidget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsTableView.html">Class: QgsTableView</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsTableWidgetBase.html">Class: QgsTableWidgetBase</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsTableWidgetItem.html">Class: QgsTableWidgetItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsTaskManagerWidget.html">Class: QgsTaskManagerWidget</a></li>
@@ -2024,123 +2027,129 @@ Constructor for QgsProcessingAlgorithmDialogBase.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.actionEvent" title="qgis.gui.QgsProcessingAlgorithmDialogBase.actionEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">actionEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.algorithm" title="qgis.gui.QgsProcessingAlgorithmDialogBase.algorithm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">algorithm</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.algExecuted" title="qgis.gui.QgsProcessingAlgorithmDialogBase.algExecuted"><code class="xref py py-obj docutils literal notranslate"><span class="pre">algExecuted</span></code></a></p></td>
+<td><p>Called when an algorithm task has completed.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.algorithm" title="qgis.gui.QgsProcessingAlgorithmDialogBase.algorithm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">algorithm</span></code></a></p></td>
 <td><p>Returns the algorithm running in the dialog.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.blockAdditionalControlsWhileRunning" title="qgis.gui.QgsProcessingAlgorithmDialogBase.blockAdditionalControlsWhileRunning"><code class="xref py py-obj docutils literal notranslate"><span class="pre">blockAdditionalControlsWhileRunning</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.blockAdditionalControlsWhileRunning" title="qgis.gui.QgsProcessingAlgorithmDialogBase.blockAdditionalControlsWhileRunning"><code class="xref py py-obj docutils literal notranslate"><span class="pre">blockAdditionalControlsWhileRunning</span></code></a></p></td>
 <td><p>For subclasses to register their own GUI controls to be blocked while the algorithm is running.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.blockControlsWhileRunning" title="qgis.gui.QgsProcessingAlgorithmDialogBase.blockControlsWhileRunning"><code class="xref py py-obj docutils literal notranslate"><span class="pre">blockControlsWhileRunning</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.blockControlsWhileRunning" title="qgis.gui.QgsProcessingAlgorithmDialogBase.blockControlsWhileRunning"><code class="xref py py-obj docutils literal notranslate"><span class="pre">blockControlsWhileRunning</span></code></a></p></td>
 <td><p>Blocks run and changeParameters buttons and parameters tab while the algorithm is running.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.buttonBox" title="qgis.gui.QgsProcessingAlgorithmDialogBase.buttonBox"><code class="xref py py-obj docutils literal notranslate"><span class="pre">buttonBox</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.buttonBox" title="qgis.gui.QgsProcessingAlgorithmDialogBase.buttonBox"><code class="xref py py-obj docutils literal notranslate"><span class="pre">buttonBox</span></code></a></p></td>
 <td><p>Returns the dialog's button box.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.cancelButton" title="qgis.gui.QgsProcessingAlgorithmDialogBase.cancelButton"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cancelButton</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.cancelButton" title="qgis.gui.QgsProcessingAlgorithmDialogBase.cancelButton"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cancelButton</span></code></a></p></td>
 <td><p>Returns the dialog's cancel button.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.changeEvent" title="qgis.gui.QgsProcessingAlgorithmDialogBase.changeEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">changeEvent</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.changeEvent" title="qgis.gui.QgsProcessingAlgorithmDialogBase.changeEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">changeEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.changeParametersButton" title="qgis.gui.QgsProcessingAlgorithmDialogBase.changeParametersButton"><code class="xref py py-obj docutils literal notranslate"><span class="pre">changeParametersButton</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.changeParametersButton" title="qgis.gui.QgsProcessingAlgorithmDialogBase.changeParametersButton"><code class="xref py py-obj docutils literal notranslate"><span class="pre">changeParametersButton</span></code></a></p></td>
 <td><p>Returns the dialog's change parameters button.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.childEvent" title="qgis.gui.QgsProcessingAlgorithmDialogBase.childEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">childEvent</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.childEvent" title="qgis.gui.QgsProcessingAlgorithmDialogBase.childEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">childEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.clearLog" title="qgis.gui.QgsProcessingAlgorithmDialogBase.clearLog"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clearLog</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.clearLog" title="qgis.gui.QgsProcessingAlgorithmDialogBase.clearLog"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clearLog</span></code></a></p></td>
 <td><p>Clears the current log contents.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.clearProgress" title="qgis.gui.QgsProcessingAlgorithmDialogBase.clearProgress"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clearProgress</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.clearProgress" title="qgis.gui.QgsProcessingAlgorithmDialogBase.clearProgress"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clearProgress</span></code></a></p></td>
 <td><p>Clears any current progress from the dialog.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.closeEvent" title="qgis.gui.QgsProcessingAlgorithmDialogBase.closeEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">closeEvent</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.closeEvent" title="qgis.gui.QgsProcessingAlgorithmDialogBase.closeEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">closeEvent</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param e</dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.connectNotify" title="qgis.gui.QgsProcessingAlgorithmDialogBase.connectNotify"><code class="xref py py-obj docutils literal notranslate"><span class="pre">connectNotify</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.connectNotify" title="qgis.gui.QgsProcessingAlgorithmDialogBase.connectNotify"><code class="xref py py-obj docutils literal notranslate"><span class="pre">connectNotify</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.contextMenuEvent" title="qgis.gui.QgsProcessingAlgorithmDialogBase.contextMenuEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">contextMenuEvent</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.contextMenuEvent" title="qgis.gui.QgsProcessingAlgorithmDialogBase.contextMenuEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">contextMenuEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.copyLogToClipboard" title="qgis.gui.QgsProcessingAlgorithmDialogBase.copyLogToClipboard"><code class="xref py py-obj docutils literal notranslate"><span class="pre">copyLogToClipboard</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.copyLogToClipboard" title="qgis.gui.QgsProcessingAlgorithmDialogBase.copyLogToClipboard"><code class="xref py py-obj docutils literal notranslate"><span class="pre">copyLogToClipboard</span></code></a></p></td>
 <td><p>Copies the current log contents to the clipboard.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.create" title="qgis.gui.QgsProcessingAlgorithmDialogBase.create"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.create" title="qgis.gui.QgsProcessingAlgorithmDialogBase.create"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.createFeedback" title="qgis.gui.QgsProcessingAlgorithmDialogBase.createFeedback"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createFeedback</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.createFeedback" title="qgis.gui.QgsProcessingAlgorithmDialogBase.createFeedback"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createFeedback</span></code></a></p></td>
 <td><p>Creates a new processing feedback object, automatically connected to the appropriate slots in this dialog.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.createProgressDialog" title="qgis.gui.QgsProcessingAlgorithmDialogBase.createProgressDialog"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createProgressDialog</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.createProgressDialog" title="qgis.gui.QgsProcessingAlgorithmDialogBase.createProgressDialog"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createProgressDialog</span></code></a></p></td>
 <td><p>Creates a modal progress dialog showing progress and log messages from this dialog.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.customEvent" title="qgis.gui.QgsProcessingAlgorithmDialogBase.customEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">customEvent</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.customEvent" title="qgis.gui.QgsProcessingAlgorithmDialogBase.customEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">customEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.destroy" title="qgis.gui.QgsProcessingAlgorithmDialogBase.destroy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">destroy</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.destroy" title="qgis.gui.QgsProcessingAlgorithmDialogBase.destroy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">destroy</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.disconnectNotify" title="qgis.gui.QgsProcessingAlgorithmDialogBase.disconnectNotify"><code class="xref py py-obj docutils literal notranslate"><span class="pre">disconnectNotify</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.disconnectNotify" title="qgis.gui.QgsProcessingAlgorithmDialogBase.disconnectNotify"><code class="xref py py-obj docutils literal notranslate"><span class="pre">disconnectNotify</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.dragEnterEvent" title="qgis.gui.QgsProcessingAlgorithmDialogBase.dragEnterEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dragEnterEvent</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.dragEnterEvent" title="qgis.gui.QgsProcessingAlgorithmDialogBase.dragEnterEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dragEnterEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.dragLeaveEvent" title="qgis.gui.QgsProcessingAlgorithmDialogBase.dragLeaveEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dragLeaveEvent</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.dragLeaveEvent" title="qgis.gui.QgsProcessingAlgorithmDialogBase.dragLeaveEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dragLeaveEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.dragMoveEvent" title="qgis.gui.QgsProcessingAlgorithmDialogBase.dragMoveEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dragMoveEvent</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.dragMoveEvent" title="qgis.gui.QgsProcessingAlgorithmDialogBase.dragMoveEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dragMoveEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.dropEvent" title="qgis.gui.QgsProcessingAlgorithmDialogBase.dropEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dropEvent</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.dropEvent" title="qgis.gui.QgsProcessingAlgorithmDialogBase.dropEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dropEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.enterEvent" title="qgis.gui.QgsProcessingAlgorithmDialogBase.enterEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">enterEvent</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.enterEvent" title="qgis.gui.QgsProcessingAlgorithmDialogBase.enterEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">enterEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.event" title="qgis.gui.QgsProcessingAlgorithmDialogBase.event"><code class="xref py py-obj docutils literal notranslate"><span class="pre">event</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.event" title="qgis.gui.QgsProcessingAlgorithmDialogBase.event"><code class="xref py py-obj docutils literal notranslate"><span class="pre">event</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.eventFilter" title="qgis.gui.QgsProcessingAlgorithmDialogBase.eventFilter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">eventFilter</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.eventFilter" title="qgis.gui.QgsProcessingAlgorithmDialogBase.eventFilter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">eventFilter</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.finished" title="qgis.gui.QgsProcessingAlgorithmDialogBase.finished"><code class="xref py py-obj docutils literal notranslate"><span class="pre">finished</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.finished" title="qgis.gui.QgsProcessingAlgorithmDialogBase.finished"><code class="xref py py-obj docutils literal notranslate"><span class="pre">finished</span></code></a></p></td>
 <td><p>Called when the algorithm has finished executing.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.focusInEvent" title="qgis.gui.QgsProcessingAlgorithmDialogBase.focusInEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">focusInEvent</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.focusInEvent" title="qgis.gui.QgsProcessingAlgorithmDialogBase.focusInEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">focusInEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.focusNextChild" title="qgis.gui.QgsProcessingAlgorithmDialogBase.focusNextChild"><code class="xref py py-obj docutils literal notranslate"><span class="pre">focusNextChild</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.focusNextChild" title="qgis.gui.QgsProcessingAlgorithmDialogBase.focusNextChild"><code class="xref py py-obj docutils literal notranslate"><span class="pre">focusNextChild</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.focusNextPrevChild" title="qgis.gui.QgsProcessingAlgorithmDialogBase.focusNextPrevChild"><code class="xref py py-obj docutils literal notranslate"><span class="pre">focusNextPrevChild</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.focusNextPrevChild" title="qgis.gui.QgsProcessingAlgorithmDialogBase.focusNextPrevChild"><code class="xref py py-obj docutils literal notranslate"><span class="pre">focusNextPrevChild</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.focusOutEvent" title="qgis.gui.QgsProcessingAlgorithmDialogBase.focusOutEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">focusOutEvent</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.focusOutEvent" title="qgis.gui.QgsProcessingAlgorithmDialogBase.focusOutEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">focusOutEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.focusPreviousChild" title="qgis.gui.QgsProcessingAlgorithmDialogBase.focusPreviousChild"><code class="xref py py-obj docutils literal notranslate"><span class="pre">focusPreviousChild</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.focusPreviousChild" title="qgis.gui.QgsProcessingAlgorithmDialogBase.focusPreviousChild"><code class="xref py py-obj docutils literal notranslate"><span class="pre">focusPreviousChild</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.formatStringForLog" title="qgis.gui.QgsProcessingAlgorithmDialogBase.formatStringForLog"><code class="xref py py-obj docutils literal notranslate"><span class="pre">formatStringForLog</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.formatStringForLog" title="qgis.gui.QgsProcessingAlgorithmDialogBase.formatStringForLog"><code class="xref py py-obj docutils literal notranslate"><span class="pre">formatStringForLog</span></code></a></p></td>
 <td><p>Formats an input <code class="docutils literal notranslate"><span class="pre">string</span></code> for display in the log tab.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.hideEvent" title="qgis.gui.QgsProcessingAlgorithmDialogBase.hideEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hideEvent</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.hideEvent" title="qgis.gui.QgsProcessingAlgorithmDialogBase.hideEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hideEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.hideShortHelp" title="qgis.gui.QgsProcessingAlgorithmDialogBase.hideShortHelp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hideShortHelp</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.hideShortHelp" title="qgis.gui.QgsProcessingAlgorithmDialogBase.hideShortHelp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hideShortHelp</span></code></a></p></td>
 <td><p>Hides the short help panel.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.initPainter" title="qgis.gui.QgsProcessingAlgorithmDialogBase.initPainter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">initPainter</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.initPainter" title="qgis.gui.QgsProcessingAlgorithmDialogBase.initPainter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">initPainter</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.inputMethodEvent" title="qgis.gui.QgsProcessingAlgorithmDialogBase.inputMethodEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">inputMethodEvent</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.inputMethodEvent" title="qgis.gui.QgsProcessingAlgorithmDialogBase.inputMethodEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">inputMethodEvent</span></code></a></p></td>
 <td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.isFinalized" title="qgis.gui.QgsProcessingAlgorithmDialogBase.isFinalized"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isFinalized</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the dialog is all finalized and can be safely deleted.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.isSignalConnected" title="qgis.gui.QgsProcessingAlgorithmDialogBase.isSignalConnected"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isSignalConnected</span></code></a></p></td>
 <td><p></p></td>
@@ -2381,6 +2390,23 @@ Constructor for QgsProcessingAlgorithmDialogBase.</p>
 <dt class="sig sig-object py" id="qgis.gui.QgsProcessingAlgorithmDialogBase.actionEvent">
 <span class="sig-name descname"><span class="pre">actionEvent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">QActionEvent</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.actionEvent" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.gui.QgsProcessingAlgorithmDialogBase.algExecuted">
+<span class="sig-name descname"><span class="pre">algExecuted</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">successful</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">results</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.algExecuted" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when an algorithm task has completed.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.26.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>successful</strong> (<em>bool</em>) – </p></li>
+<li><p><strong>results</strong> (<em>Dict</em><em>[</em><em>str</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.gui.QgsProcessingAlgorithmDialogBase.algorithm">
@@ -2672,6 +2698,20 @@ from this dialog.</p>
 <dt class="sig sig-object py" id="qgis.gui.QgsProcessingAlgorithmDialogBase.inputMethodEvent">
 <span class="sig-name descname"><span class="pre">inputMethodEvent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">QInputMethodEvent</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.inputMethodEvent" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.gui.QgsProcessingAlgorithmDialogBase.isFinalized">
+<span class="sig-name descname"><span class="pre">isFinalized</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#qgis.gui.QgsProcessingAlgorithmDialogBase.isFinalized" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the dialog is all finalized and can be safely deleted.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.26.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.gui.QgsProcessingAlgorithmDialogBase.isSignalConnected">
@@ -3209,7 +3249,7 @@ by the dialog. Ownership of <code class="docutils literal notranslate"><span cla
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:31 Mar 16, 2022.
+      <span class="lastupdated">Last updated on 02:21 Mar 16, 2022.
       </span></p>
   </div>
 
