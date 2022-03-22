@@ -2030,7 +2030,7 @@
 <td><p>Shall be reimplemented by subclasses to create a deep copy of the instance.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.color" title="qgis.core.QgsSymbolLayer.color"><code class="xref py py-obj docutils literal notranslate"><span class="pre">color</span></code></a></p></td>
-<td><p>The fill color.</p></td>
+<td><p>Returns the &quot;representative&quot; color of the symbol layer.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.copyDataDefinedProperties" title="qgis.core.QgsSymbolLayer.copyDataDefinedProperties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">copyDataDefinedProperties</span></code></a></p></td>
 <td><p>Copies all data defined properties of this layer to another symbol layer.</p></td>
@@ -2079,7 +2079,7 @@
 <td><p>Returns the estimated maximum distance which the layer style will bleed outside the drawn shape when drawn in the specified /a context.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.fillColor" title="qgis.core.QgsSymbolLayer.fillColor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fillColor</span></code></a></p></td>
-<td><p>Gets fill color.</p></td>
+<td><p>Returns the fill color for the symbol layer.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.flags" title="qgis.core.QgsSymbolLayer.flags"><code class="xref py py-obj docutils literal notranslate"><span class="pre">flags</span></code></a></p></td>
 <td><p>Returns flags which control the symbol layer's behavior.</p></td>
@@ -2136,7 +2136,7 @@
 <td><p>Restores older data defined properties from string map.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.setColor" title="qgis.core.QgsSymbolLayer.setColor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setColor</span></code></a></p></td>
-<td><p>The fill color.</p></td>
+<td><p>Sets the &quot;representative&quot; color for the symbol layer.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.setDataDefinedProperties" title="qgis.core.QgsSymbolLayer.setDataDefinedProperties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setDataDefinedProperties</span></code></a></p></td>
 <td><p>Sets the symbol layer's property collection, used for data defined overrides.</p></td>
@@ -2148,7 +2148,7 @@
 <td><p>Sets whether symbol layer is enabled and should be drawn.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.setFillColor" title="qgis.core.QgsSymbolLayer.setFillColor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setFillColor</span></code></a></p></td>
-<td><p>Set fill color.</p></td>
+<td><p>Sets the fill <code class="docutils literal notranslate"><span class="pre">color</span></code> for the symbol layer.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.setLocked" title="qgis.core.QgsSymbolLayer.setLocked"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setLocked</span></code></a></p></td>
 <td><p>Sets whether the layer's colors are locked.</p></td>
@@ -2170,7 +2170,7 @@
 <td><p>Specifies the rendering pass in which this symbol layer should be rendered.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.setStrokeColor" title="qgis.core.QgsSymbolLayer.setStrokeColor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setStrokeColor</span></code></a></p></td>
-<td><p>Set stroke color.</p></td>
+<td><p>Sets the stroke <code class="docutils literal notranslate"><span class="pre">color</span></code> for the symbol layer.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.setSubSymbol" title="qgis.core.QgsSymbolLayer.setSubSymbol"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setSubSymbol</span></code></a></p></td>
 <td><p>Sets layer's subsymbol.</p></td>
@@ -2188,7 +2188,7 @@
 <td><p>Called after a set of rendering operations has finished on the supplied render <code class="docutils literal notranslate"><span class="pre">context</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.strokeColor" title="qgis.core.QgsSymbolLayer.strokeColor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">strokeColor</span></code></a></p></td>
-<td><p>Gets stroke color.</p></td>
+<td><p>Returns the stroke color for the symbol layer.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.subSymbol" title="qgis.core.QgsSymbolLayer.subSymbol"><code class="xref py py-obj docutils literal notranslate"><span class="pre">subSymbol</span></code></a></p></td>
 <td><p>Returns the symbol's sub symbol, if present.</p></td>
@@ -2832,7 +2832,24 @@ when the feature is rendered as a series of adjacent map tiles each containing a
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsSymbolLayer.color">
 <span class="sig-name descname"><span class="pre">color</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">QColor</span></span></span><a class="headerlink" href="#qgis.core.QgsSymbolLayer.color" title="Permalink to this definition">¶</a></dt>
-<dd><p>The fill color.</p>
+<dd><p>Returns the “representative” color of the symbol layer.</p>
+<p>Depending on the symbol layer type, this will have different meaning. For instance, a line
+symbol layer will generally return the stroke color of the layer, while a fill symbol layer
+will return the “fill” color instead of stroke.</p>
+<p>Some symbol layer types will return an invalid QColor if they have no representative
+color associated (e.g. raster image based symbol layers).</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.setColor" title="qgis.core.QgsSymbolLayer.setColor"><code class="xref py py-func docutils literal notranslate"><span class="pre">setColor()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.strokeColor" title="qgis.core.QgsSymbolLayer.strokeColor"><code class="xref py py-func docutils literal notranslate"><span class="pre">strokeColor()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.fillColor" title="qgis.core.QgsSymbolLayer.fillColor"><code class="xref py py-func docutils literal notranslate"><span class="pre">fillColor()</span></code></a></p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>QColor</p>
@@ -3048,7 +3065,21 @@ be affected by data defined symbology rules.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsSymbolLayer.fillColor">
 <span class="sig-name descname"><span class="pre">fillColor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">QColor</span></span></span><a class="headerlink" href="#qgis.core.QgsSymbolLayer.fillColor" title="Permalink to this definition">¶</a></dt>
-<dd><p>Gets fill color. Supported by marker and fill layers.</p>
+<dd><p>Returns the fill color for the symbol layer.</p>
+<p>This property is not supported by all symbol layer types, only those with a fill component. Symbol
+layers without a fill component will return an invalid QColor.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.setFillColor" title="qgis.core.QgsSymbolLayer.setFillColor"><code class="xref py py-func docutils literal notranslate"><span class="pre">setFillColor()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.color" title="qgis.core.QgsSymbolLayer.color"><code class="xref py py-func docutils literal notranslate"><span class="pre">color()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.strokeColor" title="qgis.core.QgsSymbolLayer.strokeColor"><code class="xref py py-func docutils literal notranslate"><span class="pre">strokeColor()</span></code></a></p>
+</div>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 2.1.</span></p>
 </div>
@@ -3284,7 +3315,22 @@ Defaults to 0</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsSymbolLayer.setColor">
 <span class="sig-name descname"><span class="pre">setColor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">QColor</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Qt.GlobalColor</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">QGradient</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsSymbolLayer.setColor" title="Permalink to this definition">¶</a></dt>
-<dd><p>The fill color.</p>
+<dd><p>Sets the “representative” color for the symbol layer.</p>
+<p>Depending on the symbol layer type, this will have different meaning. For instance, a line
+symbol layer will generally set the stroke color of the layer, while a fill symbol layer
+will set the “fill” color instead of stroke.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.color" title="qgis.core.QgsSymbolLayer.color"><code class="xref py py-func docutils literal notranslate"><span class="pre">color()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.setStrokeColor" title="qgis.core.QgsSymbolLayer.setStrokeColor"><code class="xref py py-func docutils literal notranslate"><span class="pre">setStrokeColor()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.setFillColor" title="qgis.core.QgsSymbolLayer.setFillColor"><code class="xref py py-func docutils literal notranslate"><span class="pre">setFillColor()</span></code></a></p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>color</strong> (<em>Union</em><em>[</em><em>QColor</em>) – </p>
@@ -3359,7 +3405,20 @@ when desired.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsSymbolLayer.setFillColor">
 <span class="sig-name descname"><span class="pre">setFillColor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">QColor</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Qt.GlobalColor</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">QGradient</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsSymbolLayer.setFillColor" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set fill color. Supported by marker and fill layers.</p>
+<dd><p>Sets the fill <code class="docutils literal notranslate"><span class="pre">color</span></code> for the symbol layer.</p>
+<p>This property is not supported by all symbol layer types, only those with a fill component.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.fillColor" title="qgis.core.QgsSymbolLayer.fillColor"><code class="xref py py-func docutils literal notranslate"><span class="pre">fillColor()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.setColor" title="qgis.core.QgsSymbolLayer.setColor"><code class="xref py py-func docutils literal notranslate"><span class="pre">setColor()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.setStrokeColor" title="qgis.core.QgsSymbolLayer.setStrokeColor"><code class="xref py py-func docutils literal notranslate"><span class="pre">setStrokeColor()</span></code></a></p>
+</div>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 2.1.</span></p>
 </div>
@@ -3449,7 +3508,20 @@ Defaults to 0</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsSymbolLayer.setStrokeColor">
 <span class="sig-name descname"><span class="pre">setStrokeColor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">QColor</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Qt.GlobalColor</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">QGradient</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsSymbolLayer.setStrokeColor" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set stroke color. Supported by marker and fill layers.</p>
+<dd><p>Sets the stroke <code class="docutils literal notranslate"><span class="pre">color</span></code> for the symbol layer.</p>
+<p>This property is not supported by all symbol layer types, only those with a stroke component.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.strokeColor" title="qgis.core.QgsSymbolLayer.strokeColor"><code class="xref py py-func docutils literal notranslate"><span class="pre">strokeColor()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.setColor" title="qgis.core.QgsSymbolLayer.setColor"><code class="xref py py-func docutils literal notranslate"><span class="pre">setColor()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.setFillColor" title="qgis.core.QgsSymbolLayer.setFillColor"><code class="xref py py-func docutils literal notranslate"><span class="pre">setFillColor()</span></code></a></p>
+</div>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 2.1.</span></p>
 </div>
@@ -3592,7 +3664,21 @@ are commenced.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsSymbolLayer.strokeColor">
 <span class="sig-name descname"><span class="pre">strokeColor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">QColor</span></span></span><a class="headerlink" href="#qgis.core.QgsSymbolLayer.strokeColor" title="Permalink to this definition">¶</a></dt>
-<dd><p>Gets stroke color. Supported by marker and fill layers.</p>
+<dd><p>Returns the stroke color for the symbol layer.</p>
+<p>This property is not supported by all symbol layer types, only those with a stroke component. Symbol
+layers without a stroke component will return an invalid QColor.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.setStrokeColor" title="qgis.core.QgsSymbolLayer.setStrokeColor"><code class="xref py py-func docutils literal notranslate"><span class="pre">setStrokeColor()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.color" title="qgis.core.QgsSymbolLayer.color"><code class="xref py py-func docutils literal notranslate"><span class="pre">color()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.fillColor" title="qgis.core.QgsSymbolLayer.fillColor"><code class="xref py py-func docutils literal notranslate"><span class="pre">fillColor()</span></code></a></p>
+</div>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 2.1.</span></p>
 </div>
@@ -3701,7 +3787,7 @@ required by any data defined properties associated with the layer.</p>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:31 Mar 22, 2022.
+      <span class="lastupdated">Last updated on 02:54 Mar 22, 2022.
       </span></p>
   </div>
 
