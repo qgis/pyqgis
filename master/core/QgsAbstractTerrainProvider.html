@@ -107,6 +107,9 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsAbstractLayoutUndoCommand.html">Class: QgsAbstractLayoutUndoCommand</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAbstractMetadataBase.html">Class: QgsAbstractMetadataBase</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAbstractMetadataBaseValidator.html">Class: QgsAbstractMetadataBaseValidator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsAbstractProfileGenerator.html">Class: QgsAbstractProfileGenerator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsAbstractProfileResults.html">Class: QgsAbstractProfileResults</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsAbstractProfileSource.html">Class: QgsAbstractProfileSource</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAbstractPropertyCollection.html">Class: QgsAbstractPropertyCollection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAbstractProviderConnection.html">Class: QgsAbstractProviderConnection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAbstractReportSection.html">Class: QgsAbstractReportSection</a></li>
@@ -817,6 +820,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingProvider.html">Class: QgsProcessingProvider</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingRegistry.html">Class: QgsProcessingRegistry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingUtils.html">Class: QgsProcessingUtils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsProfileRequest.html">Class: QgsProfileRequest</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProjOperation.html">Class: QgsProjOperation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProjUtils.html">Class: QgsProjUtils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProject.html">Class: QgsProject</a></li>
@@ -2031,11 +2035,17 @@ Constructor for QgsAbstractTerrainProvider.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractTerrainProvider.crs" title="qgis.core.QgsAbstractTerrainProvider.crs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">crs</span></code></a></p></td>
 <td><p>Returns the native coordinate reference system of the terrain provider.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractTerrainProvider.heightAt" title="qgis.core.QgsAbstractTerrainProvider.heightAt"><code class="xref py py-obj docutils literal notranslate"><span class="pre">heightAt</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractTerrainProvider.equals" title="qgis.core.QgsAbstractTerrainProvider.equals"><code class="xref py py-obj docutils literal notranslate"><span class="pre">equals</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the provider is equal to <code class="docutils literal notranslate"><span class="pre">other</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractTerrainProvider.heightAt" title="qgis.core.QgsAbstractTerrainProvider.heightAt"><code class="xref py py-obj docutils literal notranslate"><span class="pre">heightAt</span></code></a></p></td>
 <td><p>Returns the height at the point (x,y) in the terrain provider's native <a class="reference internal" href="#qgis.core.QgsAbstractTerrainProvider.crs" title="qgis.core.QgsAbstractTerrainProvider.crs"><code class="xref py py-func docutils literal notranslate"><span class="pre">crs()</span></code></a>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractTerrainProvider.offset" title="qgis.core.QgsAbstractTerrainProvider.offset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">offset</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractTerrainProvider.offset" title="qgis.core.QgsAbstractTerrainProvider.offset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">offset</span></code></a></p></td>
 <td><p>Returns the vertical offset value, used for adjusting the heights from the terrain provider.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractTerrainProvider.prepare" title="qgis.core.QgsAbstractTerrainProvider.prepare"><code class="xref py py-obj docutils literal notranslate"><span class="pre">prepare</span></code></a></p></td>
+<td><p>Called on the main thread prior to accessing the provider from a background thread.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractTerrainProvider.readCommonProperties" title="qgis.core.QgsAbstractTerrainProvider.readCommonProperties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readCommonProperties</span></code></a></p></td>
 <td><p>Reads common properties from a DOM <code class="docutils literal notranslate"><span class="pre">element</span></code>.</p></td>
@@ -2107,6 +2117,20 @@ Constructor for QgsAbstractTerrainProvider.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsAbstractTerrainProvider.equals">
+<span class="sig-name descname"><span class="pre">equals</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">other</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#qgis.core.QgsAbstractTerrainProvider" title="qgis.core.QgsAbstractTerrainProvider"><span class="pre">QgsAbstractTerrainProvider</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#qgis.core.QgsAbstractTerrainProvider.equals" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the provider is equal to <code class="docutils literal notranslate"><span class="pre">other</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>other</strong> (<a class="reference internal" href="#qgis.core.QgsAbstractTerrainProvider" title="qgis.core.QgsAbstractTerrainProvider"><em>QgsAbstractTerrainProvider</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsAbstractTerrainProvider.heightAt">
 <span class="sig-name descname"><span class="pre">heightAt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#qgis.core.QgsAbstractTerrainProvider.heightAt" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the height at the point (x,y) in the terrain provider’s native <a class="reference internal" href="#qgis.core.QgsAbstractTerrainProvider.crs" title="qgis.core.QgsAbstractTerrainProvider.crs"><code class="xref py py-func docutils literal notranslate"><span class="pre">crs()</span></code></a>.</p>
@@ -2141,6 +2165,14 @@ Constructor for QgsAbstractTerrainProvider.</p>
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsAbstractTerrainProvider.prepare">
+<span class="sig-name descname"><span class="pre">prepare</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsAbstractTerrainProvider.prepare" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called on the main thread prior to accessing the provider from a background thread.</p>
+<p>Subclasses must implement suitable logic in order to prepare for thread-safe calculation of
+terrain heights on background threads.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -2305,7 +2337,7 @@ Constructor for QgsAbstractTerrainProvider.</p>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:29 Mar 26, 2022.
+      <span class="lastupdated">Last updated on 02:14 Mar 26, 2022.
       </span></p>
   </div>
 

@@ -107,6 +107,9 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsAbstractLayoutUndoCommand.html">Class: QgsAbstractLayoutUndoCommand</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAbstractMetadataBase.html">Class: QgsAbstractMetadataBase</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAbstractMetadataBaseValidator.html">Class: QgsAbstractMetadataBaseValidator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsAbstractProfileGenerator.html">Class: QgsAbstractProfileGenerator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsAbstractProfileResults.html">Class: QgsAbstractProfileResults</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsAbstractProfileSource.html">Class: QgsAbstractProfileSource</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAbstractPropertyCollection.html">Class: QgsAbstractPropertyCollection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAbstractProviderConnection.html">Class: QgsAbstractProviderConnection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAbstractReportSection.html">Class: QgsAbstractReportSection</a></li>
@@ -817,6 +820,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingProvider.html">Class: QgsProcessingProvider</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingRegistry.html">Class: QgsProcessingRegistry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingUtils.html">Class: QgsProcessingUtils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsProfileRequest.html">Class: QgsProfileRequest</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProjOperation.html">Class: QgsProjOperation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProjUtils.html">Class: QgsProjUtils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProject.html">Class: QgsProject</a></li>
@@ -2002,7 +2006,7 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="qgis.core.QgsVectorLayer">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qgis.core.</span></span><span class="sig-name descname"><span class="pre">QgsVectorLayer</span></span><a class="headerlink" href="#qgis.core.QgsVectorLayer" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="QgsMapLayer.html#module-QgsMapLayer" title="QgsMapLayer"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMapLayer</span></code></a>, <a class="reference internal" href="QgsExpressionContextGenerator.html#module-QgsExpressionContextGenerator" title="QgsExpressionContextGenerator"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsExpressionContextGenerator</span></code></a>, <a class="reference internal" href="QgsExpressionContextScopeGenerator.html#module-QgsExpressionContextScopeGenerator" title="QgsExpressionContextScopeGenerator"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsExpressionContextScopeGenerator</span></code></a>, <a class="reference internal" href="QgsFeatureSink.html#module-QgsFeatureSink" title="QgsFeatureSink"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsFeatureSink</span></code></a>, <a class="reference internal" href="QgsFeatureSource.html#module-QgsFeatureSource" title="QgsFeatureSource"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsFeatureSource</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="QgsMapLayer.html#module-QgsMapLayer" title="QgsMapLayer"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMapLayer</span></code></a>, <a class="reference internal" href="QgsExpressionContextGenerator.html#module-QgsExpressionContextGenerator" title="QgsExpressionContextGenerator"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsExpressionContextGenerator</span></code></a>, <a class="reference internal" href="QgsExpressionContextScopeGenerator.html#module-QgsExpressionContextScopeGenerator" title="QgsExpressionContextScopeGenerator"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsExpressionContextScopeGenerator</span></code></a>, <a class="reference internal" href="QgsFeatureSink.html#module-QgsFeatureSink" title="QgsFeatureSink"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsFeatureSink</span></code></a>, <a class="reference internal" href="QgsFeatureSource.html#module-QgsFeatureSource" title="QgsFeatureSource"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsFeatureSource</span></code></a>, <a class="reference internal" href="QgsAbstractProfileSource.html#module-QgsAbstractProfileSource" title="QgsAbstractProfileSource"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsAbstractProfileSource</span></code></a></p>
 <p>Represents a vector layer which manages a vector based data sets.</p>
 <p>The <a class="reference internal" href="#module-QgsVectorLayer" title="QgsVectorLayer"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsVectorLayer</span></code></a> is instantiated by specifying the name of a data provider,
 such as postgres or wfs, and url defining the specific data set to connect to.
@@ -2440,13 +2444,20 @@ parameters used by the data provider as url query items.</p></li>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.createMapRenderer" title="qgis.core.QgsVectorLayer.createMapRenderer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createMapRenderer</span></code></a></p></td>
 <td><p>Returns new instance of <a class="reference internal" href="QgsMapLayerRenderer.html#module-QgsMapLayerRenderer" title="QgsMapLayerRenderer"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMapLayerRenderer</span></code></a> that will be used for rendering of given context</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.customEvent" title="qgis.core.QgsVectorLayer.customEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">customEvent</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.createProfileGenerator" title="qgis.core.QgsVectorLayer.createProfileGenerator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createProfileGenerator</span></code></a></p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">param request</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.customEvent" title="qgis.core.QgsVectorLayer.customEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">customEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.dataComment" title="qgis.core.QgsVectorLayer.dataComment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dataComment</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.dataComment" title="qgis.core.QgsVectorLayer.dataComment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dataComment</span></code></a></p></td>
 <td><p>Returns a description for this layer as defined in the data provider.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.dataProvider" title="qgis.core.QgsVectorLayer.dataProvider"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dataProvider</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.dataProvider" title="qgis.core.QgsVectorLayer.dataProvider"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dataProvider</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">rtype</dt>
 <dd class="field-odd"><p>QgsVectorDataProvider</p>
@@ -2454,50 +2465,50 @@ parameters used by the data provider as url query items.</p></li>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.decodedSource" title="qgis.core.QgsVectorLayer.decodedSource"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decodedSource</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.decodedSource" title="qgis.core.QgsVectorLayer.decodedSource"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decodedSource</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param source</dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.defaultValue" title="qgis.core.QgsVectorLayer.defaultValue"><code class="xref py py-obj docutils literal notranslate"><span class="pre">defaultValue</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.defaultValue" title="qgis.core.QgsVectorLayer.defaultValue"><code class="xref py py-obj docutils literal notranslate"><span class="pre">defaultValue</span></code></a></p></td>
 <td><p>Returns the calculated default value for the specified field index.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.defaultValueDefinition" title="qgis.core.QgsVectorLayer.defaultValueDefinition"><code class="xref py py-obj docutils literal notranslate"><span class="pre">defaultValueDefinition</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.defaultValueDefinition" title="qgis.core.QgsVectorLayer.defaultValueDefinition"><code class="xref py py-obj docutils literal notranslate"><span class="pre">defaultValueDefinition</span></code></a></p></td>
 <td><p>Returns the definition of the expression used when calculating the default value for a field.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.deleteAttribute" title="qgis.core.QgsVectorLayer.deleteAttribute"><code class="xref py py-obj docutils literal notranslate"><span class="pre">deleteAttribute</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.deleteAttribute" title="qgis.core.QgsVectorLayer.deleteAttribute"><code class="xref py py-obj docutils literal notranslate"><span class="pre">deleteAttribute</span></code></a></p></td>
 <td><p>Deletes an attribute field (but does not commit it).</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.deleteAttributes" title="qgis.core.QgsVectorLayer.deleteAttributes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">deleteAttributes</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.deleteAttributes" title="qgis.core.QgsVectorLayer.deleteAttributes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">deleteAttributes</span></code></a></p></td>
 <td><p>Deletes a list of attribute fields (but does not commit it)</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.deleteFeature" title="qgis.core.QgsVectorLayer.deleteFeature"><code class="xref py py-obj docutils literal notranslate"><span class="pre">deleteFeature</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.deleteFeature" title="qgis.core.QgsVectorLayer.deleteFeature"><code class="xref py py-obj docutils literal notranslate"><span class="pre">deleteFeature</span></code></a></p></td>
 <td><p>Deletes a feature from the layer (but does not commit it).</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.deleteFeatures" title="qgis.core.QgsVectorLayer.deleteFeatures"><code class="xref py py-obj docutils literal notranslate"><span class="pre">deleteFeatures</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.deleteFeatures" title="qgis.core.QgsVectorLayer.deleteFeatures"><code class="xref py py-obj docutils literal notranslate"><span class="pre">deleteFeatures</span></code></a></p></td>
 <td><p>Deletes a set of features from the layer (but does not commit it)</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.deleteSelectedFeatures" title="qgis.core.QgsVectorLayer.deleteSelectedFeatures"><code class="xref py py-obj docutils literal notranslate"><span class="pre">deleteSelectedFeatures</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.deleteSelectedFeatures" title="qgis.core.QgsVectorLayer.deleteSelectedFeatures"><code class="xref py py-obj docutils literal notranslate"><span class="pre">deleteSelectedFeatures</span></code></a></p></td>
 <td><p>Deletes the selected features</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.deleteStyleFromDatabase" title="qgis.core.QgsVectorLayer.deleteStyleFromDatabase"><code class="xref py py-obj docutils literal notranslate"><span class="pre">deleteStyleFromDatabase</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.deleteStyleFromDatabase" title="qgis.core.QgsVectorLayer.deleteStyleFromDatabase"><code class="xref py py-obj docutils literal notranslate"><span class="pre">deleteStyleFromDatabase</span></code></a></p></td>
 <td><p>Deletes a style from the database</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.deleteVertex" title="qgis.core.QgsVectorLayer.deleteVertex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">deleteVertex</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.deleteVertex" title="qgis.core.QgsVectorLayer.deleteVertex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">deleteVertex</span></code></a></p></td>
 <td><p>Deletes a vertex from a feature.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.dependencies" title="qgis.core.QgsVectorLayer.dependencies"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dependencies</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.dependencies" title="qgis.core.QgsVectorLayer.dependencies"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dependencies</span></code></a></p></td>
 <td><p>Gets the list of dependencies.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.deselect" title="qgis.core.QgsVectorLayer.deselect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">deselect</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.deselect" title="qgis.core.QgsVectorLayer.deselect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">deselect</span></code></a></p></td>
 <td><p>Deselects feature by its ID</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.destroyEditCommand" title="qgis.core.QgsVectorLayer.destroyEditCommand"><code class="xref py py-obj docutils literal notranslate"><span class="pre">destroyEditCommand</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.destroyEditCommand" title="qgis.core.QgsVectorLayer.destroyEditCommand"><code class="xref py py-obj docutils literal notranslate"><span class="pre">destroyEditCommand</span></code></a></p></td>
 <td><p>Destroy active command and reverts all changes in it</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.diagramLayerSettings" title="qgis.core.QgsVectorLayer.diagramLayerSettings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">diagramLayerSettings</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.diagramLayerSettings" title="qgis.core.QgsVectorLayer.diagramLayerSettings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">diagramLayerSettings</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">rtype</dt>
 <dd class="field-odd"><p>QgsDiagramLayerSettings</p>
@@ -2505,7 +2516,7 @@ parameters used by the data provider as url query items.</p></li>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.diagramRenderer" title="qgis.core.QgsVectorLayer.diagramRenderer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">diagramRenderer</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.diagramRenderer" title="qgis.core.QgsVectorLayer.diagramRenderer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">diagramRenderer</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">rtype</dt>
 <dd class="field-odd"><p>QgsDiagramRenderer</p>
@@ -2513,31 +2524,31 @@ parameters used by the data provider as url query items.</p></li>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.diagramsEnabled" title="qgis.core.QgsVectorLayer.diagramsEnabled"><code class="xref py py-obj docutils literal notranslate"><span class="pre">diagramsEnabled</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.diagramsEnabled" title="qgis.core.QgsVectorLayer.diagramsEnabled"><code class="xref py py-obj docutils literal notranslate"><span class="pre">diagramsEnabled</span></code></a></p></td>
 <td><p>Returns whether the layer contains diagrams which are enabled and should be drawn.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.disconnectNotify" title="qgis.core.QgsVectorLayer.disconnectNotify"><code class="xref py py-obj docutils literal notranslate"><span class="pre">disconnectNotify</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.disconnectNotify" title="qgis.core.QgsVectorLayer.disconnectNotify"><code class="xref py py-obj docutils literal notranslate"><span class="pre">disconnectNotify</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.displayExpression" title="qgis.core.QgsVectorLayer.displayExpression"><code class="xref py py-obj docutils literal notranslate"><span class="pre">displayExpression</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.displayExpression" title="qgis.core.QgsVectorLayer.displayExpression"><code class="xref py py-obj docutils literal notranslate"><span class="pre">displayExpression</span></code></a></p></td>
 <td><p>Returns the preview expression, used to create a human readable preview string.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.displayField" title="qgis.core.QgsVectorLayer.displayField"><code class="xref py py-obj docutils literal notranslate"><span class="pre">displayField</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.displayField" title="qgis.core.QgsVectorLayer.displayField"><code class="xref py py-obj docutils literal notranslate"><span class="pre">displayField</span></code></a></p></td>
 <td><p>This is a shorthand for accessing the displayExpression if it is a simple field.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.drawVertexMarker" title="qgis.core.QgsVectorLayer.drawVertexMarker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">drawVertexMarker</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.drawVertexMarker" title="qgis.core.QgsVectorLayer.drawVertexMarker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">drawVertexMarker</span></code></a></p></td>
 <td><p>Draws a vertex symbol at (screen) coordinates x, y.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.editBuffer" title="qgis.core.QgsVectorLayer.editBuffer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">editBuffer</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.editBuffer" title="qgis.core.QgsVectorLayer.editBuffer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">editBuffer</span></code></a></p></td>
 <td><p>Buffer with uncommitted editing operations.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.editFormConfig" title="qgis.core.QgsVectorLayer.editFormConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">editFormConfig</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.editFormConfig" title="qgis.core.QgsVectorLayer.editFormConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">editFormConfig</span></code></a></p></td>
 <td><p>Returns the configuration of the form used to represent this vector layer.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.editorWidgetSetup" title="qgis.core.QgsVectorLayer.editorWidgetSetup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">editorWidgetSetup</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.editorWidgetSetup" title="qgis.core.QgsVectorLayer.editorWidgetSetup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">editorWidgetSetup</span></code></a></p></td>
 <td><p>The editor widget setup defines which <a class="reference internal" href="QgsFieldFormatter.html#module-QgsFieldFormatter" title="QgsFieldFormatter"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsFieldFormatter</span></code></a> and editor widget will be used for the field at <cite>index</cite>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.elevationProperties" title="qgis.core.QgsVectorLayer.elevationProperties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">elevationProperties</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.elevationProperties" title="qgis.core.QgsVectorLayer.elevationProperties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">elevationProperties</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">rtype</dt>
 <dd class="field-odd"><p>QgsMapLayerElevationProperties</p>
@@ -2545,26 +2556,26 @@ parameters used by the data provider as url query items.</p></li>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.encodedSource" title="qgis.core.QgsVectorLayer.encodedSource"><code class="xref py py-obj docutils literal notranslate"><span class="pre">encodedSource</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.encodedSource" title="qgis.core.QgsVectorLayer.encodedSource"><code class="xref py py-obj docutils literal notranslate"><span class="pre">encodedSource</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param source</dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.endEditCommand" title="qgis.core.QgsVectorLayer.endEditCommand"><code class="xref py py-obj docutils literal notranslate"><span class="pre">endEditCommand</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.endEditCommand" title="qgis.core.QgsVectorLayer.endEditCommand"><code class="xref py py-obj docutils literal notranslate"><span class="pre">endEditCommand</span></code></a></p></td>
 <td><p>Finish edit command and add it to undo/redo stack</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.excludeAttributesWfs" title="qgis.core.QgsVectorLayer.excludeAttributesWfs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">excludeAttributesWfs</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.excludeAttributesWfs" title="qgis.core.QgsVectorLayer.excludeAttributesWfs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">excludeAttributesWfs</span></code></a></p></td>
 <td><p>A set of attributes that are not advertised in WFS requests with QGIS server.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.excludeAttributesWms" title="qgis.core.QgsVectorLayer.excludeAttributesWms"><code class="xref py py-obj docutils literal notranslate"><span class="pre">excludeAttributesWms</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.excludeAttributesWms" title="qgis.core.QgsVectorLayer.excludeAttributesWms"><code class="xref py py-obj docutils literal notranslate"><span class="pre">excludeAttributesWms</span></code></a></p></td>
 <td><p>A set of attributes that are not advertised in WMS requests with QGIS server.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.expressionField" title="qgis.core.QgsVectorLayer.expressionField"><code class="xref py py-obj docutils literal notranslate"><span class="pre">expressionField</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.expressionField" title="qgis.core.QgsVectorLayer.expressionField"><code class="xref py py-obj docutils literal notranslate"><span class="pre">expressionField</span></code></a></p></td>
 <td><p>Returns the expression used for a given expression field</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.extent" title="qgis.core.QgsVectorLayer.extent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">extent</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.extent" title="qgis.core.QgsVectorLayer.extent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">extent</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">rtype</dt>
 <dd class="field-odd"><p>QgsRectangle</p>
@@ -2572,52 +2583,52 @@ parameters used by the data provider as url query items.</p></li>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.featureBlendMode" title="qgis.core.QgsVectorLayer.featureBlendMode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">featureBlendMode</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.featureBlendMode" title="qgis.core.QgsVectorLayer.featureBlendMode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">featureBlendMode</span></code></a></p></td>
 <td><p>Returns the current blending mode for features</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.featureCount" title="qgis.core.QgsVectorLayer.featureCount"><code class="xref py py-obj docutils literal notranslate"><span class="pre">featureCount</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.featureCount" title="qgis.core.QgsVectorLayer.featureCount"><code class="xref py py-obj docutils literal notranslate"><span class="pre">featureCount</span></code></a></p></td>
 <td><p>Number of features rendered with specified legend key.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.featureRendererGenerators" title="qgis.core.QgsVectorLayer.featureRendererGenerators"><code class="xref py py-obj docutils literal notranslate"><span class="pre">featureRendererGenerators</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.featureRendererGenerators" title="qgis.core.QgsVectorLayer.featureRendererGenerators"><code class="xref py py-obj docutils literal notranslate"><span class="pre">featureRendererGenerators</span></code></a></p></td>
 <td><p>Returns a list of the feature renderer generators owned by the layer.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.fieldConstraints" title="qgis.core.QgsVectorLayer.fieldConstraints"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fieldConstraints</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.fieldConstraints" title="qgis.core.QgsVectorLayer.fieldConstraints"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fieldConstraints</span></code></a></p></td>
 <td><p>Returns any constraints which are present for a specified field index.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.fieldConstraintsAndStrength" title="qgis.core.QgsVectorLayer.fieldConstraintsAndStrength"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fieldConstraintsAndStrength</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.fieldConstraintsAndStrength" title="qgis.core.QgsVectorLayer.fieldConstraintsAndStrength"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fieldConstraintsAndStrength</span></code></a></p></td>
 <td><p>Returns a map of constraint with their strength for a specific field of the layer.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.fields" title="qgis.core.QgsVectorLayer.fields"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fields</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.fields" title="qgis.core.QgsVectorLayer.fields"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fields</span></code></a></p></td>
 <td><p>Returns the list of fields of this layer.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.geometryOptions" title="qgis.core.QgsVectorLayer.geometryOptions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geometryOptions</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.geometryOptions" title="qgis.core.QgsVectorLayer.geometryOptions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geometryOptions</span></code></a></p></td>
 <td><p>Configuration and logic to apply automatically on any edit happening on this layer.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.geometryType" title="qgis.core.QgsVectorLayer.geometryType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geometryType</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.geometryType" title="qgis.core.QgsVectorLayer.geometryType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geometryType</span></code></a></p></td>
 <td><p>Returns point, line or polygon</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.getFeature" title="qgis.core.QgsVectorLayer.getFeature"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getFeature</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.getFeature" title="qgis.core.QgsVectorLayer.getFeature"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getFeature</span></code></a></p></td>
 <td><p>Queries the layer for the feature with the given id.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.getFeatures" title="qgis.core.QgsVectorLayer.getFeatures"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getFeatures</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.getFeatures" title="qgis.core.QgsVectorLayer.getFeatures"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getFeatures</span></code></a></p></td>
 <td><p>Queries the layer for features specified in request.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.getGeometry" title="qgis.core.QgsVectorLayer.getGeometry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getGeometry</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.getGeometry" title="qgis.core.QgsVectorLayer.getGeometry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getGeometry</span></code></a></p></td>
 <td><p>Queries the layer for the geometry at the given id.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.getSelectedFeatures" title="qgis.core.QgsVectorLayer.getSelectedFeatures"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getSelectedFeatures</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.getSelectedFeatures" title="qgis.core.QgsVectorLayer.getSelectedFeatures"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getSelectedFeatures</span></code></a></p></td>
 <td><p>Returns an iterator of the selected features.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.getStyleFromDatabase" title="qgis.core.QgsVectorLayer.getStyleFromDatabase"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getStyleFromDatabase</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.getStyleFromDatabase" title="qgis.core.QgsVectorLayer.getStyleFromDatabase"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getStyleFromDatabase</span></code></a></p></td>
 <td><p>Returns the named style corresponding to style id provided</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.hasDependencyCycle" title="qgis.core.QgsVectorLayer.hasDependencyCycle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hasDependencyCycle</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.hasDependencyCycle" title="qgis.core.QgsVectorLayer.hasDependencyCycle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hasDependencyCycle</span></code></a></p></td>
 <td><p>Checks whether a new set of dependencies will introduce a cycle this method is now deprecated and always return <code class="docutils literal notranslate"><span class="pre">False</span></code>, because circular dependencies are now correctly managed.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.hasFeatures" title="qgis.core.QgsVectorLayer.hasFeatures"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hasFeatures</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.hasFeatures" title="qgis.core.QgsVectorLayer.hasFeatures"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hasFeatures</span></code></a></p></td>
 <td><p>Determines if this vector layer has features.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.hasSpatialIndex" title="qgis.core.QgsVectorLayer.hasSpatialIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hasSpatialIndex</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.hasSpatialIndex" title="qgis.core.QgsVectorLayer.hasSpatialIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hasSpatialIndex</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">rtype</dt>
 <dd class="field-odd"><p>QgsFeatureSource.SpatialIndexPresence</p>
@@ -2625,7 +2636,7 @@ parameters used by the data provider as url query items.</p></li>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.htmlMetadata" title="qgis.core.QgsVectorLayer.htmlMetadata"><code class="xref py py-obj docutils literal notranslate"><span class="pre">htmlMetadata</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.htmlMetadata" title="qgis.core.QgsVectorLayer.htmlMetadata"><code class="xref py py-obj docutils literal notranslate"><span class="pre">htmlMetadata</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">rtype</dt>
 <dd class="field-odd"><p>str</p>
@@ -2633,55 +2644,55 @@ parameters used by the data provider as url query items.</p></li>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.insertVertex" title="qgis.core.QgsVectorLayer.insertVertex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">insertVertex</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.insertVertex" title="qgis.core.QgsVectorLayer.insertVertex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">insertVertex</span></code></a></p></td>
 <td><p>Inserts a new vertex before the given vertex number, in the given ring, item (first number is index 0), and feature.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.invalidateWgs84Extent" title="qgis.core.QgsVectorLayer.invalidateWgs84Extent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">invalidateWgs84Extent</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.invalidateWgs84Extent" title="qgis.core.QgsVectorLayer.invalidateWgs84Extent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">invalidateWgs84Extent</span></code></a></p></td>
 <td><p>Invalidates the WGS84 extent.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.invertSelection" title="qgis.core.QgsVectorLayer.invertSelection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">invertSelection</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.invertSelection" title="qgis.core.QgsVectorLayer.invertSelection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">invertSelection</span></code></a></p></td>
 <td><p>Selects not selected features and deselects selected ones</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.invertSelectionInRectangle" title="qgis.core.QgsVectorLayer.invertSelectionInRectangle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">invertSelectionInRectangle</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.invertSelectionInRectangle" title="qgis.core.QgsVectorLayer.invertSelectionInRectangle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">invertSelectionInRectangle</span></code></a></p></td>
 <td><p>Inverts selection of features found within the search rectangle (in layer's coordinates)</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.isAuxiliaryField" title="qgis.core.QgsVectorLayer.isAuxiliaryField"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isAuxiliaryField</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.isAuxiliaryField" title="qgis.core.QgsVectorLayer.isAuxiliaryField"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isAuxiliaryField</span></code></a></p></td>
 <td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the field comes from the auxiliary layer, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.isEditCommandActive" title="qgis.core.QgsVectorLayer.isEditCommandActive"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isEditCommandActive</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.isEditCommandActive" title="qgis.core.QgsVectorLayer.isEditCommandActive"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isEditCommandActive</span></code></a></p></td>
 <td><p>Tests if an edit command is active</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.isEditable" title="qgis.core.QgsVectorLayer.isEditable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isEditable</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.isEditable" title="qgis.core.QgsVectorLayer.isEditable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isEditable</span></code></a></p></td>
 <td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the provider is in editing mode</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.isModified" title="qgis.core.QgsVectorLayer.isModified"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isModified</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.isModified" title="qgis.core.QgsVectorLayer.isModified"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isModified</span></code></a></p></td>
 <td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the provider has been modified since the last commit</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.isSignalConnected" title="qgis.core.QgsVectorLayer.isSignalConnected"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isSignalConnected</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.isSignalConnected" title="qgis.core.QgsVectorLayer.isSignalConnected"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isSignalConnected</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.isSpatial" title="qgis.core.QgsVectorLayer.isSpatial"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isSpatial</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.isSpatial" title="qgis.core.QgsVectorLayer.isSpatial"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isSpatial</span></code></a></p></td>
 <td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if this is a geometry layer and <code class="docutils literal notranslate"><span class="pre">False</span></code> in case of NoGeometry (table only) or UnknownGeometry</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.isSqlQuery" title="qgis.core.QgsVectorLayer.isSqlQuery"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isSqlQuery</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.isSqlQuery" title="qgis.core.QgsVectorLayer.isSqlQuery"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isSqlQuery</span></code></a></p></td>
 <td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the layer is a query (SQL) layer.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.joinBuffer" title="qgis.core.QgsVectorLayer.joinBuffer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">joinBuffer</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.joinBuffer" title="qgis.core.QgsVectorLayer.joinBuffer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">joinBuffer</span></code></a></p></td>
 <td><p>Returns the join buffer object.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.labeling" title="qgis.core.QgsVectorLayer.labeling"><code class="xref py py-obj docutils literal notranslate"><span class="pre">labeling</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.labeling" title="qgis.core.QgsVectorLayer.labeling"><code class="xref py py-obj docutils literal notranslate"><span class="pre">labeling</span></code></a></p></td>
 <td><p>Access to labeling configuration.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.labelsEnabled" title="qgis.core.QgsVectorLayer.labelsEnabled"><code class="xref py py-obj docutils literal notranslate"><span class="pre">labelsEnabled</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.labelsEnabled" title="qgis.core.QgsVectorLayer.labelsEnabled"><code class="xref py py-obj docutils literal notranslate"><span class="pre">labelsEnabled</span></code></a></p></td>
 <td><p>Returns whether the layer contains labels which are enabled and should be drawn.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.listStylesInDatabase" title="qgis.core.QgsVectorLayer.listStylesInDatabase"><code class="xref py py-obj docutils literal notranslate"><span class="pre">listStylesInDatabase</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.listStylesInDatabase" title="qgis.core.QgsVectorLayer.listStylesInDatabase"><code class="xref py py-obj docutils literal notranslate"><span class="pre">listStylesInDatabase</span></code></a></p></td>
 <td><p>Lists all the style in db split into related to the layer and not related to</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.loadAuxiliaryLayer" title="qgis.core.QgsVectorLayer.loadAuxiliaryLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">loadAuxiliaryLayer</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.loadAuxiliaryLayer" title="qgis.core.QgsVectorLayer.loadAuxiliaryLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">loadAuxiliaryLayer</span></code></a></p></td>
 <td><p>Loads the auxiliary layer for this vector layer.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.loadDefaultStyle" title="qgis.core.QgsVectorLayer.loadDefaultStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">loadDefaultStyle</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.loadDefaultStyle" title="qgis.core.QgsVectorLayer.loadDefaultStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">loadDefaultStyle</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">rtype</dt>
 <dd class="field-odd"><p>Tuple[str, bool]</p>
@@ -2689,245 +2700,245 @@ parameters used by the data provider as url query items.</p></li>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.loadNamedStyle" title="qgis.core.QgsVectorLayer.loadNamedStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">loadNamedStyle</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.loadNamedStyle" title="qgis.core.QgsVectorLayer.loadNamedStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">loadNamedStyle</span></code></a></p></td>
 <td><p>Loads a named style from file/local db/datasource db</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.mapTipTemplate" title="qgis.core.QgsVectorLayer.mapTipTemplate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mapTipTemplate</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.mapTipTemplate" title="qgis.core.QgsVectorLayer.mapTipTemplate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mapTipTemplate</span></code></a></p></td>
 <td><p>The mapTip is a pretty, html representation for feature information.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.maximumValue" title="qgis.core.QgsVectorLayer.maximumValue"><code class="xref py py-obj docutils literal notranslate"><span class="pre">maximumValue</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.maximumValue" title="qgis.core.QgsVectorLayer.maximumValue"><code class="xref py py-obj docutils literal notranslate"><span class="pre">maximumValue</span></code></a></p></td>
 <td><p>Returns the maximum value for an attribute column or an invalid variant in case of error.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.minimumAndMaximumValue" title="qgis.core.QgsVectorLayer.minimumAndMaximumValue"><code class="xref py py-obj docutils literal notranslate"><span class="pre">minimumAndMaximumValue</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.minimumAndMaximumValue" title="qgis.core.QgsVectorLayer.minimumAndMaximumValue"><code class="xref py py-obj docutils literal notranslate"><span class="pre">minimumAndMaximumValue</span></code></a></p></td>
 <td><p>Calculates both the minimum and maximum value for an attribute column.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.minimumValue" title="qgis.core.QgsVectorLayer.minimumValue"><code class="xref py py-obj docutils literal notranslate"><span class="pre">minimumValue</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.minimumValue" title="qgis.core.QgsVectorLayer.minimumValue"><code class="xref py py-obj docutils literal notranslate"><span class="pre">minimumValue</span></code></a></p></td>
 <td><p>Returns the minimum value for an attribute column or an invalid variant in case of error.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.modifySelection" title="qgis.core.QgsVectorLayer.modifySelection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">modifySelection</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.modifySelection" title="qgis.core.QgsVectorLayer.modifySelection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">modifySelection</span></code></a></p></td>
 <td><p>Modifies the current selection on this layer</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.moveVertex" title="qgis.core.QgsVectorLayer.moveVertex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">moveVertex</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.moveVertex" title="qgis.core.QgsVectorLayer.moveVertex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">moveVertex</span></code></a></p></td>
 <td><p>Moves the vertex at the given position number, ring and item (first number is index 0), and feature to the given coordinates.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.moveVertexV2" title="qgis.core.QgsVectorLayer.moveVertexV2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">moveVertexV2</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.moveVertexV2" title="qgis.core.QgsVectorLayer.moveVertexV2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">moveVertexV2</span></code></a></p></td>
 <td><p>Moves the vertex at the given position number, ring and item (first number is index 0), and feature to the given coordinates.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.primaryKeyAttributes" title="qgis.core.QgsVectorLayer.primaryKeyAttributes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">primaryKeyAttributes</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.primaryKeyAttributes" title="qgis.core.QgsVectorLayer.primaryKeyAttributes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">primaryKeyAttributes</span></code></a></p></td>
 <td><p>Returns the list of attributes which make up the layer's primary keys.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.readCommonStyle" title="qgis.core.QgsVectorLayer.readCommonStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readCommonStyle</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.readCommonStyle" title="qgis.core.QgsVectorLayer.readCommonStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readCommonStyle</span></code></a></p></td>
 <td><p>Read style data common to all layer types</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.readCustomProperties" title="qgis.core.QgsVectorLayer.readCustomProperties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readCustomProperties</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.readCustomProperties" title="qgis.core.QgsVectorLayer.readCustomProperties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readCustomProperties</span></code></a></p></td>
 <td><p>Read custom properties from project file.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.readExtentFromXml" title="qgis.core.QgsVectorLayer.readExtentFromXml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readExtentFromXml</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.readExtentFromXml" title="qgis.core.QgsVectorLayer.readExtentFromXml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readExtentFromXml</span></code></a></p></td>
 <td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the extent is read from the XML document when data source has no metadata, <code class="docutils literal notranslate"><span class="pre">False</span></code> if it's the data provider which determines it.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.readSld" title="qgis.core.QgsVectorLayer.readSld"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readSld</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.readSld" title="qgis.core.QgsVectorLayer.readSld"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readSld</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param node</dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.readStyle" title="qgis.core.QgsVectorLayer.readStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readStyle</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.readStyle" title="qgis.core.QgsVectorLayer.readStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readStyle</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param node</dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.readStyleManager" title="qgis.core.QgsVectorLayer.readStyleManager"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readStyleManager</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.readStyleManager" title="qgis.core.QgsVectorLayer.readStyleManager"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readStyleManager</span></code></a></p></td>
 <td><p>Read style manager's configuration (if any).</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.readSymbology" title="qgis.core.QgsVectorLayer.readSymbology"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readSymbology</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.readSymbology" title="qgis.core.QgsVectorLayer.readSymbology"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readSymbology</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param layerNode</dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.readXml" title="qgis.core.QgsVectorLayer.readXml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readXml</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.readXml" title="qgis.core.QgsVectorLayer.readXml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readXml</span></code></a></p></td>
 <td><p>Reads vector layer specific state from project file Dom node.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.receivers" title="qgis.core.QgsVectorLayer.receivers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">receivers</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.receivers" title="qgis.core.QgsVectorLayer.receivers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">receivers</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.referencingRelations" title="qgis.core.QgsVectorLayer.referencingRelations"><code class="xref py py-obj docutils literal notranslate"><span class="pre">referencingRelations</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.referencingRelations" title="qgis.core.QgsVectorLayer.referencingRelations"><code class="xref py py-obj docutils literal notranslate"><span class="pre">referencingRelations</span></code></a></p></td>
 <td><p>Returns the layer's relations, where the foreign key is on this layer.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.reload" title="qgis.core.QgsVectorLayer.reload"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reload</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.reload" title="qgis.core.QgsVectorLayer.reload"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reload</span></code></a></p></td>
 <td><p>Synchronises with changes in the datasource</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.removeExpressionField" title="qgis.core.QgsVectorLayer.removeExpressionField"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeExpressionField</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.removeExpressionField" title="qgis.core.QgsVectorLayer.removeExpressionField"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeExpressionField</span></code></a></p></td>
 <td><p>Removes an expression field</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.removeFeatureRendererGenerator" title="qgis.core.QgsVectorLayer.removeFeatureRendererGenerator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeFeatureRendererGenerator</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.removeFeatureRendererGenerator" title="qgis.core.QgsVectorLayer.removeFeatureRendererGenerator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeFeatureRendererGenerator</span></code></a></p></td>
 <td><p>Removes the feature renderer with matching <code class="docutils literal notranslate"><span class="pre">id</span></code> from the layer.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.removeFieldAlias" title="qgis.core.QgsVectorLayer.removeFieldAlias"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeFieldAlias</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.removeFieldAlias" title="qgis.core.QgsVectorLayer.removeFieldAlias"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeFieldAlias</span></code></a></p></td>
 <td><p>Removes an alias (a display name) for attributes to display in dialogs</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.removeFieldConstraint" title="qgis.core.QgsVectorLayer.removeFieldConstraint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeFieldConstraint</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.removeFieldConstraint" title="qgis.core.QgsVectorLayer.removeFieldConstraint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeFieldConstraint</span></code></a></p></td>
 <td><p>Removes a constraint for a specified field index.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.removeJoin" title="qgis.core.QgsVectorLayer.removeJoin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeJoin</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.removeJoin" title="qgis.core.QgsVectorLayer.removeJoin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeJoin</span></code></a></p></td>
 <td><p>Removes a vector layer join</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.removeSelection" title="qgis.core.QgsVectorLayer.removeSelection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeSelection</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.removeSelection" title="qgis.core.QgsVectorLayer.removeSelection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeSelection</span></code></a></p></td>
 <td><p>Clear selection</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.renameAttribute" title="qgis.core.QgsVectorLayer.renameAttribute"><code class="xref py py-obj docutils literal notranslate"><span class="pre">renameAttribute</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.renameAttribute" title="qgis.core.QgsVectorLayer.renameAttribute"><code class="xref py py-obj docutils literal notranslate"><span class="pre">renameAttribute</span></code></a></p></td>
 <td><p>Renames an attribute field  (but does not commit it).</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.renderer" title="qgis.core.QgsVectorLayer.renderer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">renderer</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.renderer" title="qgis.core.QgsVectorLayer.renderer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">renderer</span></code></a></p></td>
 <td><p>Returns the feature renderer used for rendering the features in the layer in 2D map views.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.reselect" title="qgis.core.QgsVectorLayer.reselect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reselect</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.reselect" title="qgis.core.QgsVectorLayer.reselect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reselect</span></code></a></p></td>
 <td><p>Reselects the previous set of selected features.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.resolveReferences" title="qgis.core.QgsVectorLayer.resolveReferences"><code class="xref py py-obj docutils literal notranslate"><span class="pre">resolveReferences</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.resolveReferences" title="qgis.core.QgsVectorLayer.resolveReferences"><code class="xref py py-obj docutils literal notranslate"><span class="pre">resolveReferences</span></code></a></p></td>
 <td><p>Resolves references to other layers (kept as layer IDs after reading XML) into layer objects.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.rollBack" title="qgis.core.QgsVectorLayer.rollBack"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rollBack</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.rollBack" title="qgis.core.QgsVectorLayer.rollBack"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rollBack</span></code></a></p></td>
 <td><p>Stops a current editing operation and discards any uncommitted edits.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.saveStyleToDatabase" title="qgis.core.QgsVectorLayer.saveStyleToDatabase"><code class="xref py py-obj docutils literal notranslate"><span class="pre">saveStyleToDatabase</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.saveStyleToDatabase" title="qgis.core.QgsVectorLayer.saveStyleToDatabase"><code class="xref py py-obj docutils literal notranslate"><span class="pre">saveStyleToDatabase</span></code></a></p></td>
 <td><p>Saves named and sld style of the layer to the style table in the db.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.select" title="qgis.core.QgsVectorLayer.select"><code class="xref py py-obj docutils literal notranslate"><span class="pre">select</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.select" title="qgis.core.QgsVectorLayer.select"><code class="xref py py-obj docutils literal notranslate"><span class="pre">select</span></code></a></p></td>
 <td><p>Selects feature by its ID</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.selectAll" title="qgis.core.QgsVectorLayer.selectAll"><code class="xref py py-obj docutils literal notranslate"><span class="pre">selectAll</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.selectAll" title="qgis.core.QgsVectorLayer.selectAll"><code class="xref py py-obj docutils literal notranslate"><span class="pre">selectAll</span></code></a></p></td>
 <td><p>Select all the features</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.selectByExpression" title="qgis.core.QgsVectorLayer.selectByExpression"><code class="xref py py-obj docutils literal notranslate"><span class="pre">selectByExpression</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.selectByExpression" title="qgis.core.QgsVectorLayer.selectByExpression"><code class="xref py py-obj docutils literal notranslate"><span class="pre">selectByExpression</span></code></a></p></td>
 <td><p>Selects matching features using an expression.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.selectByIds" title="qgis.core.QgsVectorLayer.selectByIds"><code class="xref py py-obj docutils literal notranslate"><span class="pre">selectByIds</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.selectByIds" title="qgis.core.QgsVectorLayer.selectByIds"><code class="xref py py-obj docutils literal notranslate"><span class="pre">selectByIds</span></code></a></p></td>
 <td><p>Selects matching features using a list of feature IDs.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.selectByRect" title="qgis.core.QgsVectorLayer.selectByRect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">selectByRect</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.selectByRect" title="qgis.core.QgsVectorLayer.selectByRect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">selectByRect</span></code></a></p></td>
 <td><p>Selects features found within the search rectangle (in layer's coordinates)</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.selectedFeatureCount" title="qgis.core.QgsVectorLayer.selectedFeatureCount"><code class="xref py py-obj docutils literal notranslate"><span class="pre">selectedFeatureCount</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.selectedFeatureCount" title="qgis.core.QgsVectorLayer.selectedFeatureCount"><code class="xref py py-obj docutils literal notranslate"><span class="pre">selectedFeatureCount</span></code></a></p></td>
 <td><p>Returns the number of features that are selected in this layer.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.selectedFeatureIds" title="qgis.core.QgsVectorLayer.selectedFeatureIds"><code class="xref py py-obj docutils literal notranslate"><span class="pre">selectedFeatureIds</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.selectedFeatureIds" title="qgis.core.QgsVectorLayer.selectedFeatureIds"><code class="xref py py-obj docutils literal notranslate"><span class="pre">selectedFeatureIds</span></code></a></p></td>
 <td><p>Returns a list of the selected features IDs in this layer.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.selectedFeatures" title="qgis.core.QgsVectorLayer.selectedFeatures"><code class="xref py py-obj docutils literal notranslate"><span class="pre">selectedFeatures</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.selectedFeatures" title="qgis.core.QgsVectorLayer.selectedFeatures"><code class="xref py py-obj docutils literal notranslate"><span class="pre">selectedFeatures</span></code></a></p></td>
 <td><p>Returns a copy of the user-selected features.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.sender" title="qgis.core.QgsVectorLayer.sender"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sender</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.sender" title="qgis.core.QgsVectorLayer.sender"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sender</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.senderSignalIndex" title="qgis.core.QgsVectorLayer.senderSignalIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">senderSignalIndex</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.senderSignalIndex" title="qgis.core.QgsVectorLayer.senderSignalIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">senderSignalIndex</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.setAttributeTableConfig" title="qgis.core.QgsVectorLayer.setAttributeTableConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setAttributeTableConfig</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.setAttributeTableConfig" title="qgis.core.QgsVectorLayer.setAttributeTableConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setAttributeTableConfig</span></code></a></p></td>
 <td><p>Sets the attribute table configuration object.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.setAuxiliaryLayer" title="qgis.core.QgsVectorLayer.setAuxiliaryLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setAuxiliaryLayer</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.setAuxiliaryLayer" title="qgis.core.QgsVectorLayer.setAuxiliaryLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setAuxiliaryLayer</span></code></a></p></td>
 <td><p>Sets the current auxiliary layer.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.setConstraintExpression" title="qgis.core.QgsVectorLayer.setConstraintExpression"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setConstraintExpression</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.setConstraintExpression" title="qgis.core.QgsVectorLayer.setConstraintExpression"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setConstraintExpression</span></code></a></p></td>
 <td><p>Sets the constraint expression for the specified field index.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.setCoordinateSystem" title="qgis.core.QgsVectorLayer.setCoordinateSystem"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setCoordinateSystem</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.setCoordinateSystem" title="qgis.core.QgsVectorLayer.setCoordinateSystem"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setCoordinateSystem</span></code></a></p></td>
 <td><p>Setup the coordinate system transformation for the layer</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.setDefaultValueDefinition" title="qgis.core.QgsVectorLayer.setDefaultValueDefinition"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setDefaultValueDefinition</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.setDefaultValueDefinition" title="qgis.core.QgsVectorLayer.setDefaultValueDefinition"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setDefaultValueDefinition</span></code></a></p></td>
 <td><p>Sets the definition of the expression to use when calculating the default value for a field.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.setDependencies" title="qgis.core.QgsVectorLayer.setDependencies"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setDependencies</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.setDependencies" title="qgis.core.QgsVectorLayer.setDependencies"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setDependencies</span></code></a></p></td>
 <td><p>Sets the list of dependencies.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.setDiagramLayerSettings" title="qgis.core.QgsVectorLayer.setDiagramLayerSettings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setDiagramLayerSettings</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.setDiagramLayerSettings" title="qgis.core.QgsVectorLayer.setDiagramLayerSettings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setDiagramLayerSettings</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param s</dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.setDiagramRenderer" title="qgis.core.QgsVectorLayer.setDiagramRenderer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setDiagramRenderer</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.setDiagramRenderer" title="qgis.core.QgsVectorLayer.setDiagramRenderer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setDiagramRenderer</span></code></a></p></td>
 <td><p>Sets diagram rendering object (takes ownership)</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.setDisplayExpression" title="qgis.core.QgsVectorLayer.setDisplayExpression"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setDisplayExpression</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.setDisplayExpression" title="qgis.core.QgsVectorLayer.setDisplayExpression"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setDisplayExpression</span></code></a></p></td>
 <td><p>Set the preview expression, used to create a human readable preview string.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.setEditFormConfig" title="qgis.core.QgsVectorLayer.setEditFormConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setEditFormConfig</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.setEditFormConfig" title="qgis.core.QgsVectorLayer.setEditFormConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setEditFormConfig</span></code></a></p></td>
 <td><p>Sets the <code class="docutils literal notranslate"><span class="pre">editFormConfig</span></code> (configuration) of the form used to represent this vector layer.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.setEditorWidgetSetup" title="qgis.core.QgsVectorLayer.setEditorWidgetSetup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setEditorWidgetSetup</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.setEditorWidgetSetup" title="qgis.core.QgsVectorLayer.setEditorWidgetSetup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setEditorWidgetSetup</span></code></a></p></td>
 <td><p>copydoc editorWidgetSetup</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.setError" title="qgis.core.QgsVectorLayer.setError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setError</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.setError" title="qgis.core.QgsVectorLayer.setError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setError</span></code></a></p></td>
 <td><p>Sets error message</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.setExcludeAttributesWfs" title="qgis.core.QgsVectorLayer.setExcludeAttributesWfs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setExcludeAttributesWfs</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.setExcludeAttributesWfs" title="qgis.core.QgsVectorLayer.setExcludeAttributesWfs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setExcludeAttributesWfs</span></code></a></p></td>
 <td><p>A set of attributes that are not advertised in WFS requests with QGIS server.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.setExcludeAttributesWms" title="qgis.core.QgsVectorLayer.setExcludeAttributesWms"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setExcludeAttributesWms</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.setExcludeAttributesWms" title="qgis.core.QgsVectorLayer.setExcludeAttributesWms"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setExcludeAttributesWms</span></code></a></p></td>
 <td><p>A set of attributes that are not advertised in WMS requests with QGIS server.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.setExtent" title="qgis.core.QgsVectorLayer.setExtent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setExtent</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.setExtent" title="qgis.core.QgsVectorLayer.setExtent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setExtent</span></code></a></p></td>
 <td><p>Sets the extent</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.setFeatureBlendMode" title="qgis.core.QgsVectorLayer.setFeatureBlendMode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setFeatureBlendMode</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.setFeatureBlendMode" title="qgis.core.QgsVectorLayer.setFeatureBlendMode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setFeatureBlendMode</span></code></a></p></td>
 <td><p>Sets the blending mode used for rendering each feature</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.setFieldAlias" title="qgis.core.QgsVectorLayer.setFieldAlias"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setFieldAlias</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.setFieldAlias" title="qgis.core.QgsVectorLayer.setFieldAlias"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setFieldAlias</span></code></a></p></td>
 <td><p>Sets an alias (a display name) for attributes to display in dialogs</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.setFieldConstraint" title="qgis.core.QgsVectorLayer.setFieldConstraint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setFieldConstraint</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.setFieldConstraint" title="qgis.core.QgsVectorLayer.setFieldConstraint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setFieldConstraint</span></code></a></p></td>
 <td><p>Sets a constraint for a specified field index.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.setLabeling" title="qgis.core.QgsVectorLayer.setLabeling"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setLabeling</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.setLabeling" title="qgis.core.QgsVectorLayer.setLabeling"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setLabeling</span></code></a></p></td>
 <td><p>Sets labeling configuration.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.setLabelsEnabled" title="qgis.core.QgsVectorLayer.setLabelsEnabled"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setLabelsEnabled</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.setLabelsEnabled" title="qgis.core.QgsVectorLayer.setLabelsEnabled"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setLabelsEnabled</span></code></a></p></td>
 <td><p>Sets whether labels should be <code class="docutils literal notranslate"><span class="pre">enabled</span></code> for the layer.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.setMapTipTemplate" title="qgis.core.QgsVectorLayer.setMapTipTemplate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setMapTipTemplate</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.setMapTipTemplate" title="qgis.core.QgsVectorLayer.setMapTipTemplate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setMapTipTemplate</span></code></a></p></td>
 <td><p>The mapTip is a pretty, html representation for feature information.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.setProviderEncoding" title="qgis.core.QgsVectorLayer.setProviderEncoding"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setProviderEncoding</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.setProviderEncoding" title="qgis.core.QgsVectorLayer.setProviderEncoding"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setProviderEncoding</span></code></a></p></td>
 <td><p>Sets the text <code class="docutils literal notranslate"><span class="pre">encoding</span></code> of the data provider.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.setProviderType" title="qgis.core.QgsVectorLayer.setProviderType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setProviderType</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.setProviderType" title="qgis.core.QgsVectorLayer.setProviderType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setProviderType</span></code></a></p></td>
 <td><p>Sets the <code class="docutils literal notranslate"><span class="pre">providerType</span></code> (provider key)</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.setReadExtentFromXml" title="qgis.core.QgsVectorLayer.setReadExtentFromXml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setReadExtentFromXml</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.setReadExtentFromXml" title="qgis.core.QgsVectorLayer.setReadExtentFromXml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setReadExtentFromXml</span></code></a></p></td>
 <td><p>Flag allowing to indicate if the extent has to be read from the XML document when data source has no metadata or if the data provider has to determine it.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.setReadOnly" title="qgis.core.QgsVectorLayer.setReadOnly"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setReadOnly</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.setReadOnly" title="qgis.core.QgsVectorLayer.setReadOnly"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setReadOnly</span></code></a></p></td>
 <td><p>Makes layer read-only (editing disabled) or not</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.setRenderer" title="qgis.core.QgsVectorLayer.setRenderer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setRenderer</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.setRenderer" title="qgis.core.QgsVectorLayer.setRenderer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setRenderer</span></code></a></p></td>
 <td><p>Sets the feature renderer which will be invoked to represent this layer in 2D map views.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.setSimplifyMethod" title="qgis.core.QgsVectorLayer.setSimplifyMethod"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setSimplifyMethod</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.setSimplifyMethod" title="qgis.core.QgsVectorLayer.setSimplifyMethod"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setSimplifyMethod</span></code></a></p></td>
 <td><p>Sets the simplification settings for fast rendering of features</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.setSubsetString" title="qgis.core.QgsVectorLayer.setSubsetString"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setSubsetString</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.setSubsetString" title="qgis.core.QgsVectorLayer.setSubsetString"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setSubsetString</span></code></a></p></td>
 <td><p>Sets the string (typically sql) used to define a subset of the layer</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.setTransformContext" title="qgis.core.QgsVectorLayer.setTransformContext"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setTransformContext</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.setTransformContext" title="qgis.core.QgsVectorLayer.setTransformContext"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setTransformContext</span></code></a></p></td>
 <td><p>Sets the coordinate transform context to <code class="docutils literal notranslate"><span class="pre">transformContext</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.setValid" title="qgis.core.QgsVectorLayer.setValid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setValid</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.setValid" title="qgis.core.QgsVectorLayer.setValid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setValid</span></code></a></p></td>
 <td><p>Sets whether layer is valid or not</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.simplifyDrawingCanbeApplied" title="qgis.core.QgsVectorLayer.simplifyDrawingCanbeApplied"><code class="xref py py-obj docutils literal notranslate"><span class="pre">simplifyDrawingCanbeApplied</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.simplifyDrawingCanbeApplied" title="qgis.core.QgsVectorLayer.simplifyDrawingCanbeApplied"><code class="xref py py-obj docutils literal notranslate"><span class="pre">simplifyDrawingCanbeApplied</span></code></a></p></td>
 <td><p>Returns whether the VectorLayer can apply the specified simplification hint</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.simplifyMethod" title="qgis.core.QgsVectorLayer.simplifyMethod"><code class="xref py py-obj docutils literal notranslate"><span class="pre">simplifyMethod</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.simplifyMethod" title="qgis.core.QgsVectorLayer.simplifyMethod"><code class="xref py py-obj docutils literal notranslate"><span class="pre">simplifyMethod</span></code></a></p></td>
 <td><p>Returns the simplification settings for fast rendering of features</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.sourceCrs" title="qgis.core.QgsVectorLayer.sourceCrs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sourceCrs</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.sourceCrs" title="qgis.core.QgsVectorLayer.sourceCrs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sourceCrs</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">rtype</dt>
 <dd class="field-odd"><p>QgsCoordinateReferenceSystem</p>
@@ -2935,7 +2946,7 @@ parameters used by the data provider as url query items.</p></li>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.sourceExtent" title="qgis.core.QgsVectorLayer.sourceExtent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sourceExtent</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.sourceExtent" title="qgis.core.QgsVectorLayer.sourceExtent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sourceExtent</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">rtype</dt>
 <dd class="field-odd"><p>QgsRectangle</p>
@@ -2943,7 +2954,7 @@ parameters used by the data provider as url query items.</p></li>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.sourceName" title="qgis.core.QgsVectorLayer.sourceName"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sourceName</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.sourceName" title="qgis.core.QgsVectorLayer.sourceName"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sourceName</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">rtype</dt>
 <dd class="field-odd"><p>str</p>
@@ -2951,31 +2962,31 @@ parameters used by the data provider as url query items.</p></li>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.splitFeatures" title="qgis.core.QgsVectorLayer.splitFeatures"><code class="xref py py-obj docutils literal notranslate"><span class="pre">splitFeatures</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.splitFeatures" title="qgis.core.QgsVectorLayer.splitFeatures"><code class="xref py py-obj docutils literal notranslate"><span class="pre">splitFeatures</span></code></a></p></td>
 <td><p>Splits features cut by the given line</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.splitParts" title="qgis.core.QgsVectorLayer.splitParts"><code class="xref py py-obj docutils literal notranslate"><span class="pre">splitParts</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.splitParts" title="qgis.core.QgsVectorLayer.splitParts"><code class="xref py py-obj docutils literal notranslate"><span class="pre">splitParts</span></code></a></p></td>
 <td><p>Splits parts cut by the given line</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.startEditing" title="qgis.core.QgsVectorLayer.startEditing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">startEditing</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.startEditing" title="qgis.core.QgsVectorLayer.startEditing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">startEditing</span></code></a></p></td>
 <td><p>Makes the layer editable.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.storageType" title="qgis.core.QgsVectorLayer.storageType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">storageType</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.storageType" title="qgis.core.QgsVectorLayer.storageType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">storageType</span></code></a></p></td>
 <td><p>Returns the permanent storage type for this layer as a friendly name.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.storedExpressionManager" title="qgis.core.QgsVectorLayer.storedExpressionManager"><code class="xref py py-obj docutils literal notranslate"><span class="pre">storedExpressionManager</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.storedExpressionManager" title="qgis.core.QgsVectorLayer.storedExpressionManager"><code class="xref py py-obj docutils literal notranslate"><span class="pre">storedExpressionManager</span></code></a></p></td>
 <td><p>Returns the manager of the stored expressions for this layer.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.subsetString" title="qgis.core.QgsVectorLayer.subsetString"><code class="xref py py-obj docutils literal notranslate"><span class="pre">subsetString</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.subsetString" title="qgis.core.QgsVectorLayer.subsetString"><code class="xref py py-obj docutils literal notranslate"><span class="pre">subsetString</span></code></a></p></td>
 <td><p>Returns the string (typically sql) used to define a subset of the layer.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.supportsEditing" title="qgis.core.QgsVectorLayer.supportsEditing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">supportsEditing</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.supportsEditing" title="qgis.core.QgsVectorLayer.supportsEditing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">supportsEditing</span></code></a></p></td>
 <td><p>Returns whether the layer supports editing or not</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.symbolFeatureIds" title="qgis.core.QgsVectorLayer.symbolFeatureIds"><code class="xref py py-obj docutils literal notranslate"><span class="pre">symbolFeatureIds</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.symbolFeatureIds" title="qgis.core.QgsVectorLayer.symbolFeatureIds"><code class="xref py py-obj docutils literal notranslate"><span class="pre">symbolFeatureIds</span></code></a></p></td>
 <td><p>Ids of features rendered with specified legend key.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.temporalProperties" title="qgis.core.QgsVectorLayer.temporalProperties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">temporalProperties</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.temporalProperties" title="qgis.core.QgsVectorLayer.temporalProperties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">temporalProperties</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">rtype</dt>
 <dd class="field-odd"><p>QgsMapLayerTemporalProperties</p>
@@ -2983,31 +2994,31 @@ parameters used by the data provider as url query items.</p></li>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.timerEvent" title="qgis.core.QgsVectorLayer.timerEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">timerEvent</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.timerEvent" title="qgis.core.QgsVectorLayer.timerEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">timerEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.translateFeature" title="qgis.core.QgsVectorLayer.translateFeature"><code class="xref py py-obj docutils literal notranslate"><span class="pre">translateFeature</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.translateFeature" title="qgis.core.QgsVectorLayer.translateFeature"><code class="xref py py-obj docutils literal notranslate"><span class="pre">translateFeature</span></code></a></p></td>
 <td><p>Translates feature by dx, dy</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.uniqueStringsMatching" title="qgis.core.QgsVectorLayer.uniqueStringsMatching"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uniqueStringsMatching</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.uniqueStringsMatching" title="qgis.core.QgsVectorLayer.uniqueStringsMatching"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uniqueStringsMatching</span></code></a></p></td>
 <td><p>Returns unique string values of an attribute which contain a specified subset string.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.uniqueValues" title="qgis.core.QgsVectorLayer.uniqueValues"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uniqueValues</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.uniqueValues" title="qgis.core.QgsVectorLayer.uniqueValues"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uniqueValues</span></code></a></p></td>
 <td><p>Calculates a list of unique values contained within an attribute in the layer.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.updateExpressionField" title="qgis.core.QgsVectorLayer.updateExpressionField"><code class="xref py py-obj docutils literal notranslate"><span class="pre">updateExpressionField</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.updateExpressionField" title="qgis.core.QgsVectorLayer.updateExpressionField"><code class="xref py py-obj docutils literal notranslate"><span class="pre">updateExpressionField</span></code></a></p></td>
 <td><p>Changes the expression used to define an expression based (virtual) field</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.updateExtents" title="qgis.core.QgsVectorLayer.updateExtents"><code class="xref py py-obj docutils literal notranslate"><span class="pre">updateExtents</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.updateExtents" title="qgis.core.QgsVectorLayer.updateExtents"><code class="xref py py-obj docutils literal notranslate"><span class="pre">updateExtents</span></code></a></p></td>
 <td><p>Update the extents for the layer.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.updateFeature" title="qgis.core.QgsVectorLayer.updateFeature"><code class="xref py py-obj docutils literal notranslate"><span class="pre">updateFeature</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.updateFeature" title="qgis.core.QgsVectorLayer.updateFeature"><code class="xref py py-obj docutils literal notranslate"><span class="pre">updateFeature</span></code></a></p></td>
 <td><p>Updates an existing <code class="docutils literal notranslate"><span class="pre">feature</span></code> in the layer, replacing the attributes and geometry for the feature with matching <a class="reference internal" href="QgsFeature.html#qgis.core.QgsFeature.id" title="qgis.core.QgsFeature.id"><code class="xref py py-func docutils literal notranslate"><span class="pre">QgsFeature.id()</span></code></a> with the attributes and geometry from <code class="docutils literal notranslate"><span class="pre">feature</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.updateFields" title="qgis.core.QgsVectorLayer.updateFields"><code class="xref py py-obj docutils literal notranslate"><span class="pre">updateFields</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.updateFields" title="qgis.core.QgsVectorLayer.updateFields"><code class="xref py py-obj docutils literal notranslate"><span class="pre">updateFields</span></code></a></p></td>
 <td><p>Will regenerate the <cite>fields</cite> property of this layer by obtaining all fields from the dataProvider, joined fields and virtual fields.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.vectorJoins" title="qgis.core.QgsVectorLayer.vectorJoins"><code class="xref py py-obj docutils literal notranslate"><span class="pre">vectorJoins</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.vectorJoins" title="qgis.core.QgsVectorLayer.vectorJoins"><code class="xref py py-obj docutils literal notranslate"><span class="pre">vectorJoins</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">rtype</dt>
 <dd class="field-odd"><p>List[QgsVectorLayerJoinInfo]</p>
@@ -3015,39 +3026,39 @@ parameters used by the data provider as url query items.</p></li>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.vectorLayerTypeFlags" title="qgis.core.QgsVectorLayer.vectorLayerTypeFlags"><code class="xref py py-obj docutils literal notranslate"><span class="pre">vectorLayerTypeFlags</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.vectorLayerTypeFlags" title="qgis.core.QgsVectorLayer.vectorLayerTypeFlags"><code class="xref py py-obj docutils literal notranslate"><span class="pre">vectorLayerTypeFlags</span></code></a></p></td>
 <td><p>Returns the vector layer type flags.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.wkbType" title="qgis.core.QgsVectorLayer.wkbType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wkbType</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.wkbType" title="qgis.core.QgsVectorLayer.wkbType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wkbType</span></code></a></p></td>
 <td><p>Returns the WKBType or WKBUnknown in case of error</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.writeCommonStyle" title="qgis.core.QgsVectorLayer.writeCommonStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeCommonStyle</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.writeCommonStyle" title="qgis.core.QgsVectorLayer.writeCommonStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeCommonStyle</span></code></a></p></td>
 <td><p>Write style data common to all layer types</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.writeCustomProperties" title="qgis.core.QgsVectorLayer.writeCustomProperties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeCustomProperties</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.writeCustomProperties" title="qgis.core.QgsVectorLayer.writeCustomProperties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeCustomProperties</span></code></a></p></td>
 <td><p>Write custom properties to project file.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.writeSld" title="qgis.core.QgsVectorLayer.writeSld"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeSld</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.writeSld" title="qgis.core.QgsVectorLayer.writeSld"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeSld</span></code></a></p></td>
 <td><p>Writes the symbology of the layer into the document provided in SLD 1.1 format</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.writeStyle" title="qgis.core.QgsVectorLayer.writeStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeStyle</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.writeStyle" title="qgis.core.QgsVectorLayer.writeStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeStyle</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param node</dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.writeStyleManager" title="qgis.core.QgsVectorLayer.writeStyleManager"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeStyleManager</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.writeStyleManager" title="qgis.core.QgsVectorLayer.writeStyleManager"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeStyleManager</span></code></a></p></td>
 <td><p>Write style manager's configuration (if exists).</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.writeSymbology" title="qgis.core.QgsVectorLayer.writeSymbology"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeSymbology</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.writeSymbology" title="qgis.core.QgsVectorLayer.writeSymbology"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeSymbology</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param node</dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.writeXml" title="qgis.core.QgsVectorLayer.writeXml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeXml</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.writeXml" title="qgis.core.QgsVectorLayer.writeXml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeXml</span></code></a></p></td>
 <td><p>Writes vector layer specific state to project file Dom node.</p></td>
 </tr>
 </tbody>
@@ -4620,6 +4631,19 @@ you can call <code class="xref py py-func docutils literal notranslate"><span cl
 </dd>
 <dt class="field-even">Return type</dt>
 <dd class="field-even"><p><a class="reference internal" href="QgsMapLayerRenderer.html#qgis.core.QgsMapLayerRenderer" title="qgis.core.QgsMapLayerRenderer">QgsMapLayerRenderer</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsVectorLayer.createProfileGenerator">
+<span class="sig-name descname"><span class="pre">createProfileGenerator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">request</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsProfileRequest.html#qgis.core.QgsProfileRequest" title="qgis.core.QgsProfileRequest"><span class="pre">QgsProfileRequest</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="QgsAbstractProfileGenerator.html#qgis.core.QgsAbstractProfileGenerator" title="qgis.core.QgsAbstractProfileGenerator"><span class="pre">QgsAbstractProfileGenerator</span></a></span></span><a class="headerlink" href="#qgis.core.QgsVectorLayer.createProfileGenerator" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>request</strong> (<a class="reference internal" href="QgsProfileRequest.html#qgis.core.QgsProfileRequest" title="qgis.core.QgsProfileRequest"><em>QgsProfileRequest</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsAbstractProfileGenerator.html#qgis.core.QgsAbstractProfileGenerator" title="qgis.core.QgsAbstractProfileGenerator">QgsAbstractProfileGenerator</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -7989,7 +8013,7 @@ to this signal and update the element accordingly.</p>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:29 Mar 26, 2022.
+      <span class="lastupdated">Last updated on 02:14 Mar 26, 2022.
       </span></p>
   </div>
 

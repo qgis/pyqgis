@@ -107,6 +107,9 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsAbstractLayoutUndoCommand.html">Class: QgsAbstractLayoutUndoCommand</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAbstractMetadataBase.html">Class: QgsAbstractMetadataBase</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAbstractMetadataBaseValidator.html">Class: QgsAbstractMetadataBaseValidator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsAbstractProfileGenerator.html">Class: QgsAbstractProfileGenerator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsAbstractProfileResults.html">Class: QgsAbstractProfileResults</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsAbstractProfileSource.html">Class: QgsAbstractProfileSource</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAbstractPropertyCollection.html">Class: QgsAbstractPropertyCollection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAbstractProviderConnection.html">Class: QgsAbstractProviderConnection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAbstractReportSection.html">Class: QgsAbstractReportSection</a></li>
@@ -817,6 +820,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingProvider.html">Class: QgsProcessingProvider</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingRegistry.html">Class: QgsProcessingRegistry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingUtils.html">Class: QgsProcessingUtils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsProfileRequest.html">Class: QgsProfileRequest</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProjOperation.html">Class: QgsProjOperation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProjUtils.html">Class: QgsProjUtils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProject.html">Class: QgsProject</a></li>
@@ -2050,6 +2054,9 @@ Constructor for <a class="reference internal" href="#qgis.core.QgsRasterIterator
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterIterator.stopRasterRead" title="qgis.core.QgsRasterIterator.stopRasterRead"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stopRasterRead</span></code></a></p></td>
 <td><p>Cancels the raster iteration and resets the iterator.</p></td>
 </tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterIterator.subRegion" title="qgis.core.QgsRasterIterator.subRegion"><code class="xref py py-obj docutils literal notranslate"><span class="pre">subRegion</span></code></a></p></td>
+<td><p>Given an overall raster extent and width and height in pixels, calculates the sub region of the raster covering the specified <code class="docutils literal notranslate"><span class="pre">subRegion</span></code>.</p></td>
+</tr>
 </tbody>
 </table>
 <table class="longtable docutils align-default">
@@ -2258,6 +2265,39 @@ caller should delete the block.</p>
 </dl>
 </dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsRasterIterator.subRegion">
+<span class="sig-name descname"><span class="pre">subRegion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rasterExtent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsRectangle.html#qgis.core.QgsRectangle" title="qgis.core.QgsRectangle"><span class="pre">QgsRectangle</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">rasterWidth</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rasterHeight</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subRegion</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsRectangle.html#qgis.core.QgsRectangle" title="qgis.core.QgsRectangle"><span class="pre">QgsRectangle</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="QgsRectangle.html#qgis.core.QgsRectangle" title="qgis.core.QgsRectangle"><span class="pre">QgsRectangle</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qgis.core.QgsRasterIterator.subRegion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given an overall raster extent and width and height in pixels, calculates the sub region
+of the raster covering the specified <code class="docutils literal notranslate"><span class="pre">subRegion</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rasterExtent</strong> (<a class="reference internal" href="QgsRectangle.html#qgis.core.QgsRectangle" title="qgis.core.QgsRectangle"><em>QgsRectangle</em></a>) – overall raster extent</p></li>
+<li><p><strong>rasterWidth</strong> (<em>int</em>) – overall raster width</p></li>
+<li><p><strong>rasterHeight</strong> (<em>int</em>) – overall raster height</p></li>
+<li><p><strong>subRegion</strong> (<a class="reference internal" href="QgsRectangle.html#qgis.core.QgsRectangle" title="qgis.core.QgsRectangle"><em>QgsRectangle</em></a>) – desired sub region extent</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Tuple[<a class="reference internal" href="QgsRectangle.html#qgis.core.QgsRectangle" title="qgis.core.QgsRectangle"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsRectangle</span></code></a>, int, int, int, int]</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p>sub region geographic extent, snapped to exact pixel boundaries</p></li>
+<li><p>subRegionWidth: width in pixels of sub region</p></li>
+<li><p>subRegionHeight: height in pixels of sub region</p></li>
+<li><p>subRegionLeft: starting column of left side of sub region</p></li>
+<li><p>subRegionTop: starting row of top side of sub region</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.26.</span></p>
+</div>
+</dd></dl>
+
 </dd></dl>
 
 </section>
@@ -2271,7 +2311,7 @@ caller should delete the block.</p>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:29 Mar 26, 2022.
+      <span class="lastupdated">Last updated on 02:14 Mar 26, 2022.
       </span></p>
   </div>
 
