@@ -231,6 +231,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsCoordinateFormatter.html">Class: QgsCoordinateFormatter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsCoordinateReferenceSystem.html">Class: QgsCoordinateReferenceSystem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsCoordinateReferenceSystemRegistry.html">Class: QgsCoordinateReferenceSystemRegistry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsCoordinateReferenceSystemUtils.html">Class: QgsCoordinateReferenceSystemUtils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsCoordinateTransform.html">Class: QgsCoordinateTransform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsCoordinateTransformContext.html">Class: QgsCoordinateTransformContext</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsCopyFileTask.html">Class: QgsCopyFileTask</a></li>
@@ -2083,6 +2084,12 @@
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.Qgis.ContentStatus" title="qgis.core.Qgis.ContentStatus"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ContentStatus</span></code></a></p></td>
 <td><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.IntEnum</span></code></p></td>
 </tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.Qgis.CoordinateOrder" title="qgis.core.Qgis.CoordinateOrder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CoordinateOrder</span></code></a></p></td>
+<td><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.IntEnum</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.Qgis.CrsAxisDirection" title="qgis.core.Qgis.CrsAxisDirection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CrsAxisDirection</span></code></a></p></td>
+<td><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.IntEnum</span></code></p></td>
+</tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.Qgis.CrsDefinitionFormat" title="qgis.core.Qgis.CrsDefinitionFormat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CrsDefinitionFormat</span></code></a></p></td>
 <td><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.IntEnum</span></code></p></td>
 </tr>
@@ -3025,10 +3032,305 @@ are generated for executing GPSBabel processes.</p>
 
 </dd></dl>
 
+<dl class="py class">
+<dt class="sig sig-object py" id="qgis.core.Qgis.CoordinateOrder">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">CoordinateOrder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.Qgis.CoordinateOrder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.IntEnum</span></code></p>
+<p>Order of coordinates.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.26.</span></p>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Default</span></code>: Respect the default axis ordering for the CRS, as defined in the CRS’s parameters</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">XY</span></code>: Easting/Northing (or Longitude/Latitude for geographic CRS)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">YX</span></code>: Northing/Easting (or Latitude/Longitude for geographic CRS)</p></li>
+</ul>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.Qgis.CoordinateOrder.Default">
+<span class="sig-name descname"><span class="pre">Default</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#qgis.core.Qgis.CoordinateOrder.Default" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.Qgis.CoordinateOrder.XY">
+<span class="sig-name descname"><span class="pre">XY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#qgis.core.Qgis.CoordinateOrder.XY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.Qgis.CoordinateOrder.YX">
+<span class="sig-name descname"><span class="pre">YX</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#qgis.core.Qgis.CoordinateOrder.YX" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.Qgis.CoordinateOrder.baseClass">
+<span class="sig-name descname"><span class="pre">baseClass</span></span><a class="headerlink" href="#qgis.core.Qgis.CoordinateOrder.baseClass" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="../gui/Qgis.html#qgis.gui.Qgis" title="qgis._core.Qgis"><code class="xref py py-class docutils literal notranslate"><span class="pre">qgis._core.Qgis</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.core.Qgis.Critical">
 <span class="sig-name descname"><span class="pre">Critical</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#qgis.core.Qgis.Critical" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="qgis.core.Qgis.CrsAxisDirection">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">CrsAxisDirection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.Qgis.CrsAxisDirection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.IntEnum</span></code></p>
+<p>Coordinate reference system axis directions.</p>
+<p>From “Geographic information — Well-known text representation of coordinate reference systems”, section 7.5.1.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.26.</span></p>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">North</span></code>: North</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NorthNorthEast</span></code>: North North East</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NorthEast</span></code>: North East</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EastNorthEast</span></code>: East North East</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">East</span></code>: East</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EastSouthEast</span></code>: East South East</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SouthEast</span></code>: South East</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SouthSouthEast</span></code>: South South East</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">South</span></code>: South</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SouthSouthWest</span></code>: South South West</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SouthWest</span></code>: South West</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WestSouthWest</span></code>: West South West</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">West</span></code>: West</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WestNorthWest</span></code>: West North West</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NorthWest</span></code>: North West</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NorthNorthWest</span></code>: North North West</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GeocentricX</span></code>: Geocentric (X)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GeocentricY</span></code>: Geocentric (Y)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GeocentricZ</span></code>: Geocentric (Z)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Up</span></code>: Up</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Down</span></code>: Down</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Forward</span></code>: Forward</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Aft</span></code>: Aft</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Port</span></code>: Port</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Starboard</span></code>: Starboard</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Clockwise</span></code>: Clockwise</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CounterClockwise</span></code>: Counter clockwise</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ColumnPositive</span></code>: Column positive</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ColumnNegative</span></code>: Column negative</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RowPositive</span></code>: Row positive</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RowNegative</span></code>: Row negative</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DisplayRight</span></code>: Display right</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DisplayLeft</span></code>: Display left</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DisplayUp</span></code>: Display up</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DisplayDown</span></code>: Display down</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Future</span></code>: Future</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Past</span></code>: Past</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Towards</span></code>: Towards</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">AwayFrom</span></code>: Away from</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Unspecified</span></code>: Unspecified</p></li>
+</ul>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.Qgis.CrsAxisDirection.Aft">
+<span class="sig-name descname"><span class="pre">Aft</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">22</span></em><a class="headerlink" href="#qgis.core.Qgis.CrsAxisDirection.Aft" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.Qgis.CrsAxisDirection.AwayFrom">
+<span class="sig-name descname"><span class="pre">AwayFrom</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">38</span></em><a class="headerlink" href="#qgis.core.Qgis.CrsAxisDirection.AwayFrom" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.Qgis.CrsAxisDirection.Clockwise">
+<span class="sig-name descname"><span class="pre">Clockwise</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">25</span></em><a class="headerlink" href="#qgis.core.Qgis.CrsAxisDirection.Clockwise" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.Qgis.CrsAxisDirection.ColumnNegative">
+<span class="sig-name descname"><span class="pre">ColumnNegative</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">28</span></em><a class="headerlink" href="#qgis.core.Qgis.CrsAxisDirection.ColumnNegative" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.Qgis.CrsAxisDirection.ColumnPositive">
+<span class="sig-name descname"><span class="pre">ColumnPositive</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">27</span></em><a class="headerlink" href="#qgis.core.Qgis.CrsAxisDirection.ColumnPositive" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.Qgis.CrsAxisDirection.CounterClockwise">
+<span class="sig-name descname"><span class="pre">CounterClockwise</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">26</span></em><a class="headerlink" href="#qgis.core.Qgis.CrsAxisDirection.CounterClockwise" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.Qgis.CrsAxisDirection.DisplayDown">
+<span class="sig-name descname"><span class="pre">DisplayDown</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">34</span></em><a class="headerlink" href="#qgis.core.Qgis.CrsAxisDirection.DisplayDown" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.Qgis.CrsAxisDirection.DisplayLeft">
+<span class="sig-name descname"><span class="pre">DisplayLeft</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">32</span></em><a class="headerlink" href="#qgis.core.Qgis.CrsAxisDirection.DisplayLeft" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.Qgis.CrsAxisDirection.DisplayRight">
+<span class="sig-name descname"><span class="pre">DisplayRight</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">31</span></em><a class="headerlink" href="#qgis.core.Qgis.CrsAxisDirection.DisplayRight" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.Qgis.CrsAxisDirection.DisplayUp">
+<span class="sig-name descname"><span class="pre">DisplayUp</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">33</span></em><a class="headerlink" href="#qgis.core.Qgis.CrsAxisDirection.DisplayUp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.Qgis.CrsAxisDirection.Down">
+<span class="sig-name descname"><span class="pre">Down</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">20</span></em><a class="headerlink" href="#qgis.core.Qgis.CrsAxisDirection.Down" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.Qgis.CrsAxisDirection.East">
+<span class="sig-name descname"><span class="pre">East</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">4</span></em><a class="headerlink" href="#qgis.core.Qgis.CrsAxisDirection.East" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.Qgis.CrsAxisDirection.EastNorthEast">
+<span class="sig-name descname"><span class="pre">EastNorthEast</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></em><a class="headerlink" href="#qgis.core.Qgis.CrsAxisDirection.EastNorthEast" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.Qgis.CrsAxisDirection.EastSouthEast">
+<span class="sig-name descname"><span class="pre">EastSouthEast</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">5</span></em><a class="headerlink" href="#qgis.core.Qgis.CrsAxisDirection.EastSouthEast" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.Qgis.CrsAxisDirection.Forward">
+<span class="sig-name descname"><span class="pre">Forward</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">21</span></em><a class="headerlink" href="#qgis.core.Qgis.CrsAxisDirection.Forward" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.Qgis.CrsAxisDirection.Future">
+<span class="sig-name descname"><span class="pre">Future</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">35</span></em><a class="headerlink" href="#qgis.core.Qgis.CrsAxisDirection.Future" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.Qgis.CrsAxisDirection.GeocentricX">
+<span class="sig-name descname"><span class="pre">GeocentricX</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">16</span></em><a class="headerlink" href="#qgis.core.Qgis.CrsAxisDirection.GeocentricX" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.Qgis.CrsAxisDirection.GeocentricY">
+<span class="sig-name descname"><span class="pre">GeocentricY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">17</span></em><a class="headerlink" href="#qgis.core.Qgis.CrsAxisDirection.GeocentricY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.Qgis.CrsAxisDirection.GeocentricZ">
+<span class="sig-name descname"><span class="pre">GeocentricZ</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">18</span></em><a class="headerlink" href="#qgis.core.Qgis.CrsAxisDirection.GeocentricZ" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.Qgis.CrsAxisDirection.North">
+<span class="sig-name descname"><span class="pre">North</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#qgis.core.Qgis.CrsAxisDirection.North" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.Qgis.CrsAxisDirection.NorthEast">
+<span class="sig-name descname"><span class="pre">NorthEast</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#qgis.core.Qgis.CrsAxisDirection.NorthEast" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.Qgis.CrsAxisDirection.NorthNorthEast">
+<span class="sig-name descname"><span class="pre">NorthNorthEast</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#qgis.core.Qgis.CrsAxisDirection.NorthNorthEast" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.Qgis.CrsAxisDirection.NorthNorthWest">
+<span class="sig-name descname"><span class="pre">NorthNorthWest</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">15</span></em><a class="headerlink" href="#qgis.core.Qgis.CrsAxisDirection.NorthNorthWest" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.Qgis.CrsAxisDirection.NorthWest">
+<span class="sig-name descname"><span class="pre">NorthWest</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">14</span></em><a class="headerlink" href="#qgis.core.Qgis.CrsAxisDirection.NorthWest" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.Qgis.CrsAxisDirection.Past">
+<span class="sig-name descname"><span class="pre">Past</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">36</span></em><a class="headerlink" href="#qgis.core.Qgis.CrsAxisDirection.Past" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.Qgis.CrsAxisDirection.Port">
+<span class="sig-name descname"><span class="pre">Port</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">23</span></em><a class="headerlink" href="#qgis.core.Qgis.CrsAxisDirection.Port" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.Qgis.CrsAxisDirection.RowNegative">
+<span class="sig-name descname"><span class="pre">RowNegative</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">30</span></em><a class="headerlink" href="#qgis.core.Qgis.CrsAxisDirection.RowNegative" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.Qgis.CrsAxisDirection.RowPositive">
+<span class="sig-name descname"><span class="pre">RowPositive</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">29</span></em><a class="headerlink" href="#qgis.core.Qgis.CrsAxisDirection.RowPositive" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.Qgis.CrsAxisDirection.South">
+<span class="sig-name descname"><span class="pre">South</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">8</span></em><a class="headerlink" href="#qgis.core.Qgis.CrsAxisDirection.South" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.Qgis.CrsAxisDirection.SouthEast">
+<span class="sig-name descname"><span class="pre">SouthEast</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">6</span></em><a class="headerlink" href="#qgis.core.Qgis.CrsAxisDirection.SouthEast" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.Qgis.CrsAxisDirection.SouthSouthEast">
+<span class="sig-name descname"><span class="pre">SouthSouthEast</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">7</span></em><a class="headerlink" href="#qgis.core.Qgis.CrsAxisDirection.SouthSouthEast" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.Qgis.CrsAxisDirection.SouthSouthWest">
+<span class="sig-name descname"><span class="pre">SouthSouthWest</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">9</span></em><a class="headerlink" href="#qgis.core.Qgis.CrsAxisDirection.SouthSouthWest" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.Qgis.CrsAxisDirection.SouthWest">
+<span class="sig-name descname"><span class="pre">SouthWest</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">10</span></em><a class="headerlink" href="#qgis.core.Qgis.CrsAxisDirection.SouthWest" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.Qgis.CrsAxisDirection.Starboard">
+<span class="sig-name descname"><span class="pre">Starboard</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">24</span></em><a class="headerlink" href="#qgis.core.Qgis.CrsAxisDirection.Starboard" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.Qgis.CrsAxisDirection.Towards">
+<span class="sig-name descname"><span class="pre">Towards</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">37</span></em><a class="headerlink" href="#qgis.core.Qgis.CrsAxisDirection.Towards" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.Qgis.CrsAxisDirection.Unspecified">
+<span class="sig-name descname"><span class="pre">Unspecified</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">39</span></em><a class="headerlink" href="#qgis.core.Qgis.CrsAxisDirection.Unspecified" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.Qgis.CrsAxisDirection.Up">
+<span class="sig-name descname"><span class="pre">Up</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">19</span></em><a class="headerlink" href="#qgis.core.Qgis.CrsAxisDirection.Up" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.Qgis.CrsAxisDirection.West">
+<span class="sig-name descname"><span class="pre">West</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">12</span></em><a class="headerlink" href="#qgis.core.Qgis.CrsAxisDirection.West" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.Qgis.CrsAxisDirection.WestNorthWest">
+<span class="sig-name descname"><span class="pre">WestNorthWest</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">13</span></em><a class="headerlink" href="#qgis.core.Qgis.CrsAxisDirection.WestNorthWest" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.Qgis.CrsAxisDirection.WestSouthWest">
+<span class="sig-name descname"><span class="pre">WestSouthWest</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">11</span></em><a class="headerlink" href="#qgis.core.Qgis.CrsAxisDirection.WestSouthWest" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.Qgis.CrsAxisDirection.baseClass">
+<span class="sig-name descname"><span class="pre">baseClass</span></span><a class="headerlink" href="#qgis.core.Qgis.CrsAxisDirection.baseClass" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="../gui/Qgis.html#qgis.gui.Qgis" title="qgis._core.Qgis"><code class="xref py py-class docutils literal notranslate"><span class="pre">qgis._core.Qgis</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="qgis.core.Qgis.CrsDefinitionFormat">
@@ -5834,7 +6136,7 @@ with the previous or next vertex of the locked one.</p>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:31 Apr 07, 2022.
+      <span class="lastupdated">Last updated on 02:46 Apr 07, 2022.
       </span></p>
   </div>
 
