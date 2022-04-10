@@ -20,7 +20,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Class: QgsSymbolLayer" href="QgsSymbolLayer.html" />
+    <link rel="next" title="Class: QgsSymbolAnimationSettings" href="QgsSymbolAnimationSettings.html" />
     <link rel="prev" title="Class: QgsSvgMarkerSymbolLayer" href="QgsSvgMarkerSymbolLayer.html" /> 
 </head>
 
@@ -1040,6 +1040,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsSvgCache.html">Class: QgsSvgCache</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsSvgMarkerSymbolLayer.html">Class: QgsSvgMarkerSymbolLayer</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Class: QgsSymbol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsSymbolAnimationSettings.html">Class: QgsSymbolAnimationSettings</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsSymbolLayer.html">Class: QgsSymbolLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsSymbolLayerAbstractMetadata.html">Class: QgsSymbolLayerAbstractMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsSymbolLayerId.html">Class: QgsSymbolLayerId</a></li>
@@ -1807,6 +1808,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsSvgSelectorListModel.html">Class: QgsSvgSelectorListModel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsSvgSelectorWidget.html">Class: QgsSvgSelectorWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsSvgSourceLineEdit.html">Class: QgsSvgSourceLineEdit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui/QgsSymbolAnimationSettingsDialog.html">Class: QgsSymbolAnimationSettingsDialog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui/QgsSymbolAnimationSettingsWidget.html">Class: QgsSymbolAnimationSettingsWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsSymbolButton.html">Class: QgsSymbolButton</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsSymbolLayerWidget.html">Class: QgsSymbolLayerWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsSymbolLevelsDialog.html">Class: QgsSymbolLevelsDialog</a></li>
@@ -2061,92 +2064,98 @@
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbol.appendSymbolLayer" title="qgis.core.QgsSymbol.appendSymbolLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">appendSymbolLayer</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbol.animationSettings" title="qgis.core.QgsSymbol.animationSettings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">animationSettings</span></code></a></p></td>
+<td><p>Returns a reference to the symbol animation settings.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbol.appendSymbolLayer" title="qgis.core.QgsSymbol.appendSymbolLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">appendSymbolLayer</span></code></a></p></td>
 <td><p>Appends a symbol <code class="docutils literal notranslate"><span class="pre">layer</span></code> at the end of the current symbol layer list.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbol.asImage" title="qgis.core.QgsSymbol.asImage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">asImage</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbol.asImage" title="qgis.core.QgsSymbol.asImage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">asImage</span></code></a></p></td>
 <td><p>Returns an image of the symbol at the specified <code class="docutils literal notranslate"><span class="pre">size</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbol.bigSymbolPreviewImage" title="qgis.core.QgsSymbol.bigSymbolPreviewImage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bigSymbolPreviewImage</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbol.bigSymbolPreviewImage" title="qgis.core.QgsSymbol.bigSymbolPreviewImage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bigSymbolPreviewImage</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbol.bigSymbolPreviewImageV2" title="qgis.core.QgsSymbol.bigSymbolPreviewImageV2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bigSymbolPreviewImageV2</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbol.bigSymbolPreviewImageV2" title="qgis.core.QgsSymbol.bigSymbolPreviewImageV2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bigSymbolPreviewImageV2</span></code></a></p></td>
 <td><p>Returns a large (roughly 100x100 pixel) preview image for the symbol.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbol.canCauseArtifactsBetweenAdjacentTiles" title="qgis.core.QgsSymbol.canCauseArtifactsBetweenAdjacentTiles"><code class="xref py py-obj docutils literal notranslate"><span class="pre">canCauseArtifactsBetweenAdjacentTiles</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbol.canCauseArtifactsBetweenAdjacentTiles" title="qgis.core.QgsSymbol.canCauseArtifactsBetweenAdjacentTiles"><code class="xref py py-obj docutils literal notranslate"><span class="pre">canCauseArtifactsBetweenAdjacentTiles</span></code></a></p></td>
 <td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the symbol rendering can cause visible artifacts across a single feature when the feature is rendered as a series of adjacent map tiles each containing a portion of the feature's geometry.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbol.changeSymbolLayer" title="qgis.core.QgsSymbol.changeSymbolLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">changeSymbolLayer</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbol.changeSymbolLayer" title="qgis.core.QgsSymbol.changeSymbolLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">changeSymbolLayer</span></code></a></p></td>
 <td><p>Deletes the current layer at the specified <code class="docutils literal notranslate"><span class="pre">index</span></code> and replaces it with <code class="docutils literal notranslate"><span class="pre">layer</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbol.clipFeaturesToExtent" title="qgis.core.QgsSymbol.clipFeaturesToExtent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clipFeaturesToExtent</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbol.clipFeaturesToExtent" title="qgis.core.QgsSymbol.clipFeaturesToExtent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clipFeaturesToExtent</span></code></a></p></td>
 <td><p>Returns whether features drawn by the symbol will be clipped to the render context's extent.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbol.clone" title="qgis.core.QgsSymbol.clone"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clone</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbol.clone" title="qgis.core.QgsSymbol.clone"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clone</span></code></a></p></td>
 <td><p>Returns a deep copy of this symbol.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbol.cloneLayers" title="qgis.core.QgsSymbol.cloneLayers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cloneLayers</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbol.cloneLayers" title="qgis.core.QgsSymbol.cloneLayers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cloneLayers</span></code></a></p></td>
 <td><p>Retrieve a cloned list of all layers that make up this symbol.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbol.color" title="qgis.core.QgsSymbol.color"><code class="xref py py-obj docutils literal notranslate"><span class="pre">color</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbol.color" title="qgis.core.QgsSymbol.color"><code class="xref py py-obj docutils literal notranslate"><span class="pre">color</span></code></a></p></td>
 <td><p>Returns the symbol's color.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbol.dataDefinedProperties" title="qgis.core.QgsSymbol.dataDefinedProperties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dataDefinedProperties</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbol.dataDefinedProperties" title="qgis.core.QgsSymbol.dataDefinedProperties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dataDefinedProperties</span></code></a></p></td>
 <td><p>Returns a reference to the symbol's property collection, used for data defined overrides.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbol.defaultSymbol" title="qgis.core.QgsSymbol.defaultSymbol"><code class="xref py py-obj docutils literal notranslate"><span class="pre">defaultSymbol</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbol.defaultSymbol" title="qgis.core.QgsSymbol.defaultSymbol"><code class="xref py py-obj docutils literal notranslate"><span class="pre">defaultSymbol</span></code></a></p></td>
 <td><p>Returns a new default symbol for the specified geometry type.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbol.deleteSymbolLayer" title="qgis.core.QgsSymbol.deleteSymbolLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">deleteSymbolLayer</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbol.deleteSymbolLayer" title="qgis.core.QgsSymbol.deleteSymbolLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">deleteSymbolLayer</span></code></a></p></td>
 <td><p>Removes and deletes the symbol layer at the specified <code class="docutils literal notranslate"><span class="pre">index</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbol.drawPreviewIcon" title="qgis.core.QgsSymbol.drawPreviewIcon"><code class="xref py py-obj docutils literal notranslate"><span class="pre">drawPreviewIcon</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbol.drawPreviewIcon" title="qgis.core.QgsSymbol.drawPreviewIcon"><code class="xref py py-obj docutils literal notranslate"><span class="pre">drawPreviewIcon</span></code></a></p></td>
 <td><p>Draws an icon of the symbol that occupies an area given by <code class="docutils literal notranslate"><span class="pre">size</span></code> using the specified <code class="docutils literal notranslate"><span class="pre">painter</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbol.dump" title="qgis.core.QgsSymbol.dump"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dump</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbol.dump" title="qgis.core.QgsSymbol.dump"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dump</span></code></a></p></td>
 <td><p>Returns a string dump of the symbol's properties.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbol.exportImage" title="qgis.core.QgsSymbol.exportImage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">exportImage</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbol.exportImage" title="qgis.core.QgsSymbol.exportImage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">exportImage</span></code></a></p></td>
 <td><p>Export the symbol as an image format, to the specified <code class="docutils literal notranslate"><span class="pre">path</span></code> and with the given <code class="docutils literal notranslate"><span class="pre">size</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbol.flags" title="qgis.core.QgsSymbol.flags"><code class="xref py py-obj docutils literal notranslate"><span class="pre">flags</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbol.flags" title="qgis.core.QgsSymbol.flags"><code class="xref py py-obj docutils literal notranslate"><span class="pre">flags</span></code></a></p></td>
 <td><p>Returns flags for the symbol.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbol.forceRHR" title="qgis.core.QgsSymbol.forceRHR"><code class="xref py py-obj docutils literal notranslate"><span class="pre">forceRHR</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbol.forceRHR" title="qgis.core.QgsSymbol.forceRHR"><code class="xref py py-obj docutils literal notranslate"><span class="pre">forceRHR</span></code></a></p></td>
 <td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if polygon features drawn by the symbol will be reoriented to follow the standard right-hand-rule orientation, in which the area that is bounded by the polygon is to the right of the boundary.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbol.hasDataDefinedProperties" title="qgis.core.QgsSymbol.hasDataDefinedProperties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hasDataDefinedProperties</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbol.hasDataDefinedProperties" title="qgis.core.QgsSymbol.hasDataDefinedProperties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hasDataDefinedProperties</span></code></a></p></td>
 <td><p>Returns whether the symbol utilizes any data defined properties.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbol.insertSymbolLayer" title="qgis.core.QgsSymbol.insertSymbolLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">insertSymbolLayer</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbol.insertSymbolLayer" title="qgis.core.QgsSymbol.insertSymbolLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">insertSymbolLayer</span></code></a></p></td>
 <td><p>Inserts a symbol <code class="docutils literal notranslate"><span class="pre">layer</span></code> to specified <code class="docutils literal notranslate"><span class="pre">index</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbol.layer" title="qgis.core.QgsSymbol.layer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">layer</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbol.layer" title="qgis.core.QgsSymbol.layer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">layer</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbol.mapUnitScale" title="qgis.core.QgsSymbol.mapUnitScale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mapUnitScale</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbol.mapUnitScale" title="qgis.core.QgsSymbol.mapUnitScale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mapUnitScale</span></code></a></p></td>
 <td><p>Returns the map unit scale for the symbol.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbol.opacity" title="qgis.core.QgsSymbol.opacity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">opacity</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbol.opacity" title="qgis.core.QgsSymbol.opacity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">opacity</span></code></a></p></td>
 <td><p>Returns the opacity for the symbol.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbol.outputUnit" title="qgis.core.QgsSymbol.outputUnit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">outputUnit</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbol.outputUnit" title="qgis.core.QgsSymbol.outputUnit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">outputUnit</span></code></a></p></td>
 <td><p>Returns the units to use for sizes and widths within the symbol.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbol.propertyDefinitions" title="qgis.core.QgsSymbol.propertyDefinitions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">propertyDefinitions</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbol.propertyDefinitions" title="qgis.core.QgsSymbol.propertyDefinitions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">propertyDefinitions</span></code></a></p></td>
 <td><p>Returns the symbol property definitions.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbol.renderFeature" title="qgis.core.QgsSymbol.renderFeature"><code class="xref py py-obj docutils literal notranslate"><span class="pre">renderFeature</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbol.renderFeature" title="qgis.core.QgsSymbol.renderFeature"><code class="xref py py-obj docutils literal notranslate"><span class="pre">renderFeature</span></code></a></p></td>
 <td><p>Render a feature.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbol.renderHints" title="qgis.core.QgsSymbol.renderHints"><code class="xref py py-obj docutils literal notranslate"><span class="pre">renderHints</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbol.renderHints" title="qgis.core.QgsSymbol.renderHints"><code class="xref py py-obj docutils literal notranslate"><span class="pre">renderHints</span></code></a></p></td>
 <td><p>Returns the rendering hint flags for the symbol.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbol.renderUsingLayer" title="qgis.core.QgsSymbol.renderUsingLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">renderUsingLayer</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbol.renderUsingLayer" title="qgis.core.QgsSymbol.renderUsingLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">renderUsingLayer</span></code></a></p></td>
 <td><p>Renders a context using a particular symbol layer without passing in a geometry.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbol.renderVertexMarker" title="qgis.core.QgsSymbol.renderVertexMarker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">renderVertexMarker</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbol.renderVertexMarker" title="qgis.core.QgsSymbol.renderVertexMarker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">renderVertexMarker</span></code></a></p></td>
 <td><p>Render editing vertex marker at specified point</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbol.setAnimationSettings" title="qgis.core.QgsSymbol.setAnimationSettings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setAnimationSettings</span></code></a></p></td>
+<td><p>Sets a the symbol animation <code class="docutils literal notranslate"><span class="pre">settings</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbol.setClipFeaturesToExtent" title="qgis.core.QgsSymbol.setClipFeaturesToExtent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setClipFeaturesToExtent</span></code></a></p></td>
 <td><p>Sets whether features drawn by the symbol should be clipped to the render context's extent.</p></td>
@@ -2334,6 +2343,24 @@
 <dd><p>alias of <a class="reference internal" href="../gui/Qgis.html#qgis.gui.Qgis" title="qgis._core.Qgis"><code class="xref py py-class docutils literal notranslate"><span class="pre">qgis._core.Qgis</span></code></a></p>
 </dd></dl>
 
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsSymbol.animationSettings">
+<span class="sig-name descname"><span class="pre">animationSettings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="QgsSymbolAnimationSettings.html#qgis.core.QgsSymbolAnimationSettings" title="qgis.core.QgsSymbolAnimationSettings"><span class="pre">QgsSymbolAnimationSettings</span></a></span></span><a class="headerlink" href="#qgis.core.QgsSymbol.animationSettings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a reference to the symbol animation settings.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsSymbol.setAnimationSettings" title="qgis.core.QgsSymbol.setAnimationSettings"><code class="xref py py-func docutils literal notranslate"><span class="pre">setAnimationSettings()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.26.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsSymbolAnimationSettings.html#qgis.core.QgsSymbolAnimationSettings" title="qgis.core.QgsSymbolAnimationSettings">QgsSymbolAnimationSettings</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -2892,6 +2919,24 @@ geometry type, points and rings in which are being rendered by the parent symbol
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsSymbol.setAnimationSettings">
+<span class="sig-name descname"><span class="pre">setAnimationSettings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">settings</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsSymbolAnimationSettings.html#qgis.core.QgsSymbolAnimationSettings" title="qgis.core.QgsSymbolAnimationSettings"><span class="pre">QgsSymbolAnimationSettings</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsSymbol.setAnimationSettings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets a the symbol animation <code class="docutils literal notranslate"><span class="pre">settings</span></code>.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsSymbol.animationSettings" title="qgis.core.QgsSymbol.animationSettings"><code class="xref py py-func docutils literal notranslate"><span class="pre">animationSettings()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.26.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>settings</strong> (<a class="reference internal" href="QgsSymbolAnimationSettings.html#qgis.core.QgsSymbolAnimationSettings" title="qgis.core.QgsSymbolAnimationSettings"><em>QgsSymbolAnimationSettings</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsSymbol.setClipFeaturesToExtent">
 <span class="sig-name descname"><span class="pre">setClipFeaturesToExtent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clipFeaturesToExtent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsSymbol.setClipFeaturesToExtent" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets whether features drawn by the symbol should be clipped to the render context’s
@@ -3392,7 +3437,7 @@ the ones required by expressions.</p>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:31 Apr 10, 2022.
+      <span class="lastupdated">Last updated on 03:04 Apr 10, 2022.
       </span></p>
   </div>
 
