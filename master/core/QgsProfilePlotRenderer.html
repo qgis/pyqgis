@@ -20,7 +20,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Class: QgsProfileRenderContext" href="QgsProfileRenderContext.html" />
+    <link rel="next" title="Class: QgsProfilePoint" href="QgsProfilePoint.html" />
     <link rel="prev" title="Class: QgsProcessingUtils" href="QgsProcessingUtils.html" /> 
 </head>
 
@@ -829,8 +829,11 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingRegistry.html">Class: QgsProcessingRegistry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingUtils.html">Class: QgsProcessingUtils</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Class: QgsProfilePlotRenderer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsProfilePoint.html">Class: QgsProfilePoint</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProfileRenderContext.html">Class: QgsProfileRenderContext</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProfileRequest.html">Class: QgsProfileRequest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsProfileSnapContext.html">Class: QgsProfileSnapContext</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsProfileSnapResult.html">Class: QgsProfileSnapResult</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProjOperation.html">Class: QgsProjOperation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProjUtils.html">Class: QgsProjUtils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProject.html">Class: QgsProject</a></li>
@@ -2108,16 +2111,19 @@ results.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProfilePlotRenderer.senderSignalIndex" title="qgis.core.QgsProfilePlotRenderer.senderSignalIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">senderSignalIndex</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProfilePlotRenderer.startGeneration" title="qgis.core.QgsProfilePlotRenderer.startGeneration"><code class="xref py py-obj docutils literal notranslate"><span class="pre">startGeneration</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProfilePlotRenderer.snapPoint" title="qgis.core.QgsProfilePlotRenderer.snapPoint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">snapPoint</span></code></a></p></td>
+<td><p>Snap a <code class="docutils literal notranslate"><span class="pre">point</span></code> to the results.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProfilePlotRenderer.startGeneration" title="qgis.core.QgsProfilePlotRenderer.startGeneration"><code class="xref py py-obj docutils literal notranslate"><span class="pre">startGeneration</span></code></a></p></td>
 <td><p>Start the generation job and immediately return.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProfilePlotRenderer.timerEvent" title="qgis.core.QgsProfilePlotRenderer.timerEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">timerEvent</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProfilePlotRenderer.timerEvent" title="qgis.core.QgsProfilePlotRenderer.timerEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">timerEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProfilePlotRenderer.waitForFinished" title="qgis.core.QgsProfilePlotRenderer.waitForFinished"><code class="xref py py-obj docutils literal notranslate"><span class="pre">waitForFinished</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProfilePlotRenderer.waitForFinished" title="qgis.core.QgsProfilePlotRenderer.waitForFinished"><code class="xref py py-obj docutils literal notranslate"><span class="pre">waitForFinished</span></code></a></p></td>
 <td><p>Block until the current job has finished.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProfilePlotRenderer.zRange" title="qgis.core.QgsProfilePlotRenderer.zRange"><code class="xref py py-obj docutils literal notranslate"><span class="pre">zRange</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProfilePlotRenderer.zRange" title="qgis.core.QgsProfilePlotRenderer.zRange"><code class="xref py py-obj docutils literal notranslate"><span class="pre">zRange</span></code></a></p></td>
 <td><p>Returns the limits of the retrieved elevation values.</p></td>
 </tr>
 </tbody>
@@ -2256,6 +2262,23 @@ Does nothing if the generation is not active.</p>
 <dd></dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProfilePlotRenderer.snapPoint">
+<span class="sig-name descname"><span class="pre">snapPoint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">point</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsProfilePoint.html#qgis.core.QgsProfilePoint" title="qgis.core.QgsProfilePoint"><span class="pre">QgsProfilePoint</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsProfileSnapContext.html#qgis.core.QgsProfileSnapContext" title="qgis.core.QgsProfileSnapContext"><span class="pre">QgsProfileSnapContext</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="QgsProfileSnapResult.html#qgis.core.QgsProfileSnapResult" title="qgis.core.QgsProfileSnapResult"><span class="pre">QgsProfileSnapResult</span></a></span></span><a class="headerlink" href="#qgis.core.QgsProfilePlotRenderer.snapPoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Snap a <code class="docutils literal notranslate"><span class="pre">point</span></code> to the results.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>point</strong> (<a class="reference internal" href="QgsProfilePoint.html#qgis.core.QgsProfilePoint" title="qgis.core.QgsProfilePoint"><em>QgsProfilePoint</em></a>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsProfileSnapContext.html#qgis.core.QgsProfileSnapContext" title="qgis.core.QgsProfileSnapContext"><em>QgsProfileSnapContext</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsProfileSnapResult.html#qgis.core.QgsProfileSnapResult" title="qgis.core.QgsProfileSnapResult">QgsProfileSnapResult</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsProfilePlotRenderer.startGeneration">
 <span class="sig-name descname"><span class="pre">startGeneration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsProfilePlotRenderer.startGeneration" title="Permalink to this definition">¶</a></dt>
 <dd><p>Start the generation job and immediately return.
@@ -2297,7 +2320,7 @@ Does nothing if the generation is already in progress.</p>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:31 Apr 16, 2022.
+      <span class="lastupdated">Last updated on 02:23 Apr 16, 2022.
       </span></p>
   </div>
 
