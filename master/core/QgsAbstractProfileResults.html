@@ -1985,6 +1985,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../3d/QgsDirectionalLightSettings.html">Class: QgsDirectionalLightSettings</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../3d/QgsGoochMaterialSettings.html">Class: QgsGoochMaterialSettings</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../3d/QgsLayoutItem3DMap.html">Class: QgsLayoutItem3DMap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../3d/QgsLightSource.html">Class: QgsLightSource</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../3d/QgsLine3DSymbol.html">Class: QgsLine3DSymbol</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../3d/QgsMaterialContext.html">Class: QgsMaterialContext</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../3d/QgsMaterialRegistry.html">Class: QgsMaterialRegistry</a></li>
@@ -2061,22 +2062,25 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractProfileResults.asGeometries" title="qgis.core.QgsAbstractProfileResults.asGeometries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">asGeometries</span></code></a></p></td>
 <td><p>Returns a list of geometries representing the calculated elevation results.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractProfileResults.distanceToHeightMap" title="qgis.core.QgsAbstractProfileResults.distanceToHeightMap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">distanceToHeightMap</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractProfileResults.copyPropertiesFromGenerator" title="qgis.core.QgsAbstractProfileResults.copyPropertiesFromGenerator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">copyPropertiesFromGenerator</span></code></a></p></td>
+<td><p>Copies properties from specified <code class="docutils literal notranslate"><span class="pre">generator</span></code> to the results object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractProfileResults.distanceToHeightMap" title="qgis.core.QgsAbstractProfileResults.distanceToHeightMap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">distanceToHeightMap</span></code></a></p></td>
 <td><p>Returns the map of distance (chainage) to height.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractProfileResults.renderResults" title="qgis.core.QgsAbstractProfileResults.renderResults"><code class="xref py py-obj docutils literal notranslate"><span class="pre">renderResults</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractProfileResults.renderResults" title="qgis.core.QgsAbstractProfileResults.renderResults"><code class="xref py py-obj docutils literal notranslate"><span class="pre">renderResults</span></code></a></p></td>
 <td><p>Renders the results to the specified <code class="docutils literal notranslate"><span class="pre">context</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractProfileResults.sampledPoints" title="qgis.core.QgsAbstractProfileResults.sampledPoints"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sampledPoints</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractProfileResults.sampledPoints" title="qgis.core.QgsAbstractProfileResults.sampledPoints"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sampledPoints</span></code></a></p></td>
 <td><p>Returns a list of sampled points, with their calculated elevation as the point z value.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractProfileResults.snapPoint" title="qgis.core.QgsAbstractProfileResults.snapPoint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">snapPoint</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractProfileResults.snapPoint" title="qgis.core.QgsAbstractProfileResults.snapPoint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">snapPoint</span></code></a></p></td>
 <td><p>Snaps a <code class="docutils literal notranslate"><span class="pre">point</span></code> to the generated elevation profile.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractProfileResults.type" title="qgis.core.QgsAbstractProfileResults.type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractProfileResults.type" title="qgis.core.QgsAbstractProfileResults.type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a></p></td>
 <td><p>Returns the unique string identifier for the results type.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractProfileResults.zRange" title="qgis.core.QgsAbstractProfileResults.zRange"><code class="xref py py-obj docutils literal notranslate"><span class="pre">zRange</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractProfileResults.zRange" title="qgis.core.QgsAbstractProfileResults.zRange"><code class="xref py py-obj docutils literal notranslate"><span class="pre">zRange</span></code></a></p></td>
 <td><p>Returns the range of the retrieved elevation values</p></td>
 </tr>
 </tbody>
@@ -2105,6 +2109,20 @@
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>List[<a class="reference internal" href="QgsGeometry.html#qgis.core.QgsGeometry" title="qgis.core.QgsGeometry">QgsGeometry</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsAbstractProfileResults.copyPropertiesFromGenerator">
+<span class="sig-name descname"><span class="pre">copyPropertiesFromGenerator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">generator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsAbstractProfileGenerator.html#qgis.core.QgsAbstractProfileGenerator" title="qgis.core.QgsAbstractProfileGenerator"><span class="pre">QgsAbstractProfileGenerator</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsAbstractProfileResults.copyPropertiesFromGenerator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copies properties from specified <code class="docutils literal notranslate"><span class="pre">generator</span></code> to the results object.</p>
+<p>For instance, this method can be used to copy any properties relating to rendering
+the gathered results to reflect the <code class="docutils literal notranslate"><span class="pre">generator</span></code>’s current properties.</p>
+<p>The base class method does nothing.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>generator</strong> (<a class="reference internal" href="QgsAbstractProfileGenerator.html#qgis.core.QgsAbstractProfileGenerator" title="qgis.core.QgsAbstractProfileGenerator"><em>QgsAbstractProfileGenerator</em></a>) – </p>
 </dd>
 </dl>
 </dd></dl>
@@ -2195,7 +2213,7 @@ as the point z value.</p>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:39 Apr 28, 2022.
+      <span class="lastupdated">Last updated on 02:23 Apr 28, 2022.
       </span></p>
   </div>
 
