@@ -78,6 +78,7 @@
 <li class="toctree-l2"><a class="reference internal" href="NULL.html">Class: NULL</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PROJECT_SCALES.html">Class: PROJECT_SCALES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PlotToolFlags.html">Class: PlotToolFlags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ProfileGeneratorFlags.html">Class: ProfileGeneratorFlags</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ProjectDirtyBlocker.html">Class: ProjectDirtyBlocker</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ProjectFlags.html">Class: ProjectFlags</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PyQgsSettingsEntryEnumFlag.html">Class: PyQgsSettingsEntryEnumFlag</a></li>
@@ -267,6 +268,8 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsDataProviderTemporalCapabilities.html">Class: QgsDataProviderTemporalCapabilities</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsDataSourceUri.html">Class: QgsDataSourceUri</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsDatabaseFilterProxyModel.html">Class: QgsDatabaseFilterProxyModel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsDatabaseQueryLog.html">Class: QgsDatabaseQueryLog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsDatabaseQueryLogEntry.html">Class: QgsDatabaseQueryLogEntry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsDatabaseSchemaItem.html">Class: QgsDatabaseSchemaItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsDatabaseSchemaModel.html">Class: QgsDatabaseSchemaModel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsDatabaseTableModel.html">Class: QgsDatabaseTableModel</a></li>
@@ -829,6 +832,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingProvider.html">Class: QgsProcessingProvider</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingRegistry.html">Class: QgsProcessingRegistry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingUtils.html">Class: QgsProcessingUtils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsProfileGenerationContext.html">Class: QgsProfileGenerationContext</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProfilePlotRenderer.html">Class: QgsProfilePlotRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProfilePoint.html">Class: QgsProfilePoint</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProfileRenderContext.html">Class: QgsProfileRenderContext</a></li>
@@ -990,6 +994,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsSettingsEntryColor.html">Class: QgsSettingsEntryColor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsSettingsEntryDouble.html">Class: QgsSettingsEntryDouble</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsSettingsEntryEnumFlag.html">Class: QgsSettingsEntryEnumFlag</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsSettingsEntryGroup.html">Class: QgsSettingsEntryGroup</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsSettingsEntryInteger.html">Class: QgsSettingsEntryInteger</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsSettingsEntryString.html">Class: QgsSettingsEntryString</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsSettingsEntryStringList.html">Class: QgsSettingsEntryStringList</a></li>
@@ -2082,12 +2087,16 @@ GeoNode servers associated with a QGIS install.</p>
 <tbody>
 </tbody>
 </table>
+<p class="rubric">Attributes</p>
 <table class="autosummary longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
 <col style="width: 90%" />
 </colgroup>
 <tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsGeoNodeConnectionUtils.sGeoNodeConnection" title="qgis.core.QgsGeoNodeConnectionUtils.sGeoNodeConnection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sGeoNodeConnection</span></code></a></p></td>
+<td><p></p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -2128,12 +2137,21 @@ GeoNode servers associated with a QGIS install.</p>
 <dt class="sig sig-object py" id="qgis.core.QgsGeoNodeConnectionUtils.pathGeoNodeConnectionDetails">
 <span class="sig-name descname"><span class="pre">pathGeoNodeConnectionDetails</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#qgis.core.QgsGeoNodeConnectionUtils.pathGeoNodeConnectionDetails" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the base path for settings related to GeoNode connection details.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version QGIS: </span>3.26
+use <code class="xref py py-func docutils literal notranslate"><span class="pre">pathGeonNodeConnection()</span></code> instead</p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>str</p>
 </dd>
 </dl>
 </dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.QgsGeoNodeConnectionUtils.sGeoNodeConnection">
+<span class="sig-name descname"><span class="pre">sGeoNodeConnection</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'GEONODE'</span></em><a class="headerlink" href="#qgis.core.QgsGeoNodeConnectionUtils.sGeoNodeConnection" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -2148,7 +2166,7 @@ GeoNode servers associated with a QGIS install.</p>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:32 Apr 29, 2022.
+      <span class="lastupdated">Last updated on 02:30 Apr 29, 2022.
       </span></p>
   </div>
 
