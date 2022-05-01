@@ -2172,8 +2172,14 @@ Constructor for <a class="reference internal" href="#qgis.core.QgsMapLayerElevat
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMapLayerElevationProperties.profileGenerationPropertyChanged" title="qgis.core.QgsMapLayerElevationProperties.profileGenerationPropertyChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">profileGenerationPropertyChanged</span></code></a></p></td>
 <td><p>Emitted when any of the elevation properties which relate solely to generation of elevation profiles have changed.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMapLayerElevationProperties.renderingPropertyChanged" title="qgis.core.QgsMapLayerElevationProperties.renderingPropertyChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">renderingPropertyChanged</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMapLayerElevationProperties.profileRenderingPropertyChanged" title="qgis.core.QgsMapLayerElevationProperties.profileRenderingPropertyChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">profileRenderingPropertyChanged</span></code></a></p></td>
 <td><p>Emitted when any of the elevation properties which relate solely to presentation of elevation results have changed.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMapLayerElevationProperties.zOffsetChanged" title="qgis.core.QgsMapLayerElevationProperties.zOffsetChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">zOffsetChanged</span></code></a></p></td>
+<td><p>Emitted when the z offset changes.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMapLayerElevationProperties.zScaleChanged" title="qgis.core.QgsMapLayerElevationProperties.zScaleChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">zScaleChanged</span></code></a></p></td>
+<td><p>Emitted when the z scale changes.</p></td>
 </tr>
 </tbody>
 </table>
@@ -2253,7 +2259,7 @@ the settings defined by this elevation properties object.</p>
 <dt class="sig sig-object py" id="qgis.core.QgsMapLayerElevationProperties.changed">
 <span class="sig-name descname"><span class="pre">changed</span></span><a class="headerlink" href="#qgis.core.QgsMapLayerElevationProperties.changed" title="Permalink to this definition">¶</a></dt>
 <dd><p>Emitted when any of the elevation properties have changed.</p>
-<p>See <a class="reference internal" href="#qgis.core.QgsMapLayerElevationProperties.renderingPropertyChanged" title="qgis.core.QgsMapLayerElevationProperties.renderingPropertyChanged"><code class="xref py py-func docutils literal notranslate"><span class="pre">renderingPropertyChanged()</span></code></a> and <a class="reference internal" href="#qgis.core.QgsMapLayerElevationProperties.profileGenerationPropertyChanged" title="qgis.core.QgsMapLayerElevationProperties.profileGenerationPropertyChanged"><code class="xref py py-func docutils literal notranslate"><span class="pre">profileGenerationPropertyChanged()</span></code></a> for more fine-grained signals. [signal]</p>
+<p>See <code class="xref py py-func docutils literal notranslate"><span class="pre">renderingPropertyChanged()</span></code> and <a class="reference internal" href="#qgis.core.QgsMapLayerElevationProperties.profileGenerationPropertyChanged" title="qgis.core.QgsMapLayerElevationProperties.profileGenerationPropertyChanged"><code class="xref py py-func docutils literal notranslate"><span class="pre">profileGenerationPropertyChanged()</span></code></a> for more fine-grained signals. [signal]</p>
 </dd></dl>
 
 <dl class="py method">
@@ -2388,7 +2394,25 @@ profiles have changed.</p>
 </div>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
-<p><a class="reference internal" href="#qgis.core.QgsMapLayerElevationProperties.renderingPropertyChanged" title="qgis.core.QgsMapLayerElevationProperties.renderingPropertyChanged"><code class="xref py py-func docutils literal notranslate"><span class="pre">renderingPropertyChanged()</span></code></a></p>
+<p><a class="reference internal" href="#qgis.core.QgsMapLayerElevationProperties.profileRenderingPropertyChanged" title="qgis.core.QgsMapLayerElevationProperties.profileRenderingPropertyChanged"><code class="xref py py-func docutils literal notranslate"><span class="pre">profileRenderingPropertyChanged()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.26: </span>[signal]</p>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.QgsMapLayerElevationProperties.profileRenderingPropertyChanged">
+<span class="sig-name descname"><span class="pre">profileRenderingPropertyChanged</span></span><a class="headerlink" href="#qgis.core.QgsMapLayerElevationProperties.profileRenderingPropertyChanged" title="Permalink to this definition">¶</a></dt>
+<dd><p>Emitted when any of the elevation properties which relate solely to presentation of elevation
+results have changed.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsMapLayerElevationProperties.changed" title="qgis.core.QgsMapLayerElevationProperties.changed"><code class="xref py py-func docutils literal notranslate"><span class="pre">changed()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsMapLayerElevationProperties.profileGenerationPropertyChanged" title="qgis.core.QgsMapLayerElevationProperties.profileGenerationPropertyChanged"><code class="xref py py-func docutils literal notranslate"><span class="pre">profileGenerationPropertyChanged()</span></code></a></p>
 </div>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.26: </span>[signal]</p>
@@ -2455,24 +2479,6 @@ profiles have changed.</p>
 <dt class="sig sig-object py" id="qgis.core.QgsMapLayerElevationProperties.receivers">
 <span class="sig-name descname"><span class="pre">receivers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">PYQT_SIGNAL</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#qgis.core.QgsMapLayerElevationProperties.receivers" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="qgis.core.QgsMapLayerElevationProperties.renderingPropertyChanged">
-<span class="sig-name descname"><span class="pre">renderingPropertyChanged</span></span><a class="headerlink" href="#qgis.core.QgsMapLayerElevationProperties.renderingPropertyChanged" title="Permalink to this definition">¶</a></dt>
-<dd><p>Emitted when any of the elevation properties which relate solely to presentation of elevation
-results have changed.</p>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p><a class="reference internal" href="#qgis.core.QgsMapLayerElevationProperties.changed" title="qgis.core.QgsMapLayerElevationProperties.changed"><code class="xref py py-func docutils literal notranslate"><span class="pre">changed()</span></code></a></p>
-</div>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p><a class="reference internal" href="#qgis.core.QgsMapLayerElevationProperties.profileGenerationPropertyChanged" title="qgis.core.QgsMapLayerElevationProperties.profileGenerationPropertyChanged"><code class="xref py py-func docutils literal notranslate"><span class="pre">profileGenerationPropertyChanged()</span></code></a></p>
-</div>
-<div class="versionadded">
-<p><span class="versionmodified added">New in version 3.26: </span>[signal]</p>
-</div>
-</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsMapLayerElevationProperties.sender">
@@ -2649,6 +2655,15 @@ the layer.</p>
 </dl>
 </dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.QgsMapLayerElevationProperties.zOffsetChanged">
+<span class="sig-name descname"><span class="pre">zOffsetChanged</span></span><a class="headerlink" href="#qgis.core.QgsMapLayerElevationProperties.zOffsetChanged" title="Permalink to this definition">¶</a></dt>
+<dd><p>Emitted when the z offset changes.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.26: </span>[signal]</p>
+</div>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsMapLayerElevationProperties.zScale">
 <span class="sig-name descname"><span class="pre">zScale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#qgis.core.QgsMapLayerElevationProperties.zScale" title="Permalink to this definition">¶</a></dt>
@@ -2671,6 +2686,15 @@ as conversion of elevation values in feet to meters.</p>
 </dl>
 </dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.QgsMapLayerElevationProperties.zScaleChanged">
+<span class="sig-name descname"><span class="pre">zScaleChanged</span></span><a class="headerlink" href="#qgis.core.QgsMapLayerElevationProperties.zScaleChanged" title="Permalink to this definition">¶</a></dt>
+<dd><p>Emitted when the z scale changes.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.26: </span>[signal]</p>
+</div>
+</dd></dl>
+
 </dd></dl>
 
 </section>
@@ -2684,7 +2708,7 @@ as conversion of elevation values in feet to meters.</p>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:38 May 01, 2022.
+      <span class="lastupdated">Last updated on 01:00 May 01, 2022.
       </span></p>
   </div>
 
