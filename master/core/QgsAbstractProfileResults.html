@@ -833,6 +833,8 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingRegistry.html">Class: QgsProcessingRegistry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingUtils.html">Class: QgsProcessingUtils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProfileGenerationContext.html">Class: QgsProfileGenerationContext</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsProfileIdentifyContext.html">Class: QgsProfileIdentifyContext</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsProfileIdentifyResults.html">Class: QgsProfileIdentifyResults</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProfilePlotRenderer.html">Class: QgsProfilePlotRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProfilePoint.html">Class: QgsProfilePoint</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProfileRenderContext.html">Class: QgsProfileRenderContext</a></li>
@@ -2073,19 +2075,22 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractProfileResults.distanceToHeightMap" title="qgis.core.QgsAbstractProfileResults.distanceToHeightMap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">distanceToHeightMap</span></code></a></p></td>
 <td><p>Returns the map of distance (chainage) to height.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractProfileResults.renderResults" title="qgis.core.QgsAbstractProfileResults.renderResults"><code class="xref py py-obj docutils literal notranslate"><span class="pre">renderResults</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractProfileResults.identify" title="qgis.core.QgsAbstractProfileResults.identify"><code class="xref py py-obj docutils literal notranslate"><span class="pre">identify</span></code></a></p></td>
+<td><p>Identify results visible at the specified profile <code class="docutils literal notranslate"><span class="pre">point</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractProfileResults.renderResults" title="qgis.core.QgsAbstractProfileResults.renderResults"><code class="xref py py-obj docutils literal notranslate"><span class="pre">renderResults</span></code></a></p></td>
 <td><p>Renders the results to the specified <code class="docutils literal notranslate"><span class="pre">context</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractProfileResults.sampledPoints" title="qgis.core.QgsAbstractProfileResults.sampledPoints"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sampledPoints</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractProfileResults.sampledPoints" title="qgis.core.QgsAbstractProfileResults.sampledPoints"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sampledPoints</span></code></a></p></td>
 <td><p>Returns a list of sampled points, with their calculated elevation as the point z value.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractProfileResults.snapPoint" title="qgis.core.QgsAbstractProfileResults.snapPoint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">snapPoint</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractProfileResults.snapPoint" title="qgis.core.QgsAbstractProfileResults.snapPoint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">snapPoint</span></code></a></p></td>
 <td><p>Snaps a <code class="docutils literal notranslate"><span class="pre">point</span></code> to the generated elevation profile.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractProfileResults.type" title="qgis.core.QgsAbstractProfileResults.type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractProfileResults.type" title="qgis.core.QgsAbstractProfileResults.type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a></p></td>
 <td><p>Returns the unique string identifier for the results type.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractProfileResults.zRange" title="qgis.core.QgsAbstractProfileResults.zRange"><code class="xref py py-obj docutils literal notranslate"><span class="pre">zRange</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractProfileResults.zRange" title="qgis.core.QgsAbstractProfileResults.zRange"><code class="xref py py-obj docutils literal notranslate"><span class="pre">zRange</span></code></a></p></td>
 <td><p>Returns the range of the retrieved elevation values</p></td>
 </tr>
 </tbody>
@@ -2139,6 +2144,25 @@ the gathered results to reflect the <code class="docutils literal notranslate"><
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsAbstractProfileResults.identify">
+<span class="sig-name descname"><span class="pre">identify</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">point</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsProfilePoint.html#qgis.core.QgsProfilePoint" title="qgis.core.QgsProfilePoint"><span class="pre">QgsProfilePoint</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsProfileIdentifyContext.html#qgis.core.QgsProfileIdentifyContext" title="qgis.core.QgsProfileIdentifyContext"><span class="pre">QgsProfileIdentifyContext</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="QgsProfileIdentifyResults.html#qgis.core.QgsProfileIdentifyResults" title="qgis.core.QgsProfileIdentifyResults"><span class="pre">QgsProfileIdentifyResults</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qgis.core.QgsAbstractProfileResults.identify" title="Permalink to this definition">¶</a></dt>
+<dd><p>Identify results visible at the specified profile <code class="docutils literal notranslate"><span class="pre">point</span></code>.</p>
+<p>identify(self, distanceRange: <a class="reference internal" href="QgsDoubleRange.html#qgis.core.QgsDoubleRange" title="qgis.core.QgsDoubleRange"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsDoubleRange</span></code></a>, elevationRange: <a class="reference internal" href="QgsDoubleRange.html#qgis.core.QgsDoubleRange" title="qgis.core.QgsDoubleRange"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsDoubleRange</span></code></a>, context: <a class="reference internal" href="QgsProfileIdentifyContext.html#qgis.core.QgsProfileIdentifyContext" title="qgis.core.QgsProfileIdentifyContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProfileIdentifyContext</span></code></a>) -&gt; List[QgsProfileIdentifyResults]
+Identify results visible within the specified ranges.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>point</strong> (<a class="reference internal" href="QgsProfilePoint.html#qgis.core.QgsProfilePoint" title="qgis.core.QgsProfilePoint"><em>QgsProfilePoint</em></a>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsProfileIdentifyContext.html#qgis.core.QgsProfileIdentifyContext" title="qgis.core.QgsProfileIdentifyContext"><em>QgsProfileIdentifyContext</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>List[<a class="reference internal" href="QgsProfileIdentifyResults.html#qgis.core.QgsProfileIdentifyResults" title="qgis.core.QgsProfileIdentifyResults">QgsProfileIdentifyResults</a>]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2218,7 +2242,7 @@ as the point z value.</p>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:33 May 06, 2022.
+      <span class="lastupdated">Last updated on 02:10 May 06, 2022.
       </span></p>
   </div>
 
