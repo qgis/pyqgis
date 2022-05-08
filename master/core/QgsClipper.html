@@ -2072,13 +2072,16 @@ magnitude of the screen coordinates (+/- 32768, i.e. 16 bit integer).</p>
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsClipper.clippedLine" title="qgis.core.QgsClipper.clippedLine"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clippedLine</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsClipper.clipLineSegment" title="qgis.core.QgsClipper.clipLineSegment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clipLineSegment</span></code></a></p></td>
+<td><p>Clips a line segment to a rectangle.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsClipper.clippedLine" title="qgis.core.QgsClipper.clippedLine"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clippedLine</span></code></a></p></td>
 <td><p>Takes a linestring and clips it to clipExtent</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsClipper.trimFeature" title="qgis.core.QgsClipper.trimFeature"><code class="xref py py-obj docutils literal notranslate"><span class="pre">trimFeature</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsClipper.trimFeature" title="qgis.core.QgsClipper.trimFeature"><code class="xref py py-obj docutils literal notranslate"><span class="pre">trimFeature</span></code></a></p></td>
 <td><p>Trims the given feature to a rectangular box.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsClipper.trimPolygon" title="qgis.core.QgsClipper.trimPolygon"><code class="xref py py-obj docutils literal notranslate"><span class="pre">trimPolygon</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsClipper.trimPolygon" title="qgis.core.QgsClipper.trimPolygon"><code class="xref py py-obj docutils literal notranslate"><span class="pre">trimPolygon</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param pts</dt>
 <dd class="field-odd"><p></p></dd>
@@ -2176,6 +2179,36 @@ magnitude of the screen coordinates (+/- 32768, i.e. 16 bit integer).</p>
 <dd></dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsClipper.clipLineSegment">
+<span class="sig-name descname"><span class="pre">clipLineSegment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">left</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">right</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bottom</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qgis.core.QgsClipper.clipLineSegment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clips a line segment to a rectangle.</p>
+<p>An implementation of the ‘Fast clipping’ algorithm (Sobkow et al. 1987, Computers &amp; Graphics Vol.11, 4, p.459-467).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>left</strong> (<em>float</em>) – x-coordinate of left side of rectangle</p></li>
+<li><p><strong>right</strong> (<em>float</em>) – x-coordinate of right side of rectangle</p></li>
+<li><p><strong>bottom</strong> (<em>float</em>) – y-coordinate of bottom side of rectangle</p></li>
+<li><p><strong>top</strong> (<em>float</em>) – y-coordinate of top side of rectangle</p></li>
+<li><p><strong>x0</strong> (<em>float</em>) – x-coordinate of start of line</p></li>
+<li><p><strong>y0</strong> (<em>float</em>) – y-coordinate of start of line</p></li>
+<li><p><strong>x1</strong> (<em>float</em>) – x-coordinate of end of line</p></li>
+<li><p><strong>y1</strong> (<em>float</em>) – y-coordinate of end of line</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Tuple[bool, float, float, float, float]</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if line was clipped.</p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.26.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsClipper.clippedLine">
 <span class="sig-name descname"><span class="pre">clippedLine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">curve</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsCurve.html#qgis.core.QgsCurve" title="qgis.core.QgsCurve"><span class="pre">QgsCurve</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">clipExtent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsRectangle.html#qgis.core.QgsRectangle" title="qgis.core.QgsRectangle"><span class="pre">QgsRectangle</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">QPolygonF</span></span></span><a class="headerlink" href="#qgis.core.QgsClipper.clippedLine" title="Permalink to this definition">¶</a></dt>
 <dd><p>Takes a linestring and clips it to clipExtent</p>
@@ -2248,7 +2281,7 @@ an open shape (linestring).</p>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:33 May 08, 2022.
+      <span class="lastupdated">Last updated on 02:23 May 08, 2022.
       </span></p>
   </div>
 
