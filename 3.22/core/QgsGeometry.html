@@ -3391,18 +3391,18 @@ iteration only is required.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># print the WKT representation of each part in a multi-point geometry</span>
 <span class="n">geometry</span> <span class="o">=</span> <span class="n">QgsGeometry</span><span class="o">.</span><span class="n">fromWkt</span><span class="p">(</span> <span class="s1">&#39;MultiPoint( 0 0, 1 1, 2 2)&#39;</span> <span class="p">)</span>
 <span class="k">for</span> <span class="n">part</span> <span class="ow">in</span> <span class="n">geometry</span><span class="o">.</span><span class="n">constParts</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">part</span><span class="o">.</span><span class="n">asWkt</span><span class="p">())</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">part</span><span class="o">.</span><span class="n">asWkt</span><span class="p">())</span>
 
 <span class="c1"># single part geometries only have one part - this loop will iterate once only</span>
 <span class="n">geometry</span> <span class="o">=</span> <span class="n">QgsGeometry</span><span class="o">.</span><span class="n">fromWkt</span><span class="p">(</span> <span class="s1">&#39;LineString( 0 0, 10 10 )&#39;</span> <span class="p">)</span>
 <span class="k">for</span> <span class="n">part</span> <span class="ow">in</span> <span class="n">geometry</span><span class="o">.</span><span class="n">constParts</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">part</span><span class="o">.</span><span class="n">asWkt</span><span class="p">())</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">part</span><span class="o">.</span><span class="n">asWkt</span><span class="p">())</span>
 
 <span class="c1"># part iteration can also be combined with vertex iteration</span>
 <span class="n">geometry</span> <span class="o">=</span> <span class="n">QgsGeometry</span><span class="o">.</span><span class="n">fromWkt</span><span class="p">(</span> <span class="s1">&#39;MultiPolygon((( 0 0, 0 10, 10 10, 10 0, 0 0 ),( 5 5, 5 6, 6 6, 6 5, 5 5)),((20 2, 22 2, 22 4, 20 4, 20 2)))&#39;</span> <span class="p">)</span>
 <span class="k">for</span> <span class="n">part</span> <span class="ow">in</span> <span class="n">geometry</span><span class="o">.</span><span class="n">constParts</span><span class="p">():</span>
     <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">part</span><span class="o">.</span><span class="n">vertices</span><span class="p">():</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">x</span><span class="p">(),</span> <span class="n">v</span><span class="o">.</span><span class="n">y</span><span class="p">())</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">x</span><span class="p">(),</span> <span class="n">v</span><span class="o">.</span><span class="n">y</span><span class="p">())</span>
 </pre></div>
 </div>
 <div class="admonition seealso">
@@ -3654,7 +3654,7 @@ geometry should first be prepared by calling <code class="xref py py-func docuti
     <span class="n">feature_geometry</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">geometry</span><span class="p">()</span>
     <span class="c1"># test whether the feature&#39;s geometry intersects our original complex polygon</span>
     <span class="k">if</span> <span class="n">polygon_geometry_engine</span><span class="o">.</span><span class="n">intersects</span><span class="p">(</span><span class="n">feature_geometry</span><span class="o">.</span><span class="n">constGet</span><span class="p">()):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;feature intersects the polygon!&#39;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;feature intersects the polygon!&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><a class="reference internal" href="QgsGeometryEngine.html#module-QgsGeometryEngine" title="QgsGeometryEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsGeometryEngine</span></code></a> operations are backed by the GEOS library (<a class="reference external" href="https://trac.osgeo.org/geos/">https://trac.osgeo.org/geos/</a>).</p>
@@ -5247,12 +5247,12 @@ if the parts are not going to be modified.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># print the WKT representation of each part in a multi-point geometry</span>
 <span class="n">geometry</span> <span class="o">=</span> <span class="n">QgsGeometry</span><span class="o">.</span><span class="n">fromWkt</span><span class="p">(</span> <span class="s1">&#39;MultiPoint( 0 0, 1 1, 2 2)&#39;</span> <span class="p">)</span>
 <span class="k">for</span> <span class="n">part</span> <span class="ow">in</span> <span class="n">geometry</span><span class="o">.</span><span class="n">parts</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">part</span><span class="o">.</span><span class="n">asWkt</span><span class="p">())</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">part</span><span class="o">.</span><span class="n">asWkt</span><span class="p">())</span>
 
 <span class="c1"># single part geometries only have one part - this loop will iterate once only</span>
 <span class="n">geometry</span> <span class="o">=</span> <span class="n">QgsGeometry</span><span class="o">.</span><span class="n">fromWkt</span><span class="p">(</span> <span class="s1">&#39;LineString( 0 0, 10 10 )&#39;</span> <span class="p">)</span>
 <span class="k">for</span> <span class="n">part</span> <span class="ow">in</span> <span class="n">geometry</span><span class="o">.</span><span class="n">parts</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">part</span><span class="o">.</span><span class="n">asWkt</span><span class="p">())</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">part</span><span class="o">.</span><span class="n">asWkt</span><span class="p">())</span>
 
 <span class="c1"># parts can be modified during the iteration</span>
 <span class="n">geometry</span> <span class="o">=</span> <span class="n">QgsGeometry</span><span class="o">.</span><span class="n">fromWkt</span><span class="p">(</span> <span class="s1">&#39;MultiPoint( 0 0, 1 1, 2 2)&#39;</span> <span class="p">)</span>
@@ -5263,7 +5263,7 @@ if the parts are not going to be modified.</p>
 <span class="n">geometry</span> <span class="o">=</span> <span class="n">QgsGeometry</span><span class="o">.</span><span class="n">fromWkt</span><span class="p">(</span> <span class="s1">&#39;MultiPolygon((( 0 0, 0 10, 10 10, 10 0, 0 0 ),( 5 5, 5 6, 6 6, 6 5, 5 5)),((20 2, 22 2, 22 4, 20 4, 20 2)))&#39;</span> <span class="p">)</span>
 <span class="k">for</span> <span class="n">part</span> <span class="ow">in</span> <span class="n">geometry</span><span class="o">.</span><span class="n">parts</span><span class="p">():</span>
     <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">part</span><span class="o">.</span><span class="n">vertices</span><span class="p">():</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">x</span><span class="p">(),</span> <span class="n">v</span><span class="o">.</span><span class="n">y</span><span class="p">())</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">x</span><span class="p">(),</span> <span class="n">v</span><span class="o">.</span><span class="n">y</span><span class="p">())</span>
 </pre></div>
 </div>
 <div class="admonition seealso">
@@ -5734,8 +5734,8 @@ param[out] topologyTestPoints points that need to be tested for topological comp
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">geometry</span> <span class="o">=</span> <span class="n">QgsGeometry</span><span class="o">.</span><span class="n">fromWkt</span><span class="p">(</span><span class="s1">&#39;CompoundCurveZ ((2749546.2003820720128715 1262904.45356595050543547 100, 2749557.82053794478997588 1262920.05570670193992555 200))&#39;</span><span class="p">)</span>
 <span class="n">split_line</span> <span class="o">=</span> <span class="p">[</span><span class="n">QgsPoint</span><span class="p">(</span><span class="mf">2749544.19</span><span class="p">,</span> <span class="mf">1262914.79</span><span class="p">),</span> <span class="n">QgsPoint</span><span class="p">(</span><span class="mf">2749557.64</span><span class="p">,</span> <span class="mf">1262897.30</span><span class="p">)]</span>
-<span class="n">result</span><span class="p">,</span> <span class="n">new_geometries</span><span class="p">,</span> <span class="n">point_xy</span> <span class="o">=</span> <span class="n">geometry</span><span class="o">.</span><span class="n">splitGeometry</span><span class="p">(</span><span class="n">split_line</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">geometry</span><span class="o">.</span><span class="n">asWkt</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">result</span><span class="p">,</span> <span class="n">new_geometries</span><span class="p">,</span> <span class="n">point_xy</span> <span class="o">=</span> <span class="n">geometry</span><span class="o">.</span><span class="n">splitGeometry</span><span class="p">(</span><span class="n">split_line</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">geometry</span><span class="o">.</span><span class="n">asWkt</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
 <span class="o">&gt;</span> <span class="n">LineStringZ</span> <span class="p">(</span><span class="mf">2749549.12</span> <span class="mf">1262908.38</span> <span class="mf">125.14</span><span class="p">,</span> <span class="mf">2749557.82</span> <span class="mf">1262920.06</span> <span class="mi">200</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -6139,12 +6139,12 @@ modified using the iterator. See <code class="xref py py-func docutils literal n
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># print the x and y coordinate for each vertex in a LineString</span>
 <span class="n">geometry</span> <span class="o">=</span> <span class="n">QgsGeometry</span><span class="o">.</span><span class="n">fromWkt</span><span class="p">(</span> <span class="s1">&#39;LineString( 0 0, 1 1, 2 2)&#39;</span> <span class="p">)</span>
 <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">geometry</span><span class="o">.</span><span class="n">vertices</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">x</span><span class="p">(),</span> <span class="n">v</span><span class="o">.</span><span class="n">y</span><span class="p">())</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">x</span><span class="p">(),</span> <span class="n">v</span><span class="o">.</span><span class="n">y</span><span class="p">())</span>
 
 <span class="c1"># vertex iteration includes all parts and rings</span>
 <span class="n">geometry</span> <span class="o">=</span> <span class="n">QgsGeometry</span><span class="o">.</span><span class="n">fromWkt</span><span class="p">(</span> <span class="s1">&#39;MultiPolygon((( 0 0, 0 10, 10 10, 10 0, 0 0 ),( 5 5, 5 6, 6 6, 6 5, 5 5)),((20 2, 22 2, 22 4, 20 4, 20 2)))&#39;</span> <span class="p">)</span>
 <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">geometry</span><span class="o">.</span><span class="n">vertices</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">x</span><span class="p">(),</span> <span class="n">v</span><span class="o">.</span><span class="n">y</span><span class="p">())</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">x</span><span class="p">(),</span> <span class="n">v</span><span class="o">.</span><span class="n">y</span><span class="p">())</span>
 </pre></div>
 </div>
 <div class="admonition seealso">
@@ -6262,7 +6262,7 @@ faster than calling <a class="reference internal" href="#qgis.core.QgsGeometry.w
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 04:11 May 08, 2022.
+      <span class="lastupdated">Last updated on 05:29 May 10, 2022.
       </span></p>
   </div>
 
