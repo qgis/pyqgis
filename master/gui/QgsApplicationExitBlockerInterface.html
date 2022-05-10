@@ -860,6 +860,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsProjectServerValidator.html">Class: QgsProjectServerValidator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsProjectStorage.html">Class: QgsProjectStorage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsProjectStorageRegistry.html">Class: QgsProjectStorageRegistry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../core/QgsProjectStyleSettings.html">Class: QgsProjectStyleSettings</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsProjectTimeSettings.html">Class: QgsProjectTimeSettings</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsProjectTranslator.html">Class: QgsProjectTranslator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsProjectUtils.html">Class: QgsProjectUtils</a></li>
@@ -2055,20 +2056,20 @@ the QGIS application from exiting.</p>
 for the application to exit, e.g. by checking whether the plugin or script has any
 unsaved changes which should be saved or discarded before allowing QGIS to exit.</p>
 <p><a class="reference internal" href="#module-QgsApplicationExitBlockerInterface" title="QgsApplicationExitBlockerInterface"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsApplicationExitBlockerInterface</span></code></a> are registered via the iface object:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>class MyPluginExitBlocker(:py:class:`.QgsApplicationExitBlockerInterface`):
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyPluginExitBlocker</span><span class="p">(:</span><span class="n">py</span><span class="p">:</span><span class="n">class</span><span class="p">:</span><span class="sb">`.QgsApplicationExitBlockerInterface`</span><span class="p">):</span>
 
-   def allowExit(self):
-       if self.has_unsaved_changes():
-           # show a warning prompt
-           # ...
-           # prevent QGIS application from exiting
-           return False
+   <span class="k">def</span> <span class="nf">allowExit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+       <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">has_unsaved_changes</span><span class="p">():</span>
+           <span class="c1"># show a warning prompt</span>
+           <span class="c1"># ...</span>
+           <span class="c1"># prevent QGIS application from exiting</span>
+           <span class="k">return</span> <span class="bp">False</span>
 
-       # allow QGIS application to exit
-       return True
+       <span class="c1"># allow QGIS application to exit</span>
+       <span class="k">return</span> <span class="bp">True</span>
 
-my_blocker = MyPluginExitBlocker()
-iface.registerApplicationExitBlocker(my_blocker)
+<span class="n">my_blocker</span> <span class="o">=</span> <span class="n">MyPluginExitBlocker</span><span class="p">()</span>
+<span class="n">iface</span><span class="o">.</span><span class="n">registerApplicationExitBlocker</span><span class="p">(</span><span class="n">my_blocker</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="versionadded">
@@ -2144,7 +2145,7 @@ boxes or custom dialogs with event loops.</p>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:37 May 10, 2022.
+      <span class="lastupdated">Last updated on 02:21 May 10, 2022.
       </span></p>
   </div>
 
