@@ -7,7 +7,7 @@
   <title>Class: QgsPointCloudLayer</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/./theme_overrides.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/_templates/theme_overrides.css" type="text/css" />
     <link rel="shortcut icon" href="../_static/qgis.ico"/>
     <link rel="canonical" href="https://qgis.org/pyqgis/latestcore/QgsPointCloudLayer.html"/>
   <!--[if lt IE 9]>
@@ -605,6 +605,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsMarkerSymbolLayer.html">Class: QgsMarkerSymbolLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsMaskIdProvider.html">Class: QgsMaskIdProvider</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsMaskMarkerSymbolLayer.html">Class: QgsMaskMarkerSymbolLayer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsMaskPaintDevice.html">Class: QgsMaskPaintDevice</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsMasterLayoutInterface.html">Class: QgsMasterLayoutInterface</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsMemoryProviderUtils.html">Class: QgsMemoryProviderUtils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsMergedFeatureRenderer.html">Class: QgsMergedFeatureRenderer</a></li>
@@ -732,6 +733,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsPointCloudRendererMetadata.html">Class: QgsPointCloudRendererMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsPointCloudRendererRegistry.html">Class: QgsPointCloudRendererRegistry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsPointCloudRgbRenderer.html">Class: QgsPointCloudRgbRenderer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsPointCloudStatistics.html">Class: QgsPointCloudStatistics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsPointClusterRenderer.html">Class: QgsPointClusterRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsPointDisplacementRenderer.html">Class: QgsPointDisplacementRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsPointDistanceRenderer.html">Class: QgsPointDistanceRenderer</a></li>
@@ -1020,6 +1022,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsSingleBandPseudoColorRenderer.html">Class: QgsSingleBandPseudoColorRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsSingleBoxScaleBarRenderer.html">Class: QgsSingleBoxScaleBarRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsSingleCategoryDiagramRenderer.html">Class: QgsSingleCategoryDiagramRenderer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsSingleItemModel.html">Class: QgsSingleItemModel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsSingleSymbolRenderer.html">Class: QgsSingleSymbolRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsSizeScaleTransformer.html">Class: QgsSizeScaleTransformer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsSnappingConfig.html">Class: QgsSnappingConfig</a></li>
@@ -2256,6 +2259,12 @@ Constructor - creates a point cloud layer</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudLayer.setValid" title="qgis.core.QgsPointCloudLayer.setValid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setValid</span></code></a></p></td>
 <td><p>Sets whether layer is valid or not</p></td>
 </tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudLayer.statistics" title="qgis.core.QgsPointCloudLayer.statistics"><code class="xref py py-obj docutils literal notranslate"><span class="pre">statistics</span></code></a></p></td>
+<td><p>Returns the object containing statistics</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudLayer.statisticsCalculationState" title="qgis.core.QgsPointCloudLayer.statisticsCalculationState"><code class="xref py py-obj docutils literal notranslate"><span class="pre">statisticsCalculationState</span></code></a></p></td>
+<td><p>Returns the status of point cloud statistics calculation</p></td>
+</tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudLayer.subsetString" title="qgis.core.QgsPointCloudLayer.subsetString"><code class="xref py py-obj docutils literal notranslate"><span class="pre">subsetString</span></code></a></p></td>
 <td><p>Returns the string used to define a subset of the layer.</p></td>
 </tr>
@@ -2265,30 +2274,33 @@ Constructor - creates a point cloud layer</p>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudLayer.timerEvent" title="qgis.core.QgsPointCloudLayer.timerEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">timerEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudLayer.writeCommonStyle" title="qgis.core.QgsPointCloudLayer.writeCommonStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeCommonStyle</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudLayer.waitForStatisticsCalculationToFinish" title="qgis.core.QgsPointCloudLayer.waitForStatisticsCalculationToFinish"><code class="xref py py-obj docutils literal notranslate"><span class="pre">waitForStatisticsCalculationToFinish</span></code></a></p></td>
+<td><p>If a statistics calculation task is running wait for it to finish</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudLayer.writeCommonStyle" title="qgis.core.QgsPointCloudLayer.writeCommonStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeCommonStyle</span></code></a></p></td>
 <td><p>Write style data common to all layer types</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudLayer.writeCustomProperties" title="qgis.core.QgsPointCloudLayer.writeCustomProperties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeCustomProperties</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudLayer.writeCustomProperties" title="qgis.core.QgsPointCloudLayer.writeCustomProperties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeCustomProperties</span></code></a></p></td>
 <td><p>Write custom properties to project file.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudLayer.writeStyle" title="qgis.core.QgsPointCloudLayer.writeStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeStyle</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudLayer.writeStyle" title="qgis.core.QgsPointCloudLayer.writeStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeStyle</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param node</dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudLayer.writeStyleManager" title="qgis.core.QgsPointCloudLayer.writeStyleManager"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeStyleManager</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudLayer.writeStyleManager" title="qgis.core.QgsPointCloudLayer.writeStyleManager"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeStyleManager</span></code></a></p></td>
 <td><p>Write style manager's configuration (if exists).</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudLayer.writeSymbology" title="qgis.core.QgsPointCloudLayer.writeSymbology"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeSymbology</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudLayer.writeSymbology" title="qgis.core.QgsPointCloudLayer.writeSymbology"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeSymbology</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param node</dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudLayer.writeXml" title="qgis.core.QgsPointCloudLayer.writeXml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeXml</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudLayer.writeXml" title="qgis.core.QgsPointCloudLayer.writeXml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeXml</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param layerNode</dt>
 <dd class="field-odd"><p></p></dd>
@@ -2307,20 +2319,43 @@ Constructor - creates a point cloud layer</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudLayer.raiseError" title="qgis.core.QgsPointCloudLayer.raiseError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">raiseError</span></code></a></p></td>
 <td><p>Signals an error related to this point cloud layer.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudLayer.subsetStringChanged" title="qgis.core.QgsPointCloudLayer.subsetStringChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">subsetStringChanged</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudLayer.statisticsCalculationStateChanged" title="qgis.core.QgsPointCloudLayer.statisticsCalculationStateChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">statisticsCalculationStateChanged</span></code></a></p></td>
+<td><p>Emitted when statistics calculation state has changed</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudLayer.subsetStringChanged" title="qgis.core.QgsPointCloudLayer.subsetStringChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">subsetStringChanged</span></code></a></p></td>
 <td><p>Emitted when the layer's subset string has changed.</p></td>
 </tr>
 </tbody>
 </table>
+<p class="rubric">Attributes</p>
 <table class="autosummary longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
 <col style="width: 90%" />
 </colgroup>
 <tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudLayer.Calculated" title="qgis.core.QgsPointCloudLayer.Calculated"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Calculated</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudLayer.Calculating" title="qgis.core.QgsPointCloudLayer.Calculating"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Calculating</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudLayer.NotStarted" title="qgis.core.QgsPointCloudLayer.NotStarted"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NotStarted</span></code></a></p></td>
+<td><p></p></td>
+</tr>
 </tbody>
 </table>
 </div></blockquote>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.QgsPointCloudLayer.Calculated">
+<span class="sig-name descname"><span class="pre">Calculated</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#qgis.core.QgsPointCloudLayer.Calculated" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.QgsPointCloudLayer.Calculating">
+<span class="sig-name descname"><span class="pre">Calculating</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#qgis.core.QgsPointCloudLayer.Calculating" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="qgis.core.QgsPointCloudLayer.LayerOptions">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">LayerOptions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">transformContext</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsCoordinateTransformContext.html#qgis.core.QgsCoordinateTransformContext" title="qgis.core.QgsCoordinateTransformContext"><span class="pre">QgsCoordinateTransformContext</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">QgsCoordinateTransformContext()</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsPointCloudLayer.LayerOptions" title="Permalink to this definition">¶</a></dt>
@@ -2343,10 +2378,26 @@ Constructor - creates a point cloud layer</p>
 <dd></dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.QgsPointCloudLayer.LayerOptions.skipStatisticsCalculation">
+<span class="sig-name descname"><span class="pre">skipStatisticsCalculation</span></span><a class="headerlink" href="#qgis.core.QgsPointCloudLayer.LayerOptions.skipStatisticsCalculation" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.core.QgsPointCloudLayer.LayerOptions.transformContext">
 <span class="sig-name descname"><span class="pre">transformContext</span></span><a class="headerlink" href="#qgis.core.QgsPointCloudLayer.LayerOptions.transformContext" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.QgsPointCloudLayer.NotStarted">
+<span class="sig-name descname"><span class="pre">NotStarted</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#qgis.core.QgsPointCloudLayer.NotStarted" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="qgis.core.QgsPointCloudLayer.PointCloudStatisticsCalculationState">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">PointCloudStatisticsCalculationState</span></span><a class="headerlink" href="#qgis.core.QgsPointCloudLayer.PointCloudStatisticsCalculationState" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
 </dd></dl>
 
 <dl class="py method">
@@ -2770,6 +2821,48 @@ with changes applied to the layer’s 2D renderer</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsPointCloudLayer.statistics">
+<span class="sig-name descname"><span class="pre">statistics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="QgsPointCloudStatistics.html#qgis.core.QgsPointCloudStatistics" title="qgis.core.QgsPointCloudStatistics"><span class="pre">QgsPointCloudStatistics</span></a></span></span><a class="headerlink" href="#qgis.core.QgsPointCloudLayer.statistics" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the object containing statistics</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.26.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsPointCloudStatistics.html#qgis.core.QgsPointCloudStatistics" title="qgis.core.QgsPointCloudStatistics">QgsPointCloudStatistics</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsPointCloudLayer.statisticsCalculationState">
+<span class="sig-name descname"><span class="pre">statisticsCalculationState</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#qgis.core.QgsPointCloudLayer.PointCloudStatisticsCalculationState" title="qgis.core.QgsPointCloudLayer.PointCloudStatisticsCalculationState"><span class="pre">QgsPointCloudLayer.PointCloudStatisticsCalculationState</span></a></span></span><a class="headerlink" href="#qgis.core.QgsPointCloudLayer.statisticsCalculationState" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the status of point cloud statistics calculation</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.26.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#qgis.core.QgsPointCloudLayer.PointCloudStatisticsCalculationState" title="qgis.core.QgsPointCloudLayer.PointCloudStatisticsCalculationState">QgsPointCloudLayer.PointCloudStatisticsCalculationState</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.QgsPointCloudLayer.statisticsCalculationStateChanged">
+<span class="sig-name descname"><span class="pre">statisticsCalculationStateChanged</span></span><a class="headerlink" href="#qgis.core.QgsPointCloudLayer.statisticsCalculationStateChanged" title="Permalink to this definition">¶</a></dt>
+<dd><p>Emitted when statistics calculation state has changed</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.26: </span>[signal]</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>state</strong> (<a class="reference internal" href="#qgis.core.QgsPointCloudLayer.PointCloudStatisticsCalculationState" title="qgis.core.QgsPointCloudLayer.PointCloudStatisticsCalculationState"><em>QgsPointCloudLayer.PointCloudStatisticsCalculationState</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsPointCloudLayer.subsetString">
 <span class="sig-name descname"><span class="pre">subsetString</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#qgis.core.QgsPointCloudLayer.subsetString" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the string used to define a subset of the layer.</p>
@@ -2814,6 +2907,15 @@ with changes applied to the layer’s 2D renderer</p>
 <dt class="sig sig-object py" id="qgis.core.QgsPointCloudLayer.timerEvent">
 <span class="sig-name descname"><span class="pre">timerEvent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">QTimerEvent</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsPointCloudLayer.timerEvent" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsPointCloudLayer.waitForStatisticsCalculationToFinish">
+<span class="sig-name descname"><span class="pre">waitForStatisticsCalculationToFinish</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsPointCloudLayer.waitForStatisticsCalculationToFinish" title="Permalink to this definition">¶</a></dt>
+<dd><p>If a statistics calculation task is running wait for it to finish</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.26.</span></p>
+</div>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsPointCloudLayer.writeCommonStyle">
@@ -2904,7 +3006,7 @@ with changes applied to the layer’s 2D renderer</p>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 20:22 May 12, 2022.
+      <span class="lastupdated">Last updated on 09:24 May 13, 2022.
       </span></p>
   </div>
 

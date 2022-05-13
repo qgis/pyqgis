@@ -7,7 +7,7 @@
   <title>Class: QgsSymbolLayer</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/./theme_overrides.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/_templates/theme_overrides.css" type="text/css" />
     <link rel="shortcut icon" href="../_static/qgis.ico"/>
     <link rel="canonical" href="https://qgis.org/pyqgis/latestcore/QgsSymbolLayer.html"/>
   <!--[if lt IE 9]>
@@ -605,6 +605,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsMarkerSymbolLayer.html">Class: QgsMarkerSymbolLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsMaskIdProvider.html">Class: QgsMaskIdProvider</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsMaskMarkerSymbolLayer.html">Class: QgsMaskMarkerSymbolLayer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsMaskPaintDevice.html">Class: QgsMaskPaintDevice</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsMasterLayoutInterface.html">Class: QgsMasterLayoutInterface</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsMemoryProviderUtils.html">Class: QgsMemoryProviderUtils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsMergedFeatureRenderer.html">Class: QgsMergedFeatureRenderer</a></li>
@@ -732,6 +733,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsPointCloudRendererMetadata.html">Class: QgsPointCloudRendererMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsPointCloudRendererRegistry.html">Class: QgsPointCloudRendererRegistry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsPointCloudRgbRenderer.html">Class: QgsPointCloudRgbRenderer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsPointCloudStatistics.html">Class: QgsPointCloudStatistics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsPointClusterRenderer.html">Class: QgsPointClusterRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsPointDisplacementRenderer.html">Class: QgsPointDisplacementRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsPointDistanceRenderer.html">Class: QgsPointDistanceRenderer</a></li>
@@ -1020,6 +1022,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsSingleBandPseudoColorRenderer.html">Class: QgsSingleBandPseudoColorRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsSingleBoxScaleBarRenderer.html">Class: QgsSingleBoxScaleBarRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsSingleCategoryDiagramRenderer.html">Class: QgsSingleCategoryDiagramRenderer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsSingleItemModel.html">Class: QgsSingleItemModel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsSingleSymbolRenderer.html">Class: QgsSingleSymbolRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsSizeScaleTransformer.html">Class: QgsSizeScaleTransformer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsSnappingConfig.html">Class: QgsSnappingConfig</a></li>
@@ -2172,80 +2175,83 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.prepareExpressions" title="qgis.core.QgsSymbolLayer.prepareExpressions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">prepareExpressions</span></code></a></p></td>
 <td><p>Prepares all data defined property expressions for evaluation.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.properties" title="qgis.core.QgsSymbolLayer.properties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">properties</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.prepareMasks" title="qgis.core.QgsSymbolLayer.prepareMasks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">prepareMasks</span></code></a></p></td>
+<td><p>Prepares all mask internal objects according to what is defined in <code class="docutils literal notranslate"><span class="pre">context</span></code> This should be called prior to calling <a class="reference internal" href="#qgis.core.QgsSymbolLayer.startRender" title="qgis.core.QgsSymbolLayer.startRender"><code class="xref py py-func docutils literal notranslate"><span class="pre">startRender()</span></code></a> method.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.properties" title="qgis.core.QgsSymbolLayer.properties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">properties</span></code></a></p></td>
 <td><p>Should be reimplemented by subclasses to return a string map that contains the configuration information for the symbol layer.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.propertyDefinitions" title="qgis.core.QgsSymbolLayer.propertyDefinitions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">propertyDefinitions</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.propertyDefinitions" title="qgis.core.QgsSymbolLayer.propertyDefinitions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">propertyDefinitions</span></code></a></p></td>
 <td><p>Returns the symbol layer property definitions.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.renderingPass" title="qgis.core.QgsSymbolLayer.renderingPass"><code class="xref py py-obj docutils literal notranslate"><span class="pre">renderingPass</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.renderingPass" title="qgis.core.QgsSymbolLayer.renderingPass"><code class="xref py py-obj docutils literal notranslate"><span class="pre">renderingPass</span></code></a></p></td>
 <td><p>Specifies the rendering pass in which this symbol layer should be rendered.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.restoreOldDataDefinedProperties" title="qgis.core.QgsSymbolLayer.restoreOldDataDefinedProperties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">restoreOldDataDefinedProperties</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.restoreOldDataDefinedProperties" title="qgis.core.QgsSymbolLayer.restoreOldDataDefinedProperties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">restoreOldDataDefinedProperties</span></code></a></p></td>
 <td><p>Restores older data defined properties from string map.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.setColor" title="qgis.core.QgsSymbolLayer.setColor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setColor</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.setColor" title="qgis.core.QgsSymbolLayer.setColor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setColor</span></code></a></p></td>
 <td><p>Sets the &quot;representative&quot; color for the symbol layer.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.setDataDefinedProperties" title="qgis.core.QgsSymbolLayer.setDataDefinedProperties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setDataDefinedProperties</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.setDataDefinedProperties" title="qgis.core.QgsSymbolLayer.setDataDefinedProperties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setDataDefinedProperties</span></code></a></p></td>
 <td><p>Sets the symbol layer's property collection, used for data defined overrides.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.setDataDefinedProperty" title="qgis.core.QgsSymbolLayer.setDataDefinedProperty"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setDataDefinedProperty</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.setDataDefinedProperty" title="qgis.core.QgsSymbolLayer.setDataDefinedProperty"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setDataDefinedProperty</span></code></a></p></td>
 <td><p>Sets a data defined property for the layer.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.setEnabled" title="qgis.core.QgsSymbolLayer.setEnabled"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setEnabled</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.setEnabled" title="qgis.core.QgsSymbolLayer.setEnabled"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setEnabled</span></code></a></p></td>
 <td><p>Sets whether symbol layer is enabled and should be drawn.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.setFillColor" title="qgis.core.QgsSymbolLayer.setFillColor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setFillColor</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.setFillColor" title="qgis.core.QgsSymbolLayer.setFillColor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setFillColor</span></code></a></p></td>
 <td><p>Sets the fill <code class="docutils literal notranslate"><span class="pre">color</span></code> for the symbol layer.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.setLocked" title="qgis.core.QgsSymbolLayer.setLocked"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setLocked</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.setLocked" title="qgis.core.QgsSymbolLayer.setLocked"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setLocked</span></code></a></p></td>
 <td><p>Sets whether the layer's colors are locked.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.setMapUnitScale" title="qgis.core.QgsSymbolLayer.setMapUnitScale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setMapUnitScale</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.setMapUnitScale" title="qgis.core.QgsSymbolLayer.setMapUnitScale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setMapUnitScale</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param scale</dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.setOutputUnit" title="qgis.core.QgsSymbolLayer.setOutputUnit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setOutputUnit</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.setOutputUnit" title="qgis.core.QgsSymbolLayer.setOutputUnit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setOutputUnit</span></code></a></p></td>
 <td><p>Sets the units to use for sizes and widths within the symbol layer.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.setPaintEffect" title="qgis.core.QgsSymbolLayer.setPaintEffect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setPaintEffect</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.setPaintEffect" title="qgis.core.QgsSymbolLayer.setPaintEffect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setPaintEffect</span></code></a></p></td>
 <td><p>Sets the current paint effect for the layer.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.setRenderingPass" title="qgis.core.QgsSymbolLayer.setRenderingPass"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setRenderingPass</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.setRenderingPass" title="qgis.core.QgsSymbolLayer.setRenderingPass"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setRenderingPass</span></code></a></p></td>
 <td><p>Specifies the rendering pass in which this symbol layer should be rendered.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.setStrokeColor" title="qgis.core.QgsSymbolLayer.setStrokeColor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setStrokeColor</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.setStrokeColor" title="qgis.core.QgsSymbolLayer.setStrokeColor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setStrokeColor</span></code></a></p></td>
 <td><p>Sets the stroke <code class="docutils literal notranslate"><span class="pre">color</span></code> for the symbol layer.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.setSubSymbol" title="qgis.core.QgsSymbolLayer.setSubSymbol"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setSubSymbol</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.setSubSymbol" title="qgis.core.QgsSymbolLayer.setSubSymbol"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setSubSymbol</span></code></a></p></td>
 <td><p>Sets layer's subsymbol.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.startFeatureRender" title="qgis.core.QgsSymbolLayer.startFeatureRender"><code class="xref py py-obj docutils literal notranslate"><span class="pre">startFeatureRender</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.startFeatureRender" title="qgis.core.QgsSymbolLayer.startFeatureRender"><code class="xref py py-obj docutils literal notranslate"><span class="pre">startFeatureRender</span></code></a></p></td>
 <td><p>Called before the layer will be rendered for a particular <code class="docutils literal notranslate"><span class="pre">feature</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.startRender" title="qgis.core.QgsSymbolLayer.startRender"><code class="xref py py-obj docutils literal notranslate"><span class="pre">startRender</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.startRender" title="qgis.core.QgsSymbolLayer.startRender"><code class="xref py py-obj docutils literal notranslate"><span class="pre">startRender</span></code></a></p></td>
 <td><p>Called before a set of rendering operations commences on the supplied render <code class="docutils literal notranslate"><span class="pre">context</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.stopFeatureRender" title="qgis.core.QgsSymbolLayer.stopFeatureRender"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stopFeatureRender</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.stopFeatureRender" title="qgis.core.QgsSymbolLayer.stopFeatureRender"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stopFeatureRender</span></code></a></p></td>
 <td><p>Called after the layer has been rendered for a particular <code class="docutils literal notranslate"><span class="pre">feature</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.stopRender" title="qgis.core.QgsSymbolLayer.stopRender"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stopRender</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.stopRender" title="qgis.core.QgsSymbolLayer.stopRender"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stopRender</span></code></a></p></td>
 <td><p>Called after a set of rendering operations has finished on the supplied render <code class="docutils literal notranslate"><span class="pre">context</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.strokeColor" title="qgis.core.QgsSymbolLayer.strokeColor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">strokeColor</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.strokeColor" title="qgis.core.QgsSymbolLayer.strokeColor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">strokeColor</span></code></a></p></td>
 <td><p>Returns the stroke color for the symbol layer.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.subSymbol" title="qgis.core.QgsSymbolLayer.subSymbol"><code class="xref py py-obj docutils literal notranslate"><span class="pre">subSymbol</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.subSymbol" title="qgis.core.QgsSymbolLayer.subSymbol"><code class="xref py py-obj docutils literal notranslate"><span class="pre">subSymbol</span></code></a></p></td>
 <td><p>Returns the symbol's sub symbol, if present.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.toSld" title="qgis.core.QgsSymbolLayer.toSld"><code class="xref py py-obj docutils literal notranslate"><span class="pre">toSld</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.toSld" title="qgis.core.QgsSymbolLayer.toSld"><code class="xref py py-obj docutils literal notranslate"><span class="pre">toSld</span></code></a></p></td>
 <td><p>Saves the symbol layer as SLD</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.type" title="qgis.core.QgsSymbolLayer.type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.type" title="qgis.core.QgsSymbolLayer.type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">rtype</dt>
 <dd class="field-odd"><p>Qgis.SymbolType</p>
@@ -2253,13 +2259,13 @@
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.usedAttributes" title="qgis.core.QgsSymbolLayer.usedAttributes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">usedAttributes</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.usedAttributes" title="qgis.core.QgsSymbolLayer.usedAttributes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">usedAttributes</span></code></a></p></td>
 <td><p>Returns the set of attributes referenced by the layer.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.usesMapUnits" title="qgis.core.QgsSymbolLayer.usesMapUnits"><code class="xref py py-obj docutils literal notranslate"><span class="pre">usesMapUnits</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.usesMapUnits" title="qgis.core.QgsSymbolLayer.usesMapUnits"><code class="xref py py-obj docutils literal notranslate"><span class="pre">usesMapUnits</span></code></a></p></td>
 <td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the symbol layer has any components which use map unit based sizes.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.writeDxf" title="qgis.core.QgsSymbolLayer.writeDxf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeDxf</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.writeDxf" title="qgis.core.QgsSymbolLayer.writeDxf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeDxf</span></code></a></p></td>
 <td><p>write as DXF</p></td>
 </tr>
 </tbody>
@@ -3307,6 +3313,21 @@ be called prior to evaluating data defined properties.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsSymbolLayer.prepareMasks">
+<span class="sig-name descname"><span class="pre">prepareMasks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsSymbolRenderContext.html#qgis.core.QgsSymbolRenderContext" title="qgis.core.QgsSymbolRenderContext"><span class="pre">QgsSymbolRenderContext</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsSymbolLayer.prepareMasks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prepares all mask internal objects according to what is defined in <code class="docutils literal notranslate"><span class="pre">context</span></code>
+This should be called prior to calling <a class="reference internal" href="#qgis.core.QgsSymbolLayer.startRender" title="qgis.core.QgsSymbolLayer.startRender"><code class="xref py py-func docutils literal notranslate"><span class="pre">startRender()</span></code></a> method.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.26.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>context</strong> (<a class="reference internal" href="QgsSymbolRenderContext.html#qgis.core.QgsSymbolRenderContext" title="qgis.core.QgsSymbolRenderContext"><em>QgsSymbolRenderContext</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsSymbolLayer.properties">
 <span class="sig-name descname"><span class="pre">properties</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qgis.core.QgsSymbolLayer.properties" title="Permalink to this definition">¶</a></dt>
 <dd><p>Should be reimplemented by subclasses to return a string map that
@@ -3836,7 +3857,7 @@ required by any data defined properties associated with the layer.</p>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 20:22 May 12, 2022.
+      <span class="lastupdated">Last updated on 09:24 May 13, 2022.
       </span></p>
   </div>
 

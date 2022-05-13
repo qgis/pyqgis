@@ -7,7 +7,7 @@
   <title>Class: QgsPointCloudDataProvider</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/./theme_overrides.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/_templates/theme_overrides.css" type="text/css" />
     <link rel="shortcut icon" href="../_static/qgis.ico"/>
     <link rel="canonical" href="https://qgis.org/pyqgis/latestcore/QgsPointCloudDataProvider.html"/>
   <!--[if lt IE 9]>
@@ -605,6 +605,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsMarkerSymbolLayer.html">Class: QgsMarkerSymbolLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsMaskIdProvider.html">Class: QgsMaskIdProvider</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsMaskMarkerSymbolLayer.html">Class: QgsMaskMarkerSymbolLayer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsMaskPaintDevice.html">Class: QgsMaskPaintDevice</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsMasterLayoutInterface.html">Class: QgsMasterLayoutInterface</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsMemoryProviderUtils.html">Class: QgsMemoryProviderUtils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsMergedFeatureRenderer.html">Class: QgsMergedFeatureRenderer</a></li>
@@ -732,6 +733,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsPointCloudRendererMetadata.html">Class: QgsPointCloudRendererMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsPointCloudRendererRegistry.html">Class: QgsPointCloudRendererRegistry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsPointCloudRgbRenderer.html">Class: QgsPointCloudRgbRenderer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsPointCloudStatistics.html">Class: QgsPointCloudStatistics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsPointClusterRenderer.html">Class: QgsPointClusterRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsPointDisplacementRenderer.html">Class: QgsPointDisplacementRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsPointDistanceRenderer.html">Class: QgsPointDistanceRenderer</a></li>
@@ -1020,6 +1022,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsSingleBandPseudoColorRenderer.html">Class: QgsSingleBandPseudoColorRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsSingleBoxScaleBarRenderer.html">Class: QgsSingleBoxScaleBarRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsSingleCategoryDiagramRenderer.html">Class: QgsSingleCategoryDiagramRenderer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsSingleItemModel.html">Class: QgsSingleItemModel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsSingleSymbolRenderer.html">Class: QgsSingleSymbolRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsSizeScaleTransformer.html">Class: QgsSizeScaleTransformer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsSnappingConfig.html">Class: QgsSnappingConfig</a></li>
@@ -2108,32 +2111,38 @@ Ctor</p>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudDataProvider.generateIndex" title="qgis.core.QgsPointCloudDataProvider.generateIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generateIndex</span></code></a></p></td>
 <td><p>Triggers generation of the point cloud index</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudDataProvider.hasValidIndex" title="qgis.core.QgsPointCloudDataProvider.hasValidIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hasValidIndex</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudDataProvider.hasStatisticsMetadata" title="qgis.core.QgsPointCloudDataProvider.hasStatisticsMetadata"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hasStatisticsMetadata</span></code></a></p></td>
+<td><p>Returns whether the dataset contains statistics metadata</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudDataProvider.hasValidIndex" title="qgis.core.QgsPointCloudDataProvider.hasValidIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hasValidIndex</span></code></a></p></td>
 <td><p>Returns whether provider has index which is valid</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudDataProvider.identify" title="qgis.core.QgsPointCloudDataProvider.identify"><code class="xref py py-obj docutils literal notranslate"><span class="pre">identify</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudDataProvider.identify" title="qgis.core.QgsPointCloudDataProvider.identify"><code class="xref py py-obj docutils literal notranslate"><span class="pre">identify</span></code></a></p></td>
 <td><p>Returns the list of points of the point cloud according to a zoom level defined by <code class="docutils literal notranslate"><span class="pre">maxError</span></code> (in layer coordinates), an extent <code class="docutils literal notranslate"><span class="pre">geometry</span></code> in the 2D plane and a range <code class="docutils literal notranslate"><span class="pre">extentZRange</span></code> for z values.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudDataProvider.indexingState" title="qgis.core.QgsPointCloudDataProvider.indexingState"><code class="xref py py-obj docutils literal notranslate"><span class="pre">indexingState</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudDataProvider.indexingState" title="qgis.core.QgsPointCloudDataProvider.indexingState"><code class="xref py py-obj docutils literal notranslate"><span class="pre">indexingState</span></code></a></p></td>
 <td><p>Gets the current index generation state</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudDataProvider.isSignalConnected" title="qgis.core.QgsPointCloudDataProvider.isSignalConnected"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isSignalConnected</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudDataProvider.isSignalConnected" title="qgis.core.QgsPointCloudDataProvider.isSignalConnected"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isSignalConnected</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudDataProvider.lasClassificationCodes" title="qgis.core.QgsPointCloudDataProvider.lasClassificationCodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lasClassificationCodes</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudDataProvider.lasClassificationCodes" title="qgis.core.QgsPointCloudDataProvider.lasClassificationCodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lasClassificationCodes</span></code></a></p></td>
 <td><p>Returns the map of LAS classification code to untranslated string value, corresponding to the ASPRS Standard Lidar Point Classes.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudDataProvider.loadIndex" title="qgis.core.QgsPointCloudDataProvider.loadIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">loadIndex</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudDataProvider.loadIndex" title="qgis.core.QgsPointCloudDataProvider.loadIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">loadIndex</span></code></a></p></td>
 <td><p>Triggers loading of the point cloud index</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudDataProvider.metadataClassStatistic" title="qgis.core.QgsPointCloudDataProvider.metadataClassStatistic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">metadataClassStatistic</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudDataProvider.metadataClassStatistic" title="qgis.core.QgsPointCloudDataProvider.metadataClassStatistic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">metadataClassStatistic</span></code></a></p></td>
 <td><p>Returns a statistic for one class <code class="docutils literal notranslate"><span class="pre">value</span></code> from the specified <code class="docutils literal notranslate"><span class="pre">attribute</span></code>, taken only from the metadata of the point cloud data source.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudDataProvider.metadataClasses" title="qgis.core.QgsPointCloudDataProvider.metadataClasses"><code class="xref py py-obj docutils literal notranslate"><span class="pre">metadataClasses</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudDataProvider.metadataClasses" title="qgis.core.QgsPointCloudDataProvider.metadataClasses"><code class="xref py py-obj docutils literal notranslate"><span class="pre">metadataClasses</span></code></a></p></td>
 <td><p>Returns a list of existing classes which are present for the specified <code class="docutils literal notranslate"><span class="pre">attribute</span></code>, taken only from the metadata of the point cloud data source.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudDataProvider.metadataStatistic" title="qgis.core.QgsPointCloudDataProvider.metadataStatistic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">metadataStatistic</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudDataProvider.metadataStatistic" title="qgis.core.QgsPointCloudDataProvider.metadataStatistic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">metadataStatistic</span></code></a></p></td>
 <td><p>Returns a statistic for the specified <code class="docutils literal notranslate"><span class="pre">attribute</span></code>, taken only from the metadata of the point cloud data source.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudDataProvider.metadataStatistics" title="qgis.core.QgsPointCloudDataProvider.metadataStatistics"><code class="xref py py-obj docutils literal notranslate"><span class="pre">metadataStatistics</span></code></a></p></td>
+<td><p>Returns the object containings the statistics metadata extracted from the dataset</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsPointCloudDataProvider.originalMetadata" title="qgis.core.QgsPointCloudDataProvider.originalMetadata"><code class="xref py py-obj docutils literal notranslate"><span class="pre">originalMetadata</span></code></a></p></td>
 <td><p>Returns a representation of the original metadata included in a point cloud dataset.</p></td>
@@ -2383,6 +2392,20 @@ providers will return <code class="docutils literal notranslate"><span class="pr
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsPointCloudDataProvider.hasStatisticsMetadata">
+<span class="sig-name descname"><span class="pre">hasStatisticsMetadata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#qgis.core.QgsPointCloudDataProvider.hasStatisticsMetadata" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns whether the dataset contains statistics metadata</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.26.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsPointCloudDataProvider.hasValidIndex">
 <span class="sig-name descname"><span class="pre">hasValidIndex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#qgis.core.QgsPointCloudDataProvider.hasValidIndex" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns whether provider has index which is valid</p>
@@ -2538,6 +2561,20 @@ in the metadata, and even for sources with statistical metadata only some <code 
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsPointCloudDataProvider.metadataStatistics">
+<span class="sig-name descname"><span class="pre">metadataStatistics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="QgsPointCloudStatistics.html#qgis.core.QgsPointCloudStatistics" title="qgis.core.QgsPointCloudStatistics"><span class="pre">QgsPointCloudStatistics</span></a></span></span><a class="headerlink" href="#qgis.core.QgsPointCloudDataProvider.metadataStatistics" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the object containings the statistics metadata extracted from the dataset</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.26.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsPointCloudStatistics.html#qgis.core.QgsPointCloudStatistics" title="qgis.core.QgsPointCloudStatistics">QgsPointCloudStatistics</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsPointCloudDataProvider.originalMetadata">
 <span class="sig-name descname"><span class="pre">originalMetadata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qgis.core.QgsPointCloudDataProvider.originalMetadata" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a representation of the original metadata included in a point cloud dataset.</p>
@@ -2684,7 +2721,7 @@ Lidar Point Classes.</p>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 20:22 May 12, 2022.
+      <span class="lastupdated">Last updated on 09:24 May 13, 2022.
       </span></p>
   </div>
 
