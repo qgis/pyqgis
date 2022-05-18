@@ -81,6 +81,7 @@
 <li class="toctree-l2"><a class="reference internal" href="ProfileGeneratorFlags.html">Class: ProfileGeneratorFlags</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ProjectDirtyBlocker.html">Class: ProjectDirtyBlocker</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ProjectFlags.html">Class: ProjectFlags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ProjectReadFlags.html">Class: ProjectReadFlags</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PyQgsSettingsEntryEnumFlag.html">Class: PyQgsSettingsEntryEnumFlag</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgis.html">Class: Qgis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Qgs25DRenderer.html">Class: Qgs25DRenderer</a></li>
@@ -862,6 +863,8 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsProjectServerValidator.html">Class: QgsProjectServerValidator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProjectStorage.html">Class: QgsProjectStorage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProjectStorageRegistry.html">Class: QgsProjectStorageRegistry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsProjectStyleDatabaseModel.html">Class: QgsProjectStyleDatabaseModel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsProjectStyleDatabaseProxyModel.html">Class: QgsProjectStyleDatabaseProxyModel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProjectStyleSettings.html">Class: QgsProjectStyleSettings</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProjectTimeSettings.html">Class: QgsProjectTimeSettings</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProjectTranslator.html">Class: QgsProjectTranslator</a></li>
@@ -2186,8 +2189,12 @@ Constructor for <a class="reference internal" href="#qgis.core.QgsStyleProxyMode
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsStyleProxyModel.layerType" title="qgis.core.QgsStyleProxyModel.layerType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">layerType</span></code></a></p></td>
 <td><p>Returns the layer type filter, or <a class="reference internal" href="QgsWkbTypes.html#module-QgsWkbTypes" title="QgsWkbTypes"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsWkbTypes</span></code></a>.UnknownGeometry if no layer type filter is present.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">lessThan</span></code></p></td>
-<td><p></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsStyleProxyModel.lessThan" title="qgis.core.QgsStyleProxyModel.lessThan"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lessThan</span></code></a></p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">param left</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsStyleProxyModel.persistentIndexList" title="qgis.core.QgsStyleProxyModel.persistentIndexList"><code class="xref py py-obj docutils literal notranslate"><span class="pre">persistentIndexList</span></code></a></p></td>
 <td><p></p></td>
@@ -2510,9 +2517,20 @@ layer type filter is present.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">QgsStyleProxyModel.lessThan(self,</span> <span class="pre">QModelIndex,</span> <span class="pre">QModelIndex)</span> <span class="pre">-&gt;</span> <span class="pre">bool</span></span></dt>
-<dd></dd></dl>
+<dt class="sig sig-object py" id="qgis.core.QgsStyleProxyModel.lessThan">
+<span class="sig-name descname"><span class="pre">lessThan</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">left</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">QModelIndex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">right</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">QModelIndex</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#qgis.core.QgsStyleProxyModel.lessThan" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>left</strong> (<em>QModelIndex</em>) – </p></li>
+<li><p><strong>right</strong> (<em>QModelIndex</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsStyleProxyModel.persistentIndexList">
@@ -2632,6 +2650,10 @@ layer type filter is desired.</p>
 <dd><p>Sets a smart group <code class="docutils literal notranslate"><span class="pre">id</span></code> to filter style entities by. Only entities within the given
 smart group will be shown in the model.</p>
 <p>Set <code class="docutils literal notranslate"><span class="pre">id</span></code> to -1 to disable smart group filtering.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This method has no effect for models created using <code class="xref py py-class docutils literal notranslate"><span class="pre">QgsCombinedStyleModel</span></code> source models.</p>
+</div>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsStyleProxyModel.smartGroupId" title="qgis.core.QgsStyleProxyModel.smartGroupId"><code class="xref py py-func docutils literal notranslate"><span class="pre">smartGroupId()</span></code></a></p>
@@ -2690,6 +2712,10 @@ no effect on non-symbol entities (i.e. color ramps).</p>
 <dd><p>Sets a tag <code class="docutils literal notranslate"><span class="pre">id</span></code> to filter style entities by. Only entities with the given
 tag will be shown in the model.</p>
 <p>Set <code class="docutils literal notranslate"><span class="pre">id</span></code> to -1 to disable tag filtering.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This method has no effect for models created using <code class="xref py py-class docutils literal notranslate"><span class="pre">QgsCombinedStyleModel</span></code> source models.</p>
+</div>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsStyleProxyModel.tagId" title="qgis.core.QgsStyleProxyModel.tagId"><code class="xref py py-func docutils literal notranslate"><span class="pre">tagId()</span></code></a></p>
@@ -2706,6 +2732,10 @@ tag will be shown in the model.</p>
 <span class="sig-name descname"><span class="pre">smartGroupId</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#qgis.core.QgsStyleProxyModel.smartGroupId" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the smart group id used to filter style entities by.</p>
 <p>If returned value is -1, then no smart group filtering is being conducted.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This method has no effect for models created using <code class="xref py py-class docutils literal notranslate"><span class="pre">QgsCombinedStyleModel</span></code> source models.</p>
+</div>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsStyleProxyModel.setSmartGroupId" title="qgis.core.QgsStyleProxyModel.setSmartGroupId"><code class="xref py py-func docutils literal notranslate"><span class="pre">setSmartGroupId()</span></code></a></p>
@@ -2761,6 +2791,10 @@ no effect on non-symbol entities (i.e. color ramps).</p>
 <span class="sig-name descname"><span class="pre">tagId</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#qgis.core.QgsStyleProxyModel.tagId" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the tag id used to filter style entities by.</p>
 <p>If returned value is -1, then no tag filtering is being conducted.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This method has no effect for models created using <code class="xref py py-class docutils literal notranslate"><span class="pre">QgsCombinedStyleModel</span></code> source models.</p>
+</div>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsStyleProxyModel.setTagId" title="qgis.core.QgsStyleProxyModel.setTagId"><code class="xref py py-func docutils literal notranslate"><span class="pre">setTagId()</span></code></a></p>
@@ -2790,7 +2824,7 @@ no effect on non-symbol entities (i.e. color ramps).</p>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:32 May 18, 2022.
+      <span class="lastupdated">Last updated on 02:35 May 18, 2022.
       </span></p>
   </div>
 
