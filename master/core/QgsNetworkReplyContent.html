@@ -386,6 +386,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsFillSymbolLayer.html">Class: QgsFillSymbolLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsFilledMarkerSymbolLayer.html">Class: QgsFilledMarkerSymbolLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsFlatTerrainProvider.html">Class: QgsFlatTerrainProvider</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsFontManager.html">Class: QgsFontManager</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsFontMarkerSymbolLayer.html">Class: QgsFontMarkerSymbolLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsFontUtils.html">Class: QgsFontUtils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsFractionNumericFormat.html">Class: QgsFractionNumericFormat</a></li>
@@ -2118,6 +2119,12 @@ Constructor for <a class="reference internal" href="#qgis.core.QgsNetworkReplyCo
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsNetworkReplyContent.errorString" title="qgis.core.QgsNetworkReplyContent.errorString"><code class="xref py py-obj docutils literal notranslate"><span class="pre">errorString</span></code></a></p></td>
 <td><p>Returns the error text for the reply, or an empty string if no error was encountered.</p></td>
 </tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsNetworkReplyContent.extractFileNameFromContentDispositionHeader" title="qgis.core.QgsNetworkReplyContent.extractFileNameFromContentDispositionHeader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">extractFileNameFromContentDispositionHeader</span></code></a></p></td>
+<td><p>Extracts the filename component of the content disposition header from the <code class="docutils literal notranslate"><span class="pre">header</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsNetworkReplyContent.extractFilenameFromContentDispositionHeader" title="qgis.core.QgsNetworkReplyContent.extractFilenameFromContentDispositionHeader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">extractFilenameFromContentDispositionHeader</span></code></a></p></td>
+<td><p>Extracts the filename component of the content disposition header from a network <code class="docutils literal notranslate"><span class="pre">reply</span></code>.</p></td>
+</tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsNetworkReplyContent.hasRawHeader" title="qgis.core.QgsNetworkReplyContent.hasRawHeader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hasRawHeader</span></code></a></p></td>
 <td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the reply contains a header with the specified <code class="docutils literal notranslate"><span class="pre">headerName</span></code>.</p></td>
 </tr>
@@ -2227,6 +2234,40 @@ error was encountered.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsNetworkReplyContent.extractFileNameFromContentDispositionHeader">
+<span class="sig-name descname"><span class="pre">extractFileNameFromContentDispositionHeader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">header</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#qgis.core.QgsNetworkReplyContent.extractFileNameFromContentDispositionHeader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extracts the filename component of the content disposition header from the <code class="docutils literal notranslate"><span class="pre">header</span></code>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.28.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>header</strong> (<em>str</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsNetworkReplyContent.extractFilenameFromContentDispositionHeader">
+<span class="sig-name descname"><span class="pre">extractFilenameFromContentDispositionHeader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">reply</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">QNetworkReply</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#qgis.core.QgsNetworkReplyContent.extractFilenameFromContentDispositionHeader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extracts the filename component of the content disposition header from a network <code class="docutils literal notranslate"><span class="pre">reply</span></code>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.28.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>reply</strong> (<em>QNetworkReply</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2358,7 +2399,7 @@ can only be done once.</p>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:37 Jun 21, 2022.
+      <span class="lastupdated">Last updated on 03:03 Jun 21, 2022.
       </span></p>
   </div>
 

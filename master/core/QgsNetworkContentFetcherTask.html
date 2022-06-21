@@ -386,6 +386,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsFillSymbolLayer.html">Class: QgsFillSymbolLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsFilledMarkerSymbolLayer.html">Class: QgsFilledMarkerSymbolLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsFlatTerrainProvider.html">Class: QgsFlatTerrainProvider</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsFontManager.html">Class: QgsFontManager</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsFontMarkerSymbolLayer.html">Class: QgsFontMarkerSymbolLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsFontUtils.html">Class: QgsFontUtils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsFractionNumericFormat.html">Class: QgsFractionNumericFormat</a></li>
@@ -2092,14 +2093,16 @@ without danger of the task being first removed by the <a class="reference intern
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.2.</span></p>
 </div>
-<p>QgsNetworkContentFetcherTask(url: QUrl, authcfg: str = ‘’, flags: Union[QgsTask.Flags, QgsTask.Flag] = QgsTask.CanCancel)
+<p>QgsNetworkContentFetcherTask(url: QUrl, authcfg: str = ‘’, flags: Union[QgsTask.Flags, QgsTask.Flag] = QgsTask.CanCancel, description: str = ‘’)
 Constructor for a <a class="reference internal" href="#qgis.core.QgsNetworkContentFetcherTask" title="qgis.core.QgsNetworkContentFetcherTask"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsNetworkContentFetcherTask</span></code></a> which fetches
 the specified <code class="docutils literal notranslate"><span class="pre">url</span></code>.</p>
 <p>Optionally, authentication configuration can be set via the <code class="docutils literal notranslate"><span class="pre">authcfg</span></code> argument.</p>
-<p>QgsNetworkContentFetcherTask(request: QNetworkRequest, authcfg: str = ‘’, flags: Union[QgsTask.Flags, QgsTask.Flag] = QgsTask.CanCancel)
+<p>Since QGIS 3.28 the optional <code class="docutils literal notranslate"><span class="pre">description</span></code> can be explicitly set. If not specified, a default task description will be generated.</p>
+<p>QgsNetworkContentFetcherTask(request: QNetworkRequest, authcfg: str = ‘’, flags: Union[QgsTask.Flags, QgsTask.Flag] = QgsTask.CanCancel, description: str = ‘’)
 Constructor for a <a class="reference internal" href="#qgis.core.QgsNetworkContentFetcherTask" title="qgis.core.QgsNetworkContentFetcherTask"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsNetworkContentFetcherTask</span></code></a> which fetches
 the specified network <code class="docutils literal notranslate"><span class="pre">request</span></code>.</p>
 <p>Optionally, authentication configuration can be set via the <code class="docutils literal notranslate"><span class="pre">authcfg</span></code> argument.</p>
+<p>Since QGIS 3.28 the optional <code class="docutils literal notranslate"><span class="pre">description</span></code> can be explicitly set. If not specified, a default task description will be generated.</p>
 <blockquote>
 <div><table class="autosummary longtable docutils align-default">
 <colgroup>
@@ -2128,28 +2131,31 @@ the specified network <code class="docutils literal notranslate"><span class="pr
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsNetworkContentFetcherTask.contentAsString" title="qgis.core.QgsNetworkContentFetcherTask.contentAsString"><code class="xref py py-obj docutils literal notranslate"><span class="pre">contentAsString</span></code></a></p></td>
 <td><p>Returns the fetched content as a string</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsNetworkContentFetcherTask.customEvent" title="qgis.core.QgsNetworkContentFetcherTask.customEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">customEvent</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsNetworkContentFetcherTask.contentDispositionFilename" title="qgis.core.QgsNetworkContentFetcherTask.contentDispositionFilename"><code class="xref py py-obj docutils literal notranslate"><span class="pre">contentDispositionFilename</span></code></a></p></td>
+<td><p>Returns the associated filename from the reply's content disposition header, if present.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsNetworkContentFetcherTask.customEvent" title="qgis.core.QgsNetworkContentFetcherTask.customEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">customEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsNetworkContentFetcherTask.disconnectNotify" title="qgis.core.QgsNetworkContentFetcherTask.disconnectNotify"><code class="xref py py-obj docutils literal notranslate"><span class="pre">disconnectNotify</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsNetworkContentFetcherTask.disconnectNotify" title="qgis.core.QgsNetworkContentFetcherTask.disconnectNotify"><code class="xref py py-obj docutils literal notranslate"><span class="pre">disconnectNotify</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsNetworkContentFetcherTask.finished" title="qgis.core.QgsNetworkContentFetcherTask.finished"><code class="xref py py-obj docutils literal notranslate"><span class="pre">finished</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsNetworkContentFetcherTask.finished" title="qgis.core.QgsNetworkContentFetcherTask.finished"><code class="xref py py-obj docutils literal notranslate"><span class="pre">finished</span></code></a></p></td>
 <td><p>If the task is managed by a <a class="reference internal" href="QgsTaskManager.html#module-QgsTaskManager" title="QgsTaskManager"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsTaskManager</span></code></a>, this will be called after the task has finished (whether through successful completion or via early termination).</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsNetworkContentFetcherTask.isCanceled" title="qgis.core.QgsNetworkContentFetcherTask.isCanceled"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isCanceled</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsNetworkContentFetcherTask.isCanceled" title="qgis.core.QgsNetworkContentFetcherTask.isCanceled"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isCanceled</span></code></a></p></td>
 <td><p>Will return <code class="docutils literal notranslate"><span class="pre">True</span></code> if task should terminate ASAP.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsNetworkContentFetcherTask.isSignalConnected" title="qgis.core.QgsNetworkContentFetcherTask.isSignalConnected"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isSignalConnected</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsNetworkContentFetcherTask.isSignalConnected" title="qgis.core.QgsNetworkContentFetcherTask.isSignalConnected"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isSignalConnected</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsNetworkContentFetcherTask.receivers" title="qgis.core.QgsNetworkContentFetcherTask.receivers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">receivers</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsNetworkContentFetcherTask.receivers" title="qgis.core.QgsNetworkContentFetcherTask.receivers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">receivers</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsNetworkContentFetcherTask.reply" title="qgis.core.QgsNetworkContentFetcherTask.reply"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reply</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsNetworkContentFetcherTask.reply" title="qgis.core.QgsNetworkContentFetcherTask.reply"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reply</span></code></a></p></td>
 <td><p>Returns the network reply.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsNetworkContentFetcherTask.run" title="qgis.core.QgsNetworkContentFetcherTask.run"><code class="xref py py-obj docutils literal notranslate"><span class="pre">run</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsNetworkContentFetcherTask.run" title="qgis.core.QgsNetworkContentFetcherTask.run"><code class="xref py py-obj docutils literal notranslate"><span class="pre">run</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">rtype</dt>
 <dd class="field-odd"><p>bool</p>
@@ -2157,16 +2163,16 @@ the specified network <code class="docutils literal notranslate"><span class="pr
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsNetworkContentFetcherTask.sender" title="qgis.core.QgsNetworkContentFetcherTask.sender"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sender</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsNetworkContentFetcherTask.sender" title="qgis.core.QgsNetworkContentFetcherTask.sender"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sender</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsNetworkContentFetcherTask.senderSignalIndex" title="qgis.core.QgsNetworkContentFetcherTask.senderSignalIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">senderSignalIndex</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsNetworkContentFetcherTask.senderSignalIndex" title="qgis.core.QgsNetworkContentFetcherTask.senderSignalIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">senderSignalIndex</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsNetworkContentFetcherTask.setProgress" title="qgis.core.QgsNetworkContentFetcherTask.setProgress"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setProgress</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsNetworkContentFetcherTask.setProgress" title="qgis.core.QgsNetworkContentFetcherTask.setProgress"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setProgress</span></code></a></p></td>
 <td><p>Sets the task's current progress.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsNetworkContentFetcherTask.timerEvent" title="qgis.core.QgsNetworkContentFetcherTask.timerEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">timerEvent</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsNetworkContentFetcherTask.timerEvent" title="qgis.core.QgsNetworkContentFetcherTask.timerEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">timerEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -2221,6 +2227,20 @@ the <a class="reference internal" href="#qgis.core.QgsNetworkContentFetcherTask.
 </div>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.10.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsNetworkContentFetcherTask.contentDispositionFilename">
+<span class="sig-name descname"><span class="pre">contentDispositionFilename</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#qgis.core.QgsNetworkContentFetcherTask.contentDispositionFilename" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the associated filename from the reply’s content disposition header, if present.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.28.</span></p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
@@ -2365,7 +2385,7 @@ the task wants to update its progress. Calling will automatically emit the progr
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:37 Jun 21, 2022.
+      <span class="lastupdated">Last updated on 03:03 Jun 21, 2022.
       </span></p>
   </div>
 
