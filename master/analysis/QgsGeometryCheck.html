@@ -2088,10 +2088,10 @@ help a user to create valid geometries.</p>
 abstract methods need to be implemented:</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#qgis.analysis.QgsGeometryCheck.compatibleGeometryTypes" title="qgis.analysis.QgsGeometryCheck.compatibleGeometryTypes"><code class="xref py py-func docutils literal notranslate"><span class="pre">compatibleGeometryTypes()</span></code></a>: A list of geometry types to which this check applies</p></li>
-<li><p><a class="reference internal" href="#qgis.analysis.QgsGeometryCheck.resolutionMethods" title="qgis.analysis.QgsGeometryCheck.resolutionMethods"><code class="xref py py-func docutils literal notranslate"><span class="pre">resolutionMethods()</span></code></a>: A list of names for (automated) resolution methods that can be used to fix errors of this type</p></li>
+<li><p><a class="reference internal" href="#qgis.analysis.QgsGeometryCheck.availableResolutionMethods" title="qgis.analysis.QgsGeometryCheck.availableResolutionMethods"><code class="xref py py-func docutils literal notranslate"><span class="pre">availableResolutionMethods()</span></code></a>: A list of resolution methods that can be used to fix errors of this type</p></li>
 <li><p><a class="reference internal" href="#qgis.analysis.QgsGeometryCheck.description" title="qgis.analysis.QgsGeometryCheck.description"><code class="xref py py-func docutils literal notranslate"><span class="pre">description()</span></code></a>: A description for the geometry check.</p></li>
 <li><p><a class="reference internal" href="#qgis.analysis.QgsGeometryCheck.id" title="qgis.analysis.QgsGeometryCheck.id"><code class="xref py py-func docutils literal notranslate"><span class="pre">id()</span></code></a>: A unique id for this check.</p></li>
-<li><p><a class="reference internal" href="#qgis.analysis.QgsGeometryCheck.checkType" title="qgis.analysis.QgsGeometryCheck.checkType"><code class="xref py py-func docutils literal notranslate"><span class="pre">checkType()</span></code></a>: One of <a class="reference internal" href="#module-QgsGeometryCheck" title="QgsGeometryCheck"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsGeometryCheck</span></code></a>.LayerCheck, <a class="reference internal" href="#module-QgsGeometryCheck" title="QgsGeometryCheck"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsGeometryCheck</span></code></a>.FeatureCheck,:py:class:<cite>QgsGeometryCheck</cite>.FeatureNodeCheck</p></li>
+<li><p><a class="reference internal" href="#qgis.analysis.QgsGeometryCheck.checkType" title="qgis.analysis.QgsGeometryCheck.checkType"><code class="xref py py-func docutils literal notranslate"><span class="pre">checkType()</span></code></a>: One of <a class="reference internal" href="#module-QgsGeometryCheck" title="QgsGeometryCheck"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsGeometryCheck</span></code></a>.LayerCheck, <a class="reference internal" href="#module-QgsGeometryCheck" title="QgsGeometryCheck"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsGeometryCheck</span></code></a>.FeatureCheck, <a class="reference internal" href="#module-QgsGeometryCheck" title="QgsGeometryCheck"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsGeometryCheck</span></code></a>.FeatureNodeCheck</p></li>
 <li><p><a class="reference internal" href="#qgis.analysis.QgsGeometryCheck.collectErrors" title="qgis.analysis.QgsGeometryCheck.collectErrors"><code class="xref py py-func docutils literal notranslate"><span class="pre">collectErrors()</span></code></a>: This method will be called to validate geometries. All geometries which should be validated are passed
 into this method with the parameter ids and should be retrieved from the available featurePools to make
 use of caching. New errors should be appended to the error list and other message strings to messages.
@@ -2113,7 +2113,7 @@ checks for the geometry type of the layer.</p></li>
 </ul>
 <p>Finally the geometry check factory needs to be registered in QGIS, so the system
 is aware of the available geometry checks.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make sure you always keep a</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make sure you always keep a reference</span>
 <span class="n">checkFactory</span> <span class="o">=</span> <span class="n">MyGeometryCheckFactory</span><span class="p">()</span>
 <span class="n">QgsAnalysis</span><span class="o">.</span><span class="n">geometryCheckRegistry</span><span class="p">()</span><span class="o">.</span><span class="n">registerGeometryCheck</span><span class="p">(</span><span class="n">checkFactory</span><span class="p">)</span>
 </pre></div>
@@ -2169,10 +2169,10 @@ Create a new geometry check.</p>
 <td><p>Returns an id for this check.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.analysis.QgsGeometryCheck.isCompatible" title="qgis.analysis.QgsGeometryCheck.isCompatible"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isCompatible</span></code></a></p></td>
-<td><p>Returns if this geometry check is compatible with <code class="docutils literal notranslate"><span class="pre">layer</span></code>. By default it checks for the geometry type in <a href="#id1"><span class="problematic" id="id2">``</span></a>compatibleGeometryTypes``().</p></td>
+<td><p>Returns if this geometry check is compatible with <code class="docutils literal notranslate"><span class="pre">layer</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.analysis.QgsGeometryCheck.prepare" title="qgis.analysis.QgsGeometryCheck.prepare"><code class="xref py py-obj docutils literal notranslate"><span class="pre">prepare</span></code></a></p></td>
-<td><p>Will be run in the main thread before collectErrors is called (which may be run from a background thread).</p></td>
+<td><p>Will be run in the main thread before <a class="reference internal" href="#qgis.analysis.QgsGeometryCheck.collectErrors" title="qgis.analysis.QgsGeometryCheck.collectErrors"><code class="xref py py-func docutils literal notranslate"><span class="pre">collectErrors()</span></code></a> is called (which may be run from a background thread).</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.analysis.QgsGeometryCheck.resolutionMethods" title="qgis.analysis.QgsGeometryCheck.resolutionMethods"><code class="xref py py-obj docutils literal notranslate"><span class="pre">resolutionMethods</span></code></a></p></td>
 <td><p>Returns a list of descriptions for available resolutions for errors.</p></td>
@@ -2485,7 +2485,7 @@ Progress should be reported to <code class="docutils literal notranslate"><span 
 <dt class="sig sig-object py" id="qgis.analysis.QgsGeometryCheck.isCompatible">
 <span class="sig-name descname"><span class="pre">isCompatible</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">layer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../core/QgsVectorLayer.html#qgis.core.QgsVectorLayer" title="qgis.core.QgsVectorLayer"><span class="pre">QgsVectorLayer</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#qgis.analysis.QgsGeometryCheck.isCompatible" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns if this geometry check is compatible with <code class="docutils literal notranslate"><span class="pre">layer</span></code>.
-By default it checks for the geometry type in <a href="#id3"><span class="problematic" id="id4">``</span></a>compatibleGeometryTypes``().</p>
+By default it checks for the geometry type in <a class="reference internal" href="#qgis.analysis.QgsGeometryCheck.compatibleGeometryTypes" title="qgis.analysis.QgsGeometryCheck.compatibleGeometryTypes"><code class="xref py py-func docutils literal notranslate"><span class="pre">compatibleGeometryTypes()</span></code></a>.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.4.</span></p>
 </div>
@@ -2502,7 +2502,7 @@ By default it checks for the geometry type in <a href="#id3"><span class="proble
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.analysis.QgsGeometryCheck.prepare">
 <span class="sig-name descname"><span class="pre">prepare</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsGeometryCheckContext.html#qgis.analysis.QgsGeometryCheckContext" title="qgis.analysis.QgsGeometryCheckContext"><span class="pre">QgsGeometryCheckContext</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">configuration</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.analysis.QgsGeometryCheck.prepare" title="Permalink to this definition">¶</a></dt>
-<dd><p>Will be run in the main thread before collectErrors is called (which may be run from a background thread).</p>
+<dd><p>Will be run in the main thread before <a class="reference internal" href="#qgis.analysis.QgsGeometryCheck.collectErrors" title="qgis.analysis.QgsGeometryCheck.collectErrors"><code class="xref py py-func docutils literal notranslate"><span class="pre">collectErrors()</span></code></a> is called (which may be run from a background thread).</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.10.</span></p>
 </div>
@@ -2553,7 +2553,7 @@ use <a class="reference internal" href="#qgis.analysis.QgsGeometryCheck.availabl
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:34 Jul 02, 2022.
+      <span class="lastupdated">Last updated on 00:41 Jul 02, 2022.
       </span></p>
   </div>
 
