@@ -1002,6 +1002,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsScopedExpressionFunction.html">Class: QgsScopedExpressionFunction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsScopedProxyProgressTask.html">Class: QgsScopedProxyProgressTask</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsScopedRuntimeProfile.html">Class: QgsScopedRuntimeProfile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../core/QgsSelectionContext.html">Class: QgsSelectionContext</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsServerMetadataUrlProperties.html">Class: QgsServerMetadataUrlProperties</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsServerWmsDimensionProperties.html">Class: QgsServerWmsDimensionProperties</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsSettings.html">Class: QgsSettings</a></li>
@@ -1206,6 +1207,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../core/ReadWriteContextEnterCategory.html">Class: ReadWriteContextEnterCategory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/RenderContextFlags.html">Class: RenderContextFlags</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/ScopedRuntimeProfileContextManager.html">Class: ScopedRuntimeProfileContextManager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../core/SelectionFlags.html">Class: SelectionFlags</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/SettingsOptions.html">Class: SettingsOptions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/SimplifyHints.html">Class: SimplifyHints</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/SmartgroupId.html">Class: SmartgroupId</a></li>
@@ -2396,7 +2398,7 @@ Constructor</p>
 <td><p>Centers canvas extent to feature ids</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsMapCanvas.panToSelected" title="qgis.gui.QgsMapCanvas.panToSelected"><code class="xref py py-obj docutils literal notranslate"><span class="pre">panToSelected</span></code></a></p></td>
-<td><p>Pan to the selected features of current (vector) layer keeping same extent.</p></td>
+<td><p>Pan to the selected features of current ayer keeping same extent.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsMapCanvas.previewJobsEnabled" title="qgis.gui.QgsMapCanvas.previewJobsEnabled"><code class="xref py py-obj docutils literal notranslate"><span class="pre">previewJobsEnabled</span></code></a></p></td>
 <td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if canvas map preview jobs (low priority render jobs which render portions of the view just outside of the canvas extent, to allow preview of these out-of-canvas areas when panning or zooming out the map) are enabled for the canvas.</p></td>
@@ -2700,7 +2702,7 @@ Constructor</p>
 <td><p>Zoom to the full extent the project associated with this canvas.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsMapCanvas.zoomToSelected" title="qgis.gui.QgsMapCanvas.zoomToSelected"><code class="xref py py-obj docutils literal notranslate"><span class="pre">zoomToSelected</span></code></a></p></td>
-<td><p>Zoom to the extent of the selected features of provided (vector) layer.</p></td>
+<td><p>Zoom to the extent of the selected features of provided map layer.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsMapCanvas.zoomWithCenter" title="qgis.gui.QgsMapCanvas.zoomWithCenter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">zoomWithCenter</span></code></a></p></td>
 <td><p>Zooms in/out with a given center</p></td>
@@ -2778,7 +2780,7 @@ Constructor</p>
 <td><p>Emitted when the scale locked state of the map changes</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsMapCanvas.selectionChanged" title="qgis.gui.QgsMapCanvas.selectionChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">selectionChanged</span></code></a></p></td>
-<td><p>Emitted when selection in any layer gets changed [signal]</p></td>
+<td><p>Emitted when selection in any <code class="docutils literal notranslate"><span class="pre">layer</span></code> gets changed.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsMapCanvas.tapAndHoldGestureOccurred" title="qgis.gui.QgsMapCanvas.tapAndHoldGestureOccurred"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tapAndHoldGestureOccurred</span></code></a></p></td>
 <td><p>Emitted whenever a tap and hold <code class="docutils literal notranslate"><span class="pre">gesture</span></code> occurs at the specified map point.</p></td>
@@ -3888,8 +3890,8 @@ start of the pan and the current pan position.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.gui.QgsMapCanvas.panToSelected">
-<span class="sig-name descname"><span class="pre">panToSelected</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">layer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../core/QgsVectorLayer.html#qgis.core.QgsVectorLayer" title="qgis.core.QgsVectorLayer"><span class="pre">QgsVectorLayer</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsMapCanvas.panToSelected" title="Permalink to this definition">¶</a></dt>
-<dd><p>Pan to the selected features of current (vector) layer keeping same extent.</p>
+<span class="sig-name descname"><span class="pre">panToSelected</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">layer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../core/QgsMapLayer.html#qgis.core.QgsMapLayer" title="qgis.core.QgsMapLayer"><span class="pre">QgsMapLayer</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsMapCanvas.panToSelected" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pan to the selected features of current ayer keeping same extent.</p>
 <p>panToSelected(self, layers: Iterable[QgsMapLayer])
 Pan to the combined extent of the selected features of all provided (vector) layers.</p>
 <dl class="field-list simple">
@@ -3902,7 +3904,7 @@ Pan to the combined extent of the selected features of all provided (vector) lay
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>layer</strong> (<a class="reference internal" href="../core/QgsVectorLayer.html#qgis.core.QgsVectorLayer" title="qgis.core.QgsVectorLayer"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsVectorLayer</span></code></a> = None) – </p>
+<dd class="field-odd"><p><strong>layer</strong> (<a class="reference internal" href="../core/QgsMapLayer.html#qgis.core.QgsMapLayer" title="qgis.core.QgsMapLayer"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMapLayer</span></code></a> = None) – </p>
 </dd>
 </dl>
 </dd></dl>
@@ -4272,10 +4274,14 @@ The <code class="docutils literal notranslate"><span class="pre">scale</span></c
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.gui.QgsMapCanvas.selectionChanged">
 <span class="sig-name descname"><span class="pre">selectionChanged</span></span><a class="headerlink" href="#qgis.gui.QgsMapCanvas.selectionChanged" title="Permalink to this definition">¶</a></dt>
-<dd><p>Emitted when selection in any layer gets changed [signal]</p>
+<dd><p>Emitted when selection in any <code class="docutils literal notranslate"><span class="pre">layer</span></code> gets changed.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Since QGIS 3.28 this signal is emitted for multiple layer types, including <a class="reference internal" href="../core/QgsVectorLayer.html#module-QgsVectorLayer" title="QgsVectorLayer"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsVectorLayer</span></code></a> and <a class="reference internal" href="../core/QgsVectorTileLayer.html#module-QgsVectorTileLayer" title="QgsVectorTileLayer"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsVectorTileLayer</span></code></a> [signal]</p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>layer</strong> (<a class="reference internal" href="../core/QgsVectorLayer.html#qgis.core.QgsVectorLayer" title="qgis.core.QgsVectorLayer"><em>QgsVectorLayer</em></a>) – </p>
+<dd class="field-odd"><p><strong>layer</strong> (<a class="reference internal" href="../core/QgsMapLayer.html#qgis.core.QgsMapLayer" title="qgis.core.QgsMapLayer"><em>QgsMapLayer</em></a>) – </p>
 </dd>
 </dl>
 </dd></dl>
@@ -5358,11 +5364,11 @@ Unlike <a class="reference internal" href="#qgis.gui.QgsMapCanvas.zoomToFullExte
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.gui.QgsMapCanvas.zoomToSelected">
-<span class="sig-name descname"><span class="pre">zoomToSelected</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">layer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../core/QgsVectorLayer.html#qgis.core.QgsVectorLayer" title="qgis.core.QgsVectorLayer"><span class="pre">QgsVectorLayer</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsMapCanvas.zoomToSelected" title="Permalink to this definition">¶</a></dt>
-<dd><p>Zoom to the extent of the selected features of provided (vector) layer.</p>
+<span class="sig-name descname"><span class="pre">zoomToSelected</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">layer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../core/QgsMapLayer.html#qgis.core.QgsMapLayer" title="qgis.core.QgsMapLayer"><span class="pre">QgsMapLayer</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsMapCanvas.zoomToSelected" title="Permalink to this definition">¶</a></dt>
+<dd><p>Zoom to the extent of the selected features of provided map layer.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>layer</strong> (<a class="reference internal" href="../core/QgsVectorLayer.html#qgis.core.QgsVectorLayer" title="qgis.core.QgsVectorLayer"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsVectorLayer</span></code></a> = None) – optionally specify different than current layer</p>
+<dd class="field-odd"><p><strong>layer</strong> (<a class="reference internal" href="../core/QgsMapLayer.html#qgis.core.QgsMapLayer" title="qgis.core.QgsMapLayer"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMapLayer</span></code></a> = None) – optionally specify different than current layer</p>
 </dd>
 </dl>
 <p>zoomToSelected(self, layers: Iterable[QgsMapLayer])
@@ -5405,7 +5411,7 @@ Zoom to the combined extent of the selected features of all provided (vector) la
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:37 Jul 08, 2022.
+      <span class="lastupdated">Last updated on 02:54 Jul 08, 2022.
       </span></p>
   </div>
 

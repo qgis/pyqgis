@@ -1002,6 +1002,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsScopedExpressionFunction.html">Class: QgsScopedExpressionFunction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsScopedProxyProgressTask.html">Class: QgsScopedProxyProgressTask</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsScopedRuntimeProfile.html">Class: QgsScopedRuntimeProfile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsSelectionContext.html">Class: QgsSelectionContext</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsServerMetadataUrlProperties.html">Class: QgsServerMetadataUrlProperties</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsServerWmsDimensionProperties.html">Class: QgsServerWmsDimensionProperties</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsSettings.html">Class: QgsSettings</a></li>
@@ -1206,6 +1207,7 @@
 <li class="toctree-l2"><a class="reference internal" href="ReadWriteContextEnterCategory.html">Class: ReadWriteContextEnterCategory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="RenderContextFlags.html">Class: RenderContextFlags</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ScopedRuntimeProfileContextManager.html">Class: ScopedRuntimeProfileContextManager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SelectionFlags.html">Class: SelectionFlags</a></li>
 <li class="toctree-l2"><a class="reference internal" href="SettingsOptions.html">Class: SettingsOptions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="SimplifyHints.html">Class: SimplifyHints</a></li>
 <li class="toctree-l2"><a class="reference internal" href="SmartgroupId.html">Class: SmartgroupId</a></li>
@@ -2422,7 +2424,7 @@ geom is transferred.</p>
 <td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if WKB of the geometry is of WKBMulti* type</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsGeometry.isNull" title="qgis.core.QgsGeometry.isNull"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isNull</span></code></a></p></td>
-<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the geometry is null (ie, contains no underlying geometry accessible via <code class="xref py py-func docutils literal notranslate"><span class="pre">geometry()</span></code> ).</p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the geometry is null (ie, contains no underlying geometry accessible via <a class="reference internal" href="#qgis.core.QgsGeometry.get" title="qgis.core.QgsGeometry.get"><code class="xref py py-func docutils literal notranslate"><span class="pre">get()</span></code></a> or <a class="reference internal" href="#qgis.core.QgsGeometry.constGet" title="qgis.core.QgsGeometry.constGet"><code class="xref py py-func docutils literal notranslate"><span class="pre">constGet()</span></code></a> ).</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsGeometry.isSimple" title="qgis.core.QgsGeometry.isSimple"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isSimple</span></code></a></p></td>
 <td><p>Determines whether the geometry is simple (according to OGC definition), i.e. it has no anomalous geometric points, such as self-intersection or self-tangency.</p></td>
@@ -4980,10 +4982,14 @@ by <a class="reference internal" href="#qgis.core.QgsGeometry.equals" title="qgi
 <dt class="sig sig-object py" id="qgis.core.QgsGeometry.isNull">
 <span class="sig-name descname"><span class="pre">isNull</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#qgis.core.QgsGeometry.isNull" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the geometry is null (ie, contains no underlying geometry
-accessible via <code class="xref py py-func docutils literal notranslate"><span class="pre">geometry()</span></code> ).</p>
+accessible via <a class="reference internal" href="#qgis.core.QgsGeometry.get" title="qgis.core.QgsGeometry.get"><code class="xref py py-func docutils literal notranslate"><span class="pre">get()</span></code></a> or <a class="reference internal" href="#qgis.core.QgsGeometry.constGet" title="qgis.core.QgsGeometry.constGet"><code class="xref py py-func docutils literal notranslate"><span class="pre">constGet()</span></code></a> ).</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsGeometry.get" title="qgis.core.QgsGeometry.get"><code class="xref py py-func docutils literal notranslate"><span class="pre">get()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsGeometry.constGet" title="qgis.core.QgsGeometry.constGet"><code class="xref py py-func docutils literal notranslate"><span class="pre">constGet()</span></code></a></p>
 </div>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -6716,7 +6722,7 @@ faster than calling <a class="reference internal" href="#qgis.core.QgsGeometry.w
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:37 Jul 08, 2022.
+      <span class="lastupdated">Last updated on 02:54 Jul 08, 2022.
       </span></p>
   </div>
 
