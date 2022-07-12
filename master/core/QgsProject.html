@@ -90,6 +90,7 @@
 <li class="toctree-l2"><a class="reference internal" href="PROJECT_SCALES.html">Class: PROJECT_SCALES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PlotToolFlags.html">Class: PlotToolFlags</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ProfileGeneratorFlags.html">Class: ProfileGeneratorFlags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ProjectCapabilities.html">Class: ProjectCapabilities</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ProjectDirtyBlocker.html">Class: ProjectDirtyBlocker</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ProjectFlags.html">Class: ProjectFlags</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ProjectReadFlags.html">Class: ProjectReadFlags</a></li>
@@ -2095,9 +2096,11 @@ open within the main QGIS application.</p>
 <p><a class="reference internal" href="#module-QgsProject" title="QgsProject"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProject</span></code></a> has two general kinds of state to make persistent. (I.e., to read and
 write.) First, QGIS proprietary information. Second plugin information.</p>
 </div>
-<p>QgsProject(parent: QObject = None)
+<p>QgsProject(parent: QObject = None, capabilities: Union[Qgis.ProjectCapabilities, Qgis.ProjectCapability] = Qgis.ProjectCapability.ProjectStyles)
 Create a new QgsProject.</p>
 <p>Most of the time you want to use <a class="reference internal" href="#qgis.core.QgsProject.instance" title="qgis.core.QgsProject.instance"><code class="xref py py-func docutils literal notranslate"><span class="pre">QgsProject.instance()</span></code></a> instead as many components of QGIS work with the singleton.</p>
+<p>Since QGIS 3.26.1 the <code class="docutils literal notranslate"><span class="pre">capabilities</span></code> argument specifies optional capabilities which can be selectively
+enabled for the project. These affect the <a class="reference internal" href="#qgis.core.QgsProject" title="qgis.core.QgsProject"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProject</span></code></a> object for its entire lifetime.</p>
 <blockquote>
 <div><p class="rubric">Enums</p>
 <table class="autosummary longtable docutils align-default">
@@ -2172,28 +2175,31 @@ Create a new QgsProject.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.bookmarkManager" title="qgis.core.QgsProject.bookmarkManager"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bookmarkManager</span></code></a></p></td>
 <td><p>Returns the project's bookmark manager, which manages bookmarks within the project.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.childEvent" title="qgis.core.QgsProject.childEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">childEvent</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.capabilities" title="qgis.core.QgsProject.capabilities"><code class="xref py py-obj docutils literal notranslate"><span class="pre">capabilities</span></code></a></p></td>
+<td><p>Returns the project's capabilities, which dictate optional functionality which can be selectively enabled for a <a class="reference internal" href="#qgis.core.QgsProject" title="qgis.core.QgsProject"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProject</span></code></a> object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.childEvent" title="qgis.core.QgsProject.childEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">childEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.clear" title="qgis.core.QgsProject.clear"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clear</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.clear" title="qgis.core.QgsProject.clear"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clear</span></code></a></p></td>
 <td><p>Clears the project, removing all settings and resetting it back to an empty, default state.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.commitChanges" title="qgis.core.QgsProject.commitChanges"><code class="xref py py-obj docutils literal notranslate"><span class="pre">commitChanges</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.commitChanges" title="qgis.core.QgsProject.commitChanges"><code class="xref py py-obj docutils literal notranslate"><span class="pre">commitChanges</span></code></a></p></td>
 <td><p>Attempts to commit to the underlying data provider any buffered changes made since the last to call to <a class="reference internal" href="#qgis.core.QgsProject.startEditing" title="qgis.core.QgsProject.startEditing"><code class="xref py py-func docutils literal notranslate"><span class="pre">startEditing()</span></code></a>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.connectNotify" title="qgis.core.QgsProject.connectNotify"><code class="xref py py-obj docutils literal notranslate"><span class="pre">connectNotify</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.connectNotify" title="qgis.core.QgsProject.connectNotify"><code class="xref py py-obj docutils literal notranslate"><span class="pre">connectNotify</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.count" title="qgis.core.QgsProject.count"><code class="xref py py-obj docutils literal notranslate"><span class="pre">count</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.count" title="qgis.core.QgsProject.count"><code class="xref py py-obj docutils literal notranslate"><span class="pre">count</span></code></a></p></td>
 <td><p>Returns the number of registered layers.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.createAttachedFile" title="qgis.core.QgsProject.createAttachedFile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createAttachedFile</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.createAttachedFile" title="qgis.core.QgsProject.createAttachedFile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createAttachedFile</span></code></a></p></td>
 <td><p>Attaches a file to the project</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.createEmbeddedGroup" title="qgis.core.QgsProject.createEmbeddedGroup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createEmbeddedGroup</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.createEmbeddedGroup" title="qgis.core.QgsProject.createEmbeddedGroup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createEmbeddedGroup</span></code></a></p></td>
 <td><p>Create layer group instance defined in an arbitrary project file.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.createExpressionContext" title="qgis.core.QgsProject.createExpressionContext"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createExpressionContext</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.createExpressionContext" title="qgis.core.QgsProject.createExpressionContext"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createExpressionContext</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">rtype</dt>
 <dd class="field-odd"><p>QgsExpressionContext</p>
@@ -2201,7 +2207,7 @@ Create a new QgsProject.</p>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.createExpressionContextScope" title="qgis.core.QgsProject.createExpressionContextScope"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createExpressionContextScope</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.createExpressionContextScope" title="qgis.core.QgsProject.createExpressionContextScope"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createExpressionContextScope</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">rtype</dt>
 <dd class="field-odd"><p>QgsExpressionContextScope</p>
@@ -2209,181 +2215,181 @@ Create a new QgsProject.</p>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.crs" title="qgis.core.QgsProject.crs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">crs</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.crs" title="qgis.core.QgsProject.crs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">crs</span></code></a></p></td>
 <td><p>Returns the project's native coordinate reference system.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.customEvent" title="qgis.core.QgsProject.customEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">customEvent</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.customEvent" title="qgis.core.QgsProject.customEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">customEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.customVariables" title="qgis.core.QgsProject.customVariables"><code class="xref py py-obj docutils literal notranslate"><span class="pre">customVariables</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.customVariables" title="qgis.core.QgsProject.customVariables"><code class="xref py py-obj docutils literal notranslate"><span class="pre">customVariables</span></code></a></p></td>
 <td><p>A map of custom project variables.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.dataDefinedServerProperties" title="qgis.core.QgsProject.dataDefinedServerProperties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dataDefinedServerProperties</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.dataDefinedServerProperties" title="qgis.core.QgsProject.dataDefinedServerProperties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dataDefinedServerProperties</span></code></a></p></td>
 <td><p>Returns the data defined properties used for overrides in user defined server parameters</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.defaultCrsForNewLayers" title="qgis.core.QgsProject.defaultCrsForNewLayers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">defaultCrsForNewLayers</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.defaultCrsForNewLayers" title="qgis.core.QgsProject.defaultCrsForNewLayers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">defaultCrsForNewLayers</span></code></a></p></td>
 <td><p>Returns the default CRS for new layers based on the settings and the current project CRS</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.disconnectNotify" title="qgis.core.QgsProject.disconnectNotify"><code class="xref py py-obj docutils literal notranslate"><span class="pre">disconnectNotify</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.disconnectNotify" title="qgis.core.QgsProject.disconnectNotify"><code class="xref py py-obj docutils literal notranslate"><span class="pre">disconnectNotify</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.displaySettings" title="qgis.core.QgsProject.displaySettings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">displaySettings</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.displaySettings" title="qgis.core.QgsProject.displaySettings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">displaySettings</span></code></a></p></td>
 <td><p>Returns the project's display settings, which settings and properties relating to how a <a class="reference internal" href="#qgis.core.QgsProject" title="qgis.core.QgsProject"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProject</span></code></a> should display values such as map coordinates and bearings.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.distanceUnits" title="qgis.core.QgsProject.distanceUnits"><code class="xref py py-obj docutils literal notranslate"><span class="pre">distanceUnits</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.distanceUnits" title="qgis.core.QgsProject.distanceUnits"><code class="xref py py-obj docutils literal notranslate"><span class="pre">distanceUnits</span></code></a></p></td>
 <td><p>Convenience function to query default distance measurement units for project.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.dumpProperties" title="qgis.core.QgsProject.dumpProperties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dumpProperties</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.dumpProperties" title="qgis.core.QgsProject.dumpProperties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dumpProperties</span></code></a></p></td>
 <td><p>Dump out current project properties to stderr</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.editBufferGroup" title="qgis.core.QgsProject.editBufferGroup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">editBufferGroup</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.editBufferGroup" title="qgis.core.QgsProject.editBufferGroup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">editBufferGroup</span></code></a></p></td>
 <td><p>Returns the edit buffer group</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.elevationProperties" title="qgis.core.QgsProject.elevationProperties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">elevationProperties</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.elevationProperties" title="qgis.core.QgsProject.elevationProperties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">elevationProperties</span></code></a></p></td>
 <td><p>Returns the project's elevation properties, which contains the project's elevation related settings.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.ellipsoid" title="qgis.core.QgsProject.ellipsoid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ellipsoid</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.ellipsoid" title="qgis.core.QgsProject.ellipsoid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ellipsoid</span></code></a></p></td>
 <td><p>Returns a proj string representing the project's ellipsoid setting, e.g., &quot;WGS84&quot;.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.entryList" title="qgis.core.QgsProject.entryList"><code class="xref py py-obj docutils literal notranslate"><span class="pre">entryList</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.entryList" title="qgis.core.QgsProject.entryList"><code class="xref py py-obj docutils literal notranslate"><span class="pre">entryList</span></code></a></p></td>
 <td><p>Returns a list of child keys with values which exist within the the specified <code class="docutils literal notranslate"><span class="pre">scope</span></code> and <code class="docutils literal notranslate"><span class="pre">key</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.error" title="qgis.core.QgsProject.error"><code class="xref py py-obj docutils literal notranslate"><span class="pre">error</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.error" title="qgis.core.QgsProject.error"><code class="xref py py-obj docutils literal notranslate"><span class="pre">error</span></code></a></p></td>
 <td><p>Returns error message from previous read/write</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.evaluateDefaultValues" title="qgis.core.QgsProject.evaluateDefaultValues"><code class="xref py py-obj docutils literal notranslate"><span class="pre">evaluateDefaultValues</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.evaluateDefaultValues" title="qgis.core.QgsProject.evaluateDefaultValues"><code class="xref py py-obj docutils literal notranslate"><span class="pre">evaluateDefaultValues</span></code></a></p></td>
 <td><p>Should default values be evaluated on provider side when requested and not when committed.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.fileInfo" title="qgis.core.QgsProject.fileInfo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fileInfo</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.fileInfo" title="qgis.core.QgsProject.fileInfo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fileInfo</span></code></a></p></td>
 <td><p>Returns QFileInfo object for the project's associated file.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.fileName" title="qgis.core.QgsProject.fileName"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fileName</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.fileName" title="qgis.core.QgsProject.fileName"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fileName</span></code></a></p></td>
 <td><p>Returns the project's file name.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.filePathStorage" title="qgis.core.QgsProject.filePathStorage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">filePathStorage</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.filePathStorage" title="qgis.core.QgsProject.filePathStorage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">filePathStorage</span></code></a></p></td>
 <td><p>Returns the type of paths used when storing file paths in a QGS/QGZ project file.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.flags" title="qgis.core.QgsProject.flags"><code class="xref py py-obj docutils literal notranslate"><span class="pre">flags</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.flags" title="qgis.core.QgsProject.flags"><code class="xref py py-obj docutils literal notranslate"><span class="pre">flags</span></code></a></p></td>
 <td><p>Returns the project's flags, which dictate the behavior of the project.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.generateTsFile" title="qgis.core.QgsProject.generateTsFile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generateTsFile</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.generateTsFile" title="qgis.core.QgsProject.generateTsFile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generateTsFile</span></code></a></p></td>
 <td><p>Triggers the collection strings of .qgs to be included in ts file and calls <code class="xref py py-func docutils literal notranslate"><span class="pre">writeTsFile()</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.homePath" title="qgis.core.QgsProject.homePath"><code class="xref py py-obj docutils literal notranslate"><span class="pre">homePath</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.homePath" title="qgis.core.QgsProject.homePath"><code class="xref py py-obj docutils literal notranslate"><span class="pre">homePath</span></code></a></p></td>
 <td><p>Returns the project's home path.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.instance" title="qgis.core.QgsProject.instance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">instance</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.instance" title="qgis.core.QgsProject.instance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">instance</span></code></a></p></td>
 <td><p>Returns the <a class="reference internal" href="#qgis.core.QgsProject" title="qgis.core.QgsProject"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProject</span></code></a> singleton instance</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.isDirty" title="qgis.core.QgsProject.isDirty"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isDirty</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.isDirty" title="qgis.core.QgsProject.isDirty"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isDirty</span></code></a></p></td>
 <td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the project has been modified since the last <a class="reference internal" href="#qgis.core.QgsProject.write" title="qgis.core.QgsProject.write"><code class="xref py py-func docutils literal notranslate"><span class="pre">write()</span></code></a></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.isSignalConnected" title="qgis.core.QgsProject.isSignalConnected"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isSignalConnected</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.isSignalConnected" title="qgis.core.QgsProject.isSignalConnected"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isSignalConnected</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.isZipped" title="qgis.core.QgsProject.isZipped"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isZipped</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.isZipped" title="qgis.core.QgsProject.isZipped"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isZipped</span></code></a></p></td>
 <td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the project comes from a zip archive, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.labelingEngineSettings" title="qgis.core.QgsProject.labelingEngineSettings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">labelingEngineSettings</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.labelingEngineSettings" title="qgis.core.QgsProject.labelingEngineSettings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">labelingEngineSettings</span></code></a></p></td>
 <td><p>Returns project's global labeling engine settings</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.lastModified" title="qgis.core.QgsProject.lastModified"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lastModified</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.lastModified" title="qgis.core.QgsProject.lastModified"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lastModified</span></code></a></p></td>
 <td><p>Returns last modified time of the project file as returned by the file system (or other project storage).</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.lastSaveDateTime" title="qgis.core.QgsProject.lastSaveDateTime"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lastSaveDateTime</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.lastSaveDateTime" title="qgis.core.QgsProject.lastSaveDateTime"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lastSaveDateTime</span></code></a></p></td>
 <td><p>Returns the date and time when the project was last saved.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.lastSaveVersion" title="qgis.core.QgsProject.lastSaveVersion"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lastSaveVersion</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.lastSaveVersion" title="qgis.core.QgsProject.lastSaveVersion"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lastSaveVersion</span></code></a></p></td>
 <td><p>Returns the QGIS version which the project was last saved using.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.layerIsEmbedded" title="qgis.core.QgsProject.layerIsEmbedded"><code class="xref py py-obj docutils literal notranslate"><span class="pre">layerIsEmbedded</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.layerIsEmbedded" title="qgis.core.QgsProject.layerIsEmbedded"><code class="xref py py-obj docutils literal notranslate"><span class="pre">layerIsEmbedded</span></code></a></p></td>
 <td><p>Returns the source project file path if the layer with matching <code class="docutils literal notranslate"><span class="pre">id</span></code> is embedded from other project file.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.layerStore" title="qgis.core.QgsProject.layerStore"><code class="xref py py-obj docutils literal notranslate"><span class="pre">layerStore</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.layerStore" title="qgis.core.QgsProject.layerStore"><code class="xref py py-obj docutils literal notranslate"><span class="pre">layerStore</span></code></a></p></td>
 <td><p>Returns a pointer to the project's internal layer store.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.layerTreeRegistryBridge" title="qgis.core.QgsProject.layerTreeRegistryBridge"><code class="xref py py-obj docutils literal notranslate"><span class="pre">layerTreeRegistryBridge</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.layerTreeRegistryBridge" title="qgis.core.QgsProject.layerTreeRegistryBridge"><code class="xref py py-obj docutils literal notranslate"><span class="pre">layerTreeRegistryBridge</span></code></a></p></td>
 <td><p>Returns pointer to the helper class that synchronizes map layer registry with layer tree</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.layerTreeRoot" title="qgis.core.QgsProject.layerTreeRoot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">layerTreeRoot</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.layerTreeRoot" title="qgis.core.QgsProject.layerTreeRoot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">layerTreeRoot</span></code></a></p></td>
 <td><p>Returns pointer to the root (invisible) node of the project's layer tree</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.layoutManager" title="qgis.core.QgsProject.layoutManager"><code class="xref py py-obj docutils literal notranslate"><span class="pre">layoutManager</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.layoutManager" title="qgis.core.QgsProject.layoutManager"><code class="xref py py-obj docutils literal notranslate"><span class="pre">layoutManager</span></code></a></p></td>
 <td><p>Returns the project's layout manager, which manages print layouts, atlases and reports within the project.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.mainAnnotationLayer" title="qgis.core.QgsProject.mainAnnotationLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mainAnnotationLayer</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.mainAnnotationLayer" title="qgis.core.QgsProject.mainAnnotationLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mainAnnotationLayer</span></code></a></p></td>
 <td><p>Returns the main annotation layer associated with the project.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.mapLayer" title="qgis.core.QgsProject.mapLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mapLayer</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.mapLayer" title="qgis.core.QgsProject.mapLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mapLayer</span></code></a></p></td>
 <td><p>Retrieve a pointer to a registered layer by layer ID.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.mapLayers" title="qgis.core.QgsProject.mapLayers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mapLayers</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.mapLayers" title="qgis.core.QgsProject.mapLayers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mapLayers</span></code></a></p></td>
 <td><p>Returns a map of all registered layers by layer ID.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.mapLayersByName" title="qgis.core.QgsProject.mapLayersByName"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mapLayersByName</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.mapLayersByName" title="qgis.core.QgsProject.mapLayersByName"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mapLayersByName</span></code></a></p></td>
 <td><p>Retrieve a list of matching registered layers by layer name.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.mapLayersByShortName" title="qgis.core.QgsProject.mapLayersByShortName"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mapLayersByShortName</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.mapLayersByShortName" title="qgis.core.QgsProject.mapLayersByShortName"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mapLayersByShortName</span></code></a></p></td>
 <td><p>Retrieves a list of matching registered layers by layer <code class="docutils literal notranslate"><span class="pre">shortName</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.mapScales" title="qgis.core.QgsProject.mapScales"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mapScales</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.mapScales" title="qgis.core.QgsProject.mapScales"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mapScales</span></code></a></p></td>
 <td><p>Returns the list of custom project map scales.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.mapThemeCollection" title="qgis.core.QgsProject.mapThemeCollection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mapThemeCollection</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.mapThemeCollection" title="qgis.core.QgsProject.mapThemeCollection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mapThemeCollection</span></code></a></p></td>
 <td><p>Returns pointer to the project's map theme collection.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.metadata" title="qgis.core.QgsProject.metadata"><code class="xref py py-obj docutils literal notranslate"><span class="pre">metadata</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.metadata" title="qgis.core.QgsProject.metadata"><code class="xref py py-obj docutils literal notranslate"><span class="pre">metadata</span></code></a></p></td>
 <td><p>Returns a reference to the project's metadata store.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.nonIdentifiableLayers" title="qgis.core.QgsProject.nonIdentifiableLayers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nonIdentifiableLayers</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.nonIdentifiableLayers" title="qgis.core.QgsProject.nonIdentifiableLayers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nonIdentifiableLayers</span></code></a></p></td>
 <td><p>Gets the list of layers which currently should not be taken into account on map identification</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.originalPath" title="qgis.core.QgsProject.originalPath"><code class="xref py py-obj docutils literal notranslate"><span class="pre">originalPath</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.originalPath" title="qgis.core.QgsProject.originalPath"><code class="xref py py-obj docutils literal notranslate"><span class="pre">originalPath</span></code></a></p></td>
 <td><p>Returns the original path associated with the project.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.pathResolver" title="qgis.core.QgsProject.pathResolver"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pathResolver</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.pathResolver" title="qgis.core.QgsProject.pathResolver"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pathResolver</span></code></a></p></td>
 <td><p>Returns path resolver object with considering whether the project uses absolute or relative paths and using current project's path.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.presetHomePath" title="qgis.core.QgsProject.presetHomePath"><code class="xref py py-obj docutils literal notranslate"><span class="pre">presetHomePath</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.presetHomePath" title="qgis.core.QgsProject.presetHomePath"><code class="xref py py-obj docutils literal notranslate"><span class="pre">presetHomePath</span></code></a></p></td>
 <td><p>Returns any manual project home path setting, or an empty string if not set.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.projectStorage" title="qgis.core.QgsProject.projectStorage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">projectStorage</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.projectStorage" title="qgis.core.QgsProject.projectStorage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">projectStorage</span></code></a></p></td>
 <td><p>Returns pointer to project storage implementation that handles read/write of the project file.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.read" title="qgis.core.QgsProject.read"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.read" title="qgis.core.QgsProject.read"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read</span></code></a></p></td>
 <td><p>Reads given project file from the given file.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.readBoolEntry" title="qgis.core.QgsProject.readBoolEntry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readBoolEntry</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.readBoolEntry" title="qgis.core.QgsProject.readBoolEntry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readBoolEntry</span></code></a></p></td>
 <td><p>Reads a boolean from the specified <code class="docutils literal notranslate"><span class="pre">scope</span></code> and <code class="docutils literal notranslate"><span class="pre">key</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.readDoubleEntry" title="qgis.core.QgsProject.readDoubleEntry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readDoubleEntry</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.readDoubleEntry" title="qgis.core.QgsProject.readDoubleEntry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readDoubleEntry</span></code></a></p></td>
 <td><p>Reads a double from the specified <code class="docutils literal notranslate"><span class="pre">scope</span></code> and <code class="docutils literal notranslate"><span class="pre">key</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.readEntry" title="qgis.core.QgsProject.readEntry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readEntry</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.readEntry" title="qgis.core.QgsProject.readEntry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readEntry</span></code></a></p></td>
 <td><p>Reads a string from the specified <code class="docutils literal notranslate"><span class="pre">scope</span></code> and <code class="docutils literal notranslate"><span class="pre">key</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.readLayer" title="qgis.core.QgsProject.readLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readLayer</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.readLayer" title="qgis.core.QgsProject.readLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readLayer</span></code></a></p></td>
 <td><p>Reads the layer described in the associated DOM node.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.readListEntry" title="qgis.core.QgsProject.readListEntry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readListEntry</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.readListEntry" title="qgis.core.QgsProject.readListEntry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readListEntry</span></code></a></p></td>
 <td><p>Reads a string list from the specified <code class="docutils literal notranslate"><span class="pre">scope</span></code> and <code class="docutils literal notranslate"><span class="pre">key</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.readNumEntry" title="qgis.core.QgsProject.readNumEntry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readNumEntry</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.readNumEntry" title="qgis.core.QgsProject.readNumEntry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readNumEntry</span></code></a></p></td>
 <td><p>Reads an integer from the specified <code class="docutils literal notranslate"><span class="pre">scope</span></code> and <code class="docutils literal notranslate"><span class="pre">key</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.readPath" title="qgis.core.QgsProject.readPath"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readPath</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.readPath" title="qgis.core.QgsProject.readPath"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readPath</span></code></a></p></td>
 <td><p>Transforms a <code class="docutils literal notranslate"><span class="pre">filename</span></code> read from the project file to an absolute path.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.receivers" title="qgis.core.QgsProject.receivers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">receivers</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.receivers" title="qgis.core.QgsProject.receivers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">receivers</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.registerTranslatableContainers" title="qgis.core.QgsProject.registerTranslatableContainers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">registerTranslatableContainers</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.registerTranslatableContainers" title="qgis.core.QgsProject.registerTranslatableContainers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">registerTranslatableContainers</span></code></a></p></td>
 <td><p>Registers the containers that require translation into the translationContext.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.registerTranslatableObjects" title="qgis.core.QgsProject.registerTranslatableObjects"><code class="xref py py-obj docutils literal notranslate"><span class="pre">registerTranslatableObjects</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.registerTranslatableObjects" title="qgis.core.QgsProject.registerTranslatableObjects"><code class="xref py py-obj docutils literal notranslate"><span class="pre">registerTranslatableObjects</span></code></a></p></td>
 <td><p>Registers the objects that require translation into the <code class="docutils literal notranslate"><span class="pre">translationContext</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.relationManager" title="qgis.core.QgsProject.relationManager"><code class="xref py py-obj docutils literal notranslate"><span class="pre">relationManager</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.relationManager" title="qgis.core.QgsProject.relationManager"><code class="xref py py-obj docutils literal notranslate"><span class="pre">relationManager</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">rtype</dt>
 <dd class="field-odd"><p>QgsRelationManager</p>
@@ -2391,217 +2397,217 @@ Create a new QgsProject.</p>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.reloadAllLayers" title="qgis.core.QgsProject.reloadAllLayers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reloadAllLayers</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.reloadAllLayers" title="qgis.core.QgsProject.reloadAllLayers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reloadAllLayers</span></code></a></p></td>
 <td><p>Reload all registered layer's provider data caches, synchronising the layer with any changes in the datasource.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.removeAllMapLayers" title="qgis.core.QgsProject.removeAllMapLayers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeAllMapLayers</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.removeAllMapLayers" title="qgis.core.QgsProject.removeAllMapLayers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeAllMapLayers</span></code></a></p></td>
 <td><p>Removes all registered layers.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.removeAttachedFile" title="qgis.core.QgsProject.removeAttachedFile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeAttachedFile</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.removeAttachedFile" title="qgis.core.QgsProject.removeAttachedFile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeAttachedFile</span></code></a></p></td>
 <td><p>Removes the attached file</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.removeEntry" title="qgis.core.QgsProject.removeEntry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeEntry</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.removeEntry" title="qgis.core.QgsProject.removeEntry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeEntry</span></code></a></p></td>
 <td><p>Remove the given <code class="docutils literal notranslate"><span class="pre">key</span></code> from the specified <code class="docutils literal notranslate"><span class="pre">scope</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.removeMapLayer" title="qgis.core.QgsProject.removeMapLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeMapLayer</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.removeMapLayer" title="qgis.core.QgsProject.removeMapLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeMapLayer</span></code></a></p></td>
 <td><p>Remove a layer from the registry by layer ID.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.removeMapLayers" title="qgis.core.QgsProject.removeMapLayers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeMapLayers</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.removeMapLayers" title="qgis.core.QgsProject.removeMapLayers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeMapLayers</span></code></a></p></td>
 <td><p>Remove a set of layers from the registry by layer ID.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.requiredLayers" title="qgis.core.QgsProject.requiredLayers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">requiredLayers</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.requiredLayers" title="qgis.core.QgsProject.requiredLayers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">requiredLayers</span></code></a></p></td>
 <td><p>Returns a set of map layers that are required in the project and therefore they should not get removed from the project.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.resolveAttachmentIdentifier" title="qgis.core.QgsProject.resolveAttachmentIdentifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">resolveAttachmentIdentifier</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.resolveAttachmentIdentifier" title="qgis.core.QgsProject.resolveAttachmentIdentifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">resolveAttachmentIdentifier</span></code></a></p></td>
 <td><p>Resolves an attachment identifier to a attachment file path</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.rollBack" title="qgis.core.QgsProject.rollBack"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rollBack</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.rollBack" title="qgis.core.QgsProject.rollBack"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rollBack</span></code></a></p></td>
 <td><p>Stops a current editing operation on vectorLayer and discards any uncommitted edits.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.saveUser" title="qgis.core.QgsProject.saveUser"><code class="xref py py-obj docutils literal notranslate"><span class="pre">saveUser</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.saveUser" title="qgis.core.QgsProject.saveUser"><code class="xref py py-obj docutils literal notranslate"><span class="pre">saveUser</span></code></a></p></td>
 <td><p>Returns the user name that did the last save.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.saveUserFullName" title="qgis.core.QgsProject.saveUserFullName"><code class="xref py py-obj docutils literal notranslate"><span class="pre">saveUserFullName</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.saveUserFullName" title="qgis.core.QgsProject.saveUserFullName"><code class="xref py py-obj docutils literal notranslate"><span class="pre">saveUserFullName</span></code></a></p></td>
 <td><p>Returns the full user name that did the last save.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.selectionColor" title="qgis.core.QgsProject.selectionColor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">selectionColor</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.selectionColor" title="qgis.core.QgsProject.selectionColor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">selectionColor</span></code></a></p></td>
 <td><p>Returns the color used to highlight selected features</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.sender" title="qgis.core.QgsProject.sender"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sender</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.sender" title="qgis.core.QgsProject.sender"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sender</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.senderSignalIndex" title="qgis.core.QgsProject.senderSignalIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">senderSignalIndex</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.senderSignalIndex" title="qgis.core.QgsProject.senderSignalIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">senderSignalIndex</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setAreaUnits" title="qgis.core.QgsProject.setAreaUnits"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setAreaUnits</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setAreaUnits" title="qgis.core.QgsProject.setAreaUnits"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setAreaUnits</span></code></a></p></td>
 <td><p>Sets the default area measurement units for the project.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setAutoTransaction" title="qgis.core.QgsProject.setAutoTransaction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setAutoTransaction</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setAutoTransaction" title="qgis.core.QgsProject.setAutoTransaction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setAutoTransaction</span></code></a></p></td>
 <td><p>Transactional editing means that on supported datasources (postgres databases) the edit state of all tables that originate from the same database are synchronized and executed in a server side transaction.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setAvoidIntersectionsLayers" title="qgis.core.QgsProject.setAvoidIntersectionsLayers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setAvoidIntersectionsLayers</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setAvoidIntersectionsLayers" title="qgis.core.QgsProject.setAvoidIntersectionsLayers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setAvoidIntersectionsLayers</span></code></a></p></td>
 <td><p>Sets the list of layers with which intersections should be avoided.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setAvoidIntersectionsMode" title="qgis.core.QgsProject.setAvoidIntersectionsMode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setAvoidIntersectionsMode</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setAvoidIntersectionsMode" title="qgis.core.QgsProject.setAvoidIntersectionsMode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setAvoidIntersectionsMode</span></code></a></p></td>
 <td><p>Sets the avoid intersections mode.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setBackgroundColor" title="qgis.core.QgsProject.setBackgroundColor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setBackgroundColor</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setBackgroundColor" title="qgis.core.QgsProject.setBackgroundColor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setBackgroundColor</span></code></a></p></td>
 <td><p>Sets the default background <code class="docutils literal notranslate"><span class="pre">color</span></code> used by default map canvases.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setBadLayerHandler" title="qgis.core.QgsProject.setBadLayerHandler"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setBadLayerHandler</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setBadLayerHandler" title="qgis.core.QgsProject.setBadLayerHandler"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setBadLayerHandler</span></code></a></p></td>
 <td><p>Change handler for missing layers.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setCrs" title="qgis.core.QgsProject.setCrs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setCrs</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setCrs" title="qgis.core.QgsProject.setCrs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setCrs</span></code></a></p></td>
 <td><p>Sets the project's native coordinate reference system.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setCustomVariables" title="qgis.core.QgsProject.setCustomVariables"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setCustomVariables</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setCustomVariables" title="qgis.core.QgsProject.setCustomVariables"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setCustomVariables</span></code></a></p></td>
 <td><p>A map of custom project variables.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setDataDefinedServerProperties" title="qgis.core.QgsProject.setDataDefinedServerProperties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setDataDefinedServerProperties</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setDataDefinedServerProperties" title="qgis.core.QgsProject.setDataDefinedServerProperties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setDataDefinedServerProperties</span></code></a></p></td>
 <td><p>Sets the data defined properties used for overrides in user defined server parameters to <code class="docutils literal notranslate"><span class="pre">properties</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setDirty" title="qgis.core.QgsProject.setDirty"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setDirty</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setDirty" title="qgis.core.QgsProject.setDirty"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setDirty</span></code></a></p></td>
 <td><p>Flag the project as dirty (modified).</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setDistanceUnits" title="qgis.core.QgsProject.setDistanceUnits"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setDistanceUnits</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setDistanceUnits" title="qgis.core.QgsProject.setDistanceUnits"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setDistanceUnits</span></code></a></p></td>
 <td><p>Sets the default distance measurement units for the project.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setEllipsoid" title="qgis.core.QgsProject.setEllipsoid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setEllipsoid</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setEllipsoid" title="qgis.core.QgsProject.setEllipsoid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setEllipsoid</span></code></a></p></td>
 <td><p>Sets the project's ellipsoid from a proj string representation, e.g., &quot;WGS84&quot;.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setEvaluateDefaultValues" title="qgis.core.QgsProject.setEvaluateDefaultValues"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setEvaluateDefaultValues</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setEvaluateDefaultValues" title="qgis.core.QgsProject.setEvaluateDefaultValues"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setEvaluateDefaultValues</span></code></a></p></td>
 <td><p>Defines if default values should be evaluated on provider side when requested and not when committed.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setFileName" title="qgis.core.QgsProject.setFileName"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setFileName</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setFileName" title="qgis.core.QgsProject.setFileName"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setFileName</span></code></a></p></td>
 <td><p>Sets the file name associated with the project.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setFilePathStorage" title="qgis.core.QgsProject.setFilePathStorage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setFilePathStorage</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setFilePathStorage" title="qgis.core.QgsProject.setFilePathStorage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setFilePathStorage</span></code></a></p></td>
 <td><p>Sets the <code class="docutils literal notranslate"><span class="pre">type</span></code> of paths used when storing file paths in a QGS/QGZ project file.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setFlag" title="qgis.core.QgsProject.setFlag"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setFlag</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setFlag" title="qgis.core.QgsProject.setFlag"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setFlag</span></code></a></p></td>
 <td><p>Sets whether a project <code class="docutils literal notranslate"><span class="pre">flag</span></code> is <code class="docutils literal notranslate"><span class="pre">enabled</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setFlags" title="qgis.core.QgsProject.setFlags"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setFlags</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setFlags" title="qgis.core.QgsProject.setFlags"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setFlags</span></code></a></p></td>
 <td><p>Sets the project's <code class="docutils literal notranslate"><span class="pre">flags</span></code>, which dictate the behavior of the project.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setInstance" title="qgis.core.QgsProject.setInstance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setInstance</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setInstance" title="qgis.core.QgsProject.setInstance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setInstance</span></code></a></p></td>
 <td><p>Set the current project singleton instance to <code class="docutils literal notranslate"><span class="pre">project</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setLabelingEngineSettings" title="qgis.core.QgsProject.setLabelingEngineSettings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setLabelingEngineSettings</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setLabelingEngineSettings" title="qgis.core.QgsProject.setLabelingEngineSettings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setLabelingEngineSettings</span></code></a></p></td>
 <td><p>Sets project's global labeling engine settings</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setMapScales" title="qgis.core.QgsProject.setMapScales"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setMapScales</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setMapScales" title="qgis.core.QgsProject.setMapScales"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setMapScales</span></code></a></p></td>
 <td><p>Sets the list of custom project map <code class="docutils literal notranslate"><span class="pre">scales</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setMetadata" title="qgis.core.QgsProject.setMetadata"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setMetadata</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setMetadata" title="qgis.core.QgsProject.setMetadata"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setMetadata</span></code></a></p></td>
 <td><p>Sets the project's <code class="docutils literal notranslate"><span class="pre">metadata</span></code> store.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setNonIdentifiableLayers" title="qgis.core.QgsProject.setNonIdentifiableLayers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setNonIdentifiableLayers</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setNonIdentifiableLayers" title="qgis.core.QgsProject.setNonIdentifiableLayers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setNonIdentifiableLayers</span></code></a></p></td>
 <td><p>Set a list of layers which should not be taken into account on map identification</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setOriginalPath" title="qgis.core.QgsProject.setOriginalPath"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setOriginalPath</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setOriginalPath" title="qgis.core.QgsProject.setOriginalPath"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setOriginalPath</span></code></a></p></td>
 <td><p>Sets the original <code class="docutils literal notranslate"><span class="pre">path</span></code> associated with the project.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setPresetHomePath" title="qgis.core.QgsProject.setPresetHomePath"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setPresetHomePath</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setPresetHomePath" title="qgis.core.QgsProject.setPresetHomePath"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setPresetHomePath</span></code></a></p></td>
 <td><p>Sets the project's home <code class="docutils literal notranslate"><span class="pre">path</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setProjectColors" title="qgis.core.QgsProject.setProjectColors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setProjectColors</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setProjectColors" title="qgis.core.QgsProject.setProjectColors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setProjectColors</span></code></a></p></td>
 <td><p>Sets the <code class="docutils literal notranslate"><span class="pre">colors</span></code> for the project's color scheme (see <a class="reference internal" href="QgsProjectColorScheme.html#module-QgsProjectColorScheme" title="QgsProjectColorScheme"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProjectColorScheme</span></code></a>).</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setRequiredLayers" title="qgis.core.QgsProject.setRequiredLayers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setRequiredLayers</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setRequiredLayers" title="qgis.core.QgsProject.setRequiredLayers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setRequiredLayers</span></code></a></p></td>
 <td><p>Configures a set of map layers that are required in the project and therefore they should not get removed from the project.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setSelectionColor" title="qgis.core.QgsProject.setSelectionColor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setSelectionColor</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setSelectionColor" title="qgis.core.QgsProject.setSelectionColor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setSelectionColor</span></code></a></p></td>
 <td><p>Sets the <code class="docutils literal notranslate"><span class="pre">color</span></code> used to highlight selected features.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setSnappingConfig" title="qgis.core.QgsProject.setSnappingConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setSnappingConfig</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setSnappingConfig" title="qgis.core.QgsProject.setSnappingConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setSnappingConfig</span></code></a></p></td>
 <td><p>The snapping configuration for this project.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setTitle" title="qgis.core.QgsProject.setTitle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setTitle</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setTitle" title="qgis.core.QgsProject.setTitle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setTitle</span></code></a></p></td>
 <td><p>Sets the project's title.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setTopologicalEditing" title="qgis.core.QgsProject.setTopologicalEditing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setTopologicalEditing</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setTopologicalEditing" title="qgis.core.QgsProject.setTopologicalEditing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setTopologicalEditing</span></code></a></p></td>
 <td><p>Convenience function to set topological editing</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setTransactionMode" title="qgis.core.QgsProject.setTransactionMode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setTransactionMode</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setTransactionMode" title="qgis.core.QgsProject.setTransactionMode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setTransactionMode</span></code></a></p></td>
 <td><p>Set transaction mode</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setTransformContext" title="qgis.core.QgsProject.setTransformContext"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setTransformContext</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setTransformContext" title="qgis.core.QgsProject.setTransformContext"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setTransformContext</span></code></a></p></td>
 <td><p>Sets the project's coordinate transform <code class="docutils literal notranslate"><span class="pre">context</span></code>, which stores various information regarding which datum transforms should be used when transforming points from a source to destination coordinate reference system.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setTrustLayerMetadata" title="qgis.core.QgsProject.setTrustLayerMetadata"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setTrustLayerMetadata</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setTrustLayerMetadata" title="qgis.core.QgsProject.setTrustLayerMetadata"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setTrustLayerMetadata</span></code></a></p></td>
 <td><p>Sets the trust option allowing to indicate if the extent has to be read from the XML document when data source has no metadata or if the data provider has to determine it.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setUseProjectScales" title="qgis.core.QgsProject.setUseProjectScales"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setUseProjectScales</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.setUseProjectScales" title="qgis.core.QgsProject.setUseProjectScales"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setUseProjectScales</span></code></a></p></td>
 <td><p>Sets whether project <a class="reference internal" href="#qgis.core.QgsProject.mapScales" title="qgis.core.QgsProject.mapScales"><code class="xref py py-func docutils literal notranslate"><span class="pre">mapScales()</span></code></a> are <code class="docutils literal notranslate"><span class="pre">enabled</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.snappingConfig" title="qgis.core.QgsProject.snappingConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">snappingConfig</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.snappingConfig" title="qgis.core.QgsProject.snappingConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">snappingConfig</span></code></a></p></td>
 <td><p>The snapping configuration for this project.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.startEditing" title="qgis.core.QgsProject.startEditing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">startEditing</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.startEditing" title="qgis.core.QgsProject.startEditing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">startEditing</span></code></a></p></td>
 <td><p>Makes the layer editable.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.styleSettings" title="qgis.core.QgsProject.styleSettings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">styleSettings</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.styleSettings" title="qgis.core.QgsProject.styleSettings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">styleSettings</span></code></a></p></td>
 <td><p>Returns the project's style settings, which contains settings and properties relating to how a <a class="reference internal" href="#qgis.core.QgsProject" title="qgis.core.QgsProject"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProject</span></code></a> should handle styling.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.subkeyList" title="qgis.core.QgsProject.subkeyList"><code class="xref py py-obj docutils literal notranslate"><span class="pre">subkeyList</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.subkeyList" title="qgis.core.QgsProject.subkeyList"><code class="xref py py-obj docutils literal notranslate"><span class="pre">subkeyList</span></code></a></p></td>
 <td><p>Returns a list of child keys which contain other keys that exist within the the specified <code class="docutils literal notranslate"><span class="pre">scope</span></code> and <code class="docutils literal notranslate"><span class="pre">key</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.takeMapLayer" title="qgis.core.QgsProject.takeMapLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">takeMapLayer</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.takeMapLayer" title="qgis.core.QgsProject.takeMapLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">takeMapLayer</span></code></a></p></td>
 <td><p>Takes a layer from the registry.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.timeSettings" title="qgis.core.QgsProject.timeSettings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">timeSettings</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.timeSettings" title="qgis.core.QgsProject.timeSettings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">timeSettings</span></code></a></p></td>
 <td><p>Returns the project's time settings, which contains the project's temporal range and other time based settings.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.timerEvent" title="qgis.core.QgsProject.timerEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">timerEvent</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.timerEvent" title="qgis.core.QgsProject.timerEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">timerEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.title" title="qgis.core.QgsProject.title"><code class="xref py py-obj docutils literal notranslate"><span class="pre">title</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.title" title="qgis.core.QgsProject.title"><code class="xref py py-obj docutils literal notranslate"><span class="pre">title</span></code></a></p></td>
 <td><p>Returns the project's title.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.topologicalEditing" title="qgis.core.QgsProject.topologicalEditing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">topologicalEditing</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.topologicalEditing" title="qgis.core.QgsProject.topologicalEditing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">topologicalEditing</span></code></a></p></td>
 <td><p>Convenience function to query topological editing status</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.transactionGroup" title="qgis.core.QgsProject.transactionGroup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">transactionGroup</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.transactionGroup" title="qgis.core.QgsProject.transactionGroup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">transactionGroup</span></code></a></p></td>
 <td><p>Returns the matching transaction group from a provider key and connection string.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.transactionMode" title="qgis.core.QgsProject.transactionMode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">transactionMode</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.transactionMode" title="qgis.core.QgsProject.transactionMode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">transactionMode</span></code></a></p></td>
 <td><p>Returns the transaction mode</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.transformContext" title="qgis.core.QgsProject.transformContext"><code class="xref py py-obj docutils literal notranslate"><span class="pre">transformContext</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.transformContext" title="qgis.core.QgsProject.transformContext"><code class="xref py py-obj docutils literal notranslate"><span class="pre">transformContext</span></code></a></p></td>
 <td><p>Returns a copy of the project's coordinate transform context, which stores various information regarding which datum transforms should be used when transforming points from a source to destination coordinate reference system.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.translate" title="qgis.core.QgsProject.translate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">translate</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.translate" title="qgis.core.QgsProject.translate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">translate</span></code></a></p></td>
 <td><p>Translates the project with QTranslator and qm file</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.trustLayerMetadata" title="qgis.core.QgsProject.trustLayerMetadata"><code class="xref py py-obj docutils literal notranslate"><span class="pre">trustLayerMetadata</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.trustLayerMetadata" title="qgis.core.QgsProject.trustLayerMetadata"><code class="xref py py-obj docutils literal notranslate"><span class="pre">trustLayerMetadata</span></code></a></p></td>
 <td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the trust option is activated, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.useProjectScales" title="qgis.core.QgsProject.useProjectScales"><code class="xref py py-obj docutils literal notranslate"><span class="pre">useProjectScales</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.useProjectScales" title="qgis.core.QgsProject.useProjectScales"><code class="xref py py-obj docutils literal notranslate"><span class="pre">useProjectScales</span></code></a></p></td>
 <td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if project <a class="reference internal" href="#qgis.core.QgsProject.mapScales" title="qgis.core.QgsProject.mapScales"><code class="xref py py-func docutils literal notranslate"><span class="pre">mapScales()</span></code></a> are enabled.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.validCount" title="qgis.core.QgsProject.validCount"><code class="xref py py-obj docutils literal notranslate"><span class="pre">validCount</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.validCount" title="qgis.core.QgsProject.validCount"><code class="xref py py-obj docutils literal notranslate"><span class="pre">validCount</span></code></a></p></td>
 <td><p>Returns the number of registered valid layers.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.viewSettings" title="qgis.core.QgsProject.viewSettings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">viewSettings</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.viewSettings" title="qgis.core.QgsProject.viewSettings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">viewSettings</span></code></a></p></td>
 <td><p>Returns the project's view settings, which contains settings and properties relating to how a <a class="reference internal" href="#qgis.core.QgsProject" title="qgis.core.QgsProject"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProject</span></code></a> should be viewed and behave inside a map canvas (e.g.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.viewsManager" title="qgis.core.QgsProject.viewsManager"><code class="xref py py-obj docutils literal notranslate"><span class="pre">viewsManager</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.viewsManager" title="qgis.core.QgsProject.viewsManager"><code class="xref py py-obj docutils literal notranslate"><span class="pre">viewsManager</span></code></a></p></td>
 <td><p>Returns the project's views manager, which manages map views (including 3d maps) in the project.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.write" title="qgis.core.QgsProject.write"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.write" title="qgis.core.QgsProject.write"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write</span></code></a></p></td>
 <td><p>Writes the project to a file.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.writeEntry" title="qgis.core.QgsProject.writeEntry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeEntry</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.writeEntry" title="qgis.core.QgsProject.writeEntry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeEntry</span></code></a></p></td>
 <td><p>Write an integer <code class="docutils literal notranslate"><span class="pre">value</span></code> to the project file.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.writeEntryBool" title="qgis.core.QgsProject.writeEntryBool"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeEntryBool</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.writeEntryBool" title="qgis.core.QgsProject.writeEntryBool"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeEntryBool</span></code></a></p></td>
 <td><p>Write a boolean <code class="docutils literal notranslate"><span class="pre">value</span></code> to the project file.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.writeEntryDouble" title="qgis.core.QgsProject.writeEntryDouble"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeEntryDouble</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.writeEntryDouble" title="qgis.core.QgsProject.writeEntryDouble"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeEntryDouble</span></code></a></p></td>
 <td><p>Write a double <code class="docutils literal notranslate"><span class="pre">value</span></code> to the project file.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProject.writePath" title="qgis.core.QgsProject.writePath"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writePath</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProject.writePath" title="qgis.core.QgsProject.writePath"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writePath</span></code></a></p></td>
 <td><p>Prepare a filename to save it to the project file.</p></td>
 </tr>
 </tbody>
@@ -3176,6 +3182,21 @@ the project.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><a class="reference internal" href="QgsBookmarkManager.html#qgis.core.QgsBookmarkManager" title="qgis.core.QgsBookmarkManager">QgsBookmarkManager</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProject.capabilities">
+<span class="sig-name descname"><span class="pre">capabilities</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="Qgis.html#qgis.core.Qgis.ProjectCapabilities" title="qgis.core.Qgis.ProjectCapabilities"><span class="pre">Qgis.ProjectCapabilities</span></a></span></span><a class="headerlink" href="#qgis.core.QgsProject.capabilities" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the project’s capabilities, which dictate optional functionality
+which can be selectively enabled for a <a class="reference internal" href="#qgis.core.QgsProject" title="qgis.core.QgsProject"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProject</span></code></a> object.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.26.1.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="Qgis.html#qgis.core.Qgis.ProjectCapabilities" title="qgis.core.Qgis.ProjectCapabilities">Qgis.ProjectCapabilities</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -6415,7 +6436,7 @@ Paths written to the project file should be prepared with this method.</p>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:32 Jul 12, 2022.
+      <span class="lastupdated">Last updated on 02:19 Jul 12, 2022.
       </span></p>
   </div>
 
