@@ -22,7 +22,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Class: QgsArchive" href="QgsArchive.html" />
-    <link rel="prev" title="Class: QgsArcGisPortalUtils" href="QgsArcGisPortalUtils.html" /> 
+    <link rel="prev" title="Class: QgsArcGisRestContext" href="QgsArcGisRestContext.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -158,6 +158,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsAnnotationPolygonItem.html">Class: QgsAnnotationPolygonItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsApplication.html">Class: QgsApplication</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsArcGisPortalUtils.html">Class: QgsArcGisPortalUtils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsArcGisRestContext.html">Class: QgsArcGisRestContext</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Class: QgsArcGisRestUtils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsArchive.html">Class: QgsArchive</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsArrowSymbolLayer.html">Class: QgsArrowSymbolLayer</a></li>
@@ -2144,6 +2145,18 @@
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsArcGisRestUtils.convertSymbol" title="qgis.core.QgsArcGisRestUtils.convertSymbol"><code class="xref py py-obj docutils literal notranslate"><span class="pre">convertSymbol</span></code></a></p></td>
 <td><p>Converts a symbol JSON <code class="docutils literal notranslate"><span class="pre">definition</span></code> to a <a class="reference internal" href="QgsSymbol.html#module-QgsSymbol" title="QgsSymbol"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsSymbol</span></code></a>.</p></td>
 </tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsArcGisRestUtils.crsToJson" title="qgis.core.QgsArcGisRestUtils.crsToJson"><code class="xref py py-obj docutils literal notranslate"><span class="pre">crsToJson</span></code></a></p></td>
+<td><p>Converts a <code class="docutils literal notranslate"><span class="pre">crs</span></code> to an ArcGIS REST JSON representation.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsArcGisRestUtils.featureToJson" title="qgis.core.QgsArcGisRestUtils.featureToJson"><code class="xref py py-obj docutils literal notranslate"><span class="pre">featureToJson</span></code></a></p></td>
+<td><p>Converts a <code class="docutils literal notranslate"><span class="pre">feature</span></code> to an ArcGIS REST JSON representation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsArcGisRestUtils.geometryToJson" title="qgis.core.QgsArcGisRestUtils.geometryToJson"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geometryToJson</span></code></a></p></td>
+<td><p>Converts a <code class="docutils literal notranslate"><span class="pre">geometry</span></code> to an ArcGIS REST JSON representation.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsArcGisRestUtils.variantToAttributeValue" title="qgis.core.QgsArcGisRestUtils.variantToAttributeValue"><code class="xref py py-obj docutils literal notranslate"><span class="pre">variantToAttributeValue</span></code></a></p></td>
+<td><p>Converts a variant to a REST attribute value.</p></td>
+</tr>
 </tbody>
 </table>
 <table class="autosummary longtable docutils align-default">
@@ -2347,6 +2360,88 @@
 </dl>
 </dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsArcGisRestUtils.crsToJson">
+<span class="sig-name descname"><span class="pre">crsToJson</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">crs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsCoordinateReferenceSystem.html#qgis.core.QgsCoordinateReferenceSystem" title="qgis.core.QgsCoordinateReferenceSystem"><span class="pre">QgsCoordinateReferenceSystem</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qgis.core.QgsArcGisRestUtils.crsToJson" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts a <code class="docutils literal notranslate"><span class="pre">crs</span></code> to an ArcGIS REST JSON representation.</p>
+<p>Returns an empty map if the <code class="docutils literal notranslate"><span class="pre">crs</span></code> is not valid.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.28.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>crs</strong> (<a class="reference internal" href="QgsCoordinateReferenceSystem.html#qgis.core.QgsCoordinateReferenceSystem" title="qgis.core.QgsCoordinateReferenceSystem"><em>QgsCoordinateReferenceSystem</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Dict[str, Any]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsArcGisRestUtils.featureToJson">
+<span class="sig-name descname"><span class="pre">featureToJson</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsFeature.html#qgis.core.QgsFeature" title="qgis.core.QgsFeature"><span class="pre">QgsFeature</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsArcGisRestContext.html#qgis.core.QgsArcGisRestContext" title="qgis.core.QgsArcGisRestContext"><span class="pre">QgsArcGisRestContext</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">crs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsCoordinateReferenceSystem.html#qgis.core.QgsCoordinateReferenceSystem" title="qgis.core.QgsCoordinateReferenceSystem"><span class="pre">QgsCoordinateReferenceSystem</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">QgsCoordinateReferenceSystem()</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qgis.core.QgsArcGisRestUtils.featureToJson" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts a <code class="docutils literal notranslate"><span class="pre">feature</span></code> to an ArcGIS REST JSON representation.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.28.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>feature</strong> (<a class="reference internal" href="QgsFeature.html#qgis.core.QgsFeature" title="qgis.core.QgsFeature"><em>QgsFeature</em></a>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsArcGisRestContext.html#qgis.core.QgsArcGisRestContext" title="qgis.core.QgsArcGisRestContext"><em>QgsArcGisRestContext</em></a>) – </p></li>
+<li><p><strong>crs</strong> (<a class="reference internal" href="QgsCoordinateReferenceSystem.html#qgis.core.QgsCoordinateReferenceSystem" title="qgis.core.QgsCoordinateReferenceSystem"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsCoordinateReferenceSystem</span></code></a> = QgsCoordinateReferenceSystem()) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Dict[str, Any]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsArcGisRestUtils.geometryToJson">
+<span class="sig-name descname"><span class="pre">geometryToJson</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">geometry</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsGeometry.html#qgis.core.QgsGeometry" title="qgis.core.QgsGeometry"><span class="pre">QgsGeometry</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsArcGisRestContext.html#qgis.core.QgsArcGisRestContext" title="qgis.core.QgsArcGisRestContext"><span class="pre">QgsArcGisRestContext</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">crs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsCoordinateReferenceSystem.html#qgis.core.QgsCoordinateReferenceSystem" title="qgis.core.QgsCoordinateReferenceSystem"><span class="pre">QgsCoordinateReferenceSystem</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">QgsCoordinateReferenceSystem()</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qgis.core.QgsArcGisRestUtils.geometryToJson" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts a <code class="docutils literal notranslate"><span class="pre">geometry</span></code> to an ArcGIS REST JSON representation.</p>
+<p>Returns an empty map if the geometry cannot be converted.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.28.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>geometry</strong> (<a class="reference internal" href="QgsGeometry.html#qgis.core.QgsGeometry" title="qgis.core.QgsGeometry"><em>QgsGeometry</em></a>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsArcGisRestContext.html#qgis.core.QgsArcGisRestContext" title="qgis.core.QgsArcGisRestContext"><em>QgsArcGisRestContext</em></a>) – </p></li>
+<li><p><strong>crs</strong> (<a class="reference internal" href="QgsCoordinateReferenceSystem.html#qgis.core.QgsCoordinateReferenceSystem" title="qgis.core.QgsCoordinateReferenceSystem"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsCoordinateReferenceSystem</span></code></a> = QgsCoordinateReferenceSystem()) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Dict[str, Any]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsArcGisRestUtils.variantToAttributeValue">
+<span class="sig-name descname"><span class="pre">variantToAttributeValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">variant</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expectedType</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">QVariant.Type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsArcGisRestContext.html#qgis.core.QgsArcGisRestContext" title="qgis.core.QgsArcGisRestContext"><span class="pre">QgsArcGisRestContext</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="headerlink" href="#qgis.core.QgsArcGisRestUtils.variantToAttributeValue" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts a variant to a REST attribute value.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.28.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>variant</strong> (<em>Any</em>) – </p></li>
+<li><p><strong>expectedType</strong> (<em>QVariant.Type</em>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsArcGisRestContext.html#qgis.core.QgsArcGisRestContext" title="qgis.core.QgsArcGisRestContext"><em>QgsArcGisRestContext</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Any</p>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 </section>
@@ -2360,7 +2455,7 @@
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:36 Jul 17, 2022.
+      <span class="lastupdated">Last updated on 02:18 Jul 17, 2022.
       </span></p>
   </div>
 
