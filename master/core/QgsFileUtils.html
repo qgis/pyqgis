@@ -1132,6 +1132,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsTranslationContext.html">Class: QgsTranslationContext</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsTriangle.html">Class: QgsTriangle</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsUnitTypes.html">Class: QgsUnitTypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsUnsetAttributeValue.html">Class: QgsUnsetAttributeValue</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsUserColorScheme.html">Class: QgsUserColorScheme</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsUserProfile.html">Class: QgsUserProfile</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsUserProfileManager.html">Class: QgsUserProfileManager</a></li>
@@ -2139,10 +2140,13 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsFileUtils.sidecarFilesForPath" title="qgis.core.QgsFileUtils.sidecarFilesForPath"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sidecarFilesForPath</span></code></a></p></td>
 <td><p>Returns a list of the sidecar files which exist for the dataset a the specified <code class="docutils literal notranslate"><span class="pre">path</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsFileUtils.stringToSafeFilename" title="qgis.core.QgsFileUtils.stringToSafeFilename"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stringToSafeFilename</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsFileUtils.splitPathToComponents" title="qgis.core.QgsFileUtils.splitPathToComponents"><code class="xref py py-obj docutils literal notranslate"><span class="pre">splitPathToComponents</span></code></a></p></td>
+<td><p>Given a file <code class="docutils literal notranslate"><span class="pre">path</span></code>, returns a list of all the components leading to that path.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsFileUtils.stringToSafeFilename" title="qgis.core.QgsFileUtils.stringToSafeFilename"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stringToSafeFilename</span></code></a></p></td>
 <td><p>Converts a <code class="docutils literal notranslate"><span class="pre">string</span></code> to a safe filename, replacing characters which are not safe for filenames with an '_' character.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsFileUtils.wildcardsFromFilter" title="qgis.core.QgsFileUtils.wildcardsFromFilter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wildcardsFromFilter</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsFileUtils.wildcardsFromFilter" title="qgis.core.QgsFileUtils.wildcardsFromFilter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wildcardsFromFilter</span></code></a></p></td>
 <td><p>Given a <code class="docutils literal notranslate"><span class="pre">filter</span></code> string like &quot;GeoTIFF Files (<em>.tiff *.tif)&quot;, extracts the wildcard portion of this filter (i.e. &quot;</em>.tiff <a href="#id5"><span class="problematic" id="id6">*</span></a>.tif&quot;).</p></td>
 </tr>
 </tbody>
@@ -2431,6 +2435,25 @@ in the returned list.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsFileUtils.splitPathToComponents">
+<span class="sig-name descname"><span class="pre">splitPathToComponents</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qgis.core.QgsFileUtils.splitPathToComponents" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a file <code class="docutils literal notranslate"><span class="pre">path</span></code>, returns a list of all the components leading to that path.</p>
+<p>E.g. if <code class="docutils literal notranslate"><span class="pre">path</span></code> is “/home/user/Pictures/test.png”, the returned list will contain
+“/” , “home”, “user”, “Pictures”, “test.png”.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.28.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>List[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsFileUtils.stringToSafeFilename">
 <span class="sig-name descname"><span class="pre">stringToSafeFilename</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#qgis.core.QgsFileUtils.stringToSafeFilename" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts a <code class="docutils literal notranslate"><span class="pre">string</span></code> to a safe filename, replacing characters which are not safe
@@ -2480,7 +2503,7 @@ the wildcard portion of this filter (i.e. “</em>.tiff <a href="#id19"><span cl
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 02:30 Aug 01, 2022.
+      <span class="lastupdated">Last updated on 00:29 Aug 02, 2022.
       </span></p>
   </div>
 
