@@ -2120,6 +2120,10 @@ connects to the data source.</p>
 <p>The <a class="reference internal" href="#module-QgsMeshLayer" title="QgsMeshLayer"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMeshLayer</span></code></a> provides a common interface to the different data types. It does not
 yet support editing transactions.</p>
 <p>The main data providers supported by QGIS are listed below.</p>
+<section id="mesh-data-providers">
+<h2>Mesh data providers<a class="headerlink" href="#mesh-data-providers" title="Permalink to this heading">¶</a></h2>
+<section id="memory-data-providertype-mesh-memory">
+<h3>Memory data providerType (mesh_memory)<a class="headerlink" href="#memory-data-providertype-mesh-memory" title="Permalink to this heading">¶</a></h3>
 <p>The memory data provider is used to construct in memory data, for example scratch
 data. There is no inherent persistent storage of the data. The data source uri is constructed.
 Data can be populated by setMesh(const QString &amp;vertices, const QString &amp;faces), where
@@ -2137,6 +2141,9 @@ E.g. to create mesh with one quad and one triangle</p>
 <span class="n">scratchLayer</span> <span class="o">=</span> <span class="n">QgsMeshLayer</span><span class="p">(</span><span class="n">uri</span><span class="p">,</span> <span class="s2">&quot;My Scratch layer&quot;</span><span class="p">,</span> <span class="s2">&quot;mesh_memory&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+</section>
+<section id="mdal-data-provider-mdal">
+<h3>MDAL data provider (mdal)<a class="headerlink" href="#mdal-data-provider-mdal" title="Permalink to this heading">¶</a></h3>
 <p>Accesses data using the MDAL drivers (<a class="reference external" href="https://github.com/lutraconsulting/MDAL">https://github.com/lutraconsulting/MDAL</a>). The url
 is the MDAL connection string. QGIS must be built with MDAL support to allow this provider.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">uri</span> <span class="o">=</span> <span class="s2">&quot;test/land.2dm&quot;</span>
@@ -2155,14 +2162,19 @@ Constructor - creates a mesh layer</p>
 <p>The <a class="reference internal" href="#qgis.core.QgsMeshLayer" title="qgis.core.QgsMeshLayer"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMeshLayer</span></code></a> is constructed by instantiating a data provider.  The provider
 interprets the supplied path (url) of the data source to connect to and access the
 data.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>path</strong> – The path or url of the parameter.  Typically this encodes
-parameters used by the data provider as url query items.</p></li>
-<li><p><strong>baseName</strong> – The name used to represent the layer in the legend</p></li>
-<li><p><strong>providerLib</strong> – The name of the data provider, e.g., “mesh_memory”, “mdal”</p></li>
-<li><p><strong>options</strong> – <p>general mesh layer options</p>
+<dl class="field-list">
+<dt class="field-odd">param path</dt>
+<dd class="field-odd"><p>The path or url of the parameter.  Typically this encodes
+parameters used by the data provider as url query items.</p>
+</dd>
+<dt class="field-even">param baseName</dt>
+<dd class="field-even"><p>The name used to represent the layer in the legend</p>
+</dd>
+<dt class="field-odd">param providerLib</dt>
+<dd class="field-odd"><p>The name of the data provider, e.g., “mesh_memory”, “mdal”</p>
+</dd>
+<dt class="field-even">param options</dt>
+<dd class="field-even"><p>general mesh layer options</p>
 <table class="autosummary longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
@@ -2587,8 +2599,6 @@ parameters used by the data provider as url query items.</p></li>
 <tbody>
 </tbody>
 </table>
-</p></li>
-</ul>
 </dd>
 </dl>
 <dl class="py class">
@@ -4294,6 +4304,8 @@ arguments is the optional sequence of the names of the signal’s arguments.</p>
 </dl>
 </dd></dl>
 
+</section>
+</section>
 </dd></dl>
 
 </section>
@@ -4307,7 +4319,7 @@ arguments is the optional sequence of the names of the signal’s arguments.</p>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 13:45 Oct 27, 2022.
+      <span class="lastupdated">Last updated on 17:46 Oct 27, 2022.
       </span></p>
   </div>
 

@@ -3660,6 +3660,8 @@ by calling <a class="reference internal" href="#qgis.core.QgsGeometry.lastError"
 returns read-only references to parts and cannot be used to modify the parts.</p>
 <p>Unlike <a class="reference internal" href="#qgis.core.QgsGeometry.parts" title="qgis.core.QgsGeometry.parts"><code class="xref py py-func docutils literal notranslate"><span class="pre">parts()</span></code></a>, this method does not force a detach and is more efficient if read-only
 iteration only is required.</p>
+<section id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this heading">¶</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># print the WKT representation of each part in a multi-point geometry</span>
 <span class="n">geometry</span> <span class="o">=</span> <span class="n">QgsGeometry</span><span class="o">.</span><span class="n">fromWkt</span><span class="p">(</span> <span class="s1">&#39;MultiPoint( 0 0, 1 1, 2 2)&#39;</span> <span class="p">)</span>
 <span class="k">for</span> <span class="n">part</span> <span class="ow">in</span> <span class="n">geometry</span><span class="o">.</span><span class="n">constParts</span><span class="p">():</span>
@@ -3689,10 +3691,11 @@ iteration only is required.</p>
 <p><span class="versionmodified added">New in version 3.6.</span></p>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference internal" href="QgsGeometryConstPartIterator.html#qgis.core.QgsGeometryConstPartIterator" title="qgis.core.QgsGeometryConstPartIterator">QgsGeometryConstPartIterator</a></p>
+<dt class="field-odd">rtype</dt>
+<dd class="field-odd"><p>QgsGeometryConstPartIterator</p>
 </dd>
 </dl>
+</section>
 </dd></dl>
 
 <dl class="py method">
@@ -3911,6 +3914,8 @@ performance critical code instead of directly using the equivalent <a class="ref
 <p>Many methods available in the <a class="reference internal" href="QgsGeometryEngine.html#module-QgsGeometryEngine" title="QgsGeometryEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsGeometryEngine</span></code></a> class can benefit from pre-preparing geometries. For instance, whenever
 a large number of spatial relationships will be tested (such as calling <a class="reference internal" href="#qgis.core.QgsGeometry.intersects" title="qgis.core.QgsGeometry.intersects"><code class="xref py py-func docutils literal notranslate"><span class="pre">intersects()</span></code></a>, <a class="reference internal" href="#qgis.core.QgsGeometry.within" title="qgis.core.QgsGeometry.within"><code class="xref py py-func docutils literal notranslate"><span class="pre">within()</span></code></a>, etc) then the
 geometry should first be prepared by calling <code class="xref py py-func docutils literal notranslate"><span class="pre">prepareGeometry()</span></code> before performing the tests.</p>
+<section id="id1">
+<h2>Example<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># polygon_geometry contains a complex polygon, with many vertices</span>
 <span class="n">polygon_geometry</span> <span class="o">=</span> <span class="n">QgsGeometry</span><span class="o">.</span><span class="n">fromWkt</span><span class="p">(</span><span class="s1">&#39;Polygon((...))&#39;</span><span class="p">)</span>
 
@@ -3931,13 +3936,16 @@ geometry should first be prepared by calling <code class="xref py py-func docuti
 </div>
 <p><a class="reference internal" href="QgsGeometryEngine.html#module-QgsGeometryEngine" title="QgsGeometryEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsGeometryEngine</span></code></a> operations are backed by the GEOS library (<a class="reference external" href="https://trac.osgeo.org/geos/">https://trac.osgeo.org/geos/</a>).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>geometry</strong> (<a class="reference internal" href="QgsAbstractGeometry.html#qgis.core.QgsAbstractGeometry" title="qgis.core.QgsAbstractGeometry"><em>QgsAbstractGeometry</em></a>) – </p>
+<dt class="field-odd">param geometry</dt>
+<dd class="field-odd"><p></p></dd>
+<dt class="field-even">type geometry</dt>
+<dd class="field-even"><p>QgsAbstractGeometry</p>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference internal" href="QgsGeometryEngine.html#qgis.core.QgsGeometryEngine" title="qgis.core.QgsGeometryEngine">QgsGeometryEngine</a></p>
+<dt class="field-odd">rtype</dt>
+<dd class="field-odd"><p>QgsGeometryEngine</p>
 </dd>
 </dl>
+</section>
 </dd></dl>
 
 <dl class="py method">
@@ -4566,6 +4574,8 @@ distance returned approach the true Fréchet distance for the geometries.</p>
 <dd><p>Creates a new polygon geometry from a list of lists of <a class="reference internal" href="QgsPointXY.html#module-QgsPointXY" title="QgsPointXY"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsPointXY</span></code></a>.</p>
 <p>The first list of <a class="reference internal" href="QgsPointXY.html#module-QgsPointXY" title="QgsPointXY"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsPointXY</span></code></a> objects specifies the exterior ring of the polygon, and the remaining
 lists specify any interior rings.</p>
+<section id="id2">
+<h2>Example<a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a polygon geometry with a single exterior ring (a triangle)</span>
 <span class="n">polygon</span> <span class="o">=</span> <span class="n">QgsGeometry</span><span class="o">.</span><span class="n">fromPolygonXY</span><span class="p">([[</span><span class="n">QgsPointXY</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">QgsPointXY</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">QgsPointXY</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">QgsPointXY</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)]]))</span>
 
@@ -4575,13 +4585,16 @@ lists specify any interior rings.</p>
 </pre></div>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>polygon</strong> (<em>object</em>) – </p>
+<dt class="field-odd">param polygon</dt>
+<dd class="field-odd"><p></p></dd>
+<dt class="field-even">type polygon</dt>
+<dd class="field-even"><p>object</p>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference internal" href="#qgis.core.QgsGeometry" title="qgis.core.QgsGeometry">QgsGeometry</a></p>
+<dt class="field-odd">rtype</dt>
+<dd class="field-odd"><p>QgsGeometry</p>
 </dd>
 </dl>
+</section>
 </dd></dl>
 
 <dl class="py method">
@@ -5589,6 +5602,8 @@ faster than calling <a class="reference internal" href="#qgis.core.QgsGeometry.o
 can safely be used to modify parts of the geometry.</p>
 <p>This method forces a detach. Use <a class="reference internal" href="#qgis.core.QgsGeometry.constParts" title="qgis.core.QgsGeometry.constParts"><code class="xref py py-func docutils literal notranslate"><span class="pre">constParts()</span></code></a> to avoid the detach
 if the parts are not going to be modified.</p>
+<section id="id3">
+<h2>Example<a class="headerlink" href="#id3" title="Permalink to this heading">¶</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># print the WKT representation of each part in a multi-point geometry</span>
 <span class="n">geometry</span> <span class="o">=</span> <span class="n">QgsGeometry</span><span class="o">.</span><span class="n">fromWkt</span><span class="p">(</span> <span class="s1">&#39;MultiPoint( 0 0, 1 1, 2 2)&#39;</span> <span class="p">)</span>
 <span class="k">for</span> <span class="n">part</span> <span class="ow">in</span> <span class="n">geometry</span><span class="o">.</span><span class="n">parts</span><span class="p">():</span>
@@ -5623,10 +5638,11 @@ if the parts are not going to be modified.</p>
 <p><span class="versionmodified added">New in version 3.6.</span></p>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference internal" href="QgsGeometryPartIterator.html#qgis.core.QgsGeometryPartIterator" title="qgis.core.QgsGeometryPartIterator">QgsGeometryPartIterator</a></p>
+<dt class="field-odd">rtype</dt>
+<dd class="field-odd"><p>QgsGeometryPartIterator</p>
 </dd>
 </dl>
+</section>
 </dd></dl>
 
 <dl class="py method">
@@ -6694,6 +6710,8 @@ to the first vertex.</p>
 <p>The iterator returns a copy of individual vertices, and accordingly geometries cannot be
 modified using the iterator. See <code class="xref py py-func docutils literal notranslate"><span class="pre">transformVertices()</span></code> for a safe method to modify vertices “in-place”.</p>
 </div>
+<section id="id4">
+<h2>Example<a class="headerlink" href="#id4" title="Permalink to this heading">¶</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># print the x and y coordinate for each vertex in a LineString</span>
 <span class="n">geometry</span> <span class="o">=</span> <span class="n">QgsGeometry</span><span class="o">.</span><span class="n">fromWkt</span><span class="p">(</span> <span class="s1">&#39;LineString( 0 0, 1 1, 2 2)&#39;</span> <span class="p">)</span>
 <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">geometry</span><span class="o">.</span><span class="n">vertices</span><span class="p">():</span>
@@ -6713,10 +6731,11 @@ modified using the iterator. See <code class="xref py py-func docutils literal n
 <p><span class="versionmodified added">New in version 3.0.</span></p>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference internal" href="QgsVertexIterator.html#qgis.core.QgsVertexIterator" title="qgis.core.QgsVertexIterator">QgsVertexIterator</a></p>
+<dt class="field-odd">rtype</dt>
+<dd class="field-odd"><p>QgsVertexIterator</p>
 </dd>
 </dl>
+</section>
 </dd></dl>
 
 <dl class="py method">
@@ -6820,7 +6839,7 @@ faster than calling <a class="reference internal" href="#qgis.core.QgsGeometry.w
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 13:45 Oct 27, 2022.
+      <span class="lastupdated">Last updated on 17:46 Oct 27, 2022.
       </span></p>
   </div>
 

@@ -2130,6 +2130,10 @@ underlying provider by calling <a class="reference internal" href="#qgis.core.Qg
 </pre></div>
 </div>
 <p>The main data providers supported by QGIS are listed below.</p>
+<section id="vector-data-providers">
+<h2>Vector data providers<a class="headerlink" href="#vector-data-providers" title="Permalink to this heading">¶</a></h2>
+<section id="memory-data-providertype-memory">
+<h3>Memory data providerType (memory)<a class="headerlink" href="#memory-data-providertype-memory" title="Permalink to this heading">¶</a></h3>
 <p>The memory data provider is used to construct in memory data, for example scratch
 data or data generated from spatial operations such as contouring. There is no
 inherent persistent storage of the data. The data source uri is constructed. The
@@ -2153,20 +2157,35 @@ trigger such warning, it is possible to suppress that by setting the following c
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">layer</span><span class="o">.</span><span class="n">setCustomProperty</span><span class="p">(</span><span class="s2">&quot;skipMemoryLayersCheck&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
+</section>
+<section id="ogr-data-provider-ogr">
+<h3>OGR data provider (ogr)<a class="headerlink" href="#ogr-data-provider-ogr" title="Permalink to this heading">¶</a></h3>
 <p>Accesses data using the OGR drivers (<a class="reference external" href="https://gdal.org/drivers/vector/index.html">https://gdal.org/drivers/vector/index.html</a>). The url
 is the OGR connection string. A wide variety of data formats can be accessed using this
 driver, including file based formats used by many GIS systems, database formats, and
 web services. Some of these formats are also supported by custom data providers listed
 below.</p>
+</section>
+<section id="spatialite-data-provider-spatialite">
+<h3>SpatiaLite data provider (spatialite)<a class="headerlink" href="#spatialite-data-provider-spatialite" title="Permalink to this heading">¶</a></h3>
 <p>Access data in a SpatiaLite database. The url defines the connection parameters, table,
 geometry column, and other attributes. The url can be constructed using the
 <a class="reference internal" href="QgsDataSourceUri.html#module-QgsDataSourceUri" title="QgsDataSourceUri"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsDataSourceUri</span></code></a> class.</p>
+</section>
+<section id="postgresql-data-provider-postgres">
+<h3>PostgreSQL data provider (postgres)<a class="headerlink" href="#postgresql-data-provider-postgres" title="Permalink to this heading">¶</a></h3>
 <p>Connects to a PostgreSQL database. The url defines the connection parameters, table,
 geometry column, and other attributes. The url can be constructed using the
 <a class="reference internal" href="QgsDataSourceUri.html#module-QgsDataSourceUri" title="QgsDataSourceUri"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsDataSourceUri</span></code></a> class.</p>
+</section>
+<section id="microsoft-sql-server-data-provider-mssql">
+<h3>Microsoft SQL server data provider (mssql)<a class="headerlink" href="#microsoft-sql-server-data-provider-mssql" title="Permalink to this heading">¶</a></h3>
 <p>Connects to a Microsoft SQL server database. The url defines the connection parameters, table,
 geometry column, and other attributes. The url can be constructed using the
 <a class="reference internal" href="QgsDataSourceUri.html#module-QgsDataSourceUri" title="QgsDataSourceUri"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsDataSourceUri</span></code></a> class.</p>
+</section>
+<section id="wfs-web-feature-service-data-provider-wfs">
+<h3>WFS (web feature service) data provider (wfs)<a class="headerlink" href="#wfs-web-feature-service-data-provider-wfs" title="Permalink to this heading">¶</a></h3>
 <p>Used to access data provided by a web feature service.</p>
 <p>The url can be a HTTP url to a WFS server (legacy, e.g. <a class="reference external" href="http://foobar/wfs?TYPENAME=xxx&amp;SRSNAME=yyy[&amp;FILTER=zzz">http://foobar/wfs?TYPENAME=xxx&amp;SRSNAME=yyy[&amp;FILTER=zzz</a>]), or a URI constructed using the <a class="reference internal" href="QgsDataSourceUri.html#module-QgsDataSourceUri" title="QgsDataSourceUri"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsDataSourceUri</span></code></a> class with the following parameters (note that parameter keys are case sensitive):</p>
 <ul class="simple">
@@ -2218,6 +2237,9 @@ however the function must exist server side and have the same name and arguments
 <li><p>Use the special $geometry parameter to provide the layer geometry column as input
 into the spatial binary operators e.g intersects($geometry, geomFromWKT(‘POINT (5 6)’))</p></li>
 </ul>
+</section>
+<section id="delimited-text-file-data-provider-delimitedtext">
+<h3>Delimited text file data provider (delimitedtext)<a class="headerlink" href="#delimited-text-file-data-provider-delimitedtext" title="Permalink to this heading">¶</a></h3>
 <p>Accesses data in a delimited text file, for example CSV files generated by
 spreadsheets. The contents of the file are split into columns based on specified
 delimiter characters.  Each record may be represented spatially either by an
@@ -2357,10 +2379,16 @@ to monitor for changes.</p>
 </ul>
 <p>Errors encountered loading the file will not be reported in a user dialog if
 quiet is included (They will still be shown in the output log).</p>
+</section>
+<section id="gpx-data-provider-gpx">
+<h3>GPX data provider (gpx)<a class="headerlink" href="#gpx-data-provider-gpx" title="Permalink to this heading">¶</a></h3>
 <p>Provider reads tracks, routes, and waypoints from a GPX file.  The url
 defines the name of the file, and the type of data to retrieve from it
 (“track”, “route”, or “waypoint”).</p>
 <p>An example url is “/home/user/data/holiday.gpx?type=route”</p>
+</section>
+<section id="grass-data-provider-grass">
+<h3>Grass data provider (grass)<a class="headerlink" href="#grass-data-provider-grass" title="Permalink to this heading">¶</a></h3>
 <p>Provider to display vector data in a GRASS GIS layer.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -2371,14 +2399,19 @@ Constructor - creates a vector layer</p>
 <p>The <a class="reference internal" href="#qgis.core.QgsVectorLayer" title="qgis.core.QgsVectorLayer"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsVectorLayer</span></code></a> is constructed by instantiating a data provider.  The provider
 interprets the supplied path (url) of the data source to connect to and access the
 data.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>path</strong> – The path or url of the parameter.  Typically this encodes
-parameters used by the data provider as url query items.</p></li>
-<li><p><strong>baseName</strong> – The name used to represent the layer in the legend</p></li>
-<li><p><strong>providerLib</strong> – The name of the data provider, e.g., “memory”, “postgres”</p></li>
-<li><p><strong>options</strong> – <p>layer load options</p>
+<dl class="field-list">
+<dt class="field-odd">param path</dt>
+<dd class="field-odd"><p>The path or url of the parameter.  Typically this encodes
+parameters used by the data provider as url query items.</p>
+</dd>
+<dt class="field-even">param baseName</dt>
+<dd class="field-even"><p>The name used to represent the layer in the legend</p>
+</dd>
+<dt class="field-odd">param providerLib</dt>
+<dd class="field-odd"><p>The name of the data provider, e.g., “memory”, “postgres”</p>
+</dd>
+<dt class="field-even">param options</dt>
+<dd class="field-even"><p>layer load options</p>
 <p class="rubric">Enums</p>
 <table class="autosummary longtable docutils align-default">
 <colgroup>
@@ -3299,8 +3332,6 @@ parameters used by the data provider as url query items.</p></li>
 <tbody>
 </tbody>
 </table>
-</p></li>
-</ul>
 </dd>
 </dl>
 <dl class="py class">
@@ -8714,6 +8745,8 @@ arguments is the optional sequence of the names of the signal’s arguments.</p>
 </dl>
 </dd></dl>
 
+</section>
+</section>
 </dd></dl>
 
 </section>
@@ -8727,7 +8760,7 @@ arguments is the optional sequence of the names of the signal’s arguments.</p>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 13:45 Oct 27, 2022.
+      <span class="lastupdated">Last updated on 17:46 Oct 27, 2022.
       </span></p>
   </div>
 
