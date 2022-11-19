@@ -430,6 +430,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsGpsConnectionRegistry.html">Class: QgsGpsConnectionRegistry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsGpsDetector.html">Class: QgsGpsDetector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsGpsInformation.html">Class: QgsGpsInformation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsGpsLogger.html">Class: QgsGpsLogger</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsGpsdConnection.html">Class: QgsGpsdConnection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsGradientColorRamp.html">Class: QgsGradientColorRamp</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsGradientFillSymbolLayer.html">Class: QgsGradientFillSymbolLayer</a></li>
@@ -1181,6 +1182,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsVectorLayerFeatureCounter.html">Class: QgsVectorLayerFeatureCounter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsVectorLayerFeatureIterator.html">Class: QgsVectorLayerFeatureIterator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsVectorLayerFeatureSource.html">Class: QgsVectorLayerFeatureSource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsVectorLayerGpsLogger.html">Class: QgsVectorLayerGpsLogger</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsVectorLayerJoinBuffer.html">Class: QgsVectorLayerJoinBuffer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsVectorLayerJoinInfo.html">Class: QgsVectorLayerJoinInfo</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsVectorLayerSelectedFeatureSource.html">Class: QgsVectorLayerSelectedFeatureSource</a></li>
@@ -2163,79 +2165,82 @@ for creating scopes for specific uses (e.g., project scopes, layer scopes).</p>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContextUtils.layoutScope" title="qgis.core.QgsExpressionContextUtils.layoutScope"><code class="xref py py-obj docutils literal notranslate"><span class="pre">layoutScope</span></code></a></p></td>
 <td><p>Creates a new scope which contains variables and functions relating to a <a class="reference internal" href="QgsLayout.html#module-QgsLayout" title="QgsLayout"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsLayout</span></code></a> <code class="docutils literal notranslate"><span class="pre">layout</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContextUtils.mapSettingsScope" title="qgis.core.QgsExpressionContextUtils.mapSettingsScope"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mapSettingsScope</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContextUtils.mapLayerPositionScope" title="qgis.core.QgsExpressionContextUtils.mapLayerPositionScope"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mapLayerPositionScope</span></code></a></p></td>
+<td><p>Sets the expression context variables which are available for expressions triggered by moving the mouse over a feature of the currently selected layer.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContextUtils.mapSettingsScope" title="qgis.core.QgsExpressionContextUtils.mapSettingsScope"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mapSettingsScope</span></code></a></p></td>
 <td><p>Creates a new scope which contains variables and functions relating to a <a class="reference internal" href="QgsMapSettings.html#module-QgsMapSettings" title="QgsMapSettings"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMapSettings</span></code></a> object.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContextUtils.mapToolCaptureScope" title="qgis.core.QgsExpressionContextUtils.mapToolCaptureScope"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mapToolCaptureScope</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContextUtils.mapToolCaptureScope" title="qgis.core.QgsExpressionContextUtils.mapToolCaptureScope"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mapToolCaptureScope</span></code></a></p></td>
 <td><p>Sets the expression context variables which are available for expressions triggered by a map tool capture like add feature.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContextUtils.meshExpressionScope" title="qgis.core.QgsExpressionContextUtils.meshExpressionScope"><code class="xref py py-obj docutils literal notranslate"><span class="pre">meshExpressionScope</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContextUtils.meshExpressionScope" title="qgis.core.QgsExpressionContextUtils.meshExpressionScope"><code class="xref py py-obj docutils literal notranslate"><span class="pre">meshExpressionScope</span></code></a></p></td>
 <td><p>Creates a new scope which contains functions relating to mesh layer element <code class="docutils literal notranslate"><span class="pre">elementType</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContextUtils.multiFrameScope" title="qgis.core.QgsExpressionContextUtils.multiFrameScope"><code class="xref py py-obj docutils literal notranslate"><span class="pre">multiFrameScope</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContextUtils.multiFrameScope" title="qgis.core.QgsExpressionContextUtils.multiFrameScope"><code class="xref py py-obj docutils literal notranslate"><span class="pre">multiFrameScope</span></code></a></p></td>
 <td><p>Creates a new scope which contains variables and functions relating to a <a class="reference internal" href="QgsLayoutMultiFrame.html#module-QgsLayoutMultiFrame" title="QgsLayoutMultiFrame"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsLayoutMultiFrame</span></code></a>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContextUtils.notificationScope" title="qgis.core.QgsExpressionContextUtils.notificationScope"><code class="xref py py-obj docutils literal notranslate"><span class="pre">notificationScope</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContextUtils.notificationScope" title="qgis.core.QgsExpressionContextUtils.notificationScope"><code class="xref py py-obj docutils literal notranslate"><span class="pre">notificationScope</span></code></a></p></td>
 <td><p>Creates a new scope which contains variables and functions relating to provider notifications</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContextUtils.parentFormScope" title="qgis.core.QgsExpressionContextUtils.parentFormScope"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parentFormScope</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContextUtils.parentFormScope" title="qgis.core.QgsExpressionContextUtils.parentFormScope"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parentFormScope</span></code></a></p></td>
 <td><p>Creates a new scope which contains functions and variables from the current parent attribute form/table <code class="docutils literal notranslate"><span class="pre">formFeature</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContextUtils.processingAlgorithmScope" title="qgis.core.QgsExpressionContextUtils.processingAlgorithmScope"><code class="xref py py-obj docutils literal notranslate"><span class="pre">processingAlgorithmScope</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContextUtils.processingAlgorithmScope" title="qgis.core.QgsExpressionContextUtils.processingAlgorithmScope"><code class="xref py py-obj docutils literal notranslate"><span class="pre">processingAlgorithmScope</span></code></a></p></td>
 <td><p>Creates a new scope which contains variables and functions relating to a processing <code class="docutils literal notranslate"><span class="pre">algorithm</span></code>, when used with the specified <code class="docutils literal notranslate"><span class="pre">parameters</span></code> and <code class="docutils literal notranslate"><span class="pre">context</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContextUtils.processingModelAlgorithmScope" title="qgis.core.QgsExpressionContextUtils.processingModelAlgorithmScope"><code class="xref py py-obj docutils literal notranslate"><span class="pre">processingModelAlgorithmScope</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContextUtils.processingModelAlgorithmScope" title="qgis.core.QgsExpressionContextUtils.processingModelAlgorithmScope"><code class="xref py py-obj docutils literal notranslate"><span class="pre">processingModelAlgorithmScope</span></code></a></p></td>
 <td><p>Creates a new scope which contains variables and functions relating to a processing <code class="docutils literal notranslate"><span class="pre">model</span></code> algorithm, when used with the specified <code class="docutils literal notranslate"><span class="pre">parameters</span></code> and <code class="docutils literal notranslate"><span class="pre">context</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContextUtils.projectScope" title="qgis.core.QgsExpressionContextUtils.projectScope"><code class="xref py py-obj docutils literal notranslate"><span class="pre">projectScope</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContextUtils.projectScope" title="qgis.core.QgsExpressionContextUtils.projectScope"><code class="xref py py-obj docutils literal notranslate"><span class="pre">projectScope</span></code></a></p></td>
 <td><p>Creates a new scope which contains variables and functions relating to a QGIS project.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContextUtils.registerContextFunctions" title="qgis.core.QgsExpressionContextUtils.registerContextFunctions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">registerContextFunctions</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContextUtils.registerContextFunctions" title="qgis.core.QgsExpressionContextUtils.registerContextFunctions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">registerContextFunctions</span></code></a></p></td>
 <td><p>Registers all known core functions provided by <a class="reference internal" href="QgsExpressionContextScope.html#module-QgsExpressionContextScope" title="QgsExpressionContextScope"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsExpressionContextScope</span></code></a> objects.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContextUtils.removeGlobalVariable" title="qgis.core.QgsExpressionContextUtils.removeGlobalVariable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeGlobalVariable</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContextUtils.removeGlobalVariable" title="qgis.core.QgsExpressionContextUtils.removeGlobalVariable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeGlobalVariable</span></code></a></p></td>
 <td><p>Remove a global context variable.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContextUtils.removeProjectVariable" title="qgis.core.QgsExpressionContextUtils.removeProjectVariable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeProjectVariable</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContextUtils.removeProjectVariable" title="qgis.core.QgsExpressionContextUtils.removeProjectVariable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeProjectVariable</span></code></a></p></td>
 <td><p>Remove project context variable.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContextUtils.setGlobalVariable" title="qgis.core.QgsExpressionContextUtils.setGlobalVariable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setGlobalVariable</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContextUtils.setGlobalVariable" title="qgis.core.QgsExpressionContextUtils.setGlobalVariable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setGlobalVariable</span></code></a></p></td>
 <td><p>Sets a global context variable.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContextUtils.setGlobalVariables" title="qgis.core.QgsExpressionContextUtils.setGlobalVariables"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setGlobalVariables</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContextUtils.setGlobalVariables" title="qgis.core.QgsExpressionContextUtils.setGlobalVariables"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setGlobalVariables</span></code></a></p></td>
 <td><p>Sets all global context variables.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContextUtils.setLayerVariable" title="qgis.core.QgsExpressionContextUtils.setLayerVariable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setLayerVariable</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContextUtils.setLayerVariable" title="qgis.core.QgsExpressionContextUtils.setLayerVariable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setLayerVariable</span></code></a></p></td>
 <td><p>Sets a layer context variable.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContextUtils.setLayerVariables" title="qgis.core.QgsExpressionContextUtils.setLayerVariables"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setLayerVariables</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContextUtils.setLayerVariables" title="qgis.core.QgsExpressionContextUtils.setLayerVariables"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setLayerVariables</span></code></a></p></td>
 <td><p>Sets all layer context variables.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContextUtils.setLayoutItemVariable" title="qgis.core.QgsExpressionContextUtils.setLayoutItemVariable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setLayoutItemVariable</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContextUtils.setLayoutItemVariable" title="qgis.core.QgsExpressionContextUtils.setLayoutItemVariable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setLayoutItemVariable</span></code></a></p></td>
 <td><p>Sets a layout <code class="docutils literal notranslate"><span class="pre">item</span></code> context variable, with the given <code class="docutils literal notranslate"><span class="pre">name</span></code> and <code class="docutils literal notranslate"><span class="pre">value</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContextUtils.setLayoutItemVariables" title="qgis.core.QgsExpressionContextUtils.setLayoutItemVariables"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setLayoutItemVariables</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContextUtils.setLayoutItemVariables" title="qgis.core.QgsExpressionContextUtils.setLayoutItemVariables"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setLayoutItemVariables</span></code></a></p></td>
 <td><p>Sets all layout item context variables for an <code class="docutils literal notranslate"><span class="pre">item</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContextUtils.setLayoutMultiFrameVariable" title="qgis.core.QgsExpressionContextUtils.setLayoutMultiFrameVariable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setLayoutMultiFrameVariable</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContextUtils.setLayoutMultiFrameVariable" title="qgis.core.QgsExpressionContextUtils.setLayoutMultiFrameVariable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setLayoutMultiFrameVariable</span></code></a></p></td>
 <td><p>Sets a layout multi <code class="docutils literal notranslate"><span class="pre">frame</span></code> context variable, with the given <code class="docutils literal notranslate"><span class="pre">name</span></code> and <code class="docutils literal notranslate"><span class="pre">value</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContextUtils.setLayoutMultiFrameVariables" title="qgis.core.QgsExpressionContextUtils.setLayoutMultiFrameVariables"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setLayoutMultiFrameVariables</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContextUtils.setLayoutMultiFrameVariables" title="qgis.core.QgsExpressionContextUtils.setLayoutMultiFrameVariables"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setLayoutMultiFrameVariables</span></code></a></p></td>
 <td><p>Sets all layout multiframe context variables for an <code class="docutils literal notranslate"><span class="pre">frame</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContextUtils.setLayoutVariable" title="qgis.core.QgsExpressionContextUtils.setLayoutVariable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setLayoutVariable</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContextUtils.setLayoutVariable" title="qgis.core.QgsExpressionContextUtils.setLayoutVariable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setLayoutVariable</span></code></a></p></td>
 <td><p>Sets a layout context variable.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContextUtils.setLayoutVariables" title="qgis.core.QgsExpressionContextUtils.setLayoutVariables"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setLayoutVariables</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContextUtils.setLayoutVariables" title="qgis.core.QgsExpressionContextUtils.setLayoutVariables"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setLayoutVariables</span></code></a></p></td>
 <td><p>Sets all layout context variables.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContextUtils.setProjectVariable" title="qgis.core.QgsExpressionContextUtils.setProjectVariable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setProjectVariable</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContextUtils.setProjectVariable" title="qgis.core.QgsExpressionContextUtils.setProjectVariable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setProjectVariable</span></code></a></p></td>
 <td><p>Sets a project context variable.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContextUtils.setProjectVariables" title="qgis.core.QgsExpressionContextUtils.setProjectVariables"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setProjectVariables</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContextUtils.setProjectVariables" title="qgis.core.QgsExpressionContextUtils.setProjectVariables"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setProjectVariables</span></code></a></p></td>
 <td><p>Sets all project context variables.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContextUtils.updateSymbolScope" title="qgis.core.QgsExpressionContextUtils.updateSymbolScope"><code class="xref py py-obj docutils literal notranslate"><span class="pre">updateSymbolScope</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsExpressionContextUtils.updateSymbolScope" title="qgis.core.QgsExpressionContextUtils.updateSymbolScope"><code class="xref py py-obj docutils literal notranslate"><span class="pre">updateSymbolScope</span></code></a></p></td>
 <td><p>Updates a symbol scope related to a <a class="reference internal" href="QgsSymbol.html#module-QgsSymbol" title="QgsSymbol"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsSymbol</span></code></a> to an expression context.</p></td>
 </tr>
 </tbody>
@@ -2401,6 +2406,26 @@ For instance, number of pages and page sizes.</p>
 </dd>
 <dt class="field-even">Return type</dt>
 <dd class="field-even"><p><a class="reference internal" href="QgsExpressionContextScope.html#qgis.core.QgsExpressionContextScope" title="qgis.core.QgsExpressionContextScope">QgsExpressionContextScope</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsExpressionContextUtils.mapLayerPositionScope">
+<span class="sig-name descname"><span class="pre">mapLayerPositionScope</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">position</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsPointXY.html#qgis.core.QgsPointXY" title="qgis.core.QgsPointXY"><span class="pre">QgsPointXY</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="QgsExpressionContextScope.html#qgis.core.QgsExpressionContextScope" title="qgis.core.QgsExpressionContextScope"><span class="pre">QgsExpressionContextScope</span></a></span></span><a class="headerlink" href="#qgis.core.QgsExpressionContextUtils.mapLayerPositionScope" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the expression context variables which are available for expressions triggered by moving the mouse over a feature
+of the currently selected layer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>position</strong> (<a class="reference internal" href="QgsPointXY.html#qgis.core.QgsPointXY" title="qgis.core.QgsPointXY"><em>QgsPointXY</em></a>) – map coordinates of the current pointer position in the CRS of the layer which triggered the action.</p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.30.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsExpressionContextScope.html#qgis.core.QgsExpressionContextScope" title="qgis.core.QgsExpressionContextScope">QgsExpressionContextScope</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -2988,7 +3013,7 @@ with the variables specified.</p>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:37 Nov 19, 2022.
+      <span class="lastupdated">Last updated on 10:21 Nov 19, 2022.
       </span></p>
   </div>
 

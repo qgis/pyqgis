@@ -430,6 +430,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsGpsConnectionRegistry.html">Class: QgsGpsConnectionRegistry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsGpsDetector.html">Class: QgsGpsDetector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsGpsInformation.html">Class: QgsGpsInformation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsGpsLogger.html">Class: QgsGpsLogger</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsGpsdConnection.html">Class: QgsGpsdConnection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsGradientColorRamp.html">Class: QgsGradientColorRamp</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsGradientFillSymbolLayer.html">Class: QgsGradientFillSymbolLayer</a></li>
@@ -1181,6 +1182,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsVectorLayerFeatureCounter.html">Class: QgsVectorLayerFeatureCounter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsVectorLayerFeatureIterator.html">Class: QgsVectorLayerFeatureIterator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsVectorLayerFeatureSource.html">Class: QgsVectorLayerFeatureSource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsVectorLayerGpsLogger.html">Class: QgsVectorLayerGpsLogger</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsVectorLayerJoinBuffer.html">Class: QgsVectorLayerJoinBuffer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsVectorLayerJoinInfo.html">Class: QgsVectorLayerJoinInfo</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsVectorLayerSelectedFeatureSource.html">Class: QgsVectorLayerSelectedFeatureSource</a></li>
@@ -2169,6 +2171,18 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsTextDocumentMetrics.fragmentFont" title="qgis.core.QgsTextDocumentMetrics.fragmentFont"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fragmentFont</span></code></a></p></td>
 <td><p>Returns the calculated font for the fragment at the specified block and fragment indices.</p></td>
 </tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsTextDocumentMetrics.fragmentHorizontalAdvance" title="qgis.core.QgsTextDocumentMetrics.fragmentHorizontalAdvance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fragmentHorizontalAdvance</span></code></a></p></td>
+<td><p>Returns the horizontal advance of the fragment at the specified block and fragment index.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsTextDocumentMetrics.fragmentVerticalOffset" title="qgis.core.QgsTextDocumentMetrics.fragmentVerticalOffset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fragmentVerticalOffset</span></code></a></p></td>
+<td><p>Returns the vertical offset from a text block's baseline which should be applied to the fragment at the specified index within that block.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsTextDocumentMetrics.isNullFontSize" title="qgis.core.QgsTextDocumentMetrics.isNullFontSize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isNullFontSize</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the metrics could not be calculated because the text format has a null font size.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsTextDocumentMetrics.outerBounds" title="qgis.core.QgsTextDocumentMetrics.outerBounds"><code class="xref py py-obj docutils literal notranslate"><span class="pre">outerBounds</span></code></a></p></td>
+<td><p>Returns the outer bounds of the document, which is the <a class="reference internal" href="#qgis.core.QgsTextDocumentMetrics.documentSize" title="qgis.core.QgsTextDocumentMetrics.documentSize"><code class="xref py py-func docutils literal notranslate"><span class="pre">documentSize()</span></code></a> adjusted to account for any text elements which fall outside of the usual document margins (such as super or sub script elements)</p></td>
+</tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsTextDocumentMetrics.verticalOrientationXOffset" title="qgis.core.QgsTextDocumentMetrics.verticalOrientationXOffset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">verticalOrientationXOffset</span></code></a></p></td>
 <td><p>Returns the vertical orientation x offset for the specified block.</p></td>
 </tr>
@@ -2334,6 +2348,89 @@ at small font sizes.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsTextDocumentMetrics.fragmentHorizontalAdvance">
+<span class="sig-name descname"><span class="pre">fragmentHorizontalAdvance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">blockIndex</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fragmentIndex</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="Qgis.html#qgis.core.Qgis.TextLayoutMode" title="qgis.core.Qgis.TextLayoutMode"><span class="pre">Qgis.TextLayoutMode</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#qgis.core.QgsTextDocumentMetrics.fragmentHorizontalAdvance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the horizontal advance of the fragment at the specified block and fragment index.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.30.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>blockIndex</strong> (<em>int</em>) – </p></li>
+<li><p><strong>fragmentIndex</strong> (<em>int</em>) – </p></li>
+<li><p><strong>mode</strong> (<a class="reference internal" href="Qgis.html#qgis.core.Qgis.TextLayoutMode" title="qgis.core.Qgis.TextLayoutMode"><em>Qgis.TextLayoutMode</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsTextDocumentMetrics.fragmentVerticalOffset">
+<span class="sig-name descname"><span class="pre">fragmentVerticalOffset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">blockIndex</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fragmentIndex</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="Qgis.html#qgis.core.Qgis.TextLayoutMode" title="qgis.core.Qgis.TextLayoutMode"><span class="pre">Qgis.TextLayoutMode</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#qgis.core.QgsTextDocumentMetrics.fragmentVerticalOffset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the vertical offset from a text block’s baseline which should be applied
+to the fragment at the specified index within that block.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.30.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>blockIndex</strong> (<em>int</em>) – </p></li>
+<li><p><strong>fragmentIndex</strong> (<em>int</em>) – </p></li>
+<li><p><strong>mode</strong> (<a class="reference internal" href="Qgis.html#qgis.core.Qgis.TextLayoutMode" title="qgis.core.Qgis.TextLayoutMode"><em>Qgis.TextLayoutMode</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsTextDocumentMetrics.isNullFontSize">
+<span class="sig-name descname"><span class="pre">isNullFontSize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#qgis.core.QgsTextDocumentMetrics.isNullFontSize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the metrics could not be calculated because the text format has a null font size.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.30.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsTextDocumentMetrics.outerBounds">
+<span class="sig-name descname"><span class="pre">outerBounds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="Qgis.html#qgis.core.Qgis.TextLayoutMode" title="qgis.core.Qgis.TextLayoutMode"><span class="pre">Qgis.TextLayoutMode</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">orientation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="Qgis.html#qgis.core.Qgis.TextOrientation" title="qgis.core.Qgis.TextOrientation"><span class="pre">Qgis.TextOrientation</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">QRectF</span></span></span><a class="headerlink" href="#qgis.core.QgsTextDocumentMetrics.outerBounds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the outer bounds of the document, which is the <a class="reference internal" href="#qgis.core.QgsTextDocumentMetrics.documentSize" title="qgis.core.QgsTextDocumentMetrics.documentSize"><code class="xref py py-func docutils literal notranslate"><span class="pre">documentSize()</span></code></a> adjusted to account
+for any text elements which fall outside of the usual document margins (such as super or
+sub script elements)</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Currently this is only supported for the Qgis.TextLayoutMode.Labeling mode.</p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.30.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mode</strong> (<a class="reference internal" href="Qgis.html#qgis.core.Qgis.TextLayoutMode" title="qgis.core.Qgis.TextLayoutMode"><em>Qgis.TextLayoutMode</em></a>) – </p></li>
+<li><p><strong>orientation</strong> (<a class="reference internal" href="Qgis.html#qgis.core.Qgis.TextOrientation" title="qgis.core.Qgis.TextOrientation"><em>Qgis.TextOrientation</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>QRectF</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsTextDocumentMetrics.verticalOrientationXOffset">
 <span class="sig-name descname"><span class="pre">verticalOrientationXOffset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">blockIndex</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#qgis.core.QgsTextDocumentMetrics.verticalOrientationXOffset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the vertical orientation x offset for the specified block.</p>
@@ -2360,7 +2457,7 @@ at small font sizes.</p>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:37 Nov 19, 2022.
+      <span class="lastupdated">Last updated on 10:21 Nov 19, 2022.
       </span></p>
   </div>
 
