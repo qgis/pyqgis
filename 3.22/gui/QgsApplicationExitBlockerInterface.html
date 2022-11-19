@@ -18,6 +18,7 @@
         <script src="../_static/underscore.js"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -1922,9 +1923,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="index.html">gui</a> &raquo;</li>
-      <li>Class: QgsApplicationExitBlockerInterface</li>
+      <li><a href="../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">gui</a></li>
+      <li class="breadcrumb-item active">Class: QgsApplicationExitBlockerInterface</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -1945,20 +1946,22 @@ the QGIS application from exiting.</p>
 for the application to exit, e.g. by checking whether the plugin or script has any
 unsaved changes which should be saved or discarded before allowing QGIS to exit.</p>
 <p><a class="reference internal" href="#module-QgsApplicationExitBlockerInterface" title="QgsApplicationExitBlockerInterface"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsApplicationExitBlockerInterface</span></code></a> are registered via the iface object:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyPluginExitBlocker</span><span class="p">(:</span><span class="n">py</span><span class="p">:</span><span class="n">class</span><span class="p">:</span><span class="sb">`.QgsApplicationExitBlockerInterface`</span><span class="p">):</span>
+<section id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this heading">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>class MyPluginExitBlocker(:py:class:`.QgsApplicationExitBlockerInterface`):
 
-   <span class="k">def</span> <span class="nf">allowExit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-       <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">has_unsaved_changes</span><span class="p">():</span>
-           <span class="c1"># show a warning prompt</span>
-           <span class="c1"># ...</span>
-           <span class="c1"># prevent QGIS application from exiting</span>
-           <span class="k">return</span> <span class="bp">False</span>
+   def allowExit(self):
+       if self.has_unsaved_changes():
+           # show a warning prompt
+           # ...
+           # prevent QGIS application from exiting
+           return False
 
-       <span class="c1"># allow QGIS application to exit</span>
-       <span class="k">return</span> <span class="bp">True</span>
+       # allow QGIS application to exit
+       return True
 
-<span class="n">my_blocker</span> <span class="o">=</span> <span class="n">MyPluginExitBlocker</span><span class="p">()</span>
-<span class="n">iface</span><span class="o">.</span><span class="n">registerApplicationExitBlocker</span><span class="p">(</span><span class="n">my_blocker</span><span class="p">)</span>
+my_blocker = MyPluginExitBlocker()
+iface.registerApplicationExitBlocker(my_blocker)
 </pre></div>
 </div>
 <div class="versionadded">
@@ -2021,6 +2024,7 @@ boxes or custom dialogs with event loops.</p>
 </dl>
 </dd></dl>
 
+</section>
 </dd></dl>
 
 </section>
@@ -2034,7 +2038,7 @@ boxes or custom dialogs with event loops.</p>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 04:03 Aug 11, 2022.
+      <span class="lastupdated">Last updated on 13:35 Nov 19, 2022.
       </span></p>
   </div>
 
@@ -2061,6 +2065,10 @@ boxes or custom dialogs with event loops.</p>
         
           
           <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
+          
+        
+          
+          <dd><a href="https://qgis.org/pyqgis/3.28">3.28</a></dd>
           
         
           

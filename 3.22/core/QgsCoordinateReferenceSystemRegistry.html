@@ -18,6 +18,7 @@
         <script src="../_static/underscore.js"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -1922,9 +1923,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="index.html">core</a> &raquo;</li>
-      <li>Class: QgsCoordinateReferenceSystemRegistry</li>
+      <li><a href="../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">core</a></li>
+      <li class="breadcrumb-item active">Class: QgsCoordinateReferenceSystemRegistry</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -2019,16 +2020,16 @@ Constructor for <a class="reference internal" href="#qgis.core.QgsCoordinateRefe
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsCoordinateReferenceSystemRegistry.crsDefinitionsChanged" title="qgis.core.QgsCoordinateReferenceSystemRegistry.crsDefinitionsChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">crsDefinitionsChanged</span></code></a></p></td>
-<td><p>Emitted whenever an operation has caused any of the known CRS definitions (including user-defined CRS) to change.</p></td>
+<td><p>pyqtSignal(<a href="#id1"><span class="problematic" id="id2">*</span></a>types, name: str = ..., revision: int = ..., arguments: Sequence = ...) -&gt; PYQT_SIGNAL</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsCoordinateReferenceSystemRegistry.userCrsAdded" title="qgis.core.QgsCoordinateReferenceSystemRegistry.userCrsAdded"><code class="xref py py-obj docutils literal notranslate"><span class="pre">userCrsAdded</span></code></a></p></td>
-<td><p>Emitted whenever a new user CRS definition is added.</p></td>
+<td><p>pyqtSignal(<a href="#id3"><span class="problematic" id="id4">*</span></a>types, name: str = ..., revision: int = ..., arguments: Sequence = ...) -&gt; PYQT_SIGNAL</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsCoordinateReferenceSystemRegistry.userCrsChanged" title="qgis.core.QgsCoordinateReferenceSystemRegistry.userCrsChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">userCrsChanged</span></code></a></p></td>
-<td><p>Emitted whenever an existing user CRS definition is changed.</p></td>
+<td><p>pyqtSignal(<a href="#id5"><span class="problematic" id="id6">*</span></a>types, name: str = ..., revision: int = ..., arguments: Sequence = ...) -&gt; PYQT_SIGNAL</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsCoordinateReferenceSystemRegistry.userCrsRemoved" title="qgis.core.QgsCoordinateReferenceSystemRegistry.userCrsRemoved"><code class="xref py py-obj docutils literal notranslate"><span class="pre">userCrsRemoved</span></code></a></p></td>
-<td><p>Emitted when the user CRS with matching <code class="docutils literal notranslate"><span class="pre">id</span></code> is removed from the database.</p></td>
+<td><p>pyqtSignal(<a href="#id7"><span class="problematic" id="id8">*</span></a>types, name: str = ..., revision: int = ..., arguments: Sequence = ...) -&gt; PYQT_SIGNAL</p></td>
 </tr>
 </tbody>
 </table>
@@ -2146,8 +2147,28 @@ take care when using the FormatProj option.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.core.QgsCoordinateReferenceSystemRegistry.crsDefinitionsChanged">
 <span class="sig-name descname"><span class="pre">crsDefinitionsChanged</span></span><a class="headerlink" href="#qgis.core.QgsCoordinateReferenceSystemRegistry.crsDefinitionsChanged" title="Permalink to this definition">¶</a></dt>
-<dd><p>Emitted whenever an operation has caused any of the known CRS definitions (including
-user-defined CRS) to change. [signal]</p>
+<dd><p>pyqtSignal(<a href="#id9"><span class="problematic" id="id10">*</span></a>types, name: str = …, revision: int = …, arguments: Sequence = …) -&gt; PYQT_SIGNAL</p>
+<p>types is normally a sequence of individual types.  Each type is either a
+type object or a string that is the name of a C++ type.  Alternatively
+each type could itself be a sequence of types each describing a different
+overloaded signal.
+name is the optional C++ name of the signal.  If it is not specified then
+the name of the class attribute that is bound to the signal is used.
+revision is the optional revision of the signal that is exported to QML.
+If it is not specified then 0 is used.
+arguments is the optional sequence of the names of the signal’s arguments.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str = </em><em>...</em>) – </p></li>
+<li><p><strong>revision</strong> (<em>int = </em><em>...</em>) – </p></li>
+<li><p><strong>arguments</strong> (<em>Sequence = </em><em>...</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>PYQT_SIGNAL</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -2258,19 +2279,26 @@ take care when using the FormatProj option.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.core.QgsCoordinateReferenceSystemRegistry.userCrsAdded">
 <span class="sig-name descname"><span class="pre">userCrsAdded</span></span><a class="headerlink" href="#qgis.core.QgsCoordinateReferenceSystemRegistry.userCrsAdded" title="Permalink to this definition">¶</a></dt>
-<dd><p>Emitted whenever a new user CRS definition is added.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">id</span></code> argument specifies the ID of the user CRS which has been changed.</p>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p><a class="reference internal" href="#qgis.core.QgsCoordinateReferenceSystemRegistry.userCrsChanged" title="qgis.core.QgsCoordinateReferenceSystemRegistry.userCrsChanged"><code class="xref py py-func docutils literal notranslate"><span class="pre">userCrsChanged()</span></code></a></p>
-</div>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p><a class="reference internal" href="#qgis.core.QgsCoordinateReferenceSystemRegistry.crsDefinitionsChanged" title="qgis.core.QgsCoordinateReferenceSystemRegistry.crsDefinitionsChanged"><code class="xref py py-func docutils literal notranslate"><span class="pre">crsDefinitionsChanged()</span></code></a> [signal]</p>
-</div>
+<dd><p>pyqtSignal(<a href="#id11"><span class="problematic" id="id12">*</span></a>types, name: str = …, revision: int = …, arguments: Sequence = …) -&gt; PYQT_SIGNAL</p>
+<p>types is normally a sequence of individual types.  Each type is either a
+type object or a string that is the name of a C++ type.  Alternatively
+each type could itself be a sequence of types each describing a different
+overloaded signal.
+name is the optional C++ name of the signal.  If it is not specified then
+the name of the class attribute that is bound to the signal is used.
+revision is the optional revision of the signal that is exported to QML.
+If it is not specified then 0 is used.
+arguments is the optional sequence of the names of the signal’s arguments.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>id</strong> (<em>str</em>) – </p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str = </em><em>...</em>) – </p></li>
+<li><p><strong>revision</strong> (<em>int = </em><em>...</em>) – </p></li>
+<li><p><strong>arguments</strong> (<em>Sequence = </em><em>...</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>PYQT_SIGNAL</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2278,22 +2306,26 @@ take care when using the FormatProj option.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.core.QgsCoordinateReferenceSystemRegistry.userCrsChanged">
 <span class="sig-name descname"><span class="pre">userCrsChanged</span></span><a class="headerlink" href="#qgis.core.QgsCoordinateReferenceSystemRegistry.userCrsChanged" title="Permalink to this definition">¶</a></dt>
-<dd><p>Emitted whenever an existing user CRS definition is changed.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">id</span></code> argument specifies the ID of the user CRS which has been changed.</p>
-<p>Objects which store <a class="reference internal" href="QgsCoordinateReferenceSystem.html#module-QgsCoordinateReferenceSystem" title="QgsCoordinateReferenceSystem"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsCoordinateReferenceSystem</span></code></a> members should connect to this signal
-and update any stored CRS definitions to ensure that they always use the current
-definition of any user defined CRSes.</p>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p><a class="reference internal" href="#qgis.core.QgsCoordinateReferenceSystemRegistry.crsDefinitionsChanged" title="qgis.core.QgsCoordinateReferenceSystemRegistry.crsDefinitionsChanged"><code class="xref py py-func docutils literal notranslate"><span class="pre">crsDefinitionsChanged()</span></code></a></p>
-</div>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p><a class="reference internal" href="#qgis.core.QgsCoordinateReferenceSystemRegistry.userCrsAdded" title="qgis.core.QgsCoordinateReferenceSystemRegistry.userCrsAdded"><code class="xref py py-func docutils literal notranslate"><span class="pre">userCrsAdded()</span></code></a> [signal]</p>
-</div>
+<dd><p>pyqtSignal(<a href="#id13"><span class="problematic" id="id14">*</span></a>types, name: str = …, revision: int = …, arguments: Sequence = …) -&gt; PYQT_SIGNAL</p>
+<p>types is normally a sequence of individual types.  Each type is either a
+type object or a string that is the name of a C++ type.  Alternatively
+each type could itself be a sequence of types each describing a different
+overloaded signal.
+name is the optional C++ name of the signal.  If it is not specified then
+the name of the class attribute that is bound to the signal is used.
+revision is the optional revision of the signal that is exported to QML.
+If it is not specified then 0 is used.
+arguments is the optional sequence of the names of the signal’s arguments.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>id</strong> (<em>str</em>) – </p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str = </em><em>...</em>) – </p></li>
+<li><p><strong>revision</strong> (<em>int = </em><em>...</em>) – </p></li>
+<li><p><strong>arguments</strong> (<em>Sequence = </em><em>...</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>PYQT_SIGNAL</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2313,15 +2345,26 @@ custom (user-defined) CRSes.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.core.QgsCoordinateReferenceSystemRegistry.userCrsRemoved">
 <span class="sig-name descname"><span class="pre">userCrsRemoved</span></span><a class="headerlink" href="#qgis.core.QgsCoordinateReferenceSystemRegistry.userCrsRemoved" title="Permalink to this definition">¶</a></dt>
-<dd><p>Emitted when the user CRS with matching <code class="docutils literal notranslate"><span class="pre">id</span></code> is removed
-from the database.</p>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p><a class="reference internal" href="#qgis.core.QgsCoordinateReferenceSystemRegistry.removeUserCrs" title="qgis.core.QgsCoordinateReferenceSystemRegistry.removeUserCrs"><code class="xref py py-func docutils literal notranslate"><span class="pre">removeUserCrs()</span></code></a> [signal]</p>
-</div>
+<dd><p>pyqtSignal(<a href="#id15"><span class="problematic" id="id16">*</span></a>types, name: str = …, revision: int = …, arguments: Sequence = …) -&gt; PYQT_SIGNAL</p>
+<p>types is normally a sequence of individual types.  Each type is either a
+type object or a string that is the name of a C++ type.  Alternatively
+each type could itself be a sequence of types each describing a different
+overloaded signal.
+name is the optional C++ name of the signal.  If it is not specified then
+the name of the class attribute that is bound to the signal is used.
+revision is the optional revision of the signal that is exported to QML.
+If it is not specified then 0 is used.
+arguments is the optional sequence of the names of the signal’s arguments.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>id</strong> (<em>int</em>) – </p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str = </em><em>...</em>) – </p></li>
+<li><p><strong>revision</strong> (<em>int = </em><em>...</em>) – </p></li>
+<li><p><strong>arguments</strong> (<em>Sequence = </em><em>...</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>PYQT_SIGNAL</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2339,7 +2382,7 @@ from the database.</p>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 04:03 Aug 11, 2022.
+      <span class="lastupdated">Last updated on 13:35 Nov 19, 2022.
       </span></p>
   </div>
 
@@ -2366,6 +2409,10 @@ from the database.</p>
         
           
           <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
+          
+        
+          
+          <dd><a href="https://qgis.org/pyqgis/3.28">3.28</a></dd>
           
         
           

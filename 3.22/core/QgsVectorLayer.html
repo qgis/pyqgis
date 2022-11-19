@@ -18,6 +18,7 @@
         <script src="../_static/underscore.js"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -1922,9 +1923,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="index.html">core</a> &raquo;</li>
-      <li>Class: QgsVectorLayer</li>
+      <li><a href="../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">core</a></li>
+      <li class="breadcrumb-item active">Class: QgsVectorLayer</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -1958,6 +1959,10 @@ underlying provider by calling <a class="reference internal" href="#qgis.core.Qg
 </pre></div>
 </div>
 <p>The main data providers supported by QGIS are listed below.</p>
+<section id="vector-data-providers">
+<h2>Vector data providers<a class="headerlink" href="#vector-data-providers" title="Permalink to this heading">¶</a></h2>
+<section id="memory-data-providertype-memory">
+<h3>Memory data providerType (memory)<a class="headerlink" href="#memory-data-providertype-memory" title="Permalink to this heading">¶</a></h3>
 <p>The memory data provider is used to construct in memory data, for example scratch
 data or data generated from spatial operations such as contouring. There is no
 inherent persistent storage of the data. The data source uri is constructed. The
@@ -1981,20 +1986,35 @@ trigger such warning, it is possible to suppress that by setting the following c
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">layer</span><span class="o">.</span><span class="n">setCustomProperty</span><span class="p">(</span><span class="s2">&quot;skipMemoryLayersCheck&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
+</section>
+<section id="ogr-data-provider-ogr">
+<h3>OGR data provider (ogr)<a class="headerlink" href="#ogr-data-provider-ogr" title="Permalink to this heading">¶</a></h3>
 <p>Accesses data using the OGR drivers (<a class="reference external" href="https://gdal.org/drivers/vector/index.html">https://gdal.org/drivers/vector/index.html</a>). The url
 is the OGR connection string. A wide variety of data formats can be accessed using this
 driver, including file based formats used by many GIS systems, database formats, and
 web services. Some of these formats are also supported by custom data providers listed
 below.</p>
+</section>
+<section id="spatialite-data-provider-spatialite">
+<h3>SpatiaLite data provider (spatialite)<a class="headerlink" href="#spatialite-data-provider-spatialite" title="Permalink to this heading">¶</a></h3>
 <p>Access data in a SpatiaLite database. The url defines the connection parameters, table,
 geometry column, and other attributes. The url can be constructed using the
 <a class="reference internal" href="QgsDataSourceUri.html#module-QgsDataSourceUri" title="QgsDataSourceUri"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsDataSourceUri</span></code></a> class.</p>
+</section>
+<section id="postgresql-data-provider-postgres">
+<h3>PostgreSQL data provider (postgres)<a class="headerlink" href="#postgresql-data-provider-postgres" title="Permalink to this heading">¶</a></h3>
 <p>Connects to a PostgreSQL database. The url defines the connection parameters, table,
 geometry column, and other attributes. The url can be constructed using the
 <a class="reference internal" href="QgsDataSourceUri.html#module-QgsDataSourceUri" title="QgsDataSourceUri"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsDataSourceUri</span></code></a> class.</p>
+</section>
+<section id="microsoft-sql-server-data-provider-mssql">
+<h3>Microsoft SQL server data provider (mssql)<a class="headerlink" href="#microsoft-sql-server-data-provider-mssql" title="Permalink to this heading">¶</a></h3>
 <p>Connects to a Microsoft SQL server database. The url defines the connection parameters, table,
 geometry column, and other attributes. The url can be constructed using the
 <a class="reference internal" href="QgsDataSourceUri.html#module-QgsDataSourceUri" title="QgsDataSourceUri"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsDataSourceUri</span></code></a> class.</p>
+</section>
+<section id="wfs-web-feature-service-data-provider-wfs">
+<h3>WFS (web feature service) data provider (wfs)<a class="headerlink" href="#wfs-web-feature-service-data-provider-wfs" title="Permalink to this heading">¶</a></h3>
 <p>Used to access data provided by a web feature service.</p>
 <p>The url can be a HTTP url to a WFS server (legacy, e.g. <a class="reference external" href="http://foobar/wfs?TYPENAME=xxx&amp;SRSNAME=yyy[&amp;FILTER=zzz">http://foobar/wfs?TYPENAME=xxx&amp;SRSNAME=yyy[&amp;FILTER=zzz</a>]), or,
 starting with QGIS 2.16, a URI constructed using the <a class="reference internal" href="QgsDataSourceUri.html#module-QgsDataSourceUri" title="QgsDataSourceUri"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsDataSourceUri</span></code></a> class with the following parameters :</p>
@@ -2048,6 +2068,9 @@ however the function must exist server side and have the same name and arguments
 <li><p>Use the special $geometry parameter to provide the layer geometry column as input
 into the spatial binary operators e.g intersects($geometry, geomFromWKT(‘POINT (5 6)’))</p></li>
 </ul>
+</section>
+<section id="delimited-text-file-data-provider-delimitedtext">
+<h3>Delimited text file data provider (delimitedtext)<a class="headerlink" href="#delimited-text-file-data-provider-delimitedtext" title="Permalink to this heading">¶</a></h3>
 <p>Accesses data in a delimited text file, for example CSV files generated by
 spreadsheets. The contents of the file are split into columns based on specified
 delimiter characters.  Each record may be represented spatially either by an
@@ -2187,10 +2210,16 @@ to monitor for changes.</p>
 </ul>
 <p>Errors encountered loading the file will not be reported in a user dialog if
 quiet is included (They will still be shown in the output log).</p>
+</section>
+<section id="gpx-data-provider-gpx">
+<h3>GPX data provider (gpx)<a class="headerlink" href="#gpx-data-provider-gpx" title="Permalink to this heading">¶</a></h3>
 <p>Provider reads tracks, routes, and waypoints from a GPX file.  The url
 defines the name of the file, and the type of data to retrieve from it
 (“track”, “route”, or “waypoint”).</p>
 <p>An example url is “/home/user/data/holiday.gpx?type=route”</p>
+</section>
+<section id="grass-data-provider-grass">
+<h3>Grass data provider (grass)<a class="headerlink" href="#grass-data-provider-grass" title="Permalink to this heading">¶</a></h3>
 <p>Provider to display vector data in a GRASS GIS layer.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -2201,14 +2230,19 @@ Constructor - creates a vector layer</p>
 <p>The <a class="reference internal" href="#qgis.core.QgsVectorLayer" title="qgis.core.QgsVectorLayer"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsVectorLayer</span></code></a> is constructed by instantiating a data provider.  The provider
 interprets the supplied path (url) of the data source to connect to and access the
 data.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>path</strong> – The path or url of the parameter.  Typically this encodes
-parameters used by the data provider as url query items.</p></li>
-<li><p><strong>baseName</strong> – The name used to represent the layer in the legend</p></li>
-<li><p><strong>providerLib</strong> – The name of the data provider, e.g., “memory”, “postgres”</p></li>
-<li><p><strong>options</strong> – <p>layer load options</p>
+<dl class="field-list">
+<dt class="field-odd">param path</dt>
+<dd class="field-odd"><p>The path or url of the parameter.  Typically this encodes
+parameters used by the data provider as url query items.</p>
+</dd>
+<dt class="field-even">param baseName</dt>
+<dd class="field-even"><p>The name used to represent the layer in the legend</p>
+</dd>
+<dt class="field-odd">param providerLib</dt>
+<dd class="field-odd"><p>The name of the data provider, e.g., “memory”, “postgres”</p>
+</dd>
+<dt class="field-even">param options</dt>
+<dd class="field-even"><p>layer load options</p>
 <p class="rubric">Enums</p>
 <table class="autosummary longtable docutils align-default">
 <colgroup>
@@ -2977,121 +3011,121 @@ parameters used by the data provider as url query items.</p></li>
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.afterCommitChanges" title="qgis.core.QgsVectorLayer.afterCommitChanges"><code class="xref py py-obj docutils literal notranslate"><span class="pre">afterCommitChanges</span></code></a></p></td>
-<td><p>Emitted after changes are committed to the data provider.</p></td>
+<td><p>pyqtSignal(<a href="#id1"><span class="problematic" id="id2">*</span></a>types, name: str = ..., revision: int = ..., arguments: Sequence = ...) -&gt; PYQT_SIGNAL</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.afterRollBack" title="qgis.core.QgsVectorLayer.afterRollBack"><code class="xref py py-obj docutils literal notranslate"><span class="pre">afterRollBack</span></code></a></p></td>
-<td><p>Emitted after changes are rolled back.</p></td>
+<td><p>pyqtSignal(<a href="#id3"><span class="problematic" id="id4">*</span></a>types, name: str = ..., revision: int = ..., arguments: Sequence = ...) -&gt; PYQT_SIGNAL</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.allowCommitChanged" title="qgis.core.QgsVectorLayer.allowCommitChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">allowCommitChanged</span></code></a></p></td>
-<td><p>Emitted whenever the <a class="reference internal" href="#qgis.core.QgsVectorLayer.allowCommitChanged" title="qgis.core.QgsVectorLayer.allowCommitChanged"><code class="xref py py-func docutils literal notranslate"><span class="pre">allowCommitChanged()</span></code></a> property of this layer changes.</p></td>
+<td><p>pyqtSignal(<a href="#id5"><span class="problematic" id="id6">*</span></a>types, name: str = ..., revision: int = ..., arguments: Sequence = ...) -&gt; PYQT_SIGNAL</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.attributeAdded" title="qgis.core.QgsVectorLayer.attributeAdded"><code class="xref py py-obj docutils literal notranslate"><span class="pre">attributeAdded</span></code></a></p></td>
-<td><p>Will be emitted, when a new attribute has been added to this vector layer.</p></td>
+<td><p>pyqtSignal(<a href="#id7"><span class="problematic" id="id8">*</span></a>types, name: str = ..., revision: int = ..., arguments: Sequence = ...) -&gt; PYQT_SIGNAL</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.attributeDeleted" title="qgis.core.QgsVectorLayer.attributeDeleted"><code class="xref py py-obj docutils literal notranslate"><span class="pre">attributeDeleted</span></code></a></p></td>
-<td><p>Will be emitted, when an attribute has been deleted from this vector layer.</p></td>
+<td><p>pyqtSignal(<a href="#id9"><span class="problematic" id="id10">*</span></a>types, name: str = ..., revision: int = ..., arguments: Sequence = ...) -&gt; PYQT_SIGNAL</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.attributeValueChanged" title="qgis.core.QgsVectorLayer.attributeValueChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">attributeValueChanged</span></code></a></p></td>
-<td><p>Emitted whenever an attribute value change is done in the edit buffer.</p></td>
+<td><p>pyqtSignal(<a href="#id11"><span class="problematic" id="id12">*</span></a>types, name: str = ..., revision: int = ..., arguments: Sequence = ...) -&gt; PYQT_SIGNAL</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.beforeAddingExpressionField" title="qgis.core.QgsVectorLayer.beforeAddingExpressionField"><code class="xref py py-obj docutils literal notranslate"><span class="pre">beforeAddingExpressionField</span></code></a></p></td>
-<td><p>Will be emitted, when an expression field is going to be added to this vector layer.</p></td>
+<td><p>pyqtSignal(<a href="#id13"><span class="problematic" id="id14">*</span></a>types, name: str = ..., revision: int = ..., arguments: Sequence = ...) -&gt; PYQT_SIGNAL</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.beforeCommitChanges" title="qgis.core.QgsVectorLayer.beforeCommitChanges"><code class="xref py py-obj docutils literal notranslate"><span class="pre">beforeCommitChanges</span></code></a></p></td>
-<td><p>Emitted before changes are committed to the data provider.</p></td>
+<td><p>pyqtSignal(<a href="#id15"><span class="problematic" id="id16">*</span></a>types, name: str = ..., revision: int = ..., arguments: Sequence = ...) -&gt; PYQT_SIGNAL</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.beforeEditingStarted" title="qgis.core.QgsVectorLayer.beforeEditingStarted"><code class="xref py py-obj docutils literal notranslate"><span class="pre">beforeEditingStarted</span></code></a></p></td>
-<td><p>Emitted before editing on this layer is started.</p></td>
+<td><p>pyqtSignal(<a href="#id17"><span class="problematic" id="id18">*</span></a>types, name: str = ..., revision: int = ..., arguments: Sequence = ...) -&gt; PYQT_SIGNAL</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.beforeModifiedCheck" title="qgis.core.QgsVectorLayer.beforeModifiedCheck"><code class="xref py py-obj docutils literal notranslate"><span class="pre">beforeModifiedCheck</span></code></a></p></td>
-<td><p>Emitted when the layer is checked for modifications.</p></td>
+<td><p>pyqtSignal(<a href="#id19"><span class="problematic" id="id20">*</span></a>types, name: str = ..., revision: int = ..., arguments: Sequence = ...) -&gt; PYQT_SIGNAL</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.beforeRemovingExpressionField" title="qgis.core.QgsVectorLayer.beforeRemovingExpressionField"><code class="xref py py-obj docutils literal notranslate"><span class="pre">beforeRemovingExpressionField</span></code></a></p></td>
-<td><p>Will be emitted, when an expression field is going to be deleted from this vector layer.</p></td>
+<td><p>pyqtSignal(<a href="#id21"><span class="problematic" id="id22">*</span></a>types, name: str = ..., revision: int = ..., arguments: Sequence = ...) -&gt; PYQT_SIGNAL</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.beforeRollBack" title="qgis.core.QgsVectorLayer.beforeRollBack"><code class="xref py py-obj docutils literal notranslate"><span class="pre">beforeRollBack</span></code></a></p></td>
-<td><p>Emitted before changes are rolled back.</p></td>
+<td><p>pyqtSignal(<a href="#id23"><span class="problematic" id="id24">*</span></a>types, name: str = ..., revision: int = ..., arguments: Sequence = ...) -&gt; PYQT_SIGNAL</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.committedAttributeValuesChanges" title="qgis.core.QgsVectorLayer.committedAttributeValuesChanges"><code class="xref py py-obj docutils literal notranslate"><span class="pre">committedAttributeValuesChanges</span></code></a></p></td>
-<td><p>Emitted when attribute value changes are saved to the provider [signal]</p></td>
+<td><p>pyqtSignal(<a href="#id25"><span class="problematic" id="id26">*</span></a>types, name: str = ..., revision: int = ..., arguments: Sequence = ...) -&gt; PYQT_SIGNAL</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.committedAttributesAdded" title="qgis.core.QgsVectorLayer.committedAttributesAdded"><code class="xref py py-obj docutils literal notranslate"><span class="pre">committedAttributesAdded</span></code></a></p></td>
-<td><p>Emitted when attributes are added to the provider [signal]</p></td>
+<td><p>pyqtSignal(<a href="#id27"><span class="problematic" id="id28">*</span></a>types, name: str = ..., revision: int = ..., arguments: Sequence = ...) -&gt; PYQT_SIGNAL</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.committedAttributesDeleted" title="qgis.core.QgsVectorLayer.committedAttributesDeleted"><code class="xref py py-obj docutils literal notranslate"><span class="pre">committedAttributesDeleted</span></code></a></p></td>
-<td><p>Emitted when attributes are deleted from the provider [signal]</p></td>
+<td><p>pyqtSignal(<a href="#id29"><span class="problematic" id="id30">*</span></a>types, name: str = ..., revision: int = ..., arguments: Sequence = ...) -&gt; PYQT_SIGNAL</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.committedFeaturesAdded" title="qgis.core.QgsVectorLayer.committedFeaturesAdded"><code class="xref py py-obj docutils literal notranslate"><span class="pre">committedFeaturesAdded</span></code></a></p></td>
-<td><p>Emitted when features are added to the provider [signal]</p></td>
+<td><p>pyqtSignal(<a href="#id31"><span class="problematic" id="id32">*</span></a>types, name: str = ..., revision: int = ..., arguments: Sequence = ...) -&gt; PYQT_SIGNAL</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.committedFeaturesRemoved" title="qgis.core.QgsVectorLayer.committedFeaturesRemoved"><code class="xref py py-obj docutils literal notranslate"><span class="pre">committedFeaturesRemoved</span></code></a></p></td>
-<td><p>Emitted when features are deleted from the provider [signal]</p></td>
+<td><p>pyqtSignal(<a href="#id33"><span class="problematic" id="id34">*</span></a>types, name: str = ..., revision: int = ..., arguments: Sequence = ...) -&gt; PYQT_SIGNAL</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.committedGeometriesChanges" title="qgis.core.QgsVectorLayer.committedGeometriesChanges"><code class="xref py py-obj docutils literal notranslate"><span class="pre">committedGeometriesChanges</span></code></a></p></td>
-<td><p>Emitted when geometry changes are saved to the provider [signal]</p></td>
+<td><p>pyqtSignal(<a href="#id35"><span class="problematic" id="id36">*</span></a>types, name: str = ..., revision: int = ..., arguments: Sequence = ...) -&gt; PYQT_SIGNAL</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.displayExpressionChanged" title="qgis.core.QgsVectorLayer.displayExpressionChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">displayExpressionChanged</span></code></a></p></td>
-<td><p>Emitted when the display expression changes</p></td>
+<td><p>pyqtSignal(<a href="#id37"><span class="problematic" id="id38">*</span></a>types, name: str = ..., revision: int = ..., arguments: Sequence = ...) -&gt; PYQT_SIGNAL</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.editCommandDestroyed" title="qgis.core.QgsVectorLayer.editCommandDestroyed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">editCommandDestroyed</span></code></a></p></td>
-<td><p>Signal emitted, when an edit command is destroyed</p></td>
+<td><p>pyqtSignal(<a href="#id39"><span class="problematic" id="id40">*</span></a>types, name: str = ..., revision: int = ..., arguments: Sequence = ...) -&gt; PYQT_SIGNAL</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.editCommandEnded" title="qgis.core.QgsVectorLayer.editCommandEnded"><code class="xref py py-obj docutils literal notranslate"><span class="pre">editCommandEnded</span></code></a></p></td>
-<td><p>Signal emitted, when an edit command successfully ended</p></td>
+<td><p>pyqtSignal(<a href="#id41"><span class="problematic" id="id42">*</span></a>types, name: str = ..., revision: int = ..., arguments: Sequence = ...) -&gt; PYQT_SIGNAL</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.editCommandStarted" title="qgis.core.QgsVectorLayer.editCommandStarted"><code class="xref py py-obj docutils literal notranslate"><span class="pre">editCommandStarted</span></code></a></p></td>
-<td><p>Signal emitted when a new edit command has been started</p></td>
+<td><p>pyqtSignal(<a href="#id43"><span class="problematic" id="id44">*</span></a>types, name: str = ..., revision: int = ..., arguments: Sequence = ...) -&gt; PYQT_SIGNAL</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.editFormConfigChanged" title="qgis.core.QgsVectorLayer.editFormConfigChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">editFormConfigChanged</span></code></a></p></td>
-<td><p>Will be emitted whenever the edit form configuration of this layer changes.</p></td>
+<td><p>pyqtSignal(<a href="#id45"><span class="problematic" id="id46">*</span></a>types, name: str = ..., revision: int = ..., arguments: Sequence = ...) -&gt; PYQT_SIGNAL</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.featureAdded" title="qgis.core.QgsVectorLayer.featureAdded"><code class="xref py py-obj docutils literal notranslate"><span class="pre">featureAdded</span></code></a></p></td>
-<td><p>Emitted when a new feature has been added to the layer</p></td>
+<td><p>pyqtSignal(<a href="#id47"><span class="problematic" id="id48">*</span></a>types, name: str = ..., revision: int = ..., arguments: Sequence = ...) -&gt; PYQT_SIGNAL</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.featureBlendModeChanged" title="qgis.core.QgsVectorLayer.featureBlendModeChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">featureBlendModeChanged</span></code></a></p></td>
-<td><p>Signal emitted when <a class="reference internal" href="#qgis.core.QgsVectorLayer.setFeatureBlendMode" title="qgis.core.QgsVectorLayer.setFeatureBlendMode"><code class="xref py py-func docutils literal notranslate"><span class="pre">setFeatureBlendMode()</span></code></a> is called [signal]</p></td>
+<td><p>pyqtSignal(<a href="#id49"><span class="problematic" id="id50">*</span></a>types, name: str = ..., revision: int = ..., arguments: Sequence = ...) -&gt; PYQT_SIGNAL</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.featureDeleted" title="qgis.core.QgsVectorLayer.featureDeleted"><code class="xref py py-obj docutils literal notranslate"><span class="pre">featureDeleted</span></code></a></p></td>
-<td><p>Emitted when a feature has been deleted.</p></td>
+<td><p>pyqtSignal(<a href="#id51"><span class="problematic" id="id52">*</span></a>types, name: str = ..., revision: int = ..., arguments: Sequence = ...) -&gt; PYQT_SIGNAL</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.featuresDeleted" title="qgis.core.QgsVectorLayer.featuresDeleted"><code class="xref py py-obj docutils literal notranslate"><span class="pre">featuresDeleted</span></code></a></p></td>
-<td><p>Emitted when features have been deleted.</p></td>
+<td><p>pyqtSignal(<a href="#id53"><span class="problematic" id="id54">*</span></a>types, name: str = ..., revision: int = ..., arguments: Sequence = ...) -&gt; PYQT_SIGNAL</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.geometryChanged" title="qgis.core.QgsVectorLayer.geometryChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geometryChanged</span></code></a></p></td>
-<td><p>Emitted whenever a geometry change is done in the edit buffer.</p></td>
+<td><p>pyqtSignal(<a href="#id55"><span class="problematic" id="id56">*</span></a>types, name: str = ..., revision: int = ..., arguments: Sequence = ...) -&gt; PYQT_SIGNAL</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.labelingFontNotFound" title="qgis.core.QgsVectorLayer.labelingFontNotFound"><code class="xref py py-obj docutils literal notranslate"><span class="pre">labelingFontNotFound</span></code></a></p></td>
-<td><p>Emitted when the font family defined for labeling layer is not found on system [signal]</p></td>
+<td><p>pyqtSignal(<a href="#id57"><span class="problematic" id="id58">*</span></a>types, name: str = ..., revision: int = ..., arguments: Sequence = ...) -&gt; PYQT_SIGNAL</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.mapTipTemplateChanged" title="qgis.core.QgsVectorLayer.mapTipTemplateChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mapTipTemplateChanged</span></code></a></p></td>
-<td><p>Emitted when the map tip changes</p></td>
+<td><p>pyqtSignal(<a href="#id59"><span class="problematic" id="id60">*</span></a>types, name: str = ..., revision: int = ..., arguments: Sequence = ...) -&gt; PYQT_SIGNAL</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.raiseError" title="qgis.core.QgsVectorLayer.raiseError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">raiseError</span></code></a></p></td>
-<td><p>Signals an error related to this vector layer.</p></td>
+<td><p>pyqtSignal(<a href="#id61"><span class="problematic" id="id62">*</span></a>types, name: str = ..., revision: int = ..., arguments: Sequence = ...) -&gt; PYQT_SIGNAL</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.readCustomSymbology" title="qgis.core.QgsVectorLayer.readCustomSymbology"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readCustomSymbology</span></code></a></p></td>
-<td><p>Signal emitted whenever the symbology (QML-file) for this layer is being read.</p></td>
+<td><p>pyqtSignal(<a href="#id63"><span class="problematic" id="id64">*</span></a>types, name: str = ..., revision: int = ..., arguments: Sequence = ...) -&gt; PYQT_SIGNAL</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.readOnlyChanged" title="qgis.core.QgsVectorLayer.readOnlyChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readOnlyChanged</span></code></a></p></td>
-<td><p>Emitted when the read only state of this layer is changed.</p></td>
+<td><p>pyqtSignal(<a href="#id65"><span class="problematic" id="id66">*</span></a>types, name: str = ..., revision: int = ..., arguments: Sequence = ...) -&gt; PYQT_SIGNAL</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.selectionChanged" title="qgis.core.QgsVectorLayer.selectionChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">selectionChanged</span></code></a></p></td>
-<td><p>Emitted when selection was changed</p></td>
+<td><p>pyqtSignal(<a href="#id67"><span class="problematic" id="id68">*</span></a>types, name: str = ..., revision: int = ..., arguments: Sequence = ...) -&gt; PYQT_SIGNAL</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.subsetStringChanged" title="qgis.core.QgsVectorLayer.subsetStringChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">subsetStringChanged</span></code></a></p></td>
-<td><p>Emitted when the layer's subset string has changed.</p></td>
+<td><p>pyqtSignal(<a href="#id69"><span class="problematic" id="id70">*</span></a>types, name: str = ..., revision: int = ..., arguments: Sequence = ...) -&gt; PYQT_SIGNAL</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.supportsEditingChanged" title="qgis.core.QgsVectorLayer.supportsEditingChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">supportsEditingChanged</span></code></a></p></td>
-<td><p>Emitted when the read only state or the data provider of this layer is changed.</p></td>
+<td><p>pyqtSignal(<a href="#id71"><span class="problematic" id="id72">*</span></a>types, name: str = ..., revision: int = ..., arguments: Sequence = ...) -&gt; PYQT_SIGNAL</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.symbolFeatureCountMapChanged" title="qgis.core.QgsVectorLayer.symbolFeatureCountMapChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">symbolFeatureCountMapChanged</span></code></a></p></td>
-<td><p>Emitted when the feature count for symbols on this layer has been recalculated.</p></td>
+<td><p>pyqtSignal(<a href="#id73"><span class="problematic" id="id74">*</span></a>types, name: str = ..., revision: int = ..., arguments: Sequence = ...) -&gt; PYQT_SIGNAL</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.updatedFields" title="qgis.core.QgsVectorLayer.updatedFields"><code class="xref py py-obj docutils literal notranslate"><span class="pre">updatedFields</span></code></a></p></td>
-<td><p>Emitted whenever the fields available from this layer have been changed.</p></td>
+<td><p>pyqtSignal(<a href="#id75"><span class="problematic" id="id76">*</span></a>types, name: str = ..., revision: int = ..., arguments: Sequence = ...) -&gt; PYQT_SIGNAL</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayer.writeCustomSymbology" title="qgis.core.QgsVectorLayer.writeCustomSymbology"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeCustomSymbology</span></code></a></p></td>
-<td><p>Signal emitted whenever the symbology (QML-file) for this layer is being written.</p></td>
+<td><p>pyqtSignal(<a href="#id77"><span class="problematic" id="id78">*</span></a>types, name: str = ..., revision: int = ..., arguments: Sequence = ...) -&gt; PYQT_SIGNAL</p></td>
 </tr>
 </tbody>
 </table>
@@ -3103,8 +3137,6 @@ parameters used by the data provider as url query items.</p></li>
 <tbody>
 </tbody>
 </table>
-</p></li>
-</ul>
 </dd>
 </dl>
 <dl class="py class">
@@ -3781,19 +3813,55 @@ changes can be discarded by calling <a class="reference internal" href="#qgis.co
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.core.QgsVectorLayer.afterCommitChanges">
 <span class="sig-name descname"><span class="pre">afterCommitChanges</span></span><a class="headerlink" href="#qgis.core.QgsVectorLayer.afterCommitChanges" title="Permalink to this definition">¶</a></dt>
-<dd><p>Emitted after changes are committed to the data provider.</p>
-<div class="versionadded">
-<p><span class="versionmodified added">New in version 3.16: </span>[signal]</p>
-</div>
+<dd><p>pyqtSignal(<a href="#id79"><span class="problematic" id="id80">*</span></a>types, name: str = …, revision: int = …, arguments: Sequence = …) -&gt; PYQT_SIGNAL</p>
+<p>types is normally a sequence of individual types.  Each type is either a
+type object or a string that is the name of a C++ type.  Alternatively
+each type could itself be a sequence of types each describing a different
+overloaded signal.
+name is the optional C++ name of the signal.  If it is not specified then
+the name of the class attribute that is bound to the signal is used.
+revision is the optional revision of the signal that is exported to QML.
+If it is not specified then 0 is used.
+arguments is the optional sequence of the names of the signal’s arguments.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str = </em><em>...</em>) – </p></li>
+<li><p><strong>revision</strong> (<em>int = </em><em>...</em>) – </p></li>
+<li><p><strong>arguments</strong> (<em>Sequence = </em><em>...</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>PYQT_SIGNAL</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.core.QgsVectorLayer.afterRollBack">
 <span class="sig-name descname"><span class="pre">afterRollBack</span></span><a class="headerlink" href="#qgis.core.QgsVectorLayer.afterRollBack" title="Permalink to this definition">¶</a></dt>
-<dd><p>Emitted after changes are rolled back.</p>
-<div class="versionadded">
-<p><span class="versionmodified added">New in version 3.4: </span>[signal]</p>
-</div>
+<dd><p>pyqtSignal(<a href="#id81"><span class="problematic" id="id82">*</span></a>types, name: str = …, revision: int = …, arguments: Sequence = …) -&gt; PYQT_SIGNAL</p>
+<p>types is normally a sequence of individual types.  Each type is either a
+type object or a string that is the name of a C++ type.  Alternatively
+each type could itself be a sequence of types each describing a different
+overloaded signal.
+name is the optional C++ name of the signal.  If it is not specified then
+the name of the class attribute that is bound to the signal is used.
+revision is the optional revision of the signal that is exported to QML.
+If it is not specified then 0 is used.
+arguments is the optional sequence of the names of the signal’s arguments.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str = </em><em>...</em>) – </p></li>
+<li><p><strong>revision</strong> (<em>int = </em><em>...</em>) – </p></li>
+<li><p><strong>arguments</strong> (<em>Sequence = </em><em>...</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>PYQT_SIGNAL</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -3828,10 +3896,28 @@ Currently any filtering expression provided will override filters in the Feature
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.core.QgsVectorLayer.allowCommitChanged">
 <span class="sig-name descname"><span class="pre">allowCommitChanged</span></span><a class="headerlink" href="#qgis.core.QgsVectorLayer.allowCommitChanged" title="Permalink to this definition">¶</a></dt>
-<dd><p>Emitted whenever the <a class="reference internal" href="#qgis.core.QgsVectorLayer.allowCommitChanged" title="qgis.core.QgsVectorLayer.allowCommitChanged"><code class="xref py py-func docutils literal notranslate"><span class="pre">allowCommitChanged()</span></code></a> property of this layer changes.</p>
-<div class="versionadded">
-<p><span class="versionmodified added">New in version 3.4: </span>[signal]</p>
-</div>
+<dd><p>pyqtSignal(<a href="#id83"><span class="problematic" id="id84">*</span></a>types, name: str = …, revision: int = …, arguments: Sequence = …) -&gt; PYQT_SIGNAL</p>
+<p>types is normally a sequence of individual types.  Each type is either a
+type object or a string that is the name of a C++ type.  Alternatively
+each type could itself be a sequence of types each describing a different
+overloaded signal.
+name is the optional C++ name of the signal.  If it is not specified then
+the name of the class attribute that is bound to the signal is used.
+revision is the optional revision of the signal that is exported to QML.
+If it is not specified then 0 is used.
+arguments is the optional sequence of the names of the signal’s arguments.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str = </em><em>...</em>) – </p></li>
+<li><p><strong>revision</strong> (<em>int = </em><em>...</em>) – </p></li>
+<li><p><strong>arguments</strong> (<em>Sequence = </em><em>...</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>PYQT_SIGNAL</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -3843,17 +3929,28 @@ Currently any filtering expression provided will override filters in the Feature
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.core.QgsVectorLayer.attributeAdded">
 <span class="sig-name descname"><span class="pre">attributeAdded</span></span><a class="headerlink" href="#qgis.core.QgsVectorLayer.attributeAdded" title="Permalink to this definition">¶</a></dt>
-<dd><p>Will be emitted, when a new attribute has been added to this vector layer.
-Applies only to types <a class="reference internal" href="QgsFields.html#module-QgsFields" title="QgsFields"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsFields</span></code></a>.OriginEdit, <a class="reference internal" href="QgsFields.html#module-QgsFields" title="QgsFields"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsFields</span></code></a>.OriginProvider and <a class="reference internal" href="QgsFields.html#module-QgsFields" title="QgsFields"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsFields</span></code></a>.OriginExpression</p>
+<dd><p>pyqtSignal(<a href="#id85"><span class="problematic" id="id86">*</span></a>types, name: str = …, revision: int = …, arguments: Sequence = …) -&gt; PYQT_SIGNAL</p>
+<p>types is normally a sequence of individual types.  Each type is either a
+type object or a string that is the name of a C++ type.  Alternatively
+each type could itself be a sequence of types each describing a different
+overloaded signal.
+name is the optional C++ name of the signal.  If it is not specified then
+the name of the class attribute that is bound to the signal is used.
+revision is the optional revision of the signal that is exported to QML.
+If it is not specified then 0 is used.
+arguments is the optional sequence of the names of the signal’s arguments.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>idx</strong> (<em>int</em>) – The index of the new attribute</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str = </em><em>...</em>) – </p></li>
+<li><p><strong>revision</strong> (<em>int = </em><em>...</em>) – </p></li>
+<li><p><strong>arguments</strong> (<em>Sequence = </em><em>...</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>PYQT_SIGNAL</p>
 </dd>
 </dl>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p><a class="reference internal" href="#qgis.core.QgsVectorLayer.updatedFields" title="qgis.core.QgsVectorLayer.updatedFields"><code class="xref py py-func docutils literal notranslate"><span class="pre">updatedFields()</span></code></a> [signal]</p>
-</div>
 </dd></dl>
 
 <dl class="py method">
@@ -3886,17 +3983,28 @@ if no alias is defined.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.core.QgsVectorLayer.attributeDeleted">
 <span class="sig-name descname"><span class="pre">attributeDeleted</span></span><a class="headerlink" href="#qgis.core.QgsVectorLayer.attributeDeleted" title="Permalink to this definition">¶</a></dt>
-<dd><p>Will be emitted, when an attribute has been deleted from this vector layer.
-Applies only to types <a class="reference internal" href="QgsFields.html#module-QgsFields" title="QgsFields"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsFields</span></code></a>.OriginEdit, <a class="reference internal" href="QgsFields.html#module-QgsFields" title="QgsFields"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsFields</span></code></a>.OriginProvider and <a class="reference internal" href="QgsFields.html#module-QgsFields" title="QgsFields"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsFields</span></code></a>.OriginExpression</p>
+<dd><p>pyqtSignal(<a href="#id87"><span class="problematic" id="id88">*</span></a>types, name: str = …, revision: int = …, arguments: Sequence = …) -&gt; PYQT_SIGNAL</p>
+<p>types is normally a sequence of individual types.  Each type is either a
+type object or a string that is the name of a C++ type.  Alternatively
+each type could itself be a sequence of types each describing a different
+overloaded signal.
+name is the optional C++ name of the signal.  If it is not specified then
+the name of the class attribute that is bound to the signal is used.
+revision is the optional revision of the signal that is exported to QML.
+If it is not specified then 0 is used.
+arguments is the optional sequence of the names of the signal’s arguments.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>idx</strong> (<em>int</em>) – The index of the deleted attribute</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str = </em><em>...</em>) – </p></li>
+<li><p><strong>revision</strong> (<em>int = </em><em>...</em>) – </p></li>
+<li><p><strong>arguments</strong> (<em>Sequence = </em><em>...</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>PYQT_SIGNAL</p>
 </dd>
 </dl>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p><a class="reference internal" href="#qgis.core.QgsVectorLayer.updatedFields" title="qgis.core.QgsVectorLayer.updatedFields"><code class="xref py py-func docutils literal notranslate"><span class="pre">updatedFields()</span></code></a> [signal]</p>
-</div>
 </dd></dl>
 
 <dl class="py method">
@@ -3939,15 +4047,26 @@ This defines the appearance of the attribute table.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.core.QgsVectorLayer.attributeValueChanged">
 <span class="sig-name descname"><span class="pre">attributeValueChanged</span></span><a class="headerlink" href="#qgis.core.QgsVectorLayer.attributeValueChanged" title="Permalink to this definition">¶</a></dt>
-<dd><p>Emitted whenever an attribute value change is done in the edit buffer.
-Note that at this point the attribute change is not yet saved to the provider.</p>
+<dd><p>pyqtSignal(<a href="#id89"><span class="problematic" id="id90">*</span></a>types, name: str = …, revision: int = …, arguments: Sequence = …) -&gt; PYQT_SIGNAL</p>
+<p>types is normally a sequence of individual types.  Each type is either a
+type object or a string that is the name of a C++ type.  Alternatively
+each type could itself be a sequence of types each describing a different
+overloaded signal.
+name is the optional C++ name of the signal.  If it is not specified then
+the name of the class attribute that is bound to the signal is used.
+revision is the optional revision of the signal that is exported to QML.
+If it is not specified then 0 is used.
+arguments is the optional sequence of the names of the signal’s arguments.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>fid</strong> (<em>int</em>) – The id of the changed feature</p></li>
-<li><p><strong>idx</strong> (<em>int</em>) – The attribute index of the changed attribute</p></li>
-<li><p><strong>value</strong> (<em>Any</em>) – The new value of the attribute [signal]</p></li>
+<li><p><strong>name</strong> (<em>str = </em><em>...</em>) – </p></li>
+<li><p><strong>revision</strong> (<em>int = </em><em>...</em>) – </p></li>
+<li><p><strong>arguments</strong> (<em>Sequence = </em><em>...</em>) – </p></li>
 </ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>PYQT_SIGNAL</p>
 </dd>
 </dl>
 </dd></dl>
@@ -3969,11 +4088,26 @@ Note that at this point the attribute change is not yet saved to the provider.</
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.core.QgsVectorLayer.beforeAddingExpressionField">
 <span class="sig-name descname"><span class="pre">beforeAddingExpressionField</span></span><a class="headerlink" href="#qgis.core.QgsVectorLayer.beforeAddingExpressionField" title="Permalink to this definition">¶</a></dt>
-<dd><p>Will be emitted, when an expression field is going to be added to this vector layer.
-Applies only to types <a class="reference internal" href="QgsFields.html#module-QgsFields" title="QgsFields"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsFields</span></code></a>.OriginExpression</p>
+<dd><p>pyqtSignal(<a href="#id91"><span class="problematic" id="id92">*</span></a>types, name: str = …, revision: int = …, arguments: Sequence = …) -&gt; PYQT_SIGNAL</p>
+<p>types is normally a sequence of individual types.  Each type is either a
+type object or a string that is the name of a C++ type.  Alternatively
+each type could itself be a sequence of types each describing a different
+overloaded signal.
+name is the optional C++ name of the signal.  If it is not specified then
+the name of the class attribute that is bound to the signal is used.
+revision is the optional revision of the signal that is exported to QML.
+If it is not specified then 0 is used.
+arguments is the optional sequence of the names of the signal’s arguments.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>fieldName</strong> (<em>str</em>) – The name of the attribute to be added [signal]</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str = </em><em>...</em>) – </p></li>
+<li><p><strong>revision</strong> (<em>int = </em><em>...</em>) – </p></li>
+<li><p><strong>arguments</strong> (<em>Sequence = </em><em>...</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>PYQT_SIGNAL</p>
 </dd>
 </dl>
 </dd></dl>
@@ -3981,11 +4115,26 @@ Applies only to types <a class="reference internal" href="QgsFields.html#module-
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.core.QgsVectorLayer.beforeCommitChanges">
 <span class="sig-name descname"><span class="pre">beforeCommitChanges</span></span><a class="headerlink" href="#qgis.core.QgsVectorLayer.beforeCommitChanges" title="Permalink to this definition">¶</a></dt>
-<dd><p>Emitted before changes are committed to the data provider.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">stopEditing</span></code> flag specifies if the editing mode shall be left after this commit. [signal]</p>
+<dd><p>pyqtSignal(<a href="#id93"><span class="problematic" id="id94">*</span></a>types, name: str = …, revision: int = …, arguments: Sequence = …) -&gt; PYQT_SIGNAL</p>
+<p>types is normally a sequence of individual types.  Each type is either a
+type object or a string that is the name of a C++ type.  Alternatively
+each type could itself be a sequence of types each describing a different
+overloaded signal.
+name is the optional C++ name of the signal.  If it is not specified then
+the name of the class attribute that is bound to the signal is used.
+revision is the optional revision of the signal that is exported to QML.
+If it is not specified then 0 is used.
+arguments is the optional sequence of the names of the signal’s arguments.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>stopEditing</strong> (<em>bool</em>) – </p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str = </em><em>...</em>) – </p></li>
+<li><p><strong>revision</strong> (<em>int = </em><em>...</em>) – </p></li>
+<li><p><strong>arguments</strong> (<em>Sequence = </em><em>...</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>PYQT_SIGNAL</p>
 </dd>
 </dl>
 </dd></dl>
@@ -3993,23 +4142,80 @@ Applies only to types <a class="reference internal" href="QgsFields.html#module-
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.core.QgsVectorLayer.beforeEditingStarted">
 <span class="sig-name descname"><span class="pre">beforeEditingStarted</span></span><a class="headerlink" href="#qgis.core.QgsVectorLayer.beforeEditingStarted" title="Permalink to this definition">¶</a></dt>
-<dd><p>Emitted before editing on this layer is started. [signal]</p>
+<dd><p>pyqtSignal(<a href="#id95"><span class="problematic" id="id96">*</span></a>types, name: str = …, revision: int = …, arguments: Sequence = …) -&gt; PYQT_SIGNAL</p>
+<p>types is normally a sequence of individual types.  Each type is either a
+type object or a string that is the name of a C++ type.  Alternatively
+each type could itself be a sequence of types each describing a different
+overloaded signal.
+name is the optional C++ name of the signal.  If it is not specified then
+the name of the class attribute that is bound to the signal is used.
+revision is the optional revision of the signal that is exported to QML.
+If it is not specified then 0 is used.
+arguments is the optional sequence of the names of the signal’s arguments.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str = </em><em>...</em>) – </p></li>
+<li><p><strong>revision</strong> (<em>int = </em><em>...</em>) – </p></li>
+<li><p><strong>arguments</strong> (<em>Sequence = </em><em>...</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>PYQT_SIGNAL</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.core.QgsVectorLayer.beforeModifiedCheck">
 <span class="sig-name descname"><span class="pre">beforeModifiedCheck</span></span><a class="headerlink" href="#qgis.core.QgsVectorLayer.beforeModifiedCheck" title="Permalink to this definition">¶</a></dt>
-<dd><p>Emitted when the layer is checked for modifications. Use for last-minute additions. [signal]</p>
+<dd><p>pyqtSignal(<a href="#id97"><span class="problematic" id="id98">*</span></a>types, name: str = …, revision: int = …, arguments: Sequence = …) -&gt; PYQT_SIGNAL</p>
+<p>types is normally a sequence of individual types.  Each type is either a
+type object or a string that is the name of a C++ type.  Alternatively
+each type could itself be a sequence of types each describing a different
+overloaded signal.
+name is the optional C++ name of the signal.  If it is not specified then
+the name of the class attribute that is bound to the signal is used.
+revision is the optional revision of the signal that is exported to QML.
+If it is not specified then 0 is used.
+arguments is the optional sequence of the names of the signal’s arguments.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str = </em><em>...</em>) – </p></li>
+<li><p><strong>revision</strong> (<em>int = </em><em>...</em>) – </p></li>
+<li><p><strong>arguments</strong> (<em>Sequence = </em><em>...</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>PYQT_SIGNAL</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.core.QgsVectorLayer.beforeRemovingExpressionField">
 <span class="sig-name descname"><span class="pre">beforeRemovingExpressionField</span></span><a class="headerlink" href="#qgis.core.QgsVectorLayer.beforeRemovingExpressionField" title="Permalink to this definition">¶</a></dt>
-<dd><p>Will be emitted, when an expression field is going to be deleted from this vector layer.
-Applies only to types <a class="reference internal" href="QgsFields.html#module-QgsFields" title="QgsFields"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsFields</span></code></a>.OriginExpression</p>
+<dd><p>pyqtSignal(<a href="#id99"><span class="problematic" id="id100">*</span></a>types, name: str = …, revision: int = …, arguments: Sequence = …) -&gt; PYQT_SIGNAL</p>
+<p>types is normally a sequence of individual types.  Each type is either a
+type object or a string that is the name of a C++ type.  Alternatively
+each type could itself be a sequence of types each describing a different
+overloaded signal.
+name is the optional C++ name of the signal.  If it is not specified then
+the name of the class attribute that is bound to the signal is used.
+revision is the optional revision of the signal that is exported to QML.
+If it is not specified then 0 is used.
+arguments is the optional sequence of the names of the signal’s arguments.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>idx</strong> (<em>int</em>) – The index of the attribute to be deleted [signal]</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str = </em><em>...</em>) – </p></li>
+<li><p><strong>revision</strong> (<em>int = </em><em>...</em>) – </p></li>
+<li><p><strong>arguments</strong> (<em>Sequence = </em><em>...</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>PYQT_SIGNAL</p>
 </dd>
 </dl>
 </dd></dl>
@@ -4017,7 +4223,28 @@ Applies only to types <a class="reference internal" href="QgsFields.html#module-
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.core.QgsVectorLayer.beforeRollBack">
 <span class="sig-name descname"><span class="pre">beforeRollBack</span></span><a class="headerlink" href="#qgis.core.QgsVectorLayer.beforeRollBack" title="Permalink to this definition">¶</a></dt>
-<dd><p>Emitted before changes are rolled back. [signal]</p>
+<dd><p>pyqtSignal(<a href="#id101"><span class="problematic" id="id102">*</span></a>types, name: str = …, revision: int = …, arguments: Sequence = …) -&gt; PYQT_SIGNAL</p>
+<p>types is normally a sequence of individual types.  Each type is either a
+type object or a string that is the name of a C++ type.  Alternatively
+each type could itself be a sequence of types each describing a different
+overloaded signal.
+name is the optional C++ name of the signal.  If it is not specified then
+the name of the class attribute that is bound to the signal is used.
+revision is the optional revision of the signal that is exported to QML.
+If it is not specified then 0 is used.
+arguments is the optional sequence of the names of the signal’s arguments.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str = </em><em>...</em>) – </p></li>
+<li><p><strong>revision</strong> (<em>int = </em><em>...</em>) – </p></li>
+<li><p><strong>arguments</strong> (<em>Sequence = </em><em>...</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>PYQT_SIGNAL</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -4313,13 +4540,26 @@ to commit changes to the layer.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.core.QgsVectorLayer.committedAttributeValuesChanges">
 <span class="sig-name descname"><span class="pre">committedAttributeValuesChanges</span></span><a class="headerlink" href="#qgis.core.QgsVectorLayer.committedAttributeValuesChanges" title="Permalink to this definition">¶</a></dt>
-<dd><p>Emitted when attribute value changes are saved to the provider [signal]</p>
+<dd><p>pyqtSignal(<a href="#id103"><span class="problematic" id="id104">*</span></a>types, name: str = …, revision: int = …, arguments: Sequence = …) -&gt; PYQT_SIGNAL</p>
+<p>types is normally a sequence of individual types.  Each type is either a
+type object or a string that is the name of a C++ type.  Alternatively
+each type could itself be a sequence of types each describing a different
+overloaded signal.
+name is the optional C++ name of the signal.  If it is not specified then
+the name of the class attribute that is bound to the signal is used.
+revision is the optional revision of the signal that is exported to QML.
+If it is not specified then 0 is used.
+arguments is the optional sequence of the names of the signal’s arguments.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>layerId</strong> (<em>str</em>) – </p></li>
-<li><p><strong>changedAttributesValues</strong> (<em>object</em>) – </p></li>
+<li><p><strong>name</strong> (<em>str = </em><em>...</em>) – </p></li>
+<li><p><strong>revision</strong> (<em>int = </em><em>...</em>) – </p></li>
+<li><p><strong>arguments</strong> (<em>Sequence = </em><em>...</em>) – </p></li>
 </ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>PYQT_SIGNAL</p>
 </dd>
 </dl>
 </dd></dl>
@@ -4327,13 +4567,26 @@ to commit changes to the layer.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.core.QgsVectorLayer.committedAttributesAdded">
 <span class="sig-name descname"><span class="pre">committedAttributesAdded</span></span><a class="headerlink" href="#qgis.core.QgsVectorLayer.committedAttributesAdded" title="Permalink to this definition">¶</a></dt>
-<dd><p>Emitted when attributes are added to the provider [signal]</p>
+<dd><p>pyqtSignal(<a href="#id105"><span class="problematic" id="id106">*</span></a>types, name: str = …, revision: int = …, arguments: Sequence = …) -&gt; PYQT_SIGNAL</p>
+<p>types is normally a sequence of individual types.  Each type is either a
+type object or a string that is the name of a C++ type.  Alternatively
+each type could itself be a sequence of types each describing a different
+overloaded signal.
+name is the optional C++ name of the signal.  If it is not specified then
+the name of the class attribute that is bound to the signal is used.
+revision is the optional revision of the signal that is exported to QML.
+If it is not specified then 0 is used.
+arguments is the optional sequence of the names of the signal’s arguments.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>layerId</strong> (<em>str</em>) – </p></li>
-<li><p><strong>addedAttributes</strong> (<em>object</em>) – </p></li>
+<li><p><strong>name</strong> (<em>str = </em><em>...</em>) – </p></li>
+<li><p><strong>revision</strong> (<em>int = </em><em>...</em>) – </p></li>
+<li><p><strong>arguments</strong> (<em>Sequence = </em><em>...</em>) – </p></li>
 </ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>PYQT_SIGNAL</p>
 </dd>
 </dl>
 </dd></dl>
@@ -4341,13 +4594,26 @@ to commit changes to the layer.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.core.QgsVectorLayer.committedAttributesDeleted">
 <span class="sig-name descname"><span class="pre">committedAttributesDeleted</span></span><a class="headerlink" href="#qgis.core.QgsVectorLayer.committedAttributesDeleted" title="Permalink to this definition">¶</a></dt>
-<dd><p>Emitted when attributes are deleted from the provider [signal]</p>
+<dd><p>pyqtSignal(<a href="#id107"><span class="problematic" id="id108">*</span></a>types, name: str = …, revision: int = …, arguments: Sequence = …) -&gt; PYQT_SIGNAL</p>
+<p>types is normally a sequence of individual types.  Each type is either a
+type object or a string that is the name of a C++ type.  Alternatively
+each type could itself be a sequence of types each describing a different
+overloaded signal.
+name is the optional C++ name of the signal.  If it is not specified then
+the name of the class attribute that is bound to the signal is used.
+revision is the optional revision of the signal that is exported to QML.
+If it is not specified then 0 is used.
+arguments is the optional sequence of the names of the signal’s arguments.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>layerId</strong> (<em>str</em>) – </p></li>
-<li><p><strong>deletedAttributes</strong> (<em>Iterable</em><em>[</em><em>int</em><em>]</em>) – </p></li>
+<li><p><strong>name</strong> (<em>str = </em><em>...</em>) – </p></li>
+<li><p><strong>revision</strong> (<em>int = </em><em>...</em>) – </p></li>
+<li><p><strong>arguments</strong> (<em>Sequence = </em><em>...</em>) – </p></li>
 </ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>PYQT_SIGNAL</p>
 </dd>
 </dl>
 </dd></dl>
@@ -4355,13 +4621,26 @@ to commit changes to the layer.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.core.QgsVectorLayer.committedFeaturesAdded">
 <span class="sig-name descname"><span class="pre">committedFeaturesAdded</span></span><a class="headerlink" href="#qgis.core.QgsVectorLayer.committedFeaturesAdded" title="Permalink to this definition">¶</a></dt>
-<dd><p>Emitted when features are added to the provider [signal]</p>
+<dd><p>pyqtSignal(<a href="#id109"><span class="problematic" id="id110">*</span></a>types, name: str = …, revision: int = …, arguments: Sequence = …) -&gt; PYQT_SIGNAL</p>
+<p>types is normally a sequence of individual types.  Each type is either a
+type object or a string that is the name of a C++ type.  Alternatively
+each type could itself be a sequence of types each describing a different
+overloaded signal.
+name is the optional C++ name of the signal.  If it is not specified then
+the name of the class attribute that is bound to the signal is used.
+revision is the optional revision of the signal that is exported to QML.
+If it is not specified then 0 is used.
+arguments is the optional sequence of the names of the signal’s arguments.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>layerId</strong> (<em>str</em>) – </p></li>
-<li><p><strong>addedFeatures</strong> (<em>Iterable</em><em>[</em><a class="reference internal" href="QgsFeature.html#qgis.core.QgsFeature" title="qgis.core.QgsFeature"><em>QgsFeature</em></a><em>]</em>) – </p></li>
+<li><p><strong>name</strong> (<em>str = </em><em>...</em>) – </p></li>
+<li><p><strong>revision</strong> (<em>int = </em><em>...</em>) – </p></li>
+<li><p><strong>arguments</strong> (<em>Sequence = </em><em>...</em>) – </p></li>
 </ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>PYQT_SIGNAL</p>
 </dd>
 </dl>
 </dd></dl>
@@ -4369,13 +4648,26 @@ to commit changes to the layer.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.core.QgsVectorLayer.committedFeaturesRemoved">
 <span class="sig-name descname"><span class="pre">committedFeaturesRemoved</span></span><a class="headerlink" href="#qgis.core.QgsVectorLayer.committedFeaturesRemoved" title="Permalink to this definition">¶</a></dt>
-<dd><p>Emitted when features are deleted from the provider [signal]</p>
+<dd><p>pyqtSignal(<a href="#id111"><span class="problematic" id="id112">*</span></a>types, name: str = …, revision: int = …, arguments: Sequence = …) -&gt; PYQT_SIGNAL</p>
+<p>types is normally a sequence of individual types.  Each type is either a
+type object or a string that is the name of a C++ type.  Alternatively
+each type could itself be a sequence of types each describing a different
+overloaded signal.
+name is the optional C++ name of the signal.  If it is not specified then
+the name of the class attribute that is bound to the signal is used.
+revision is the optional revision of the signal that is exported to QML.
+If it is not specified then 0 is used.
+arguments is the optional sequence of the names of the signal’s arguments.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>layerId</strong> (<em>str</em>) – </p></li>
-<li><p><strong>deletedFeatureIds</strong> (<em>object</em>) – </p></li>
+<li><p><strong>name</strong> (<em>str = </em><em>...</em>) – </p></li>
+<li><p><strong>revision</strong> (<em>int = </em><em>...</em>) – </p></li>
+<li><p><strong>arguments</strong> (<em>Sequence = </em><em>...</em>) – </p></li>
 </ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>PYQT_SIGNAL</p>
 </dd>
 </dl>
 </dd></dl>
@@ -4383,13 +4675,26 @@ to commit changes to the layer.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.core.QgsVectorLayer.committedGeometriesChanges">
 <span class="sig-name descname"><span class="pre">committedGeometriesChanges</span></span><a class="headerlink" href="#qgis.core.QgsVectorLayer.committedGeometriesChanges" title="Permalink to this definition">¶</a></dt>
-<dd><p>Emitted when geometry changes are saved to the provider [signal]</p>
+<dd><p>pyqtSignal(<a href="#id113"><span class="problematic" id="id114">*</span></a>types, name: str = …, revision: int = …, arguments: Sequence = …) -&gt; PYQT_SIGNAL</p>
+<p>types is normally a sequence of individual types.  Each type is either a
+type object or a string that is the name of a C++ type.  Alternatively
+each type could itself be a sequence of types each describing a different
+overloaded signal.
+name is the optional C++ name of the signal.  If it is not specified then
+the name of the class attribute that is bound to the signal is used.
+revision is the optional revision of the signal that is exported to QML.
+If it is not specified then 0 is used.
+arguments is the optional sequence of the names of the signal’s arguments.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>layerId</strong> (<em>str</em>) – </p></li>
-<li><p><strong>changedGeometries</strong> (<em>object</em>) – </p></li>
+<li><p><strong>name</strong> (<em>str = </em><em>...</em>) – </p></li>
+<li><p><strong>revision</strong> (<em>int = </em><em>...</em>) – </p></li>
+<li><p><strong>arguments</strong> (<em>Sequence = </em><em>...</em>) – </p></li>
 </ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>PYQT_SIGNAL</p>
 </dd>
 </dl>
 </dd></dl>
@@ -4922,10 +5227,28 @@ Uses <a class="reference internal" href="QgsExpression.html#module-QgsExpression
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.core.QgsVectorLayer.displayExpressionChanged">
 <span class="sig-name descname"><span class="pre">displayExpressionChanged</span></span><a class="headerlink" href="#qgis.core.QgsVectorLayer.displayExpressionChanged" title="Permalink to this definition">¶</a></dt>
-<dd><p>Emitted when the display expression changes</p>
-<div class="versionadded">
-<p><span class="versionmodified added">New in version 3.0: </span>[signal]</p>
-</div>
+<dd><p>pyqtSignal(<a href="#id115"><span class="problematic" id="id116">*</span></a>types, name: str = …, revision: int = …, arguments: Sequence = …) -&gt; PYQT_SIGNAL</p>
+<p>types is normally a sequence of individual types.  Each type is either a
+type object or a string that is the name of a C++ type.  Alternatively
+each type could itself be a sequence of types each describing a different
+overloaded signal.
+name is the optional C++ name of the signal.  If it is not specified then
+the name of the class attribute that is bound to the signal is used.
+revision is the optional revision of the signal that is exported to QML.
+If it is not specified then 0 is used.
+arguments is the optional sequence of the names of the signal’s arguments.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str = </em><em>...</em>) – </p></li>
+<li><p><strong>revision</strong> (<em>int = </em><em>...</em>) – </p></li>
+<li><p><strong>arguments</strong> (<em>Sequence = </em><em>...</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>PYQT_SIGNAL</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -4979,32 +5302,80 @@ be returned.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.core.QgsVectorLayer.editCommandDestroyed">
 <span class="sig-name descname"><span class="pre">editCommandDestroyed</span></span><a class="headerlink" href="#qgis.core.QgsVectorLayer.editCommandDestroyed" title="Permalink to this definition">¶</a></dt>
-<dd><p>Signal emitted, when an edit command is destroyed</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This is not a rollback, it is only related to the current edit command.
-See <a class="reference internal" href="#qgis.core.QgsVectorLayer.beforeRollBack" title="qgis.core.QgsVectorLayer.beforeRollBack"><code class="xref py py-func docutils literal notranslate"><span class="pre">beforeRollBack()</span></code></a> [signal]</p>
-</div>
+<dd><p>pyqtSignal(<a href="#id117"><span class="problematic" id="id118">*</span></a>types, name: str = …, revision: int = …, arguments: Sequence = …) -&gt; PYQT_SIGNAL</p>
+<p>types is normally a sequence of individual types.  Each type is either a
+type object or a string that is the name of a C++ type.  Alternatively
+each type could itself be a sequence of types each describing a different
+overloaded signal.
+name is the optional C++ name of the signal.  If it is not specified then
+the name of the class attribute that is bound to the signal is used.
+revision is the optional revision of the signal that is exported to QML.
+If it is not specified then 0 is used.
+arguments is the optional sequence of the names of the signal’s arguments.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str = </em><em>...</em>) – </p></li>
+<li><p><strong>revision</strong> (<em>int = </em><em>...</em>) – </p></li>
+<li><p><strong>arguments</strong> (<em>Sequence = </em><em>...</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>PYQT_SIGNAL</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.core.QgsVectorLayer.editCommandEnded">
 <span class="sig-name descname"><span class="pre">editCommandEnded</span></span><a class="headerlink" href="#qgis.core.QgsVectorLayer.editCommandEnded" title="Permalink to this definition">¶</a></dt>
-<dd><p>Signal emitted, when an edit command successfully ended</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This does not mean it is also committed, only that it is written
-to the edit buffer. See <a class="reference internal" href="#qgis.core.QgsVectorLayer.beforeCommitChanges" title="qgis.core.QgsVectorLayer.beforeCommitChanges"><code class="xref py py-func docutils literal notranslate"><span class="pre">beforeCommitChanges()</span></code></a> [signal]</p>
-</div>
+<dd><p>pyqtSignal(<a href="#id119"><span class="problematic" id="id120">*</span></a>types, name: str = …, revision: int = …, arguments: Sequence = …) -&gt; PYQT_SIGNAL</p>
+<p>types is normally a sequence of individual types.  Each type is either a
+type object or a string that is the name of a C++ type.  Alternatively
+each type could itself be a sequence of types each describing a different
+overloaded signal.
+name is the optional C++ name of the signal.  If it is not specified then
+the name of the class attribute that is bound to the signal is used.
+revision is the optional revision of the signal that is exported to QML.
+If it is not specified then 0 is used.
+arguments is the optional sequence of the names of the signal’s arguments.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str = </em><em>...</em>) – </p></li>
+<li><p><strong>revision</strong> (<em>int = </em><em>...</em>) – </p></li>
+<li><p><strong>arguments</strong> (<em>Sequence = </em><em>...</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>PYQT_SIGNAL</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.core.QgsVectorLayer.editCommandStarted">
 <span class="sig-name descname"><span class="pre">editCommandStarted</span></span><a class="headerlink" href="#qgis.core.QgsVectorLayer.editCommandStarted" title="Permalink to this definition">¶</a></dt>
-<dd><p>Signal emitted when a new edit command has been started</p>
+<dd><p>pyqtSignal(<a href="#id121"><span class="problematic" id="id122">*</span></a>types, name: str = …, revision: int = …, arguments: Sequence = …) -&gt; PYQT_SIGNAL</p>
+<p>types is normally a sequence of individual types.  Each type is either a
+type object or a string that is the name of a C++ type.  Alternatively
+each type could itself be a sequence of types each describing a different
+overloaded signal.
+name is the optional C++ name of the signal.  If it is not specified then
+the name of the class attribute that is bound to the signal is used.
+revision is the optional revision of the signal that is exported to QML.
+If it is not specified then 0 is used.
+arguments is the optional sequence of the names of the signal’s arguments.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>text</strong> (<em>str</em>) – Description for this edit command [signal]</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str = </em><em>...</em>) – </p></li>
+<li><p><strong>revision</strong> (<em>int = </em><em>...</em>) – </p></li>
+<li><p><strong>arguments</strong> (<em>Sequence = </em><em>...</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>PYQT_SIGNAL</p>
 </dd>
 </dl>
 </dd></dl>
@@ -5029,10 +5400,28 @@ to the edit buffer. See <a class="reference internal" href="#qgis.core.QgsVector
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.core.QgsVectorLayer.editFormConfigChanged">
 <span class="sig-name descname"><span class="pre">editFormConfigChanged</span></span><a class="headerlink" href="#qgis.core.QgsVectorLayer.editFormConfigChanged" title="Permalink to this definition">¶</a></dt>
-<dd><p>Will be emitted whenever the edit form configuration of this layer changes.</p>
-<div class="versionadded">
-<p><span class="versionmodified added">New in version 3.0: </span>[signal]</p>
-</div>
+<dd><p>pyqtSignal(<a href="#id123"><span class="problematic" id="id124">*</span></a>types, name: str = …, revision: int = …, arguments: Sequence = …) -&gt; PYQT_SIGNAL</p>
+<p>types is normally a sequence of individual types.  Each type is either a
+type object or a string that is the name of a C++ type.  Alternatively
+each type could itself be a sequence of types each describing a different
+overloaded signal.
+name is the optional C++ name of the signal.  If it is not specified then
+the name of the class attribute that is bound to the signal is used.
+revision is the optional revision of the signal that is exported to QML.
+If it is not specified then 0 is used.
+arguments is the optional sequence of the names of the signal’s arguments.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str = </em><em>...</em>) – </p></li>
+<li><p><strong>revision</strong> (<em>int = </em><em>...</em>) – </p></li>
+<li><p><strong>arguments</strong> (<em>Sequence = </em><em>...</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>PYQT_SIGNAL</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -5138,10 +5527,26 @@ use <a class="reference internal" href="#qgis.core.QgsVectorLayer.fields" title=
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.core.QgsVectorLayer.featureAdded">
 <span class="sig-name descname"><span class="pre">featureAdded</span></span><a class="headerlink" href="#qgis.core.QgsVectorLayer.featureAdded" title="Permalink to this definition">¶</a></dt>
-<dd><p>Emitted when a new feature has been added to the layer</p>
+<dd><p>pyqtSignal(<a href="#id125"><span class="problematic" id="id126">*</span></a>types, name: str = …, revision: int = …, arguments: Sequence = …) -&gt; PYQT_SIGNAL</p>
+<p>types is normally a sequence of individual types.  Each type is either a
+type object or a string that is the name of a C++ type.  Alternatively
+each type could itself be a sequence of types each describing a different
+overloaded signal.
+name is the optional C++ name of the signal.  If it is not specified then
+the name of the class attribute that is bound to the signal is used.
+revision is the optional revision of the signal that is exported to QML.
+If it is not specified then 0 is used.
+arguments is the optional sequence of the names of the signal’s arguments.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>fid</strong> (<em>int</em>) – The id of the new feature [signal]</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str = </em><em>...</em>) – </p></li>
+<li><p><strong>revision</strong> (<em>int = </em><em>...</em>) – </p></li>
+<li><p><strong>arguments</strong> (<em>Sequence = </em><em>...</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>PYQT_SIGNAL</p>
 </dd>
 </dl>
 </dd></dl>
@@ -5160,10 +5565,26 @@ use <a class="reference internal" href="#qgis.core.QgsVectorLayer.fields" title=
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.core.QgsVectorLayer.featureBlendModeChanged">
 <span class="sig-name descname"><span class="pre">featureBlendModeChanged</span></span><a class="headerlink" href="#qgis.core.QgsVectorLayer.featureBlendModeChanged" title="Permalink to this definition">¶</a></dt>
-<dd><p>Signal emitted when <a class="reference internal" href="#qgis.core.QgsVectorLayer.setFeatureBlendMode" title="qgis.core.QgsVectorLayer.setFeatureBlendMode"><code class="xref py py-func docutils literal notranslate"><span class="pre">setFeatureBlendMode()</span></code></a> is called [signal]</p>
+<dd><p>pyqtSignal(<a href="#id127"><span class="problematic" id="id128">*</span></a>types, name: str = …, revision: int = …, arguments: Sequence = …) -&gt; PYQT_SIGNAL</p>
+<p>types is normally a sequence of individual types.  Each type is either a
+type object or a string that is the name of a C++ type.  Alternatively
+each type could itself be a sequence of types each describing a different
+overloaded signal.
+name is the optional C++ name of the signal.  If it is not specified then
+the name of the class attribute that is bound to the signal is used.
+revision is the optional revision of the signal that is exported to QML.
+If it is not specified then 0 is used.
+arguments is the optional sequence of the names of the signal’s arguments.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>blendMode</strong> (<em>QPainter.CompositionMode</em>) – </p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str = </em><em>...</em>) – </p></li>
+<li><p><strong>revision</strong> (<em>int = </em><em>...</em>) – </p></li>
+<li><p><strong>arguments</strong> (<em>Sequence = </em><em>...</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>PYQT_SIGNAL</p>
 </dd>
 </dl>
 </dd></dl>
@@ -5197,12 +5618,26 @@ If you need only the count of committed features call this method on this layer�
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.core.QgsVectorLayer.featureDeleted">
 <span class="sig-name descname"><span class="pre">featureDeleted</span></span><a class="headerlink" href="#qgis.core.QgsVectorLayer.featureDeleted" title="Permalink to this definition">¶</a></dt>
-<dd><p>Emitted when a feature has been deleted.</p>
-<p>If you do expensive operations in a slot connected to this, you should prefer to use
-featuresDeleted( const :py:class:<a href="#id1"><span class="problematic" id="id2">`</span></a>QgsFeatureIds`&amp; ).</p>
+<dd><p>pyqtSignal(<a href="#id129"><span class="problematic" id="id130">*</span></a>types, name: str = …, revision: int = …, arguments: Sequence = …) -&gt; PYQT_SIGNAL</p>
+<p>types is normally a sequence of individual types.  Each type is either a
+type object or a string that is the name of a C++ type.  Alternatively
+each type could itself be a sequence of types each describing a different
+overloaded signal.
+name is the optional C++ name of the signal.  If it is not specified then
+the name of the class attribute that is bound to the signal is used.
+revision is the optional revision of the signal that is exported to QML.
+If it is not specified then 0 is used.
+arguments is the optional sequence of the names of the signal’s arguments.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>fid</strong> (<em>int</em>) – The id of the feature which has been deleted [signal]</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str = </em><em>...</em>) – </p></li>
+<li><p><strong>revision</strong> (<em>int = </em><em>...</em>) – </p></li>
+<li><p><strong>arguments</strong> (<em>Sequence = </em><em>...</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>PYQT_SIGNAL</p>
 </dd>
 </dl>
 </dd></dl>
@@ -5232,13 +5667,26 @@ featuresDeleted( const :py:class:<a href="#id1"><span class="problematic" id="id
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.core.QgsVectorLayer.featuresDeleted">
 <span class="sig-name descname"><span class="pre">featuresDeleted</span></span><a class="headerlink" href="#qgis.core.QgsVectorLayer.featuresDeleted" title="Permalink to this definition">¶</a></dt>
-<dd><p>Emitted when features have been deleted.</p>
-<p>If features are deleted within an edit command, this will only be emitted once at the end
-to allow connected slots to minimize the overhead.
-If features are deleted outside of an edit command, this signal will be emitted once per feature.</p>
+<dd><p>pyqtSignal(<a href="#id131"><span class="problematic" id="id132">*</span></a>types, name: str = …, revision: int = …, arguments: Sequence = …) -&gt; PYQT_SIGNAL</p>
+<p>types is normally a sequence of individual types.  Each type is either a
+type object or a string that is the name of a C++ type.  Alternatively
+each type could itself be a sequence of types each describing a different
+overloaded signal.
+name is the optional C++ name of the signal.  If it is not specified then
+the name of the class attribute that is bound to the signal is used.
+revision is the optional revision of the signal that is exported to QML.
+If it is not specified then 0 is used.
+arguments is the optional sequence of the names of the signal’s arguments.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>fids</strong> (<em>object</em>) – The feature ids that have been deleted. [signal]</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str = </em><em>...</em>) – </p></li>
+<li><p><strong>revision</strong> (<em>int = </em><em>...</em>) – </p></li>
+<li><p><strong>arguments</strong> (<em>Sequence = </em><em>...</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>PYQT_SIGNAL</p>
 </dd>
 </dl>
 </dd></dl>
@@ -5303,14 +5751,26 @@ This also includes fields which have not yet been saved to the provider.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.core.QgsVectorLayer.geometryChanged">
 <span class="sig-name descname"><span class="pre">geometryChanged</span></span><a class="headerlink" href="#qgis.core.QgsVectorLayer.geometryChanged" title="Permalink to this definition">¶</a></dt>
-<dd><p>Emitted whenever a geometry change is done in the edit buffer.
-Note that at this point the geometry change is not yet saved to the provider.</p>
+<dd><p>pyqtSignal(<a href="#id133"><span class="problematic" id="id134">*</span></a>types, name: str = …, revision: int = …, arguments: Sequence = …) -&gt; PYQT_SIGNAL</p>
+<p>types is normally a sequence of individual types.  Each type is either a
+type object or a string that is the name of a C++ type.  Alternatively
+each type could itself be a sequence of types each describing a different
+overloaded signal.
+name is the optional C++ name of the signal.  If it is not specified then
+the name of the class attribute that is bound to the signal is used.
+revision is the optional revision of the signal that is exported to QML.
+If it is not specified then 0 is used.
+arguments is the optional sequence of the names of the signal’s arguments.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>fid</strong> (<em>int</em>) – The id of the changed feature</p></li>
-<li><p><strong>geometry</strong> (<a class="reference internal" href="QgsGeometry.html#qgis.core.QgsGeometry" title="qgis.core.QgsGeometry"><em>QgsGeometry</em></a>) – The new geometry [signal]</p></li>
+<li><p><strong>name</strong> (<em>str = </em><em>...</em>) – </p></li>
+<li><p><strong>revision</strong> (<em>int = </em><em>...</em>) – </p></li>
+<li><p><strong>arguments</strong> (<em>Sequence = </em><em>...</em>) – </p></li>
 </ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>PYQT_SIGNAL</p>
 </dd>
 </dl>
 </dd></dl>
@@ -5670,13 +6130,26 @@ happens.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.core.QgsVectorLayer.labelingFontNotFound">
 <span class="sig-name descname"><span class="pre">labelingFontNotFound</span></span><a class="headerlink" href="#qgis.core.QgsVectorLayer.labelingFontNotFound" title="Permalink to this definition">¶</a></dt>
-<dd><p>Emitted when the font family defined for labeling layer is not found on system [signal]</p>
+<dd><p>pyqtSignal(<a href="#id135"><span class="problematic" id="id136">*</span></a>types, name: str = …, revision: int = …, arguments: Sequence = …) -&gt; PYQT_SIGNAL</p>
+<p>types is normally a sequence of individual types.  Each type is either a
+type object or a string that is the name of a C++ type.  Alternatively
+each type could itself be a sequence of types each describing a different
+overloaded signal.
+name is the optional C++ name of the signal.  If it is not specified then
+the name of the class attribute that is bound to the signal is used.
+revision is the optional revision of the signal that is exported to QML.
+If it is not specified then 0 is used.
+arguments is the optional sequence of the names of the signal’s arguments.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>layer</strong> (<a class="reference internal" href="#qgis.core.QgsVectorLayer" title="qgis.core.QgsVectorLayer"><em>QgsVectorLayer</em></a>) – </p></li>
-<li><p><strong>fontfamily</strong> (<em>str</em>) – </p></li>
+<li><p><strong>name</strong> (<em>str = </em><em>...</em>) – </p></li>
+<li><p><strong>revision</strong> (<em>int = </em><em>...</em>) – </p></li>
+<li><p><strong>arguments</strong> (<em>Sequence = </em><em>...</em>) – </p></li>
 </ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>PYQT_SIGNAL</p>
 </dd>
 </dl>
 </dd></dl>
@@ -5809,10 +6282,28 @@ Retained for backward compatibility</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.core.QgsVectorLayer.mapTipTemplateChanged">
 <span class="sig-name descname"><span class="pre">mapTipTemplateChanged</span></span><a class="headerlink" href="#qgis.core.QgsVectorLayer.mapTipTemplateChanged" title="Permalink to this definition">¶</a></dt>
-<dd><p>Emitted when the map tip changes</p>
-<div class="versionadded">
-<p><span class="versionmodified added">New in version 3.0: </span>[signal]</p>
-</div>
+<dd><p>pyqtSignal(<a href="#id137"><span class="problematic" id="id138">*</span></a>types, name: str = …, revision: int = …, arguments: Sequence = …) -&gt; PYQT_SIGNAL</p>
+<p>types is normally a sequence of individual types.  Each type is either a
+type object or a string that is the name of a C++ type.  Alternatively
+each type could itself be a sequence of types each describing a different
+overloaded signal.
+name is the optional C++ name of the signal.  If it is not specified then
+the name of the class attribute that is bound to the signal is used.
+revision is the optional revision of the signal that is exported to QML.
+If it is not specified then 0 is used.
+arguments is the optional sequence of the names of the signal’s arguments.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str = </em><em>...</em>) – </p></li>
+<li><p><strong>revision</strong> (<em>int = </em><em>...</em>) – </p></li>
+<li><p><strong>arguments</strong> (<em>Sequence = </em><em>...</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>PYQT_SIGNAL</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -6034,10 +6525,26 @@ changes can be discarded by calling <a class="reference internal" href="#qgis.co
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.core.QgsVectorLayer.raiseError">
 <span class="sig-name descname"><span class="pre">raiseError</span></span><a class="headerlink" href="#qgis.core.QgsVectorLayer.raiseError" title="Permalink to this definition">¶</a></dt>
-<dd><p>Signals an error related to this vector layer. [signal]</p>
+<dd><p>pyqtSignal(<a href="#id139"><span class="problematic" id="id140">*</span></a>types, name: str = …, revision: int = …, arguments: Sequence = …) -&gt; PYQT_SIGNAL</p>
+<p>types is normally a sequence of individual types.  Each type is either a
+type object or a string that is the name of a C++ type.  Alternatively
+each type could itself be a sequence of types each describing a different
+overloaded signal.
+name is the optional C++ name of the signal.  If it is not specified then
+the name of the class attribute that is bound to the signal is used.
+revision is the optional revision of the signal that is exported to QML.
+If it is not specified then 0 is used.
+arguments is the optional sequence of the names of the signal’s arguments.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>msg</strong> (<em>str</em>) – </p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str = </em><em>...</em>) – </p></li>
+<li><p><strong>revision</strong> (<em>int = </em><em>...</em>) – </p></li>
+<li><p><strong>arguments</strong> (<em>Sequence = </em><em>...</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>PYQT_SIGNAL</p>
 </dd>
 </dl>
 </dd></dl>
@@ -6068,15 +6575,26 @@ changes can be discarded by calling <a class="reference internal" href="#qgis.co
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.core.QgsVectorLayer.readCustomSymbology">
 <span class="sig-name descname"><span class="pre">readCustomSymbology</span></span><a class="headerlink" href="#qgis.core.QgsVectorLayer.readCustomSymbology" title="Permalink to this definition">¶</a></dt>
-<dd><p>Signal emitted whenever the symbology (QML-file) for this layer is being read.
-If there is custom style information saved in the file, you can connect to this signal
-and update the layer style accordingly.</p>
+<dd><p>pyqtSignal(<a href="#id141"><span class="problematic" id="id142">*</span></a>types, name: str = …, revision: int = …, arguments: Sequence = …) -&gt; PYQT_SIGNAL</p>
+<p>types is normally a sequence of individual types.  Each type is either a
+type object or a string that is the name of a C++ type.  Alternatively
+each type could itself be a sequence of types each describing a different
+overloaded signal.
+name is the optional C++ name of the signal.  If it is not specified then
+the name of the class attribute that is bound to the signal is used.
+revision is the optional revision of the signal that is exported to QML.
+If it is not specified then 0 is used.
+arguments is the optional sequence of the names of the signal’s arguments.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>element</strong> (<em>QDomElement</em>) – The XML layer style element.</p></li>
-<li><p><strong>errorMessage</strong> (<em>str</em>) – Write error messages into this string. [signal]</p></li>
+<li><p><strong>name</strong> (<em>str = </em><em>...</em>) – </p></li>
+<li><p><strong>revision</strong> (<em>int = </em><em>...</em>) – </p></li>
+<li><p><strong>arguments</strong> (<em>Sequence = </em><em>...</em>) – </p></li>
 </ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>PYQT_SIGNAL</p>
 </dd>
 </dl>
 </dd></dl>
@@ -6100,11 +6618,28 @@ it.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.core.QgsVectorLayer.readOnlyChanged">
 <span class="sig-name descname"><span class="pre">readOnlyChanged</span></span><a class="headerlink" href="#qgis.core.QgsVectorLayer.readOnlyChanged" title="Permalink to this definition">¶</a></dt>
-<dd><p>Emitted when the read only state of this layer is changed.
-Only applies to manually set readonly state, not to the edit mode.</p>
-<div class="versionadded">
-<p><span class="versionmodified added">New in version 3.0: </span>[signal]</p>
-</div>
+<dd><p>pyqtSignal(<a href="#id143"><span class="problematic" id="id144">*</span></a>types, name: str = …, revision: int = …, arguments: Sequence = …) -&gt; PYQT_SIGNAL</p>
+<p>types is normally a sequence of individual types.  Each type is either a
+type object or a string that is the name of a C++ type.  Alternatively
+each type could itself be a sequence of types each describing a different
+overloaded signal.
+name is the optional C++ name of the signal.  If it is not specified then
+the name of the class attribute that is bound to the signal is used.
+revision is the optional revision of the signal that is exported to QML.
+If it is not specified then 0 is used.
+arguments is the optional sequence of the names of the signal’s arguments.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str = </em><em>...</em>) – </p></li>
+<li><p><strong>revision</strong> (<em>int = </em><em>...</em>) – </p></li>
+<li><p><strong>arguments</strong> (<em>Sequence = </em><em>...</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>PYQT_SIGNAL</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -6621,14 +7156,26 @@ require access to the feature attributes or geometry.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.core.QgsVectorLayer.selectionChanged">
 <span class="sig-name descname"><span class="pre">selectionChanged</span></span><a class="headerlink" href="#qgis.core.QgsVectorLayer.selectionChanged" title="Permalink to this definition">¶</a></dt>
-<dd><p>Emitted when selection was changed</p>
+<dd><p>pyqtSignal(<a href="#id145"><span class="problematic" id="id146">*</span></a>types, name: str = …, revision: int = …, arguments: Sequence = …) -&gt; PYQT_SIGNAL</p>
+<p>types is normally a sequence of individual types.  Each type is either a
+type object or a string that is the name of a C++ type.  Alternatively
+each type could itself be a sequence of types each describing a different
+overloaded signal.
+name is the optional C++ name of the signal.  If it is not specified then
+the name of the class attribute that is bound to the signal is used.
+revision is the optional revision of the signal that is exported to QML.
+If it is not specified then 0 is used.
+arguments is the optional sequence of the names of the signal’s arguments.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>selected</strong> (<em>object</em>) – Newly selected feature ids</p></li>
-<li><p><strong>deselected</strong> (<em>object</em>) – Ids of all features which have previously been selected but are not any more</p></li>
-<li><p><strong>clearAndSelect</strong> (<em>bool</em>) – In case this is set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, the old selection was dismissed and the new selection corresponds to selected [signal]</p></li>
+<li><p><strong>name</strong> (<em>str = </em><em>...</em>) – </p></li>
+<li><p><strong>revision</strong> (<em>int = </em><em>...</em>) – </p></li>
+<li><p><strong>arguments</strong> (<em>Sequence = </em><em>...</em>) – </p></li>
 </ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>PYQT_SIGNAL</p>
 </dd>
 </dl>
 </dd></dl>
@@ -7424,10 +7971,28 @@ This is obtained from the data provider and does not follow any standard.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.core.QgsVectorLayer.subsetStringChanged">
 <span class="sig-name descname"><span class="pre">subsetStringChanged</span></span><a class="headerlink" href="#qgis.core.QgsVectorLayer.subsetStringChanged" title="Permalink to this definition">¶</a></dt>
-<dd><p>Emitted when the layer’s subset string has changed.</p>
-<div class="versionadded">
-<p><span class="versionmodified added">New in version 3.2: </span>[signal]</p>
-</div>
+<dd><p>pyqtSignal(<a href="#id147"><span class="problematic" id="id148">*</span></a>types, name: str = …, revision: int = …, arguments: Sequence = …) -&gt; PYQT_SIGNAL</p>
+<p>types is normally a sequence of individual types.  Each type is either a
+type object or a string that is the name of a C++ type.  Alternatively
+each type could itself be a sequence of types each describing a different
+overloaded signal.
+name is the optional C++ name of the signal.  If it is not specified then
+the name of the class attribute that is bound to the signal is used.
+revision is the optional revision of the signal that is exported to QML.
+If it is not specified then 0 is used.
+arguments is the optional sequence of the names of the signal’s arguments.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str = </em><em>...</em>) – </p></li>
+<li><p><strong>revision</strong> (<em>int = </em><em>...</em>) – </p></li>
+<li><p><strong>arguments</strong> (<em>Sequence = </em><em>...</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>PYQT_SIGNAL</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -7450,19 +8015,55 @@ This is obtained from the data provider and does not follow any standard.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.core.QgsVectorLayer.supportsEditingChanged">
 <span class="sig-name descname"><span class="pre">supportsEditingChanged</span></span><a class="headerlink" href="#qgis.core.QgsVectorLayer.supportsEditingChanged" title="Permalink to this definition">¶</a></dt>
-<dd><p>Emitted when the read only state or the data provider of this layer is changed.</p>
-<div class="versionadded">
-<p><span class="versionmodified added">New in version 3.18: </span>[signal]</p>
-</div>
+<dd><p>pyqtSignal(<a href="#id149"><span class="problematic" id="id150">*</span></a>types, name: str = …, revision: int = …, arguments: Sequence = …) -&gt; PYQT_SIGNAL</p>
+<p>types is normally a sequence of individual types.  Each type is either a
+type object or a string that is the name of a C++ type.  Alternatively
+each type could itself be a sequence of types each describing a different
+overloaded signal.
+name is the optional C++ name of the signal.  If it is not specified then
+the name of the class attribute that is bound to the signal is used.
+revision is the optional revision of the signal that is exported to QML.
+If it is not specified then 0 is used.
+arguments is the optional sequence of the names of the signal’s arguments.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str = </em><em>...</em>) – </p></li>
+<li><p><strong>revision</strong> (<em>int = </em><em>...</em>) – </p></li>
+<li><p><strong>arguments</strong> (<em>Sequence = </em><em>...</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>PYQT_SIGNAL</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.core.QgsVectorLayer.symbolFeatureCountMapChanged">
 <span class="sig-name descname"><span class="pre">symbolFeatureCountMapChanged</span></span><a class="headerlink" href="#qgis.core.QgsVectorLayer.symbolFeatureCountMapChanged" title="Permalink to this definition">¶</a></dt>
-<dd><p>Emitted when the feature count for symbols on this layer has been recalculated.</p>
-<div class="versionadded">
-<p><span class="versionmodified added">New in version 3.0: </span>[signal]</p>
-</div>
+<dd><p>pyqtSignal(<a href="#id151"><span class="problematic" id="id152">*</span></a>types, name: str = …, revision: int = …, arguments: Sequence = …) -&gt; PYQT_SIGNAL</p>
+<p>types is normally a sequence of individual types.  Each type is either a
+type object or a string that is the name of a C++ type.  Alternatively
+each type could itself be a sequence of types each describing a different
+overloaded signal.
+name is the optional C++ name of the signal.  If it is not specified then
+the name of the class attribute that is bound to the signal is used.
+revision is the optional revision of the signal that is exported to QML.
+If it is not specified then 0 is used.
+arguments is the optional sequence of the names of the signal’s arguments.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str = </em><em>...</em>) – </p></li>
+<li><p><strong>revision</strong> (<em>int = </em><em>...</em>) – </p></li>
+<li><p><strong>arguments</strong> (<em>Sequence = </em><em>...</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>PYQT_SIGNAL</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -7687,8 +8288,28 @@ no reason to call this method.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.core.QgsVectorLayer.updatedFields">
 <span class="sig-name descname"><span class="pre">updatedFields</span></span><a class="headerlink" href="#qgis.core.QgsVectorLayer.updatedFields" title="Permalink to this definition">¶</a></dt>
-<dd><p>Emitted whenever the fields available from this layer have been changed.
-This can be due to manually adding attributes or due to a join. [signal]</p>
+<dd><p>pyqtSignal(<a href="#id153"><span class="problematic" id="id154">*</span></a>types, name: str = …, revision: int = …, arguments: Sequence = …) -&gt; PYQT_SIGNAL</p>
+<p>types is normally a sequence of individual types.  Each type is either a
+type object or a string that is the name of a C++ type.  Alternatively
+each type could itself be a sequence of types each describing a different
+overloaded signal.
+name is the optional C++ name of the signal.  If it is not specified then
+the name of the class attribute that is bound to the signal is used.
+revision is the optional revision of the signal that is exported to QML.
+If it is not specified then 0 is used.
+arguments is the optional sequence of the names of the signal’s arguments.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str = </em><em>...</em>) – </p></li>
+<li><p><strong>revision</strong> (<em>int = </em><em>...</em>) – </p></li>
+<li><p><strong>arguments</strong> (<em>Sequence = </em><em>...</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>PYQT_SIGNAL</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -7730,16 +8351,26 @@ This can be due to manually adding attributes or due to a join. [signal]</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.core.QgsVectorLayer.writeCustomSymbology">
 <span class="sig-name descname"><span class="pre">writeCustomSymbology</span></span><a class="headerlink" href="#qgis.core.QgsVectorLayer.writeCustomSymbology" title="Permalink to this definition">¶</a></dt>
-<dd><p>Signal emitted whenever the symbology (QML-file) for this layer is being written.
-If there is custom style information you want to save to the file, you can connect
-to this signal and update the element accordingly.</p>
+<dd><p>pyqtSignal(<a href="#id155"><span class="problematic" id="id156">*</span></a>types, name: str = …, revision: int = …, arguments: Sequence = …) -&gt; PYQT_SIGNAL</p>
+<p>types is normally a sequence of individual types.  Each type is either a
+type object or a string that is the name of a C++ type.  Alternatively
+each type could itself be a sequence of types each describing a different
+overloaded signal.
+name is the optional C++ name of the signal.  If it is not specified then
+the name of the class attribute that is bound to the signal is used.
+revision is the optional revision of the signal that is exported to QML.
+If it is not specified then 0 is used.
+arguments is the optional sequence of the names of the signal’s arguments.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>element</strong> (<em>QDomElement</em>) – The XML element where you can add additional style information to.</p></li>
-<li><p><strong>doc</strong> (<em>QDomDocument</em>) – The XML document that you can use to create new XML nodes.</p></li>
-<li><p><strong>errorMessage</strong> (<em>str</em>) – Write error messages into this string. [signal]</p></li>
+<li><p><strong>name</strong> (<em>str = </em><em>...</em>) – </p></li>
+<li><p><strong>revision</strong> (<em>int = </em><em>...</em>) – </p></li>
+<li><p><strong>arguments</strong> (<em>Sequence = </em><em>...</em>) – </p></li>
 </ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>PYQT_SIGNAL</p>
 </dd>
 </dl>
 </dd></dl>
@@ -7832,6 +8463,8 @@ to this signal and update the element accordingly.</p>
 </dl>
 </dd></dl>
 
+</section>
+</section>
 </dd></dl>
 
 </section>
@@ -7845,7 +8478,7 @@ to this signal and update the element accordingly.</p>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 04:03 Aug 11, 2022.
+      <span class="lastupdated">Last updated on 13:35 Nov 19, 2022.
       </span></p>
   </div>
 
@@ -7872,6 +8505,10 @@ to this signal and update the element accordingly.</p>
         
           
           <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
+          
+        
+          
+          <dd><a href="https://qgis.org/pyqgis/3.28">3.28</a></dd>
           
         
           

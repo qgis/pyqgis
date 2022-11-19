@@ -18,6 +18,7 @@
         <script src="../_static/underscore.js"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -1922,9 +1923,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="index.html">core</a> &raquo;</li>
-      <li>Class: QgsGeometryEngine</li>
+      <li><a href="../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">core</a></li>
+      <li class="breadcrumb-item active">Class: QgsGeometryEngine</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -1947,6 +1948,8 @@ between geometries and operations such as buffers or clipping.</p>
 <p>Many methods available in the <a class="reference internal" href="#module-QgsGeometryEngine" title="QgsGeometryEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsGeometryEngine</span></code></a> class can benefit from pre-preparing geometries. For instance, whenever
 a large number of spatial relationships will be tested (such as calling <a class="reference internal" href="#qgis.core.QgsGeometryEngine.intersects" title="qgis.core.QgsGeometryEngine.intersects"><code class="xref py py-func docutils literal notranslate"><span class="pre">intersects()</span></code></a>, <a class="reference internal" href="#qgis.core.QgsGeometryEngine.within" title="qgis.core.QgsGeometryEngine.within"><code class="xref py py-func docutils literal notranslate"><span class="pre">within()</span></code></a>, etc) then the
 geometry should first be prepared by calling <a class="reference internal" href="#qgis.core.QgsGeometryEngine.prepareGeometry" title="qgis.core.QgsGeometryEngine.prepareGeometry"><code class="xref py py-func docutils literal notranslate"><span class="pre">prepareGeometry()</span></code></a> before performing the tests.</p>
+<section id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this heading">¶</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># polygon_geometry contains a complex polygon, with many vertices</span>
 <span class="n">polygon_geometry</span> <span class="o">=</span> <span class="n">QgsGeometry</span><span class="o">.</span><span class="n">fromWkt</span><span class="p">(</span><span class="s1">&#39;Polygon((...))&#39;</span><span class="p">)</span>
 
@@ -1962,7 +1965,7 @@ geometry should first be prepared by calling <a class="reference internal" href=
     <span class="n">feature_geometry</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">geometry</span><span class="p">()</span>
     <span class="c1"># test whether the feature&#39;s geometry intersects our original complex polygon</span>
     <span class="k">if</span> <span class="n">polygon_geometry_engine</span><span class="o">.</span><span class="n">intersects</span><span class="p">(</span><span class="n">feature_geometry</span><span class="o">.</span><span class="n">constGet</span><span class="p">()):</span>
-        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;feature intersects the polygon!&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;feature intersects the polygon!&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><a class="reference internal" href="#module-QgsGeometryEngine" title="QgsGeometryEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsGeometryEngine</span></code></a> operations are backed by the GEOS library (<a class="reference external" href="https://trac.osgeo.org/geos/">https://trac.osgeo.org/geos/</a>).</p>
@@ -2256,7 +2259,7 @@ May return a <code class="docutils literal notranslate"><span class="pre">`None`
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0.</span></p>
 </div>
-<p>combine(self, geomList: object, errorMsg: str) -&gt; QgsAbstractGeometry
+<p>combine(self, geomList: Iterable[QgsAbstractGeometry], errorMsg: str) -&gt; QgsAbstractGeometry
 Calculate the combination of this and <code class="docutils literal notranslate"><span class="pre">geometries</span></code>.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0.</span></p>
@@ -2845,6 +2848,7 @@ param[out] errorMsg error messages emitted, if any
 </dl>
 </dd></dl>
 
+</section>
 </dd></dl>
 
 </section>
@@ -2858,7 +2862,7 @@ param[out] errorMsg error messages emitted, if any
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 04:03 Aug 11, 2022.
+      <span class="lastupdated">Last updated on 13:35 Nov 19, 2022.
       </span></p>
   </div>
 
@@ -2885,6 +2889,10 @@ param[out] errorMsg error messages emitted, if any
         
           
           <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
+          
+        
+          
+          <dd><a href="https://qgis.org/pyqgis/3.28">3.28</a></dd>
           
         
           

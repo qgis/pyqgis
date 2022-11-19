@@ -18,6 +18,7 @@
         <script src="../_static/underscore.js"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -1922,9 +1923,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="index.html">core</a> &raquo;</li>
-      <li>Class: QgsOfflineEditing</li>
+      <li><a href="../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">core</a></li>
+      <li class="breadcrumb-item active">Class: QgsOfflineEditing</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -2001,16 +2002,16 @@
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsOfflineEditing.layerProgressUpdated" title="qgis.core.QgsOfflineEditing.layerProgressUpdated"><code class="xref py py-obj docutils literal notranslate"><span class="pre">layerProgressUpdated</span></code></a></p></td>
-<td><p>Emitted whenever a new layer is being processed.</p></td>
+<td><p>pyqtSignal(<a href="#id1"><span class="problematic" id="id2">*</span></a>types, name: str = ..., revision: int = ..., arguments: Sequence = ...) -&gt; PYQT_SIGNAL</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsOfflineEditing.progressStarted" title="qgis.core.QgsOfflineEditing.progressStarted"><code class="xref py py-obj docutils literal notranslate"><span class="pre">progressStarted</span></code></a></p></td>
-<td><p>Emitted when the process has started.</p></td>
+<td><p>pyqtSignal(<a href="#id3"><span class="problematic" id="id4">*</span></a>types, name: str = ..., revision: int = ..., arguments: Sequence = ...) -&gt; PYQT_SIGNAL</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsOfflineEditing.progressStopped" title="qgis.core.QgsOfflineEditing.progressStopped"><code class="xref py py-obj docutils literal notranslate"><span class="pre">progressStopped</span></code></a></p></td>
-<td><p>Emitted when the processing of all layers has finished [signal]</p></td>
+<td><p>pyqtSignal(<a href="#id5"><span class="problematic" id="id6">*</span></a>types, name: str = ..., revision: int = ..., arguments: Sequence = ...) -&gt; PYQT_SIGNAL</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsOfflineEditing.warning" title="qgis.core.QgsOfflineEditing.warning"><code class="xref py py-obj docutils literal notranslate"><span class="pre">warning</span></code></a></p></td>
-<td><p>Emitted when a warning needs to be displayed.</p></td>
+<td><p>pyqtSignal(<a href="#id7"><span class="problematic" id="id8">*</span></a>types, name: str = ..., revision: int = ..., arguments: Sequence = ...) -&gt; PYQT_SIGNAL</p></td>
 </tr>
 </tbody>
 </table>
@@ -2168,16 +2169,26 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.core.QgsOfflineEditing.layerProgressUpdated">
 <span class="sig-name descname"><span class="pre">layerProgressUpdated</span></span><a class="headerlink" href="#qgis.core.QgsOfflineEditing.layerProgressUpdated" title="Permalink to this definition">¶</a></dt>
-<dd><p>Emitted whenever a new layer is being processed.
-It is possible to estimate the progress of the complete operation by
-comparing the index of the current <code class="docutils literal notranslate"><span class="pre">layer</span></code> to the total amount
-<code class="docutils literal notranslate"><span class="pre">numLayers</span></code>. [signal]</p>
+<dd><p>pyqtSignal(<a href="#id9"><span class="problematic" id="id10">*</span></a>types, name: str = …, revision: int = …, arguments: Sequence = …) -&gt; PYQT_SIGNAL</p>
+<p>types is normally a sequence of individual types.  Each type is either a
+type object or a string that is the name of a C++ type.  Alternatively
+each type could itself be a sequence of types each describing a different
+overloaded signal.
+name is the optional C++ name of the signal.  If it is not specified then
+the name of the class attribute that is bound to the signal is used.
+revision is the optional revision of the signal that is exported to QML.
+If it is not specified then 0 is used.
+arguments is the optional sequence of the names of the signal’s arguments.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>layer</strong> (<em>int</em>) – </p></li>
-<li><p><strong>numLayers</strong> (<em>int</em>) – </p></li>
+<li><p><strong>name</strong> (<em>str = </em><em>...</em>) – </p></li>
+<li><p><strong>revision</strong> (<em>int = </em><em>...</em>) – </p></li>
+<li><p><strong>arguments</strong> (<em>Sequence = </em><em>...</em>) – </p></li>
 </ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>PYQT_SIGNAL</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2185,13 +2196,55 @@ comparing the index of the current <code class="docutils literal notranslate"><s
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.core.QgsOfflineEditing.progressStarted">
 <span class="sig-name descname"><span class="pre">progressStarted</span></span><a class="headerlink" href="#qgis.core.QgsOfflineEditing.progressStarted" title="Permalink to this definition">¶</a></dt>
-<dd><p>Emitted when the process has started. [signal]</p>
+<dd><p>pyqtSignal(<a href="#id11"><span class="problematic" id="id12">*</span></a>types, name: str = …, revision: int = …, arguments: Sequence = …) -&gt; PYQT_SIGNAL</p>
+<p>types is normally a sequence of individual types.  Each type is either a
+type object or a string that is the name of a C++ type.  Alternatively
+each type could itself be a sequence of types each describing a different
+overloaded signal.
+name is the optional C++ name of the signal.  If it is not specified then
+the name of the class attribute that is bound to the signal is used.
+revision is the optional revision of the signal that is exported to QML.
+If it is not specified then 0 is used.
+arguments is the optional sequence of the names of the signal’s arguments.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str = </em><em>...</em>) – </p></li>
+<li><p><strong>revision</strong> (<em>int = </em><em>...</em>) – </p></li>
+<li><p><strong>arguments</strong> (<em>Sequence = </em><em>...</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>PYQT_SIGNAL</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.core.QgsOfflineEditing.progressStopped">
 <span class="sig-name descname"><span class="pre">progressStopped</span></span><a class="headerlink" href="#qgis.core.QgsOfflineEditing.progressStopped" title="Permalink to this definition">¶</a></dt>
-<dd><p>Emitted when the processing of all layers has finished [signal]</p>
+<dd><p>pyqtSignal(<a href="#id13"><span class="problematic" id="id14">*</span></a>types, name: str = …, revision: int = …, arguments: Sequence = …) -&gt; PYQT_SIGNAL</p>
+<p>types is normally a sequence of individual types.  Each type is either a
+type object or a string that is the name of a C++ type.  Alternatively
+each type could itself be a sequence of types each describing a different
+overloaded signal.
+name is the optional C++ name of the signal.  If it is not specified then
+the name of the class attribute that is bound to the signal is used.
+revision is the optional revision of the signal that is exported to QML.
+If it is not specified then 0 is used.
+arguments is the optional sequence of the names of the signal’s arguments.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str = </em><em>...</em>) – </p></li>
+<li><p><strong>revision</strong> (<em>int = </em><em>...</em>) – </p></li>
+<li><p><strong>arguments</strong> (<em>Sequence = </em><em>...</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>PYQT_SIGNAL</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -2228,13 +2281,26 @@ comparing the index of the current <code class="docutils literal notranslate"><s
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.core.QgsOfflineEditing.warning">
 <span class="sig-name descname"><span class="pre">warning</span></span><a class="headerlink" href="#qgis.core.QgsOfflineEditing.warning" title="Permalink to this definition">¶</a></dt>
-<dd><p>Emitted when a warning needs to be displayed.</p>
+<dd><p>pyqtSignal(<a href="#id15"><span class="problematic" id="id16">*</span></a>types, name: str = …, revision: int = …, arguments: Sequence = …) -&gt; PYQT_SIGNAL</p>
+<p>types is normally a sequence of individual types.  Each type is either a
+type object or a string that is the name of a C++ type.  Alternatively
+each type could itself be a sequence of types each describing a different
+overloaded signal.
+name is the optional C++ name of the signal.  If it is not specified then
+the name of the class attribute that is bound to the signal is used.
+revision is the optional revision of the signal that is exported to QML.
+If it is not specified then 0 is used.
+arguments is the optional sequence of the names of the signal’s arguments.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>title</strong> (<em>str</em>) – title string for message</p></li>
-<li><p><strong>message</strong> (<em>str</em>) – A descriptive message for the warning [signal]</p></li>
+<li><p><strong>name</strong> (<em>str = </em><em>...</em>) – </p></li>
+<li><p><strong>revision</strong> (<em>int = </em><em>...</em>) – </p></li>
+<li><p><strong>arguments</strong> (<em>Sequence = </em><em>...</em>) – </p></li>
 </ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>PYQT_SIGNAL</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2252,7 +2318,7 @@ comparing the index of the current <code class="docutils literal notranslate"><s
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 04:03 Aug 11, 2022.
+      <span class="lastupdated">Last updated on 13:35 Nov 19, 2022.
       </span></p>
   </div>
 
@@ -2279,6 +2345,10 @@ comparing the index of the current <code class="docutils literal notranslate"><s
         
           
           <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
+          
+        
+          
+          <dd><a href="https://qgis.org/pyqgis/3.28">3.28</a></dd>
           
         
           

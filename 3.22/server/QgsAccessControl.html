@@ -18,6 +18,7 @@
         <script src="../_static/underscore.js"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -1922,9 +1923,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="index.html">server</a> &raquo;</li>
-      <li>Class: QgsAccessControl</li>
+      <li><a href="../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">server</a></li>
+      <li class="breadcrumb-item active">Class: QgsAccessControl</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -1997,7 +1998,10 @@ Constructor</p>
 <td><p>Register an access control filter</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.server.QgsAccessControl.resolveFilterFeatures" title="qgis.server.QgsAccessControl.resolveFilterFeatures"><code class="xref py py-obj docutils literal notranslate"><span class="pre">resolveFilterFeatures</span></code></a></p></td>
-<td><p>Resolve features' filter of layers</p></td>
+<td><p>Resolve features' filter of layers The method fetch filter's expressions returned from access control plugins and and combine them to a unique expression for each layer.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.server.QgsAccessControl.unresolveFilterFeatures" title="qgis.server.QgsAccessControl.unresolveFilterFeatures"><code class="xref py py-obj docutils literal notranslate"><span class="pre">unresolveFilterFeatures</span></code></a></p></td>
+<td><p>Clear expression's cache computed from <cite>resolveFilterFeatures</cite></p></td>
 </tr>
 </tbody>
 </table>
@@ -2202,12 +2206,22 @@ Constructor</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.server.QgsAccessControl.resolveFilterFeatures">
 <span class="sig-name descname"><span class="pre">resolveFilterFeatures</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">layers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../core/QgsMapLayer.html#qgis.core.QgsMapLayer" title="qgis.core.QgsMapLayer"><span class="pre">QgsMapLayer</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.server.QgsAccessControl.resolveFilterFeatures" title="Permalink to this definition">¶</a></dt>
-<dd><p>Resolve features’ filter of layers</p>
+<dd><p>Resolve features’ filter of layers
+The method fetch filter’s expressions returned from access control plugins and
+and combine them to a unique expression for each layer.
+The resulted expressions are stored in cache for efficiency; between each requests, the cache
+must be cleared using ‘<a class="reference internal" href="#qgis.server.QgsAccessControl.unresolveFilterFeatures" title="qgis.server.QgsAccessControl.unresolveFilterFeatures"><code class="xref py py-func docutils literal notranslate"><span class="pre">unresolveFilterFeatures()</span></code></a>’.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>layers</strong> (<em>Iterable</em><em>[</em><a class="reference internal" href="../core/QgsMapLayer.html#qgis.core.QgsMapLayer" title="qgis.core.QgsMapLayer"><em>QgsMapLayer</em></a><em>]</em>) – to filter</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.server.QgsAccessControl.unresolveFilterFeatures">
+<span class="sig-name descname"><span class="pre">unresolveFilterFeatures</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.server.QgsAccessControl.unresolveFilterFeatures" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clear expression’s cache computed from <cite>resolveFilterFeatures</cite></p>
 </dd></dl>
 
 </dd></dl>
@@ -2223,7 +2237,7 @@ Constructor</p>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 04:03 Aug 11, 2022.
+      <span class="lastupdated">Last updated on 13:35 Nov 19, 2022.
       </span></p>
   </div>
 
@@ -2250,6 +2264,10 @@ Constructor</p>
         
           
           <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
+          
+        
+          
+          <dd><a href="https://qgis.org/pyqgis/3.28">3.28</a></dd>
           
         
           

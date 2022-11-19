@@ -18,6 +18,7 @@
         <script src="../_static/underscore.js"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -1922,9 +1923,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="index.html">core</a> &raquo;</li>
-      <li>Class: QgsVectorLayerCache</li>
+      <li><a href="../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">core</a></li>
+      <li class="breadcrumb-item active">Class: QgsVectorLayerCache</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -2064,19 +2065,19 @@
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayerCache.attributeValueChanged" title="qgis.core.QgsVectorLayerCache.attributeValueChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">attributeValueChanged</span></code></a></p></td>
-<td><p>Emitted when an attribute is changed.</p></td>
+<td><p>pyqtSignal(<a href="#id1"><span class="problematic" id="id2">*</span></a>types, name: str = ..., revision: int = ..., arguments: Sequence = ...) -&gt; PYQT_SIGNAL</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayerCache.cachedLayerDeleted" title="qgis.core.QgsVectorLayerCache.cachedLayerDeleted"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cachedLayerDeleted</span></code></a></p></td>
-<td><p>Is emitted when the cached layer is deleted.</p></td>
+<td><p>pyqtSignal(<a href="#id3"><span class="problematic" id="id4">*</span></a>types, name: str = ..., revision: int = ..., arguments: Sequence = ...) -&gt; PYQT_SIGNAL</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayerCache.featureAdded" title="qgis.core.QgsVectorLayerCache.featureAdded"><code class="xref py py-obj docutils literal notranslate"><span class="pre">featureAdded</span></code></a></p></td>
-<td><p>Emitted when a new feature has been added to the layer and this cache.</p></td>
+<td><p>pyqtSignal(<a href="#id5"><span class="problematic" id="id6">*</span></a>types, name: str = ..., revision: int = ..., arguments: Sequence = ...) -&gt; PYQT_SIGNAL</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayerCache.finished" title="qgis.core.QgsVectorLayerCache.finished"><code class="xref py py-obj docutils literal notranslate"><span class="pre">finished</span></code></a></p></td>
-<td><p>When filling the cache, this signal gets emitted once the cache is fully initialized.</p></td>
+<td><p>pyqtSignal(<a href="#id7"><span class="problematic" id="id8">*</span></a>types, name: str = ..., revision: int = ..., arguments: Sequence = ...) -&gt; PYQT_SIGNAL</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorLayerCache.invalidated" title="qgis.core.QgsVectorLayerCache.invalidated"><code class="xref py py-obj docutils literal notranslate"><span class="pre">invalidated</span></code></a></p></td>
-<td><p>The cache has been invalidated and cleared.</p></td>
+<td><p>pyqtSignal(<a href="#id9"><span class="problematic" id="id10">*</span></a>types, name: str = ..., revision: int = ..., arguments: Sequence = ...) -&gt; PYQT_SIGNAL</p></td>
 </tr>
 </tbody>
 </table>
@@ -2105,15 +2106,26 @@ The layer cache will take ownership of the index.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.core.QgsVectorLayerCache.attributeValueChanged">
 <span class="sig-name descname"><span class="pre">attributeValueChanged</span></span><a class="headerlink" href="#qgis.core.QgsVectorLayerCache.attributeValueChanged" title="Permalink to this definition">¶</a></dt>
-<dd><p>Emitted when an attribute is changed. Is re-emitted after the layer itself emits this signal.
-You should connect to this signal, to be sure, to not get a cached value if querying the cache. [signal]</p>
+<dd><p>pyqtSignal(<a href="#id11"><span class="problematic" id="id12">*</span></a>types, name: str = …, revision: int = …, arguments: Sequence = …) -&gt; PYQT_SIGNAL</p>
+<p>types is normally a sequence of individual types.  Each type is either a
+type object or a string that is the name of a C++ type.  Alternatively
+each type could itself be a sequence of types each describing a different
+overloaded signal.
+name is the optional C++ name of the signal.  If it is not specified then
+the name of the class attribute that is bound to the signal is used.
+revision is the optional revision of the signal that is exported to QML.
+If it is not specified then 0 is used.
+arguments is the optional sequence of the names of the signal’s arguments.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>fid</strong> (<em>int</em>) – </p></li>
-<li><p><strong>field</strong> (<em>int</em>) – </p></li>
-<li><p><strong>value</strong> (<em>Any</em>) – </p></li>
+<li><p><strong>name</strong> (<em>str = </em><em>...</em>) – </p></li>
+<li><p><strong>revision</strong> (<em>int = </em><em>...</em>) – </p></li>
+<li><p><strong>arguments</strong> (<em>Sequence = </em><em>...</em>) – </p></li>
 </ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>PYQT_SIGNAL</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2172,9 +2184,28 @@ In case full caching is enabled, this number can change, as new features get add
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.core.QgsVectorLayerCache.cachedLayerDeleted">
 <span class="sig-name descname"><span class="pre">cachedLayerDeleted</span></span><a class="headerlink" href="#qgis.core.QgsVectorLayerCache.cachedLayerDeleted" title="Permalink to this definition">¶</a></dt>
-<dd><p>Is emitted when the cached layer is deleted. Is emitted when the cached layers <code class="xref py py-func docutils literal notranslate"><span class="pre">layerDelete()</span></code>
-signal is being emitted, but before the local reference to it has been set to <code class="docutils literal notranslate"><span class="pre">None</span></code>. So call to
-<a class="reference internal" href="#qgis.core.QgsVectorLayerCache.layer" title="qgis.core.QgsVectorLayerCache.layer"><code class="xref py py-func docutils literal notranslate"><span class="pre">layer()</span></code></a> will still return a valid pointer for cleanup purpose. [signal]</p>
+<dd><p>pyqtSignal(<a href="#id13"><span class="problematic" id="id14">*</span></a>types, name: str = …, revision: int = …, arguments: Sequence = …) -&gt; PYQT_SIGNAL</p>
+<p>types is normally a sequence of individual types.  Each type is either a
+type object or a string that is the name of a C++ type.  Alternatively
+each type could itself be a sequence of types each describing a different
+overloaded signal.
+name is the optional C++ name of the signal.  If it is not specified then
+the name of the class attribute that is bound to the signal is used.
+revision is the optional revision of the signal that is exported to QML.
+If it is not specified then 0 is used.
+arguments is the optional sequence of the names of the signal’s arguments.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str = </em><em>...</em>) – </p></li>
+<li><p><strong>revision</strong> (<em>int = </em><em>...</em>) – </p></li>
+<li><p><strong>arguments</strong> (<em>Sequence = </em><em>...</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>PYQT_SIGNAL</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -2219,12 +2250,26 @@ Please note, that this does not check, if the requested features are cached.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.core.QgsVectorLayerCache.featureAdded">
 <span class="sig-name descname"><span class="pre">featureAdded</span></span><a class="headerlink" href="#qgis.core.QgsVectorLayerCache.featureAdded" title="Permalink to this definition">¶</a></dt>
-<dd><p>Emitted when a new feature has been added to the layer and this cache.
-You should connect to this signal instead of the layers’, if you want to be sure
-that this cache has updated information for the new feature</p>
+<dd><p>pyqtSignal(<a href="#id15"><span class="problematic" id="id16">*</span></a>types, name: str = …, revision: int = …, arguments: Sequence = …) -&gt; PYQT_SIGNAL</p>
+<p>types is normally a sequence of individual types.  Each type is either a
+type object or a string that is the name of a C++ type.  Alternatively
+each type could itself be a sequence of types each describing a different
+overloaded signal.
+name is the optional C++ name of the signal.  If it is not specified then
+the name of the class attribute that is bound to the signal is used.
+revision is the optional revision of the signal that is exported to QML.
+If it is not specified then 0 is used.
+arguments is the optional sequence of the names of the signal’s arguments.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>fid</strong> (<em>int</em>) – The featureid of the changed feature [signal]</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str = </em><em>...</em>) – </p></li>
+<li><p><strong>revision</strong> (<em>int = </em><em>...</em>) – </p></li>
+<li><p><strong>arguments</strong> (<em>Sequence = </em><em>...</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>PYQT_SIGNAL</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2288,7 +2333,28 @@ Broadcasts this information to indices, so they can invalidate their cache if re
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.core.QgsVectorLayerCache.finished">
 <span class="sig-name descname"><span class="pre">finished</span></span><a class="headerlink" href="#qgis.core.QgsVectorLayerCache.finished" title="Permalink to this definition">¶</a></dt>
-<dd><p>When filling the cache, this signal gets emitted once the cache is fully initialized. [signal]</p>
+<dd><p>pyqtSignal(<a href="#id17"><span class="problematic" id="id18">*</span></a>types, name: str = …, revision: int = …, arguments: Sequence = …) -&gt; PYQT_SIGNAL</p>
+<p>types is normally a sequence of individual types.  Each type is either a
+type object or a string that is the name of a C++ type.  Alternatively
+each type could itself be a sequence of types each describing a different
+overloaded signal.
+name is the optional C++ name of the signal.  If it is not specified then
+the name of the class attribute that is bound to the signal is used.
+revision is the optional revision of the signal that is exported to QML.
+If it is not specified then 0 is used.
+arguments is the optional sequence of the names of the signal’s arguments.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str = </em><em>...</em>) – </p></li>
+<li><p><strong>revision</strong> (<em>int = </em><em>...</em>) – </p></li>
+<li><p><strong>arguments</strong> (<em>Sequence = </em><em>...</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>PYQT_SIGNAL</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -2356,9 +2422,28 @@ all available features being cached.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.core.QgsVectorLayerCache.invalidated">
 <span class="sig-name descname"><span class="pre">invalidated</span></span><a class="headerlink" href="#qgis.core.QgsVectorLayerCache.invalidated" title="Permalink to this definition">¶</a></dt>
-<dd><p>The cache has been invalidated and cleared. Note that when a cache is invalidated
-the <code class="xref py py-func docutils literal notranslate"><span class="pre">fullCache()</span></code> setting will be cleared, and a full cache rebuild via setFullCache( <code class="docutils literal notranslate"><span class="pre">True</span></code> )
-will need to be performed. [signal]</p>
+<dd><p>pyqtSignal(<a href="#id19"><span class="problematic" id="id20">*</span></a>types, name: str = …, revision: int = …, arguments: Sequence = …) -&gt; PYQT_SIGNAL</p>
+<p>types is normally a sequence of individual types.  Each type is either a
+type object or a string that is the name of a C++ type.  Alternatively
+each type could itself be a sequence of types each describing a different
+overloaded signal.
+name is the optional C++ name of the signal.  If it is not specified then
+the name of the class attribute that is bound to the signal is used.
+revision is the optional revision of the signal that is exported to QML.
+If it is not specified then 0 is used.
+arguments is the optional sequence of the names of the signal’s arguments.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str = </em><em>...</em>) – </p></li>
+<li><p><strong>revision</strong> (<em>int = </em><em>...</em>) – </p></li>
+<li><p><strong>arguments</strong> (<em>Sequence = </em><em>...</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>PYQT_SIGNAL</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -2559,7 +2644,7 @@ is reset. A full cache rebuild must be performed by calling setFullCache( <code 
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 04:03 Aug 11, 2022.
+      <span class="lastupdated">Last updated on 13:35 Nov 19, 2022.
       </span></p>
   </div>
 
@@ -2586,6 +2671,10 @@ is reset. A full cache rebuild must be performed by calling setFullCache( <code 
         
           
           <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
+          
+        
+          
+          <dd><a href="https://qgis.org/pyqgis/3.28">3.28</a></dd>
           
         
           

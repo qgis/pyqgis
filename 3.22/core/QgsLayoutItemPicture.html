@@ -18,6 +18,7 @@
         <script src="../_static/underscore.js"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -1922,9 +1923,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="index.html">core</a> &raquo;</li>
-      <li>Class: QgsLayoutItemPicture</li>
+      <li><a href="../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">core</a></li>
+      <li class="breadcrumb-item active">Class: QgsLayoutItemPicture</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -2077,7 +2078,7 @@ Constructor for <a class="reference internal" href="#qgis.core.QgsLayoutItemPict
 <td><p>Returns the linked rotation map, if set.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.mode" title="qgis.core.QgsLayoutItemPicture.mode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mode</span></code></a></p></td>
-<td><p>Returns the current picture mode (image format).</p></td>
+<td><p>Returns the current picture mode (image format), FormatUnknown if given picture format is unknown</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.mouseDoubleClickEvent" title="qgis.core.QgsLayoutItemPicture.mouseDoubleClickEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mouseDoubleClickEvent</span></code></a></p></td>
 <td><p></p></td>
@@ -2097,144 +2098,147 @@ Constructor for <a class="reference internal" href="#qgis.core.QgsLayoutItemPict
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.northOffset" title="qgis.core.QgsLayoutItemPicture.northOffset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">northOffset</span></code></a></p></td>
 <td><p>Returns the offset added to the picture's rotation from a map's North.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.pictureAnchor" title="qgis.core.QgsLayoutItemPicture.pictureAnchor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pictureAnchor</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.originalMode" title="qgis.core.QgsLayoutItemPicture.originalMode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">originalMode</span></code></a></p></td>
+<td><p>Returns the original set picture mode (image format).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.pictureAnchor" title="qgis.core.QgsLayoutItemPicture.pictureAnchor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pictureAnchor</span></code></a></p></td>
 <td><p>Returns the picture's current anchor, which controls how it is placed within the picture item's frame.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.picturePath" title="qgis.core.QgsLayoutItemPicture.picturePath"><code class="xref py py-obj docutils literal notranslate"><span class="pre">picturePath</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.picturePath" title="qgis.core.QgsLayoutItemPicture.picturePath"><code class="xref py py-obj docutils literal notranslate"><span class="pre">picturePath</span></code></a></p></td>
 <td><p>Returns the path of the source image.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.pictureRotation" title="qgis.core.QgsLayoutItemPicture.pictureRotation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pictureRotation</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.pictureRotation" title="qgis.core.QgsLayoutItemPicture.pictureRotation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pictureRotation</span></code></a></p></td>
 <td><p>Returns the rotation used for drawing the picture within the item's frame, in degrees clockwise.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.positionAtReferencePoint" title="qgis.core.QgsLayoutItemPicture.positionAtReferencePoint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">positionAtReferencePoint</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.positionAtReferencePoint" title="qgis.core.QgsLayoutItemPicture.positionAtReferencePoint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">positionAtReferencePoint</span></code></a></p></td>
 <td><p>Returns the current position (in layout units) of a <code class="docutils literal notranslate"><span class="pre">reference</span></code> point for the item.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.prepareGeometryChange" title="qgis.core.QgsLayoutItemPicture.prepareGeometryChange"><code class="xref py py-obj docutils literal notranslate"><span class="pre">prepareGeometryChange</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.prepareGeometryChange" title="qgis.core.QgsLayoutItemPicture.prepareGeometryChange"><code class="xref py py-obj docutils literal notranslate"><span class="pre">prepareGeometryChange</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.readObjectPropertiesFromElement" title="qgis.core.QgsLayoutItemPicture.readObjectPropertiesFromElement"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readObjectPropertiesFromElement</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.readObjectPropertiesFromElement" title="qgis.core.QgsLayoutItemPicture.readObjectPropertiesFromElement"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readObjectPropertiesFromElement</span></code></a></p></td>
 <td><p>Sets object properties from a DOM element</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.readPropertiesFromElement" title="qgis.core.QgsLayoutItemPicture.readPropertiesFromElement"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readPropertiesFromElement</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.readPropertiesFromElement" title="qgis.core.QgsLayoutItemPicture.readPropertiesFromElement"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readPropertiesFromElement</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param element</dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.recalculateSize" title="qgis.core.QgsLayoutItemPicture.recalculateSize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">recalculateSize</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.recalculateSize" title="qgis.core.QgsLayoutItemPicture.recalculateSize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">recalculateSize</span></code></a></p></td>
 <td><p>Forces a recalculation of the picture's frame size</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.receivers" title="qgis.core.QgsLayoutItemPicture.receivers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">receivers</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.receivers" title="qgis.core.QgsLayoutItemPicture.receivers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">receivers</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.refreshBackgroundColor" title="qgis.core.QgsLayoutItemPicture.refreshBackgroundColor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">refreshBackgroundColor</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.refreshBackgroundColor" title="qgis.core.QgsLayoutItemPicture.refreshBackgroundColor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">refreshBackgroundColor</span></code></a></p></td>
 <td><p>Refresh item's background color, considering data defined colors.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.refreshBlendMode" title="qgis.core.QgsLayoutItemPicture.refreshBlendMode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">refreshBlendMode</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.refreshBlendMode" title="qgis.core.QgsLayoutItemPicture.refreshBlendMode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">refreshBlendMode</span></code></a></p></td>
 <td><p>Refresh item's blend mode, considering data defined blend mode.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.refreshDataDefinedProperty" title="qgis.core.QgsLayoutItemPicture.refreshDataDefinedProperty"><code class="xref py py-obj docutils literal notranslate"><span class="pre">refreshDataDefinedProperty</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.refreshDataDefinedProperty" title="qgis.core.QgsLayoutItemPicture.refreshDataDefinedProperty"><code class="xref py py-obj docutils literal notranslate"><span class="pre">refreshDataDefinedProperty</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param property</dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.refreshFrame" title="qgis.core.QgsLayoutItemPicture.refreshFrame"><code class="xref py py-obj docutils literal notranslate"><span class="pre">refreshFrame</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.refreshFrame" title="qgis.core.QgsLayoutItemPicture.refreshFrame"><code class="xref py py-obj docutils literal notranslate"><span class="pre">refreshFrame</span></code></a></p></td>
 <td><p>Refresh item's frame, considering data defined colors and frame size.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.refreshItemPosition" title="qgis.core.QgsLayoutItemPicture.refreshItemPosition"><code class="xref py py-obj docutils literal notranslate"><span class="pre">refreshItemPosition</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.refreshItemPosition" title="qgis.core.QgsLayoutItemPicture.refreshItemPosition"><code class="xref py py-obj docutils literal notranslate"><span class="pre">refreshItemPosition</span></code></a></p></td>
 <td><p>Refreshes an item's position by rechecking it against any possible overrides such as data defined positioning.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.refreshItemRotation" title="qgis.core.QgsLayoutItemPicture.refreshItemRotation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">refreshItemRotation</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.refreshItemRotation" title="qgis.core.QgsLayoutItemPicture.refreshItemRotation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">refreshItemRotation</span></code></a></p></td>
 <td><p>Refreshes an item's rotation by rechecking it against any possible overrides such as data defined rotation.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.refreshItemSize" title="qgis.core.QgsLayoutItemPicture.refreshItemSize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">refreshItemSize</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.refreshItemSize" title="qgis.core.QgsLayoutItemPicture.refreshItemSize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">refreshItemSize</span></code></a></p></td>
 <td><p>Refreshes an item's size by rechecking it against any possible item fixed or minimum sizes.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.refreshOpacity" title="qgis.core.QgsLayoutItemPicture.refreshOpacity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">refreshOpacity</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.refreshOpacity" title="qgis.core.QgsLayoutItemPicture.refreshOpacity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">refreshOpacity</span></code></a></p></td>
 <td><p>Refresh item's opacity, considering data defined opacity.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.refreshPicture" title="qgis.core.QgsLayoutItemPicture.refreshPicture"><code class="xref py py-obj docutils literal notranslate"><span class="pre">refreshPicture</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.refreshPicture" title="qgis.core.QgsLayoutItemPicture.refreshPicture"><code class="xref py py-obj docutils literal notranslate"><span class="pre">refreshPicture</span></code></a></p></td>
 <td><p>Recalculates the source image (if using an expression for picture's source) and reloads and redraws the picture.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.resizeMode" title="qgis.core.QgsLayoutItemPicture.resizeMode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">resizeMode</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.resizeMode" title="qgis.core.QgsLayoutItemPicture.resizeMode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">resizeMode</span></code></a></p></td>
 <td><p>Returns the resize mode used for drawing the picture within the layout item's frame.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.sceneEvent" title="qgis.core.QgsLayoutItemPicture.sceneEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sceneEvent</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.sceneEvent" title="qgis.core.QgsLayoutItemPicture.sceneEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sceneEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.sceneEventFilter" title="qgis.core.QgsLayoutItemPicture.sceneEventFilter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sceneEventFilter</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.sceneEventFilter" title="qgis.core.QgsLayoutItemPicture.sceneEventFilter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sceneEventFilter</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.sender" title="qgis.core.QgsLayoutItemPicture.sender"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sender</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.sender" title="qgis.core.QgsLayoutItemPicture.sender"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sender</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.senderSignalIndex" title="qgis.core.QgsLayoutItemPicture.senderSignalIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">senderSignalIndex</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.senderSignalIndex" title="qgis.core.QgsLayoutItemPicture.senderSignalIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">senderSignalIndex</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.setFixedSize" title="qgis.core.QgsLayoutItemPicture.setFixedSize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setFixedSize</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.setFixedSize" title="qgis.core.QgsLayoutItemPicture.setFixedSize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setFixedSize</span></code></a></p></td>
 <td><p>Sets a fixed <code class="docutils literal notranslate"><span class="pre">size</span></code> for the layout item, which prevents it from being freely resized.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.setLinkedMap" title="qgis.core.QgsLayoutItemPicture.setLinkedMap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setLinkedMap</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.setLinkedMap" title="qgis.core.QgsLayoutItemPicture.setLinkedMap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setLinkedMap</span></code></a></p></td>
 <td><p>Sets the <code class="docutils literal notranslate"><span class="pre">map</span></code> object for rotation.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.setMinimumSize" title="qgis.core.QgsLayoutItemPicture.setMinimumSize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setMinimumSize</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.setMinimumSize" title="qgis.core.QgsLayoutItemPicture.setMinimumSize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setMinimumSize</span></code></a></p></td>
 <td><p>Sets the minimum allowed <code class="docutils literal notranslate"><span class="pre">size</span></code> for the layout item.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.setMode" title="qgis.core.QgsLayoutItemPicture.setMode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setMode</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.setMode" title="qgis.core.QgsLayoutItemPicture.setMode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setMode</span></code></a></p></td>
 <td><p>Sets the current picture <code class="docutils literal notranslate"><span class="pre">mode</span></code> (image format).</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.setNorthMode" title="qgis.core.QgsLayoutItemPicture.setNorthMode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setNorthMode</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.setNorthMode" title="qgis.core.QgsLayoutItemPicture.setNorthMode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setNorthMode</span></code></a></p></td>
 <td><p>Sets the <code class="docutils literal notranslate"><span class="pre">mode</span></code> used to align the picture to a map's North.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.setNorthOffset" title="qgis.core.QgsLayoutItemPicture.setNorthOffset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setNorthOffset</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.setNorthOffset" title="qgis.core.QgsLayoutItemPicture.setNorthOffset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setNorthOffset</span></code></a></p></td>
 <td><p>Sets the <code class="docutils literal notranslate"><span class="pre">offset</span></code> added to the picture's rotation from a map's North.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.setPictureAnchor" title="qgis.core.QgsLayoutItemPicture.setPictureAnchor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setPictureAnchor</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.setPictureAnchor" title="qgis.core.QgsLayoutItemPicture.setPictureAnchor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setPictureAnchor</span></code></a></p></td>
 <td><p>Sets the picture's <code class="docutils literal notranslate"><span class="pre">anchor</span></code> point, which controls how it is placed within the picture item's frame.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.setPicturePath" title="qgis.core.QgsLayoutItemPicture.setPicturePath"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setPicturePath</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.setPicturePath" title="qgis.core.QgsLayoutItemPicture.setPicturePath"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setPicturePath</span></code></a></p></td>
 <td><p>Sets the source <code class="docutils literal notranslate"><span class="pre">path</span></code> of the image (may be svg or a raster format).</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.setPictureRotation" title="qgis.core.QgsLayoutItemPicture.setPictureRotation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setPictureRotation</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.setPictureRotation" title="qgis.core.QgsLayoutItemPicture.setPictureRotation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setPictureRotation</span></code></a></p></td>
 <td><p>Sets the picture <code class="docutils literal notranslate"><span class="pre">rotation</span></code> within the item bounds, in degrees clockwise.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.setResizeMode" title="qgis.core.QgsLayoutItemPicture.setResizeMode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setResizeMode</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.setResizeMode" title="qgis.core.QgsLayoutItemPicture.setResizeMode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setResizeMode</span></code></a></p></td>
 <td><p>Sets the resize <code class="docutils literal notranslate"><span class="pre">mode</span></code> used for drawing the picture within the item bounds.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.setSvgDynamicParameters" title="qgis.core.QgsLayoutItemPicture.setSvgDynamicParameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setSvgDynamicParameters</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.setSvgDynamicParameters" title="qgis.core.QgsLayoutItemPicture.setSvgDynamicParameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setSvgDynamicParameters</span></code></a></p></td>
 <td><p>Sets the SVG dynamic parameters</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.setSvgFillColor" title="qgis.core.QgsLayoutItemPicture.setSvgFillColor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setSvgFillColor</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.setSvgFillColor" title="qgis.core.QgsLayoutItemPicture.setSvgFillColor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setSvgFillColor</span></code></a></p></td>
 <td><p>Sets the fill <code class="docutils literal notranslate"><span class="pre">color</span></code> used for parametrized SVG files.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.setSvgStrokeColor" title="qgis.core.QgsLayoutItemPicture.setSvgStrokeColor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setSvgStrokeColor</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.setSvgStrokeColor" title="qgis.core.QgsLayoutItemPicture.setSvgStrokeColor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setSvgStrokeColor</span></code></a></p></td>
 <td><p>Sets the stroke <code class="docutils literal notranslate"><span class="pre">color</span></code> used for parametrized SVG files.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.setSvgStrokeWidth" title="qgis.core.QgsLayoutItemPicture.setSvgStrokeWidth"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setSvgStrokeWidth</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.setSvgStrokeWidth" title="qgis.core.QgsLayoutItemPicture.setSvgStrokeWidth"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setSvgStrokeWidth</span></code></a></p></td>
 <td><p>Sets the stroke <code class="docutils literal notranslate"><span class="pre">width</span></code> (in layout units) used for parametrized SVG files.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.svgDynamicParameters" title="qgis.core.QgsLayoutItemPicture.svgDynamicParameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">svgDynamicParameters</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.svgDynamicParameters" title="qgis.core.QgsLayoutItemPicture.svgDynamicParameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">svgDynamicParameters</span></code></a></p></td>
 <td><p>Returns the SVG dynamic parameters</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.svgFillColor" title="qgis.core.QgsLayoutItemPicture.svgFillColor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">svgFillColor</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.svgFillColor" title="qgis.core.QgsLayoutItemPicture.svgFillColor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">svgFillColor</span></code></a></p></td>
 <td><p>Returns the fill color used for parametrized SVG files.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.svgStrokeColor" title="qgis.core.QgsLayoutItemPicture.svgStrokeColor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">svgStrokeColor</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.svgStrokeColor" title="qgis.core.QgsLayoutItemPicture.svgStrokeColor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">svgStrokeColor</span></code></a></p></td>
 <td><p>Returns the stroke color used for parametrized SVG files.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.svgStrokeWidth" title="qgis.core.QgsLayoutItemPicture.svgStrokeWidth"><code class="xref py py-obj docutils literal notranslate"><span class="pre">svgStrokeWidth</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.svgStrokeWidth" title="qgis.core.QgsLayoutItemPicture.svgStrokeWidth"><code class="xref py py-obj docutils literal notranslate"><span class="pre">svgStrokeWidth</span></code></a></p></td>
 <td><p>Returns the stroke width (in layout units) used for parametrized SVG files.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.timerEvent" title="qgis.core.QgsLayoutItemPicture.timerEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">timerEvent</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.timerEvent" title="qgis.core.QgsLayoutItemPicture.timerEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">timerEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.topLeftToReferencePoint" title="qgis.core.QgsLayoutItemPicture.topLeftToReferencePoint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">topLeftToReferencePoint</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.topLeftToReferencePoint" title="qgis.core.QgsLayoutItemPicture.topLeftToReferencePoint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">topLeftToReferencePoint</span></code></a></p></td>
 <td><p>Returns the position for the reference point of the item, if the top-left of the item was placed at the specified <code class="docutils literal notranslate"><span class="pre">point</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.type" title="qgis.core.QgsLayoutItemPicture.type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.type" title="qgis.core.QgsLayoutItemPicture.type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">rtype</dt>
 <dd class="field-odd"><p>int</p>
@@ -2242,16 +2246,16 @@ Constructor for <a class="reference internal" href="#qgis.core.QgsLayoutItemPict
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.updateMicroFocus" title="qgis.core.QgsLayoutItemPicture.updateMicroFocus"><code class="xref py py-obj docutils literal notranslate"><span class="pre">updateMicroFocus</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.updateMicroFocus" title="qgis.core.QgsLayoutItemPicture.updateMicroFocus"><code class="xref py py-obj docutils literal notranslate"><span class="pre">updateMicroFocus</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.wheelEvent" title="qgis.core.QgsLayoutItemPicture.wheelEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wheelEvent</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.wheelEvent" title="qgis.core.QgsLayoutItemPicture.wheelEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wheelEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.writeObjectPropertiesToElement" title="qgis.core.QgsLayoutItemPicture.writeObjectPropertiesToElement"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeObjectPropertiesToElement</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.writeObjectPropertiesToElement" title="qgis.core.QgsLayoutItemPicture.writeObjectPropertiesToElement"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeObjectPropertiesToElement</span></code></a></p></td>
 <td><p>Stores object properties within an XML DOM element.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.writePropertiesToElement" title="qgis.core.QgsLayoutItemPicture.writePropertiesToElement"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writePropertiesToElement</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.writePropertiesToElement" title="qgis.core.QgsLayoutItemPicture.writePropertiesToElement"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writePropertiesToElement</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param element</dt>
 <dd class="field-odd"><p></p></dd>
@@ -2268,7 +2272,7 @@ Constructor for <a class="reference internal" href="#qgis.core.QgsLayoutItemPict
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.pictureRotationChanged" title="qgis.core.QgsLayoutItemPicture.pictureRotationChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pictureRotationChanged</span></code></a></p></td>
-<td><p>Emitted on picture rotation change [signal]</p></td>
+<td><p>pyqtSignal(<a href="#id1"><span class="problematic" id="id2">*</span></a>types, name: str = ..., revision: int = ..., arguments: Sequence = ...) -&gt; PYQT_SIGNAL</p></td>
 </tr>
 </tbody>
 </table>
@@ -2649,7 +2653,8 @@ as the specified map object.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsLayoutItemPicture.mode">
 <span class="sig-name descname"><span class="pre">mode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.Format" title="qgis.core.QgsLayoutItemPicture.Format"><span class="pre">QgsLayoutItemPicture.Format</span></a></span></span><a class="headerlink" href="#qgis.core.QgsLayoutItemPicture.mode" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the current picture mode (image format).</p>
+<dd><p>Returns the current picture mode (image format), FormatUnknown if given
+picture format is unknown</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.setMode" title="qgis.core.QgsLayoutItemPicture.setMode"><code class="xref py py-func docutils literal notranslate"><span class="pre">setMode()</span></code></a></p>
@@ -2720,6 +2725,25 @@ as the specified map object.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsLayoutItemPicture.originalMode">
+<span class="sig-name descname"><span class="pre">originalMode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.Format" title="qgis.core.QgsLayoutItemPicture.Format"><span class="pre">QgsLayoutItemPicture.Format</span></a></span></span><a class="headerlink" href="#qgis.core.QgsLayoutItemPicture.originalMode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the original set picture mode (image format).
+It could differ from <a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.mode" title="qgis.core.QgsLayoutItemPicture.mode"><code class="xref py py-func docutils literal notranslate"><span class="pre">mode()</span></code></a> if given picture format is unknown</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.setMode" title="qgis.core.QgsLayoutItemPicture.setMode"><code class="xref py py-func docutils literal notranslate"><span class="pre">setMode()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.22.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#qgis.core.QgsLayoutItemPicture.Format" title="qgis.core.QgsLayoutItemPicture.Format">QgsLayoutItemPicture.Format</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsLayoutItemPicture.pictureAnchor">
 <span class="sig-name descname"><span class="pre">pictureAnchor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="QgsLayoutItem.html#qgis.core.QgsLayoutItem.ReferencePoint" title="qgis.core.QgsLayoutItem.ReferencePoint"><span class="pre">QgsLayoutItem.ReferencePoint</span></a></span></span><a class="headerlink" href="#qgis.core.QgsLayoutItemPicture.pictureAnchor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the picture’s current anchor, which controls how it is placed
@@ -2781,10 +2805,26 @@ in degrees clockwise.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.core.QgsLayoutItemPicture.pictureRotationChanged">
 <span class="sig-name descname"><span class="pre">pictureRotationChanged</span></span><a class="headerlink" href="#qgis.core.QgsLayoutItemPicture.pictureRotationChanged" title="Permalink to this definition">¶</a></dt>
-<dd><p>Emitted on picture rotation change [signal]</p>
+<dd><p>pyqtSignal(<a href="#id3"><span class="problematic" id="id4">*</span></a>types, name: str = …, revision: int = …, arguments: Sequence = …) -&gt; PYQT_SIGNAL</p>
+<p>types is normally a sequence of individual types.  Each type is either a
+type object or a string that is the name of a C++ type.  Alternatively
+each type could itself be a sequence of types each describing a different
+overloaded signal.
+name is the optional C++ name of the signal.  If it is not specified then
+the name of the class attribute that is bound to the signal is used.
+revision is the optional revision of the signal that is exported to QML.
+If it is not specified then 0 is used.
+arguments is the optional sequence of the names of the signal’s arguments.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>newRotation</strong> (<em>float</em>) – </p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str = </em><em>...</em>) – </p></li>
+<li><p><strong>revision</strong> (<em>int = </em><em>...</em>) – </p></li>
+<li><p><strong>arguments</strong> (<em>Sequence = </em><em>...</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>PYQT_SIGNAL</p>
 </dd>
 </dl>
 </dd></dl>
@@ -3402,7 +3442,7 @@ was placed at the specified <code class="docutils literal notranslate"><span cla
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 04:03 Aug 11, 2022.
+      <span class="lastupdated">Last updated on 13:35 Nov 19, 2022.
       </span></p>
   </div>
 
@@ -3429,6 +3469,10 @@ was placed at the specified <code class="docutils literal notranslate"><span cla
         
           
           <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
+          
+        
+          
+          <dd><a href="https://qgis.org/pyqgis/3.28">3.28</a></dd>
           
         
           

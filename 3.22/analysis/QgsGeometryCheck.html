@@ -18,6 +18,7 @@
         <script src="../_static/underscore.js"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -1922,9 +1923,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="index.html">analysis</a> &raquo;</li>
-      <li>Class: QgsGeometryCheck</li>
+      <li><a href="../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">analysis</a></li>
+      <li class="breadcrumb-item active">Class: QgsGeometryCheck</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -1944,6 +1945,8 @@
 or other issues which are reported in the geometry validation panel in QGIS and
 help a user to create valid geometries.</p>
 <p>Implementing a custom geometry check consists of the following parts</p>
+<section id="writing-the-check">
+<h2>Writing the check<a class="headerlink" href="#writing-the-check" title="Permalink to this heading">¶</a></h2>
 <p>A new subclass of <a class="reference internal" href="#module-QgsGeometryCheck" title="QgsGeometryCheck"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsGeometryCheck</span></code></a> needs to be written and at least the following
 abstract methods need to be implemented:</p>
 <ul class="simple">
@@ -1957,6 +1960,9 @@ into this method with the parameter ids and should be retrieved from the availab
 use of caching. New errors should be appended to the error list and other message strings to messages.
 The method needs to return a tuple (errors, messages).</p></li>
 </ul>
+</section>
+<section id="creating-a-geometry-check-factory">
+<h2>Creating a geometry check factory<a class="headerlink" href="#creating-a-geometry-check-factory" title="Permalink to this heading">¶</a></h2>
 <p>A Geometry check factory manages meta information for checks. There will always be one single
 geometry check factory created per check type, but it’s possible that multiple <a class="reference internal" href="#module-QgsGeometryCheck" title="QgsGeometryCheck"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsGeometryCheck</span></code></a>
 instances are created and used in parallel.</p>
@@ -1971,6 +1977,9 @@ checks for the geometry type of the layer.</p></li>
 <li><p><a class="reference internal" href="QgsGeometryCheckFactory.html#qgis.analysis.QgsGeometryCheckFactory.flags" title="qgis.analysis.QgsGeometryCheckFactory.flags"><code class="xref py py-func docutils literal notranslate"><span class="pre">QgsGeometryCheckFactory.flags()</span></code></a>: Returns additional flags for a geometry check. If unsure return <a class="reference internal" href="#module-QgsGeometryCheck" title="QgsGeometryCheck"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsGeometryCheck</span></code></a>.AvailableInValidation.</p></li>
 <li><p><a class="reference internal" href="QgsGeometryCheckFactory.html#qgis.analysis.QgsGeometryCheckFactory.checkType" title="qgis.analysis.QgsGeometryCheckFactory.checkType"><code class="xref py py-func docutils literal notranslate"><span class="pre">QgsGeometryCheckFactory.checkType()</span></code></a>: Returns the type of this geometry check.</p></li>
 </ul>
+</section>
+<section id="registering-the-geometry-check">
+<h2>Registering the geometry check<a class="headerlink" href="#registering-the-geometry-check" title="Permalink to this heading">¶</a></h2>
 <p>Finally the geometry check factory needs to be registered in QGIS, so the system
 is aware of the available geometry checks.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make sure you always keep a</span>
@@ -2400,6 +2409,7 @@ use <a class="reference internal" href="#qgis.analysis.QgsGeometryCheck.availabl
 <span class="sig-name descname"><span class="pre">staticMetaObject</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;PyQt5.QtCore.QMetaObject</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#qgis.analysis.QgsGeometryCheck.staticMetaObject" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
+</section>
 </dd></dl>
 
 </section>
@@ -2413,7 +2423,7 @@ use <a class="reference internal" href="#qgis.analysis.QgsGeometryCheck.availabl
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 04:03 Aug 11, 2022.
+      <span class="lastupdated">Last updated on 13:35 Nov 19, 2022.
       </span></p>
   </div>
 
@@ -2440,6 +2450,10 @@ use <a class="reference internal" href="#qgis.analysis.QgsGeometryCheck.availabl
         
           
           <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
+          
+        
+          
+          <dd><a href="https://qgis.org/pyqgis/3.28">3.28</a></dd>
           
         
           

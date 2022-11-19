@@ -18,6 +18,7 @@
         <script src="../_static/underscore.js"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -1922,9 +1923,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="index.html">core</a> &raquo;</li>
-      <li>Class: QgsQueryResultModel</li>
+      <li><a href="../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">core</a></li>
+      <li class="breadcrumb-item active">Class: QgsQueryResultModel</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -2115,13 +2116,13 @@ Constructs a <a class="reference internal" href="#qgis.core.QgsQueryResultModel"
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsQueryResultModel.fetchMoreRows" title="qgis.core.QgsQueryResultModel.fetchMoreRows"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fetchMoreRows</span></code></a></p></td>
-<td><p>Emitted when more rows are requested.</p></td>
+<td><p>pyqtSignal(<a href="#id1"><span class="problematic" id="id2">*</span></a>types, name: str = ..., revision: int = ..., arguments: Sequence = ...) -&gt; PYQT_SIGNAL</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsQueryResultModel.fetchingComplete" title="qgis.core.QgsQueryResultModel.fetchingComplete"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fetchingComplete</span></code></a></p></td>
-<td><p>Emitted when rows have been fetched (all of them or a batch if <cite>maxRows</cite> was passed to <a class="reference internal" href="#qgis.core.QgsQueryResultModel.fetchMoreRows" title="qgis.core.QgsQueryResultModel.fetchMoreRows"><code class="xref py py-func docutils literal notranslate"><span class="pre">fetchMoreRows()</span></code></a> ) or when the fetching has been stopped (canceled).</p></td>
+<td><p>pyqtSignal(<a href="#id3"><span class="problematic" id="id4">*</span></a>types, name: str = ..., revision: int = ..., arguments: Sequence = ...) -&gt; PYQT_SIGNAL</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsQueryResultModel.fetchingStarted" title="qgis.core.QgsQueryResultModel.fetchingStarted"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fetchingStarted</span></code></a></p></td>
-<td><p>Emitted when fetching of rows has started [signal]</p></td>
+<td><p>pyqtSignal(<a href="#id5"><span class="problematic" id="id6">*</span></a>types, name: str = ..., revision: int = ..., arguments: Sequence = ...) -&gt; PYQT_SIGNAL</p></td>
 </tr>
 </tbody>
 </table>
@@ -2321,10 +2322,26 @@ Constructs a <a class="reference internal" href="#qgis.core.QgsQueryResultModel"
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.core.QgsQueryResultModel.fetchMoreRows">
 <span class="sig-name descname"><span class="pre">fetchMoreRows</span></span><a class="headerlink" href="#qgis.core.QgsQueryResultModel.fetchMoreRows" title="Permalink to this definition">¶</a></dt>
-<dd><p>Emitted when more rows are requested.</p>
+<dd><p>pyqtSignal(<a href="#id7"><span class="problematic" id="id8">*</span></a>types, name: str = …, revision: int = …, arguments: Sequence = …) -&gt; PYQT_SIGNAL</p>
+<p>types is normally a sequence of individual types.  Each type is either a
+type object or a string that is the name of a C++ type.  Alternatively
+each type could itself be a sequence of types each describing a different
+overloaded signal.
+name is the optional C++ name of the signal.  If it is not specified then
+the name of the class attribute that is bound to the signal is used.
+revision is the optional revision of the signal that is exported to QML.
+If it is not specified then 0 is used.
+arguments is the optional sequence of the names of the signal’s arguments.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>maxRows</strong> (<em>int</em>) – the number of rows that will be fetched. [signal]</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str = </em><em>...</em>) – </p></li>
+<li><p><strong>revision</strong> (<em>int = </em><em>...</em>) – </p></li>
+<li><p><strong>arguments</strong> (<em>Sequence = </em><em>...</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>PYQT_SIGNAL</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2332,18 +2349,55 @@ Constructs a <a class="reference internal" href="#qgis.core.QgsQueryResultModel"
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.core.QgsQueryResultModel.fetchingComplete">
 <span class="sig-name descname"><span class="pre">fetchingComplete</span></span><a class="headerlink" href="#qgis.core.QgsQueryResultModel.fetchingComplete" title="Permalink to this definition">¶</a></dt>
-<dd><p>Emitted when rows have been fetched (all of them or a batch if <cite>maxRows</cite> was passed to <a class="reference internal" href="#qgis.core.QgsQueryResultModel.fetchMoreRows" title="qgis.core.QgsQueryResultModel.fetchMoreRows"><code class="xref py py-func docutils literal notranslate"><span class="pre">fetchMoreRows()</span></code></a> )
-or when the fetching has been stopped (canceled).</p>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p><a class="reference internal" href="#qgis.core.QgsQueryResultModel.fetchMoreRows" title="qgis.core.QgsQueryResultModel.fetchMoreRows"><code class="xref py py-func docutils literal notranslate"><span class="pre">fetchMoreRows()</span></code></a> [signal]</p>
-</div>
+<dd><p>pyqtSignal(<a href="#id9"><span class="problematic" id="id10">*</span></a>types, name: str = …, revision: int = …, arguments: Sequence = …) -&gt; PYQT_SIGNAL</p>
+<p>types is normally a sequence of individual types.  Each type is either a
+type object or a string that is the name of a C++ type.  Alternatively
+each type could itself be a sequence of types each describing a different
+overloaded signal.
+name is the optional C++ name of the signal.  If it is not specified then
+the name of the class attribute that is bound to the signal is used.
+revision is the optional revision of the signal that is exported to QML.
+If it is not specified then 0 is used.
+arguments is the optional sequence of the names of the signal’s arguments.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str = </em><em>...</em>) – </p></li>
+<li><p><strong>revision</strong> (<em>int = </em><em>...</em>) – </p></li>
+<li><p><strong>arguments</strong> (<em>Sequence = </em><em>...</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>PYQT_SIGNAL</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.core.QgsQueryResultModel.fetchingStarted">
 <span class="sig-name descname"><span class="pre">fetchingStarted</span></span><a class="headerlink" href="#qgis.core.QgsQueryResultModel.fetchingStarted" title="Permalink to this definition">¶</a></dt>
-<dd><p>Emitted when fetching of rows has started [signal]</p>
+<dd><p>pyqtSignal(<a href="#id11"><span class="problematic" id="id12">*</span></a>types, name: str = …, revision: int = …, arguments: Sequence = …) -&gt; PYQT_SIGNAL</p>
+<p>types is normally a sequence of individual types.  Each type is either a
+type object or a string that is the name of a C++ type.  Alternatively
+each type could itself be a sequence of types each describing a different
+overloaded signal.
+name is the optional C++ name of the signal.  If it is not specified then
+the name of the class attribute that is bound to the signal is used.
+revision is the optional revision of the signal that is exported to QML.
+If it is not specified then 0 is used.
+arguments is the optional sequence of the names of the signal’s arguments.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str = </em><em>...</em>) – </p></li>
+<li><p><strong>revision</strong> (<em>int = </em><em>...</em>) – </p></li>
+<li><p><strong>arguments</strong> (<em>Sequence = </em><em>...</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>PYQT_SIGNAL</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -2449,7 +2503,7 @@ or when the fetching has been stopped (canceled).</p>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 04:03 Aug 11, 2022.
+      <span class="lastupdated">Last updated on 13:35 Nov 19, 2022.
       </span></p>
   </div>
 
@@ -2476,6 +2530,10 @@ or when the fetching has been stopped (canceled).</p>
         
           
           <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
+          
+        
+          
+          <dd><a href="https://qgis.org/pyqgis/3.28">3.28</a></dd>
           
         
           

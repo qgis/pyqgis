@@ -18,6 +18,7 @@
         <script src="../_static/underscore.js"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -1922,9 +1923,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="index.html">core</a> &raquo;</li>
-      <li>Class: QgsDataProvider</li>
+      <li><a href="../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">core</a></li>
+      <li class="breadcrumb-item active">Class: QgsDataProvider</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -2107,13 +2108,13 @@ Create a new dataprovider with the specified in the <code class="docutils litera
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsDataProvider.dataChanged" title="qgis.core.QgsDataProvider.dataChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dataChanged</span></code></a></p></td>
-<td><p>Emitted whenever a change is made to the data provider which may have caused changes in the provider's data OUTSIDE of QGIS.</p></td>
+<td><p>pyqtSignal(<a href="#id1"><span class="problematic" id="id2">*</span></a>types, name: str = ..., revision: int = ..., arguments: Sequence = ...) -&gt; PYQT_SIGNAL</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsDataProvider.fullExtentCalculated" title="qgis.core.QgsDataProvider.fullExtentCalculated"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fullExtentCalculated</span></code></a></p></td>
-<td><p>Emitted whenever a deferred extent calculation is completed by the provider.</p></td>
+<td><p>pyqtSignal(<a href="#id3"><span class="problematic" id="id4">*</span></a>types, name: str = ..., revision: int = ..., arguments: Sequence = ...) -&gt; PYQT_SIGNAL</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsDataProvider.notify" title="qgis.core.QgsDataProvider.notify"><code class="xref py py-obj docutils literal notranslate"><span class="pre">notify</span></code></a></p></td>
-<td><p>Emitted when the datasource issues a notification.</p></td>
+<td><p>pyqtSignal(<a href="#id5"><span class="problematic" id="id6">*</span></a>types, name: str = ..., revision: int = ..., arguments: Sequence = ...) -&gt; PYQT_SIGNAL</p></td>
 </tr>
 </tbody>
 </table>
@@ -2316,17 +2317,28 @@ If the provider isn’t capable of returning its projection then an invalid
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.core.QgsDataProvider.dataChanged">
 <span class="sig-name descname"><span class="pre">dataChanged</span></span><a class="headerlink" href="#qgis.core.QgsDataProvider.dataChanged" title="Permalink to this definition">¶</a></dt>
-<dd><p>Emitted whenever a change is made to the data provider which may have
-caused changes in the provider’s data OUTSIDE of QGIS.</p>
-<p>When emitted from a <a class="reference internal" href="QgsVectorDataProvider.html#module-QgsVectorDataProvider" title="QgsVectorDataProvider"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsVectorDataProvider</span></code></a>, any cached information such as
-feature ids should be invalidated.</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>This signal is NOT emitted when changes are made to a provider
-from INSIDE QGIS – e.g. when adding features to a vector layer, deleting features
-or modifying existing features. Instead, the specific <a class="reference internal" href="QgsVectorLayer.html#module-QgsVectorLayer" title="QgsVectorLayer"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsVectorLayer</span></code></a> signals
-should be used to detect these operations. [signal]</p>
-</div>
+<dd><p>pyqtSignal(<a href="#id7"><span class="problematic" id="id8">*</span></a>types, name: str = …, revision: int = …, arguments: Sequence = …) -&gt; PYQT_SIGNAL</p>
+<p>types is normally a sequence of individual types.  Each type is either a
+type object or a string that is the name of a C++ type.  Alternatively
+each type could itself be a sequence of types each describing a different
+overloaded signal.
+name is the optional C++ name of the signal.  If it is not specified then
+the name of the class attribute that is bound to the signal is used.
+revision is the optional revision of the signal that is exported to QML.
+If it is not specified then 0 is used.
+arguments is the optional sequence of the names of the signal’s arguments.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str = </em><em>...</em>) – </p></li>
+<li><p><strong>revision</strong> (<em>int = </em><em>...</em>) – </p></li>
+<li><p><strong>arguments</strong> (<em>Sequence = </em><em>...</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>PYQT_SIGNAL</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -2500,9 +2512,28 @@ databases and servers.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.core.QgsDataProvider.fullExtentCalculated">
 <span class="sig-name descname"><span class="pre">fullExtentCalculated</span></span><a class="headerlink" href="#qgis.core.QgsDataProvider.fullExtentCalculated" title="Permalink to this definition">¶</a></dt>
-<dd><p>Emitted whenever a deferred extent calculation is completed by the provider.</p>
-<p>Layers should connect to this signal and update their cached extents whenever
-it is emitted. [signal]</p>
+<dd><p>pyqtSignal(<a href="#id9"><span class="problematic" id="id10">*</span></a>types, name: str = …, revision: int = …, arguments: Sequence = …) -&gt; PYQT_SIGNAL</p>
+<p>types is normally a sequence of individual types.  Each type is either a
+type object or a string that is the name of a C++ type.  Alternatively
+each type could itself be a sequence of types each describing a different
+overloaded signal.
+name is the optional C++ name of the signal.  If it is not specified then
+the name of the class attribute that is bound to the signal is used.
+revision is the optional revision of the signal that is exported to QML.
+If it is not specified then 0 is used.
+arguments is the optional sequence of the names of the signal’s arguments.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str = </em><em>...</em>) – </p></li>
+<li><p><strong>revision</strong> (<em>int = </em><em>...</em>) – </p></li>
+<li><p><strong>arguments</strong> (<em>Sequence = </em><em>...</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>PYQT_SIGNAL</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -2601,17 +2632,26 @@ anything strange with regards to their name or description?</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.core.QgsDataProvider.notify">
 <span class="sig-name descname"><span class="pre">notify</span></span><a class="headerlink" href="#qgis.core.QgsDataProvider.notify" title="Permalink to this definition">¶</a></dt>
-<dd><p>Emitted when the datasource issues a notification.</p>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p><a class="reference internal" href="#qgis.core.QgsDataProvider.setListening" title="qgis.core.QgsDataProvider.setListening"><code class="xref py py-func docutils literal notranslate"><span class="pre">setListening()</span></code></a></p>
-</div>
-<div class="versionadded">
-<p><span class="versionmodified added">New in version 3.0: </span>[signal]</p>
-</div>
+<dd><p>pyqtSignal(<a href="#id11"><span class="problematic" id="id12">*</span></a>types, name: str = …, revision: int = …, arguments: Sequence = …) -&gt; PYQT_SIGNAL</p>
+<p>types is normally a sequence of individual types.  Each type is either a
+type object or a string that is the name of a C++ type.  Alternatively
+each type could itself be a sequence of types each describing a different
+overloaded signal.
+name is the optional C++ name of the signal.  If it is not specified then
+the name of the class attribute that is bound to the signal is used.
+revision is the optional revision of the signal that is exported to QML.
+If it is not specified then 0 is used.
+arguments is the optional sequence of the names of the signal’s arguments.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>msg</strong> (<em>str</em>) – </p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str = </em><em>...</em>) – </p></li>
+<li><p><strong>revision</strong> (<em>int = </em><em>...</em>) – </p></li>
+<li><p><strong>arguments</strong> (<em>Sequence = </em><em>...</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>PYQT_SIGNAL</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2965,7 +3005,7 @@ on individual provider capabilities.</p>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 04:03 Aug 11, 2022.
+      <span class="lastupdated">Last updated on 13:35 Nov 19, 2022.
       </span></p>
   </div>
 
@@ -2992,6 +3032,10 @@ on individual provider capabilities.</p>
         
           
           <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
+          
+        
+          
+          <dd><a href="https://qgis.org/pyqgis/3.28">3.28</a></dd>
           
         
           

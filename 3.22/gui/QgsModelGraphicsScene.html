@@ -18,6 +18,7 @@
         <script src="../_static/underscore.js"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -1922,9 +1923,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="index.html">gui</a> &raquo;</li>
-      <li>Class: QgsModelGraphicsScene</li>
+      <li><a href="../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">gui</a></li>
+      <li class="breadcrumb-item active">Class: QgsModelGraphicsScene</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -2144,16 +2145,16 @@ Constructor for <a class="reference internal" href="#qgis.gui.QgsModelGraphicsSc
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsModelGraphicsScene.componentAboutToChange" title="qgis.gui.QgsModelGraphicsScene.componentAboutToChange"><code class="xref py py-obj docutils literal notranslate"><span class="pre">componentAboutToChange</span></code></a></p></td>
-<td><p>Emitted whenever a component of the model is about to be changed.</p></td>
+<td><p>pyqtSignal(<a href="#id1"><span class="problematic" id="id2">*</span></a>types, name: str = ..., revision: int = ..., arguments: Sequence = ...) -&gt; PYQT_SIGNAL</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsModelGraphicsScene.componentChanged" title="qgis.gui.QgsModelGraphicsScene.componentChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">componentChanged</span></code></a></p></td>
-<td><p>Emitted whenever a component of the model is changed.</p></td>
+<td><p>pyqtSignal(<a href="#id3"><span class="problematic" id="id4">*</span></a>types, name: str = ..., revision: int = ..., arguments: Sequence = ...) -&gt; PYQT_SIGNAL</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsModelGraphicsScene.rebuildRequired" title="qgis.gui.QgsModelGraphicsScene.rebuildRequired"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rebuildRequired</span></code></a></p></td>
-<td><p>Emitted when a change in the model requires a full rebuild of the scene.</p></td>
+<td><p>pyqtSignal(<a href="#id5"><span class="problematic" id="id6">*</span></a>types, name: str = ..., revision: int = ..., arguments: Sequence = ...) -&gt; PYQT_SIGNAL</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsModelGraphicsScene.selectedItemChanged" title="qgis.gui.QgsModelGraphicsScene.selectedItemChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">selectedItemChanged</span></code></a></p></td>
-<td><p>Emitted whenever the selected item changes.</p></td>
+<td><p>pyqtSignal(<a href="#id7"><span class="problematic" id="id8">*</span></a>types, name: str = ..., revision: int = ..., arguments: Sequence = ...) -&gt; PYQT_SIGNAL</p></td>
 </tr>
 </tbody>
 </table>
@@ -2261,15 +2262,26 @@ Constructor for <a class="reference internal" href="#qgis.gui.QgsModelGraphicsSc
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.gui.QgsModelGraphicsScene.componentAboutToChange">
 <span class="sig-name descname"><span class="pre">componentAboutToChange</span></span><a class="headerlink" href="#qgis.gui.QgsModelGraphicsScene.componentAboutToChange" title="Permalink to this definition">¶</a></dt>
-<dd><p>Emitted whenever a component of the model is about to be changed.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">text</span></code> argument gives the translated text describing the change about to occur, and the
-optional <code class="docutils literal notranslate"><span class="pre">id</span></code> can be used to group the associated undo commands. [signal]</p>
+<dd><p>pyqtSignal(<a href="#id9"><span class="problematic" id="id10">*</span></a>types, name: str = …, revision: int = …, arguments: Sequence = …) -&gt; PYQT_SIGNAL</p>
+<p>types is normally a sequence of individual types.  Each type is either a
+type object or a string that is the name of a C++ type.  Alternatively
+each type could itself be a sequence of types each describing a different
+overloaded signal.
+name is the optional C++ name of the signal.  If it is not specified then
+the name of the class attribute that is bound to the signal is used.
+revision is the optional revision of the signal that is exported to QML.
+If it is not specified then 0 is used.
+arguments is the optional sequence of the names of the signal’s arguments.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>text</strong> (<em>str</em>) – </p></li>
-<li><p><strong>id</strong> (<em>int = 0</em>) – </p></li>
+<li><p><strong>name</strong> (<em>str = </em><em>...</em>) – </p></li>
+<li><p><strong>revision</strong> (<em>int = </em><em>...</em>) – </p></li>
+<li><p><strong>arguments</strong> (<em>Sequence = </em><em>...</em>) – </p></li>
 </ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>PYQT_SIGNAL</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2277,7 +2289,28 @@ optional <code class="docutils literal notranslate"><span class="pre">id</span><
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.gui.QgsModelGraphicsScene.componentChanged">
 <span class="sig-name descname"><span class="pre">componentChanged</span></span><a class="headerlink" href="#qgis.gui.QgsModelGraphicsScene.componentChanged" title="Permalink to this definition">¶</a></dt>
-<dd><p>Emitted whenever a component of the model is changed. [signal]</p>
+<dd><p>pyqtSignal(<a href="#id11"><span class="problematic" id="id12">*</span></a>types, name: str = …, revision: int = …, arguments: Sequence = …) -&gt; PYQT_SIGNAL</p>
+<p>types is normally a sequence of individual types.  Each type is either a
+type object or a string that is the name of a C++ type.  Alternatively
+each type could itself be a sequence of types each describing a different
+overloaded signal.
+name is the optional C++ name of the signal.  If it is not specified then
+the name of the class attribute that is bound to the signal is used.
+revision is the optional revision of the signal that is exported to QML.
+If it is not specified then 0 is used.
+arguments is the optional sequence of the names of the signal’s arguments.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str = </em><em>...</em>) – </p></li>
+<li><p><strong>revision</strong> (<em>int = </em><em>...</em>) – </p></li>
+<li><p><strong>arguments</strong> (<em>Sequence = </em><em>...</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>PYQT_SIGNAL</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -2588,7 +2621,28 @@ not correctly emit signals to allow the scene’s model to update.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.gui.QgsModelGraphicsScene.rebuildRequired">
 <span class="sig-name descname"><span class="pre">rebuildRequired</span></span><a class="headerlink" href="#qgis.gui.QgsModelGraphicsScene.rebuildRequired" title="Permalink to this definition">¶</a></dt>
-<dd><p>Emitted when a change in the model requires a full rebuild of the scene. [signal]</p>
+<dd><p>pyqtSignal(<a href="#id13"><span class="problematic" id="id14">*</span></a>types, name: str = …, revision: int = …, arguments: Sequence = …) -&gt; PYQT_SIGNAL</p>
+<p>types is normally a sequence of individual types.  Each type is either a
+type object or a string that is the name of a C++ type.  Alternatively
+each type could itself be a sequence of types each describing a different
+overloaded signal.
+name is the optional C++ name of the signal.  If it is not specified then
+the name of the class attribute that is bound to the signal is used.
+revision is the optional revision of the signal that is exported to QML.
+If it is not specified then 0 is used.
+arguments is the optional sequence of the names of the signal’s arguments.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str = </em><em>...</em>) – </p></li>
+<li><p><strong>revision</strong> (<em>int = </em><em>...</em>) – </p></li>
+<li><p><strong>arguments</strong> (<em>Sequence = </em><em>...</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>PYQT_SIGNAL</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -2616,11 +2670,26 @@ not correctly emit signals to allow the scene’s model to update.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.gui.QgsModelGraphicsScene.selectedItemChanged">
 <span class="sig-name descname"><span class="pre">selectedItemChanged</span></span><a class="headerlink" href="#qgis.gui.QgsModelGraphicsScene.selectedItemChanged" title="Permalink to this definition">¶</a></dt>
-<dd><p>Emitted whenever the selected item changes.
-If <code class="docutils literal notranslate"><span class="pre">None</span></code>, no item is selected. [signal]</p>
+<dd><p>pyqtSignal(<a href="#id15"><span class="problematic" id="id16">*</span></a>types, name: str = …, revision: int = …, arguments: Sequence = …) -&gt; PYQT_SIGNAL</p>
+<p>types is normally a sequence of individual types.  Each type is either a
+type object or a string that is the name of a C++ type.  Alternatively
+each type could itself be a sequence of types each describing a different
+overloaded signal.
+name is the optional C++ name of the signal.  If it is not specified then
+the name of the class attribute that is bound to the signal is used.
+revision is the optional revision of the signal that is exported to QML.
+If it is not specified then 0 is used.
+arguments is the optional sequence of the names of the signal’s arguments.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>selected</strong> (<a class="reference internal" href="QgsModelComponentGraphicItem.html#qgis.gui.QgsModelComponentGraphicItem" title="qgis.gui.QgsModelComponentGraphicItem"><em>QgsModelComponentGraphicItem</em></a>) – </p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str = </em><em>...</em>) – </p></li>
+<li><p><strong>revision</strong> (<em>int = </em><em>...</em>) – </p></li>
+<li><p><strong>arguments</strong> (<em>Sequence = </em><em>...</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>PYQT_SIGNAL</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2774,7 +2843,7 @@ flags are not affected.</p>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 04:03 Aug 11, 2022.
+      <span class="lastupdated">Last updated on 13:35 Nov 19, 2022.
       </span></p>
   </div>
 
@@ -2801,6 +2870,10 @@ flags are not affected.</p>
         
           
           <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
+          
+        
+          
+          <dd><a href="https://qgis.org/pyqgis/3.28">3.28</a></dd>
           
         
           
