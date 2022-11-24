@@ -22,7 +22,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Class: QgsMapLayerActionRegistry" href="QgsMapLayerActionRegistry.html" />
+    <link rel="next" title="Class: QgsMapLayerActionContext" href="QgsMapLayerActionContext.html" />
     <link rel="prev" title="Class: QgsMapCanvasUtils" href="QgsMapCanvasUtils.html" /> 
 </head>
 
@@ -1646,6 +1646,8 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsMapCanvasTracer.html">Class: QgsMapCanvasTracer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsMapCanvasUtils.html">Class: QgsMapCanvasUtils</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Class: QgsMapLayerAction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsMapLayerActionContext.html">Class: QgsMapLayerActionContext</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsMapLayerActionContextGenerator.html">Class: QgsMapLayerActionContextGenerator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsMapLayerActionRegistry.html">Class: QgsMapLayerActionRegistry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsMapLayerComboBox.html">Class: QgsMapLayerComboBox</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsMapLayerConfigWidget.html">Class: QgsMapLayerConfigWidget</a></li>
@@ -2153,7 +2155,7 @@ Creates a map layer action which can run on a specific type of layer</p>
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsMapLayerAction.canRunUsingLayer" title="qgis.gui.QgsMapLayerAction.canRunUsingLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">canRunUsingLayer</span></code></a></p></td>
-<td><p>True if action can run using the specified layer</p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the action can run using the specified layer.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsMapLayerAction.childEvent" title="qgis.gui.QgsMapLayerAction.childEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">childEvent</span></code></a></p></td>
 <td><p></p></td>
@@ -2218,11 +2220,20 @@ Creates a map layer action which can run on a specific type of layer</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsMapLayerAction.triggeredForFeature" title="qgis.gui.QgsMapLayerAction.triggeredForFeature"><code class="xref py py-obj docutils literal notranslate"><span class="pre">triggeredForFeature</span></code></a></p></td>
 <td><p>pyqtSignal(<a href="#id1"><span class="problematic" id="id2">*</span></a>types, name: str = ..., revision: int = ..., arguments: Sequence = ...) -&gt; PYQT_SIGNAL</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsMapLayerAction.triggeredForFeatures" title="qgis.gui.QgsMapLayerAction.triggeredForFeatures"><code class="xref py py-obj docutils literal notranslate"><span class="pre">triggeredForFeatures</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsMapLayerAction.triggeredForFeatureV2" title="qgis.gui.QgsMapLayerAction.triggeredForFeatureV2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">triggeredForFeatureV2</span></code></a></p></td>
 <td><p>pyqtSignal(<a href="#id3"><span class="problematic" id="id4">*</span></a>types, name: str = ..., revision: int = ..., arguments: Sequence = ...) -&gt; PYQT_SIGNAL</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsMapLayerAction.triggeredForLayer" title="qgis.gui.QgsMapLayerAction.triggeredForLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">triggeredForLayer</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsMapLayerAction.triggeredForFeatures" title="qgis.gui.QgsMapLayerAction.triggeredForFeatures"><code class="xref py py-obj docutils literal notranslate"><span class="pre">triggeredForFeatures</span></code></a></p></td>
 <td><p>pyqtSignal(<a href="#id5"><span class="problematic" id="id6">*</span></a>types, name: str = ..., revision: int = ..., arguments: Sequence = ...) -&gt; PYQT_SIGNAL</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsMapLayerAction.triggeredForFeaturesV2" title="qgis.gui.QgsMapLayerAction.triggeredForFeaturesV2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">triggeredForFeaturesV2</span></code></a></p></td>
+<td><p>pyqtSignal(<a href="#id7"><span class="problematic" id="id8">*</span></a>types, name: str = ..., revision: int = ..., arguments: Sequence = ...) -&gt; PYQT_SIGNAL</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsMapLayerAction.triggeredForLayer" title="qgis.gui.QgsMapLayerAction.triggeredForLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">triggeredForLayer</span></code></a></p></td>
+<td><p>pyqtSignal(<a href="#id9"><span class="problematic" id="id10">*</span></a>types, name: str = ..., revision: int = ..., arguments: Sequence = ...) -&gt; PYQT_SIGNAL</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsMapLayerAction.triggeredForLayerV2" title="qgis.gui.QgsMapLayerAction.triggeredForLayerV2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">triggeredForLayerV2</span></code></a></p></td>
+<td><p>pyqtSignal(<a href="#id11"><span class="problematic" id="id12">*</span></a>types, name: str = ..., revision: int = ..., arguments: Sequence = ...) -&gt; PYQT_SIGNAL</p></td>
 </tr>
 </tbody>
 </table>
@@ -2323,7 +2334,19 @@ Creates a map layer action which can run on a specific type of layer</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.gui.QgsMapLayerAction.canRunUsingLayer">
 <span class="sig-name descname"><span class="pre">canRunUsingLayer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">layer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../core/QgsMapLayer.html#qgis.core.QgsMapLayer" title="qgis.core.QgsMapLayer"><span class="pre">QgsMapLayer</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#qgis.gui.QgsMapLayerAction.canRunUsingLayer" title="Permalink to this definition">¶</a></dt>
-<dd><p>True if action can run using the specified layer</p>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the action can run using the specified layer.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version use: </span>the version with <a class="reference internal" href="QgsMapLayerActionContext.html#module-QgsMapLayerActionContext" title="QgsMapLayerActionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMapLayerActionContext</span></code></a> instead.</p>
+</div>
+<p>canRunUsingLayer(self, layer: <a class="reference internal" href="../core/QgsMapLayer.html#qgis.core.QgsMapLayer" title="qgis.core.QgsMapLayer"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMapLayer</span></code></a>, context: <a class="reference internal" href="QgsMapLayerActionContext.html#qgis.gui.QgsMapLayerActionContext" title="qgis.gui.QgsMapLayerActionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMapLayerActionContext</span></code></a>) -&gt; bool
+Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the action can run using the specified layer.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Classes which implement this should return <code class="docutils literal notranslate"><span class="pre">False</span></code> to the deprecated <a class="reference internal" href="#qgis.gui.QgsMapLayerAction.canRunUsingLayer" title="qgis.gui.QgsMapLayerAction.canRunUsingLayer"><code class="xref py py-func docutils literal notranslate"><span class="pre">canRunUsingLayer()</span></code></a> method which does not accept a <a class="reference internal" href="QgsMapLayerActionContext.html#module-QgsMapLayerActionContext" title="QgsMapLayerActionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMapLayerActionContext</span></code></a> argument.</p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.30.</span></p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>layer</strong> (<a class="reference internal" href="../core/QgsMapLayer.html#qgis.core.QgsMapLayer" title="qgis.core.QgsMapLayer"><em>QgsMapLayer</em></a>) – </p>
@@ -2438,6 +2461,14 @@ Creates a map layer action which can run on a specific type of layer</p>
 <dt class="sig sig-object py" id="qgis.gui.QgsMapLayerAction.triggerForFeature">
 <span class="sig-name descname"><span class="pre">triggerForFeature</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">layer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../core/QgsMapLayer.html#qgis.core.QgsMapLayer" title="qgis.core.QgsMapLayer"><span class="pre">QgsMapLayer</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../core/QgsFeature.html#qgis.core.QgsFeature" title="qgis.core.QgsFeature"><span class="pre">QgsFeature</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsMapLayerAction.triggerForFeature" title="Permalink to this definition">¶</a></dt>
 <dd><p>Triggers the action with the specified layer and feature.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version use: </span>the version with <a class="reference internal" href="QgsMapLayerActionContext.html#module-QgsMapLayerActionContext" title="QgsMapLayerActionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMapLayerActionContext</span></code></a> instead.</p>
+</div>
+<p>triggerForFeature(self, layer: <a class="reference internal" href="../core/QgsMapLayer.html#qgis.core.QgsMapLayer" title="qgis.core.QgsMapLayer"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMapLayer</span></code></a>, feature: <a class="reference internal" href="../core/QgsFeature.html#qgis.core.QgsFeature" title="qgis.core.QgsFeature"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsFeature</span></code></a>, context: <a class="reference internal" href="QgsMapLayerActionContext.html#qgis.gui.QgsMapLayerActionContext" title="qgis.gui.QgsMapLayerActionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMapLayerActionContext</span></code></a>)
+Triggers the action with the specified layer and feature.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.30.</span></p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -2452,6 +2483,14 @@ Creates a map layer action which can run on a specific type of layer</p>
 <dt class="sig sig-object py" id="qgis.gui.QgsMapLayerAction.triggerForFeatures">
 <span class="sig-name descname"><span class="pre">triggerForFeatures</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">layer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../core/QgsMapLayer.html#qgis.core.QgsMapLayer" title="qgis.core.QgsMapLayer"><span class="pre">QgsMapLayer</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">featureList</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../core/QgsFeature.html#qgis.core.QgsFeature" title="qgis.core.QgsFeature"><span class="pre">QgsFeature</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsMapLayerAction.triggerForFeatures" title="Permalink to this definition">¶</a></dt>
 <dd><p>Triggers the action with the specified layer and list of feature.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version use: </span>the version with <a class="reference internal" href="QgsMapLayerActionContext.html#module-QgsMapLayerActionContext" title="QgsMapLayerActionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMapLayerActionContext</span></code></a> instead.</p>
+</div>
+<p>triggerForFeatures(self, layer: <a class="reference internal" href="../core/QgsMapLayer.html#qgis.core.QgsMapLayer" title="qgis.core.QgsMapLayer"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMapLayer</span></code></a>, featureList: Iterable[QgsFeature], context: <a class="reference internal" href="QgsMapLayerActionContext.html#qgis.gui.QgsMapLayerActionContext" title="qgis.gui.QgsMapLayerActionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMapLayerActionContext</span></code></a>)
+Triggers the action with the specified layer and list of feature.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.30.</span></p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -2466,6 +2505,14 @@ Creates a map layer action which can run on a specific type of layer</p>
 <dt class="sig sig-object py" id="qgis.gui.QgsMapLayerAction.triggerForLayer">
 <span class="sig-name descname"><span class="pre">triggerForLayer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">layer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../core/QgsMapLayer.html#qgis.core.QgsMapLayer" title="qgis.core.QgsMapLayer"><span class="pre">QgsMapLayer</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsMapLayerAction.triggerForLayer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Triggers the action with the specified layer.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version use: </span>the version with <a class="reference internal" href="QgsMapLayerActionContext.html#module-QgsMapLayerActionContext" title="QgsMapLayerActionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMapLayerActionContext</span></code></a> instead.</p>
+</div>
+<p>triggerForLayer(self, layer: <a class="reference internal" href="../core/QgsMapLayer.html#qgis.core.QgsMapLayer" title="qgis.core.QgsMapLayer"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMapLayer</span></code></a>, context: <a class="reference internal" href="QgsMapLayerActionContext.html#qgis.gui.QgsMapLayerActionContext" title="qgis.gui.QgsMapLayerActionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMapLayerActionContext</span></code></a>)
+Triggers the action with the specified layer.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.30.</span></p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>layer</strong> (<a class="reference internal" href="../core/QgsMapLayer.html#qgis.core.QgsMapLayer" title="qgis.core.QgsMapLayer"><em>QgsMapLayer</em></a>) – </p>
@@ -2476,7 +2523,34 @@ Creates a map layer action which can run on a specific type of layer</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.gui.QgsMapLayerAction.triggeredForFeature">
 <span class="sig-name descname"><span class="pre">triggeredForFeature</span></span><a class="headerlink" href="#qgis.gui.QgsMapLayerAction.triggeredForFeature" title="Permalink to this definition">¶</a></dt>
-<dd><p>pyqtSignal(<a href="#id7"><span class="problematic" id="id8">*</span></a>types, name: str = …, revision: int = …, arguments: Sequence = …) -&gt; PYQT_SIGNAL</p>
+<dd><p>pyqtSignal(<a href="#id13"><span class="problematic" id="id14">*</span></a>types, name: str = …, revision: int = …, arguments: Sequence = …) -&gt; PYQT_SIGNAL</p>
+<p>types is normally a sequence of individual types.  Each type is either a
+type object or a string that is the name of a C++ type.  Alternatively
+each type could itself be a sequence of types each describing a different
+overloaded signal.
+name is the optional C++ name of the signal.  If it is not specified then
+the name of the class attribute that is bound to the signal is used.
+revision is the optional revision of the signal that is exported to QML.
+If it is not specified then 0 is used.
+arguments is the optional sequence of the names of the signal’s arguments.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str = </em><em>...</em>) – </p></li>
+<li><p><strong>revision</strong> (<em>int = </em><em>...</em>) – </p></li>
+<li><p><strong>arguments</strong> (<em>Sequence = </em><em>...</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>PYQT_SIGNAL</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.gui.QgsMapLayerAction.triggeredForFeatureV2">
+<span class="sig-name descname"><span class="pre">triggeredForFeatureV2</span></span><a class="headerlink" href="#qgis.gui.QgsMapLayerAction.triggeredForFeatureV2" title="Permalink to this definition">¶</a></dt>
+<dd><p>pyqtSignal(<a href="#id15"><span class="problematic" id="id16">*</span></a>types, name: str = …, revision: int = …, arguments: Sequence = …) -&gt; PYQT_SIGNAL</p>
 <p>types is normally a sequence of individual types.  Each type is either a
 type object or a string that is the name of a C++ type.  Alternatively
 each type could itself be a sequence of types each describing a different
@@ -2503,7 +2577,34 @@ arguments is the optional sequence of the names of the signal’s arguments.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.gui.QgsMapLayerAction.triggeredForFeatures">
 <span class="sig-name descname"><span class="pre">triggeredForFeatures</span></span><a class="headerlink" href="#qgis.gui.QgsMapLayerAction.triggeredForFeatures" title="Permalink to this definition">¶</a></dt>
-<dd><p>pyqtSignal(<a href="#id9"><span class="problematic" id="id10">*</span></a>types, name: str = …, revision: int = …, arguments: Sequence = …) -&gt; PYQT_SIGNAL</p>
+<dd><p>pyqtSignal(<a href="#id17"><span class="problematic" id="id18">*</span></a>types, name: str = …, revision: int = …, arguments: Sequence = …) -&gt; PYQT_SIGNAL</p>
+<p>types is normally a sequence of individual types.  Each type is either a
+type object or a string that is the name of a C++ type.  Alternatively
+each type could itself be a sequence of types each describing a different
+overloaded signal.
+name is the optional C++ name of the signal.  If it is not specified then
+the name of the class attribute that is bound to the signal is used.
+revision is the optional revision of the signal that is exported to QML.
+If it is not specified then 0 is used.
+arguments is the optional sequence of the names of the signal’s arguments.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str = </em><em>...</em>) – </p></li>
+<li><p><strong>revision</strong> (<em>int = </em><em>...</em>) – </p></li>
+<li><p><strong>arguments</strong> (<em>Sequence = </em><em>...</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>PYQT_SIGNAL</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.gui.QgsMapLayerAction.triggeredForFeaturesV2">
+<span class="sig-name descname"><span class="pre">triggeredForFeaturesV2</span></span><a class="headerlink" href="#qgis.gui.QgsMapLayerAction.triggeredForFeaturesV2" title="Permalink to this definition">¶</a></dt>
+<dd><p>pyqtSignal(<a href="#id19"><span class="problematic" id="id20">*</span></a>types, name: str = …, revision: int = …, arguments: Sequence = …) -&gt; PYQT_SIGNAL</p>
 <p>types is normally a sequence of individual types.  Each type is either a
 type object or a string that is the name of a C++ type.  Alternatively
 each type could itself be a sequence of types each describing a different
@@ -2530,7 +2631,34 @@ arguments is the optional sequence of the names of the signal’s arguments.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.gui.QgsMapLayerAction.triggeredForLayer">
 <span class="sig-name descname"><span class="pre">triggeredForLayer</span></span><a class="headerlink" href="#qgis.gui.QgsMapLayerAction.triggeredForLayer" title="Permalink to this definition">¶</a></dt>
-<dd><p>pyqtSignal(<a href="#id11"><span class="problematic" id="id12">*</span></a>types, name: str = …, revision: int = …, arguments: Sequence = …) -&gt; PYQT_SIGNAL</p>
+<dd><p>pyqtSignal(<a href="#id21"><span class="problematic" id="id22">*</span></a>types, name: str = …, revision: int = …, arguments: Sequence = …) -&gt; PYQT_SIGNAL</p>
+<p>types is normally a sequence of individual types.  Each type is either a
+type object or a string that is the name of a C++ type.  Alternatively
+each type could itself be a sequence of types each describing a different
+overloaded signal.
+name is the optional C++ name of the signal.  If it is not specified then
+the name of the class attribute that is bound to the signal is used.
+revision is the optional revision of the signal that is exported to QML.
+If it is not specified then 0 is used.
+arguments is the optional sequence of the names of the signal’s arguments.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str = </em><em>...</em>) – </p></li>
+<li><p><strong>revision</strong> (<em>int = </em><em>...</em>) – </p></li>
+<li><p><strong>arguments</strong> (<em>Sequence = </em><em>...</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>PYQT_SIGNAL</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.gui.QgsMapLayerAction.triggeredForLayerV2">
+<span class="sig-name descname"><span class="pre">triggeredForLayerV2</span></span><a class="headerlink" href="#qgis.gui.QgsMapLayerAction.triggeredForLayerV2" title="Permalink to this definition">¶</a></dt>
+<dd><p>pyqtSignal(<a href="#id23"><span class="problematic" id="id24">*</span></a>types, name: str = …, revision: int = …, arguments: Sequence = …) -&gt; PYQT_SIGNAL</p>
 <p>types is normally a sequence of individual types.  Each type is either a
 type object or a string that is the name of a C++ type.  Alternatively
 each type could itself be a sequence of types each describing a different
@@ -2567,7 +2695,7 @@ arguments is the optional sequence of the names of the signal’s arguments.</p>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:39 Nov 24, 2022.
+      <span class="lastupdated">Last updated on 02:31 Nov 24, 2022.
       </span></p>
   </div>
 

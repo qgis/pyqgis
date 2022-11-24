@@ -1646,6 +1646,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsMapCanvasTracer.html">Class: QgsMapCanvasTracer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsMapCanvasUtils.html">Class: QgsMapCanvasUtils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsMapLayerAction.html">Class: QgsMapLayerAction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui/QgsMapLayerActionContext.html">Class: QgsMapLayerActionContext</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui/QgsMapLayerActionContextGenerator.html">Class: QgsMapLayerActionContextGenerator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsMapLayerActionRegistry.html">Class: QgsMapLayerActionRegistry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsMapLayerComboBox.html">Class: QgsMapLayerComboBox</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsMapLayerConfigWidget.html">Class: QgsMapLayerConfigWidget</a></li>
@@ -2132,15 +2134,19 @@ it is highly desirable to use copy-on-write where possible. This way,
 the overhead of copying (both memory and CPU) will be kept low.
 Qt containers and various Qt classes use implicit sharing.</p>
 <p>The scenario will be:</p>
-<dl class="simple">
-<dt># renderer job (doing preparation in the GUI thread) calls</dt><dd><p><a class="reference internal" href="QgsMapLayer.html#qgis.core.QgsMapLayer.createMapRenderer" title="qgis.core.QgsMapLayer.createMapRenderer"><code class="xref py py-func docutils literal notranslate"><span class="pre">QgsMapLayer.createMapRenderer()</span></code></a> and gets instance of this class.
+<ol class="arabic simple">
+<li><p>renderer job (doing preparation in the GUI thread) calls</p></li>
+</ol>
+<blockquote>
+<div><p><a class="reference internal" href="QgsMapLayer.html#qgis.core.QgsMapLayer.createMapRenderer" title="qgis.core.QgsMapLayer.createMapRenderer"><code class="xref py py-func docutils literal notranslate"><span class="pre">QgsMapLayer.createMapRenderer()</span></code></a> and gets instance of this class.
 The instance is initialized at that point and should not need
 additional calls to <a class="reference internal" href="QgsVectorLayer.html#module-QgsVectorLayer" title="QgsVectorLayer"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsVectorLayer</span></code></a>.</p>
-</dd>
-</dl>
-<p># renderer job (still in GUI thread) stores the renderer for later use.
-# renderer job (in worker thread) calls <a class="reference internal" href="#qgis.core.QgsMapLayerRenderer.render" title="qgis.core.QgsMapLayerRenderer.render"><code class="xref py py-func docutils literal notranslate"><span class="pre">QgsMapLayerRenderer.render()</span></code></a>
-# renderer job (again in GUI thread) will check <a class="reference internal" href="#qgis.core.QgsMapLayerRenderer.errors" title="qgis.core.QgsMapLayerRenderer.errors"><code class="xref py py-func docutils literal notranslate"><span class="pre">errors()</span></code></a> and report them</p>
+</div></blockquote>
+<ol class="arabic simple">
+<li><p>renderer job (still in GUI thread) stores the renderer for later use.</p></li>
+<li><p>renderer job (in worker thread) calls <a class="reference internal" href="#qgis.core.QgsMapLayerRenderer.render" title="qgis.core.QgsMapLayerRenderer.render"><code class="xref py py-func docutils literal notranslate"><span class="pre">QgsMapLayerRenderer.render()</span></code></a></p></li>
+<li><p>renderer job (again in GUI thread) will check <a class="reference internal" href="#qgis.core.QgsMapLayerRenderer.errors" title="qgis.core.QgsMapLayerRenderer.errors"><code class="xref py py-func docutils literal notranslate"><span class="pre">errors()</span></code></a> and report them</p></li>
+</ol>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 2.4.</span></p>
 </div>
@@ -2361,7 +2367,7 @@ was not canceled early).</p>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:39 Nov 24, 2022.
+      <span class="lastupdated">Last updated on 02:31 Nov 24, 2022.
       </span></p>
   </div>
 
