@@ -86,6 +86,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../core/LabelSettingsXML.html">Class: LabelSettingsXML</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/LabelingFlags.html">Class: LabelingFlags</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/LayerFlags.html">Class: LayerFlags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../core/MapLayerActionFlags.html">Class: MapLayerActionFlags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../core/MapLayerActionTargets.html">Class: MapLayerActionTargets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/MapLayerProperties.html">Class: MapLayerProperties</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/MapSettingsFlags.html">Class: MapSettingsFlags</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/MarkerLinePlacements.html">Class: MarkerLinePlacements</a></li>
@@ -1938,7 +1940,6 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsWidgetWrapper.html">Class: QgsWidgetWrapper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsWindowManagerInterface.html">Class: QgsWindowManagerInterface</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QtCore.html">Class: QtCore</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Targets.html">Class: Targets</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../analysis/index.html">analysis</a><ul>
@@ -2147,12 +2148,16 @@ Constructs a new QgsActionMenu</p>
 <li><p><strong>fid</strong> – The feature id of the feature for which this action will be run.</p></li>
 <li><p><strong>parent</strong> – The usual QWidget parent.</p></li>
 <li><p><strong>actionScope</strong> – <p>The action scope this menu will run in</p>
+<p class="rubric">Enums</p>
 <table class="autosummary longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
 <col style="width: 90%" />
 </colgroup>
 <tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsActionMenu.ActionType" title="qgis.gui.QgsActionMenu.ActionType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ActionType</span></code></a></p></td>
+<td><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.IntEnum</span></code></p></td>
+</tr>
 </tbody>
 </table>
 <p class="rubric">Methods</p>
@@ -2341,22 +2346,12 @@ Constructs a new QgsActionMenu</p>
 </tr>
 </tbody>
 </table>
-<p class="rubric">Attributes</p>
 <table class="autosummary longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsActionMenu.AttributeAction" title="qgis.gui.QgsActionMenu.AttributeAction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AttributeAction</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsActionMenu.Invalid" title="qgis.gui.QgsActionMenu.Invalid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Invalid</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsActionMenu.MapLayerAction" title="qgis.gui.QgsActionMenu.MapLayerAction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MapLayerAction</span></code></a></p></td>
-<td><p></p></td>
-</tr>
 </tbody>
 </table>
 </p></li>
@@ -2395,24 +2390,25 @@ Constructs a new QgsActionMenu</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="qgis.gui.QgsActionMenu.ActionType">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ActionType</span></span><a class="headerlink" href="#qgis.gui.QgsActionMenu.ActionType" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ActionType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsActionMenu.ActionType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.IntEnum</span></code></p>
+<p>Action types.</p>
+<p>Prior to QGIS 3.30 this was available as <a class="reference internal" href="#module-QgsActionMenu" title="QgsActionMenu"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsActionMenu</span></code></a>.ActionType</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.30.</span></p>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Invalid</span></code>: Invalid</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MapLayerAction</span></code>: Standard actions (defined by core or plugins), corresponds to <a class="reference internal" href="QgsMapLayerAction.html#qgis.gui.QgsMapLayerAction" title="qgis.gui.QgsMapLayerAction"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMapLayerAction</span></code></a> class.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">AttributeAction</span></code>: Custom actions (manually defined in layer properties), corresponds to <a class="reference internal" href="../core/QgsAction.html#qgis.core.QgsAction" title="qgis.core.QgsAction"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsAction</span></code></a> class.</p></li>
+</ul>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.gui.QgsActionMenu.ActionType.baseClass">
+<span class="sig-name descname"><span class="pre">baseClass</span></span><a class="headerlink" href="#qgis.gui.QgsActionMenu.ActionType.baseClass" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="Qgis.html#qgis.gui.Qgis" title="qgis._core.Qgis"><code class="xref py py-class docutils literal notranslate"><span class="pre">Qgis</span></code></a></p>
 </dd></dl>
 
-<dl class="py attribute">
-<dt class="sig sig-object py" id="qgis.gui.QgsActionMenu.AttributeAction">
-<span class="sig-name descname"><span class="pre">AttributeAction</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#qgis.gui.QgsActionMenu.AttributeAction" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="qgis.gui.QgsActionMenu.Invalid">
-<span class="sig-name descname"><span class="pre">Invalid</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#qgis.gui.QgsActionMenu.Invalid" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="qgis.gui.QgsActionMenu.MapLayerAction">
-<span class="sig-name descname"><span class="pre">MapLayerAction</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#qgis.gui.QgsActionMenu.MapLayerAction" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.gui.QgsActionMenu.actionEvent">
@@ -2788,7 +2784,7 @@ as long as the menu is displayed and the action is running.</p>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:36 Nov 29, 2022.
+      <span class="lastupdated">Last updated on 02:37 Nov 29, 2022.
       </span></p>
   </div>
 
