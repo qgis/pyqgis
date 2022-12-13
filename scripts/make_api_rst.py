@@ -13,7 +13,7 @@ with open('pyqgis_conf.yml', 'r') as f:
 parser = argparse.ArgumentParser(description='Create RST files for QGIS Python API Documentation')
 parser.add_argument('--version', '-v', dest='qgis_version', default="master")
 parser.add_argument('--package', '-p', dest='package_limit', default=None, nargs='+',
-                    choices=['core', 'gui', 'server', 'analysis', 'processing', '3d'],
+                    choices=['core', 'gui', 'server', 'analysis', 'processing', '_3d'],
                     help='limit the build of the docs to one package (core, gui, server, analysis, processing, 3d) ')
 parser.add_argument('--class', '-c', dest='class_limit', default=None, nargs='+',
                     help='limit the build of the docs to a single class')
@@ -21,12 +21,11 @@ args = parser.parse_args()
 
 if args.package_limit:
     packages = args.package_limit
-    imports = [pkg if pkg != "3d" else "_3d" for pkg in packages]
     exec("from qgis import {}".format(', '.join(imports)))
     packages = {pkg: eval(imp) for (pkg,imp) in dict(zip(packages, imports)).items()}
 else:
     from qgis import core, gui, analysis, server, processing, _3d
-    packages = {'core': core, 'gui': gui, 'analysis': analysis, 'server': server, 'processing': processing, '3d': _3d}
+    packages = {'core': core, 'gui': gui, 'analysis': analysis, 'server': server, 'processing': processing, '_3d': _3d}
  
 
 # Make sure :numbered: is only specified in the top level index - see
