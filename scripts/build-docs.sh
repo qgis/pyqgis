@@ -54,6 +54,7 @@ export LD_PRELOAD=/lib/x86_64-linux-gnu/libstdc++.so.6
 
 ./scripts/make_api_rst.py ${PACKAGE} ${CLASS} -v ${QGIS_VERSION}
 cp -r _templates api/${QGIS_VERSION}/_templates
+cp -r _static api/${QGIS_VERSION}/_static
 echo "##[endgroup]"
 
 echo "##[group]Build HTML"
