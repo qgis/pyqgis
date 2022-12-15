@@ -21,8 +21,8 @@ args = parser.parse_args()
 
 if args.package_limit:
     packages = args.package_limit
-    exec("from qgis import {}".format(', '.join(imports)))
-    packages = {pkg: eval(imp) for (pkg,imp) in dict(zip(packages, imports)).items()}
+    exec("from qgis import {}".format(', '.join(packages)))
+    packages = {pkg: eval(pkg) for pkg in packages}
 else:
     from qgis import core, gui, analysis, server, processing, _3d
     packages = {'core': core, 'gui': gui, 'analysis': analysis, 'server': server, 'processing': processing, '_3d': _3d}
