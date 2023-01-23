@@ -2884,19 +2884,22 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.symbolToMimeData" title="qgis.core.QgsSymbolLayerUtils.symbolToMimeData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">symbolToMimeData</span></code></a></p></td>
 <td><p>Creates new mime data from a <code class="docutils literal notranslate"><span class="pre">symbol</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.toPoint" title="qgis.core.QgsSymbolLayerUtils.toPoint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">toPoint</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.tileSize" title="qgis.core.QgsSymbolLayerUtils.tileSize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tileSize</span></code></a></p></td>
+<td><p>Calculate the minimum size in pixels of a symbol tile given the symbol <code class="docutils literal notranslate"><span class="pre">width</span></code> and <code class="docutils literal notranslate"><span class="pre">height</span></code> and the symbol layer rotation <code class="docutils literal notranslate"><span class="pre">angleRad</span></code> in radians (counter clockwise).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.toPoint" title="qgis.core.QgsSymbolLayerUtils.toPoint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">toPoint</span></code></a></p></td>
 <td><p>Converts a <code class="docutils literal notranslate"><span class="pre">value</span></code> to a point.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.toSize" title="qgis.core.QgsSymbolLayerUtils.toSize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">toSize</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.toSize" title="qgis.core.QgsSymbolLayerUtils.toSize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">toSize</span></code></a></p></td>
 <td><p>Converts a <code class="docutils literal notranslate"><span class="pre">value</span></code> to a size.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.toSymbolLayerPointers" title="qgis.core.QgsSymbolLayerUtils.toSymbolLayerPointers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">toSymbolLayerPointers</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.toSymbolLayerPointers" title="qgis.core.QgsSymbolLayerUtils.toSymbolLayerPointers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">toSymbolLayerPointers</span></code></a></p></td>
 <td><p>Converts a set of symbol layer id to a set of pointers to actual symbol layers carried by the feature renderer.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.wellKnownMarkerFromSld2" title="qgis.core.QgsSymbolLayerUtils.wellKnownMarkerFromSld2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wellKnownMarkerFromSld2</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.wellKnownMarkerFromSld2" title="qgis.core.QgsSymbolLayerUtils.wellKnownMarkerFromSld2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wellKnownMarkerFromSld2</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.wellKnownMarkerToSld" title="qgis.core.QgsSymbolLayerUtils.wellKnownMarkerToSld"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wellKnownMarkerToSld</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.wellKnownMarkerToSld" title="qgis.core.QgsSymbolLayerUtils.wellKnownMarkerToSld"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wellKnownMarkerToSld</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param doc</dt>
 <dd class="field-odd"><p></p></dd>
@@ -5660,6 +5663,31 @@ can be paste in places where a color is expected.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsSymbolLayerUtils.tileSize">
+<span class="sig-name descname"><span class="pre">tileSize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angleRad</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">QSize</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qgis.core.QgsSymbolLayerUtils.tileSize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the minimum size in pixels of a symbol tile given the symbol <code class="docutils literal notranslate"><span class="pre">width</span></code> and <code class="docutils literal notranslate"><span class="pre">height</span></code> and the symbol layer rotation <code class="docutils literal notranslate"><span class="pre">angleRad</span></code> in radians (counter clockwise).
+The method makes approximations and can modify <code class="docutils literal notranslate"><span class="pre">angle</span></code> in order to generate the smallest possible tile.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>width</strong> (<em>int</em>) – marker width, including margins</p></li>
+<li><p><strong>height</strong> (<em>int</em>) – marker height, including margins</p></li>
+<li><p><strong>angleRad</strong> (<em>float</em>) – symbol layer rotation angle in radians (counter clockwise), it may be approximated by the method to minimize the tile size.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Tuple[QSize, float]</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the size of the tile</p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.30.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsSymbolLayerUtils.toPoint">
 <span class="sig-name descname"><span class="pre">toPoint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">QPointF</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qgis.core.QgsSymbolLayerUtils.toPoint" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts a <code class="docutils literal notranslate"><span class="pre">value</span></code> to a point.</p>
@@ -5797,7 +5825,7 @@ can be paste in places where a color is expected.</p>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:33 Jan 23, 2023.
+      <span class="lastupdated">Last updated on 02:26 Jan 23, 2023.
       </span></p>
   </div>
 

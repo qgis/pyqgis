@@ -2198,7 +2198,10 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsFileUtils.stringToSafeFilename" title="qgis.core.QgsFileUtils.stringToSafeFilename"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stringToSafeFilename</span></code></a></p></td>
 <td><p>Converts a <code class="docutils literal notranslate"><span class="pre">string</span></code> to a safe filename, replacing characters which are not safe for filenames with an '_' character.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsFileUtils.wildcardsFromFilter" title="qgis.core.QgsFileUtils.wildcardsFromFilter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wildcardsFromFilter</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsFileUtils.uniquePath" title="qgis.core.QgsFileUtils.uniquePath"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uniquePath</span></code></a></p></td>
+<td><p>Creates a unique file path name from a desired path by appending &quot;_&lt;n&gt;&quot; (where &quot;&lt;n&gt;&quot; is an integer number) before the file suffix.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsFileUtils.wildcardsFromFilter" title="qgis.core.QgsFileUtils.wildcardsFromFilter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wildcardsFromFilter</span></code></a></p></td>
 <td><p>Given a <code class="docutils literal notranslate"><span class="pre">filter</span></code> string like &quot;GeoTIFF Files (<em>.tiff *.tif)&quot;, extracts the wildcard portion of this filter (i.e. &quot;</em>.tiff <a href="#id5"><span class="problematic" id="id6">*</span></a>.tif&quot;).</p></td>
 </tr>
 </tbody>
@@ -2525,6 +2528,31 @@ for filenames with an ‘_’ character.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsFileUtils.uniquePath">
+<span class="sig-name descname"><span class="pre">uniquePath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#qgis.core.QgsFileUtils.uniquePath" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a unique file path name from a desired path by appending “_&lt;n&gt;” (where “&lt;n&gt;” is an integer number) before the file suffix.</p>
+<p>E.g. if “/path/my_image.png” already exists “/path/my_image_2.png” (and “_3”, “_4” etc.) will be checked until a file path that does not already exist is found.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the desired path.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the unmodified path if path is already unique or the new path with “_&lt;n&gt;” (where “&lt;n&gt;” is an integer number) appended to the file name before the suffix.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This function does not make any check on path validity and write permissions.</p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.30.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsFileUtils.wildcardsFromFilter">
 <span class="sig-name descname"><span class="pre">wildcardsFromFilter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#qgis.core.QgsFileUtils.wildcardsFromFilter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Given a <code class="docutils literal notranslate"><span class="pre">filter</span></code> string like “GeoTIFF Files (<em>.tiff *.tif)”, extracts
@@ -2555,7 +2583,7 @@ the wildcard portion of this filter (i.e. “</em>.tiff <a href="#id19"><span cl
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:33 Jan 23, 2023.
+      <span class="lastupdated">Last updated on 02:26 Jan 23, 2023.
       </span></p>
   </div>
 
