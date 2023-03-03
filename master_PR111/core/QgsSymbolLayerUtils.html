@@ -14,6 +14,7 @@
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/doctools.js"></script>
         <script src="../_static/sphinx_highlight.js"></script>
@@ -96,7 +97,6 @@
 <li class="toctree-l2"><a class="reference internal" href="MarkerLinePlacements.html">Class: MarkerLinePlacements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="MeshDriverCapabilities.html">Class: MeshDriverCapabilities</a></li>
 <li class="toctree-l2"><a class="reference internal" href="NULL.html">Class: NULL</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Options.html">Class: Options</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PROJECT_SCALES.html">Class: PROJECT_SCALES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PlotToolFlags.html">Class: PlotToolFlags</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ProfileGeneratorFlags.html">Class: ProfileGeneratorFlags</a></li>
@@ -1255,6 +1255,7 @@
 <li class="toctree-l2"><a class="reference internal" href="ScopedRuntimeProfileContextManager.html">Class: ScopedRuntimeProfileContextManager</a></li>
 <li class="toctree-l2"><a class="reference internal" href="SelectionFlags.html">Class: SelectionFlags</a></li>
 <li class="toctree-l2"><a class="reference internal" href="SettingsOptions.html">Class: SettingsOptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SettingsTreeNodeOptions.html">Class: SettingsTreeNodeOptions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="SimplifyHints.html">Class: SimplifyHints</a></li>
 <li class="toctree-l2"><a class="reference internal" href="SldExportOptions.html">Class: SldExportOptions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="SmartgroupId.html">Class: SmartgroupId</a></li>
@@ -2082,10 +2083,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../_3d/Qgs3D.html">Class: Qgs3D</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_3d/Qgs3DAlgorithms.html">Class: Qgs3DAlgorithms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_3d/Qgs3DMapExportSettings.html">Class: Qgs3DMapExportSettings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_3d/Qgs3DMapScene.html">Class: Qgs3DMapScene</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_3d/Qgs3DMapSettings.html">Class: Qgs3DMapSettings</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_3d/Qgs3DTypes.html">Class: Qgs3DTypes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_3d/QgsAbstractMaterialSettings.html">Class: QgsAbstractMaterialSettings</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_3d/QgsAbstractVectorLayer3DRenderer.html">Class: QgsAbstractVectorLayer3DRenderer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_3d/QgsCameraController.html">Class: QgsCameraController</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_3d/QgsCameraPose.html">Class: QgsCameraPose</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_3d/QgsClassificationPointCloud3DSymbol.html">Class: QgsClassificationPointCloud3DSymbol</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_3d/QgsColorRampPointCloud3DSymbol.html">Class: QgsColorRampPointCloud3DSymbol</a></li>
@@ -2171,661 +2174,667 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.blurImageInPlace" title="qgis.core.QgsSymbolLayerUtils.blurImageInPlace"><code class="xref py py-obj docutils literal notranslate"><span class="pre">blurImageInPlace</span></code></a></p></td>
 <td><p>Blurs an image in place, e.g.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.clearSymbolMap" title="qgis.core.QgsSymbolLayerUtils.clearSymbolMap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clearSymbolMap</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.clearSymbolLayerIds" title="qgis.core.QgsSymbolLayerUtils.clearSymbolLayerIds"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clearSymbolLayerIds</span></code></a></p></td>
+<td><p>Remove recursively unique id from all <code class="docutils literal notranslate"><span class="pre">symbol</span></code> symbol layers and set an empty string instead</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.clearSymbolMap" title="qgis.core.QgsSymbolLayerUtils.clearSymbolMap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clearSymbolMap</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param symbols<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.colorFromMimeData" title="qgis.core.QgsSymbolLayerUtils.colorFromMimeData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">colorFromMimeData</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.colorFromMimeData" title="qgis.core.QgsSymbolLayerUtils.colorFromMimeData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">colorFromMimeData</span></code></a></p></td>
 <td><p>Attempts to parse mime data as a color</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.colorListFromMimeData" title="qgis.core.QgsSymbolLayerUtils.colorListFromMimeData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">colorListFromMimeData</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.colorListFromMimeData" title="qgis.core.QgsSymbolLayerUtils.colorListFromMimeData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">colorListFromMimeData</span></code></a></p></td>
 <td><p>Attempts to parse mime data as a list of named colors</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.colorListToMimeData" title="qgis.core.QgsSymbolLayerUtils.colorListToMimeData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">colorListToMimeData</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.colorListToMimeData" title="qgis.core.QgsSymbolLayerUtils.colorListToMimeData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">colorListToMimeData</span></code></a></p></td>
 <td><p>Creates mime data from a list of named colors</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.colorRampPreviewIcon" title="qgis.core.QgsSymbolLayerUtils.colorRampPreviewIcon"><code class="xref py py-obj docutils literal notranslate"><span class="pre">colorRampPreviewIcon</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.colorRampPreviewIcon" title="qgis.core.QgsSymbolLayerUtils.colorRampPreviewIcon"><code class="xref py py-obj docutils literal notranslate"><span class="pre">colorRampPreviewIcon</span></code></a></p></td>
 <td><p>Returns an icon preview for a color ramp.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.colorRampPreviewPixmap" title="qgis.core.QgsSymbolLayerUtils.colorRampPreviewPixmap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">colorRampPreviewPixmap</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.colorRampPreviewPixmap" title="qgis.core.QgsSymbolLayerUtils.colorRampPreviewPixmap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">colorRampPreviewPixmap</span></code></a></p></td>
 <td><p>Returns a pixmap preview for a color ramp.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.colorRampToVariant" title="qgis.core.QgsSymbolLayerUtils.colorRampToVariant"><code class="xref py py-obj docutils literal notranslate"><span class="pre">colorRampToVariant</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.colorRampToVariant" title="qgis.core.QgsSymbolLayerUtils.colorRampToVariant"><code class="xref py py-obj docutils literal notranslate"><span class="pre">colorRampToVariant</span></code></a></p></td>
 <td><p>Saves a color ramp to a QVariantMap, wrapped in a QVariant.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.colorToMimeData" title="qgis.core.QgsSymbolLayerUtils.colorToMimeData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">colorToMimeData</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.colorToMimeData" title="qgis.core.QgsSymbolLayerUtils.colorToMimeData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">colorToMimeData</span></code></a></p></td>
 <td><p>Creates mime data from a color.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.colorToName" title="qgis.core.QgsSymbolLayerUtils.colorToName"><code class="xref py py-obj docutils literal notranslate"><span class="pre">colorToName</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.colorToName" title="qgis.core.QgsSymbolLayerUtils.colorToName"><code class="xref py py-obj docutils literal notranslate"><span class="pre">colorToName</span></code></a></p></td>
 <td><p>Returns a friendly display name for a color</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.condenseFillAndOutline" title="qgis.core.QgsSymbolLayerUtils.condenseFillAndOutline"><code class="xref py py-obj docutils literal notranslate"><span class="pre">condenseFillAndOutline</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.condenseFillAndOutline" title="qgis.core.QgsSymbolLayerUtils.condenseFillAndOutline"><code class="xref py py-obj docutils literal notranslate"><span class="pre">condenseFillAndOutline</span></code></a></p></td>
 <td><p>Attempts to condense a <code class="docutils literal notranslate"><span class="pre">fill</span></code> and <code class="docutils literal notranslate"><span class="pre">outline</span></code> layer, by moving the outline layer to the fill symbol's stroke.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.convertPolygonSymbolizerToPointMarker" title="qgis.core.QgsSymbolLayerUtils.convertPolygonSymbolizerToPointMarker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">convertPolygonSymbolizerToPointMarker</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.convertPolygonSymbolizerToPointMarker" title="qgis.core.QgsSymbolLayerUtils.convertPolygonSymbolizerToPointMarker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">convertPolygonSymbolizerToPointMarker</span></code></a></p></td>
 <td><p>Converts a polygon symbolizer <code class="docutils literal notranslate"><span class="pre">element</span></code> to a list of marker symbol layers.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.createAnchorPointElement" title="qgis.core.QgsSymbolLayerUtils.createAnchorPointElement"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createAnchorPointElement</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.createAnchorPointElement" title="qgis.core.QgsSymbolLayerUtils.createAnchorPointElement"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createAnchorPointElement</span></code></a></p></td>
 <td><p>Creates a SE 1.1 anchor point element as a child of the specified element</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.createDisplacementElement" title="qgis.core.QgsSymbolLayerUtils.createDisplacementElement"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createDisplacementElement</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.createDisplacementElement" title="qgis.core.QgsSymbolLayerUtils.createDisplacementElement"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createDisplacementElement</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param doc<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.createExpressionElement" title="qgis.core.QgsSymbolLayerUtils.createExpressionElement"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createExpressionElement</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.createExpressionElement" title="qgis.core.QgsSymbolLayerUtils.createExpressionElement"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createExpressionElement</span></code></a></p></td>
 <td><p>Creates a OGC Expression element based on the provided function expression</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.createFillLayerFromSld" title="qgis.core.QgsSymbolLayerUtils.createFillLayerFromSld"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createFillLayerFromSld</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.createFillLayerFromSld" title="qgis.core.QgsSymbolLayerUtils.createFillLayerFromSld"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createFillLayerFromSld</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param element<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.createFunctionElement" title="qgis.core.QgsSymbolLayerUtils.createFunctionElement"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createFunctionElement</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.createFunctionElement" title="qgis.core.QgsSymbolLayerUtils.createFunctionElement"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createFunctionElement</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param doc<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.createGeometryElement" title="qgis.core.QgsSymbolLayerUtils.createGeometryElement"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createGeometryElement</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.createGeometryElement" title="qgis.core.QgsSymbolLayerUtils.createGeometryElement"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createGeometryElement</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param doc<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.createLineLayerFromSld" title="qgis.core.QgsSymbolLayerUtils.createLineLayerFromSld"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createLineLayerFromSld</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.createLineLayerFromSld" title="qgis.core.QgsSymbolLayerUtils.createLineLayerFromSld"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createLineLayerFromSld</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param element<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.createMarkerLayerFromSld" title="qgis.core.QgsSymbolLayerUtils.createMarkerLayerFromSld"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createMarkerLayerFromSld</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.createMarkerLayerFromSld" title="qgis.core.QgsSymbolLayerUtils.createMarkerLayerFromSld"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createMarkerLayerFromSld</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param element<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.createOnlineResourceElement" title="qgis.core.QgsSymbolLayerUtils.createOnlineResourceElement"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createOnlineResourceElement</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.createOnlineResourceElement" title="qgis.core.QgsSymbolLayerUtils.createOnlineResourceElement"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createOnlineResourceElement</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param doc<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.createOpacityElement" title="qgis.core.QgsSymbolLayerUtils.createOpacityElement"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createOpacityElement</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.createOpacityElement" title="qgis.core.QgsSymbolLayerUtils.createOpacityElement"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createOpacityElement</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param doc<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.createRotationElement" title="qgis.core.QgsSymbolLayerUtils.createRotationElement"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createRotationElement</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.createRotationElement" title="qgis.core.QgsSymbolLayerUtils.createRotationElement"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createRotationElement</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param doc<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.createSvgParameterElement" title="qgis.core.QgsSymbolLayerUtils.createSvgParameterElement"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createSvgParameterElement</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.createSvgParameterElement" title="qgis.core.QgsSymbolLayerUtils.createSvgParameterElement"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createSvgParameterElement</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param doc<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.createSymbolLayerListFromSld" title="qgis.core.QgsSymbolLayerUtils.createSymbolLayerListFromSld"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createSymbolLayerListFromSld</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.createSymbolLayerListFromSld" title="qgis.core.QgsSymbolLayerUtils.createSymbolLayerListFromSld"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createSymbolLayerListFromSld</span></code></a></p></td>
 <td><p>Creates a symbol layer list from a DOM <code class="docutils literal notranslate"><span class="pre">element</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.createVendorOptionElement" title="qgis.core.QgsSymbolLayerUtils.createVendorOptionElement"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createVendorOptionElement</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.createVendorOptionElement" title="qgis.core.QgsSymbolLayerUtils.createVendorOptionElement"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createVendorOptionElement</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param doc<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.decodeArrowHeadType" title="qgis.core.QgsSymbolLayerUtils.decodeArrowHeadType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decodeArrowHeadType</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.decodeArrowHeadType" title="qgis.core.QgsSymbolLayerUtils.decodeArrowHeadType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decodeArrowHeadType</span></code></a></p></td>
 <td><p>Decodes a <code class="docutils literal notranslate"><span class="pre">value</span></code> representing an arrow head type.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.decodeArrowType" title="qgis.core.QgsSymbolLayerUtils.decodeArrowType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decodeArrowType</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.decodeArrowType" title="qgis.core.QgsSymbolLayerUtils.decodeArrowType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decodeArrowType</span></code></a></p></td>
 <td><p>Decodes a <code class="docutils literal notranslate"><span class="pre">value</span></code> representing an arrow type.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.decodeBlendMode" title="qgis.core.QgsSymbolLayerUtils.decodeBlendMode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decodeBlendMode</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.decodeBlendMode" title="qgis.core.QgsSymbolLayerUtils.decodeBlendMode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decodeBlendMode</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param s<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.decodeBrushStyle" title="qgis.core.QgsSymbolLayerUtils.decodeBrushStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decodeBrushStyle</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.decodeBrushStyle" title="qgis.core.QgsSymbolLayerUtils.decodeBrushStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decodeBrushStyle</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param str<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.decodeColor" title="qgis.core.QgsSymbolLayerUtils.decodeColor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decodeColor</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.decodeColor" title="qgis.core.QgsSymbolLayerUtils.decodeColor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decodeColor</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param str<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.decodeCoordinateReference" title="qgis.core.QgsSymbolLayerUtils.decodeCoordinateReference"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decodeCoordinateReference</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.decodeCoordinateReference" title="qgis.core.QgsSymbolLayerUtils.decodeCoordinateReference"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decodeCoordinateReference</span></code></a></p></td>
 <td><p>Decodes a <code class="docutils literal notranslate"><span class="pre">string</span></code> representing a symbol coordinate reference mode.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.decodeLineClipMode" title="qgis.core.QgsSymbolLayerUtils.decodeLineClipMode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decodeLineClipMode</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.decodeLineClipMode" title="qgis.core.QgsSymbolLayerUtils.decodeLineClipMode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decodeLineClipMode</span></code></a></p></td>
 <td><p>Decodes a <code class="docutils literal notranslate"><span class="pre">string</span></code> representing a line clip mode.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.decodeMapUnitScale" title="qgis.core.QgsSymbolLayerUtils.decodeMapUnitScale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decodeMapUnitScale</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.decodeMapUnitScale" title="qgis.core.QgsSymbolLayerUtils.decodeMapUnitScale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decodeMapUnitScale</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param str<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.decodeMarkerClipMode" title="qgis.core.QgsSymbolLayerUtils.decodeMarkerClipMode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decodeMarkerClipMode</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.decodeMarkerClipMode" title="qgis.core.QgsSymbolLayerUtils.decodeMarkerClipMode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decodeMarkerClipMode</span></code></a></p></td>
 <td><p>Decodes a <code class="docutils literal notranslate"><span class="pre">string</span></code> representing a marker clip mode.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.decodePenCapStyle" title="qgis.core.QgsSymbolLayerUtils.decodePenCapStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decodePenCapStyle</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.decodePenCapStyle" title="qgis.core.QgsSymbolLayerUtils.decodePenCapStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decodePenCapStyle</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param str<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.decodePenJoinStyle" title="qgis.core.QgsSymbolLayerUtils.decodePenJoinStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decodePenJoinStyle</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.decodePenJoinStyle" title="qgis.core.QgsSymbolLayerUtils.decodePenJoinStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decodePenJoinStyle</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param str<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.decodePenStyle" title="qgis.core.QgsSymbolLayerUtils.decodePenStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decodePenStyle</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.decodePenStyle" title="qgis.core.QgsSymbolLayerUtils.decodePenStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decodePenStyle</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param str<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.decodePoint" title="qgis.core.QgsSymbolLayerUtils.decodePoint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decodePoint</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.decodePoint" title="qgis.core.QgsSymbolLayerUtils.decodePoint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decodePoint</span></code></a></p></td>
 <td><p>Decodes a QSizeF from a string.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.decodeRealVector" title="qgis.core.QgsSymbolLayerUtils.decodeRealVector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decodeRealVector</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.decodeRealVector" title="qgis.core.QgsSymbolLayerUtils.decodeRealVector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decodeRealVector</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param s<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.decodeScaleMethod" title="qgis.core.QgsSymbolLayerUtils.decodeScaleMethod"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decodeScaleMethod</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.decodeScaleMethod" title="qgis.core.QgsSymbolLayerUtils.decodeScaleMethod"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decodeScaleMethod</span></code></a></p></td>
 <td><p>Decodes a symbol scale method from a string.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.decodeSize" title="qgis.core.QgsSymbolLayerUtils.decodeSize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decodeSize</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.decodeSize" title="qgis.core.QgsSymbolLayerUtils.decodeSize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decodeSize</span></code></a></p></td>
 <td><p>Decodes a QSizeF from a string.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.decodeSldAlpha" title="qgis.core.QgsSymbolLayerUtils.decodeSldAlpha"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decodeSldAlpha</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.decodeSldAlpha" title="qgis.core.QgsSymbolLayerUtils.decodeSldAlpha"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decodeSldAlpha</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param str<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.decodeSldBrushStyle" title="qgis.core.QgsSymbolLayerUtils.decodeSldBrushStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decodeSldBrushStyle</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.decodeSldBrushStyle" title="qgis.core.QgsSymbolLayerUtils.decodeSldBrushStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decodeSldBrushStyle</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param str<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.decodeSldFontStyle" title="qgis.core.QgsSymbolLayerUtils.decodeSldFontStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decodeSldFontStyle</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.decodeSldFontStyle" title="qgis.core.QgsSymbolLayerUtils.decodeSldFontStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decodeSldFontStyle</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param str<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.decodeSldFontWeight" title="qgis.core.QgsSymbolLayerUtils.decodeSldFontWeight"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decodeSldFontWeight</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.decodeSldFontWeight" title="qgis.core.QgsSymbolLayerUtils.decodeSldFontWeight"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decodeSldFontWeight</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param str<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.decodeSldLineCapStyle" title="qgis.core.QgsSymbolLayerUtils.decodeSldLineCapStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decodeSldLineCapStyle</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.decodeSldLineCapStyle" title="qgis.core.QgsSymbolLayerUtils.decodeSldLineCapStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decodeSldLineCapStyle</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param str<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.decodeSldLineJoinStyle" title="qgis.core.QgsSymbolLayerUtils.decodeSldLineJoinStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decodeSldLineJoinStyle</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.decodeSldLineJoinStyle" title="qgis.core.QgsSymbolLayerUtils.decodeSldLineJoinStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decodeSldLineJoinStyle</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param str<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.decodeSldRealVector" title="qgis.core.QgsSymbolLayerUtils.decodeSldRealVector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decodeSldRealVector</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.decodeSldRealVector" title="qgis.core.QgsSymbolLayerUtils.decodeSldRealVector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decodeSldRealVector</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param s<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.decodeSldUom" title="qgis.core.QgsSymbolLayerUtils.decodeSldUom"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decodeSldUom</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.decodeSldUom" title="qgis.core.QgsSymbolLayerUtils.decodeSldUom"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decodeSldUom</span></code></a></p></td>
 <td><p>Decodes a SLD unit of measure string to a render unit.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.displacementFromSldElement" title="qgis.core.QgsSymbolLayerUtils.displacementFromSldElement"><code class="xref py py-obj docutils literal notranslate"><span class="pre">displacementFromSldElement</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.displacementFromSldElement" title="qgis.core.QgsSymbolLayerUtils.displacementFromSldElement"><code class="xref py py-obj docutils literal notranslate"><span class="pre">displacementFromSldElement</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param element<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.drawStippledBackground" title="qgis.core.QgsSymbolLayerUtils.drawStippledBackground"><code class="xref py py-obj docutils literal notranslate"><span class="pre">drawStippledBackground</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.drawStippledBackground" title="qgis.core.QgsSymbolLayerUtils.drawStippledBackground"><code class="xref py py-obj docutils literal notranslate"><span class="pre">drawStippledBackground</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param painter<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.drawVertexMarker" title="qgis.core.QgsSymbolLayerUtils.drawVertexMarker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">drawVertexMarker</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.drawVertexMarker" title="qgis.core.QgsSymbolLayerUtils.drawVertexMarker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">drawVertexMarker</span></code></a></p></td>
 <td><p>Draws a vertex symbol at (painter) coordinates x, y.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.encodeBrushStyle" title="qgis.core.QgsSymbolLayerUtils.encodeBrushStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">encodeBrushStyle</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.encodeBrushStyle" title="qgis.core.QgsSymbolLayerUtils.encodeBrushStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">encodeBrushStyle</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param style<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.encodeColor" title="qgis.core.QgsSymbolLayerUtils.encodeColor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">encodeColor</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.encodeColor" title="qgis.core.QgsSymbolLayerUtils.encodeColor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">encodeColor</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param color<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.encodeCoordinateReference" title="qgis.core.QgsSymbolLayerUtils.encodeCoordinateReference"><code class="xref py py-obj docutils literal notranslate"><span class="pre">encodeCoordinateReference</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.encodeCoordinateReference" title="qgis.core.QgsSymbolLayerUtils.encodeCoordinateReference"><code class="xref py py-obj docutils literal notranslate"><span class="pre">encodeCoordinateReference</span></code></a></p></td>
 <td><p>Encodes a symbol coordinate reference mode to a string.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.encodeLineClipMode" title="qgis.core.QgsSymbolLayerUtils.encodeLineClipMode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">encodeLineClipMode</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.encodeLineClipMode" title="qgis.core.QgsSymbolLayerUtils.encodeLineClipMode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">encodeLineClipMode</span></code></a></p></td>
 <td><p>Encodes a line clip <code class="docutils literal notranslate"><span class="pre">mode</span></code> to a string.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.encodeMapUnitScale" title="qgis.core.QgsSymbolLayerUtils.encodeMapUnitScale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">encodeMapUnitScale</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.encodeMapUnitScale" title="qgis.core.QgsSymbolLayerUtils.encodeMapUnitScale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">encodeMapUnitScale</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param mapUnitScale<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.encodeMarkerClipMode" title="qgis.core.QgsSymbolLayerUtils.encodeMarkerClipMode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">encodeMarkerClipMode</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.encodeMarkerClipMode" title="qgis.core.QgsSymbolLayerUtils.encodeMarkerClipMode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">encodeMarkerClipMode</span></code></a></p></td>
 <td><p>Encodes a marker clip <code class="docutils literal notranslate"><span class="pre">mode</span></code> to a string.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.encodePenCapStyle" title="qgis.core.QgsSymbolLayerUtils.encodePenCapStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">encodePenCapStyle</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.encodePenCapStyle" title="qgis.core.QgsSymbolLayerUtils.encodePenCapStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">encodePenCapStyle</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param style<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.encodePenJoinStyle" title="qgis.core.QgsSymbolLayerUtils.encodePenJoinStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">encodePenJoinStyle</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.encodePenJoinStyle" title="qgis.core.QgsSymbolLayerUtils.encodePenJoinStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">encodePenJoinStyle</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param style<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.encodePenStyle" title="qgis.core.QgsSymbolLayerUtils.encodePenStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">encodePenStyle</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.encodePenStyle" title="qgis.core.QgsSymbolLayerUtils.encodePenStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">encodePenStyle</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param style<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.encodePoint" title="qgis.core.QgsSymbolLayerUtils.encodePoint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">encodePoint</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.encodePoint" title="qgis.core.QgsSymbolLayerUtils.encodePoint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">encodePoint</span></code></a></p></td>
 <td><p>Encodes a QPointF to a string.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.encodeRealVector" title="qgis.core.QgsSymbolLayerUtils.encodeRealVector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">encodeRealVector</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.encodeRealVector" title="qgis.core.QgsSymbolLayerUtils.encodeRealVector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">encodeRealVector</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param v<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.encodeScaleMethod" title="qgis.core.QgsSymbolLayerUtils.encodeScaleMethod"><code class="xref py py-obj docutils literal notranslate"><span class="pre">encodeScaleMethod</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.encodeScaleMethod" title="qgis.core.QgsSymbolLayerUtils.encodeScaleMethod"><code class="xref py py-obj docutils literal notranslate"><span class="pre">encodeScaleMethod</span></code></a></p></td>
 <td><p>Encodes a symbol scale method to a string.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.encodeSize" title="qgis.core.QgsSymbolLayerUtils.encodeSize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">encodeSize</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.encodeSize" title="qgis.core.QgsSymbolLayerUtils.encodeSize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">encodeSize</span></code></a></p></td>
 <td><p>Encodes a QSizeF to a string.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.encodeSldAlpha" title="qgis.core.QgsSymbolLayerUtils.encodeSldAlpha"><code class="xref py py-obj docutils literal notranslate"><span class="pre">encodeSldAlpha</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.encodeSldAlpha" title="qgis.core.QgsSymbolLayerUtils.encodeSldAlpha"><code class="xref py py-obj docutils literal notranslate"><span class="pre">encodeSldAlpha</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param alpha<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.encodeSldBrushStyle" title="qgis.core.QgsSymbolLayerUtils.encodeSldBrushStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">encodeSldBrushStyle</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.encodeSldBrushStyle" title="qgis.core.QgsSymbolLayerUtils.encodeSldBrushStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">encodeSldBrushStyle</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param style<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.encodeSldFontStyle" title="qgis.core.QgsSymbolLayerUtils.encodeSldFontStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">encodeSldFontStyle</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.encodeSldFontStyle" title="qgis.core.QgsSymbolLayerUtils.encodeSldFontStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">encodeSldFontStyle</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param style<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.encodeSldFontWeight" title="qgis.core.QgsSymbolLayerUtils.encodeSldFontWeight"><code class="xref py py-obj docutils literal notranslate"><span class="pre">encodeSldFontWeight</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.encodeSldFontWeight" title="qgis.core.QgsSymbolLayerUtils.encodeSldFontWeight"><code class="xref py py-obj docutils literal notranslate"><span class="pre">encodeSldFontWeight</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param weight<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.encodeSldLineCapStyle" title="qgis.core.QgsSymbolLayerUtils.encodeSldLineCapStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">encodeSldLineCapStyle</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.encodeSldLineCapStyle" title="qgis.core.QgsSymbolLayerUtils.encodeSldLineCapStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">encodeSldLineCapStyle</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param style<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.encodeSldLineJoinStyle" title="qgis.core.QgsSymbolLayerUtils.encodeSldLineJoinStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">encodeSldLineJoinStyle</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.encodeSldLineJoinStyle" title="qgis.core.QgsSymbolLayerUtils.encodeSldLineJoinStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">encodeSldLineJoinStyle</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param style<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.encodeSldRealVector" title="qgis.core.QgsSymbolLayerUtils.encodeSldRealVector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">encodeSldRealVector</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.encodeSldRealVector" title="qgis.core.QgsSymbolLayerUtils.encodeSldRealVector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">encodeSldRealVector</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param v<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.encodeSldUom" title="qgis.core.QgsSymbolLayerUtils.encodeSldUom"><code class="xref py py-obj docutils literal notranslate"><span class="pre">encodeSldUom</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.encodeSldUom" title="qgis.core.QgsSymbolLayerUtils.encodeSldUom"><code class="xref py py-obj docutils literal notranslate"><span class="pre">encodeSldUom</span></code></a></p></td>
 <td><p>Encodes a render unit into an SLD unit of measure string.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.estimateMaxSymbolBleed" title="qgis.core.QgsSymbolLayerUtils.estimateMaxSymbolBleed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">estimateMaxSymbolBleed</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.estimateMaxSymbolBleed" title="qgis.core.QgsSymbolLayerUtils.estimateMaxSymbolBleed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">estimateMaxSymbolBleed</span></code></a></p></td>
 <td><p>Returns the maximum estimated bleed for the symbol</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.evaluatePropertiesMap" title="qgis.core.QgsSymbolLayerUtils.evaluatePropertiesMap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">evaluatePropertiesMap</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.evaluatePropertiesMap" title="qgis.core.QgsSymbolLayerUtils.evaluatePropertiesMap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">evaluatePropertiesMap</span></code></a></p></td>
 <td><p>Evaluates a map of properties using the given <code class="docutils literal notranslate"><span class="pre">context</span></code> and returns a variant map with evaluated expressions from the properties.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.externalGraphicFromSld" title="qgis.core.QgsSymbolLayerUtils.externalGraphicFromSld"><code class="xref py py-obj docutils literal notranslate"><span class="pre">externalGraphicFromSld</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.externalGraphicFromSld" title="qgis.core.QgsSymbolLayerUtils.externalGraphicFromSld"><code class="xref py py-obj docutils literal notranslate"><span class="pre">externalGraphicFromSld</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param element<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.externalGraphicToSld" title="qgis.core.QgsSymbolLayerUtils.externalGraphicToSld"><code class="xref py py-obj docutils literal notranslate"><span class="pre">externalGraphicToSld</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.externalGraphicToSld" title="qgis.core.QgsSymbolLayerUtils.externalGraphicToSld"><code class="xref py py-obj docutils literal notranslate"><span class="pre">externalGraphicToSld</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param doc<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.externalMarkerFromSld" title="qgis.core.QgsSymbolLayerUtils.externalMarkerFromSld"><code class="xref py py-obj docutils literal notranslate"><span class="pre">externalMarkerFromSld</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.externalMarkerFromSld" title="qgis.core.QgsSymbolLayerUtils.externalMarkerFromSld"><code class="xref py py-obj docutils literal notranslate"><span class="pre">externalMarkerFromSld</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param element<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.externalMarkerToSld" title="qgis.core.QgsSymbolLayerUtils.externalMarkerToSld"><code class="xref py py-obj docutils literal notranslate"><span class="pre">externalMarkerToSld</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.externalMarkerToSld" title="qgis.core.QgsSymbolLayerUtils.externalMarkerToSld"><code class="xref py py-obj docutils literal notranslate"><span class="pre">externalMarkerToSld</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param doc<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.fieldOrExpressionFromExpression" title="qgis.core.QgsSymbolLayerUtils.fieldOrExpressionFromExpression"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fieldOrExpressionFromExpression</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.fieldOrExpressionFromExpression" title="qgis.core.QgsSymbolLayerUtils.fieldOrExpressionFromExpression"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fieldOrExpressionFromExpression</span></code></a></p></td>
 <td><p>Returns a field name if the whole expression is just a name of the field .</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.fieldOrExpressionToExpression" title="qgis.core.QgsSymbolLayerUtils.fieldOrExpressionToExpression"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fieldOrExpressionToExpression</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.fieldOrExpressionToExpression" title="qgis.core.QgsSymbolLayerUtils.fieldOrExpressionToExpression"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fieldOrExpressionToExpression</span></code></a></p></td>
 <td><p>Returns a new valid expression instance for given field or expression string.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.fillFromSld" title="qgis.core.QgsSymbolLayerUtils.fillFromSld"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fillFromSld</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.fillFromSld" title="qgis.core.QgsSymbolLayerUtils.fillFromSld"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fillFromSld</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param element<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.fillToSld" title="qgis.core.QgsSymbolLayerUtils.fillToSld"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fillToSld</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.fillToSld" title="qgis.core.QgsSymbolLayerUtils.fillToSld"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fillToSld</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param doc<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.functionFromSldElement" title="qgis.core.QgsSymbolLayerUtils.functionFromSldElement"><code class="xref py py-obj docutils literal notranslate"><span class="pre">functionFromSldElement</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.functionFromSldElement" title="qgis.core.QgsSymbolLayerUtils.functionFromSldElement"><code class="xref py py-obj docutils literal notranslate"><span class="pre">functionFromSldElement</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param element<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.geometryFromSldElement" title="qgis.core.QgsSymbolLayerUtils.geometryFromSldElement"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geometryFromSldElement</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.geometryFromSldElement" title="qgis.core.QgsSymbolLayerUtils.geometryFromSldElement"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geometryFromSldElement</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param element<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.getSvgParameterList" title="qgis.core.QgsSymbolLayerUtils.getSvgParameterList"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getSvgParameterList</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.getSvgParameterList" title="qgis.core.QgsSymbolLayerUtils.getSvgParameterList"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getSvgParameterList</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param element<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.getSvgParametricPath" title="qgis.core.QgsSymbolLayerUtils.getSvgParametricPath"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getSvgParametricPath</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.getSvgParametricPath" title="qgis.core.QgsSymbolLayerUtils.getSvgParametricPath"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getSvgParametricPath</span></code></a></p></td>
 <td><p>Encodes a reference to a parametric SVG into a path with parameters according to the SVG Parameters spec</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.getVendorOptionList" title="qgis.core.QgsSymbolLayerUtils.getVendorOptionList"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getVendorOptionList</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.getVendorOptionList" title="qgis.core.QgsSymbolLayerUtils.getVendorOptionList"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getVendorOptionList</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param element<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.hasExternalGraphic" title="qgis.core.QgsSymbolLayerUtils.hasExternalGraphic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hasExternalGraphic</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.hasExternalGraphic" title="qgis.core.QgsSymbolLayerUtils.hasExternalGraphic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hasExternalGraphic</span></code></a></p></td>
 <td><p>Checks if <code class="docutils literal notranslate"><span class="pre">element</span></code> contains an ExternalGraphic element with format &quot;image/svg+xml&quot; &#64;return <code class="docutils literal notranslate"><span class="pre">True</span></code> if the ExternalGraphic with format &quot;image/svg+xml&quot; is found .</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.hasExternalGraphicV2" title="qgis.core.QgsSymbolLayerUtils.hasExternalGraphicV2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hasExternalGraphicV2</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.hasExternalGraphicV2" title="qgis.core.QgsSymbolLayerUtils.hasExternalGraphicV2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hasExternalGraphicV2</span></code></a></p></td>
 <td><p>Checks if <code class="docutils literal notranslate"><span class="pre">element</span></code> contains an ExternalGraphic element, if the optional <code class="docutils literal notranslate"><span class="pre">format</span></code> is specified it will also be checked.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.hasWellKnownMark" title="qgis.core.QgsSymbolLayerUtils.hasWellKnownMark"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hasWellKnownMark</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.hasWellKnownMark" title="qgis.core.QgsSymbolLayerUtils.hasWellKnownMark"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hasWellKnownMark</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param element<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.importColorsFromGpl" title="qgis.core.QgsSymbolLayerUtils.importColorsFromGpl"><code class="xref py py-obj docutils literal notranslate"><span class="pre">importColorsFromGpl</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.importColorsFromGpl" title="qgis.core.QgsSymbolLayerUtils.importColorsFromGpl"><code class="xref py py-obj docutils literal notranslate"><span class="pre">importColorsFromGpl</span></code></a></p></td>
 <td><p>Imports colors from a gpl GIMP palette file</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.isSharpCorner" title="qgis.core.QgsSymbolLayerUtils.isSharpCorner"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isSharpCorner</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.isSharpCorner" title="qgis.core.QgsSymbolLayerUtils.isSharpCorner"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isSharpCorner</span></code></a></p></td>
 <td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the angle formed by the line <code class="docutils literal notranslate"><span class="pre">p1</span></code> - <code class="docutils literal notranslate"><span class="pre">p2</span></code> - <code class="docutils literal notranslate"><span class="pre">p3</span></code> forms a &quot;sharp&quot; corner.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.labelTextToSld" title="qgis.core.QgsSymbolLayerUtils.labelTextToSld"><code class="xref py py-obj docutils literal notranslate"><span class="pre">labelTextToSld</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.labelTextToSld" title="qgis.core.QgsSymbolLayerUtils.labelTextToSld"><code class="xref py py-obj docutils literal notranslate"><span class="pre">labelTextToSld</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param doc<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.lineFromSld" title="qgis.core.QgsSymbolLayerUtils.lineFromSld"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lineFromSld</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.lineFromSld" title="qgis.core.QgsSymbolLayerUtils.lineFromSld"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lineFromSld</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param element<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.listSvgFiles" title="qgis.core.QgsSymbolLayerUtils.listSvgFiles"><code class="xref py py-obj docutils literal notranslate"><span class="pre">listSvgFiles</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.listSvgFiles" title="qgis.core.QgsSymbolLayerUtils.listSvgFiles"><code class="xref py py-obj docutils literal notranslate"><span class="pre">listSvgFiles</span></code></a></p></td>
 <td><p>Returns a list of all available svg files</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.listSvgFilesAt" title="qgis.core.QgsSymbolLayerUtils.listSvgFilesAt"><code class="xref py py-obj docutils literal notranslate"><span class="pre">listSvgFilesAt</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.listSvgFilesAt" title="qgis.core.QgsSymbolLayerUtils.listSvgFilesAt"><code class="xref py py-obj docutils literal notranslate"><span class="pre">listSvgFilesAt</span></code></a></p></td>
 <td><p>Returns a list of svg files at the specified directory</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.loadColorRamp" title="qgis.core.QgsSymbolLayerUtils.loadColorRamp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">loadColorRamp</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.loadColorRamp" title="qgis.core.QgsSymbolLayerUtils.loadColorRamp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">loadColorRamp</span></code></a></p></td>
 <td><p>Creates a color ramp from the settings encoded in an XML element</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.loadSymbol" title="qgis.core.QgsSymbolLayerUtils.loadSymbol"><code class="xref py py-obj docutils literal notranslate"><span class="pre">loadSymbol</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.loadSymbol" title="qgis.core.QgsSymbolLayerUtils.loadSymbol"><code class="xref py py-obj docutils literal notranslate"><span class="pre">loadSymbol</span></code></a></p></td>
 <td><p>Attempts to load a symbol from a DOM element</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.loadSymbolLayer" title="qgis.core.QgsSymbolLayerUtils.loadSymbolLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">loadSymbolLayer</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.loadSymbolLayer" title="qgis.core.QgsSymbolLayerUtils.loadSymbolLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">loadSymbolLayer</span></code></a></p></td>
 <td><p>Reads and returns symbol layer from XML.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.loadSymbols" title="qgis.core.QgsSymbolLayerUtils.loadSymbols"><code class="xref py py-obj docutils literal notranslate"><span class="pre">loadSymbols</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.loadSymbols" title="qgis.core.QgsSymbolLayerUtils.loadSymbols"><code class="xref py py-obj docutils literal notranslate"><span class="pre">loadSymbols</span></code></a></p></td>
 <td><p>Reads a collection of symbols from XML and returns them in a map.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.mergeScaleDependencies" title="qgis.core.QgsSymbolLayerUtils.mergeScaleDependencies"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mergeScaleDependencies</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.mergeScaleDependencies" title="qgis.core.QgsSymbolLayerUtils.mergeScaleDependencies"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mergeScaleDependencies</span></code></a></p></td>
 <td><p>Merges the local scale limits, if any, with the ones already in the map, if any</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.multiplyImageOpacity" title="qgis.core.QgsSymbolLayerUtils.multiplyImageOpacity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">multiplyImageOpacity</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.multiplyImageOpacity" title="qgis.core.QgsSymbolLayerUtils.multiplyImageOpacity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">multiplyImageOpacity</span></code></a></p></td>
 <td><p>Multiplies opacity of image pixel values with a (global) transparency value.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.needEllipseMarker" title="qgis.core.QgsSymbolLayerUtils.needEllipseMarker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">needEllipseMarker</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.needEllipseMarker" title="qgis.core.QgsSymbolLayerUtils.needEllipseMarker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">needEllipseMarker</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param element<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.needFontMarker" title="qgis.core.QgsSymbolLayerUtils.needFontMarker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">needFontMarker</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.needFontMarker" title="qgis.core.QgsSymbolLayerUtils.needFontMarker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">needFontMarker</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param element<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.needLinePatternFill" title="qgis.core.QgsSymbolLayerUtils.needLinePatternFill"><code class="xref py py-obj docutils literal notranslate"><span class="pre">needLinePatternFill</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.needLinePatternFill" title="qgis.core.QgsSymbolLayerUtils.needLinePatternFill"><code class="xref py py-obj docutils literal notranslate"><span class="pre">needLinePatternFill</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param element<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.needMarkerLine" title="qgis.core.QgsSymbolLayerUtils.needMarkerLine"><code class="xref py py-obj docutils literal notranslate"><span class="pre">needMarkerLine</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.needMarkerLine" title="qgis.core.QgsSymbolLayerUtils.needMarkerLine"><code class="xref py py-obj docutils literal notranslate"><span class="pre">needMarkerLine</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param element<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.needPointPatternFill" title="qgis.core.QgsSymbolLayerUtils.needPointPatternFill"><code class="xref py py-obj docutils literal notranslate"><span class="pre">needPointPatternFill</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.needPointPatternFill" title="qgis.core.QgsSymbolLayerUtils.needPointPatternFill"><code class="xref py py-obj docutils literal notranslate"><span class="pre">needPointPatternFill</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param element<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.needRasterImageFill" title="qgis.core.QgsSymbolLayerUtils.needRasterImageFill"><code class="xref py py-obj docutils literal notranslate"><span class="pre">needRasterImageFill</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.needRasterImageFill" title="qgis.core.QgsSymbolLayerUtils.needRasterImageFill"><code class="xref py py-obj docutils literal notranslate"><span class="pre">needRasterImageFill</span></code></a></p></td>
 <td><p>Checks if <code class="docutils literal notranslate"><span class="pre">element</span></code> contains a graphic fill with a raster image of type PNG, JPEG or GIF.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.needSvgFill" title="qgis.core.QgsSymbolLayerUtils.needSvgFill"><code class="xref py py-obj docutils literal notranslate"><span class="pre">needSvgFill</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.needSvgFill" title="qgis.core.QgsSymbolLayerUtils.needSvgFill"><code class="xref py py-obj docutils literal notranslate"><span class="pre">needSvgFill</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param element<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.needSvgMarker" title="qgis.core.QgsSymbolLayerUtils.needSvgMarker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">needSvgMarker</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.needSvgMarker" title="qgis.core.QgsSymbolLayerUtils.needSvgMarker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">needSvgMarker</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param element<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.ogrFeatureStyleBrush" title="qgis.core.QgsSymbolLayerUtils.ogrFeatureStyleBrush"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ogrFeatureStyleBrush</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.ogrFeatureStyleBrush" title="qgis.core.QgsSymbolLayerUtils.ogrFeatureStyleBrush"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ogrFeatureStyleBrush</span></code></a></p></td>
 <td><p>Create ogr feature style string for brush</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.ogrFeatureStylePen" title="qgis.core.QgsSymbolLayerUtils.ogrFeatureStylePen"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ogrFeatureStylePen</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.ogrFeatureStylePen" title="qgis.core.QgsSymbolLayerUtils.ogrFeatureStylePen"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ogrFeatureStylePen</span></code></a></p></td>
 <td><p>Create ogr feature style string for pen</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.onlineResourceFromSldElement" title="qgis.core.QgsSymbolLayerUtils.onlineResourceFromSldElement"><code class="xref py py-obj docutils literal notranslate"><span class="pre">onlineResourceFromSldElement</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.onlineResourceFromSldElement" title="qgis.core.QgsSymbolLayerUtils.onlineResourceFromSldElement"><code class="xref py py-obj docutils literal notranslate"><span class="pre">onlineResourceFromSldElement</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param element<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.opacityFromSldElement" title="qgis.core.QgsSymbolLayerUtils.opacityFromSldElement"><code class="xref py py-obj docutils literal notranslate"><span class="pre">opacityFromSldElement</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.opacityFromSldElement" title="qgis.core.QgsSymbolLayerUtils.opacityFromSldElement"><code class="xref py py-obj docutils literal notranslate"><span class="pre">opacityFromSldElement</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param element<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.parametricSvgToSld" title="qgis.core.QgsSymbolLayerUtils.parametricSvgToSld"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parametricSvgToSld</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.parametricSvgToSld" title="qgis.core.QgsSymbolLayerUtils.parametricSvgToSld"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parametricSvgToSld</span></code></a></p></td>
 <td><p>Encodes a reference to a parametric SVG into SLD, as a succession of parametric SVG using URL parameters, a fallback SVG without parameters, and a final fallback as a mark with the right colors and stroke for systems that cannot do SVG at all</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.parseColor" title="qgis.core.QgsSymbolLayerUtils.parseColor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parseColor</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.parseColor" title="qgis.core.QgsSymbolLayerUtils.parseColor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parseColor</span></code></a></p></td>
 <td><p>Attempts to parse a string as a color using a variety of common formats, including hex codes, rgb and rgba strings.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.parseColorList" title="qgis.core.QgsSymbolLayerUtils.parseColorList"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parseColorList</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.parseColorList" title="qgis.core.QgsSymbolLayerUtils.parseColorList"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parseColorList</span></code></a></p></td>
 <td><p>Attempts to parse a string as a list of colors using a variety of common formats, including hex codes, rgb and rgba strings.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.parseColorWithAlpha" title="qgis.core.QgsSymbolLayerUtils.parseColorWithAlpha"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parseColorWithAlpha</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.parseColorWithAlpha" title="qgis.core.QgsSymbolLayerUtils.parseColorWithAlpha"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parseColorWithAlpha</span></code></a></p></td>
 <td><p>Attempts to parse a string as a color using a variety of common formats, including hex codes, rgb and rgba, hsl and hsla strings.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.parseProperties" title="qgis.core.QgsSymbolLayerUtils.parseProperties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parseProperties</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.parseProperties" title="qgis.core.QgsSymbolLayerUtils.parseProperties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parseProperties</span></code></a></p></td>
 <td><p>Parses the properties from XML and returns a map</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.pointInPolygon" title="qgis.core.QgsSymbolLayerUtils.pointInPolygon"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pointInPolygon</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.pointInPolygon" title="qgis.core.QgsSymbolLayerUtils.pointInPolygon"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pointInPolygon</span></code></a></p></td>
 <td><p>Calculate whether a point is within of a QPolygonF</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.pointOnLineWithDistance" title="qgis.core.QgsSymbolLayerUtils.pointOnLineWithDistance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pointOnLineWithDistance</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.pointOnLineWithDistance" title="qgis.core.QgsSymbolLayerUtils.pointOnLineWithDistance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pointOnLineWithDistance</span></code></a></p></td>
 <td><p>Returns a point on the line from startPoint to directionPoint that is a certain distance away from the starting point</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.polygonCentroid" title="qgis.core.QgsSymbolLayerUtils.polygonCentroid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">polygonCentroid</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.polygonCentroid" title="qgis.core.QgsSymbolLayerUtils.polygonCentroid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">polygonCentroid</span></code></a></p></td>
 <td><p>Calculate the centroid point of a QPolygonF</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.polygonPointOnSurface" title="qgis.core.QgsSymbolLayerUtils.polygonPointOnSurface"><code class="xref py py-obj docutils literal notranslate"><span class="pre">polygonPointOnSurface</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.polygonPointOnSurface" title="qgis.core.QgsSymbolLayerUtils.polygonPointOnSurface"><code class="xref py py-obj docutils literal notranslate"><span class="pre">polygonPointOnSurface</span></code></a></p></td>
 <td><p>Calculate a point on the surface of a QPolygonF</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.polylineLength" title="qgis.core.QgsSymbolLayerUtils.polylineLength"><code class="xref py py-obj docutils literal notranslate"><span class="pre">polylineLength</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.polylineLength" title="qgis.core.QgsSymbolLayerUtils.polylineLength"><code class="xref py py-obj docutils literal notranslate"><span class="pre">polylineLength</span></code></a></p></td>
 <td><p>Returns the total length of a <code class="docutils literal notranslate"><span class="pre">polyline</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.polylineSubstring" title="qgis.core.QgsSymbolLayerUtils.polylineSubstring"><code class="xref py py-obj docutils literal notranslate"><span class="pre">polylineSubstring</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.polylineSubstring" title="qgis.core.QgsSymbolLayerUtils.polylineSubstring"><code class="xref py py-obj docutils literal notranslate"><span class="pre">polylineSubstring</span></code></a></p></td>
 <td><p>Returns the substring of a <code class="docutils literal notranslate"><span class="pre">polyline</span></code> which starts at <code class="docutils literal notranslate"><span class="pre">startOffset</span></code> from the beginning of the line and ends at <code class="docutils literal notranslate"><span class="pre">endOffset</span></code> from the start of the line.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.premultiplyColor" title="qgis.core.QgsSymbolLayerUtils.premultiplyColor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">premultiplyColor</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.premultiplyColor" title="qgis.core.QgsSymbolLayerUtils.premultiplyColor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">premultiplyColor</span></code></a></p></td>
 <td><p>Converts a QColor into a premultiplied ARGB QColor value using a specified alpha value</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.prettyBreaks" title="qgis.core.QgsSymbolLayerUtils.prettyBreaks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">prettyBreaks</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.prettyBreaks" title="qgis.core.QgsSymbolLayerUtils.prettyBreaks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">prettyBreaks</span></code></a></p></td>
 <td><p>Computes a sequence of about 'classes' equally spaced round values which cover the range of values from 'minimum' to 'maximum'.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.rendererFrameRate" title="qgis.core.QgsSymbolLayerUtils.rendererFrameRate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rendererFrameRate</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.rendererFrameRate" title="qgis.core.QgsSymbolLayerUtils.rendererFrameRate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rendererFrameRate</span></code></a></p></td>
 <td><p>Calculates the frame rate (in frames per second) at which the given <code class="docutils literal notranslate"><span class="pre">renderer</span></code> must be redrawn.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.rescaleArrayUom" title="qgis.core.QgsSymbolLayerUtils.rescaleArrayUom"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rescaleArrayUom</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.rescaleArrayUom" title="qgis.core.QgsSymbolLayerUtils.rescaleArrayUom"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rescaleArrayUom</span></code></a></p></td>
 <td><p>Rescales the given array based on the uomScale found in the props, if any is found, otherwise returns a copy of the original point</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.rescalePointUom" title="qgis.core.QgsSymbolLayerUtils.rescalePointUom"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rescalePointUom</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.rescalePointUom" title="qgis.core.QgsSymbolLayerUtils.rescalePointUom"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rescalePointUom</span></code></a></p></td>
 <td><p>Rescales the given point based on the uomScale found in the props, if any is found, otherwise returns a copy of the original point</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.rescaleUom" title="qgis.core.QgsSymbolLayerUtils.rescaleUom"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rescaleUom</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.rescaleUom" title="qgis.core.QgsSymbolLayerUtils.rescaleUom"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rescaleUom</span></code></a></p></td>
 <td><p>Rescales the given size based on the uomScale found in the props, if any is found, otherwise returns the value un-modified</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.resetSymbolLayerIds" title="qgis.core.QgsSymbolLayerUtils.resetSymbolLayerIds"><code class="xref py py-obj docutils literal notranslate"><span class="pre">resetSymbolLayerIds</span></code></a></p></td>
+<td><p>Regenerate recursively unique id from all <code class="docutils literal notranslate"><span class="pre">symbol</span></code> symbol layers</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayerUtils.restrictedSizeSymbol" title="qgis.core.QgsSymbolLayerUtils.restrictedSizeSymbol"><code class="xref py py-obj docutils literal notranslate"><span class="pre">restrictedSizeSymbol</span></code></a></p></td>
 <td><p>Creates a new symbol with size restricted to min/max size if original size is out of min/max range</p></td>
@@ -2987,6 +2996,25 @@
 <li><p><strong>radius</strong> (<em>int</em>) – </p></li>
 <li><p><strong>alphaOnly</strong> (<em>bool</em>) – </p></li>
 </ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsSymbolLayerUtils.clearSymbolLayerIds">
+<span class="sig-name descname"><span class="pre">clearSymbolLayerIds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsSymbol.html#qgis.core.QgsSymbol" title="qgis.core.QgsSymbol"><span class="pre">QgsSymbol</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsSymbolLayerUtils.clearSymbolLayerIds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove recursively unique id from all <code class="docutils literal notranslate"><span class="pre">symbol</span></code> symbol layers and set an empty string instead</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.30.</span></p>
+</div>
+<p>clearSymbolLayerIds(symbolLayer: <a class="reference internal" href="QgsSymbolLayer.html#qgis.core.QgsSymbolLayer" title="qgis.core.QgsSymbolLayer"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsSymbolLayer</span></code></a>)
+Remove recursively unique id from <code class="docutils literal notranslate"><span class="pre">symbolLayer</span></code> and its children and set an empty string instead</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.30.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>symbol</strong> (<a class="reference internal" href="QgsSymbol.html#qgis.core.QgsSymbol" title="qgis.core.QgsSymbol"><em>QgsSymbol</em></a>) – </p>
 </dd>
 </dl>
 </dd></dl>
@@ -3408,13 +3436,13 @@ settings in <code class="docutils literal notranslate"><span class="pre">fill</s
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsSymbolLayerUtils.createSymbolLayerListFromSld">
-<span class="sig-name descname"><span class="pre">createSymbolLayerListFromSld</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">QDomElement</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">geomType</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsWkbTypes.html#qgis.core.QgsWkbTypes.GeometryType" title="qgis.core.QgsWkbTypes.GeometryType"><span class="pre">QgsWkbTypes.GeometryType</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">layers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="QgsSymbolLayer.html#qgis.core.QgsSymbolLayer" title="qgis.core.QgsSymbolLayer"><span class="pre">QgsSymbolLayer</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#qgis.core.QgsSymbolLayerUtils.createSymbolLayerListFromSld" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">createSymbolLayerListFromSld</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">QDomElement</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">geomType</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="Qgis.html#qgis.core.Qgis.GeometryType" title="qgis.core.Qgis.GeometryType"><span class="pre">Qgis.GeometryType</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">layers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="QgsSymbolLayer.html#qgis.core.QgsSymbolLayer" title="qgis.core.QgsSymbolLayer"><span class="pre">QgsSymbolLayer</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#qgis.core.QgsSymbolLayerUtils.createSymbolLayerListFromSld" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates a symbol layer list from a DOM <code class="docutils literal notranslate"><span class="pre">element</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>element</strong> (<em>QDomElement</em>) – </p></li>
-<li><p><strong>geomType</strong> (<a class="reference internal" href="QgsWkbTypes.html#qgis.core.QgsWkbTypes.GeometryType" title="qgis.core.QgsWkbTypes.GeometryType"><em>QgsWkbTypes.GeometryType</em></a>) – </p></li>
+<li><p><strong>geomType</strong> (<a class="reference internal" href="Qgis.html#qgis.core.Qgis.GeometryType" title="qgis.core.Qgis.GeometryType"><em>Qgis.GeometryType</em></a>) – </p></li>
 <li><p><strong>layers</strong> (<em>Iterable</em><em>[</em><a class="reference internal" href="QgsSymbolLayer.html#qgis.core.QgsSymbolLayer" title="qgis.core.QgsSymbolLayer"><em>QgsSymbolLayer</em></a><em>]</em>) – </p></li>
 </ul>
 </dd>
@@ -5279,6 +5307,25 @@ returns the value un-modified</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsSymbolLayerUtils.resetSymbolLayerIds">
+<span class="sig-name descname"><span class="pre">resetSymbolLayerIds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsSymbol.html#qgis.core.QgsSymbol" title="qgis.core.QgsSymbol"><span class="pre">QgsSymbol</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsSymbolLayerUtils.resetSymbolLayerIds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Regenerate recursively unique id from all <code class="docutils literal notranslate"><span class="pre">symbol</span></code> symbol layers</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.30.</span></p>
+</div>
+<p>resetSymbolLayerIds(symbolLayer: <a class="reference internal" href="QgsSymbolLayer.html#qgis.core.QgsSymbolLayer" title="qgis.core.QgsSymbolLayer"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsSymbolLayer</span></code></a>)
+Regenerate recursively unique id from <code class="docutils literal notranslate"><span class="pre">symbolLayer</span></code> and its children</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.30.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>symbol</strong> (<a class="reference internal" href="QgsSymbol.html#qgis.core.QgsSymbol" title="qgis.core.QgsSymbol"><em>QgsSymbol</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsSymbolLayerUtils.restrictedSizeSymbol">
 <span class="sig-name descname"><span class="pre">restrictedSizeSymbol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsSymbol.html#qgis.core.QgsSymbol" title="qgis.core.QgsSymbol"><span class="pre">QgsSymbol</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">minSize</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxSize</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsRenderContext.html#qgis.core.QgsRenderContext" title="qgis.core.QgsRenderContext"><span class="pre">QgsRenderContext</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="QgsSymbol.html#qgis.core.QgsSymbol" title="qgis.core.QgsSymbol"><span class="pre">QgsSymbol</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qgis.core.QgsSymbolLayerUtils.restrictedSizeSymbol" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates a new symbol with size restricted to min/max size if original size is out of min/max range</p>
@@ -5792,6 +5839,10 @@ The method makes approximations and can modify <code class="docutils literal not
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.12.</span></p>
 </div>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version QGIS: </span>3.30
+because it was related to old <a class="reference internal" href="QgsSymbolLayerReference.html#module-QgsSymbolLayerReference" title="QgsSymbolLayerReference"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsSymbolLayerReference</span></code></a> system</p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -5859,7 +5910,7 @@ The method makes approximations and can modify <code class="docutils literal not
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 13:18 Feb 21, 2023.
+      <span class="lastupdated">Last updated on 06:37 Mar 03, 2023.
       </span></p>
   </div>
 
