@@ -10,7 +10,7 @@ RUN curl https://bootstrap.pypa.io/get-pip.py | python3
 
 WORKDIR /root
 
-RUN pip install --upgrade sphinx-rtd-theme numpydoc
+RUN pip install --upgrade sphinx-rtd-theme numpydoc sphinxcontrib-jquery
 
 RUN mkdir /root/pyqgis
 COPY . /root/pyqgis
