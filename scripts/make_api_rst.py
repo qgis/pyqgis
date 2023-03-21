@@ -37,7 +37,7 @@ Welcome to the QGIS Python API documentation project
 ==============================================================
 
 .. toctree::
-   :maxdepth: 5
+   :maxdepth: 2
    :caption: Contents:
 
 """
