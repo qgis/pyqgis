@@ -1254,6 +1254,7 @@
 <li class="toctree-l2"><a class="reference internal" href="RelationshipCapabilities.html">Class: RelationshipCapabilities</a></li>
 <li class="toctree-l2"><a class="reference internal" href="RenderContextFlags.html">Class: RenderContextFlags</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ScopedRuntimeProfileContextManager.html">Class: ScopedRuntimeProfileContextManager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ScriptLanguageCapabilities.html">Class: ScriptLanguageCapabilities</a></li>
 <li class="toctree-l2"><a class="reference internal" href="SelectionFlags.html">Class: SelectionFlags</a></li>
 <li class="toctree-l2"><a class="reference internal" href="SettingsOptions.html">Class: SettingsOptions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="SettingsTreeNodeOptions.html">Class: SettingsTreeNodeOptions</a></li>
@@ -2958,7 +2959,7 @@ parameter value.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsProcessingUtils.generateTempFilename">
-<span class="sig-name descname"><span class="pre">generateTempFilename</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">basename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#qgis.core.QgsProcessingUtils.generateTempFilename" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">generateTempFilename</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">basename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsProcessingContext.html#qgis.core.QgsProcessingContext" title="qgis.core.QgsProcessingContext"><span class="pre">QgsProcessingContext</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#qgis.core.QgsProcessingUtils.generateTempFilename" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a temporary filename for a given file, putting it into
 a temporary folder (creating that folder in the process),
 but not changing the <code class="docutils literal notranslate"><span class="pre">basename</span></code>.</p>
@@ -2968,7 +2969,10 @@ but not changing the <code class="docutils literal notranslate"><span class="pre
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>basename</strong> (<em>str</em>) – </p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>basename</strong> (<em>str</em>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsProcessingContext.html#qgis.core.QgsProcessingContext" title="qgis.core.QgsProcessingContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingContext</span></code></a> = None) – </p></li>
+</ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>str</p>
@@ -3096,15 +3100,18 @@ appropriate string values where possible.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsProcessingUtils.tempFolder">
-<span class="sig-name descname"><span class="pre">tempFolder</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#qgis.core.QgsProcessingUtils.tempFolder" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">tempFolder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsProcessingContext.html#qgis.core.QgsProcessingContext" title="qgis.core.QgsProcessingContext"><span class="pre">QgsProcessingContext</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#qgis.core.QgsProcessingUtils.tempFolder" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a session specific processing temporary folder for use in processing algorithms.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsProcessingUtils.generateTempFilename" title="qgis.core.QgsProcessingUtils.generateTempFilename"><code class="xref py py-func docutils literal notranslate"><span class="pre">generateTempFilename()</span></code></a></p>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>str</p>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>context</strong> (<a class="reference internal" href="QgsProcessingContext.html#qgis.core.QgsProcessingContext" title="qgis.core.QgsProcessingContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingContext</span></code></a> = None) – </p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
 </dd>
 </dl>
 </dd></dl>
@@ -3189,7 +3196,7 @@ if <code class="docutils literal notranslate"><span class="pre">value</span></co
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:32 Mar 21, 2023.
+      <span class="lastupdated">Last updated on 02:32 Mar 21, 2023.
       </span></p>
   </div>
 
