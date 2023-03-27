@@ -90,6 +90,7 @@
 <li class="toctree-l2"><a class="reference internal" href="LabelSettingsXML.html">Class: LabelSettingsXML</a></li>
 <li class="toctree-l2"><a class="reference internal" href="LabelingFlags.html">Class: LabelingFlags</a></li>
 <li class="toctree-l2"><a class="reference internal" href="LayerFlags.html">Class: LayerFlags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="LayerTreeFilterFlags.html">Class: LayerTreeFilterFlags</a></li>
 <li class="toctree-l2"><a class="reference internal" href="MapLayerActionFlags.html">Class: MapLayerActionFlags</a></li>
 <li class="toctree-l2"><a class="reference internal" href="MapLayerActionTargets.html">Class: MapLayerActionTargets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="MapLayerProperties.html">Class: MapLayerProperties</a></li>
@@ -495,6 +496,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsLayerNotesUtils.html">Class: QgsLayerNotesUtils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsLayerTree.html">Class: QgsLayerTree</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsLayerTreeFilterProxyModel.html">Class: QgsLayerTreeFilterProxyModel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsLayerTreeFilterSettings.html">Class: QgsLayerTreeFilterSettings</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsLayerTreeGroup.html">Class: QgsLayerTreeGroup</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsLayerTreeLayer.html">Class: QgsLayerTreeLayer</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Class: QgsLayerTreeModel</a></li>
@@ -2326,16 +2328,19 @@ The root node is not transferred by the model.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.filterLegendNodes" title="qgis.core.QgsLayerTreeModel.filterLegendNodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">filterLegendNodes</span></code></a></p></td>
 <td><p>Filter nodes from <a class="reference internal" href="QgsMapLayerLegend.html#module-QgsMapLayerLegend" title="QgsMapLayerLegend"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMapLayerLegend</span></code></a> according to the current filtering rules</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.findLegendNode" title="qgis.core.QgsLayerTreeModel.findLegendNode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">findLegendNode</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.filterSettings" title="qgis.core.QgsLayerTreeModel.filterSettings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">filterSettings</span></code></a></p></td>
+<td><p>Returns the filter settings to use to filter legend nodes.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.findLegendNode" title="qgis.core.QgsLayerTreeModel.findLegendNode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">findLegendNode</span></code></a></p></td>
 <td><p>Searches through the layer tree to find a legend node with a matching layer ID and rule key.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.flags" title="qgis.core.QgsLayerTreeModel.flags"><code class="xref py py-obj docutils literal notranslate"><span class="pre">flags</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.flags" title="qgis.core.QgsLayerTreeModel.flags"><code class="xref py py-obj docutils literal notranslate"><span class="pre">flags</span></code></a></p></td>
 <td><p>flags(self) -&gt; QgsLayerTreeModel.Flags Returns OR-ed combination of model flags</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.hitTestInProgress" title="qgis.core.QgsLayerTreeModel.hitTestInProgress"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hitTestInProgress</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.hitTestInProgress" title="qgis.core.QgsLayerTreeModel.hitTestInProgress"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hitTestInProgress</span></code></a></p></td>
 <td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if a hit test for visible legend items is currently in progress.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.iconGroup" title="qgis.core.QgsLayerTreeModel.iconGroup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">iconGroup</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.iconGroup" title="qgis.core.QgsLayerTreeModel.iconGroup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">iconGroup</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">rtype<span class="colon">:</span></dt>
 <dd class="field-odd"><p>QIcon</p>
@@ -2343,151 +2348,151 @@ The root node is not transferred by the model.</p>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.index" title="qgis.core.QgsLayerTreeModel.index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">index</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.index" title="qgis.core.QgsLayerTreeModel.index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">index</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param row<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.index2legendNode" title="qgis.core.QgsLayerTreeModel.index2legendNode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">index2legendNode</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.index2legendNode" title="qgis.core.QgsLayerTreeModel.index2legendNode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">index2legendNode</span></code></a></p></td>
 <td><p>Returns legend node for given index.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.index2node" title="qgis.core.QgsLayerTreeModel.index2node"><code class="xref py py-obj docutils literal notranslate"><span class="pre">index2node</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.index2node" title="qgis.core.QgsLayerTreeModel.index2node"><code class="xref py py-obj docutils literal notranslate"><span class="pre">index2node</span></code></a></p></td>
 <td><p>Returns layer tree node for given index.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.indexOfParentLayerTreeNode" title="qgis.core.QgsLayerTreeModel.indexOfParentLayerTreeNode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">indexOfParentLayerTreeNode</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.indexOfParentLayerTreeNode" title="qgis.core.QgsLayerTreeModel.indexOfParentLayerTreeNode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">indexOfParentLayerTreeNode</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param parentNode<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.indexes2nodes" title="qgis.core.QgsLayerTreeModel.indexes2nodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">indexes2nodes</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.indexes2nodes" title="qgis.core.QgsLayerTreeModel.indexes2nodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">indexes2nodes</span></code></a></p></td>
 <td><p>Convert a <code class="docutils literal notranslate"><span class="pre">list</span></code> of indexes to a list of layer tree nodes.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.invalidateLegendMapBasedData" title="qgis.core.QgsLayerTreeModel.invalidateLegendMapBasedData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">invalidateLegendMapBasedData</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.invalidateLegendMapBasedData" title="qgis.core.QgsLayerTreeModel.invalidateLegendMapBasedData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">invalidateLegendMapBasedData</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.isSignalConnected" title="qgis.core.QgsLayerTreeModel.isSignalConnected"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isSignalConnected</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.isSignalConnected" title="qgis.core.QgsLayerTreeModel.isSignalConnected"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isSignalConnected</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.layerFlagsChanged" title="qgis.core.QgsLayerTreeModel.layerFlagsChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">layerFlagsChanged</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.layerFlagsChanged" title="qgis.core.QgsLayerTreeModel.layerFlagsChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">layerFlagsChanged</span></code></a></p></td>
 <td><p>Emitted when layer flags have changed.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.layerLegendChanged" title="qgis.core.QgsLayerTreeModel.layerLegendChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">layerLegendChanged</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.layerLegendChanged" title="qgis.core.QgsLayerTreeModel.layerLegendChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">layerLegendChanged</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.layerLegendNodes" title="qgis.core.QgsLayerTreeModel.layerLegendNodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">layerLegendNodes</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.layerLegendNodes" title="qgis.core.QgsLayerTreeModel.layerLegendNodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">layerLegendNodes</span></code></a></p></td>
 <td><p>Returns filtered list of active legend nodes attached to a particular layer node (by default it returns also legend node embedded in parent layer node (if any) unless skipNodeEmbeddedInParent is <code class="docutils literal notranslate"><span class="pre">True</span></code>)</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.layerNeedsUpdate" title="qgis.core.QgsLayerTreeModel.layerNeedsUpdate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">layerNeedsUpdate</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.layerNeedsUpdate" title="qgis.core.QgsLayerTreeModel.layerNeedsUpdate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">layerNeedsUpdate</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.layerOriginalLegendNodes" title="qgis.core.QgsLayerTreeModel.layerOriginalLegendNodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">layerOriginalLegendNodes</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.layerOriginalLegendNodes" title="qgis.core.QgsLayerTreeModel.layerOriginalLegendNodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">layerOriginalLegendNodes</span></code></a></p></td>
 <td><p>Returns original (unfiltered) list of legend nodes attached to a particular layer node</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.layerStyleOverrides" title="qgis.core.QgsLayerTreeModel.layerStyleOverrides"><code class="xref py py-obj docutils literal notranslate"><span class="pre">layerStyleOverrides</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.layerStyleOverrides" title="qgis.core.QgsLayerTreeModel.layerStyleOverrides"><code class="xref py py-obj docutils literal notranslate"><span class="pre">layerStyleOverrides</span></code></a></p></td>
 <td><p>Gets map of map layer style overrides (key: layer ID, value: style name) where a different style should be used instead of the current one</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.layerTreeNodeFont" title="qgis.core.QgsLayerTreeModel.layerTreeNodeFont"><code class="xref py py-obj docutils literal notranslate"><span class="pre">layerTreeNodeFont</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.layerTreeNodeFont" title="qgis.core.QgsLayerTreeModel.layerTreeNodeFont"><code class="xref py py-obj docutils literal notranslate"><span class="pre">layerTreeNodeFont</span></code></a></p></td>
 <td><p>Gets font for a particular type of layer tree node.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.legendCleanup" title="qgis.core.QgsLayerTreeModel.legendCleanup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legendCleanup</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.legendCleanup" title="qgis.core.QgsLayerTreeModel.legendCleanup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legendCleanup</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.legendEmbeddedInParent" title="qgis.core.QgsLayerTreeModel.legendEmbeddedInParent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legendEmbeddedInParent</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.legendEmbeddedInParent" title="qgis.core.QgsLayerTreeModel.legendEmbeddedInParent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legendEmbeddedInParent</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param nodeLayer<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.legendFilterByScale" title="qgis.core.QgsLayerTreeModel.legendFilterByScale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legendFilterByScale</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.legendFilterByScale" title="qgis.core.QgsLayerTreeModel.legendFilterByScale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legendFilterByScale</span></code></a></p></td>
 <td><p>Returns the scale which restricts the legend nodes which are visible.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.legendFilterMapSettings" title="qgis.core.QgsLayerTreeModel.legendFilterMapSettings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legendFilterMapSettings</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.legendFilterMapSettings" title="qgis.core.QgsLayerTreeModel.legendFilterMapSettings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legendFilterMapSettings</span></code></a></p></td>
 <td><p>Returns the current map settings used for the current legend filter (or <code class="docutils literal notranslate"><span class="pre">None</span></code> if none is enabled)</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.legendIconEmbeddedInParent" title="qgis.core.QgsLayerTreeModel.legendIconEmbeddedInParent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legendIconEmbeddedInParent</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.legendIconEmbeddedInParent" title="qgis.core.QgsLayerTreeModel.legendIconEmbeddedInParent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legendIconEmbeddedInParent</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param nodeLayer<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.legendInvalidateMapBasedData" title="qgis.core.QgsLayerTreeModel.legendInvalidateMapBasedData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legendInvalidateMapBasedData</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.legendInvalidateMapBasedData" title="qgis.core.QgsLayerTreeModel.legendInvalidateMapBasedData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legendInvalidateMapBasedData</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.legendMapViewData" title="qgis.core.QgsLayerTreeModel.legendMapViewData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legendMapViewData</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.legendMapViewData" title="qgis.core.QgsLayerTreeModel.legendMapViewData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legendMapViewData</span></code></a></p></td>
 <td><p>Gets hints about map view - to be used in legend nodes.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.legendNode2index" title="qgis.core.QgsLayerTreeModel.legendNode2index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legendNode2index</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.legendNode2index" title="qgis.core.QgsLayerTreeModel.legendNode2index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legendNode2index</span></code></a></p></td>
 <td><p>Returns index for a given legend node.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.legendNodeData" title="qgis.core.QgsLayerTreeModel.legendNodeData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legendNodeData</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.legendNodeData" title="qgis.core.QgsLayerTreeModel.legendNodeData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legendNodeData</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param node<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.legendNodeDataChanged" title="qgis.core.QgsLayerTreeModel.legendNodeDataChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legendNodeDataChanged</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.legendNodeDataChanged" title="qgis.core.QgsLayerTreeModel.legendNodeDataChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legendNodeDataChanged</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.legendNodeEmbeddedInParent" title="qgis.core.QgsLayerTreeModel.legendNodeEmbeddedInParent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legendNodeEmbeddedInParent</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.legendNodeEmbeddedInParent" title="qgis.core.QgsLayerTreeModel.legendNodeEmbeddedInParent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legendNodeEmbeddedInParent</span></code></a></p></td>
 <td><p>Returns legend node that may be embedded in parent (i.e.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.legendNodeFlags" title="qgis.core.QgsLayerTreeModel.legendNodeFlags"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legendNodeFlags</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.legendNodeFlags" title="qgis.core.QgsLayerTreeModel.legendNodeFlags"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legendNodeFlags</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param node<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.legendNodeIndex" title="qgis.core.QgsLayerTreeModel.legendNodeIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legendNodeIndex</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.legendNodeIndex" title="qgis.core.QgsLayerTreeModel.legendNodeIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legendNodeIndex</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param row<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.legendNodeRowCount" title="qgis.core.QgsLayerTreeModel.legendNodeRowCount"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legendNodeRowCount</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.legendNodeRowCount" title="qgis.core.QgsLayerTreeModel.legendNodeRowCount"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legendNodeRowCount</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param node<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.legendParent" title="qgis.core.QgsLayerTreeModel.legendParent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legendParent</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.legendParent" title="qgis.core.QgsLayerTreeModel.legendParent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legendParent</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param legendNode<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.legendRootIndex" title="qgis.core.QgsLayerTreeModel.legendRootIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legendRootIndex</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.legendRootIndex" title="qgis.core.QgsLayerTreeModel.legendRootIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legendRootIndex</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param row<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.legendRootRowCount" title="qgis.core.QgsLayerTreeModel.legendRootRowCount"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legendRootRowCount</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.legendRootRowCount" title="qgis.core.QgsLayerTreeModel.legendRootRowCount"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legendRootRowCount</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param nL<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.mimeData" title="qgis.core.QgsLayerTreeModel.mimeData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mimeData</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.mimeData" title="qgis.core.QgsLayerTreeModel.mimeData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mimeData</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param indexes<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.mimeTypes" title="qgis.core.QgsLayerTreeModel.mimeTypes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mimeTypes</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.mimeTypes" title="qgis.core.QgsLayerTreeModel.mimeTypes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mimeTypes</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">rtype<span class="colon">:</span></dt>
 <dd class="field-odd"><p>List[str]</p>
@@ -2495,126 +2500,129 @@ The root node is not transferred by the model.</p>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.node2index" title="qgis.core.QgsLayerTreeModel.node2index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">node2index</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.node2index" title="qgis.core.QgsLayerTreeModel.node2index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">node2index</span></code></a></p></td>
 <td><p>Returns index for a given node.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.nodeAddedChildren" title="qgis.core.QgsLayerTreeModel.nodeAddedChildren"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nodeAddedChildren</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.nodeAddedChildren" title="qgis.core.QgsLayerTreeModel.nodeAddedChildren"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nodeAddedChildren</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param node<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.nodeCustomPropertyChanged" title="qgis.core.QgsLayerTreeModel.nodeCustomPropertyChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nodeCustomPropertyChanged</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.nodeCustomPropertyChanged" title="qgis.core.QgsLayerTreeModel.nodeCustomPropertyChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nodeCustomPropertyChanged</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param node<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.nodeLayerLoaded" title="qgis.core.QgsLayerTreeModel.nodeLayerLoaded"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nodeLayerLoaded</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.nodeLayerLoaded" title="qgis.core.QgsLayerTreeModel.nodeLayerLoaded"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nodeLayerLoaded</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.nodeLayerWillBeUnloaded" title="qgis.core.QgsLayerTreeModel.nodeLayerWillBeUnloaded"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nodeLayerWillBeUnloaded</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.nodeLayerWillBeUnloaded" title="qgis.core.QgsLayerTreeModel.nodeLayerWillBeUnloaded"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nodeLayerWillBeUnloaded</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.nodeNameChanged" title="qgis.core.QgsLayerTreeModel.nodeNameChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nodeNameChanged</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.nodeNameChanged" title="qgis.core.QgsLayerTreeModel.nodeNameChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nodeNameChanged</span></code></a></p></td>
 <td><p>Updates model when node's name has changed</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.nodeRemovedChildren" title="qgis.core.QgsLayerTreeModel.nodeRemovedChildren"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nodeRemovedChildren</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.nodeRemovedChildren" title="qgis.core.QgsLayerTreeModel.nodeRemovedChildren"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nodeRemovedChildren</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.nodeVisibilityChanged" title="qgis.core.QgsLayerTreeModel.nodeVisibilityChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nodeVisibilityChanged</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.nodeVisibilityChanged" title="qgis.core.QgsLayerTreeModel.nodeVisibilityChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nodeVisibilityChanged</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param node<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.nodeWillAddChildren" title="qgis.core.QgsLayerTreeModel.nodeWillAddChildren"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nodeWillAddChildren</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.nodeWillAddChildren" title="qgis.core.QgsLayerTreeModel.nodeWillAddChildren"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nodeWillAddChildren</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param node<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.nodeWillRemoveChildren" title="qgis.core.QgsLayerTreeModel.nodeWillRemoveChildren"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nodeWillRemoveChildren</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.nodeWillRemoveChildren" title="qgis.core.QgsLayerTreeModel.nodeWillRemoveChildren"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nodeWillRemoveChildren</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param node<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.parent" title="qgis.core.QgsLayerTreeModel.parent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parent</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.parent" title="qgis.core.QgsLayerTreeModel.parent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parent</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param child<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.persistentIndexList" title="qgis.core.QgsLayerTreeModel.persistentIndexList"><code class="xref py py-obj docutils literal notranslate"><span class="pre">persistentIndexList</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.persistentIndexList" title="qgis.core.QgsLayerTreeModel.persistentIndexList"><code class="xref py py-obj docutils literal notranslate"><span class="pre">persistentIndexList</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.receivers" title="qgis.core.QgsLayerTreeModel.receivers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">receivers</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.receivers" title="qgis.core.QgsLayerTreeModel.receivers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">receivers</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.recursivelyEmitDataChanged" title="qgis.core.QgsLayerTreeModel.recursivelyEmitDataChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">recursivelyEmitDataChanged</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.recursivelyEmitDataChanged" title="qgis.core.QgsLayerTreeModel.recursivelyEmitDataChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">recursivelyEmitDataChanged</span></code></a></p></td>
 <td><p>emit <code class="xref py py-func docutils literal notranslate"><span class="pre">dataChanged()</span></code> for layer tree node items</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.refreshLayerLegend" title="qgis.core.QgsLayerTreeModel.refreshLayerLegend"><code class="xref py py-obj docutils literal notranslate"><span class="pre">refreshLayerLegend</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.refreshLayerLegend" title="qgis.core.QgsLayerTreeModel.refreshLayerLegend"><code class="xref py py-obj docutils literal notranslate"><span class="pre">refreshLayerLegend</span></code></a></p></td>
 <td><p>Force a refresh of legend nodes of a layer node.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.refreshScaleBasedLayers" title="qgis.core.QgsLayerTreeModel.refreshScaleBasedLayers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">refreshScaleBasedLayers</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.refreshScaleBasedLayers" title="qgis.core.QgsLayerTreeModel.refreshScaleBasedLayers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">refreshScaleBasedLayers</span></code></a></p></td>
 <td><p>Updates layer data for scale dependent layers, should be called when map scale changes.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.removeLegendFromLayer" title="qgis.core.QgsLayerTreeModel.removeLegendFromLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeLegendFromLayer</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.removeLegendFromLayer" title="qgis.core.QgsLayerTreeModel.removeLegendFromLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeLegendFromLayer</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param nodeLayer<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.removeRows" title="qgis.core.QgsLayerTreeModel.removeRows"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeRows</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.removeRows" title="qgis.core.QgsLayerTreeModel.removeRows"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeRows</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param row<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.resetInternalData" title="qgis.core.QgsLayerTreeModel.resetInternalData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">resetInternalData</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.resetInternalData" title="qgis.core.QgsLayerTreeModel.resetInternalData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">resetInternalData</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.rootGroup" title="qgis.core.QgsLayerTreeModel.rootGroup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rootGroup</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.rootGroup" title="qgis.core.QgsLayerTreeModel.rootGroup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rootGroup</span></code></a></p></td>
 <td><p>Returns pointer to the root node of the layer tree.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.rowCount" title="qgis.core.QgsLayerTreeModel.rowCount"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rowCount</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.rowCount" title="qgis.core.QgsLayerTreeModel.rowCount"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rowCount</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param parent<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.scaleIconSize" title="qgis.core.QgsLayerTreeModel.scaleIconSize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scaleIconSize</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.scaleIconSize" title="qgis.core.QgsLayerTreeModel.scaleIconSize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scaleIconSize</span></code></a></p></td>
 <td><p>Scales an layer tree model icon size to compensate for display pixel density, making the icon size hi-dpi friendly, whilst still resulting in pixel-perfect sizes for low-dpi displays.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.sender" title="qgis.core.QgsLayerTreeModel.sender"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sender</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.sender" title="qgis.core.QgsLayerTreeModel.sender"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sender</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.senderSignalIndex" title="qgis.core.QgsLayerTreeModel.senderSignalIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">senderSignalIndex</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.senderSignalIndex" title="qgis.core.QgsLayerTreeModel.senderSignalIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">senderSignalIndex</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.setAutoCollapseLegendNodes" title="qgis.core.QgsLayerTreeModel.setAutoCollapseLegendNodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setAutoCollapseLegendNodes</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.setAutoCollapseLegendNodes" title="qgis.core.QgsLayerTreeModel.setAutoCollapseLegendNodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setAutoCollapseLegendNodes</span></code></a></p></td>
 <td><p>Sets at what number of legend nodes the layer node should be collapsed.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.setCurrentIndex" title="qgis.core.QgsLayerTreeModel.setCurrentIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setCurrentIndex</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.setCurrentIndex" title="qgis.core.QgsLayerTreeModel.setCurrentIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setCurrentIndex</span></code></a></p></td>
 <td><p>Sets index of the current item.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.setData" title="qgis.core.QgsLayerTreeModel.setData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setData</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.setData" title="qgis.core.QgsLayerTreeModel.setData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setData</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param index<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.setFilterSettings" title="qgis.core.QgsLayerTreeModel.setFilterSettings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setFilterSettings</span></code></a></p></td>
+<td><p>Sets the filter <code class="docutils literal notranslate"><span class="pre">settings</span></code> to use to filter legend nodes.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.setFlag" title="qgis.core.QgsLayerTreeModel.setFlag"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setFlag</span></code></a></p></td>
 <td><p>Enable or disable a model flag</p></td>
@@ -3041,6 +3049,24 @@ The root node is not transferred by the model.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>List[<a class="reference internal" href="QgsLayerTreeModelLegendNode.html#qgis.core.QgsLayerTreeModelLegendNode" title="qgis.core.QgsLayerTreeModelLegendNode">QgsLayerTreeModelLegendNode</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsLayerTreeModel.filterSettings">
+<span class="sig-name descname"><span class="pre">filterSettings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="QgsLayerTreeFilterSettings.html#qgis.core.QgsLayerTreeFilterSettings" title="qgis.core.QgsLayerTreeFilterSettings"><span class="pre">QgsLayerTreeFilterSettings</span></a></span></span><a class="headerlink" href="#qgis.core.QgsLayerTreeModel.filterSettings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the filter settings to use to filter legend nodes. May be <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.setFilterSettings" title="qgis.core.QgsLayerTreeModel.setFilterSettings"><code class="xref py py-func docutils literal notranslate"><span class="pre">setFilterSettings()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.32.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsLayerTreeFilterSettings.html#qgis.core.QgsLayerTreeFilterSettings" title="qgis.core.QgsLayerTreeFilterSettings">QgsLayerTreeFilterSettings</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -3936,6 +3962,25 @@ displays.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsLayerTreeModel.setFilterSettings">
+<span class="sig-name descname"><span class="pre">setFilterSettings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">settings</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsLayerTreeFilterSettings.html#qgis.core.QgsLayerTreeFilterSettings" title="qgis.core.QgsLayerTreeFilterSettings"><span class="pre">QgsLayerTreeFilterSettings</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsLayerTreeModel.setFilterSettings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the filter <code class="docutils literal notranslate"><span class="pre">settings</span></code> to use to filter legend nodes.</p>
+<p>Set to <code class="docutils literal notranslate"><span class="pre">None</span></code> to disable legend filter.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.filterSettings" title="qgis.core.QgsLayerTreeModel.filterSettings"><code class="xref py py-func docutils literal notranslate"><span class="pre">filterSettings()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.32.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>settings</strong> (<a class="reference internal" href="QgsLayerTreeFilterSettings.html#qgis.core.QgsLayerTreeFilterSettings" title="qgis.core.QgsLayerTreeFilterSettings"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsLayerTreeFilterSettings</span></code></a> = None) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsLayerTreeModel.setFlag">
 <span class="sig-name descname"><span class="pre">setFlag</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#qgis.core.QgsLayerTreeModel.Flag" title="qgis.core.QgsLayerTreeModel.Flag"><span class="pre">QgsLayerTreeModel.Flag</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">on</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsLayerTreeModel.setFlag" title="Permalink to this definition">¶</a></dt>
 <dd><p>Enable or disable a model flag</p>
@@ -4002,8 +4047,8 @@ displays.</p>
 </ul>
 </dd>
 </dl>
-<div class="versionadded">
-<p><span class="versionmodified added">New in version 2.14.</span></p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version QGIS: </span>3.32. Use <a class="reference internal" href="#qgis.core.QgsLayerTreeModel.setFilterSettings" title="qgis.core.QgsLayerTreeModel.setFilterSettings"><code class="xref py py-func docutils literal notranslate"><span class="pre">setFilterSettings()</span></code></a> instead.</p>
 </div>
 </dd></dl>
 
@@ -4013,8 +4058,8 @@ displays.</p>
 <dd><p>Force only display of legend nodes which are valid for given map settings.
 Setting <code class="docutils literal notranslate"><span class="pre">None</span></code> or invalid map settings will disable the functionality.
 Ownership of map settings pointer does not change, a copy is made.</p>
-<div class="versionadded">
-<p><span class="versionmodified added">New in version 2.6.</span></p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version QGIS: </span>3.32. Use <a class="reference internal" href="#qgis.core.QgsLayerTreeModel.setFilterSettings" title="qgis.core.QgsLayerTreeModel.setFilterSettings"><code class="xref py py-func docutils literal notranslate"><span class="pre">setFilterSettings()</span></code></a> instead.</p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -4128,7 +4173,7 @@ method will block until that hit test is complete.</p>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:32 Mar 27, 2023.
+      <span class="lastupdated">Last updated on 02:28 Mar 27, 2023.
       </span></p>
   </div>
 
