@@ -2196,11 +2196,17 @@ and background shapes.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsTextRenderer.drawDocument" title="qgis.core.QgsTextRenderer.drawDocument"><code class="xref py py-obj docutils literal notranslate"><span class="pre">drawDocument</span></code></a></p></td>
 <td><p>Draws a text document within a rectangle using the specified settings.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsTextRenderer.drawPart" title="qgis.core.QgsTextRenderer.drawPart"><code class="xref py py-obj docutils literal notranslate"><span class="pre">drawPart</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsTextRenderer.drawDocumentOnLine" title="qgis.core.QgsTextRenderer.drawDocumentOnLine"><code class="xref py py-obj docutils literal notranslate"><span class="pre">drawDocumentOnLine</span></code></a></p></td>
+<td><p>Draws a text document along a line using the specified settings.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsTextRenderer.drawPart" title="qgis.core.QgsTextRenderer.drawPart"><code class="xref py py-obj docutils literal notranslate"><span class="pre">drawPart</span></code></a></p></td>
 <td><p>Draws a single component of rendered text using the specified settings.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsTextRenderer.drawText" title="qgis.core.QgsTextRenderer.drawText"><code class="xref py py-obj docutils literal notranslate"><span class="pre">drawText</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsTextRenderer.drawText" title="qgis.core.QgsTextRenderer.drawText"><code class="xref py py-obj docutils literal notranslate"><span class="pre">drawText</span></code></a></p></td>
 <td><p>Draws text within a rectangle using the specified settings.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsTextRenderer.drawTextOnLine" title="qgis.core.QgsTextRenderer.drawTextOnLine"><code class="xref py py-obj docutils literal notranslate"><span class="pre">drawTextOnLine</span></code></a></p></td>
+<td><p>Draws text along a line using the specified settings.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsTextRenderer.fontMetrics" title="qgis.core.QgsTextRenderer.fontMetrics"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fontMetrics</span></code></a></p></td>
 <td><p>Returns the font metrics for the given text <code class="docutils literal notranslate"><span class="pre">format</span></code>, when rendered in the specified render <code class="docutils literal notranslate"><span class="pre">context</span></code>.</p></td>
@@ -2232,6 +2238,9 @@ and background shapes.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsTextRenderer.FONT_WORKAROUND_SCALE" title="qgis.core.QgsTextRenderer.FONT_WORKAROUND_SCALE"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FONT_WORKAROUND_SCALE</span></code></a></p></td>
 <td><p></p></td>
 </tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsTextRenderer.SUPERSCRIPT_SUBSCRIPT_FONT_SIZE_SCALING_FACTOR" title="qgis.core.QgsTextRenderer.SUPERSCRIPT_SUBSCRIPT_FONT_SIZE_SCALING_FACTOR"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SUPERSCRIPT_SUBSCRIPT_FONT_SIZE_SCALING_FACTOR</span></code></a></p></td>
+<td><p></p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -2251,6 +2260,11 @@ and background shapes.</p>
 <span class="sig-name descname"><span class="pre">HAlignment</span></span><a class="headerlink" href="#qgis.core.QgsTextRenderer.HAlignment" title="Permalink to this definition">¶</a></dt>
 <dd><p>alias of <a class="reference internal" href="../gui/Qgis.html#qgis.gui.Qgis.TextHorizontalAlignment" title="qgis._core.Qgis.TextHorizontalAlignment"><code class="xref py py-class docutils literal notranslate"><span class="pre">TextHorizontalAlignment</span></code></a></p>
 </dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.QgsTextRenderer.SUPERSCRIPT_SUBSCRIPT_FONT_SIZE_SCALING_FACTOR">
+<span class="sig-name descname"><span class="pre">SUPERSCRIPT_SUBSCRIPT_FONT_SIZE_SCALING_FACTOR</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0.6666666666666666</span></em><a class="headerlink" href="#qgis.core.QgsTextRenderer.SUPERSCRIPT_SUBSCRIPT_FONT_SIZE_SCALING_FACTOR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.core.QgsTextRenderer.TextPart">
@@ -2320,7 +2334,7 @@ is the caller’s responsibility to do, and must be done prior to generating the
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>rect</strong> (<em>QRectF</em>) – destination rectangle for text</p></li>
+<li><p><strong>rect</strong> (<em>QRectF</em>) – destination rectangle for text, in painter units</p></li>
 <li><p><strong>format</strong> (<a class="reference internal" href="QgsTextFormat.html#qgis.core.QgsTextFormat" title="qgis.core.QgsTextFormat"><em>QgsTextFormat</em></a>) – base text format</p></li>
 <li><p><strong>document</strong> (<a class="reference internal" href="QgsTextDocument.html#qgis.core.QgsTextDocument" title="qgis.core.QgsTextDocument"><em>QgsTextDocument</em></a>) – text document to draw</p></li>
 <li><p><strong>metrics</strong> (<a class="reference internal" href="QgsTextDocumentMetrics.html#qgis.core.QgsTextDocumentMetrics" title="qgis.core.QgsTextDocumentMetrics"><em>QgsTextDocumentMetrics</em></a>) – precalculated text metrics</p></li>
@@ -2339,13 +2353,34 @@ is the caller’s responsibility to do, and must be done prior to generating the
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsTextRenderer.drawDocumentOnLine">
+<span class="sig-name descname"><span class="pre">drawDocumentOnLine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">QPolygonF</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsTextFormat.html#qgis.core.QgsTextFormat" title="qgis.core.QgsTextFormat"><span class="pre">QgsTextFormat</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">document</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsTextDocument.html#qgis.core.QgsTextDocument" title="qgis.core.QgsTextDocument"><span class="pre">QgsTextDocument</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsRenderContext.html#qgis.core.QgsRenderContext" title="qgis.core.QgsRenderContext"><span class="pre">QgsRenderContext</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">offsetAlongLine</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offsetFromLine</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsTextRenderer.drawDocumentOnLine" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draws a text document along a line using the specified settings.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>line</strong> (<em>QPolygonF</em>) – line to render text along, in painter units</p></li>
+<li><p><strong>format</strong> (<a class="reference internal" href="QgsTextFormat.html#qgis.core.QgsTextFormat" title="qgis.core.QgsTextFormat"><em>QgsTextFormat</em></a>) – text format</p></li>
+<li><p><strong>document</strong> (<a class="reference internal" href="QgsTextDocument.html#qgis.core.QgsTextDocument" title="qgis.core.QgsTextDocument"><em>QgsTextDocument</em></a>) – text document to draw</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsRenderContext.html#qgis.core.QgsRenderContext" title="qgis.core.QgsRenderContext"><em>QgsRenderContext</em></a>) – render context</p></li>
+<li><p><strong>offsetAlongLine</strong> (<em>float = 0</em>) – offset along the line (in painter units) to start text at</p></li>
+<li><p><strong>offsetFromLine</strong> (<em>float = 0</em>) – offset from the line (in painter units). Negative values will shift the text to the left of the line, positive values will shift the text to the right.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.32.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsTextRenderer.drawPart">
 <span class="sig-name descname"><span class="pre">drawPart</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rect</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">QRectF</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alignment</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="Qgis.html#qgis.core.Qgis.TextHorizontalAlignment" title="qgis.core.Qgis.TextHorizontalAlignment"><span class="pre">Qgis.TextHorizontalAlignment</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">textLines</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsRenderContext.html#qgis.core.QgsRenderContext" title="qgis.core.QgsRenderContext"><span class="pre">QgsRenderContext</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsTextFormat.html#qgis.core.QgsTextFormat" title="qgis.core.QgsTextFormat"><span class="pre">QgsTextFormat</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">part</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="Qgis.html#qgis.core.Qgis.TextComponent" title="qgis.core.Qgis.TextComponent"><span class="pre">Qgis.TextComponent</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">drawAsOutlines</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsTextRenderer.drawPart" title="Permalink to this definition">¶</a></dt>
 <dd><p>Draws a single component of rendered text using the specified settings.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>rect</strong> (<em>QRectF</em>) – destination rectangle for text</p></li>
+<li><p><strong>rect</strong> (<em>QRectF</em>) – destination rectangle for text, in painter units</p></li>
 <li><p><strong>rotation</strong> (<em>float</em>) – text rotation</p></li>
 <li><p><strong>alignment</strong> (<a class="reference internal" href="Qgis.html#qgis.core.Qgis.TextHorizontalAlignment" title="qgis.core.Qgis.TextHorizontalAlignment"><em>Qgis.TextHorizontalAlignment</em></a>) – horizontal alignment</p></li>
 <li><p><strong>textLines</strong> (<em>Iterable</em><em>[</em><em>str</em><em>]</em>) – list of lines of text to draw</p></li>
@@ -2369,7 +2404,7 @@ Draws a single component of rendered text using the specified settings.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>origin</strong> – origin for start of text. Y coordinate will be used as baseline.</p></li>
+<li><p><strong>origin</strong> – origin for start of text, in painter units. Y coordinate will be used as baseline.</p></li>
 <li><p><strong>rotation</strong> – text rotation</p></li>
 <li><p><strong>alignment</strong> – horizontal alignment</p></li>
 <li><p><strong>textLines</strong> – list of lines of text to draw</p></li>
@@ -2397,7 +2432,7 @@ as of QGIS 3.4.3 and the text format should be set using <a class="reference int
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>rect</strong> (<em>QRectF</em>) – destination rectangle for text</p></li>
+<li><p><strong>rect</strong> (<em>QRectF</em>) – destination rectangle for text, in painter units</p></li>
 <li><p><strong>rotation</strong> (<em>float</em>) – text rotation</p></li>
 <li><p><strong>alignment</strong> (<a class="reference internal" href="Qgis.html#qgis.core.Qgis.TextHorizontalAlignment" title="qgis.core.Qgis.TextHorizontalAlignment"><em>Qgis.TextHorizontalAlignment</em></a>) – horizontal alignment</p></li>
 <li><p><strong>textLines</strong> (<em>Iterable</em><em>[</em><em>str</em><em>]</em>) – list of lines of text to draw</p></li>
@@ -2422,7 +2457,7 @@ Draws text at a point origin using the specified settings.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>point</strong> – origin of text</p></li>
+<li><p><strong>point</strong> – origin of text, in painter units</p></li>
 <li><p><strong>rotation</strong> – text rotation</p></li>
 <li><p><strong>alignment</strong> – horizontal alignment</p></li>
 <li><p><strong>textLines</strong> – list of lines of text to draw</p></li>
@@ -2435,6 +2470,27 @@ as of QGIS 3.4.3 and the text format should be set using <a class="reference int
 </ul>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsTextRenderer.drawTextOnLine">
+<span class="sig-name descname"><span class="pre">drawTextOnLine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">QPolygonF</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsRenderContext.html#qgis.core.QgsRenderContext" title="qgis.core.QgsRenderContext"><span class="pre">QgsRenderContext</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsTextFormat.html#qgis.core.QgsTextFormat" title="qgis.core.QgsTextFormat"><span class="pre">QgsTextFormat</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">offsetAlongLine</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offsetFromLine</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsTextRenderer.drawTextOnLine" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draws text along a line using the specified settings.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>line</strong> (<em>QPolygonF</em>) – line to render text along, in painter units</p></li>
+<li><p><strong>text</strong> (<em>str</em>) – text to draw</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsRenderContext.html#qgis.core.QgsRenderContext" title="qgis.core.QgsRenderContext"><em>QgsRenderContext</em></a>) – render context</p></li>
+<li><p><strong>format</strong> (<a class="reference internal" href="QgsTextFormat.html#qgis.core.QgsTextFormat" title="qgis.core.QgsTextFormat"><em>QgsTextFormat</em></a>) – text format</p></li>
+<li><p><strong>offsetAlongLine</strong> (<em>float = 0</em>) – offset along the line (in painter units) to start text at</p></li>
+<li><p><strong>offsetFromLine</strong> (<em>float = 0</em>) – offset from the line (in painter units). Negative values will shift the text to the left of the line, positive values will shift the text to the right.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.32.</span></p>
+</div>
 </dd></dl>
 
 <dl class="py method">
@@ -2610,7 +2666,7 @@ returned height. If <code class="docutils literal notranslate"><span class="pre"
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:33 Mar 28, 2023.
+      <span class="lastupdated">Last updated on 02:36 Mar 28, 2023.
       </span></p>
   </div>
 
