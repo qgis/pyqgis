@@ -1043,6 +1043,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsSelectionContext.html">Class: QgsSelectionContext</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsSensorAbstractMetadata.html">Class: QgsSensorAbstractMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsSensorManager.html">Class: QgsSensorManager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../core/QgsSensorModel.html">Class: QgsSensorModel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsSensorRegistry.html">Class: QgsSensorRegistry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsSerialPortSensor.html">Class: QgsSerialPortSensor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsServerMetadataUrlProperties.html">Class: QgsServerMetadataUrlProperties</a></li>
@@ -2556,10 +2557,16 @@ Construct a new code editor.</p>
 </div>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">CodeFolding</span></code>: Indicates that code folding should be enabled for the editor</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ImmediatelyUpdateHistory</span></code>: Indicates that the history file should be immediately updated whenever a command is executed, instead of the default behavior of only writing the history on widget close. Since QGIS 3.32.</p></li>
 </ul>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.gui.QgsCodeEditor.Flag.CodeFolding">
 <span class="sig-name descname"><span class="pre">CodeFolding</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#qgis.gui.QgsCodeEditor.Flag.CodeFolding" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.gui.QgsCodeEditor.Flag.ImmediatelyUpdateHistory">
+<span class="sig-name descname"><span class="pre">ImmediatelyUpdateHistory</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#qgis.gui.QgsCodeEditor.Flag.ImmediatelyUpdateHistory" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -3346,15 +3353,20 @@ actions to the context menu.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.gui.QgsCodeEditor.runCommand">
-<span class="sig-name descname"><span class="pre">runCommand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">command</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsCodeEditor.runCommand" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">runCommand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">command</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skipHistory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsCodeEditor.runCommand" title="Permalink to this definition">¶</a></dt>
 <dd><p>Runs a command in the editor.</p>
 <p>An <a class="reference internal" href="#qgis.gui.QgsCodeEditor.interpreter" title="qgis.gui.QgsCodeEditor.interpreter"><code class="xref py py-func docutils literal notranslate"><span class="pre">interpreter()</span></code></a> must be set.</p>
+<p>Since QGIS 3.32, if <code class="docutils literal notranslate"><span class="pre">skipHistory</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code> then the command will not be automatically
+added to the widget’s history.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.30.</span></p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>command</strong> (<em>str</em>) – </p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>command</strong> (<em>str</em>) – </p></li>
+<li><p><strong>skipHistory</strong> (<em>bool = False</em>) – </p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -3705,7 +3717,7 @@ is in the QgsCodeEditor.Mode.CommandInput mode.</p>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:35 Mar 29, 2023.
+      <span class="lastupdated">Last updated on 02:35 Mar 29, 2023.
       </span></p>
   </div>
 
