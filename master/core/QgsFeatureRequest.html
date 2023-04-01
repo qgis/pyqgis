@@ -83,6 +83,8 @@
 <li class="toctree-l2"><a class="reference internal" href="GeometryValidityFlags.html">Class: GeometryValidityFlags</a></li>
 <li class="toctree-l2"><a class="reference internal" href="GpsInformationComponents.html">Class: GpsInformationComponents</a></li>
 <li class="toctree-l2"><a class="reference internal" href="HistoryProviderBackends.html">Class: HistoryProviderBackends</a></li>
+<li class="toctree-l2"><a class="reference internal" href="LabelLinePlacementFlags.html">Class: LabelLinePlacementFlags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="LabelPolygonPlacementFlags.html">Class: LabelPolygonPlacementFlags</a></li>
 <li class="toctree-l2"><a class="reference internal" href="LabelSettingsFavoriteId.html">Class: LabelSettingsFavoriteId</a></li>
 <li class="toctree-l2"><a class="reference internal" href="LabelSettingsId.html">Class: LabelSettingsId</a></li>
 <li class="toctree-l2"><a class="reference internal" href="LabelSettingsName.html">Class: LabelSettingsName</a></li>
@@ -165,6 +167,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsAnnotationItemRegistry.html">Class: QgsAnnotationItemRegistry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAnnotationLayer.html">Class: QgsAnnotationLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAnnotationLineItem.html">Class: QgsAnnotationLineItem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsAnnotationLineTextItem.html">Class: QgsAnnotationLineTextItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAnnotationManager.html">Class: QgsAnnotationManager</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAnnotationMarkerItem.html">Class: QgsAnnotationMarkerItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAnnotationPointTextItem.html">Class: QgsAnnotationPointTextItem</a></li>
@@ -2179,8 +2182,8 @@
 <p>Additionally a spatial filter can be set in combination with the attribute/ID filter. Supported
 spatial filters are:</p>
 <ul class="simple">
-<li><p>Qgis.SpatialFilterType.BoundingBox: Only features that intersect a given rectangle will be fetched. For the sake of speed, the intersection is often done only using feature’s bounding box. There is a flag ExactIntersect that makes sure that only intersecting features will be returned.</p></li>
-<li><p>Qgis.SpatialFilterType.DistanceWithin: Only features within a specified distance of a reference geometry will be fetched.</p></li>
+<li><p><a class="reference internal" href="../gui/Qgis.html#module-Qgis" title="Qgis"><code class="xref py py-class docutils literal notranslate"><span class="pre">Qgis</span></code></a>.SpatialFilterType.BoundingBox: Only features that intersect a given rectangle will be fetched. For the sake of speed, the intersection is often done only using feature’s bounding box. There is a flag ExactIntersect that makes sure that only intersecting features will be returned.</p></li>
+<li><p><a class="reference internal" href="../gui/Qgis.html#module-Qgis" title="Qgis"><code class="xref py py-class docutils literal notranslate"><span class="pre">Qgis</span></code></a>.SpatialFilterType.DistanceWithin: Only features within a specified distance of a reference geometry will be fetched.</p></li>
 </ul>
 <p>For efficiency, it is also possible to tell provider that some data is not required:</p>
 <ul class="simple">
@@ -2251,7 +2254,7 @@ copy constructor</p>
 <td><p>Disables any attribute/ID filtering.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsFeatureRequest.distanceWithin" title="qgis.core.QgsFeatureRequest.distanceWithin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">distanceWithin</span></code></a></p></td>
-<td><p>Returns the maximum distance from the <a class="reference internal" href="#qgis.core.QgsFeatureRequest.referenceGeometry" title="qgis.core.QgsFeatureRequest.referenceGeometry"><code class="xref py py-func docutils literal notranslate"><span class="pre">referenceGeometry()</span></code></a> of fetched features, if <a class="reference internal" href="#qgis.core.QgsFeatureRequest.spatialFilterType" title="qgis.core.QgsFeatureRequest.spatialFilterType"><code class="xref py py-func docutils literal notranslate"><span class="pre">spatialFilterType()</span></code></a> is Qgis.SpatialFilterType.DistanceWithin.</p></td>
+<td><p>Returns the maximum distance from the <a class="reference internal" href="#qgis.core.QgsFeatureRequest.referenceGeometry" title="qgis.core.QgsFeatureRequest.referenceGeometry"><code class="xref py py-func docutils literal notranslate"><span class="pre">referenceGeometry()</span></code></a> of fetched features, if <a class="reference internal" href="#qgis.core.QgsFeatureRequest.spatialFilterType" title="qgis.core.QgsFeatureRequest.spatialFilterType"><code class="xref py py-func docutils literal notranslate"><span class="pre">spatialFilterType()</span></code></a> is <a class="reference internal" href="../gui/Qgis.html#module-Qgis" title="Qgis"><code class="xref py py-class docutils literal notranslate"><span class="pre">Qgis</span></code></a>.SpatialFilterType.DistanceWithin.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsFeatureRequest.expressionContext" title="qgis.core.QgsFeatureRequest.expressionContext"><code class="xref py py-obj docutils literal notranslate"><span class="pre">expressionContext</span></code></a></p></td>
 <td><p>Returns the expression context used to evaluate filter expressions.</p></td>
@@ -2929,7 +2932,7 @@ and all features will be left with their original geometry.</p>
 <dt class="sig sig-object py" id="qgis.core.QgsFeatureRequest.distanceWithin">
 <span class="sig-name descname"><span class="pre">distanceWithin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#qgis.core.QgsFeatureRequest.distanceWithin" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the maximum distance from the <a class="reference internal" href="#qgis.core.QgsFeatureRequest.referenceGeometry" title="qgis.core.QgsFeatureRequest.referenceGeometry"><code class="xref py py-func docutils literal notranslate"><span class="pre">referenceGeometry()</span></code></a> of fetched
-features, if <a class="reference internal" href="#qgis.core.QgsFeatureRequest.spatialFilterType" title="qgis.core.QgsFeatureRequest.spatialFilterType"><code class="xref py py-func docutils literal notranslate"><span class="pre">spatialFilterType()</span></code></a> is Qgis.SpatialFilterType.DistanceWithin.</p>
+features, if <a class="reference internal" href="#qgis.core.QgsFeatureRequest.spatialFilterType" title="qgis.core.QgsFeatureRequest.spatialFilterType"><code class="xref py py-func docutils literal notranslate"><span class="pre">spatialFilterType()</span></code></a> is <a class="reference internal" href="../gui/Qgis.html#module-Qgis" title="Qgis"><code class="xref py py-class docutils literal notranslate"><span class="pre">Qgis</span></code></a>.SpatialFilterType.DistanceWithin.</p>
 <p>When a destination CRS is set using <a class="reference internal" href="#qgis.core.QgsFeatureRequest.setDestinationCrs" title="qgis.core.QgsFeatureRequest.setDestinationCrs"><code class="xref py py-func docutils literal notranslate"><span class="pre">setDestinationCrs()</span></code></a>, the distance
 will be in the spatial units of <a class="reference internal" href="#qgis.core.QgsFeatureRequest.destinationCrs" title="qgis.core.QgsFeatureRequest.destinationCrs"><code class="xref py py-func docutils literal notranslate"><span class="pre">destinationCrs()</span></code></a>. Otherwise, the distance
 will use the same units as the CRS of the source layer/provider.</p>
@@ -3050,9 +3053,9 @@ if it should be canceled, if set.</p>
 <span class="sig-name descname"><span class="pre">filterRect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="QgsRectangle.html#qgis.core.QgsRectangle" title="qgis.core.QgsRectangle"><span class="pre">QgsRectangle</span></a></span></span><a class="headerlink" href="#qgis.core.QgsFeatureRequest.filterRect" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the rectangle from which features will be taken. If the returned
 rectangle is null, then no filter rectangle is set.</p>
-<p>If <a class="reference internal" href="#qgis.core.QgsFeatureRequest.spatialFilterType" title="qgis.core.QgsFeatureRequest.spatialFilterType"><code class="xref py py-func docutils literal notranslate"><span class="pre">spatialFilterType()</span></code></a> is Qgis.SpatialFilterType.BoundingBox then only
+<p>If <a class="reference internal" href="#qgis.core.QgsFeatureRequest.spatialFilterType" title="qgis.core.QgsFeatureRequest.spatialFilterType"><code class="xref py py-func docutils literal notranslate"><span class="pre">spatialFilterType()</span></code></a> is <a class="reference internal" href="../gui/Qgis.html#module-Qgis" title="Qgis"><code class="xref py py-class docutils literal notranslate"><span class="pre">Qgis</span></code></a>.SpatialFilterType.BoundingBox then only
 features from within this bounding box will be fetched. If <a class="reference internal" href="#qgis.core.QgsFeatureRequest.spatialFilterType" title="qgis.core.QgsFeatureRequest.spatialFilterType"><code class="xref py py-func docutils literal notranslate"><span class="pre">spatialFilterType()</span></code></a>
-is Qgis.SpatialFilterType.DistanceWithin then the returned rectangle
+is <a class="reference internal" href="../gui/Qgis.html#module-Qgis" title="Qgis"><code class="xref py py-class docutils literal notranslate"><span class="pre">Qgis</span></code></a>.SpatialFilterType.DistanceWithin then the returned rectangle
 represents the bounding box of the <a class="reference internal" href="#qgis.core.QgsFeatureRequest.referenceGeometry" title="qgis.core.QgsFeatureRequest.referenceGeometry"><code class="xref py py-func docutils literal notranslate"><span class="pre">referenceGeometry()</span></code></a> extended by <a class="reference internal" href="#qgis.core.QgsFeatureRequest.distanceWithin" title="qgis.core.QgsFeatureRequest.distanceWithin"><code class="xref py py-func docutils literal notranslate"><span class="pre">distanceWithin()</span></code></a>.</p>
 <p>When a destination CRS is set using <a class="reference internal" href="#qgis.core.QgsFeatureRequest.setDestinationCrs" title="qgis.core.QgsFeatureRequest.setDestinationCrs"><code class="xref py py-func docutils literal notranslate"><span class="pre">setDestinationCrs()</span></code></a>, the rectangle
 will be in the same CRS as the <a class="reference internal" href="#qgis.core.QgsFeatureRequest.destinationCrs" title="qgis.core.QgsFeatureRequest.destinationCrs"><code class="xref py py-func docutils literal notranslate"><span class="pre">destinationCrs()</span></code></a>. Otherwise, the rectangle
@@ -3159,7 +3162,7 @@ set. See <a class="reference internal" href="#qgis.core.QgsFeatureRequest.spatia
 <dt class="sig sig-object py" id="qgis.core.QgsFeatureRequest.referenceGeometry">
 <span class="sig-name descname"><span class="pre">referenceGeometry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="QgsGeometry.html#qgis.core.QgsGeometry" title="qgis.core.QgsGeometry"><span class="pre">QgsGeometry</span></a></span></span><a class="headerlink" href="#qgis.core.QgsFeatureRequest.referenceGeometry" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the reference geometry used for spatial filtering of features.</p>
-<p>When <a class="reference internal" href="#qgis.core.QgsFeatureRequest.spatialFilterType" title="qgis.core.QgsFeatureRequest.spatialFilterType"><code class="xref py py-func docutils literal notranslate"><span class="pre">spatialFilterType()</span></code></a> is Qgis.SpatialFilterType.DistanceWithin then only
+<p>When <a class="reference internal" href="#qgis.core.QgsFeatureRequest.spatialFilterType" title="qgis.core.QgsFeatureRequest.spatialFilterType"><code class="xref py py-func docutils literal notranslate"><span class="pre">spatialFilterType()</span></code></a> is <a class="reference internal" href="../gui/Qgis.html#module-Qgis" title="Qgis"><code class="xref py py-class docutils literal notranslate"><span class="pre">Qgis</span></code></a>.SpatialFilterType.DistanceWithin then only
 features within <a class="reference internal" href="#qgis.core.QgsFeatureRequest.distanceWithin" title="qgis.core.QgsFeatureRequest.distanceWithin"><code class="xref py py-func docutils literal notranslate"><span class="pre">distanceWithin()</span></code></a> units of the reference geometry will be
 fetched.</p>
 <p>When a destination CRS is set using <a class="reference internal" href="#qgis.core.QgsFeatureRequest.setDestinationCrs" title="qgis.core.QgsFeatureRequest.setDestinationCrs"><code class="xref py py-func docutils literal notranslate"><span class="pre">setDestinationCrs()</span></code></a>, the geometry
@@ -3276,7 +3279,7 @@ is expected to be in the same CRS as the <a class="reference internal" href="#qg
 the spatial units of the <a class="reference internal" href="#qgis.core.QgsFeatureRequest.destinationCrs" title="qgis.core.QgsFeatureRequest.destinationCrs"><code class="xref py py-func docutils literal notranslate"><span class="pre">destinationCrs()</span></code></a>. Otherwise, <code class="docutils literal notranslate"><span class="pre">geometry</span></code>
 should use the same CRS as the source layer/provider and <code class="docutils literal notranslate"><span class="pre">distance</span></code>
 should use the spatial units as this same CRS.</p>
-<p>Calling this method will automatically set <a class="reference internal" href="#qgis.core.QgsFeatureRequest.spatialFilterType" title="qgis.core.QgsFeatureRequest.spatialFilterType"><code class="xref py py-func docutils literal notranslate"><span class="pre">spatialFilterType()</span></code></a> to Qgis.SpatialFilterType.DistanceWithin.</p>
+<p>Calling this method will automatically set <a class="reference internal" href="#qgis.core.QgsFeatureRequest.spatialFilterType" title="qgis.core.QgsFeatureRequest.spatialFilterType"><code class="xref py py-func docutils literal notranslate"><span class="pre">spatialFilterType()</span></code></a> to <a class="reference internal" href="../gui/Qgis.html#module-Qgis" title="Qgis"><code class="xref py py-class docutils literal notranslate"><span class="pre">Qgis</span></code></a>.SpatialFilterType.DistanceWithin.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsFeatureRequest.filterRect" title="qgis.core.QgsFeatureRequest.filterRect"><code class="xref py py-func docutils literal notranslate"><span class="pre">filterRect()</span></code></a></p>
@@ -3421,8 +3424,8 @@ for the lifetime of the feature request and feature iterators.</p>
 <p>When a destination CRS is set using <a class="reference internal" href="#qgis.core.QgsFeatureRequest.setDestinationCrs" title="qgis.core.QgsFeatureRequest.setDestinationCrs"><code class="xref py py-func docutils literal notranslate"><span class="pre">setDestinationCrs()</span></code></a>, <code class="docutils literal notranslate"><span class="pre">rectangle</span></code>
 is expected to be in the same CRS as the <a class="reference internal" href="#qgis.core.QgsFeatureRequest.destinationCrs" title="qgis.core.QgsFeatureRequest.destinationCrs"><code class="xref py py-func docutils literal notranslate"><span class="pre">destinationCrs()</span></code></a>. Otherwise, <code class="docutils literal notranslate"><span class="pre">rectangle</span></code>
 should use the same CRS as the source layer/provider.</p>
-<p>Calling this method will automatically set <a class="reference internal" href="#qgis.core.QgsFeatureRequest.spatialFilterType" title="qgis.core.QgsFeatureRequest.spatialFilterType"><code class="xref py py-func docutils literal notranslate"><span class="pre">spatialFilterType()</span></code></a> to Qgis.SpatialFilterType.BoundingBox.
-If <code class="docutils literal notranslate"><span class="pre">rectangle</span></code> is a null rectangle then <a class="reference internal" href="#qgis.core.QgsFeatureRequest.spatialFilterType" title="qgis.core.QgsFeatureRequest.spatialFilterType"><code class="xref py py-func docutils literal notranslate"><span class="pre">spatialFilterType()</span></code></a> will be reset to Qgis.SpatialFilterType.NoFilter.</p>
+<p>Calling this method will automatically set <a class="reference internal" href="#qgis.core.QgsFeatureRequest.spatialFilterType" title="qgis.core.QgsFeatureRequest.spatialFilterType"><code class="xref py py-func docutils literal notranslate"><span class="pre">spatialFilterType()</span></code></a> to <a class="reference internal" href="../gui/Qgis.html#module-Qgis" title="Qgis"><code class="xref py py-class docutils literal notranslate"><span class="pre">Qgis</span></code></a>.SpatialFilterType.BoundingBox.
+If <code class="docutils literal notranslate"><span class="pre">rectangle</span></code> is a null rectangle then <a class="reference internal" href="#qgis.core.QgsFeatureRequest.spatialFilterType" title="qgis.core.QgsFeatureRequest.spatialFilterType"><code class="xref py py-func docutils literal notranslate"><span class="pre">spatialFilterType()</span></code></a> will be reset to <a class="reference internal" href="../gui/Qgis.html#module-Qgis" title="Qgis"><code class="xref py py-class docutils literal notranslate"><span class="pre">Qgis</span></code></a>.SpatialFilterType.NoFilter.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsFeatureRequest.filterRect" title="qgis.core.QgsFeatureRequest.filterRect"><code class="xref py py-func docutils literal notranslate"><span class="pre">filterRect()</span></code></a></p>
@@ -3858,7 +3861,7 @@ and reprojection is required</p>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:40 Apr 01, 2023.
+      <span class="lastupdated">Last updated on 03:18 Apr 01, 2023.
       </span></p>
   </div>
 

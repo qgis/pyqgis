@@ -83,6 +83,8 @@
 <li class="toctree-l2"><a class="reference internal" href="GeometryValidityFlags.html">Class: GeometryValidityFlags</a></li>
 <li class="toctree-l2"><a class="reference internal" href="GpsInformationComponents.html">Class: GpsInformationComponents</a></li>
 <li class="toctree-l2"><a class="reference internal" href="HistoryProviderBackends.html">Class: HistoryProviderBackends</a></li>
+<li class="toctree-l2"><a class="reference internal" href="LabelLinePlacementFlags.html">Class: LabelLinePlacementFlags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="LabelPolygonPlacementFlags.html">Class: LabelPolygonPlacementFlags</a></li>
 <li class="toctree-l2"><a class="reference internal" href="LabelSettingsFavoriteId.html">Class: LabelSettingsFavoriteId</a></li>
 <li class="toctree-l2"><a class="reference internal" href="LabelSettingsId.html">Class: LabelSettingsId</a></li>
 <li class="toctree-l2"><a class="reference internal" href="LabelSettingsName.html">Class: LabelSettingsName</a></li>
@@ -165,6 +167,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsAnnotationItemRegistry.html">Class: QgsAnnotationItemRegistry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAnnotationLayer.html">Class: QgsAnnotationLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAnnotationLineItem.html">Class: QgsAnnotationLineItem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsAnnotationLineTextItem.html">Class: QgsAnnotationLineTextItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAnnotationManager.html">Class: QgsAnnotationManager</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAnnotationMarkerItem.html">Class: QgsAnnotationMarkerItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAnnotationPointTextItem.html">Class: QgsAnnotationPointTextItem</a></li>
@@ -2271,7 +2274,7 @@ Fetching process is run in background.
 Returns a <a class="reference internal" href="QgsExternalStorageFetchedContent.html#module-QgsExternalStorageFetchedContent" title="QgsExternalStorageFetchedContent"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsExternalStorageFetchedContent</span></code></a> to follow the status of the fetched resource.</p>
 <p><code class="docutils literal notranslate"><span class="pre">fetchingMode</span></code> defines if the download will start immediately or shall be manually triggered
 calling <a class="reference internal" href="QgsExternalStorageFetchedContent.html#qgis.core.QgsExternalStorageFetchedContent.fetch" title="qgis.core.QgsExternalStorageFetchedContent.fetch"><code class="xref py py-func docutils literal notranslate"><span class="pre">QgsExternalStorageFetchedContent.fetch()</span></code></a>. User should use
-Qgis.ActionStart.Deferred if he needs to connect the <code class="xref py py-func docutils literal notranslate"><span class="pre">fetched()</span></code> signal.</p>
+<a class="reference internal" href="../gui/Qgis.html#module-Qgis" title="Qgis"><code class="xref py py-class docutils literal notranslate"><span class="pre">Qgis</span></code></a>.ActionStart.Deferred if he needs to connect the <code class="xref py py-func docutils literal notranslate"><span class="pre">fetched()</span></code> signal.</p>
 <p>After using this method, user should wait for <code class="xref py py-func docutils literal notranslate"><span class="pre">QgsExternalStorageStoredContent.fetched()</span></code>,
 <code class="xref py py-func docutils literal notranslate"><span class="pre">QgsExternalStorageStoredContent.errorOccurred()</span></code> or <code class="xref py py-func docutils literal notranslate"><span class="pre">QgsExternalStorageStoredContent.canceled()</span></code> signals.</p>
 <p>It’s possible to give <code class="docutils literal notranslate"><span class="pre">authCfg</span></code> authentication configuration id in case its needed.</p>
@@ -2297,7 +2300,7 @@ Storing process is run in background.
 Returns a <a class="reference internal" href="QgsExternalStorageStoredContent.html#module-QgsExternalStorageStoredContent" title="QgsExternalStorageStoredContent"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsExternalStorageStoredContent</span></code></a> to follow the status of the stored resource.</p>
 <p><code class="docutils literal notranslate"><span class="pre">storingMode</span></code> defines if the download will start immediately or shall be manually triggered
 calling <a class="reference internal" href="QgsExternalStorageStoredContent.html#qgis.core.QgsExternalStorageStoredContent.store" title="qgis.core.QgsExternalStorageStoredContent.store"><code class="xref py py-func docutils literal notranslate"><span class="pre">QgsExternalStorageStoredContent.store()</span></code></a>. User should use
-Qgis.ActionStart.Deferred if he needs to connect the <code class="xref py py-func docutils literal notranslate"><span class="pre">stored()</span></code> signal.</p>
+<a class="reference internal" href="../gui/Qgis.html#module-Qgis" title="Qgis"><code class="xref py py-class docutils literal notranslate"><span class="pre">Qgis</span></code></a>.ActionStart.Deferred if he needs to connect the <code class="xref py py-func docutils literal notranslate"><span class="pre">stored()</span></code> signal.</p>
 <p>After using this method, user wait for <a class="reference internal" href="QgsExternalStorageStoredContent.html#qgis.core.QgsExternalStorageStoredContent.stored" title="qgis.core.QgsExternalStorageStoredContent.stored"><code class="xref py py-func docutils literal notranslate"><span class="pre">QgsExternalStorageStoredContent.stored()</span></code></a>,
 <code class="xref py py-func docutils literal notranslate"><span class="pre">QgsExternalStorageStoredContent.errorOccurred()</span></code> or <code class="xref py py-func docutils literal notranslate"><span class="pre">QgsExternalStorageStoredContent.canceled()</span></code> signals.</p>
 <p>It’s possible to give <code class="docutils literal notranslate"><span class="pre">authCfg</span></code> authentication configuration id in case its needed.</p>
@@ -2341,7 +2344,7 @@ Qgis.ActionStart.Deferred if he needs to connect the <code class="xref py py-fun
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:40 Apr 01, 2023.
+      <span class="lastupdated">Last updated on 03:18 Apr 01, 2023.
       </span></p>
   </div>
 
