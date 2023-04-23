@@ -1611,7 +1611,12 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsHillshadeRendererWidget.html">Class: QgsHillshadeRendererWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsHistogramWidget.html">Class: QgsHistogramWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsHistoryEntry.html">Class: QgsHistoryEntry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsHistoryEntryGroup.html">Class: QgsHistoryEntryGroup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsHistoryEntryModel.html">Class: QgsHistoryEntryModel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsHistoryEntryNode.html">Class: QgsHistoryEntryNode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsHistoryProviderRegistry.html">Class: QgsHistoryProviderRegistry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsHistoryWidget.html">Class: QgsHistoryWidget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsHistoryWidgetContext.html">Class: QgsHistoryWidgetContext</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsHtmlWidgetWrapper.html">Class: QgsHtmlWidgetWrapper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsHttpHeaderWidget.html">Class: QgsHttpHeaderWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsIFeatureSelectionManager.html">Class: QgsIFeatureSelectionManager</a></li>
@@ -2187,8 +2192,14 @@
 <p class="rubric">Methods</p>
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsAbstractHistoryProvider.id" title="qgis.gui.QgsAbstractHistoryProvider.id"><code class="xref py py-obj docutils literal notranslate"><span class="pre">id</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsAbstractHistoryProvider.createNodeForEntry" title="qgis.gui.QgsAbstractHistoryProvider.createNodeForEntry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createNodeForEntry</span></code></a></p></td>
+<td><p>Creates a new history node for the given <code class="docutils literal notranslate"><span class="pre">entry</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsAbstractHistoryProvider.id" title="qgis.gui.QgsAbstractHistoryProvider.id"><code class="xref py py-obj docutils literal notranslate"><span class="pre">id</span></code></a></p></td>
 <td><p>Returns the provider's unique id, which is used to associate existing history entries with the provider.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsAbstractHistoryProvider.updateNodeForEntry" title="qgis.gui.QgsAbstractHistoryProvider.updateNodeForEntry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">updateNodeForEntry</span></code></a></p></td>
+<td><p>Updates an existing history <code class="docutils literal notranslate"><span class="pre">node</span></code> for the given <code class="docutils literal notranslate"><span class="pre">entry</span></code>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -2202,12 +2213,50 @@
 </table>
 </div>
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.gui.QgsAbstractHistoryProvider.createNodeForEntry">
+<span class="sig-name descname"><span class="pre">createNodeForEntry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">entry</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsHistoryEntry.html#qgis.gui.QgsHistoryEntry" title="qgis.gui.QgsHistoryEntry"><span class="pre">QgsHistoryEntry</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsHistoryWidgetContext.html#qgis.gui.QgsHistoryWidgetContext" title="qgis.gui.QgsHistoryWidgetContext"><span class="pre">QgsHistoryWidgetContext</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="QgsHistoryEntryNode.html#qgis.gui.QgsHistoryEntryNode" title="qgis.gui.QgsHistoryEntryNode"><span class="pre">QgsHistoryEntryNode</span></a></span></span><a class="headerlink" href="#qgis.gui.QgsAbstractHistoryProvider.createNodeForEntry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a new history node for the given <code class="docutils literal notranslate"><span class="pre">entry</span></code>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.32.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>entry</strong> (<a class="reference internal" href="QgsHistoryEntry.html#qgis.gui.QgsHistoryEntry" title="qgis.gui.QgsHistoryEntry"><em>QgsHistoryEntry</em></a>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsHistoryWidgetContext.html#qgis.gui.QgsHistoryWidgetContext" title="qgis.gui.QgsHistoryWidgetContext"><em>QgsHistoryWidgetContext</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsHistoryEntryNode.html#qgis.gui.QgsHistoryEntryNode" title="qgis.gui.QgsHistoryEntryNode">QgsHistoryEntryNode</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.gui.QgsAbstractHistoryProvider.id">
 <span class="sig-name descname"><span class="pre">id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#qgis.gui.QgsAbstractHistoryProvider.id" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the provider’s unique id, which is used to associate existing history entries with the provider.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.gui.QgsAbstractHistoryProvider.updateNodeForEntry">
+<span class="sig-name descname"><span class="pre">updateNodeForEntry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsHistoryEntryNode.html#qgis.gui.QgsHistoryEntryNode" title="qgis.gui.QgsHistoryEntryNode"><span class="pre">QgsHistoryEntryNode</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">entry</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsHistoryEntry.html#qgis.gui.QgsHistoryEntry" title="qgis.gui.QgsHistoryEntry"><span class="pre">QgsHistoryEntry</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsHistoryWidgetContext.html#qgis.gui.QgsHistoryWidgetContext" title="qgis.gui.QgsHistoryWidgetContext"><span class="pre">QgsHistoryWidgetContext</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsAbstractHistoryProvider.updateNodeForEntry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates an existing history <code class="docutils literal notranslate"><span class="pre">node</span></code> for the given <code class="docutils literal notranslate"><span class="pre">entry</span></code>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.32.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>node</strong> (<a class="reference internal" href="QgsHistoryEntryNode.html#qgis.gui.QgsHistoryEntryNode" title="qgis.gui.QgsHistoryEntryNode"><em>QgsHistoryEntryNode</em></a>) – </p></li>
+<li><p><strong>entry</strong> (<a class="reference internal" href="QgsHistoryEntry.html#qgis.gui.QgsHistoryEntry" title="qgis.gui.QgsHistoryEntry"><em>QgsHistoryEntry</em></a>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsHistoryWidgetContext.html#qgis.gui.QgsHistoryWidgetContext" title="qgis.gui.QgsHistoryWidgetContext"><em>QgsHistoryWidgetContext</em></a>) – </p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -2225,7 +2274,7 @@
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:36 Apr 23, 2023.
+      <span class="lastupdated">Last updated on 02:52 Apr 23, 2023.
       </span></p>
   </div>
 
