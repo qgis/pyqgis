@@ -2204,14 +2204,20 @@ Constructor for QgsHistoryEntryNode.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsHistoryEntryNode.data" title="qgis.gui.QgsHistoryEntryNode.data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">data</span></code></a></p></td>
 <td><p>Returns the node's data for the specified model <code class="docutils literal notranslate"><span class="pre">role</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsHistoryEntryNode.html" title="qgis.gui.QgsHistoryEntryNode.html"><code class="xref py py-obj docutils literal notranslate"><span class="pre">html</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsHistoryEntryNode.doubleClicked" title="qgis.gui.QgsHistoryEntryNode.doubleClicked"><code class="xref py py-obj docutils literal notranslate"><span class="pre">doubleClicked</span></code></a></p></td>
+<td><p>Called when the node is double-clicked.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsHistoryEntryNode.html" title="qgis.gui.QgsHistoryEntryNode.html"><code class="xref py py-obj docutils literal notranslate"><span class="pre">html</span></code></a></p></td>
 <td><p>Returns a HTML formatted text string which should be shown to a user when selecting the node.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsHistoryEntryNode.matchesString" title="qgis.gui.QgsHistoryEntryNode.matchesString"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matchesString</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsHistoryEntryNode.matchesString" title="qgis.gui.QgsHistoryEntryNode.matchesString"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matchesString</span></code></a></p></td>
 <td><p>Returns true if the node matches the specified <code class="docutils literal notranslate"><span class="pre">searchString</span></code>, and should be shown in filtered results with that search string.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsHistoryEntryNode.parent" title="qgis.gui.QgsHistoryEntryNode.parent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parent</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsHistoryEntryNode.parent" title="qgis.gui.QgsHistoryEntryNode.parent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parent</span></code></a></p></td>
 <td><p>Returns the node's parent node.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsHistoryEntryNode.populateContextMenu" title="qgis.gui.QgsHistoryEntryNode.populateContextMenu"><code class="xref py py-obj docutils literal notranslate"><span class="pre">populateContextMenu</span></code></a></p></td>
+<td><p>Allows the node to populate a context <code class="docutils literal notranslate"><span class="pre">menu</span></code> before display to the user.</p></td>
 </tr>
 </tbody>
 </table>
@@ -2270,6 +2276,17 @@ create the node’s content.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.gui.QgsHistoryEntryNode.doubleClicked">
+<span class="sig-name descname"><span class="pre">doubleClicked</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsHistoryWidgetContext.html#qgis.gui.QgsHistoryWidgetContext" title="qgis.gui.QgsHistoryWidgetContext"><span class="pre">QgsHistoryWidgetContext</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsHistoryEntryNode.doubleClicked" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when the node is double-clicked. The default implementation does nothing.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>context</strong> (<a class="reference internal" href="QgsHistoryWidgetContext.html#qgis.gui.QgsHistoryWidgetContext" title="qgis.gui.QgsHistoryWidgetContext"><em>QgsHistoryWidgetContext</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.gui.QgsHistoryEntryNode.html">
 <span class="sig-name descname"><span class="pre">html</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsHistoryWidgetContext.html#qgis.gui.QgsHistoryWidgetContext" title="qgis.gui.QgsHistoryWidgetContext"><span class="pre">QgsHistoryWidgetContext</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#qgis.gui.QgsHistoryEntryNode.html" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a HTML formatted text string which should be shown to a user when
@@ -2318,6 +2335,21 @@ within the node’s DisplayRole.</p>
 </dl>
 </dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.gui.QgsHistoryEntryNode.populateContextMenu">
+<span class="sig-name descname"><span class="pre">populateContextMenu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">menu</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">QMenu</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsHistoryWidgetContext.html#qgis.gui.QgsHistoryWidgetContext" title="qgis.gui.QgsHistoryWidgetContext"><span class="pre">QgsHistoryWidgetContext</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsHistoryEntryNode.populateContextMenu" title="Permalink to this definition">¶</a></dt>
+<dd><p>Allows the node to populate a context <code class="docutils literal notranslate"><span class="pre">menu</span></code> before display to the user.</p>
+<p>Actions should be parented to the specified <code class="docutils literal notranslate"><span class="pre">menu</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>menu</strong> (<em>QMenu</em>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsHistoryWidgetContext.html#qgis.gui.QgsHistoryWidgetContext" title="qgis.gui.QgsHistoryWidgetContext"><em>QgsHistoryWidgetContext</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 </section>
@@ -2331,7 +2363,7 @@ within the node’s DisplayRole.</p>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:41 Apr 24, 2023.
+      <span class="lastupdated">Last updated on 02:39 Apr 24, 2023.
       </span></p>
   </div>
 
