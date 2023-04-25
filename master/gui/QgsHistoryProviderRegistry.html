@@ -1455,6 +1455,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsCodeEditorPython.html">Class: QgsCodeEditorPython</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsCodeEditorR.html">Class: QgsCodeEditorR</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsCodeEditorSQL.html">Class: QgsCodeEditorSQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsCodeEditorShell.html">Class: QgsCodeEditorShell</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsCodeInterpreter.html">Class: QgsCodeInterpreter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsCollapsibleGroupBox.html">Class: QgsCollapsibleGroupBox</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsCollapsibleGroupBoxBasic.html">Class: QgsCollapsibleGroupBoxBasic</a></li>
@@ -1821,7 +1822,9 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingGui.html">Class: QgsProcessingGui</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingGuiRegistry.html">Class: QgsProcessingGuiRegistry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingHiddenWidgetWrapper.html">Class: QgsProcessingHiddenWidgetWrapper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsProcessingHistoryDialog.html">Class: QgsProcessingHistoryDialog</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingHistoryProvider.html">Class: QgsProcessingHistoryProvider</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsProcessingHistoryWidget.html">Class: QgsProcessingHistoryWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingLayerOutputDestinationWidget.html">Class: QgsProcessingLayerOutputDestinationWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingMapLayerComboBox.html">Class: QgsProcessingMapLayerComboBox</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingModelerParameterWidget.html">Class: QgsProcessingModelerParameterWidget</a></li>
@@ -2389,7 +2392,7 @@ transferred to the registry.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.gui.QgsHistoryProviderRegistry.clearHistory">
-<span class="sig-name descname"><span class="pre">clearHistory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backend</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="Qgis.html#qgis.gui.Qgis.HistoryProviderBackend" title="qgis.gui.Qgis.HistoryProviderBackend"><span class="pre">Qgis.HistoryProviderBackend</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#qgis.gui.QgsHistoryProviderRegistry.clearHistory" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">clearHistory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backend</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="Qgis.html#qgis.gui.Qgis.HistoryProviderBackend" title="qgis.gui.Qgis.HistoryProviderBackend"><span class="pre">Qgis.HistoryProviderBackend</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">providerId</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#qgis.gui.QgsHistoryProviderRegistry.clearHistory" title="Permalink to this definition">¶</a></dt>
 <dd><p>Clears the history for the specified <code class="docutils literal notranslate"><span class="pre">backend</span></code>.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -2397,7 +2400,10 @@ transferred to the registry.</p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>backend</strong> (<a class="reference internal" href="Qgis.html#qgis.gui.Qgis.HistoryProviderBackend" title="qgis.gui.Qgis.HistoryProviderBackend"><em>Qgis.HistoryProviderBackend</em></a>) – </p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>backend</strong> (<a class="reference internal" href="Qgis.html#qgis.gui.Qgis.HistoryProviderBackend" title="qgis.gui.Qgis.HistoryProviderBackend"><em>Qgis.HistoryProviderBackend</em></a>) – </p></li>
+<li><p><strong>providerId</strong> (<em>str = ''</em>) – </p></li>
+</ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>bool</p>
@@ -2599,7 +2605,7 @@ to the content. (Such as recording the results of after a long-running operation
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:32 Apr 25, 2023.
+      <span class="lastupdated">Last updated on 02:26 Apr 25, 2023.
       </span></p>
   </div>
 
