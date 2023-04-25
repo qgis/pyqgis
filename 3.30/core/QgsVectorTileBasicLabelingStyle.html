@@ -2180,10 +2180,10 @@
 <td><p>Returns name of the sub-layer to render (empty layer means that all layers match)</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileBasicLabelingStyle.maxZoomLevel" title="qgis.core.QgsVectorTileBasicLabelingStyle.maxZoomLevel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">maxZoomLevel</span></code></a></p></td>
-<td><p>Returns maxnimum zoom level index (negative number means no limit)</p></td>
+<td><p>Returns the maximum zoom level index (negative number means no limit).</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileBasicLabelingStyle.minZoomLevel" title="qgis.core.QgsVectorTileBasicLabelingStyle.minZoomLevel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">minZoomLevel</span></code></a></p></td>
-<td><p>Returns minimum zoom level index (negative number means no limit)</p></td>
+<td><p>Returns the minimum zoom level index (negative number means no limit).</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileBasicLabelingStyle.readXml" title="qgis.core.QgsVectorTileBasicLabelingStyle.readXml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readXml</span></code></a></p></td>
 <td><p>Reads object content from given DOM element</p></td>
@@ -2204,10 +2204,10 @@
 <td><p>Sets name of the sub-layer to render (empty layer means that all layers match)</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileBasicLabelingStyle.setMaxZoomLevel" title="qgis.core.QgsVectorTileBasicLabelingStyle.setMaxZoomLevel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setMaxZoomLevel</span></code></a></p></td>
-<td><p>Sets maximum zoom level index (negative number means no limit)</p></td>
+<td><p>Sets maximum zoom level index (negative number means no limit).</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileBasicLabelingStyle.setMinZoomLevel" title="qgis.core.QgsVectorTileBasicLabelingStyle.setMinZoomLevel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setMinZoomLevel</span></code></a></p></td>
-<td><p>Sets minimum zoom level index (negative number means no limit)</p></td>
+<td><p>Sets minimum zoom level index (negative number means no limit).</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileBasicLabelingStyle.setStyleName" title="qgis.core.QgsVectorTileBasicLabelingStyle.setStyleName"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setStyleName</span></code></a></p></td>
 <td><p>Sets human readable name of this style</p></td>
@@ -2301,7 +2301,23 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsVectorTileBasicLabelingStyle.maxZoomLevel">
 <span class="sig-name descname"><span class="pre">maxZoomLevel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#qgis.core.QgsVectorTileBasicLabelingStyle.maxZoomLevel" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns maxnimum zoom level index (negative number means no limit)</p>
+<dd><p>Returns the maximum zoom level index (negative number means no limit).</p>
+<p>The style will be rendered if the zoom level is less than or equal
+to the maximum zoom.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This differs from the handling of the max zoom as defined
+in the MapBox Style Specifications, where the style is rendered
+only if the zoom level is less than the maximum zoom.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsVectorTileBasicLabelingStyle.setMaxZoomLevel" title="qgis.core.QgsVectorTileBasicLabelingStyle.setMaxZoomLevel"><code class="xref py py-func docutils literal notranslate"><span class="pre">setMaxZoomLevel()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsVectorTileBasicLabelingStyle.minZoomLevel" title="qgis.core.QgsVectorTileBasicLabelingStyle.minZoomLevel"><code class="xref py py-func docutils literal notranslate"><span class="pre">minZoomLevel()</span></code></a></p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>int</p>
@@ -2312,7 +2328,17 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsVectorTileBasicLabelingStyle.minZoomLevel">
 <span class="sig-name descname"><span class="pre">minZoomLevel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#qgis.core.QgsVectorTileBasicLabelingStyle.minZoomLevel" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns minimum zoom level index (negative number means no limit)</p>
+<dd><p>Returns the minimum zoom level index (negative number means no limit).</p>
+<p>The style will be rendered if the zoom level is greater than or equal
+to the this level.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsVectorTileBasicLabelingStyle.setMinZoomLevel" title="qgis.core.QgsVectorTileBasicLabelingStyle.setMinZoomLevel"><code class="xref py py-func docutils literal notranslate"><span class="pre">setMinZoomLevel()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsVectorTileBasicLabelingStyle.maxZoomLevel" title="qgis.core.QgsVectorTileBasicLabelingStyle.maxZoomLevel"><code class="xref py py-func docutils literal notranslate"><span class="pre">maxZoomLevel()</span></code></a></p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>int</p>
@@ -2392,7 +2418,23 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsVectorTileBasicLabelingStyle.setMaxZoomLevel">
 <span class="sig-name descname"><span class="pre">setMaxZoomLevel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxZoom</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsVectorTileBasicLabelingStyle.setMaxZoomLevel" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sets maximum zoom level index (negative number means no limit)</p>
+<dd><p>Sets maximum zoom level index (negative number means no limit).</p>
+<p>The style will be rendered if the zoom level is less than or equal
+to <code class="docutils literal notranslate"><span class="pre">maxZoom</span></code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This differs from the handling of the max zoom as defined
+in the MapBox Style Specifications, where the style is rendered
+only if the zoom level is less than the maximum zoom.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsVectorTileBasicLabelingStyle.maxZoomLevel" title="qgis.core.QgsVectorTileBasicLabelingStyle.maxZoomLevel"><code class="xref py py-func docutils literal notranslate"><span class="pre">maxZoomLevel()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsVectorTileBasicLabelingStyle.setMinZoomLevel" title="qgis.core.QgsVectorTileBasicLabelingStyle.setMinZoomLevel"><code class="xref py py-func docutils literal notranslate"><span class="pre">setMinZoomLevel()</span></code></a></p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>maxZoom</strong> (<em>int</em>) – </p>
@@ -2403,7 +2445,17 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsVectorTileBasicLabelingStyle.setMinZoomLevel">
 <span class="sig-name descname"><span class="pre">setMinZoomLevel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">minZoom</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsVectorTileBasicLabelingStyle.setMinZoomLevel" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sets minimum zoom level index (negative number means no limit)</p>
+<dd><p>Sets minimum zoom level index (negative number means no limit).</p>
+<p>The style will be rendered if the zoom level is greater than or equal
+to <code class="docutils literal notranslate"><span class="pre">minZoom</span></code>.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsVectorTileBasicLabelingStyle.minZoomLevel" title="qgis.core.QgsVectorTileBasicLabelingStyle.minZoomLevel"><code class="xref py py-func docutils literal notranslate"><span class="pre">minZoomLevel()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsVectorTileBasicLabelingStyle.setMaxZoomLevel" title="qgis.core.QgsVectorTileBasicLabelingStyle.setMaxZoomLevel"><code class="xref py py-func docutils literal notranslate"><span class="pre">setMaxZoomLevel()</span></code></a></p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>minZoom</strong> (<em>int</em>) – </p>
@@ -2460,7 +2512,7 @@
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 04:30 Apr 24, 2023.
+      <span class="lastupdated">Last updated on 05:13 Apr 25, 2023.
       </span></p>
   </div>
 
