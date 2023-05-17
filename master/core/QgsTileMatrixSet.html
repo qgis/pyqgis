@@ -1314,6 +1314,8 @@
 <li class="toctree-l2"><a class="reference internal" href="VectorDataProviderAttributeEditCapabilities.html">Class: VectorDataProviderAttributeEditCapabilities</a></li>
 <li class="toctree-l2"><a class="reference internal" href="VectorFileWriterCapabilities.html">Class: VectorFileWriterCapabilities</a></li>
 <li class="toctree-l2"><a class="reference internal" href="VectorLayerTypeFlags.html">Class: VectorLayerTypeFlags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="VectorTileProviderCapabilities.html">Class: VectorTileProviderCapabilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="VectorTileProviderFlags.html">Class: VectorTileProviderFlags</a></li>
 <li class="toctree-l2"><a class="reference internal" href="additions.html">Class: additions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="check.html">Class: check</a></li>
 <li class="toctree-l2"><a class="reference internal" href="compareWkt.html">Class: compareWkt</a></li>
@@ -2261,13 +2263,16 @@
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsTileMatrixSet.setScaleToTileZoomMethod" title="qgis.core.QgsTileMatrixSet.setScaleToTileZoomMethod"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setScaleToTileZoomMethod</span></code></a></p></td>
 <td><p>Sets the scale to tile zoom method.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsTileMatrixSet.tileMatrix" title="qgis.core.QgsTileMatrixSet.tileMatrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tileMatrix</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsTileMatrixSet.tileAvailability" title="qgis.core.QgsTileMatrixSet.tileAvailability"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tileAvailability</span></code></a></p></td>
+<td><p>Returns the availability of the given tile in this matrix.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsTileMatrixSet.tileMatrix" title="qgis.core.QgsTileMatrixSet.tileMatrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tileMatrix</span></code></a></p></td>
 <td><p>Returns the tile matrix corresponding to the specified <code class="docutils literal notranslate"><span class="pre">zoom</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsTileMatrixSet.tilesInRange" title="qgis.core.QgsTileMatrixSet.tilesInRange"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tilesInRange</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsTileMatrixSet.tilesInRange" title="qgis.core.QgsTileMatrixSet.tilesInRange"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tilesInRange</span></code></a></p></td>
 <td><p>Returns a list of tiles in the given tile range.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsTileMatrixSet.writeXml" title="qgis.core.QgsTileMatrixSet.writeXml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeXml</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsTileMatrixSet.writeXml" title="qgis.core.QgsTileMatrixSet.writeXml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeXml</span></code></a></p></td>
 <td><p>Writes the set to an XML element.</p></td>
 </tr>
 </tbody>
@@ -2526,6 +2531,27 @@ by <code class="docutils literal notranslate"><span class="pre">minimumZoom</spa
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsTileMatrixSet.tileAvailability">
+<span class="sig-name descname"><span class="pre">tileAvailability</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsTileXYZ.html#qgis.core.QgsTileXYZ" title="qgis.core.QgsTileXYZ"><span class="pre">QgsTileXYZ</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="Qgis.html#qgis.core.Qgis.TileAvailability" title="qgis.core.Qgis.TileAvailability"><span class="pre">Qgis.TileAvailability</span></a></span></span><a class="headerlink" href="#qgis.core.QgsTileMatrixSet.tileAvailability" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the availability of the given tile in this matrix.</p>
+<p>This method can be used to determine whether a particular tile actually
+exists within the matrix, or is not available (e.g. due to holes within the matrix).</p>
+<p>This method returns <a class="reference internal" href="../gui/Qgis.html#module-Qgis" title="Qgis"><code class="xref py py-class docutils literal notranslate"><span class="pre">Qgis</span></code></a>.TileAvailability.Available by default, unless specific
+tile availability is known for the given <code class="docutils literal notranslate"><span class="pre">id</span></code>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.32.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id</strong> (<a class="reference internal" href="QgsTileXYZ.html#qgis.core.QgsTileXYZ" title="qgis.core.QgsTileXYZ"><em>QgsTileXYZ</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="Qgis.html#qgis.core.Qgis.TileAvailability" title="qgis.core.Qgis.TileAvailability">Qgis.TileAvailability</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsTileMatrixSet.tileMatrix">
 <span class="sig-name descname"><span class="pre">tileMatrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zoom</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="QgsTileMatrix.html#qgis.core.QgsTileMatrix" title="qgis.core.QgsTileMatrix"><span class="pre">QgsTileMatrix</span></a></span></span><a class="headerlink" href="#qgis.core.QgsTileMatrixSet.tileMatrix" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the tile matrix corresponding to the specified <code class="docutils literal notranslate"><span class="pre">zoom</span></code>.</p>
@@ -2589,7 +2615,7 @@ by <code class="docutils literal notranslate"><span class="pre">minimumZoom</spa
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:35 May 17, 2023.
+      <span class="lastupdated">Last updated on 02:37 May 17, 2023.
       </span></p>
   </div>
 
