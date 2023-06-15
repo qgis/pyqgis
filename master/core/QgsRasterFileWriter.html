@@ -2215,9 +2215,21 @@
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qgis.core.</span></span><span class="sig-name descname"><span class="pre">QgsRasterFileWriter</span></span><a class="headerlink" href="#qgis.core.QgsRasterFileWriter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sip.wrapper</span></code></p>
 <p>The raster file writer which allows you to save a raster to a new file.</p>
+<p>The writer defaults to creating GeoTIFF outputs using GDAL. Alternative formats and
+data providers can be used by calling <a class="reference internal" href="#qgis.core.QgsRasterFileWriter.setOutputFormat" title="qgis.core.QgsRasterFileWriter.setOutputFormat"><code class="xref py py-func docutils literal notranslate"><span class="pre">setOutputFormat()</span></code></a> and <a class="reference internal" href="#qgis.core.QgsRasterFileWriter.setOutputProviderKey" title="qgis.core.QgsRasterFileWriter.setOutputProviderKey"><code class="xref py py-func docutils literal notranslate"><span class="pre">setOutputProviderKey()</span></code></a>.</p>
+<p>QgsRasterFileWriter(outputUrl: str)
+Constructor for <a class="reference internal" href="#qgis.core.QgsRasterFileWriter" title="qgis.core.QgsRasterFileWriter"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsRasterFileWriter</span></code></a>, writing to the specified output URL/filename.</p>
+<p>QgsRasterFileWriter(<a class="reference internal" href="#qgis.core.QgsRasterFileWriter" title="qgis.core.QgsRasterFileWriter"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsRasterFileWriter</span></code></a>)</p>
 <blockquote>
-<div><table class="autosummary longtable docutils align-default">
+<div><p class="rubric">Enums</p>
+<table class="autosummary longtable docutils align-default">
 <tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterFileWriter.Mode" title="qgis.core.QgsRasterFileWriter.Mode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mode</span></code></a></p></td>
+<td><p>alias of <a class="reference internal" href="../gui/Qgis.html#qgis.gui.Qgis.RasterExportType" title="qgis._core.Qgis.RasterExportType"><code class="xref py py-class docutils literal notranslate"><span class="pre">RasterExportType</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterFileWriter.WriterError" title="qgis.core.QgsRasterFileWriter.WriterError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WriterError</span></code></a></p></td>
+<td><p>alias of <a class="reference internal" href="../gui/Qgis.html#qgis.gui.Qgis.RasterFileWriterResult" title="qgis._core.Qgis.RasterFileWriterResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">RasterFileWriterResult</span></code></a></p></td>
+</tr>
 </tbody>
 </table>
 <p class="rubric">Methods</p>
@@ -2233,12 +2245,7 @@
 <td><p>Create a raster file with one band without initializing the pixel data.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterFileWriter.createOptions" title="qgis.core.QgsRasterFileWriter.createOptions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createOptions</span></code></a></p></td>
-<td><p><dl class="field-list simple">
-<dt class="field-odd">rtype<span class="colon">:</span></dt>
-<dd class="field-odd"><p>List[str]</p>
-</dd>
-</dl>
-</p></td>
+<td><p>Returns the list of data source creation options which will be used when creating the output raster file.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterFileWriter.driverForExtension" title="qgis.core.QgsRasterFileWriter.driverForExtension"><code class="xref py py-obj docutils literal notranslate"><span class="pre">driverForExtension</span></code></a></p></td>
 <td><p>Returns the GDAL driver name for a specified file <code class="docutils literal notranslate"><span class="pre">extension</span></code>.</p></td>
@@ -2250,58 +2257,28 @@
 <td><p>Creates a filter for an GDAL driver key</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterFileWriter.maxTileHeight" title="qgis.core.QgsRasterFileWriter.maxTileHeight"><code class="xref py py-obj docutils literal notranslate"><span class="pre">maxTileHeight</span></code></a></p></td>
-<td><p><dl class="field-list simple">
-<dt class="field-odd">rtype<span class="colon">:</span></dt>
-<dd class="field-odd"><p>int</p>
-</dd>
-</dl>
-</p></td>
+<td><p>Returns the maximum tile height (in pixels) for tiled outputs.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterFileWriter.maxTileWidth" title="qgis.core.QgsRasterFileWriter.maxTileWidth"><code class="xref py py-obj docutils literal notranslate"><span class="pre">maxTileWidth</span></code></a></p></td>
-<td><p><dl class="field-list simple">
-<dt class="field-odd">rtype<span class="colon">:</span></dt>
-<dd class="field-odd"><p>int</p>
-</dd>
-</dl>
-</p></td>
+<td><p>Returns the maximum tile width (in pixels) for tiled outputs.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterFileWriter.outputFormat" title="qgis.core.QgsRasterFileWriter.outputFormat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">outputFormat</span></code></a></p></td>
-<td><p><dl class="field-list simple">
-<dt class="field-odd">rtype<span class="colon">:</span></dt>
-<dd class="field-odd"><p>str</p>
-</dd>
-</dl>
-</p></td>
+<td><p>Returns the output format.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterFileWriter.outputProviderKey" title="qgis.core.QgsRasterFileWriter.outputProviderKey"><code class="xref py py-obj docutils literal notranslate"><span class="pre">outputProviderKey</span></code></a></p></td>
-<td><p><dl class="field-list simple">
-<dt class="field-odd">rtype<span class="colon">:</span></dt>
-<dd class="field-odd"><p>str</p>
-</dd>
-</dl>
-</p></td>
+<td><p>Returns the name of the data provider for the raster output.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterFileWriter.outputUrl" title="qgis.core.QgsRasterFileWriter.outputUrl"><code class="xref py py-obj docutils literal notranslate"><span class="pre">outputUrl</span></code></a></p></td>
-<td><p>Returns the output URL for the raster.</p></td>
+<td><p>Returns the output URL (filename) for the raster.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterFileWriter.pyramidsConfigOptions" title="qgis.core.QgsRasterFileWriter.pyramidsConfigOptions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pyramidsConfigOptions</span></code></a></p></td>
-<td><p><dl class="field-list simple">
-<dt class="field-odd">rtype<span class="colon">:</span></dt>
-<dd class="field-odd"><p>List[str]</p>
-</dd>
-</dl>
-</p></td>
+<td><p>Returns the list of configuration options used when creating the pyramids for the output raster file.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterFileWriter.pyramidsFormat" title="qgis.core.QgsRasterFileWriter.pyramidsFormat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pyramidsFormat</span></code></a></p></td>
 <td><p>Returns the raster pyramid format.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterFileWriter.pyramidsList" title="qgis.core.QgsRasterFileWriter.pyramidsList"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pyramidsList</span></code></a></p></td>
-<td><p><dl class="field-list simple">
-<dt class="field-odd">rtype<span class="colon">:</span></dt>
-<dd class="field-odd"><p>List[int]</p>
-</dd>
-</dl>
-</p></td>
+<td><p>Returns the list of pyramids which will be created for the output file.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterFileWriter.pyramidsResampling" title="qgis.core.QgsRasterFileWriter.pyramidsResampling"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pyramidsResampling</span></code></a></p></td>
 <td><p><dl class="field-list simple">
@@ -2315,56 +2292,28 @@
 <td><p>Sets the pyramid building option.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterFileWriter.setCreateOptions" title="qgis.core.QgsRasterFileWriter.setCreateOptions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setCreateOptions</span></code></a></p></td>
-<td><p><dl class="field-list simple">
-<dt class="field-odd">param list<span class="colon">:</span></dt>
-<dd class="field-odd"><p></p></dd>
-</dl>
-</p></td>
+<td><p>Sets a list of data source creation options to use when creating the output raster file.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterFileWriter.setMaxTileHeight" title="qgis.core.QgsRasterFileWriter.setMaxTileHeight"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setMaxTileHeight</span></code></a></p></td>
-<td><p><dl class="field-list simple">
-<dt class="field-odd">param h<span class="colon">:</span></dt>
-<dd class="field-odd"><p></p></dd>
-</dl>
-</p></td>
+<td><p>Sets the maximum tile height (in pixels) for tiled outputs.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterFileWriter.setMaxTileWidth" title="qgis.core.QgsRasterFileWriter.setMaxTileWidth"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setMaxTileWidth</span></code></a></p></td>
-<td><p><dl class="field-list simple">
-<dt class="field-odd">param w<span class="colon">:</span></dt>
-<dd class="field-odd"><p></p></dd>
-</dl>
-</p></td>
+<td><p>Sets the maximum tile width (in pixels) for tiled outputs.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterFileWriter.setOutputFormat" title="qgis.core.QgsRasterFileWriter.setOutputFormat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setOutputFormat</span></code></a></p></td>
-<td><p><dl class="field-list simple">
-<dt class="field-odd">param format<span class="colon">:</span></dt>
-<dd class="field-odd"><p></p></dd>
-</dl>
-</p></td>
+<td><p>Sets the output <code class="docutils literal notranslate"><span class="pre">format</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterFileWriter.setOutputProviderKey" title="qgis.core.QgsRasterFileWriter.setOutputProviderKey"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setOutputProviderKey</span></code></a></p></td>
-<td><p><dl class="field-list simple">
-<dt class="field-odd">param key<span class="colon">:</span></dt>
-<dd class="field-odd"><p></p></dd>
-</dl>
-</p></td>
+<td><p>Sets the name of the data provider for the raster output.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterFileWriter.setPyramidsConfigOptions" title="qgis.core.QgsRasterFileWriter.setPyramidsConfigOptions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setPyramidsConfigOptions</span></code></a></p></td>
-<td><p><dl class="field-list simple">
-<dt class="field-odd">param list<span class="colon">:</span></dt>
-<dd class="field-odd"><p></p></dd>
-</dl>
-</p></td>
+<td><p>Sets a <code class="docutils literal notranslate"><span class="pre">list</span></code> of configuration options to use when creating the pyramids for the output raster file.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterFileWriter.setPyramidsFormat" title="qgis.core.QgsRasterFileWriter.setPyramidsFormat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setPyramidsFormat</span></code></a></p></td>
 <td><p>Sets the raster pyramid format.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterFileWriter.setPyramidsList" title="qgis.core.QgsRasterFileWriter.setPyramidsList"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setPyramidsList</span></code></a></p></td>
-<td><p><dl class="field-list simple">
-<dt class="field-odd">param list<span class="colon">:</span></dt>
-<dd class="field-odd"><p></p></dd>
-</dl>
-</p></td>
+<td><p>Sets the <code class="docutils literal notranslate"><span class="pre">list</span></code> of pyramids which will be created for the output file.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterFileWriter.setPyramidsResampling" title="qgis.core.QgsRasterFileWriter.setPyramidsResampling"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setPyramidsResampling</span></code></a></p></td>
 <td><p><dl class="field-list simple">
@@ -2374,11 +2323,7 @@
 </p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterFileWriter.setTiledMode" title="qgis.core.QgsRasterFileWriter.setTiledMode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setTiledMode</span></code></a></p></td>
-<td><p><dl class="field-list simple">
-<dt class="field-odd">param t<span class="colon">:</span></dt>
-<dd class="field-odd"><p></p></dd>
-</dl>
-</p></td>
+<td><p>Sets whether the output should be tiled.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterFileWriter.supportedFiltersAndFormats" title="qgis.core.QgsRasterFileWriter.supportedFiltersAndFormats"><code class="xref py py-obj docutils literal notranslate"><span class="pre">supportedFiltersAndFormats</span></code></a></p></td>
 <td><p>Returns a list or pairs, with format filter string as first element and GDAL format key as second element.</p></td>
@@ -2387,12 +2332,7 @@
 <td><p>Returns a list of file extensions for supported formats.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterFileWriter.tiledMode" title="qgis.core.QgsRasterFileWriter.tiledMode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tiledMode</span></code></a></p></td>
-<td><p><dl class="field-list simple">
-<dt class="field-odd">rtype<span class="colon">:</span></dt>
-<dd class="field-odd"><p>bool</p>
-</dd>
-</dl>
-</p></td>
+<td><p>Returns whether the output will be tiled.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterFileWriter.writeRaster" title="qgis.core.QgsRasterFileWriter.writeRaster"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeRaster</span></code></a></p></td>
 <td><p>Write raster file</p></td>
@@ -2406,49 +2346,12 @@
 <p class="rubric">Attributes</p>
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterFileWriter.CreateDatasourceError" title="qgis.core.QgsRasterFileWriter.CreateDatasourceError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CreateDatasourceError</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterFileWriter.DestProviderError" title="qgis.core.QgsRasterFileWriter.DestProviderError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DestProviderError</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterFileWriter.Image" title="qgis.core.QgsRasterFileWriter.Image"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Image</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterFileWriter.NoDataConflict" title="qgis.core.QgsRasterFileWriter.NoDataConflict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NoDataConflict</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterFileWriter.NoError" title="qgis.core.QgsRasterFileWriter.NoError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NoError</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterFileWriter.Raw" title="qgis.core.QgsRasterFileWriter.Raw"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Raw</span></code></a></p></td>
-<td><p></p></td>
-</tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterFileWriter.SortRecommended" title="qgis.core.QgsRasterFileWriter.SortRecommended"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SortRecommended</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterFileWriter.SourceProviderError" title="qgis.core.QgsRasterFileWriter.SourceProviderError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SourceProviderError</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterFileWriter.WriteCanceled" title="qgis.core.QgsRasterFileWriter.WriteCanceled"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WriteCanceled</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterFileWriter.WriteError" title="qgis.core.QgsRasterFileWriter.WriteError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WriteError</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 </tbody>
 </table>
 </div></blockquote>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="qgis.core.QgsRasterFileWriter.CreateDatasourceError">
-<span class="sig-name descname"><span class="pre">CreateDatasourceError</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></em><a class="headerlink" href="#qgis.core.QgsRasterFileWriter.CreateDatasourceError" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="qgis.core.QgsRasterFileWriter.DestProviderError">
-<span class="sig-name descname"><span class="pre">DestProviderError</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#qgis.core.QgsRasterFileWriter.DestProviderError" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
 <dl class="py class">
 <dt class="sig sig-object py" id="qgis.core.QgsRasterFileWriter.FilterFormatDetails">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">FilterFormatDetails</span></span><a class="headerlink" href="#qgis.core.QgsRasterFileWriter.FilterFormatDetails" title="Permalink to this definition">¶</a></dt>
@@ -2468,25 +2371,10 @@
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="qgis.core.QgsRasterFileWriter.Image">
-<span class="sig-name descname"><span class="pre">Image</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#qgis.core.QgsRasterFileWriter.Image" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py class">
 <dt class="sig sig-object py" id="qgis.core.QgsRasterFileWriter.Mode">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Mode</span></span><a class="headerlink" href="#qgis.core.QgsRasterFileWriter.Mode" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
+<span class="sig-name descname"><span class="pre">Mode</span></span><a class="headerlink" href="#qgis.core.QgsRasterFileWriter.Mode" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="../gui/Qgis.html#qgis.gui.Qgis.RasterExportType" title="qgis._core.Qgis.RasterExportType"><code class="xref py py-class docutils literal notranslate"><span class="pre">RasterExportType</span></code></a></p>
 </dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="qgis.core.QgsRasterFileWriter.NoDataConflict">
-<span class="sig-name descname"><span class="pre">NoDataConflict</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">5</span></em><a class="headerlink" href="#qgis.core.QgsRasterFileWriter.NoDataConflict" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="qgis.core.QgsRasterFileWriter.NoError">
-<span class="sig-name descname"><span class="pre">NoError</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#qgis.core.QgsRasterFileWriter.NoError" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="qgis.core.QgsRasterFileWriter.RasterFormatOption">
@@ -2505,34 +2393,14 @@
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="qgis.core.QgsRasterFileWriter.Raw">
-<span class="sig-name descname"><span class="pre">Raw</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#qgis.core.QgsRasterFileWriter.Raw" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.core.QgsRasterFileWriter.SortRecommended">
 <span class="sig-name descname"><span class="pre">SortRecommended</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#qgis.core.QgsRasterFileWriter.SortRecommended" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="qgis.core.QgsRasterFileWriter.SourceProviderError">
-<span class="sig-name descname"><span class="pre">SourceProviderError</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#qgis.core.QgsRasterFileWriter.SourceProviderError" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="qgis.core.QgsRasterFileWriter.WriteCanceled">
-<span class="sig-name descname"><span class="pre">WriteCanceled</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">6</span></em><a class="headerlink" href="#qgis.core.QgsRasterFileWriter.WriteCanceled" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="qgis.core.QgsRasterFileWriter.WriteError">
-<span class="sig-name descname"><span class="pre">WriteError</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">4</span></em><a class="headerlink" href="#qgis.core.QgsRasterFileWriter.WriteError" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py class">
 <dt class="sig sig-object py" id="qgis.core.QgsRasterFileWriter.WriterError">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">WriterError</span></span><a class="headerlink" href="#qgis.core.QgsRasterFileWriter.WriterError" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
+<span class="sig-name descname"><span class="pre">WriterError</span></span><a class="headerlink" href="#qgis.core.QgsRasterFileWriter.WriterError" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="../gui/Qgis.html#qgis.gui.Qgis.RasterFileWriterResult" title="qgis._core.Qgis.RasterFileWriterResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">RasterFileWriterResult</span></code></a></p>
 </dd></dl>
 
 <dl class="py method">
@@ -2622,7 +2490,13 @@ Ownership of the returned provider is passed to the caller.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsRasterFileWriter.createOptions">
 <span class="sig-name descname"><span class="pre">createOptions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qgis.core.QgsRasterFileWriter.createOptions" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>Returns the list of data source creation options which will be used when
+creating the output raster file.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsRasterFileWriter.setCreateOptions" title="qgis.core.QgsRasterFileWriter.setCreateOptions"><code class="xref py py-func docutils literal notranslate"><span class="pre">setCreateOptions()</span></code></a></p>
+</div>
+<dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>List[str]</p>
 </dd>
@@ -2688,7 +2562,20 @@ E.g. returns “tif”, “tiff” for the format “GTiff”.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsRasterFileWriter.maxTileHeight">
 <span class="sig-name descname"><span class="pre">maxTileHeight</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#qgis.core.QgsRasterFileWriter.maxTileHeight" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>Returns the maximum tile height (in pixels) for tiled outputs.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsRasterFileWriter.maxTileWidth" title="qgis.core.QgsRasterFileWriter.maxTileWidth"><code class="xref py py-func docutils literal notranslate"><span class="pre">maxTileWidth()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsRasterFileWriter.setMaxTileHeight" title="qgis.core.QgsRasterFileWriter.setMaxTileHeight"><code class="xref py py-func docutils literal notranslate"><span class="pre">setMaxTileHeight()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsRasterFileWriter.tiledMode" title="qgis.core.QgsRasterFileWriter.tiledMode"><code class="xref py py-func docutils literal notranslate"><span class="pre">tiledMode()</span></code></a></p>
+</div>
+<dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>int</p>
 </dd>
@@ -2698,7 +2585,20 @@ E.g. returns “tif”, “tiff” for the format “GTiff”.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsRasterFileWriter.maxTileWidth">
 <span class="sig-name descname"><span class="pre">maxTileWidth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#qgis.core.QgsRasterFileWriter.maxTileWidth" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>Returns the maximum tile width (in pixels) for tiled outputs.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsRasterFileWriter.maxTileHeight" title="qgis.core.QgsRasterFileWriter.maxTileHeight"><code class="xref py py-func docutils literal notranslate"><span class="pre">maxTileHeight()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsRasterFileWriter.setMaxTileWidth" title="qgis.core.QgsRasterFileWriter.setMaxTileWidth"><code class="xref py py-func docutils literal notranslate"><span class="pre">setMaxTileWidth()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsRasterFileWriter.tiledMode" title="qgis.core.QgsRasterFileWriter.tiledMode"><code class="xref py py-func docutils literal notranslate"><span class="pre">tiledMode()</span></code></a></p>
+</div>
+<dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>int</p>
 </dd>
@@ -2708,7 +2608,13 @@ E.g. returns “tif”, “tiff” for the format “GTiff”.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsRasterFileWriter.outputFormat">
 <span class="sig-name descname"><span class="pre">outputFormat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#qgis.core.QgsRasterFileWriter.outputFormat" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>Returns the output format.</p>
+<p>For GDAL disk based outputs this will match the GDAL driver name, e.g. “GTiff” for GeoTiff exports.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsRasterFileWriter.setOutputFormat" title="qgis.core.QgsRasterFileWriter.setOutputFormat"><code class="xref py py-func docutils literal notranslate"><span class="pre">setOutputFormat()</span></code></a></p>
+</div>
+<dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>str</p>
 </dd>
@@ -2718,7 +2624,12 @@ E.g. returns “tif”, “tiff” for the format “GTiff”.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsRasterFileWriter.outputProviderKey">
 <span class="sig-name descname"><span class="pre">outputProviderKey</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#qgis.core.QgsRasterFileWriter.outputProviderKey" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>Returns the name of the data provider for the raster output.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsRasterFileWriter.setOutputProviderKey" title="qgis.core.QgsRasterFileWriter.setOutputProviderKey"><code class="xref py py-func docutils literal notranslate"><span class="pre">setOutputProviderKey()</span></code></a></p>
+</div>
+<dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>str</p>
 </dd>
@@ -2728,7 +2639,7 @@ E.g. returns “tif”, “tiff” for the format “GTiff”.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsRasterFileWriter.outputUrl">
 <span class="sig-name descname"><span class="pre">outputUrl</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#qgis.core.QgsRasterFileWriter.outputUrl" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the output URL for the raster.</p>
+<dd><p>Returns the output URL (filename) for the raster.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0.</span></p>
 </div>
@@ -2742,7 +2653,13 @@ E.g. returns “tif”, “tiff” for the format “GTiff”.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsRasterFileWriter.pyramidsConfigOptions">
 <span class="sig-name descname"><span class="pre">pyramidsConfigOptions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qgis.core.QgsRasterFileWriter.pyramidsConfigOptions" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>Returns the list of configuration options used when
+creating the pyramids for the output raster file.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsRasterFileWriter.setPyramidsConfigOptions" title="qgis.core.QgsRasterFileWriter.setPyramidsConfigOptions"><code class="xref py py-func docutils literal notranslate"><span class="pre">setPyramidsConfigOptions()</span></code></a></p>
+</div>
+<dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>List[str]</p>
 </dd>
@@ -2767,7 +2684,12 @@ E.g. returns “tif”, “tiff” for the format “GTiff”.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsRasterFileWriter.pyramidsList">
 <span class="sig-name descname"><span class="pre">pyramidsList</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qgis.core.QgsRasterFileWriter.pyramidsList" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>Returns the list of pyramids which will be created for the output file.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsRasterFileWriter.setPyramidsList" title="qgis.core.QgsRasterFileWriter.setPyramidsList"><code class="xref py py-func docutils literal notranslate"><span class="pre">setPyramidsList()</span></code></a></p>
+</div>
+<dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>List[int]</p>
 </dd>
@@ -2802,7 +2724,13 @@ E.g. returns “tif”, “tiff” for the format “GTiff”.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsRasterFileWriter.setCreateOptions">
 <span class="sig-name descname"><span class="pre">setCreateOptions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsRasterFileWriter.setCreateOptions" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>Sets a list of data source creation options to use when
+creating the output raster file.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsRasterFileWriter.createOptions" title="qgis.core.QgsRasterFileWriter.createOptions"><code class="xref py py-func docutils literal notranslate"><span class="pre">createOptions()</span></code></a></p>
+</div>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>list</strong> (<em>Iterable</em><em>[</em><em>str</em><em>]</em>) – </p>
 </dd>
@@ -2812,7 +2740,20 @@ E.g. returns “tif”, “tiff” for the format “GTiff”.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsRasterFileWriter.setMaxTileHeight">
 <span class="sig-name descname"><span class="pre">setMaxTileHeight</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsRasterFileWriter.setMaxTileHeight" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>Sets the maximum tile height (in pixels) for tiled outputs.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsRasterFileWriter.maxTileHeight" title="qgis.core.QgsRasterFileWriter.maxTileHeight"><code class="xref py py-func docutils literal notranslate"><span class="pre">maxTileHeight()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsRasterFileWriter.setMaxTileWidth" title="qgis.core.QgsRasterFileWriter.setMaxTileWidth"><code class="xref py py-func docutils literal notranslate"><span class="pre">setMaxTileWidth()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsRasterFileWriter.tiledMode" title="qgis.core.QgsRasterFileWriter.tiledMode"><code class="xref py py-func docutils literal notranslate"><span class="pre">tiledMode()</span></code></a></p>
+</div>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>h</strong> (<em>int</em>) – </p>
 </dd>
@@ -2822,7 +2763,20 @@ E.g. returns “tif”, “tiff” for the format “GTiff”.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsRasterFileWriter.setMaxTileWidth">
 <span class="sig-name descname"><span class="pre">setMaxTileWidth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">w</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsRasterFileWriter.setMaxTileWidth" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>Sets the maximum tile width (in pixels) for tiled outputs.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsRasterFileWriter.maxTileWidth" title="qgis.core.QgsRasterFileWriter.maxTileWidth"><code class="xref py py-func docutils literal notranslate"><span class="pre">maxTileWidth()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsRasterFileWriter.setMaxTileHeight" title="qgis.core.QgsRasterFileWriter.setMaxTileHeight"><code class="xref py py-func docutils literal notranslate"><span class="pre">setMaxTileHeight()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsRasterFileWriter.tiledMode" title="qgis.core.QgsRasterFileWriter.tiledMode"><code class="xref py py-func docutils literal notranslate"><span class="pre">tiledMode()</span></code></a></p>
+</div>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>w</strong> (<em>int</em>) – </p>
 </dd>
@@ -2832,7 +2786,13 @@ E.g. returns “tif”, “tiff” for the format “GTiff”.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsRasterFileWriter.setOutputFormat">
 <span class="sig-name descname"><span class="pre">setOutputFormat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsRasterFileWriter.setOutputFormat" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>Sets the output <code class="docutils literal notranslate"><span class="pre">format</span></code>.</p>
+<p>For GDAL disk based outputs this should match the GDAL driver name, e.g. “GTiff” for GeoTiff exports.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsRasterFileWriter.outputFormat" title="qgis.core.QgsRasterFileWriter.outputFormat"><code class="xref py py-func docutils literal notranslate"><span class="pre">outputFormat()</span></code></a></p>
+</div>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>format</strong> (<em>str</em>) – </p>
 </dd>
@@ -2842,7 +2802,13 @@ E.g. returns “tif”, “tiff” for the format “GTiff”.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsRasterFileWriter.setOutputProviderKey">
 <span class="sig-name descname"><span class="pre">setOutputProviderKey</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsRasterFileWriter.setOutputProviderKey" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>Sets the name of the data provider for the raster output.</p>
+<p>E.g. set to “gdal” to use GDAL to create disk based raster files.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsRasterFileWriter.outputProviderKey" title="qgis.core.QgsRasterFileWriter.outputProviderKey"><code class="xref py py-func docutils literal notranslate"><span class="pre">outputProviderKey()</span></code></a></p>
+</div>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>key</strong> (<em>str</em>) – </p>
 </dd>
@@ -2852,7 +2818,13 @@ E.g. returns “tif”, “tiff” for the format “GTiff”.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsRasterFileWriter.setPyramidsConfigOptions">
 <span class="sig-name descname"><span class="pre">setPyramidsConfigOptions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsRasterFileWriter.setPyramidsConfigOptions" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>Sets a <code class="docutils literal notranslate"><span class="pre">list</span></code> of configuration options to use when
+creating the pyramids for the output raster file.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsRasterFileWriter.pyramidsConfigOptions" title="qgis.core.QgsRasterFileWriter.pyramidsConfigOptions"><code class="xref py py-func docutils literal notranslate"><span class="pre">pyramidsConfigOptions()</span></code></a></p>
+</div>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>list</strong> (<em>Iterable</em><em>[</em><em>str</em><em>]</em>) – </p>
 </dd>
@@ -2877,7 +2849,12 @@ E.g. returns “tif”, “tiff” for the format “GTiff”.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsRasterFileWriter.setPyramidsList">
 <span class="sig-name descname"><span class="pre">setPyramidsList</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsRasterFileWriter.setPyramidsList" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>Sets the <code class="docutils literal notranslate"><span class="pre">list</span></code> of pyramids which will be created for the output file.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsRasterFileWriter.pyramidsList" title="qgis.core.QgsRasterFileWriter.pyramidsList"><code class="xref py py-func docutils literal notranslate"><span class="pre">pyramidsList()</span></code></a></p>
+</div>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>list</strong> (<em>Iterable</em><em>[</em><em>int</em><em>]</em>) – </p>
 </dd>
@@ -2897,7 +2874,14 @@ E.g. returns “tif”, “tiff” for the format “GTiff”.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsRasterFileWriter.setTiledMode">
 <span class="sig-name descname"><span class="pre">setTiledMode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsRasterFileWriter.setTiledMode" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>Sets whether the output should be tiled.</p>
+<p>Tiled outputs will automatically split the raster into multiple parts, based on the
+<a class="reference internal" href="#qgis.core.QgsRasterFileWriter.maxTileWidth" title="qgis.core.QgsRasterFileWriter.maxTileWidth"><code class="xref py py-func docutils literal notranslate"><span class="pre">maxTileWidth()</span></code></a> value.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsRasterFileWriter.tiledMode" title="qgis.core.QgsRasterFileWriter.tiledMode"><code class="xref py py-func docutils literal notranslate"><span class="pre">tiledMode()</span></code></a></p>
+</div>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>t</strong> (<em>bool</em>) – </p>
 </dd>
@@ -2951,7 +2935,12 @@ returned formats.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsRasterFileWriter.tiledMode">
 <span class="sig-name descname"><span class="pre">tiledMode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#qgis.core.QgsRasterFileWriter.tiledMode" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>Returns whether the output will be tiled.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsRasterFileWriter.setTiledMode" title="qgis.core.QgsRasterFileWriter.setTiledMode"><code class="xref py py-func docutils literal notranslate"><span class="pre">setTiledMode()</span></code></a></p>
+</div>
+<dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>bool</p>
 </dd>
@@ -2960,7 +2949,7 @@ returned formats.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsRasterFileWriter.writeRaster">
-<span class="sig-name descname"><span class="pre">writeRaster</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pipe</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsRasterPipe.html#qgis.core.QgsRasterPipe" title="qgis.core.QgsRasterPipe"><span class="pre">QgsRasterPipe</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">nCols</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nRows</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputExtent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsRectangle.html#qgis.core.QgsRectangle" title="qgis.core.QgsRectangle"><span class="pre">QgsRectangle</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">crs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsCoordinateReferenceSystem.html#qgis.core.QgsCoordinateReferenceSystem" title="qgis.core.QgsCoordinateReferenceSystem"><span class="pre">QgsCoordinateReferenceSystem</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">feedback</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsRasterBlockFeedback.html#qgis.core.QgsRasterBlockFeedback" title="qgis.core.QgsRasterBlockFeedback"><span class="pre">QgsRasterBlockFeedback</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#qgis.core.QgsRasterFileWriter.WriterError" title="qgis.core.QgsRasterFileWriter.WriterError"><span class="pre">QgsRasterFileWriter.WriterError</span></a></span></span><a class="headerlink" href="#qgis.core.QgsRasterFileWriter.writeRaster" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">writeRaster</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pipe</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsRasterPipe.html#qgis.core.QgsRasterPipe" title="qgis.core.QgsRasterPipe"><span class="pre">QgsRasterPipe</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">nCols</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nRows</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputExtent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsRectangle.html#qgis.core.QgsRectangle" title="qgis.core.QgsRectangle"><span class="pre">QgsRectangle</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">crs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsCoordinateReferenceSystem.html#qgis.core.QgsCoordinateReferenceSystem" title="qgis.core.QgsCoordinateReferenceSystem"><span class="pre">QgsCoordinateReferenceSystem</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">feedback</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsRasterBlockFeedback.html#qgis.core.QgsRasterBlockFeedback" title="qgis.core.QgsRasterBlockFeedback"><span class="pre">QgsRasterBlockFeedback</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="Qgis.html#qgis.core.Qgis.RasterFileWriterResult" title="qgis.core.Qgis.RasterFileWriterResult"><span class="pre">Qgis.RasterFileWriterResult</span></a></span></span><a class="headerlink" href="#qgis.core.QgsRasterFileWriter.writeRaster" title="Permalink to this definition">¶</a></dt>
 <dd><p>Write raster file</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2978,7 +2967,7 @@ returned formats.</p>
 <p><span class="versionmodified deprecated">Deprecated since version QGIS: </span>3.8
 use version with transformContext instead</p>
 </div>
-<p>writeRaster(self, pipe: <a class="reference internal" href="QgsRasterPipe.html#qgis.core.QgsRasterPipe" title="qgis.core.QgsRasterPipe"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsRasterPipe</span></code></a>, nCols: int, nRows: int, outputExtent: <a class="reference internal" href="QgsRectangle.html#qgis.core.QgsRectangle" title="qgis.core.QgsRectangle"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsRectangle</span></code></a>, crs: <a class="reference internal" href="QgsCoordinateReferenceSystem.html#qgis.core.QgsCoordinateReferenceSystem" title="qgis.core.QgsCoordinateReferenceSystem"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsCoordinateReferenceSystem</span></code></a>, transformContext: <a class="reference internal" href="QgsCoordinateTransformContext.html#qgis.core.QgsCoordinateTransformContext" title="qgis.core.QgsCoordinateTransformContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsCoordinateTransformContext</span></code></a>, feedback: <a class="reference internal" href="QgsRasterBlockFeedback.html#qgis.core.QgsRasterBlockFeedback" title="qgis.core.QgsRasterBlockFeedback"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsRasterBlockFeedback</span></code></a> = None) -&gt; QgsRasterFileWriter.WriterError
+<p>writeRaster(self, pipe: <a class="reference internal" href="QgsRasterPipe.html#qgis.core.QgsRasterPipe" title="qgis.core.QgsRasterPipe"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsRasterPipe</span></code></a>, nCols: int, nRows: int, outputExtent: <a class="reference internal" href="QgsRectangle.html#qgis.core.QgsRectangle" title="qgis.core.QgsRectangle"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsRectangle</span></code></a>, crs: <a class="reference internal" href="QgsCoordinateReferenceSystem.html#qgis.core.QgsCoordinateReferenceSystem" title="qgis.core.QgsCoordinateReferenceSystem"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsCoordinateReferenceSystem</span></code></a>, transformContext: <a class="reference internal" href="QgsCoordinateTransformContext.html#qgis.core.QgsCoordinateTransformContext" title="qgis.core.QgsCoordinateTransformContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsCoordinateTransformContext</span></code></a>, feedback: <a class="reference internal" href="QgsRasterBlockFeedback.html#qgis.core.QgsRasterBlockFeedback" title="qgis.core.QgsRasterBlockFeedback"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsRasterBlockFeedback</span></code></a> = None) -&gt; Qgis.RasterFileWriterResult
 Write raster file</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2998,7 +2987,7 @@ Write raster file</p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference internal" href="#qgis.core.QgsRasterFileWriter.WriterError" title="qgis.core.QgsRasterFileWriter.WriterError">QgsRasterFileWriter.WriterError</a></p>
+<dd class="field-odd"><p><a class="reference internal" href="Qgis.html#qgis.core.Qgis.RasterFileWriterResult" title="qgis.core.Qgis.RasterFileWriterResult">Qgis.RasterFileWriterResult</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -3016,7 +3005,7 @@ Write raster file</p>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:37 Jun 15, 2023.
+      <span class="lastupdated">Last updated on 02:51 Jun 15, 2023.
       </span></p>
   </div>
 
