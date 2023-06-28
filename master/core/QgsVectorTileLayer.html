@@ -1376,10 +1376,13 @@
 <li class="toctree-l2"><a class="reference internal" href="../gui/Qgs25DRendererWidget.html">Class: Qgs25DRendererWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/Qgs3DSymbolDialog.html">Class: Qgs3DSymbolDialog</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/Qgs3DSymbolWidget.html">Class: Qgs3DSymbolWidget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui/QgsAbstract2DMapController.html">Class: QgsAbstract2DMapController</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui/QgsAbstract3DMapController.html">Class: QgsAbstract3DMapController</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsAbstractDataSourceWidget.html">Class: QgsAbstractDataSourceWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsAbstractDbSourceSelect.html">Class: QgsAbstractDbSourceSelect</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsAbstractFileContentSourceLineEdit.html">Class: QgsAbstractFileContentSourceLineEdit</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsAbstractHistoryProvider.html">Class: QgsAbstractHistoryProvider</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui/QgsAbstractInputController.html">Class: QgsAbstractInputController</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsAbstractMapToolHandler.html">Class: QgsAbstractMapToolHandler</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsAbstractProcessingParameterWidgetWrapper.html">Class: QgsAbstractProcessingParameterWidgetWrapper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsAbstractRelationEditorConfigWidget.html">Class: QgsAbstractRelationEditorConfigWidget</a></li>
@@ -1637,6 +1640,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsIFeatureSelectionManager.html">Class: QgsIFeatureSelectionManager</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsIdentifyMenu.html">Class: QgsIdentifyMenu</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsImageSourceLineEdit.html">Class: QgsImageSourceLineEdit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui/QgsInputControllerManager.html">Class: QgsInputControllerManager</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsInterpolatedLineSymbolLayerWidget.html">Class: QgsInterpolatedLineSymbolLayerWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsInvertedPolygonRendererWidget.html">Class: QgsInvertedPolygonRendererWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsJsonEditWidget.html">Class: QgsJsonEditWidget</a></li>
@@ -2348,7 +2352,10 @@ Constructs a new vector tile layer</p>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileLayer.labeling" title="qgis.core.QgsVectorTileLayer.labeling"><code class="xref py py-obj docutils literal notranslate"><span class="pre">labeling</span></code></a></p></td>
 <td><p>Returns currently assigned labeling</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileLayer.loadDefaultMetadata" title="qgis.core.QgsVectorTileLayer.loadDefaultMetadata"><code class="xref py py-obj docutils literal notranslate"><span class="pre">loadDefaultMetadata</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileLayer.labelsEnabled" title="qgis.core.QgsVectorTileLayer.labelsEnabled"><code class="xref py py-obj docutils literal notranslate"><span class="pre">labelsEnabled</span></code></a></p></td>
+<td><p>Returns whether the layer contains labels which are enabled and should be drawn.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileLayer.loadDefaultMetadata" title="qgis.core.QgsVectorTileLayer.loadDefaultMetadata"><code class="xref py py-obj docutils literal notranslate"><span class="pre">loadDefaultMetadata</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">rtype<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Tuple[str, bool]</p>
@@ -2356,7 +2363,7 @@ Constructs a new vector tile layer</p>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileLayer.loadDefaultStyle" title="qgis.core.QgsVectorTileLayer.loadDefaultStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">loadDefaultStyle</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileLayer.loadDefaultStyle" title="qgis.core.QgsVectorTileLayer.loadDefaultStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">loadDefaultStyle</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">rtype<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Tuple[str, bool]</p>
@@ -2364,10 +2371,10 @@ Constructs a new vector tile layer</p>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileLayer.loadDefaultStyleAndSubLayers" title="qgis.core.QgsVectorTileLayer.loadDefaultStyleAndSubLayers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">loadDefaultStyleAndSubLayers</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileLayer.loadDefaultStyleAndSubLayers" title="qgis.core.QgsVectorTileLayer.loadDefaultStyleAndSubLayers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">loadDefaultStyleAndSubLayers</span></code></a></p></td>
 <td><p>Loads the default style for the layer, and returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the style was successfully loaded.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileLayer.properties" title="qgis.core.QgsVectorTileLayer.properties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">properties</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileLayer.properties" title="qgis.core.QgsVectorTileLayer.properties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">properties</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">rtype<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Qgis.MapLayerProperties</p>
@@ -2375,61 +2382,64 @@ Constructs a new vector tile layer</p>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileLayer.readCommonStyle" title="qgis.core.QgsVectorTileLayer.readCommonStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readCommonStyle</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileLayer.readCommonStyle" title="qgis.core.QgsVectorTileLayer.readCommonStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readCommonStyle</span></code></a></p></td>
 <td><p>Read style data common to all layer types</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileLayer.readCustomProperties" title="qgis.core.QgsVectorTileLayer.readCustomProperties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readCustomProperties</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileLayer.readCustomProperties" title="qgis.core.QgsVectorTileLayer.readCustomProperties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readCustomProperties</span></code></a></p></td>
 <td><p>Read custom properties from project file.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileLayer.readStyleManager" title="qgis.core.QgsVectorTileLayer.readStyleManager"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readStyleManager</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileLayer.readStyleManager" title="qgis.core.QgsVectorTileLayer.readStyleManager"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readStyleManager</span></code></a></p></td>
 <td><p>Read style manager's configuration (if any).</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileLayer.readSymbology" title="qgis.core.QgsVectorTileLayer.readSymbology"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readSymbology</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileLayer.readSymbology" title="qgis.core.QgsVectorTileLayer.readSymbology"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readSymbology</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param node<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileLayer.readXml" title="qgis.core.QgsVectorTileLayer.readXml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readXml</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileLayer.readXml" title="qgis.core.QgsVectorTileLayer.readXml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readXml</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param layerNode<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileLayer.receivers" title="qgis.core.QgsVectorTileLayer.receivers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">receivers</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileLayer.receivers" title="qgis.core.QgsVectorTileLayer.receivers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">receivers</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileLayer.removeSelection" title="qgis.core.QgsVectorTileLayer.removeSelection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeSelection</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileLayer.removeSelection" title="qgis.core.QgsVectorTileLayer.removeSelection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeSelection</span></code></a></p></td>
 <td><p>Clear selection</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileLayer.renderer" title="qgis.core.QgsVectorTileLayer.renderer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">renderer</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileLayer.renderer" title="qgis.core.QgsVectorTileLayer.renderer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">renderer</span></code></a></p></td>
 <td><p>Returns currently assigned renderer</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileLayer.selectByGeometry" title="qgis.core.QgsVectorTileLayer.selectByGeometry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">selectByGeometry</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileLayer.selectByGeometry" title="qgis.core.QgsVectorTileLayer.selectByGeometry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">selectByGeometry</span></code></a></p></td>
 <td><p>Selects features found within the search <code class="docutils literal notranslate"><span class="pre">geometry</span></code> (in layer's coordinates).</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileLayer.selectedFeatureCount" title="qgis.core.QgsVectorTileLayer.selectedFeatureCount"><code class="xref py py-obj docutils literal notranslate"><span class="pre">selectedFeatureCount</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileLayer.selectedFeatureCount" title="qgis.core.QgsVectorTileLayer.selectedFeatureCount"><code class="xref py py-obj docutils literal notranslate"><span class="pre">selectedFeatureCount</span></code></a></p></td>
 <td><p>Returns the number of features that are selected in this layer.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileLayer.selectedFeatures" title="qgis.core.QgsVectorTileLayer.selectedFeatures"><code class="xref py py-obj docutils literal notranslate"><span class="pre">selectedFeatures</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileLayer.selectedFeatures" title="qgis.core.QgsVectorTileLayer.selectedFeatures"><code class="xref py py-obj docutils literal notranslate"><span class="pre">selectedFeatures</span></code></a></p></td>
 <td><p>Returns the list of features currently selected in the layer.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileLayer.sender" title="qgis.core.QgsVectorTileLayer.sender"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sender</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileLayer.sender" title="qgis.core.QgsVectorTileLayer.sender"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sender</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileLayer.senderSignalIndex" title="qgis.core.QgsVectorTileLayer.senderSignalIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">senderSignalIndex</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileLayer.senderSignalIndex" title="qgis.core.QgsVectorTileLayer.senderSignalIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">senderSignalIndex</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileLayer.setError" title="qgis.core.QgsVectorTileLayer.setError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setError</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileLayer.setError" title="qgis.core.QgsVectorTileLayer.setError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setError</span></code></a></p></td>
 <td><p>Sets error message</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileLayer.setExtent" title="qgis.core.QgsVectorTileLayer.setExtent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setExtent</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileLayer.setExtent" title="qgis.core.QgsVectorTileLayer.setExtent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setExtent</span></code></a></p></td>
 <td><p>Sets the extent</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileLayer.setLabeling" title="qgis.core.QgsVectorTileLayer.setLabeling"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setLabeling</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileLayer.setLabeling" title="qgis.core.QgsVectorTileLayer.setLabeling"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setLabeling</span></code></a></p></td>
 <td><p>Sets labeling for the map layer.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileLayer.setLabelsEnabled" title="qgis.core.QgsVectorTileLayer.setLabelsEnabled"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setLabelsEnabled</span></code></a></p></td>
+<td><p>Sets whether labels should be <code class="docutils literal notranslate"><span class="pre">enabled</span></code> for the layer.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsVectorTileLayer.setProviderType" title="qgis.core.QgsVectorTileLayer.setProviderType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setProviderType</span></code></a></p></td>
 <td><p>Sets the <code class="docutils literal notranslate"><span class="pre">providerType</span></code> (provider key)</p></td>
@@ -2667,6 +2677,27 @@ happens.</p>
 <dd class="field-odd"><p><a class="reference internal" href="QgsVectorTileLabeling.html#qgis.core.QgsVectorTileLabeling" title="qgis.core.QgsVectorTileLabeling">QgsVectorTileLabeling</a></p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsVectorTileLayer.labelsEnabled">
+<span class="sig-name descname"><span class="pre">labelsEnabled</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#qgis.core.QgsVectorTileLayer.labelsEnabled" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns whether the layer contains labels which are enabled and should be drawn.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if layer contains enabled labels</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsVectorTileLayer.setLabelsEnabled" title="qgis.core.QgsVectorTileLayer.setLabelsEnabled"><code class="xref py py-func docutils literal notranslate"><span class="pre">setLabelsEnabled()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.34.</span></p>
+</div>
 </dd></dl>
 
 <dl class="py method">
@@ -2982,6 +3013,33 @@ arguments is the optional sequence of the names of the signal’s arguments.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsVectorTileLayer.setLabelsEnabled">
+<span class="sig-name descname"><span class="pre">setLabelsEnabled</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enabled</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsVectorTileLayer.setLabelsEnabled" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets whether labels should be <code class="docutils literal notranslate"><span class="pre">enabled</span></code> for the layer.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Labels will only be rendered if <a class="reference internal" href="#qgis.core.QgsVectorTileLayer.labelsEnabled" title="qgis.core.QgsVectorTileLayer.labelsEnabled"><code class="xref py py-func docutils literal notranslate"><span class="pre">labelsEnabled()</span></code></a> is <code class="docutils literal notranslate"><span class="pre">True</span></code> and a labeling
+object is returned by <a class="reference internal" href="#qgis.core.QgsVectorTileLayer.labeling" title="qgis.core.QgsVectorTileLayer.labeling"><code class="xref py py-func docutils literal notranslate"><span class="pre">labeling()</span></code></a>.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsVectorTileLayer.labelsEnabled" title="qgis.core.QgsVectorTileLayer.labelsEnabled"><code class="xref py py-func docutils literal notranslate"><span class="pre">labelsEnabled()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsVectorTileLayer.labeling" title="qgis.core.QgsVectorTileLayer.labeling"><code class="xref py py-func docutils literal notranslate"><span class="pre">labeling()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.34.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>enabled</strong> (<em>bool</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsVectorTileLayer.setProviderType">
 <span class="sig-name descname"><span class="pre">setProviderType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">providerType</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsVectorTileLayer.setProviderType" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets the <code class="docutils literal notranslate"><span class="pre">providerType</span></code> (provider key)</p>
@@ -3162,7 +3220,7 @@ arguments is the optional sequence of the names of the signal’s arguments.</p>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:37 Jun 28, 2023.
+      <span class="lastupdated">Last updated on 02:31 Jun 28, 2023.
       </span></p>
   </div>
 
