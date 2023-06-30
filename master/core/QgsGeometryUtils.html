@@ -2346,8 +2346,14 @@
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsGeometryUtils.pointContinuesArc" title="qgis.core.QgsGeometryUtils.pointContinuesArc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pointContinuesArc</span></code></a></p></td>
 <td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if point <code class="docutils literal notranslate"><span class="pre">b</span></code> is on the arc formed by points <code class="docutils literal notranslate"><span class="pre">a1</span></code>, <code class="docutils literal notranslate"><span class="pre">a2</span></code>, and <code class="docutils literal notranslate"><span class="pre">a3</span></code>, but not within that arc portion already described by <code class="docutils literal notranslate"><span class="pre">a1</span></code>, <code class="docutils literal notranslate"><span class="pre">a2</span></code> and <code class="docutils literal notranslate"><span class="pre">a3</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsGeometryUtils.pointOnLineWithDistance" title="qgis.core.QgsGeometryUtils.pointOnLineWithDistance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pointOnLineWithDistance</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsGeometryUtils.pointFractionAlongLine" title="qgis.core.QgsGeometryUtils.pointFractionAlongLine"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pointFractionAlongLine</span></code></a></p></td>
+<td><p>Given the line (<code class="docutils literal notranslate"><span class="pre">x1</span></code>, <code class="docutils literal notranslate"><span class="pre">y1</span></code>) to (<code class="docutils literal notranslate"><span class="pre">x2</span></code>, <code class="docutils literal notranslate"><span class="pre">y2</span></code>) and a point (<code class="docutils literal notranslate"><span class="pre">px</span></code>, <code class="docutils literal notranslate"><span class="pre">py</span></code>) returns the fraction of the line length at which the point lies.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsGeometryUtils.pointOnLineWithDistance" title="qgis.core.QgsGeometryUtils.pointOnLineWithDistance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pointOnLineWithDistance</span></code></a></p></td>
 <td><p>Returns a point a specified <code class="docutils literal notranslate"><span class="pre">distance</span></code> toward a second point.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsGeometryUtils.pointsAreCollinear" title="qgis.core.QgsGeometryUtils.pointsAreCollinear"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pointsAreCollinear</span></code></a></p></td>
+<td><p>Given the points (<code class="docutils literal notranslate"><span class="pre">x1</span></code>, <code class="docutils literal notranslate"><span class="pre">y1</span></code>), (<code class="docutils literal notranslate"><span class="pre">x2</span></code>, <code class="docutils literal notranslate"><span class="pre">y2</span></code>) and (<code class="docutils literal notranslate"><span class="pre">x3</span></code>, <code class="docutils literal notranslate"><span class="pre">y3</span></code>) returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if these points can be considered collinear with a specified tolerance <code class="docutils literal notranslate"><span class="pre">epsilon</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsGeometryUtils.projectPointOnSegment" title="qgis.core.QgsGeometryUtils.projectPointOnSegment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">projectPointOnSegment</span></code></a></p></td>
 <td><p>Project the point on a segment</p></td>
@@ -3466,6 +3472,35 @@ angular deviation (in radians) allowed when testing for regular point spacing.</
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsGeometryUtils.pointFractionAlongLine">
+<span class="sig-name descname"><span class="pre">pointFractionAlongLine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">px</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">py</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#qgis.core.QgsGeometryUtils.pointFractionAlongLine" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given the line (<code class="docutils literal notranslate"><span class="pre">x1</span></code>, <code class="docutils literal notranslate"><span class="pre">y1</span></code>) to (<code class="docutils literal notranslate"><span class="pre">x2</span></code>, <code class="docutils literal notranslate"><span class="pre">y2</span></code>) and a point (<code class="docutils literal notranslate"><span class="pre">px</span></code>, <code class="docutils literal notranslate"><span class="pre">py</span></code>) returns the fraction
+of the line length at which the point lies.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>this method requires that the point definitely lies on the line!</p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.32.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x1</strong> (<em>float</em>) – </p></li>
+<li><p><strong>y1</strong> (<em>float</em>) – </p></li>
+<li><p><strong>x2</strong> (<em>float</em>) – </p></li>
+<li><p><strong>y2</strong> (<em>float</em>) – </p></li>
+<li><p><strong>px</strong> (<em>float</em>) – </p></li>
+<li><p><strong>py</strong> (<em>float</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsGeometryUtils.pointOnLineWithDistance">
 <span class="sig-name descname"><span class="pre">pointOnLineWithDistance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">startPoint</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint"><span class="pre">QgsPoint</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">directionPoint</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint"><span class="pre">QgsPoint</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint"><span class="pre">QgsPoint</span></a></span></span><a class="headerlink" href="#qgis.core.QgsGeometryUtils.pointOnLineWithDistance" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a point a specified <code class="docutils literal notranslate"><span class="pre">distance</span></code> toward a second point.</p>
@@ -3479,6 +3514,32 @@ angular deviation (in radians) allowed when testing for regular point spacing.</
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p><a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint">QgsPoint</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsGeometryUtils.pointsAreCollinear">
+<span class="sig-name descname"><span class="pre">pointsAreCollinear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x3</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y3</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epsilon</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#qgis.core.QgsGeometryUtils.pointsAreCollinear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given the points (<code class="docutils literal notranslate"><span class="pre">x1</span></code>, <code class="docutils literal notranslate"><span class="pre">y1</span></code>), (<code class="docutils literal notranslate"><span class="pre">x2</span></code>, <code class="docutils literal notranslate"><span class="pre">y2</span></code>) and (<code class="docutils literal notranslate"><span class="pre">x3</span></code>, <code class="docutils literal notranslate"><span class="pre">y3</span></code>) returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if these
+points can be considered collinear with a specified tolerance <code class="docutils literal notranslate"><span class="pre">epsilon</span></code>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.32.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x1</strong> (<em>float</em>) – </p></li>
+<li><p><strong>y1</strong> (<em>float</em>) – </p></li>
+<li><p><strong>x2</strong> (<em>float</em>) – </p></li>
+<li><p><strong>y2</strong> (<em>float</em>) – </p></li>
+<li><p><strong>x3</strong> (<em>float</em>) – </p></li>
+<li><p><strong>y3</strong> (<em>float</em>) – </p></li>
+<li><p><strong>epsilon</strong> (<em>float</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
 </dd>
 </dl>
 </dd></dl>
@@ -4047,7 +4108,7 @@ points whose z value is closest to the original x/y point, but only the first on
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:35 Jun 30, 2023.
+      <span class="lastupdated">Last updated on 02:34 Jun 30, 2023.
       </span></p>
   </div>
 
