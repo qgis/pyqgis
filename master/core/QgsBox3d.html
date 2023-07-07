@@ -2233,14 +2233,9 @@ extent of a geometry or collection of geometries.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0.</span></p>
 </div>
-<p>QgsBox3d(xmin: float = 0, ymin: float = 0, zmin: float = 0, xmax: float = 0, ymax: float = 0, zmax: float = 0)
-Constructor for <code class="xref py py-class docutils literal notranslate"><span class="pre">QgsBox3D</span></code> which accepts the ranges of x/y/z coordinates.</p>
-<p>QgsBox3d(p1: <a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsPoint</span></code></a>, p2: <a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsPoint</span></code></a>)
-Constructs a <code class="xref py py-class docutils literal notranslate"><span class="pre">QgsBox3D</span></code> from two points representing opposite corners of the box.
-The box is normalized after construction.</p>
-<p>QgsBox3d(rect: <a class="reference internal" href="QgsRectangle.html#qgis.core.QgsRectangle" title="qgis.core.QgsRectangle"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsRectangle</span></code></a>)
-Constructs a <code class="xref py py-class docutils literal notranslate"><span class="pre">QgsBox3D</span></code> from a rectangle.
-Z Minimum and Z Maximum are set to 0.0.</p>
+<p>QgsBox3d(x: Optional[Union[<a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsPoint</span></code></a>, <a class="reference internal" href="QgsRectangle.html#qgis.core.QgsRectangle" title="qgis.core.QgsRectangle"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsRectangle</span></code></a>, float]] = Py_None, y: Optional[<a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsPoint</span></code></a>, float] = Py_None, z: Optional[Union[bool, float]] = Py_None, x2: Optional[Union[bool, float]] = Py_None, y2: Optional[float] = Py_None, z2: Optional[float] = Py_None, n: Optional[bool] = Py_None)
+Constructor for <code class="xref py py-class docutils literal notranslate"><span class="pre">QgsBox3D</span></code> which accepts the ranges of x/y/z coordinates. If <code class="docutils literal notranslate"><span class="pre">normalize</span></code> is <code class="docutils literal notranslate"><span class="pre">False</span></code> then
+the normalization step will not be applied automatically.</p>
 <p>QgsBox3d(<a class="reference internal" href="#qgis.core.QgsBox3d" title="qgis.core.QgsBox3d"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsBox3d</span></code></a>)</p>
 <blockquote>
 <div><table class="autosummary longtable docutils align-default">
@@ -2250,26 +2245,38 @@ Z Minimum and Z Maximum are set to 0.0.</p>
 <p class="rubric">Methods</p>
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsBox3d.contains" title="qgis.core.QgsBox3d.contains"><code class="xref py py-obj docutils literal notranslate"><span class="pre">contains</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsBox3d.combineWith" title="qgis.core.QgsBox3d.combineWith"><code class="xref py py-obj docutils literal notranslate"><span class="pre">combineWith</span></code></a></p></td>
+<td><p>Expands the bbox so that it covers both the original rectangle and the given rectangle.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsBox3d.contains" title="qgis.core.QgsBox3d.contains"><code class="xref py py-obj docutils literal notranslate"><span class="pre">contains</span></code></a></p></td>
 <td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> when box contains other box.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsBox3d.depth" title="qgis.core.QgsBox3d.depth"><code class="xref py py-obj docutils literal notranslate"><span class="pre">depth</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsBox3d.depth" title="qgis.core.QgsBox3d.depth"><code class="xref py py-obj docutils literal notranslate"><span class="pre">depth</span></code></a></p></td>
 <td><p>Returns the depth of the box.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsBox3d.distanceTo" title="qgis.core.QgsBox3d.distanceTo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">distanceTo</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsBox3d.distanceTo" title="qgis.core.QgsBox3d.distanceTo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">distanceTo</span></code></a></p></td>
 <td><p>Returns the smallest distance between the box and the point <code class="docutils literal notranslate"><span class="pre">point</span></code> (returns 0 if the point is inside the box)</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsBox3d.height" title="qgis.core.QgsBox3d.height"><code class="xref py py-obj docutils literal notranslate"><span class="pre">height</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsBox3d.height" title="qgis.core.QgsBox3d.height"><code class="xref py py-obj docutils literal notranslate"><span class="pre">height</span></code></a></p></td>
 <td><p>Returns the height of the box.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsBox3d.intersect" title="qgis.core.QgsBox3d.intersect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">intersect</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsBox3d.intersect" title="qgis.core.QgsBox3d.intersect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">intersect</span></code></a></p></td>
 <td><p>Returns the intersection of this box and another 3D box.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsBox3d.intersects" title="qgis.core.QgsBox3d.intersects"><code class="xref py py-obj docutils literal notranslate"><span class="pre">intersects</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsBox3d.intersects" title="qgis.core.QgsBox3d.intersects"><code class="xref py py-obj docutils literal notranslate"><span class="pre">intersects</span></code></a></p></td>
 <td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if box intersects with another box.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsBox3d.is2d" title="qgis.core.QgsBox3d.is2d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is2d</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsBox3d.is2d" title="qgis.core.QgsBox3d.is2d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is2d</span></code></a></p></td>
 <td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the box can be considered a 2-dimensional box, i.e. it has equal minimum and maximum z values.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsBox3d.is3D" title="qgis.core.QgsBox3d.is3D"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is3D</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the box can be considered a 3-dimensional box, i.e. it has valid minimum and maximum z values.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsBox3d.isEmpty" title="qgis.core.QgsBox3d.isEmpty"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isEmpty</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the box is empty.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsBox3d.isNull" title="qgis.core.QgsBox3d.isNull"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isNull</span></code></a></p></td>
+<td><p>Test if the box is null (all coordinates NaN or after call to <a class="reference internal" href="#qgis.core.QgsBox3d.setMinimal" title="qgis.core.QgsBox3d.setMinimal"><code class="xref py py-func docutils literal notranslate"><span class="pre">setMinimal()</span></code></a>).</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsBox3d.normalize" title="qgis.core.QgsBox3d.normalize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">normalize</span></code></a></p></td>
 <td><p>Normalize the box so it has non-negative width/height/depth.</p></td>
@@ -2277,26 +2284,32 @@ Z Minimum and Z Maximum are set to 0.0.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsBox3d.scale" title="qgis.core.QgsBox3d.scale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale</span></code></a></p></td>
 <td><p>Scale the rectangle around a <code class="docutils literal notranslate"><span class="pre">center</span></code> <a class="reference internal" href="QgsPoint.html#module-QgsPoint" title="QgsPoint"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsPoint</span></code></a>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsBox3d.setXMaximum" title="qgis.core.QgsBox3d.setXMaximum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setXMaximum</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsBox3d.setMinimal" title="qgis.core.QgsBox3d.setMinimal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setMinimal</span></code></a></p></td>
+<td><p>Set a box so that min corner is at std.numeric_limits&lt;double&gt;.max() and max corner is at -std.numeric_limits&lt;double&gt;.max().</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsBox3d.setXMaximum" title="qgis.core.QgsBox3d.setXMaximum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setXMaximum</span></code></a></p></td>
 <td><p>Sets the maximum <code class="docutils literal notranslate"><span class="pre">x</span></code> value.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsBox3d.setXMinimum" title="qgis.core.QgsBox3d.setXMinimum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setXMinimum</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsBox3d.setXMinimum" title="qgis.core.QgsBox3d.setXMinimum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setXMinimum</span></code></a></p></td>
 <td><p>Sets the minimum <code class="docutils literal notranslate"><span class="pre">x</span></code> value.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsBox3d.setYMaximum" title="qgis.core.QgsBox3d.setYMaximum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setYMaximum</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsBox3d.setYMaximum" title="qgis.core.QgsBox3d.setYMaximum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setYMaximum</span></code></a></p></td>
 <td><p>Sets the maximum <code class="docutils literal notranslate"><span class="pre">y</span></code> value.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsBox3d.setYMinimum" title="qgis.core.QgsBox3d.setYMinimum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setYMinimum</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsBox3d.setYMinimum" title="qgis.core.QgsBox3d.setYMinimum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setYMinimum</span></code></a></p></td>
 <td><p>Sets the minimum <code class="docutils literal notranslate"><span class="pre">y</span></code> value.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsBox3d.setZMaximum" title="qgis.core.QgsBox3d.setZMaximum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setZMaximum</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsBox3d.setZMaximum" title="qgis.core.QgsBox3d.setZMaximum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setZMaximum</span></code></a></p></td>
 <td><p>Sets the maximum <code class="docutils literal notranslate"><span class="pre">z</span></code> value.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsBox3d.setZMinimum" title="qgis.core.QgsBox3d.setZMinimum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setZMinimum</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsBox3d.setZMinimum" title="qgis.core.QgsBox3d.setZMinimum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setZMinimum</span></code></a></p></td>
 <td><p>Sets the minimum <code class="docutils literal notranslate"><span class="pre">z</span></code> value.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsBox3d.toRectangle" title="qgis.core.QgsBox3d.toRectangle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">toRectangle</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsBox3d.toRectangle" title="qgis.core.QgsBox3d.toRectangle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">toRectangle</span></code></a></p></td>
 <td><p>Converts the box to a 2D rectangle.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsBox3d.toString" title="qgis.core.QgsBox3d.toString"><code class="xref py py-obj docutils literal notranslate"><span class="pre">toString</span></code></a></p></td>
+<td><p>Returns a string representation of form xmin,ymin,zmin : xmax,ymax,zmax Coordinates will be truncated to the specified precision.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsBox3d.volume" title="qgis.core.QgsBox3d.volume"><code class="xref py py-obj docutils literal notranslate"><span class="pre">volume</span></code></a></p></td>
 <td><p>Returns the volume of the box.</p></td>
@@ -2328,11 +2341,34 @@ Z Minimum and Z Maximum are set to 0.0.</p>
 <tbody>
 </tbody>
 </table>
+<p class="rubric">Attributes</p>
 <table class="autosummary longtable docutils align-default">
 <tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsBox3d.staticMetaObject" title="qgis.core.QgsBox3d.staticMetaObject"><code class="xref py py-obj docutils literal notranslate"><span class="pre">staticMetaObject</span></code></a></p></td>
+<td><p></p></td>
+</tr>
 </tbody>
 </table>
 </div></blockquote>
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsBox3d.combineWith">
+<span class="sig-name descname"><span class="pre">combineWith</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">box</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#qgis.core.QgsBox3d" title="qgis.core.QgsBox3d"><span class="pre">QgsBox3d</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsBox3d.combineWith" title="Permalink to this definition">¶</a></dt>
+<dd><p>Expands the bbox so that it covers both the original rectangle and the given rectangle.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.34.</span></p>
+</div>
+<p>combineWith(self, x: float, y: float, z: float)
+Expands the bbox so that it covers both the original rectangle and the given point.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.34.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>box</strong> (<a class="reference internal" href="#qgis.core.QgsBox3d" title="qgis.core.QgsBox3d"><em>QgsBox3d</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsBox3d.contains">
 <span class="sig-name descname"><span class="pre">contains</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">other</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#qgis.core.QgsBox3d" title="qgis.core.QgsBox3d"><span class="pre">QgsBox3d</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#qgis.core.QgsBox3d.contains" title="Permalink to this definition">¶</a></dt>
@@ -2341,6 +2377,14 @@ Z Minimum and Z Maximum are set to 0.0.</p>
 Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> when box contains a <code class="docutils literal notranslate"><span class="pre">point</span></code>.</p>
 <p>If the point is a 2D point (no z-coordinate), then the containment test
 will be performed on the x/y extent of the box only.</p>
+<p>contains(self, x: float, y: float, z: float) -&gt; bool
+Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> when box contains a point (<code class="docutils literal notranslate"><span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">y</span></code>, <code class="docutils literal notranslate"><span class="pre">z</span></code>).
+A point on the border of the box will also return <code class="docutils literal notranslate"><span class="pre">True</span></code></p>
+<p>If the point is a 2D point (no z-coordinate), then the containment test
+will be performed on the x/y extent of the box only.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.34.</span></p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>other</strong> (<a class="reference internal" href="#qgis.core.QgsBox3d" title="qgis.core.QgsBox3d"><em>QgsBox3d</em></a>) – </p>
@@ -2448,6 +2492,52 @@ it has equal minimum and maximum z values.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsBox3d.is3D">
+<span class="sig-name descname"><span class="pre">is3D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#qgis.core.QgsBox3d.is3D" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the box can be considered a 3-dimensional box, i.e.
+it has valid minimum and maximum z values.
+If the box is not normalized, this returns <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.34.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsBox3d.isEmpty">
+<span class="sig-name descname"><span class="pre">isEmpty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#qgis.core.QgsBox3d.isEmpty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the box is empty.
+An empty box may still be non-null if it contains valid information (e.g. bounding box of a point).</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.34.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsBox3d.isNull">
+<span class="sig-name descname"><span class="pre">isNull</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#qgis.core.QgsBox3d.isNull" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if the box is null (all coordinates NaN or after call to <a class="reference internal" href="#qgis.core.QgsBox3d.setMinimal" title="qgis.core.QgsBox3d.setMinimal"><code class="xref py py-func docutils literal notranslate"><span class="pre">setMinimal()</span></code></a>).
+A null box is also an empty box.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.34.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsBox3d.normalize">
 <span class="sig-name descname"><span class="pre">normalize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsBox3d.normalize" title="Permalink to this definition">¶</a></dt>
 <dd><p>Normalize the box so it has non-negative width/height/depth.</p>
@@ -2474,6 +2564,17 @@ Scale the rectangle around a center coordinates.</p>
 </ul>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsBox3d.setMinimal">
+<span class="sig-name descname"><span class="pre">setMinimal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsBox3d.setMinimal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set a box so that min corner is at std.numeric_limits&lt;double&gt;.max()
+and max corner is at -std.numeric_limits&lt;double&gt;.max().
+It is NOT normalized.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.34.</span></p>
+</div>
 </dd></dl>
 
 <dl class="py method">
@@ -2590,6 +2691,11 @@ Scale the rectangle around a center coordinates.</p>
 </dl>
 </dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.QgsBox3d.staticMetaObject">
+<span class="sig-name descname"><span class="pre">staticMetaObject</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;PyQt5.QtCore.QMetaObject</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#qgis.core.QgsBox3d.staticMetaObject" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsBox3d.toRectangle">
 <span class="sig-name descname"><span class="pre">toRectangle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="QgsRectangle.html#qgis.core.QgsRectangle" title="qgis.core.QgsRectangle"><span class="pre">QgsRectangle</span></a></span></span><a class="headerlink" href="#qgis.core.QgsBox3d.toRectangle" title="Permalink to this definition">¶</a></dt>
@@ -2597,6 +2703,25 @@ Scale the rectangle around a center coordinates.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference internal" href="QgsRectangle.html#qgis.core.QgsRectangle" title="qgis.core.QgsRectangle">QgsRectangle</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsBox3d.toString">
+<span class="sig-name descname"><span class="pre">toString</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">precision</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">16</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#qgis.core.QgsBox3d.toString" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a string representation of form xmin,ymin,zmin : xmax,ymax,zmax
+Coordinates will be truncated to the specified precision.
+If the specified precision is less than 0, a suitable minimum precision is used.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.34.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>precision</strong> (<em>int = 16</em>) – </p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2758,7 +2883,7 @@ Scale the rectangle around a center coordinates.</p>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:42 Jul 07, 2023.
+      <span class="lastupdated">Last updated on 03:21 Jul 07, 2023.
       </span></p>
   </div>
 
