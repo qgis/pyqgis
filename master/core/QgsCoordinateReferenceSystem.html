@@ -2580,22 +2580,25 @@ Copy constructor</p>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsCoordinateReferenceSystem.toWkt" title="qgis.core.QgsCoordinateReferenceSystem.toWkt"><code class="xref py py-obj docutils literal notranslate"><span class="pre">toWkt</span></code></a></p></td>
 <td><p>Returns a WKT representation of this CRS.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsCoordinateReferenceSystem.updateDefinition" title="qgis.core.QgsCoordinateReferenceSystem.updateDefinition"><code class="xref py py-obj docutils literal notranslate"><span class="pre">updateDefinition</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsCoordinateReferenceSystem.type" title="qgis.core.QgsCoordinateReferenceSystem.type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a></p></td>
+<td><p>Returns the type of the CRS.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsCoordinateReferenceSystem.updateDefinition" title="qgis.core.QgsCoordinateReferenceSystem.updateDefinition"><code class="xref py py-obj docutils literal notranslate"><span class="pre">updateDefinition</span></code></a></p></td>
 <td><p>Updates the definition and parameters of the coordinate reference system to their latest values.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsCoordinateReferenceSystem.userFriendlyIdentifier" title="qgis.core.QgsCoordinateReferenceSystem.userFriendlyIdentifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">userFriendlyIdentifier</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsCoordinateReferenceSystem.userFriendlyIdentifier" title="qgis.core.QgsCoordinateReferenceSystem.userFriendlyIdentifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">userFriendlyIdentifier</span></code></a></p></td>
 <td><p>Returns a user friendly identifier for the CRS.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsCoordinateReferenceSystem.validSrsIds" title="qgis.core.QgsCoordinateReferenceSystem.validSrsIds"><code class="xref py py-obj docutils literal notranslate"><span class="pre">validSrsIds</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsCoordinateReferenceSystem.validSrsIds" title="qgis.core.QgsCoordinateReferenceSystem.validSrsIds"><code class="xref py py-obj docutils literal notranslate"><span class="pre">validSrsIds</span></code></a></p></td>
 <td><p>Returns a list of all valid SRS IDs present in the CRS database.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsCoordinateReferenceSystem.validate" title="qgis.core.QgsCoordinateReferenceSystem.validate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">validate</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsCoordinateReferenceSystem.validate" title="qgis.core.QgsCoordinateReferenceSystem.validate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">validate</span></code></a></p></td>
 <td><p>Perform some validation on this CRS.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsCoordinateReferenceSystem.validationHint" title="qgis.core.QgsCoordinateReferenceSystem.validationHint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">validationHint</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsCoordinateReferenceSystem.validationHint" title="qgis.core.QgsCoordinateReferenceSystem.validationHint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">validationHint</span></code></a></p></td>
 <td><p>Gets user hint for validation</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsCoordinateReferenceSystem.writeXml" title="qgis.core.QgsCoordinateReferenceSystem.writeXml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeXml</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsCoordinateReferenceSystem.writeXml" title="qgis.core.QgsCoordinateReferenceSystem.writeXml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeXml</span></code></a></p></td>
 <td><p>Stores state to the given Dom node in the given document.</p></td>
 </tr>
 </tbody>
@@ -3184,6 +3187,10 @@ and <a class="reference internal" href="#qgis.core.QgsCoordinateReferenceSystem.
 <dd><p>Attempts to retrieve datum ensemble details from the CRS.</p>
 <p>If the CRS does not use a datum ensemble then an invalid <a class="reference internal" href="QgsDatumEnsemble.html#module-QgsDatumEnsemble" title="QgsDatumEnsemble"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsDatumEnsemble</span></code></a> will
 be returned.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In the case of a compound crs, this method will always return the datum ensemble for the horizontal component.</p>
+</div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>This method requires PROJ 8.0 or later</p>
@@ -3527,6 +3534,10 @@ plate-fixed.</p>
 <dt class="sig sig-object py" id="qgis.core.QgsCoordinateReferenceSystem.mapUnits">
 <span class="sig-name descname"><span class="pre">mapUnits</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="Qgis.html#qgis.core.Qgis.DistanceUnit" title="qgis.core.Qgis.DistanceUnit"><span class="pre">Qgis.DistanceUnit</span></a></span></span><a class="headerlink" href="#qgis.core.QgsCoordinateReferenceSystem.mapUnits" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the units for the projection used by the CRS.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In the case of a compound CRS, this method will always return the units for the horizontal component.</p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference internal" href="Qgis.html#qgis.core.Qgis.DistanceUnit" title="qgis.core.Qgis.DistanceUnit">Qgis.DistanceUnit</a></p>
@@ -3958,6 +3969,20 @@ This is only used on builds based on Proj &gt;= 6.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsCoordinateReferenceSystem.type">
+<span class="sig-name descname"><span class="pre">type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="Qgis.html#qgis.core.Qgis.CrsType" title="qgis.core.Qgis.CrsType"><span class="pre">Qgis.CrsType</span></a></span></span><a class="headerlink" href="#qgis.core.QgsCoordinateReferenceSystem.type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the type of the CRS.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.34.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="Qgis.html#qgis.core.Qgis.CrsType" title="qgis.core.Qgis.CrsType">Qgis.CrsType</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsCoordinateReferenceSystem.updateDefinition">
 <span class="sig-name descname"><span class="pre">updateDefinition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsCoordinateReferenceSystem.updateDefinition" title="Permalink to this definition">¶</a></dt>
 <dd><p>Updates the definition and parameters of the coordinate reference system to their
@@ -4085,7 +4110,7 @@ are trying to force this CRS to be valid.</p>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:39 Jul 10, 2023.
+      <span class="lastupdated">Last updated on 02:52 Jul 10, 2023.
       </span></p>
   </div>
 
