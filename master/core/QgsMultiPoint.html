@@ -1513,6 +1513,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsConfigureShortcutsDialog.html">Class: QgsConfigureShortcutsDialog</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsCoordinateBoundsPreviewMapWidget.html">Class: QgsCoordinateBoundsPreviewMapWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsCoordinateOperationWidget.html">Class: QgsCoordinateOperationWidget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui/QgsCoordinateReferenceSystemModel.html">Class: QgsCoordinateReferenceSystemModel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui/QgsCoordinateReferenceSystemProxyModel.html">Class: QgsCoordinateReferenceSystemProxyModel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsCptCityColorRampDialog.html">Class: QgsCptCityColorRampDialog</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsCreateAnnotationItemMapToolHandler.html">Class: QgsCreateAnnotationItemMapToolHandler</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsCreateAnnotationItemMapToolInterface.html">Class: QgsCreateAnnotationItemMapToolInterface</a></li>
@@ -2237,6 +2239,22 @@
 </div>
 <p>QgsMultiPoint()
 Constructor for an empty multipoint geometry.</p>
+<p>QgsMultiPoint(points: Sequence[Union[<a class="reference internal" href="QgsPoint.html#qgis.core.QgsPoint" title="qgis.core.QgsPoint"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsPoint</span></code></a>, <a class="reference internal" href="QgsPointXY.html#qgis.core.QgsPointXY" title="qgis.core.QgsPointXY"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsPointXY</span></code></a>, Sequence[float]]])
+Construct a multipoint from a sequence of points (<a class="reference internal" href="QgsPoint.html#module-QgsPoint" title="QgsPoint"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsPoint</span></code></a> objects, <a class="reference internal" href="QgsPointXY.html#module-QgsPointXY" title="QgsPointXY"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsPointXY</span></code></a> objects, or sequences of float values).</p>
+<p>The multipoint Z and M type will be set based on the type of the first point in the sequence.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.34.</span></p>
+</div>
+<p>QgsMultiPoint(x: Iterable[float], y: Iterable[float], z: Iterable[float] = [], m: Iterable[float] = [])
+Construct a multipoint from arrays of coordinates. If the z or m
+arrays are non-empty then the resultant multipoint will have
+z and m types accordingly.
+This constructor is more efficient then calling <a class="reference internal" href="#qgis.core.QgsMultiPoint.addGeometry" title="qgis.core.QgsMultiPoint.addGeometry"><code class="xref py py-func docutils literal notranslate"><span class="pre">addGeometry()</span></code></a> repeatedly.</p>
+<p>If the sizes of <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> are non-equal then the resultant multipoint
+will be created using the minimum size of these arrays.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.34.</span></p>
+</div>
 <p>QgsMultiPoint(<a class="reference internal" href="#qgis.core.QgsMultiPoint" title="qgis.core.QgsMultiPoint"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMultiPoint</span></code></a>)</p>
 <blockquote>
 <div><table class="autosummary longtable docutils align-default">
@@ -2705,7 +2723,7 @@ geometries of different types.</p>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:36 Jul 20, 2023.
+      <span class="lastupdated">Last updated on 02:41 Jul 20, 2023.
       </span></p>
   </div>
 

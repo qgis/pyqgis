@@ -1513,6 +1513,8 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsConfigureShortcutsDialog.html">Class: QgsConfigureShortcutsDialog</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsCoordinateBoundsPreviewMapWidget.html">Class: QgsCoordinateBoundsPreviewMapWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsCoordinateOperationWidget.html">Class: QgsCoordinateOperationWidget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsCoordinateReferenceSystemModel.html">Class: QgsCoordinateReferenceSystemModel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsCoordinateReferenceSystemProxyModel.html">Class: QgsCoordinateReferenceSystemProxyModel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsCptCityColorRampDialog.html">Class: QgsCptCityColorRampDialog</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsCreateAnnotationItemMapToolHandler.html">Class: QgsCreateAnnotationItemMapToolHandler</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsCreateAnnotationItemMapToolInterface.html">Class: QgsCreateAnnotationItemMapToolInterface</a></li>
@@ -2246,8 +2248,11 @@ suitable to use the compact <a class="reference internal" href="QgsProjectionSel
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0.</span></p>
 </div>
-<p>QgsProjectionSelectionTreeWidget(parent: QWidget = None)
-Constructor for QgsProjectionSelectionTreeWidget.</p>
+<p>QgsProjectionSelectionTreeWidget(parent: QWidget = None, filters: Union[QgsCoordinateReferenceSystemProxyModel.Filters, QgsCoordinateReferenceSystemProxyModel.Filter] = QgsCoordinateReferenceSystemProxyModel.FilterHorizontal|QgsCoordinateReferenceSystemProxyModel.FilterCompound)
+Constructor for <a class="reference internal" href="#qgis.gui.QgsProjectionSelectionTreeWidget" title="qgis.gui.QgsProjectionSelectionTreeWidget"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProjectionSelectionTreeWidget</span></code></a>, with the specified <code class="docutils literal notranslate"><span class="pre">parent</span></code> widget.</p>
+<p>Since QGIS 3.34, the optional <code class="docutils literal notranslate"><span class="pre">filter</span></code> argument can be used to specify filters on the systems
+shown in the widget. The default is to show all horizontal and compound CRS in order to match
+the behavior of older QGIS releases. The <code class="docutils literal notranslate"><span class="pre">filter</span></code> can be altered to also include vertical CRS if desired.</p>
 <blockquote>
 <div><table class="autosummary longtable docutils align-default">
 <tbody>
@@ -2317,99 +2322,105 @@ Constructor for QgsProjectionSelectionTreeWidget.</p>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProjectionSelectionTreeWidget.focusInEvent" title="qgis.gui.QgsProjectionSelectionTreeWidget.focusInEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">focusInEvent</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProjectionSelectionTreeWidget.filters" title="qgis.gui.QgsProjectionSelectionTreeWidget.filters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">filters</span></code></a></p></td>
+<td><p>Returns the filters set on the available CRS.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProjectionSelectionTreeWidget.focusInEvent" title="qgis.gui.QgsProjectionSelectionTreeWidget.focusInEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">focusInEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProjectionSelectionTreeWidget.focusNextChild" title="qgis.gui.QgsProjectionSelectionTreeWidget.focusNextChild"><code class="xref py py-obj docutils literal notranslate"><span class="pre">focusNextChild</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProjectionSelectionTreeWidget.focusNextChild" title="qgis.gui.QgsProjectionSelectionTreeWidget.focusNextChild"><code class="xref py py-obj docutils literal notranslate"><span class="pre">focusNextChild</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProjectionSelectionTreeWidget.focusNextPrevChild" title="qgis.gui.QgsProjectionSelectionTreeWidget.focusNextPrevChild"><code class="xref py py-obj docutils literal notranslate"><span class="pre">focusNextPrevChild</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProjectionSelectionTreeWidget.focusNextPrevChild" title="qgis.gui.QgsProjectionSelectionTreeWidget.focusNextPrevChild"><code class="xref py py-obj docutils literal notranslate"><span class="pre">focusNextPrevChild</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProjectionSelectionTreeWidget.focusOutEvent" title="qgis.gui.QgsProjectionSelectionTreeWidget.focusOutEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">focusOutEvent</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProjectionSelectionTreeWidget.focusOutEvent" title="qgis.gui.QgsProjectionSelectionTreeWidget.focusOutEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">focusOutEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProjectionSelectionTreeWidget.focusPreviousChild" title="qgis.gui.QgsProjectionSelectionTreeWidget.focusPreviousChild"><code class="xref py py-obj docutils literal notranslate"><span class="pre">focusPreviousChild</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProjectionSelectionTreeWidget.focusPreviousChild" title="qgis.gui.QgsProjectionSelectionTreeWidget.focusPreviousChild"><code class="xref py py-obj docutils literal notranslate"><span class="pre">focusPreviousChild</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProjectionSelectionTreeWidget.hasValidSelection" title="qgis.gui.QgsProjectionSelectionTreeWidget.hasValidSelection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hasValidSelection</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProjectionSelectionTreeWidget.hasValidSelection" title="qgis.gui.QgsProjectionSelectionTreeWidget.hasValidSelection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hasValidSelection</span></code></a></p></td>
 <td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the current selection in the widget is a valid choice.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProjectionSelectionTreeWidget.hideEvent" title="qgis.gui.QgsProjectionSelectionTreeWidget.hideEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hideEvent</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProjectionSelectionTreeWidget.hideEvent" title="qgis.gui.QgsProjectionSelectionTreeWidget.hideEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hideEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProjectionSelectionTreeWidget.initPainter" title="qgis.gui.QgsProjectionSelectionTreeWidget.initPainter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">initPainter</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProjectionSelectionTreeWidget.initPainter" title="qgis.gui.QgsProjectionSelectionTreeWidget.initPainter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">initPainter</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProjectionSelectionTreeWidget.inputMethodEvent" title="qgis.gui.QgsProjectionSelectionTreeWidget.inputMethodEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">inputMethodEvent</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProjectionSelectionTreeWidget.inputMethodEvent" title="qgis.gui.QgsProjectionSelectionTreeWidget.inputMethodEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">inputMethodEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProjectionSelectionTreeWidget.isSignalConnected" title="qgis.gui.QgsProjectionSelectionTreeWidget.isSignalConnected"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isSignalConnected</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProjectionSelectionTreeWidget.isSignalConnected" title="qgis.gui.QgsProjectionSelectionTreeWidget.isSignalConnected"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isSignalConnected</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProjectionSelectionTreeWidget.keyPressEvent" title="qgis.gui.QgsProjectionSelectionTreeWidget.keyPressEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">keyPressEvent</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProjectionSelectionTreeWidget.keyPressEvent" title="qgis.gui.QgsProjectionSelectionTreeWidget.keyPressEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">keyPressEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProjectionSelectionTreeWidget.keyReleaseEvent" title="qgis.gui.QgsProjectionSelectionTreeWidget.keyReleaseEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">keyReleaseEvent</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProjectionSelectionTreeWidget.keyReleaseEvent" title="qgis.gui.QgsProjectionSelectionTreeWidget.keyReleaseEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">keyReleaseEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProjectionSelectionTreeWidget.leaveEvent" title="qgis.gui.QgsProjectionSelectionTreeWidget.leaveEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">leaveEvent</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProjectionSelectionTreeWidget.leaveEvent" title="qgis.gui.QgsProjectionSelectionTreeWidget.leaveEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">leaveEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProjectionSelectionTreeWidget.metric" title="qgis.gui.QgsProjectionSelectionTreeWidget.metric"><code class="xref py py-obj docutils literal notranslate"><span class="pre">metric</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProjectionSelectionTreeWidget.metric" title="qgis.gui.QgsProjectionSelectionTreeWidget.metric"><code class="xref py py-obj docutils literal notranslate"><span class="pre">metric</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProjectionSelectionTreeWidget.mouseDoubleClickEvent" title="qgis.gui.QgsProjectionSelectionTreeWidget.mouseDoubleClickEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mouseDoubleClickEvent</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProjectionSelectionTreeWidget.mouseDoubleClickEvent" title="qgis.gui.QgsProjectionSelectionTreeWidget.mouseDoubleClickEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mouseDoubleClickEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProjectionSelectionTreeWidget.mouseMoveEvent" title="qgis.gui.QgsProjectionSelectionTreeWidget.mouseMoveEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mouseMoveEvent</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProjectionSelectionTreeWidget.mouseMoveEvent" title="qgis.gui.QgsProjectionSelectionTreeWidget.mouseMoveEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mouseMoveEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProjectionSelectionTreeWidget.mousePressEvent" title="qgis.gui.QgsProjectionSelectionTreeWidget.mousePressEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mousePressEvent</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProjectionSelectionTreeWidget.mousePressEvent" title="qgis.gui.QgsProjectionSelectionTreeWidget.mousePressEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mousePressEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProjectionSelectionTreeWidget.mouseReleaseEvent" title="qgis.gui.QgsProjectionSelectionTreeWidget.mouseReleaseEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mouseReleaseEvent</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProjectionSelectionTreeWidget.mouseReleaseEvent" title="qgis.gui.QgsProjectionSelectionTreeWidget.mouseReleaseEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mouseReleaseEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProjectionSelectionTreeWidget.moveEvent" title="qgis.gui.QgsProjectionSelectionTreeWidget.moveEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">moveEvent</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProjectionSelectionTreeWidget.moveEvent" title="qgis.gui.QgsProjectionSelectionTreeWidget.moveEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">moveEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProjectionSelectionTreeWidget.nativeEvent" title="qgis.gui.QgsProjectionSelectionTreeWidget.nativeEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nativeEvent</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProjectionSelectionTreeWidget.nativeEvent" title="qgis.gui.QgsProjectionSelectionTreeWidget.nativeEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nativeEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProjectionSelectionTreeWidget.paintEvent" title="qgis.gui.QgsProjectionSelectionTreeWidget.paintEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">paintEvent</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProjectionSelectionTreeWidget.paintEvent" title="qgis.gui.QgsProjectionSelectionTreeWidget.paintEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">paintEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProjectionSelectionTreeWidget.previewRect" title="qgis.gui.QgsProjectionSelectionTreeWidget.previewRect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">previewRect</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProjectionSelectionTreeWidget.previewRect" title="qgis.gui.QgsProjectionSelectionTreeWidget.previewRect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">previewRect</span></code></a></p></td>
 <td><p>The initial &quot;preview&quot; rectangle for the bounds overview map.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProjectionSelectionTreeWidget.pushProjectionToFront" title="qgis.gui.QgsProjectionSelectionTreeWidget.pushProjectionToFront"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pushProjectionToFront</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProjectionSelectionTreeWidget.pushProjectionToFront" title="qgis.gui.QgsProjectionSelectionTreeWidget.pushProjectionToFront"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pushProjectionToFront</span></code></a></p></td>
 <td><p>Marks the current selected projection for push to front of recent projections list.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProjectionSelectionTreeWidget.receivers" title="qgis.gui.QgsProjectionSelectionTreeWidget.receivers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">receivers</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProjectionSelectionTreeWidget.receivers" title="qgis.gui.QgsProjectionSelectionTreeWidget.receivers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">receivers</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProjectionSelectionTreeWidget.resizeEvent" title="qgis.gui.QgsProjectionSelectionTreeWidget.resizeEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">resizeEvent</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProjectionSelectionTreeWidget.resizeEvent" title="qgis.gui.QgsProjectionSelectionTreeWidget.resizeEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">resizeEvent</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param event<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProjectionSelectionTreeWidget.sender" title="qgis.gui.QgsProjectionSelectionTreeWidget.sender"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sender</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProjectionSelectionTreeWidget.sender" title="qgis.gui.QgsProjectionSelectionTreeWidget.sender"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sender</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProjectionSelectionTreeWidget.senderSignalIndex" title="qgis.gui.QgsProjectionSelectionTreeWidget.senderSignalIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">senderSignalIndex</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProjectionSelectionTreeWidget.senderSignalIndex" title="qgis.gui.QgsProjectionSelectionTreeWidget.senderSignalIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">senderSignalIndex</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProjectionSelectionTreeWidget.setCrs" title="qgis.gui.QgsProjectionSelectionTreeWidget.setCrs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setCrs</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProjectionSelectionTreeWidget.setCrs" title="qgis.gui.QgsProjectionSelectionTreeWidget.setCrs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setCrs</span></code></a></p></td>
 <td><p>Sets the initial <code class="docutils literal notranslate"><span class="pre">crs</span></code> to show within the dialog.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProjectionSelectionTreeWidget.setFilters" title="qgis.gui.QgsProjectionSelectionTreeWidget.setFilters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setFilters</span></code></a></p></td>
+<td><p>Sets <code class="docutils literal notranslate"><span class="pre">filters</span></code> for the available CRS.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProjectionSelectionTreeWidget.setNotSetText" title="qgis.gui.QgsProjectionSelectionTreeWidget.setNotSetText"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setNotSetText</span></code></a></p></td>
 <td><p>Sets the text to show for the not set option.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProjectionSelectionTreeWidget.setOgcWmsCrsFilter" title="qgis.gui.QgsProjectionSelectionTreeWidget.setOgcWmsCrsFilter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setOgcWmsCrsFilter</span></code></a></p></td>
-<td><p>filters this widget by the given CRSs</p></td>
+<td><p>Filters this widget by the given CRSs.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProjectionSelectionTreeWidget.setPreviewRect" title="qgis.gui.QgsProjectionSelectionTreeWidget.setPreviewRect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setPreviewRect</span></code></a></p></td>
 <td><p>Sets the initial &quot;preview&quot; rectangle for the bounds overview map.</p></td>
@@ -2427,11 +2438,7 @@ Constructor for QgsProjectionSelectionTreeWidget.</p>
 <td><p>Returns whether the bounds preview map is shown.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsProjectionSelectionTreeWidget.showEvent" title="qgis.gui.QgsProjectionSelectionTreeWidget.showEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">showEvent</span></code></a></p></td>
-<td><p><dl class="field-list simple">
-<dt class="field-odd">param event<span class="colon">:</span></dt>
-<dd class="field-odd"><p></p></dd>
-</dl>
-</p></td>
+<td><p></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsProjectionSelectionTreeWidget.showNoProjection" title="qgis.gui.QgsProjectionSelectionTreeWidget.showNoProjection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">showNoProjection</span></code></a></p></td>
 <td><p>Returns whether the &quot;no/invalid&quot; projection option is shown.</p></td>
@@ -2618,6 +2625,24 @@ arguments is the optional sequence of the names of the signal’s arguments.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.gui.QgsProjectionSelectionTreeWidget.filters">
+<span class="sig-name descname"><span class="pre">filters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="QgsCoordinateReferenceSystemProxyModel.html#qgis.gui.QgsCoordinateReferenceSystemProxyModel.Filters" title="qgis.gui.QgsCoordinateReferenceSystemProxyModel.Filters"><span class="pre">QgsCoordinateReferenceSystemProxyModel.Filters</span></a></span></span><a class="headerlink" href="#qgis.gui.QgsProjectionSelectionTreeWidget.filters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the filters set on the available CRS.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.gui.QgsProjectionSelectionTreeWidget.setFilters" title="qgis.gui.QgsProjectionSelectionTreeWidget.setFilters"><code class="xref py py-func docutils literal notranslate"><span class="pre">setFilters()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.34.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsCoordinateReferenceSystemProxyModel.html#qgis.gui.QgsCoordinateReferenceSystemProxyModel.Filters" title="qgis.gui.QgsCoordinateReferenceSystemProxyModel.Filters">QgsCoordinateReferenceSystemProxyModel.Filters</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -2888,6 +2913,24 @@ arguments is the optional sequence of the names of the signal’s arguments.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.gui.QgsProjectionSelectionTreeWidget.setFilters">
+<span class="sig-name descname"><span class="pre">setFilters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filters</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsCoordinateReferenceSystemProxyModel.html#qgis.gui.QgsCoordinateReferenceSystemProxyModel.Filters" title="qgis.gui.QgsCoordinateReferenceSystemProxyModel.Filters"><span class="pre">QgsCoordinateReferenceSystemProxyModel.Filters</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="QgsCoordinateReferenceSystemProxyModel.html#qgis.gui.QgsCoordinateReferenceSystemProxyModel.Filter" title="qgis.gui.QgsCoordinateReferenceSystemProxyModel.Filter"><span class="pre">QgsCoordinateReferenceSystemProxyModel.Filter</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsProjectionSelectionTreeWidget.setFilters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets <code class="docutils literal notranslate"><span class="pre">filters</span></code> for the available CRS.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.gui.QgsProjectionSelectionTreeWidget.filters" title="qgis.gui.QgsProjectionSelectionTreeWidget.filters"><code class="xref py py-func docutils literal notranslate"><span class="pre">filters()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.34.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>filters</strong> (<em>Union</em><em>[</em><a class="reference internal" href="QgsCoordinateReferenceSystemProxyModel.html#qgis.gui.QgsCoordinateReferenceSystemProxyModel.Filters" title="qgis.gui.QgsCoordinateReferenceSystemProxyModel.Filters"><em>QgsCoordinateReferenceSystemProxyModel.Filters</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.gui.QgsProjectionSelectionTreeWidget.setNotSetText">
 <span class="sig-name descname"><span class="pre">setNotSetText</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsProjectionSelectionTreeWidget.setNotSetText" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets the text to show for the not set option. Note that this option is not shown
@@ -2905,20 +2948,15 @@ by default and must be set visible by calling <a class="reference internal" href
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.gui.QgsProjectionSelectionTreeWidget.setOgcWmsCrsFilter">
 <span class="sig-name descname"><span class="pre">setOgcWmsCrsFilter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crsFilter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsProjectionSelectionTreeWidget.setOgcWmsCrsFilter" title="Permalink to this definition">¶</a></dt>
-<dd><p>filters this widget by the given CRSs</p>
+<dd><p>Filters this widget by the given CRSs.</p>
 <p>Sets this widget to filter the available projections to those listed
 by the given Coordinate Reference Systems.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>crsFilter</strong> (<em>Iterable</em><em>[</em><em>str</em><em>]</em>) – a list of OGC Coordinate Reference Systems to filter the
-list of projections by.  This is useful in (e.g.) WMS situations
-where you just want to offer what the WMS server can support.</p>
+<dd class="field-odd"><p><strong>crsFilter</strong> (<em>Iterable</em><em>[</em><em>str</em><em>]</em>) – a list of the authority:id strings for Coordinate Reference Systems to include
+in the widget.</p>
 </dd>
 </dl>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>This function’s behavior is undefined if it is called after the widget is shown.</p>
-</div>
 </dd></dl>
 
 <dl class="py method">
@@ -3001,13 +3039,8 @@ option is selected, calling <a class="reference internal" href="#qgis.gui.QgsPro
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.gui.QgsProjectionSelectionTreeWidget.showEvent">
-<span class="sig-name descname"><span class="pre">showEvent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">event</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">QShowEvent</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsProjectionSelectionTreeWidget.showEvent" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>event</strong> (<em>QShowEvent</em>) – </p>
-</dd>
-</dl>
-</dd></dl>
+<span class="sig-name descname"><span class="pre">showEvent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">QShowEvent</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsProjectionSelectionTreeWidget.showEvent" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.gui.QgsProjectionSelectionTreeWidget.showNoProjection">
@@ -3061,7 +3094,7 @@ option is selected, calling <a class="reference internal" href="#qgis.gui.QgsPro
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:36 Jul 20, 2023.
+      <span class="lastupdated">Last updated on 02:41 Jul 20, 2023.
       </span></p>
   </div>
 
