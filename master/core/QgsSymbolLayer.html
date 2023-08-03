@@ -1315,6 +1315,7 @@
 <li class="toctree-l2"><a class="reference internal" href="SymbolFlags.html">Class: SymbolFlags</a></li>
 <li class="toctree-l2"><a class="reference internal" href="SymbolId.html">Class: SymbolId</a></li>
 <li class="toctree-l2"><a class="reference internal" href="SymbolLayerFlags.html">Class: SymbolLayerFlags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SymbolLayerUserFlags.html">Class: SymbolLayerUserFlags</a></li>
 <li class="toctree-l2"><a class="reference internal" href="SymbolName.html">Class: SymbolName</a></li>
 <li class="toctree-l2"><a class="reference internal" href="SymbolPreviewFlags.html">Class: SymbolPreviewFlags</a></li>
 <li class="toctree-l2"><a class="reference internal" href="SymbolRenderHints.html">Class: SymbolRenderHints</a></li>
@@ -2421,6 +2422,12 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.setSubSymbol" title="qgis.core.QgsSymbolLayer.setSubSymbol"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setSubSymbol</span></code></a></p></td>
 <td><p>Sets layer's subsymbol.</p></td>
 </tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.setUserFlags" title="qgis.core.QgsSymbolLayer.setUserFlags"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setUserFlags</span></code></a></p></td>
+<td><p>Sets user-controlled <code class="docutils literal notranslate"><span class="pre">flags</span></code> which control the symbol layer's behavior.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.shouldRenderUsingSelectionColor" title="qgis.core.QgsSymbolLayer.shouldRenderUsingSelectionColor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shouldRenderUsingSelectionColor</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the symbol layer should be rendered using the selection color from the render context.</p></td>
+</tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.startFeatureRender" title="qgis.core.QgsSymbolLayer.startFeatureRender"><code class="xref py py-obj docutils literal notranslate"><span class="pre">startFeatureRender</span></code></a></p></td>
 <td><p>Called before the layer will be rendered for a particular <code class="docutils literal notranslate"><span class="pre">feature</span></code>.</p></td>
 </tr>
@@ -2453,10 +2460,13 @@
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.usedAttributes" title="qgis.core.QgsSymbolLayer.usedAttributes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">usedAttributes</span></code></a></p></td>
 <td><p>Returns the set of attributes referenced by the layer.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.usesMapUnits" title="qgis.core.QgsSymbolLayer.usesMapUnits"><code class="xref py py-obj docutils literal notranslate"><span class="pre">usesMapUnits</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.userFlags" title="qgis.core.QgsSymbolLayer.userFlags"><code class="xref py py-obj docutils literal notranslate"><span class="pre">userFlags</span></code></a></p></td>
+<td><p>Returns user-controlled flags which control the symbol layer's behavior.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.usesMapUnits" title="qgis.core.QgsSymbolLayer.usesMapUnits"><code class="xref py py-obj docutils literal notranslate"><span class="pre">usesMapUnits</span></code></a></p></td>
 <td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the symbol layer has any components which use map unit based sizes.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.writeDxf" title="qgis.core.QgsSymbolLayer.writeDxf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeDxf</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.writeDxf" title="qgis.core.QgsSymbolLayer.writeDxf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeDxf</span></code></a></p></td>
 <td><p>write as DXF</p></td>
 </tr>
 </tbody>
@@ -3907,6 +3917,42 @@ Defaults to 0</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsSymbolLayer.setUserFlags">
+<span class="sig-name descname"><span class="pre">setUserFlags</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flags</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="Qgis.html#qgis.core.Qgis.SymbolLayerUserFlags" title="qgis.core.Qgis.SymbolLayerUserFlags"><span class="pre">Qgis.SymbolLayerUserFlags</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="Qgis.html#qgis.core.Qgis.SymbolLayerUserFlag" title="qgis.core.Qgis.SymbolLayerUserFlag"><span class="pre">Qgis.SymbolLayerUserFlag</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsSymbolLayer.setUserFlags" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets user-controlled <code class="docutils literal notranslate"><span class="pre">flags</span></code> which control the symbol layer’s behavior.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.userFlags" title="qgis.core.QgsSymbolLayer.userFlags"><code class="xref py py-func docutils literal notranslate"><span class="pre">userFlags()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.34.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>flags</strong> (<em>Union</em><em>[</em><a class="reference internal" href="Qgis.html#qgis.core.Qgis.SymbolLayerUserFlags" title="qgis.core.Qgis.SymbolLayerUserFlags"><em>Qgis.SymbolLayerUserFlags</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsSymbolLayer.shouldRenderUsingSelectionColor">
+<span class="sig-name descname"><span class="pre">shouldRenderUsingSelectionColor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsSymbolRenderContext.html#qgis.core.QgsSymbolRenderContext" title="qgis.core.QgsSymbolRenderContext"><span class="pre">QgsSymbolRenderContext</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#qgis.core.QgsSymbolLayer.shouldRenderUsingSelectionColor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the symbol layer should be rendered using the selection color
+from the render context.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.34.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>context</strong> (<a class="reference internal" href="QgsSymbolRenderContext.html#qgis.core.QgsSymbolRenderContext" title="qgis.core.QgsSymbolRenderContext"><em>QgsSymbolRenderContext</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsSymbolLayer.startFeatureRender">
 <span class="sig-name descname"><span class="pre">startFeatureRender</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsFeature.html#qgis.core.QgsFeature" title="qgis.core.QgsFeature"><span class="pre">QgsFeature</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsRenderContext.html#qgis.core.QgsRenderContext" title="qgis.core.QgsRenderContext"><span class="pre">QgsRenderContext</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsSymbolLayer.startFeatureRender" title="Permalink to this definition">¶</a></dt>
 <dd><p>Called before the layer will be rendered for a particular <code class="docutils literal notranslate"><span class="pre">feature</span></code>.</p>
@@ -4101,6 +4147,24 @@ required by any data defined properties associated with the layer.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsSymbolLayer.userFlags">
+<span class="sig-name descname"><span class="pre">userFlags</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="Qgis.html#qgis.core.Qgis.SymbolLayerUserFlags" title="qgis.core.Qgis.SymbolLayerUserFlags"><span class="pre">Qgis.SymbolLayerUserFlags</span></a></span></span><a class="headerlink" href="#qgis.core.QgsSymbolLayer.userFlags" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns user-controlled flags which control the symbol layer’s behavior.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsSymbolLayer.setUserFlags" title="qgis.core.QgsSymbolLayer.setUserFlags"><code class="xref py py-func docutils literal notranslate"><span class="pre">setUserFlags()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.34.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="Qgis.html#qgis.core.Qgis.SymbolLayerUserFlags" title="qgis.core.Qgis.SymbolLayerUserFlags">Qgis.SymbolLayerUserFlags</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsSymbolLayer.usesMapUnits">
 <span class="sig-name descname"><span class="pre">usesMapUnits</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#qgis.core.QgsSymbolLayer.usesMapUnits" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the symbol layer has any components which use map unit based sizes.</p>
@@ -4147,7 +4211,7 @@ required by any data defined properties associated with the layer.</p>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:34 Aug 03, 2023.
+      <span class="lastupdated">Last updated on 02:34 Aug 03, 2023.
       </span></p>
   </div>
 
