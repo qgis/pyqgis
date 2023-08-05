@@ -1192,10 +1192,13 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsTileRange.html">Class: QgsTileRange</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsTileXYZ.html">Class: QgsTileXYZ</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsTiledMeshDataProvider.html">Class: QgsTiledMeshDataProvider</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsTiledMeshIndex.html">Class: QgsTiledMeshIndex</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsTiledMeshLayer.html">Class: QgsTiledMeshLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsTiledMeshNodeBoundingVolumeBox.html">Class: QgsTiledMeshNodeBoundingVolumeBox</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsTiledMeshNodeBoundingVolumeRegion.html">Class: QgsTiledMeshNodeBoundingVolumeRegion</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsTiledMeshNodeBoundingVolumeSphere.html">Class: QgsTiledMeshNodeBoundingVolumeSphere</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsTiledMeshRequest.html">Class: QgsTiledMeshRequest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsTiledMeshTile.html">Class: QgsTiledMeshTile</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsTolerance.html">Class: QgsTolerance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsTopologyPreservingSimplifier.html">Class: QgsTopologyPreservingSimplifier</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsTracer.html">Class: QgsTracer</a></li>
@@ -1335,6 +1338,7 @@
 <li class="toctree-l2"><a class="reference internal" href="TextFormatXML.html">Class: TextFormatXML</a></li>
 <li class="toctree-l2"><a class="reference internal" href="TextRendererFlags.html">Class: TextRendererFlags</a></li>
 <li class="toctree-l2"><a class="reference internal" href="TiledMeshProviderCapabilities.html">Class: TiledMeshProviderCapabilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TiledMeshRequestFlags.html">Class: TiledMeshRequestFlags</a></li>
 <li class="toctree-l2"><a class="reference internal" href="USER_CRS_START_ID.html">Class: USER_CRS_START_ID</a></li>
 <li class="toctree-l2"><a class="reference internal" href="VectorDataProviderAttributeEditCapabilities.html">Class: VectorDataProviderAttributeEditCapabilities</a></li>
 <li class="toctree-l2"><a class="reference internal" href="VectorFileWriterCapabilities.html">Class: VectorFileWriterCapabilities</a></li>
@@ -2251,6 +2255,8 @@
 Constructor for a null oriented box.</p>
 <p>QgsOrientedBox3D(center: Iterable[float], halfAxes: Iterable[float])
 Constructor for a oriented box, with a specified center and half axes matrix.</p>
+<p>QgsOrientedBox3D(center: <a class="reference internal" href="QgsVector3D.html#qgis.core.QgsVector3D" title="qgis.core.QgsVector3D"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsVector3D</span></code></a>, halfAxes: Iterable[QgsVector3D])
+Constructor for a oriented box, with a specified center and half axes matrix.</p>
 <p>QgsOrientedBox3D(<a class="reference internal" href="#qgis.core.QgsOrientedBox3D" title="qgis.core.QgsOrientedBox3D"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsOrientedBox3D</span></code></a>)</p>
 <blockquote>
 <div><table class="autosummary longtable docutils align-default">
@@ -2260,34 +2266,43 @@ Constructor for a oriented box, with a specified center and half axes matrix.</p
 <p class="rubric">Methods</p>
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsOrientedBox3D.centerX" title="qgis.core.QgsOrientedBox3D.centerX"><code class="xref py py-obj docutils literal notranslate"><span class="pre">centerX</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsOrientedBox3D.center" title="qgis.core.QgsOrientedBox3D.center"><code class="xref py py-obj docutils literal notranslate"><span class="pre">center</span></code></a></p></td>
+<td><p>Returns the vector to the center of the box.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsOrientedBox3D.centerX" title="qgis.core.QgsOrientedBox3D.centerX"><code class="xref py py-obj docutils literal notranslate"><span class="pre">centerX</span></code></a></p></td>
 <td><p>Returns the center x-coordinate.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsOrientedBox3D.centerY" title="qgis.core.QgsOrientedBox3D.centerY"><code class="xref py py-obj docutils literal notranslate"><span class="pre">centerY</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsOrientedBox3D.centerY" title="qgis.core.QgsOrientedBox3D.centerY"><code class="xref py py-obj docutils literal notranslate"><span class="pre">centerY</span></code></a></p></td>
 <td><p>Returns the center y-coordinate.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsOrientedBox3D.centerZ" title="qgis.core.QgsOrientedBox3D.centerZ"><code class="xref py py-obj docutils literal notranslate"><span class="pre">centerZ</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsOrientedBox3D.centerZ" title="qgis.core.QgsOrientedBox3D.centerZ"><code class="xref py py-obj docutils literal notranslate"><span class="pre">centerZ</span></code></a></p></td>
 <td><p>Returns the center z-coordinate.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsOrientedBox3D.corners" title="qgis.core.QgsOrientedBox3D.corners"><code class="xref py py-obj docutils literal notranslate"><span class="pre">corners</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsOrientedBox3D.corners" title="qgis.core.QgsOrientedBox3D.corners"><code class="xref py py-obj docutils literal notranslate"><span class="pre">corners</span></code></a></p></td>
 <td><p>Returns an array of all corners as 3D vectors.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsOrientedBox3D.extent" title="qgis.core.QgsOrientedBox3D.extent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">extent</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsOrientedBox3D.extent" title="qgis.core.QgsOrientedBox3D.extent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">extent</span></code></a></p></td>
 <td><p>Returns the overall bounding box of the object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsOrientedBox3D.fromBox3D" title="qgis.core.QgsOrientedBox3D.fromBox3D"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fromBox3D</span></code></a></p></td>
+<td><p>Constructs an oriented box from an axis-aligned bounding box.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsOrientedBox3D.halfAxes" title="qgis.core.QgsOrientedBox3D.halfAxes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">halfAxes</span></code></a></p></td>
 <td><p>Returns the half axes matrix;</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsOrientedBox3D.isNull" title="qgis.core.QgsOrientedBox3D.isNull"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isNull</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsOrientedBox3D.intersects" title="qgis.core.QgsOrientedBox3D.intersects"><code class="xref py py-obj docutils literal notranslate"><span class="pre">intersects</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the box intersects the <code class="docutils literal notranslate"><span class="pre">other</span></code> box.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsOrientedBox3D.isNull" title="qgis.core.QgsOrientedBox3D.isNull"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isNull</span></code></a></p></td>
 <td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the box is a null box.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsOrientedBox3D.reprojectedExtent" title="qgis.core.QgsOrientedBox3D.reprojectedExtent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reprojectedExtent</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsOrientedBox3D.reprojectedExtent" title="qgis.core.QgsOrientedBox3D.reprojectedExtent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reprojectedExtent</span></code></a></p></td>
 <td><p>Reprojects corners of this box using the given coordinate <code class="docutils literal notranslate"><span class="pre">transform</span></code> and returns axis-aligned box containing reprojected corners.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsOrientedBox3D.size" title="qgis.core.QgsOrientedBox3D.size"><code class="xref py py-obj docutils literal notranslate"><span class="pre">size</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsOrientedBox3D.size" title="qgis.core.QgsOrientedBox3D.size"><code class="xref py py-obj docutils literal notranslate"><span class="pre">size</span></code></a></p></td>
 <td><p>Returns size of sides of the box.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsOrientedBox3D.transformed" title="qgis.core.QgsOrientedBox3D.transformed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">transformed</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsOrientedBox3D.transformed" title="qgis.core.QgsOrientedBox3D.transformed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">transformed</span></code></a></p></td>
 <td><p>Returns box transformed by a 4x4 matrix.</p></td>
 </tr>
 </tbody>
@@ -2301,6 +2316,17 @@ Constructor for a oriented box, with a specified center and half axes matrix.</p
 </tbody>
 </table>
 </div></blockquote>
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsOrientedBox3D.center">
+<span class="sig-name descname"><span class="pre">center</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="QgsVector3D.html#qgis.core.QgsVector3D" title="qgis.core.QgsVector3D"><span class="pre">QgsVector3D</span></a></span></span><a class="headerlink" href="#qgis.core.QgsOrientedBox3D.center" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the vector to the center of the box.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsVector3D.html#qgis.core.QgsVector3D" title="qgis.core.QgsVector3D">QgsVector3D</a></p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsOrientedBox3D.centerX">
 <span class="sig-name descname"><span class="pre">centerX</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#qgis.core.QgsOrientedBox3D.centerX" title="Permalink to this definition">¶</a></dt>
@@ -2381,12 +2407,40 @@ Constructor for a oriented box, with a specified center and half axes matrix.</p
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsOrientedBox3D.fromBox3D">
+<span class="sig-name descname"><span class="pre">fromBox3D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">box</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsBox3D.html#qgis.core.QgsBox3D" title="qgis.core.QgsBox3D"><span class="pre">QgsBox3D</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#qgis.core.QgsOrientedBox3D" title="qgis.core.QgsOrientedBox3D"><span class="pre">QgsOrientedBox3D</span></a></span></span><a class="headerlink" href="#qgis.core.QgsOrientedBox3D.fromBox3D" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs an oriented box from an axis-aligned bounding box.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>box</strong> (<a class="reference internal" href="QgsBox3D.html#qgis.core.QgsBox3D" title="qgis.core.QgsBox3D"><em>QgsBox3D</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#qgis.core.QgsOrientedBox3D" title="qgis.core.QgsOrientedBox3D">QgsOrientedBox3D</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsOrientedBox3D.halfAxes">
 <span class="sig-name descname"><span class="pre">halfAxes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qgis.core.QgsOrientedBox3D.halfAxes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the half axes matrix;</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>List[float]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsOrientedBox3D.intersects">
+<span class="sig-name descname"><span class="pre">intersects</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">other</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#qgis.core.QgsOrientedBox3D" title="qgis.core.QgsOrientedBox3D"><span class="pre">QgsOrientedBox3D</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#qgis.core.QgsOrientedBox3D.intersects" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the box intersects the <code class="docutils literal notranslate"><span class="pre">other</span></code> box.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>other</strong> (<a class="reference internal" href="#qgis.core.QgsOrientedBox3D" title="qgis.core.QgsOrientedBox3D"><em>QgsOrientedBox3D</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2458,7 +2512,7 @@ and returns axis-aligned box containing reprojected corners.</p>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:33 Aug 05, 2023.
+      <span class="lastupdated">Last updated on 03:10 Aug 05, 2023.
       </span></p>
   </div>
 

@@ -1192,10 +1192,13 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsTileRange.html">Class: QgsTileRange</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsTileXYZ.html">Class: QgsTileXYZ</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsTiledMeshDataProvider.html">Class: QgsTiledMeshDataProvider</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsTiledMeshIndex.html">Class: QgsTiledMeshIndex</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsTiledMeshLayer.html">Class: QgsTiledMeshLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsTiledMeshNodeBoundingVolumeBox.html">Class: QgsTiledMeshNodeBoundingVolumeBox</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsTiledMeshNodeBoundingVolumeRegion.html">Class: QgsTiledMeshNodeBoundingVolumeRegion</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsTiledMeshNodeBoundingVolumeSphere.html">Class: QgsTiledMeshNodeBoundingVolumeSphere</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsTiledMeshRequest.html">Class: QgsTiledMeshRequest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsTiledMeshTile.html">Class: QgsTiledMeshTile</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsTolerance.html">Class: QgsTolerance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsTopologyPreservingSimplifier.html">Class: QgsTopologyPreservingSimplifier</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsTracer.html">Class: QgsTracer</a></li>
@@ -1335,6 +1338,7 @@
 <li class="toctree-l2"><a class="reference internal" href="TextFormatXML.html">Class: TextFormatXML</a></li>
 <li class="toctree-l2"><a class="reference internal" href="TextRendererFlags.html">Class: TextRendererFlags</a></li>
 <li class="toctree-l2"><a class="reference internal" href="TiledMeshProviderCapabilities.html">Class: TiledMeshProviderCapabilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TiledMeshRequestFlags.html">Class: TiledMeshRequestFlags</a></li>
 <li class="toctree-l2"><a class="reference internal" href="USER_CRS_START_ID.html">Class: USER_CRS_START_ID</a></li>
 <li class="toctree-l2"><a class="reference internal" href="VectorDataProviderAttributeEditCapabilities.html">Class: VectorDataProviderAttributeEditCapabilities</a></li>
 <li class="toctree-l2"><a class="reference internal" href="VectorFileWriterCapabilities.html">Class: VectorFileWriterCapabilities</a></li>
@@ -2266,11 +2270,17 @@ the normalization step will not be applied automatically.</p>
 <p class="rubric">Methods</p>
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsBox3D.combineWith" title="qgis.core.QgsBox3D.combineWith"><code class="xref py py-obj docutils literal notranslate"><span class="pre">combineWith</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsBox3D.center" title="qgis.core.QgsBox3D.center"><code class="xref py py-obj docutils literal notranslate"><span class="pre">center</span></code></a></p></td>
+<td><p>Returns the center of the box as a vector.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsBox3D.combineWith" title="qgis.core.QgsBox3D.combineWith"><code class="xref py py-obj docutils literal notranslate"><span class="pre">combineWith</span></code></a></p></td>
 <td><p>Expands the bbox so that it covers both the original rectangle and the given rectangle.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsBox3D.contains" title="qgis.core.QgsBox3D.contains"><code class="xref py py-obj docutils literal notranslate"><span class="pre">contains</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsBox3D.contains" title="qgis.core.QgsBox3D.contains"><code class="xref py py-obj docutils literal notranslate"><span class="pre">contains</span></code></a></p></td>
 <td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> when box contains other box.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsBox3D.corners" title="qgis.core.QgsBox3D.corners"><code class="xref py py-obj docutils literal notranslate"><span class="pre">corners</span></code></a></p></td>
+<td><p>Returns an array of all box corners as 3D vectors.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsBox3D.depth" title="qgis.core.QgsBox3D.depth"><code class="xref py py-obj docutils literal notranslate"><span class="pre">depth</span></code></a></p></td>
 <td><p>Returns the depth of the box.</p></td>
@@ -2372,6 +2382,20 @@ the normalization step will not be applied automatically.</p>
 </table>
 </div></blockquote>
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsBox3D.center">
+<span class="sig-name descname"><span class="pre">center</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="QgsVector3D.html#qgis.core.QgsVector3D" title="qgis.core.QgsVector3D"><span class="pre">QgsVector3D</span></a></span></span><a class="headerlink" href="#qgis.core.QgsBox3D.center" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the center of the box as a vector.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.34.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsVector3D.html#qgis.core.QgsVector3D" title="qgis.core.QgsVector3D">QgsVector3D</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsBox3D.combineWith">
 <span class="sig-name descname"><span class="pre">combineWith</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">box</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#qgis.core.QgsBox3D" title="qgis.core.QgsBox3D"><span class="pre">QgsBox3D</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsBox3D.combineWith" title="Permalink to this definition">¶</a></dt>
 <dd><p>Expands the bbox so that it covers both the original rectangle and the given rectangle.</p>
@@ -2412,6 +2436,17 @@ will be performed on the x/y extent of the box only.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsBox3D.corners">
+<span class="sig-name descname"><span class="pre">corners</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="QgsVector3D.html#qgis.core.QgsVector3D" title="qgis.core.QgsVector3D"><span class="pre">QgsVector3D</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qgis.core.QgsBox3D.corners" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns an array of all box corners as 3D vectors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List[<a class="reference internal" href="QgsVector3D.html#qgis.core.QgsVector3D" title="qgis.core.QgsVector3D">QgsVector3D</a>]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2904,7 +2939,7 @@ If the specified precision is less than 0, a suitable minimum precision is used.
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:33 Aug 05, 2023.
+      <span class="lastupdated">Last updated on 03:10 Aug 05, 2023.
       </span></p>
   </div>
 

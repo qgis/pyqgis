@@ -1192,10 +1192,13 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsTileRange.html">Class: QgsTileRange</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsTileXYZ.html">Class: QgsTileXYZ</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsTiledMeshDataProvider.html">Class: QgsTiledMeshDataProvider</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsTiledMeshIndex.html">Class: QgsTiledMeshIndex</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsTiledMeshLayer.html">Class: QgsTiledMeshLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsTiledMeshNodeBoundingVolumeBox.html">Class: QgsTiledMeshNodeBoundingVolumeBox</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsTiledMeshNodeBoundingVolumeRegion.html">Class: QgsTiledMeshNodeBoundingVolumeRegion</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsTiledMeshNodeBoundingVolumeSphere.html">Class: QgsTiledMeshNodeBoundingVolumeSphere</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsTiledMeshRequest.html">Class: QgsTiledMeshRequest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsTiledMeshTile.html">Class: QgsTiledMeshTile</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsTolerance.html">Class: QgsTolerance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsTopologyPreservingSimplifier.html">Class: QgsTopologyPreservingSimplifier</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsTracer.html">Class: QgsTracer</a></li>
@@ -1335,6 +1338,7 @@
 <li class="toctree-l2"><a class="reference internal" href="TextFormatXML.html">Class: TextFormatXML</a></li>
 <li class="toctree-l2"><a class="reference internal" href="TextRendererFlags.html">Class: TextRendererFlags</a></li>
 <li class="toctree-l2"><a class="reference internal" href="TiledMeshProviderCapabilities.html">Class: TiledMeshProviderCapabilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TiledMeshRequestFlags.html">Class: TiledMeshRequestFlags</a></li>
 <li class="toctree-l2"><a class="reference internal" href="USER_CRS_START_ID.html">Class: USER_CRS_START_ID</a></li>
 <li class="toctree-l2"><a class="reference internal" href="VectorDataProviderAttributeEditCapabilities.html">Class: VectorDataProviderAttributeEditCapabilities</a></li>
 <li class="toctree-l2"><a class="reference internal" href="VectorFileWriterCapabilities.html">Class: VectorFileWriterCapabilities</a></li>
@@ -2258,6 +2262,12 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractTiledMeshNodeBoundingVolume.clone" title="qgis.core.QgsAbstractTiledMeshNodeBoundingVolume.clone"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clone</span></code></a></p></td>
 <td><p>Returns a clone of the volume.</p></td>
 </tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractTiledMeshNodeBoundingVolume.intersects" title="qgis.core.QgsAbstractTiledMeshNodeBoundingVolume.intersects"><code class="xref py py-obj docutils literal notranslate"><span class="pre">intersects</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if this bounds intersects the specified <code class="docutils literal notranslate"><span class="pre">box</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractTiledMeshNodeBoundingVolume.transform" title="qgis.core.QgsAbstractTiledMeshNodeBoundingVolume.transform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">transform</span></code></a></p></td>
+<td><p>Applies a <code class="docutils literal notranslate"><span class="pre">transform</span></code> to the bounding volume.</p></td>
+</tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractTiledMeshNodeBoundingVolume.type" title="qgis.core.QgsAbstractTiledMeshNodeBoundingVolume.type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a></p></td>
 <td><p>Returns the type of the volume;</p></td>
 </tr>
@@ -2323,6 +2333,36 @@ to be transformed into a specific destination CRS, in order to correctly handle 
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsAbstractTiledMeshNodeBoundingVolume.intersects">
+<span class="sig-name descname"><span class="pre">intersects</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">box</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsOrientedBox3D.html#qgis.core.QgsOrientedBox3D" title="qgis.core.QgsOrientedBox3D"><span class="pre">QgsOrientedBox3D</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#qgis.core.QgsAbstractTiledMeshNodeBoundingVolume.intersects" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if this bounds intersects the specified <code class="docutils literal notranslate"><span class="pre">box</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>box</strong> (<a class="reference internal" href="QgsOrientedBox3D.html#qgis.core.QgsOrientedBox3D" title="qgis.core.QgsOrientedBox3D"><em>QgsOrientedBox3D</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsAbstractTiledMeshNodeBoundingVolume.transform">
+<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsMatrix4x4.html#qgis.core.QgsMatrix4x4" title="qgis.core.QgsMatrix4x4"><span class="pre">QgsMatrix4x4</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsAbstractTiledMeshNodeBoundingVolume.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies a <code class="docutils literal notranslate"><span class="pre">transform</span></code> to the bounding volume.</p>
+<p>The actual result of transforming a bounding volume depends on subclass specific logic. For instance:</p>
+<ul class="simple">
+<li><p>transforming a <a class="reference internal" href="QgsTiledMeshNodeBoundingVolumeRegion.html#module-QgsTiledMeshNodeBoundingVolumeRegion" title="QgsTiledMeshNodeBoundingVolumeRegion"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsTiledMeshNodeBoundingVolumeRegion</span></code></a> results in no change to the region</p></li>
+<li><p>transforming a <a class="reference internal" href="QgsTiledMeshNodeBoundingVolumeSphere.html#module-QgsTiledMeshNodeBoundingVolumeSphere" title="QgsTiledMeshNodeBoundingVolumeSphere"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsTiledMeshNodeBoundingVolumeSphere</span></code></a> causes the radius to be multiplied by the maximum length of the transform scales</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>transform</strong> (<a class="reference internal" href="QgsMatrix4x4.html#qgis.core.QgsMatrix4x4" title="qgis.core.QgsMatrix4x4"><em>QgsMatrix4x4</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsAbstractTiledMeshNodeBoundingVolume.type">
 <span class="sig-name descname"><span class="pre">type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="Qgis.html#qgis.core.Qgis.TiledMeshBoundingVolumeType" title="qgis.core.Qgis.TiledMeshBoundingVolumeType"><span class="pre">Qgis.TiledMeshBoundingVolumeType</span></a></span></span><a class="headerlink" href="#qgis.core.QgsAbstractTiledMeshNodeBoundingVolume.type" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the type of the volume;</p>
@@ -2346,7 +2386,7 @@ to be transformed into a specific destination CRS, in order to correctly handle 
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:33 Aug 05, 2023.
+      <span class="lastupdated">Last updated on 03:10 Aug 05, 2023.
       </span></p>
   </div>
 
