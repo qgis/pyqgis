@@ -22,7 +22,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Class: QgsTiledSceneRequest" href="QgsTiledSceneRequest.html" />
+    <link rel="next" title="Class: QgsTiledSceneRenderContext" href="QgsTiledSceneRenderContext.html" />
     <link rel="prev" title="Class: QgsTiledSceneIndex" href="QgsTiledSceneIndex.html" /> 
 </head>
 
@@ -1197,7 +1197,13 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsTiledSceneDataProvider.html">Class: QgsTiledSceneDataProvider</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsTiledSceneIndex.html">Class: QgsTiledSceneIndex</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Class: QgsTiledSceneLayer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsTiledSceneRenderContext.html">Class: QgsTiledSceneRenderContext</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsTiledSceneRenderer.html">Class: QgsTiledSceneRenderer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsTiledSceneRendererAbstractMetadata.html">Class: QgsTiledSceneRendererAbstractMetadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsTiledSceneRendererMetadata.html">Class: QgsTiledSceneRendererMetadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsTiledSceneRendererRegistry.html">Class: QgsTiledSceneRendererRegistry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsTiledSceneRequest.html">Class: QgsTiledSceneRequest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsTiledSceneTextureRenderer.html">Class: QgsTiledSceneTextureRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsTiledSceneTile.html">Class: QgsTiledSceneTile</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsTolerance.html">Class: QgsTolerance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsTopologyPreservingSimplifier.html">Class: QgsTopologyPreservingSimplifier</a></li>
@@ -2034,6 +2040,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsTextFormatWidget.html">Class: QgsTextFormatWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsTextPreview.html">Class: QgsTextPreview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsTextWidgetWrapper.html">Class: QgsTextWidgetWrapper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui/QgsTiledSceneRendererPropertiesWidget.html">Class: QgsTiledSceneRendererPropertiesWidget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui/QgsTiledSceneRendererWidget.html">Class: QgsTiledSceneRendererWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsTimeEdit.html">Class: QgsTimeEdit</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsToolTipComboBox.html">Class: QgsToolTipComboBox</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsTransformWidget.html">Class: QgsTransformWidget</a></li>
@@ -2334,7 +2342,7 @@ Constructor for QgsTiledSceneLayer.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsTiledSceneLayer.isSignalConnected" title="qgis.core.QgsTiledSceneLayer.isSignalConnected"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isSignalConnected</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsTiledSceneLayer.loadDefaultStyle" title="qgis.core.QgsTiledSceneLayer.loadDefaultStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">loadDefaultStyle</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsTiledSceneLayer.loadDefaultMetadata" title="qgis.core.QgsTiledSceneLayer.loadDefaultMetadata"><code class="xref py py-obj docutils literal notranslate"><span class="pre">loadDefaultMetadata</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">rtype<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Tuple[str, bool]</p>
@@ -2342,38 +2350,49 @@ Constructor for QgsTiledSceneLayer.</p>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsTiledSceneLayer.readCommonStyle" title="qgis.core.QgsTiledSceneLayer.readCommonStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readCommonStyle</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsTiledSceneLayer.loadDefaultStyle" title="qgis.core.QgsTiledSceneLayer.loadDefaultStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">loadDefaultStyle</span></code></a></p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">rtype<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tuple[str, bool]</p>
+</dd>
+</dl>
+</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsTiledSceneLayer.readCommonStyle" title="qgis.core.QgsTiledSceneLayer.readCommonStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readCommonStyle</span></code></a></p></td>
 <td><p>Read style data common to all layer types</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsTiledSceneLayer.readCustomProperties" title="qgis.core.QgsTiledSceneLayer.readCustomProperties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readCustomProperties</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsTiledSceneLayer.readCustomProperties" title="qgis.core.QgsTiledSceneLayer.readCustomProperties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readCustomProperties</span></code></a></p></td>
 <td><p>Read custom properties from project file.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsTiledSceneLayer.readStyle" title="qgis.core.QgsTiledSceneLayer.readStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readStyle</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsTiledSceneLayer.readStyle" title="qgis.core.QgsTiledSceneLayer.readStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readStyle</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param node<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsTiledSceneLayer.readStyleManager" title="qgis.core.QgsTiledSceneLayer.readStyleManager"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readStyleManager</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsTiledSceneLayer.readStyleManager" title="qgis.core.QgsTiledSceneLayer.readStyleManager"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readStyleManager</span></code></a></p></td>
 <td><p>Read style manager's configuration (if any).</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsTiledSceneLayer.readSymbology" title="qgis.core.QgsTiledSceneLayer.readSymbology"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readSymbology</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsTiledSceneLayer.readSymbology" title="qgis.core.QgsTiledSceneLayer.readSymbology"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readSymbology</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param node<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsTiledSceneLayer.readXml" title="qgis.core.QgsTiledSceneLayer.readXml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readXml</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsTiledSceneLayer.readXml" title="qgis.core.QgsTiledSceneLayer.readXml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readXml</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param layerNode<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsTiledSceneLayer.receivers" title="qgis.core.QgsTiledSceneLayer.receivers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">receivers</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsTiledSceneLayer.receivers" title="qgis.core.QgsTiledSceneLayer.receivers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">receivers</span></code></a></p></td>
 <td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsTiledSceneLayer.renderer" title="qgis.core.QgsTiledSceneLayer.renderer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">renderer</span></code></a></p></td>
+<td><p>Returns the 2D renderer for the tiled scene.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsTiledSceneLayer.sender" title="qgis.core.QgsTiledSceneLayer.sender"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sender</span></code></a></p></td>
 <td><p></p></td>
@@ -2390,43 +2409,46 @@ Constructor for QgsTiledSceneLayer.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsTiledSceneLayer.setProviderType" title="qgis.core.QgsTiledSceneLayer.setProviderType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setProviderType</span></code></a></p></td>
 <td><p>Sets the <code class="docutils literal notranslate"><span class="pre">providerType</span></code> (provider key)</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsTiledSceneLayer.setTransformContext" title="qgis.core.QgsTiledSceneLayer.setTransformContext"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setTransformContext</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsTiledSceneLayer.setRenderer" title="qgis.core.QgsTiledSceneLayer.setRenderer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setRenderer</span></code></a></p></td>
+<td><p>Sets the 2D <code class="docutils literal notranslate"><span class="pre">renderer</span></code> for the tiled scene.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsTiledSceneLayer.setTransformContext" title="qgis.core.QgsTiledSceneLayer.setTransformContext"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setTransformContext</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param transformContext<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsTiledSceneLayer.setValid" title="qgis.core.QgsTiledSceneLayer.setValid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setValid</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsTiledSceneLayer.setValid" title="qgis.core.QgsTiledSceneLayer.setValid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setValid</span></code></a></p></td>
 <td><p>Sets whether layer is valid or not</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsTiledSceneLayer.timerEvent" title="qgis.core.QgsTiledSceneLayer.timerEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">timerEvent</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsTiledSceneLayer.timerEvent" title="qgis.core.QgsTiledSceneLayer.timerEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">timerEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsTiledSceneLayer.writeCommonStyle" title="qgis.core.QgsTiledSceneLayer.writeCommonStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeCommonStyle</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsTiledSceneLayer.writeCommonStyle" title="qgis.core.QgsTiledSceneLayer.writeCommonStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeCommonStyle</span></code></a></p></td>
 <td><p>Write style data common to all layer types</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsTiledSceneLayer.writeCustomProperties" title="qgis.core.QgsTiledSceneLayer.writeCustomProperties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeCustomProperties</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsTiledSceneLayer.writeCustomProperties" title="qgis.core.QgsTiledSceneLayer.writeCustomProperties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeCustomProperties</span></code></a></p></td>
 <td><p>Write custom properties to project file.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsTiledSceneLayer.writeStyle" title="qgis.core.QgsTiledSceneLayer.writeStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeStyle</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsTiledSceneLayer.writeStyle" title="qgis.core.QgsTiledSceneLayer.writeStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeStyle</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param node<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsTiledSceneLayer.writeStyleManager" title="qgis.core.QgsTiledSceneLayer.writeStyleManager"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeStyleManager</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsTiledSceneLayer.writeStyleManager" title="qgis.core.QgsTiledSceneLayer.writeStyleManager"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeStyleManager</span></code></a></p></td>
 <td><p>Write style manager's configuration (if exists).</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsTiledSceneLayer.writeSymbology" title="qgis.core.QgsTiledSceneLayer.writeSymbology"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeSymbology</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsTiledSceneLayer.writeSymbology" title="qgis.core.QgsTiledSceneLayer.writeSymbology"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeSymbology</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param node<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsTiledSceneLayer.writeXml" title="qgis.core.QgsTiledSceneLayer.writeXml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeXml</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsTiledSceneLayer.writeXml" title="qgis.core.QgsTiledSceneLayer.writeXml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeXml</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param layerNode<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
@@ -2606,6 +2628,16 @@ happens.</p>
 <dd></dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsTiledSceneLayer.loadDefaultMetadata">
+<span class="sig-name descname"><span class="pre">loadDefaultMetadata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qgis.core.QgsTiledSceneLayer.loadDefaultMetadata" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tuple[str, bool]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsTiledSceneLayer.loadDefaultStyle">
 <span class="sig-name descname"><span class="pre">loadDefaultStyle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qgis.core.QgsTiledSceneLayer.loadDefaultStyle" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
@@ -2702,6 +2734,21 @@ happens.</p>
 <dd></dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsTiledSceneLayer.renderer">
+<span class="sig-name descname"><span class="pre">renderer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="QgsTiledSceneRenderer.html#qgis.core.QgsTiledSceneRenderer" title="qgis.core.QgsTiledSceneRenderer"><span class="pre">QgsTiledSceneRenderer</span></a></span></span><a class="headerlink" href="#qgis.core.QgsTiledSceneLayer.renderer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the 2D renderer for the tiled scene.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsTiledSceneLayer.setRenderer" title="qgis.core.QgsTiledSceneLayer.setRenderer"><code class="xref py py-func docutils literal notranslate"><span class="pre">setRenderer()</span></code></a></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsTiledSceneRenderer.html#qgis.core.QgsTiledSceneRenderer" title="qgis.core.QgsTiledSceneRenderer">QgsTiledSceneRenderer</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsTiledSceneLayer.sender">
 <span class="sig-name descname"><span class="pre">sender</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">QObject</span></span></span><a class="headerlink" href="#qgis.core.QgsTiledSceneLayer.sender" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -2727,6 +2774,22 @@ happens.</p>
 <dt class="sig sig-object py" id="qgis.core.QgsTiledSceneLayer.setProviderType">
 <span class="sig-name descname"><span class="pre">setProviderType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">providerType</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsTiledSceneLayer.setProviderType" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets the <code class="docutils literal notranslate"><span class="pre">providerType</span></code> (provider key)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsTiledSceneLayer.setRenderer">
+<span class="sig-name descname"><span class="pre">setRenderer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">renderer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsTiledSceneRenderer.html#qgis.core.QgsTiledSceneRenderer" title="qgis.core.QgsTiledSceneRenderer"><span class="pre">QgsTiledSceneRenderer</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsTiledSceneLayer.setRenderer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the 2D <code class="docutils literal notranslate"><span class="pre">renderer</span></code> for the tiled scene.</p>
+<p>Ownership of <code class="docutils literal notranslate"><span class="pre">renderer</span></code> is transferred to the layer.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsTiledSceneLayer.renderer" title="qgis.core.QgsTiledSceneLayer.renderer"><code class="xref py py-func docutils literal notranslate"><span class="pre">renderer()</span></code></a></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>renderer</strong> (<a class="reference internal" href="QgsTiledSceneRenderer.html#qgis.core.QgsTiledSceneRenderer" title="qgis.core.QgsTiledSceneRenderer"><em>QgsTiledSceneRenderer</em></a>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -2839,7 +2902,7 @@ happens.</p>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:34 Aug 08, 2023.
+      <span class="lastupdated">Last updated on 02:38 Aug 08, 2023.
       </span></p>
   </div>
 
