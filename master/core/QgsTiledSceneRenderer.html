@@ -1202,6 +1202,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsTiledSceneRequest.html">Class: QgsTiledSceneRequest</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsTiledSceneTextureRenderer.html">Class: QgsTiledSceneTextureRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsTiledSceneTile.html">Class: QgsTiledSceneTile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsTiledSceneWireframeRenderer.html">Class: QgsTiledSceneWireframeRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsTolerance.html">Class: QgsTolerance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsTopologyPreservingSimplifier.html">Class: QgsTopologyPreservingSimplifier</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsTracer.html">Class: QgsTracer</a></li>
@@ -1341,6 +1342,7 @@
 <li class="toctree-l2"><a class="reference internal" href="TextFormatXML.html">Class: TextFormatXML</a></li>
 <li class="toctree-l2"><a class="reference internal" href="TextRendererFlags.html">Class: TextRendererFlags</a></li>
 <li class="toctree-l2"><a class="reference internal" href="TiledSceneProviderCapabilities.html">Class: TiledSceneProviderCapabilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TiledSceneRendererFlags.html">Class: TiledSceneRendererFlags</a></li>
 <li class="toctree-l2"><a class="reference internal" href="TiledSceneRequestFlags.html">Class: TiledSceneRequestFlags</a></li>
 <li class="toctree-l2"><a class="reference internal" href="USER_CRS_START_ID.html">Class: USER_CRS_START_ID</a></li>
 <li class="toctree-l2"><a class="reference internal" href="VectorDataProviderAttributeEditCapabilities.html">Class: VectorDataProviderAttributeEditCapabilities</a></li>
@@ -2271,6 +2273,12 @@ Constructor for QgsTiledSceneRenderer.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsTiledSceneRenderer.createLegendNodes" title="qgis.core.QgsTiledSceneRenderer.createLegendNodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createLegendNodes</span></code></a></p></td>
 <td><p>Creates a set of legend nodes representing the renderer.</p></td>
 </tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsTiledSceneRenderer.flags" title="qgis.core.QgsTiledSceneRenderer.flags"><code class="xref py py-obj docutils literal notranslate"><span class="pre">flags</span></code></a></p></td>
+<td><p>Returns flags which control how the renderer behaves.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsTiledSceneRenderer.isTileBorderRenderingEnabled" title="qgis.core.QgsTiledSceneRenderer.isTileBorderRenderingEnabled"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isTileBorderRenderingEnabled</span></code></a></p></td>
+<td><p>Returns whether to render also borders of tiles.</p></td>
+</tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsTiledSceneRenderer.legendRuleKeys" title="qgis.core.QgsTiledSceneRenderer.legendRuleKeys"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legendRuleKeys</span></code></a></p></td>
 <td><p>Returns a list of all rule keys for legend nodes created by the renderer.</p></td>
 </tr>
@@ -2283,20 +2291,26 @@ Constructor for QgsTiledSceneRenderer.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsTiledSceneRenderer.maximumScreenErrorUnit" title="qgis.core.QgsTiledSceneRenderer.maximumScreenErrorUnit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">maximumScreenErrorUnit</span></code></a></p></td>
 <td><p>Returns the unit for the maximum screen error allowed when rendering the tiled scene.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsTiledSceneRenderer.restoreCommonProperties" title="qgis.core.QgsTiledSceneRenderer.restoreCommonProperties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">restoreCommonProperties</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsTiledSceneRenderer.renderTriangle" title="qgis.core.QgsTiledSceneRenderer.renderTriangle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">renderTriangle</span></code></a></p></td>
+<td><p>Renders a <code class="docutils literal notranslate"><span class="pre">triangle</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsTiledSceneRenderer.restoreCommonProperties" title="qgis.core.QgsTiledSceneRenderer.restoreCommonProperties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">restoreCommonProperties</span></code></a></p></td>
 <td><p>Restores common renderer properties (such as screen error) from the specified DOM <code class="docutils literal notranslate"><span class="pre">element</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsTiledSceneRenderer.save" title="qgis.core.QgsTiledSceneRenderer.save"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsTiledSceneRenderer.save" title="qgis.core.QgsTiledSceneRenderer.save"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save</span></code></a></p></td>
 <td><p>Saves the renderer configuration to an XML element.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsTiledSceneRenderer.saveCommonProperties" title="qgis.core.QgsTiledSceneRenderer.saveCommonProperties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">saveCommonProperties</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsTiledSceneRenderer.saveCommonProperties" title="qgis.core.QgsTiledSceneRenderer.saveCommonProperties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">saveCommonProperties</span></code></a></p></td>
 <td><p>Saves common renderer properties (such as point size and screen error) to the specified DOM <code class="docutils literal notranslate"><span class="pre">element</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsTiledSceneRenderer.setMaximumScreenError" title="qgis.core.QgsTiledSceneRenderer.setMaximumScreenError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setMaximumScreenError</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsTiledSceneRenderer.setMaximumScreenError" title="qgis.core.QgsTiledSceneRenderer.setMaximumScreenError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setMaximumScreenError</span></code></a></p></td>
 <td><p>Sets the maximum screen <code class="docutils literal notranslate"><span class="pre">error</span></code> allowed when rendering the tiled scene.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsTiledSceneRenderer.setMaximumScreenErrorUnit" title="qgis.core.QgsTiledSceneRenderer.setMaximumScreenErrorUnit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setMaximumScreenErrorUnit</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsTiledSceneRenderer.setMaximumScreenErrorUnit" title="qgis.core.QgsTiledSceneRenderer.setMaximumScreenErrorUnit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setMaximumScreenErrorUnit</span></code></a></p></td>
 <td><p>Sets the <code class="docutils literal notranslate"><span class="pre">unit</span></code> for the maximum screen error allowed when rendering the tiled scene.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsTiledSceneRenderer.setTileBorderRenderingEnabled" title="qgis.core.QgsTiledSceneRenderer.setTileBorderRenderingEnabled"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setTileBorderRenderingEnabled</span></code></a></p></td>
+<td><p>Sets whether to render the borders of tiles.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsTiledSceneRenderer.startRender" title="qgis.core.QgsTiledSceneRenderer.startRender"><code class="xref py py-obj docutils literal notranslate"><span class="pre">startRender</span></code></a></p></td>
 <td><p>Must be called when a new render cycle is started.</p></td>
@@ -2351,6 +2365,29 @@ and generate a proper subclass.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>List[<a class="reference internal" href="QgsLayerTreeModelLegendNode.html#qgis.core.QgsLayerTreeModelLegendNode" title="qgis.core.QgsLayerTreeModelLegendNode">QgsLayerTreeModelLegendNode</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsTiledSceneRenderer.flags">
+<span class="sig-name descname"><span class="pre">flags</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="Qgis.html#qgis.core.Qgis.TiledSceneRendererFlags" title="qgis.core.Qgis.TiledSceneRendererFlags"><span class="pre">Qgis.TiledSceneRendererFlags</span></a></span></span><a class="headerlink" href="#qgis.core.QgsTiledSceneRenderer.flags" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns flags which control how the renderer behaves.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="Qgis.html#qgis.core.Qgis.TiledSceneRendererFlags" title="qgis.core.Qgis.TiledSceneRendererFlags">Qgis.TiledSceneRendererFlags</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsTiledSceneRenderer.isTileBorderRenderingEnabled">
+<span class="sig-name descname"><span class="pre">isTileBorderRenderingEnabled</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#qgis.core.QgsTiledSceneRenderer.isTileBorderRenderingEnabled" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns whether to render also borders of tiles.</p>
+<p>see <a class="reference internal" href="#qgis.core.QgsTiledSceneRenderer.setTileBorderRenderingEnabled" title="qgis.core.QgsTiledSceneRenderer.setTileBorderRenderingEnabled"><code class="xref py py-func docutils literal notranslate"><span class="pre">setTileBorderRenderingEnabled()</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2424,6 +2461,20 @@ and generate a proper subclass.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference internal" href="Qgis.html#qgis.core.Qgis.RenderUnit" title="qgis.core.Qgis.RenderUnit">Qgis.RenderUnit</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsTiledSceneRenderer.renderTriangle">
+<span class="sig-name descname"><span class="pre">renderTriangle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsTiledSceneRenderContext.html#qgis.core.QgsTiledSceneRenderContext" title="qgis.core.QgsTiledSceneRenderContext"><span class="pre">QgsTiledSceneRenderContext</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">triangle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">QPolygonF</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsTiledSceneRenderer.renderTriangle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Renders a <code class="docutils literal notranslate"><span class="pre">triangle</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>context</strong> (<a class="reference internal" href="QgsTiledSceneRenderContext.html#qgis.core.QgsTiledSceneRenderContext" title="qgis.core.QgsTiledSceneRenderContext"><em>QgsTiledSceneRenderContext</em></a>) – </p></li>
+<li><p><strong>triangle</strong> (<em>QPolygonF</em>) – </p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -2528,6 +2579,21 @@ specified DOM <code class="docutils literal notranslate"><span class="pre">eleme
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsTiledSceneRenderer.setTileBorderRenderingEnabled">
+<span class="sig-name descname"><span class="pre">setTileBorderRenderingEnabled</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enabled</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsTiledSceneRenderer.setTileBorderRenderingEnabled" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets whether to render the borders of tiles.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsTiledSceneRenderer.isTileBorderRenderingEnabled" title="qgis.core.QgsTiledSceneRenderer.isTileBorderRenderingEnabled"><code class="xref py py-func docutils literal notranslate"><span class="pre">isTileBorderRenderingEnabled()</span></code></a></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>enabled</strong> (<em>bool</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsTiledSceneRenderer.startRender">
 <span class="sig-name descname"><span class="pre">startRender</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsTiledSceneRenderContext.html#qgis.core.QgsTiledSceneRenderContext" title="qgis.core.QgsTiledSceneRenderContext"><span class="pre">QgsTiledSceneRenderContext</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsTiledSceneRenderer.startRender" title="Permalink to this definition">¶</a></dt>
 <dd><p>Must be called when a new render cycle is started. A call to <a class="reference internal" href="#qgis.core.QgsTiledSceneRenderer.startRender" title="qgis.core.QgsTiledSceneRenderer.startRender"><code class="xref py py-func docutils literal notranslate"><span class="pre">startRender()</span></code></a> must always
@@ -2593,7 +2659,7 @@ the renderer should instead be cloned and <a class="reference internal" href="#q
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:31 Aug 13, 2023.
+      <span class="lastupdated">Last updated on 03:46 Aug 13, 2023.
       </span></p>
   </div>
 
