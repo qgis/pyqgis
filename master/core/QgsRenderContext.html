@@ -98,6 +98,7 @@
 <li class="toctree-l2"><a class="reference internal" href="MapLayerActionFlags.html">Class: MapLayerActionFlags</a></li>
 <li class="toctree-l2"><a class="reference internal" href="MapLayerActionTargets.html">Class: MapLayerActionTargets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="MapLayerProperties.html">Class: MapLayerProperties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MapLayerRendererFlags.html">Class: MapLayerRendererFlags</a></li>
 <li class="toctree-l2"><a class="reference internal" href="MapSettingsFlags.html">Class: MapSettingsFlags</a></li>
 <li class="toctree-l2"><a class="reference internal" href="MarkerLinePlacements.html">Class: MarkerLinePlacements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="MeshDriverCapabilities.html">Class: MeshDriverCapabilities</a></li>
@@ -2213,6 +2214,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../_3d/QgsRuleBased3DRendererMetadata.html">Class: QgsRuleBased3DRendererMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_3d/QgsSimpleLineMaterialSettings.html">Class: QgsSimpleLineMaterialSettings</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_3d/QgsSingleColorPointCloud3DSymbol.html">Class: QgsSingleColorPointCloud3DSymbol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_3d/QgsTiledSceneLayer3DRenderer.html">Class: QgsTiledSceneLayer3DRenderer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_3d/QgsTiledSceneLayer3DRendererMetadata.html">Class: QgsTiledSceneLayer3DRendererMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_3d/QgsVectorLayer3DRenderer.html">Class: QgsVectorLayer3DRenderer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_3d/QgsVectorLayer3DRendererMetadata.html">Class: QgsVectorLayer3DRendererMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_3d/QgsVectorLayer3DTilingSettings.html">Class: QgsVectorLayer3DTilingSettings</a></li>
@@ -2392,122 +2395,128 @@ to be rendered etc.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.pathResolver" title="qgis.core.QgsRenderContext.pathResolver"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pathResolver</span></code></a></p></td>
 <td><p>Returns the path resolver for conversion between relative and absolute paths during rendering operations, e.g.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.renderedFeatureHandlers" title="qgis.core.QgsRenderContext.renderedFeatureHandlers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">renderedFeatureHandlers</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.previewRenderPainter" title="qgis.core.QgsRenderContext.previewRenderPainter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">previewRenderPainter</span></code></a></p></td>
+<td><p>Returns the const destination QPainter for temporary in-progress preview renders.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.renderedFeatureHandlers" title="qgis.core.QgsRenderContext.renderedFeatureHandlers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">renderedFeatureHandlers</span></code></a></p></td>
 <td><p>Returns the list of rendered feature handlers to use while rendering map layers.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.rendererScale" title="qgis.core.QgsRenderContext.rendererScale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rendererScale</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.rendererScale" title="qgis.core.QgsRenderContext.rendererScale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rendererScale</span></code></a></p></td>
 <td><p>Returns the renderer map scale.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.rendererUsage" title="qgis.core.QgsRenderContext.rendererUsage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rendererUsage</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.rendererUsage" title="qgis.core.QgsRenderContext.rendererUsage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rendererUsage</span></code></a></p></td>
 <td><p>Returns the renderer usage</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.renderingStopped" title="qgis.core.QgsRenderContext.renderingStopped"><code class="xref py py-obj docutils literal notranslate"><span class="pre">renderingStopped</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.renderingStopped" title="qgis.core.QgsRenderContext.renderingStopped"><code class="xref py py-obj docutils literal notranslate"><span class="pre">renderingStopped</span></code></a></p></td>
 <td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the rendering operation has been stopped and any ongoing rendering should be canceled immediately.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.scaleFactor" title="qgis.core.QgsRenderContext.scaleFactor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scaleFactor</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.scaleFactor" title="qgis.core.QgsRenderContext.scaleFactor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scaleFactor</span></code></a></p></td>
 <td><p>Returns the scaling factor for the render to convert painter units to physical sizes.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.segmentationTolerance" title="qgis.core.QgsRenderContext.segmentationTolerance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">segmentationTolerance</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.segmentationTolerance" title="qgis.core.QgsRenderContext.segmentationTolerance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">segmentationTolerance</span></code></a></p></td>
 <td><p>Gets the segmentation tolerance applied when rendering curved geometries</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.segmentationToleranceType" title="qgis.core.QgsRenderContext.segmentationToleranceType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">segmentationToleranceType</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.segmentationToleranceType" title="qgis.core.QgsRenderContext.segmentationToleranceType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">segmentationToleranceType</span></code></a></p></td>
 <td><p>Gets segmentation tolerance type (maximum angle or maximum difference between curve and approximation)</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.selectionColor" title="qgis.core.QgsRenderContext.selectionColor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">selectionColor</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.selectionColor" title="qgis.core.QgsRenderContext.selectionColor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">selectionColor</span></code></a></p></td>
 <td><p>Returns the color to use when rendering selected features.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.setCoordinateTransform" title="qgis.core.QgsRenderContext.setCoordinateTransform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setCoordinateTransform</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.setCoordinateTransform" title="qgis.core.QgsRenderContext.setCoordinateTransform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setCoordinateTransform</span></code></a></p></td>
 <td><p>Sets the current coordinate transform for the context.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.setCurrentFrame" title="qgis.core.QgsRenderContext.setCurrentFrame"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setCurrentFrame</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.setCurrentFrame" title="qgis.core.QgsRenderContext.setCurrentFrame"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setCurrentFrame</span></code></a></p></td>
 <td><p>Sets the current <code class="docutils literal notranslate"><span class="pre">frame</span></code> of the map, for maps which are part of an animation.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.setCurrentMaskId" title="qgis.core.QgsRenderContext.setCurrentMaskId"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setCurrentMaskId</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.setCurrentMaskId" title="qgis.core.QgsRenderContext.setCurrentMaskId"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setCurrentMaskId</span></code></a></p></td>
 <td><p>Stores a mask id as the &quot;current&quot; one.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.setCustomRenderingFlag" title="qgis.core.QgsRenderContext.setCustomRenderingFlag"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setCustomRenderingFlag</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.setCustomRenderingFlag" title="qgis.core.QgsRenderContext.setCustomRenderingFlag"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setCustomRenderingFlag</span></code></a></p></td>
 <td><p>Sets a custom rendering flag.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.setDevicePixelRatio" title="qgis.core.QgsRenderContext.setDevicePixelRatio"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setDevicePixelRatio</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.setDevicePixelRatio" title="qgis.core.QgsRenderContext.setDevicePixelRatio"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setDevicePixelRatio</span></code></a></p></td>
 <td><p>Sets the device pixel <code class="docutils literal notranslate"><span class="pre">ratio</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.setDisabledSymbolLayers" title="qgis.core.QgsRenderContext.setDisabledSymbolLayers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setDisabledSymbolLayers</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.setDisabledSymbolLayers" title="qgis.core.QgsRenderContext.setDisabledSymbolLayers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setDisabledSymbolLayers</span></code></a></p></td>
 <td><p>When rendering a map layer in a second pass (for selective masking), some symbol layers may be disabled.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.setDisabledSymbolLayersV2" title="qgis.core.QgsRenderContext.setDisabledSymbolLayersV2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setDisabledSymbolLayersV2</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.setDisabledSymbolLayersV2" title="qgis.core.QgsRenderContext.setDisabledSymbolLayersV2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setDisabledSymbolLayersV2</span></code></a></p></td>
 <td><p>When rendering a map layer in a second pass (for selective masking), some symbol layers may be disabled.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.setDistanceArea" title="qgis.core.QgsRenderContext.setDistanceArea"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setDistanceArea</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.setDistanceArea" title="qgis.core.QgsRenderContext.setDistanceArea"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setDistanceArea</span></code></a></p></td>
 <td><p>A general purpose distance and area calculator, capable of performing ellipsoid based calculations.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.setDpiTarget" title="qgis.core.QgsRenderContext.setDpiTarget"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setDpiTarget</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.setDpiTarget" title="qgis.core.QgsRenderContext.setDpiTarget"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setDpiTarget</span></code></a></p></td>
 <td><p>Sets the targeted <code class="docutils literal notranslate"><span class="pre">dpi</span></code> for rendering.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.setDrawEditingInformation" title="qgis.core.QgsRenderContext.setDrawEditingInformation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setDrawEditingInformation</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.setDrawEditingInformation" title="qgis.core.QgsRenderContext.setDrawEditingInformation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setDrawEditingInformation</span></code></a></p></td>
 <td><p>Sets whether edit markers should be drawn during the render operation.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.setElevationMap" title="qgis.core.QgsRenderContext.setElevationMap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setElevationMap</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.setElevationMap" title="qgis.core.QgsRenderContext.setElevationMap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setElevationMap</span></code></a></p></td>
 <td><p>Sets the destination elevation <code class="docutils literal notranslate"><span class="pre">map</span></code> for the render operation.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.setExpressionContext" title="qgis.core.QgsRenderContext.setExpressionContext"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setExpressionContext</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.setExpressionContext" title="qgis.core.QgsRenderContext.setExpressionContext"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setExpressionContext</span></code></a></p></td>
 <td><p>Sets the expression context.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.setExtent" title="qgis.core.QgsRenderContext.setExtent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setExtent</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.setExtent" title="qgis.core.QgsRenderContext.setExtent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setExtent</span></code></a></p></td>
 <td><p>When rendering a map layer, calling this method sets the &quot;clipping&quot; extent for the layer (in the layer's CRS).</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.setFeatureClipGeometry" title="qgis.core.QgsRenderContext.setFeatureClipGeometry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setFeatureClipGeometry</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.setFeatureClipGeometry" title="qgis.core.QgsRenderContext.setFeatureClipGeometry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setFeatureClipGeometry</span></code></a></p></td>
 <td><p>Sets a <code class="docutils literal notranslate"><span class="pre">geometry</span></code> to use to clip features at render time.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.setFeatureFilterProvider" title="qgis.core.QgsRenderContext.setFeatureFilterProvider"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setFeatureFilterProvider</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.setFeatureFilterProvider" title="qgis.core.QgsRenderContext.setFeatureFilterProvider"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setFeatureFilterProvider</span></code></a></p></td>
 <td><p>Set a filter feature provider used for additional filtering of rendered features.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.setFeedback" title="qgis.core.QgsRenderContext.setFeedback"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setFeedback</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.setFeedback" title="qgis.core.QgsRenderContext.setFeedback"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setFeedback</span></code></a></p></td>
 <td><p>Attach a <code class="docutils literal notranslate"><span class="pre">feedback</span></code> object that can be queried regularly during rendering to check if rendering should be canceled.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.setFlag" title="qgis.core.QgsRenderContext.setFlag"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setFlag</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.setFlag" title="qgis.core.QgsRenderContext.setFlag"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setFlag</span></code></a></p></td>
 <td><p>Enable or disable a particular flag (other flags are not affected)</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.setFlags" title="qgis.core.QgsRenderContext.setFlags"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setFlags</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.setFlags" title="qgis.core.QgsRenderContext.setFlags"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setFlags</span></code></a></p></td>
 <td><p>Set combination of flags that will be used for rendering.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.setForceVectorOutput" title="qgis.core.QgsRenderContext.setForceVectorOutput"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setForceVectorOutput</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.setForceVectorOutput" title="qgis.core.QgsRenderContext.setForceVectorOutput"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setForceVectorOutput</span></code></a></p></td>
 <td><p>Sets whether rendering operations should use vector operations instead of any faster raster shortcuts.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.setFrameRate" title="qgis.core.QgsRenderContext.setFrameRate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setFrameRate</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.setFrameRate" title="qgis.core.QgsRenderContext.setFrameRate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setFrameRate</span></code></a></p></td>
 <td><p>Sets the frame <code class="docutils literal notranslate"><span class="pre">rate</span></code> of the map (in frames per second), for maps which are part of an animation.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.setGeometry" title="qgis.core.QgsRenderContext.setGeometry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setGeometry</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.setGeometry" title="qgis.core.QgsRenderContext.setGeometry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setGeometry</span></code></a></p></td>
 <td><p>Sets pointer to original (unsegmentized) geometry</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.setImageFormat" title="qgis.core.QgsRenderContext.setImageFormat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setImageFormat</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.setImageFormat" title="qgis.core.QgsRenderContext.setImageFormat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setImageFormat</span></code></a></p></td>
 <td><p>Sets QImage <code class="docutils literal notranslate"><span class="pre">format</span></code> which should be used for QImages created during rendering.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.setIsGuiPreview" title="qgis.core.QgsRenderContext.setIsGuiPreview"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setIsGuiPreview</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.setIsGuiPreview" title="qgis.core.QgsRenderContext.setIsGuiPreview"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setIsGuiPreview</span></code></a></p></td>
 <td><p>Sets GUI preview mode.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.setMapExtent" title="qgis.core.QgsRenderContext.setMapExtent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setMapExtent</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.setMapExtent" title="qgis.core.QgsRenderContext.setMapExtent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setMapExtent</span></code></a></p></td>
 <td><p>Sets the original <code class="docutils literal notranslate"><span class="pre">extent</span></code> of the map being rendered.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.setMapToPixel" title="qgis.core.QgsRenderContext.setMapToPixel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setMapToPixel</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.setMapToPixel" title="qgis.core.QgsRenderContext.setMapToPixel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setMapToPixel</span></code></a></p></td>
 <td><p>Sets the context's map to pixel transform, which transforms between map coordinates and device coordinates.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.setMaskIdProvider" title="qgis.core.QgsRenderContext.setMaskIdProvider"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setMaskIdProvider</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.setMaskIdProvider" title="qgis.core.QgsRenderContext.setMaskIdProvider"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setMaskIdProvider</span></code></a></p></td>
 <td><p>Attaches a mask id provider to the context.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.setMaskPainter" title="qgis.core.QgsRenderContext.setMaskPainter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setMaskPainter</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.setMaskPainter" title="qgis.core.QgsRenderContext.setMaskPainter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setMaskPainter</span></code></a></p></td>
 <td><p>Sets a mask QPainter for the render operation.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.setOutputSize" title="qgis.core.QgsRenderContext.setOutputSize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setOutputSize</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.setOutputSize" title="qgis.core.QgsRenderContext.setOutputSize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setOutputSize</span></code></a></p></td>
 <td><p>Sets the <code class="docutils literal notranslate"><span class="pre">size</span></code> of the resulting rendered image, in pixels.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.setPainter" title="qgis.core.QgsRenderContext.setPainter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setPainter</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.setPainter" title="qgis.core.QgsRenderContext.setPainter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setPainter</span></code></a></p></td>
 <td><p>Sets the destination QPainter for the render operation.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.setPainterFlagsUsingContext" title="qgis.core.QgsRenderContext.setPainterFlagsUsingContext"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setPainterFlagsUsingContext</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.setPainterFlagsUsingContext" title="qgis.core.QgsRenderContext.setPainterFlagsUsingContext"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setPainterFlagsUsingContext</span></code></a></p></td>
 <td><p>Sets relevant flags on a destination <code class="docutils literal notranslate"><span class="pre">painter</span></code>, using the flags and settings currently defined for the render context.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.setPathResolver" title="qgis.core.QgsRenderContext.setPathResolver"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setPathResolver</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.setPathResolver" title="qgis.core.QgsRenderContext.setPathResolver"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setPathResolver</span></code></a></p></td>
 <td><p>Sets the path <code class="docutils literal notranslate"><span class="pre">resolver</span></code> for conversion between relative and absolute paths during rendering operations, e.g.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.setPreviewRenderPainter" title="qgis.core.QgsRenderContext.setPreviewRenderPainter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setPreviewRenderPainter</span></code></a></p></td>
+<td><p>Sets the destination <code class="docutils literal notranslate"><span class="pre">painter</span></code> for temporary in-progress preview renders.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRenderContext.setRendererScale" title="qgis.core.QgsRenderContext.setRendererScale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setRendererScale</span></code></a></p></td>
 <td><p>Sets the renderer map scale.</p></td>
@@ -3468,6 +3477,25 @@ during rendering operations, e.g. for resolving relative symbol paths.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsRenderContext.previewRenderPainter">
+<span class="sig-name descname"><span class="pre">previewRenderPainter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">QPainter</span></span></span><a class="headerlink" href="#qgis.core.QgsRenderContext.previewRenderPainter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the const destination QPainter for temporary in-progress preview renders.</p>
+<p>May be <code class="docutils literal notranslate"><span class="pre">None</span></code> if temporary in-progress preview renders are not required.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsRenderContext.setPreviewRenderPainter" title="qgis.core.QgsRenderContext.setPreviewRenderPainter"><code class="xref py py-func docutils literal notranslate"><span class="pre">setPreviewRenderPainter()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.34.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>QPainter</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsRenderContext.renderedFeatureHandlers">
 <span class="sig-name descname"><span class="pre">renderedFeatureHandlers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="QgsRenderedFeatureHandlerInterface.html#qgis.core.QgsRenderedFeatureHandlerInterface" title="qgis.core.QgsRenderedFeatureHandlerInterface"><span class="pre">QgsRenderedFeatureHandlerInterface</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qgis.core.QgsRenderContext.renderedFeatureHandlers" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the list of rendered feature handlers to use while rendering map layers.</p>
@@ -4202,6 +4230,27 @@ during rendering operations, e.g. for resolving relative symbol paths.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsRenderContext.setPreviewRenderPainter">
+<span class="sig-name descname"><span class="pre">setPreviewRenderPainter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">painter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">QPainter</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsRenderContext.setPreviewRenderPainter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the destination <code class="docutils literal notranslate"><span class="pre">painter</span></code> for temporary in-progress preview renders.
+Ownership of <code class="docutils literal notranslate"><span class="pre">painter</span></code> is not transferred and the QPainter destination must
+stay alive for the duration of any rendering operations.</p>
+<p><code class="docutils literal notranslate"><span class="pre">painter</span></code> may be <code class="docutils literal notranslate"><span class="pre">None</span></code> if temporary in-progress preview renders are not required.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsRenderContext.previewRenderPainter" title="qgis.core.QgsRenderContext.previewRenderPainter"><code class="xref py py-func docutils literal notranslate"><span class="pre">previewRenderPainter()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.34.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>painter</strong> (<em>QPainter</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsRenderContext.setRendererScale">
 <span class="sig-name descname"><span class="pre">setRendererScale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsRenderContext.setRendererScale" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets the renderer map scale. This should match the desired scale denominator
@@ -4739,7 +4788,7 @@ from a source to destination coordinate reference system.</p>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:31 Aug 17, 2023.
+      <span class="lastupdated">Last updated on 03:21 Aug 17, 2023.
       </span></p>
   </div>
 
