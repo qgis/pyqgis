@@ -14,11 +14,11 @@
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=159d94a3"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -2109,11 +2109,11 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="module-QgsServerApi">
-<span id="class-qgsserverapi"></span><h1>Class: QgsServerApi<a class="headerlink" href="#module-QgsServerApi" title="Permalink to this heading">¶</a></h1>
-<dl class="py class">
+  <section id="class-qgsserverapi">
+<h1>Class: QgsServerApi<a class="headerlink" href="#class-qgsserverapi" title="Link to this heading">¶</a></h1>
+<dl class="py class" id="module-QgsServerApi">
 <dt class="sig sig-object py" id="qgis.server.QgsServerApi">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qgis.server.</span></span><span class="sig-name descname"><span class="pre">QgsServerApi</span></span><a class="headerlink" href="#qgis.server.QgsServerApi" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qgis.server.</span></span><span class="sig-name descname"><span class="pre">QgsServerApi</span></span><a class="headerlink" href="#qgis.server.QgsServerApi" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sip.wrapper</span></code></p>
 <p>Server generic API endpoint abstract base class.</p>
 <div class="admonition seealso">
@@ -2132,20 +2132,20 @@ APIs developers are encouraged to implement a more robust accept(url) logic by
 making sure that their APIs accept only URLs they can actually handle, if they do,
 the APIs registration order becomes irrelevant.</p>
 <p>After the API has been registered to the server API registry:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>class API(:py:class:`.QgsServerApi`):
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">API</span><span class="p">(:</span><span class="n">py</span><span class="p">:</span><span class="n">class</span><span class="p">:</span><span class="err">`</span><span class="o">.</span><span class="n">QgsServerApi</span><span class="err">`</span><span class="p">):</span>
 
-  def name(self):
-    return &quot;Test API&quot;
+  <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s2">&quot;Test API&quot;</span>
 
-  def rootPath(self):
-    return &quot;/testapi&quot;
+  <span class="k">def</span> <span class="nf">rootPath</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s2">&quot;/testapi&quot;</span>
 
-  def executeRequest(self, request_context):
-    request_context.response().write(b&quot;\&quot;Test API\&quot;&quot;)
+  <span class="k">def</span> <span class="nf">executeRequest</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request_context</span><span class="p">):</span>
+    <span class="n">request_context</span><span class="o">.</span><span class="n">response</span><span class="p">()</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;</span><span class="se">\&quot;</span><span class="s2">Test API</span><span class="se">\&quot;</span><span class="s2">&quot;</span><span class="p">)</span>
 
-server = QgsServer()
-api = API(server.serverInterface())
-server.serverInterface().serviceRegistry().registerApi(api)
+<span class="n">server</span> <span class="o">=</span> <span class="n">QgsServer</span><span class="p">()</span>
+<span class="n">api</span> <span class="o">=</span> <span class="n">API</span><span class="p">(</span><span class="n">server</span><span class="o">.</span><span class="n">serverInterface</span><span class="p">())</span>
+<span class="n">server</span><span class="o">.</span><span class="n">serverInterface</span><span class="p">()</span><span class="o">.</span><span class="n">serviceRegistry</span><span class="p">()</span><span class="o">.</span><span class="n">registerApi</span><span class="p">(</span><span class="n">api</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>the incoming calls with an URL path starting with the API root path
@@ -2199,7 +2199,7 @@ Creates a <a class="reference internal" href="#qgis.server.QgsServerApi" title="
 </div></blockquote>
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.server.QgsServerApi.accept">
-<span class="sig-name descname"><span class="pre">accept</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">QUrl</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#qgis.server.QgsServerApi.accept" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">accept</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">QUrl</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#qgis.server.QgsServerApi.accept" title="Link to this definition">¶</a></dt>
 <dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the given <code class="docutils literal notranslate"><span class="pre">url</span></code> is handled by the API, default implementation checks for the presence of rootPath inside the <code class="docutils literal notranslate"><span class="pre">url</span></code> path.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2213,7 +2213,7 @@ Creates a <a class="reference internal" href="#qgis.server.QgsServerApi" title="
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.server.QgsServerApi.description">
-<span class="sig-name descname"><span class="pre">description</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#qgis.server.QgsServerApi.description" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">description</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#qgis.server.QgsServerApi.description" title="Link to this definition">¶</a></dt>
 <dd><p>Returns the API description</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
@@ -2224,7 +2224,7 @@ Creates a <a class="reference internal" href="#qgis.server.QgsServerApi" title="
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.server.QgsServerApi.executeRequest">
-<span class="sig-name descname"><span class="pre">executeRequest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsServerApiContext.html#qgis.server.QgsServerApiContext" title="qgis.server.QgsServerApiContext"><span class="pre">QgsServerApiContext</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.server.QgsServerApi.executeRequest" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">executeRequest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsServerApiContext.html#qgis.server.QgsServerApiContext" title="qgis.server.QgsServerApiContext"><span class="pre">QgsServerApiContext</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.server.QgsServerApi.executeRequest" title="Link to this definition">¶</a></dt>
 <dd><p>Executes a request by passing the given <code class="docutils literal notranslate"><span class="pre">context</span></code> to the API handlers.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2235,7 +2235,7 @@ Creates a <a class="reference internal" href="#qgis.server.QgsServerApi" title="
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.server.QgsServerApi.name">
-<span class="sig-name descname"><span class="pre">name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#qgis.server.QgsServerApi.name" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#qgis.server.QgsServerApi.name" title="Link to this definition">¶</a></dt>
 <dd><p>Returns the API name</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
@@ -2246,7 +2246,7 @@ Creates a <a class="reference internal" href="#qgis.server.QgsServerApi" title="
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.server.QgsServerApi.rootPath">
-<span class="sig-name descname"><span class="pre">rootPath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#qgis.server.QgsServerApi.rootPath" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">rootPath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#qgis.server.QgsServerApi.rootPath" title="Link to this definition">¶</a></dt>
 <dd><p>Returns the root path for the API</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
@@ -2257,7 +2257,7 @@ Creates a <a class="reference internal" href="#qgis.server.QgsServerApi" title="
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.server.QgsServerApi.serverIface">
-<span class="sig-name descname"><span class="pre">serverIface</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="QgsServerInterface.html#qgis.server.QgsServerInterface" title="qgis.server.QgsServerInterface"><span class="pre">QgsServerInterface</span></a></span></span><a class="headerlink" href="#qgis.server.QgsServerApi.serverIface" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">serverIface</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="QgsServerInterface.html#qgis.server.QgsServerInterface" title="qgis.server.QgsServerInterface"><span class="pre">QgsServerInterface</span></a></span></span><a class="headerlink" href="#qgis.server.QgsServerApi.serverIface" title="Link to this definition">¶</a></dt>
 <dd><p>Returns the server interface</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
@@ -2268,7 +2268,7 @@ Creates a <a class="reference internal" href="#qgis.server.QgsServerApi" title="
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.server.QgsServerApi.version">
-<span class="sig-name descname"><span class="pre">version</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#qgis.server.QgsServerApi.version" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">version</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#qgis.server.QgsServerApi.version" title="Link to this definition">¶</a></dt>
 <dd><p>Returns the version of the service</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -2294,7 +2294,7 @@ Creates a <a class="reference internal" href="#qgis.server.QgsServerApi" title="
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 05:16 Aug 15, 2023.
+      <span class="lastupdated">Last updated on 04:32 Aug 22, 2023.
       </span></p>
   </div>
 
