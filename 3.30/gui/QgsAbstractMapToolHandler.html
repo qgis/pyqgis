@@ -14,11 +14,11 @@
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=52c177e8"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -2145,11 +2145,11 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="module-QgsAbstractMapToolHandler">
-<span id="class-qgsabstractmaptoolhandler"></span><h1>Class: QgsAbstractMapToolHandler<a class="headerlink" href="#module-QgsAbstractMapToolHandler" title="Permalink to this heading">¶</a></h1>
-<dl class="py class">
+  <section id="class-qgsabstractmaptoolhandler">
+<h1>Class: QgsAbstractMapToolHandler<a class="headerlink" href="#class-qgsabstractmaptoolhandler" title="Link to this heading">¶</a></h1>
+<dl class="py class" id="module-QgsAbstractMapToolHandler">
 <dt class="sig sig-object py" id="qgis.gui.QgsAbstractMapToolHandler">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qgis.gui.</span></span><span class="sig-name descname"><span class="pre">QgsAbstractMapToolHandler</span></span><a class="headerlink" href="#qgis.gui.QgsAbstractMapToolHandler" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qgis.gui.</span></span><span class="sig-name descname"><span class="pre">QgsAbstractMapToolHandler</span></span><a class="headerlink" href="#qgis.gui.QgsAbstractMapToolHandler" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sip.wrapper</span></code></p>
 <p>An abstract base class for map tool handlers which automatically handle all the necessary
 logic for toggling the map tool and enabling/disabling the associated action
@@ -2162,23 +2162,23 @@ to, etc).</p>
 <ul class="simple">
 <li><p>### Example</p></li>
 </ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>class MyMapTool(:py:class:`.QgsMapTool`):
-   ...
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyMapTool</span><span class="p">(:</span><span class="n">py</span><span class="p">:</span><span class="n">class</span><span class="p">:</span><span class="err">`</span><span class="o">.</span><span class="n">QgsMapTool</span><span class="err">`</span><span class="p">):</span>
+   <span class="o">...</span>
 
-class MyMapToolHandler(:py:class:`.QgsAbstractMapToolHandler`):
+<span class="k">class</span> <span class="nc">MyMapToolHandler</span><span class="p">(:</span><span class="n">py</span><span class="p">:</span><span class="n">class</span><span class="p">:</span><span class="err">`</span><span class="o">.</span><span class="n">QgsAbstractMapToolHandler</span><span class="err">`</span><span class="p">):</span>
 
-   def __init__(self, tool, action):
-       super().__init__(tool, action)
+   <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tool</span><span class="p">,</span> <span class="n">action</span><span class="p">):</span>
+       <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">tool</span><span class="p">,</span> <span class="n">action</span><span class="p">)</span>
 
-   def isCompatibleWithLayer(self, layer, context):
-       # this tool can only be activated when an editable vector layer is selected
-       return isinstance(layer, :py:class:`.QgsVectorLayer`) and layer.isEditable()
+   <span class="k">def</span> <span class="nf">isCompatibleWithLayer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">layer</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+       <span class="c1"># this tool can only be activated when an editable vector layer is selected</span>
+       <span class="k">return</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="p">:</span><span class="n">py</span><span class="p">:</span><span class="n">class</span><span class="p">:</span><span class="err">`</span><span class="o">.</span><span class="n">QgsVectorLayer</span><span class="err">`</span><span class="p">)</span> <span class="ow">and</span> <span class="n">layer</span><span class="o">.</span><span class="n">isEditable</span><span class="p">()</span>
 
-my_tool = MyMapTool()
-my_action = QAction(&#39;My Map Tool&#39;)
+<span class="n">my_tool</span> <span class="o">=</span> <span class="n">MyMapTool</span><span class="p">()</span>
+<span class="n">my_action</span> <span class="o">=</span> <span class="n">QAction</span><span class="p">(</span><span class="s1">&#39;My Map Tool&#39;</span><span class="p">)</span>
 
-my_handler = MyMapToolHandler(my_tool, my_action)
-iface.registerMapToolHandler(my_handler)
+<span class="n">my_handler</span> <span class="o">=</span> <span class="n">MyMapToolHandler</span><span class="p">(</span><span class="n">my_tool</span><span class="p">,</span> <span class="n">my_action</span><span class="p">)</span>
+<span class="n">iface</span><span class="o">.</span><span class="n">registerMapToolHandler</span><span class="p">(</span><span class="n">my_handler</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="versionadded">
@@ -2231,20 +2231,20 @@ manually connected elsewhere!</p>
 </div></blockquote>
 <dl class="py class">
 <dt class="sig sig-object py" id="qgis.gui.QgsAbstractMapToolHandler.Context">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Context</span></span><a class="headerlink" href="#qgis.gui.QgsAbstractMapToolHandler.Context" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Context</span></span><a class="headerlink" href="#qgis.gui.QgsAbstractMapToolHandler.Context" title="Link to this definition">¶</a></dt>
 <dt class="sig sig-object py">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Context</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">QgsAbstractMapToolHandler.Context</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sip.wrapper</span></code></p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qgis.gui.QgsAbstractMapToolHandler.Context.dummy">
-<span class="sig-name descname"><span class="pre">dummy</span></span><a class="headerlink" href="#qgis.gui.QgsAbstractMapToolHandler.Context.dummy" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">dummy</span></span><a class="headerlink" href="#qgis.gui.QgsAbstractMapToolHandler.Context.dummy" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.gui.QgsAbstractMapToolHandler.action">
-<span class="sig-name descname"><span class="pre">action</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">QAction</span></span></span><a class="headerlink" href="#qgis.gui.QgsAbstractMapToolHandler.action" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">action</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">QAction</span></span></span><a class="headerlink" href="#qgis.gui.QgsAbstractMapToolHandler.action" title="Link to this definition">¶</a></dt>
 <dd><p>Returns the action associated with toggling the tool.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
@@ -2255,7 +2255,7 @@ manually connected elsewhere!</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.gui.QgsAbstractMapToolHandler.isCompatibleWithLayer">
-<span class="sig-name descname"><span class="pre">isCompatibleWithLayer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">layer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../core/QgsMapLayer.html#qgis.core.QgsMapLayer" title="qgis.core.QgsMapLayer"><span class="pre">QgsMapLayer</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#qgis.gui.QgsAbstractMapToolHandler.Context" title="qgis.gui.QgsAbstractMapToolHandler.Context"><span class="pre">QgsAbstractMapToolHandler.Context</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#qgis.gui.QgsAbstractMapToolHandler.isCompatibleWithLayer" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">isCompatibleWithLayer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">layer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../core/QgsMapLayer.html#qgis.core.QgsMapLayer" title="qgis.core.QgsMapLayer"><span class="pre">QgsMapLayer</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#qgis.gui.QgsAbstractMapToolHandler.Context" title="qgis.gui.QgsAbstractMapToolHandler.Context"><span class="pre">QgsAbstractMapToolHandler.Context</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#qgis.gui.QgsAbstractMapToolHandler.isCompatibleWithLayer" title="Link to this definition">¶</a></dt>
 <dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the associated map tool is compatible with the specified <code class="docutils literal notranslate"><span class="pre">layer</span></code>.</p>
 <p>Additional information is available through the <code class="docutils literal notranslate"><span class="pre">context</span></code> argument.</p>
 <dl class="field-list simple">
@@ -2273,7 +2273,7 @@ manually connected elsewhere!</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.gui.QgsAbstractMapToolHandler.mapTool">
-<span class="sig-name descname"><span class="pre">mapTool</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="QgsMapTool.html#qgis.gui.QgsMapTool" title="qgis.gui.QgsMapTool"><span class="pre">QgsMapTool</span></a></span></span><a class="headerlink" href="#qgis.gui.QgsAbstractMapToolHandler.mapTool" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">mapTool</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="QgsMapTool.html#qgis.gui.QgsMapTool" title="qgis.gui.QgsMapTool"><span class="pre">QgsMapTool</span></a></span></span><a class="headerlink" href="#qgis.gui.QgsAbstractMapToolHandler.mapTool" title="Link to this definition">¶</a></dt>
 <dd><p>Returns the tool associated with this handler.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
@@ -2284,7 +2284,7 @@ manually connected elsewhere!</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.gui.QgsAbstractMapToolHandler.setLayerForTool">
-<span class="sig-name descname"><span class="pre">setLayerForTool</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">layer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../core/QgsMapLayer.html#qgis.core.QgsMapLayer" title="qgis.core.QgsMapLayer"><span class="pre">QgsMapLayer</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsAbstractMapToolHandler.setLayerForTool" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">setLayerForTool</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">layer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../core/QgsMapLayer.html#qgis.core.QgsMapLayer" title="qgis.core.QgsMapLayer"><span class="pre">QgsMapLayer</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsAbstractMapToolHandler.setLayerForTool" title="Link to this definition">¶</a></dt>
 <dd><p>Sets the <code class="docutils literal notranslate"><span class="pre">layer</span></code> to use for the tool.</p>
 <p>Called whenever a new layer should be associated with the tool, e.g. as a result of the
 user selecting a different active layer.</p>
@@ -2309,7 +2309,7 @@ user selecting a different active layer.</p>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 04:45 Aug 18, 2023.
+      <span class="lastupdated">Last updated on 03:35 Aug 22, 2023.
       </span></p>
   </div>
 
