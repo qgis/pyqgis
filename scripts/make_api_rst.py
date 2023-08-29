@@ -55,6 +55,7 @@ Earlier versions of the API
 See `Backwards Incompatible Changes <https://api.qgis.org/api/master/api_break.html>`_ for information about incompatible changes to API between releases.
 
 Earlier versions of the documentation are also available on the QGIS website:
+`3.32 <https://qgis.org/pyqgis/3.32>`_,
 `3.30 <https://qgis.org/pyqgis/3.30>`_,
 `3.28 (LTR) <https://qgis.org/pyqgis/3.28>`_,
 `3.26 <https://qgis.org/pyqgis/3.26>`_,
@@ -83,11 +84,6 @@ Bug Reporting
 
 If you think you have found a bug in the documentation, please report it using our `bug tracker <https://github.com/qgis/pyqgis/issues>`_.
 When reporting bugs, please be available to follow up on your initial report.
-
-
-.. toctree::
-   :maxdepth: 5
-   :caption: Contents:
 
 """
 
