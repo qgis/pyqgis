@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Class: QgsMatrix4x4</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+    <link rel="shortcut icon" href="../_static/qgis.ico"/>
+    <link rel="canonical" href="https://qgis.org/pyqgis/latestcore/QgsMatrix4x4.html"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=30d551ce"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            QGIS Python API
+              <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                master
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Class: QgsMatrix4x4</a><ul>
+<li><a class="reference internal" href="#qgis.core.QgsMatrix4x4"><code class="docutils literal notranslate"><span class="pre">QgsMatrix4x4</span></code></a><ul>
+<li><a class="reference internal" href="#qgis.core.QgsMatrix4x4.data"><code class="docutils literal notranslate"><span class="pre">QgsMatrix4x4.data()</span></code></a></li>
+<li><a class="reference internal" href="#qgis.core.QgsMatrix4x4.isIdentity"><code class="docutils literal notranslate"><span class="pre">QgsMatrix4x4.isIdentity()</span></code></a></li>
+<li><a class="reference internal" href="#qgis.core.QgsMatrix4x4.map"><code class="docutils literal notranslate"><span class="pre">QgsMatrix4x4.map()</span></code></a></li>
+<li><a class="reference internal" href="#qgis.core.QgsMatrix4x4.setToIdentity"><code class="docutils literal notranslate"><span class="pre">QgsMatrix4x4.setToIdentity()</span></code></a></li>
+<li><a class="reference internal" href="#qgis.core.QgsMatrix4x4.translate"><code class="docutils literal notranslate"><span class="pre">QgsMatrix4x4.translate()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">QGIS Python API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Class: QgsMatrix4x4</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-QgsMatrix4x4">
+<span id="class-qgsmatrix4x4"></span><h1>Class: QgsMatrix4x4<a class="headerlink" href="#module-QgsMatrix4x4" title="Link to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="qgis.core.QgsMatrix4x4">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qgis.core.</span></span><span class="sig-name descname"><span class="pre">QgsMatrix4x4</span></span><a class="headerlink" href="#qgis.core.QgsMatrix4x4" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sip.wrapper</span></code></p>
+<p>A simple 4x4 matrix implementation useful for transformation in 3D space.</p>
+<p>It is similar to QMatrix4x4, but working with double precision values.
+Most of the time, doing transform using QMatrix4x4 is fine, however <a class="reference internal" href="#module-QgsMatrix4x4" title="QgsMatrix4x4"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMatrix4x4</span></code></a>
+is useful in situations where single precision floats are not enough.
+For example, when using transform matrix where translation component has
+values in order of millions.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Non-stable API, exposed to Python for unit testing only.</p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.34.</span></p>
+</div>
+<p>QgsMatrix4x4()
+Initializes identity matrix</p>
+<p>QgsMatrix4x4(m11: float, m12: float, m13: float, m14: float, m21: float, m22: float, m23: float, m24: float, m31: float, m32: float, m33: float, m34: float, m41: float, m42: float, m43: float, m44: float)
+Initializes matrix by setting all values in row-major order</p>
+<p>QgsMatrix4x4(<a class="reference internal" href="#qgis.core.QgsMatrix4x4" title="qgis.core.QgsMatrix4x4"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMatrix4x4</span></code></a>)</p>
+<blockquote>
+<div><table class="autosummary longtable docutils align-default">
+<tbody>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMatrix4x4.data" title="qgis.core.QgsMatrix4x4.data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">data</span></code></a></p></td>
+<td><p>Returns matrix data (in column-major order)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMatrix4x4.isIdentity" title="qgis.core.QgsMatrix4x4.isIdentity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isIdentity</span></code></a></p></td>
+<td><p>Returns whether this matrix is an identity matrix</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMatrix4x4.map" title="qgis.core.QgsMatrix4x4.map"><code class="xref py py-obj docutils literal notranslate"><span class="pre">map</span></code></a></p></td>
+<td><p>Matrix-vector multiplication (vector is converted to homogenous coordinates [X,Y,Z,1] and back)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMatrix4x4.setToIdentity" title="qgis.core.QgsMatrix4x4.setToIdentity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setToIdentity</span></code></a></p></td>
+<td><p>Sets matrix to be identity matrix</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMatrix4x4.translate" title="qgis.core.QgsMatrix4x4.translate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">translate</span></code></a></p></td>
+<td><p>Multiplies this matrix by another that translates coordinates by the components of a <code class="docutils literal notranslate"><span class="pre">vector</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+</tbody>
+</table>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+</tbody>
+</table>
+</div></blockquote>
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsMatrix4x4.data">
+<span class="sig-name descname"><span class="pre">data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qgis.core.QgsMatrix4x4.data" title="Link to this definition">¶</a></dt>
+<dd><p>Returns matrix data (in column-major order)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List[float]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsMatrix4x4.isIdentity">
+<span class="sig-name descname"><span class="pre">isIdentity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#qgis.core.QgsMatrix4x4.isIdentity" title="Link to this definition">¶</a></dt>
+<dd><p>Returns whether this matrix is an identity matrix</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsMatrix4x4.map">
+<span class="sig-name descname"><span class="pre">map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsVector3D.html#qgis.core.QgsVector3D" title="qgis.core.QgsVector3D"><span class="pre">QgsVector3D</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="QgsVector3D.html#qgis.core.QgsVector3D" title="qgis.core.QgsVector3D"><span class="pre">QgsVector3D</span></a></span></span><a class="headerlink" href="#qgis.core.QgsMatrix4x4.map" title="Link to this definition">¶</a></dt>
+<dd><p>Matrix-vector multiplication (vector is converted to homogenous coordinates [X,Y,Z,1] and back)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>vector</strong> (<a class="reference internal" href="QgsVector3D.html#qgis.core.QgsVector3D" title="qgis.core.QgsVector3D"><em>QgsVector3D</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="QgsVector3D.html#qgis.core.QgsVector3D" title="qgis.core.QgsVector3D">QgsVector3D</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsMatrix4x4.setToIdentity">
+<span class="sig-name descname"><span class="pre">setToIdentity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsMatrix4x4.setToIdentity" title="Link to this definition">¶</a></dt>
+<dd><p>Sets matrix to be identity matrix</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsMatrix4x4.translate">
+<span class="sig-name descname"><span class="pre">translate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsVector3D.html#qgis.core.QgsVector3D" title="qgis.core.QgsVector3D"><span class="pre">QgsVector3D</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsMatrix4x4.translate" title="Link to this definition">¶</a></dt>
+<dd><p>Multiplies this matrix by another that translates coordinates by the components of a <code class="docutils literal notranslate"><span class="pre">vector</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>vector</strong> (<a class="reference internal" href="QgsVector3D.html#qgis.core.QgsVector3D" title="qgis.core.QgsVector3D"><em>QgsVector3D</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      <span class="lastupdated">Last updated on 14:23 Aug 29, 2023.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> QGIS Python API</span>
+      v: master
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      
+      
+      <dl>
+        <dt>Versions</dt>
+        
+           <strong> 
+          <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
+           </strong> 
+        
+          
+          <dd><a href="https://qgis.org/pyqgis/3.32">3.32</a></dd>
+          
+        
+          
+          <dd><a href="https://qgis.org/pyqgis/3.30">3.30</a></dd>
+          
+        
+          
+          <dd><a href="https://qgis.org/pyqgis/3.28">3.28</a></dd>
+          
+        
+          
+          <dd><a href="https://qgis.org/pyqgis/3.26">3.26</a></dd>
+          
+        
+          
+          <dd><a href="https://qgis.org/pyqgis/3.24">3.24</a></dd>
+          
+        
+          
+          <dd><a href="https://qgis.org/pyqgis/3.22">3.22</a></dd>
+          
+        
+          
+          <dd><a href="https://qgis.org/pyqgis/3.20">3.20</a></dd>
+          
+        
+          
+          <dd><a href="https://qgis.org/pyqgis/3.18">3.18</a></dd>
+          
+        
+          
+          <dd><a href="https://qgis.org/pyqgis/3.16">3.16</a></dd>
+          
+        
+          
+          <dd><a href="https://qgis.org/pyqgis/3.14">3.14</a></dd>
+          
+        
+          
+          <dd><a href="https://qgis.org/pyqgis/3.12">3.12</a></dd>
+          
+        
+          
+          <dd><a href="https://qgis.org/pyqgis/3.10">3.10</a></dd>
+          
+        
+          
+          <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
+          
+        
+          
+          <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
+          
+        
+          
+          <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
+          
+        
+          
+          <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
+          
+        
+          
+          <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
+          
+        
+      </dl>
+      
+      
+      
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org" target="_blank" rel="noopener noreferrer">Project Home</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/pyqgis/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/master" target="_blank" rel="noopener noreferrer">Source Code</a>
+          </dd>
+      </dl>
+      <hr/>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

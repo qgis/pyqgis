@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Class: QgsProfileExporterTask</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+    <link rel="shortcut icon" href="../_static/qgis.ico"/>
+    <link rel="canonical" href="https://qgis.org/pyqgis/latestcore/QgsProfileExporterTask.html"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=30d551ce"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            QGIS Python API
+              <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                master
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Class: QgsProfileExporterTask</a><ul>
+<li><a class="reference internal" href="#qgis.core.QgsProfileExporterTask"><code class="docutils literal notranslate"><span class="pre">QgsProfileExporterTask</span></code></a><ul>
+<li><a class="reference internal" href="#qgis.core.QgsProfileExporterTask.ExportResult"><code class="docutils literal notranslate"><span class="pre">QgsProfileExporterTask.ExportResult</span></code></a><ul>
+<li><a class="reference internal" href="#qgis.core.QgsProfileExporterTask.ExportResult.Canceled"><code class="docutils literal notranslate"><span class="pre">QgsProfileExporterTask.ExportResult.Canceled</span></code></a></li>
+<li><a class="reference internal" href="#qgis.core.QgsProfileExporterTask.ExportResult.DeviceError"><code class="docutils literal notranslate"><span class="pre">QgsProfileExporterTask.ExportResult.DeviceError</span></code></a></li>
+<li><a class="reference internal" href="#qgis.core.QgsProfileExporterTask.ExportResult.DxfExportFailed"><code class="docutils literal notranslate"><span class="pre">QgsProfileExporterTask.ExportResult.DxfExportFailed</span></code></a></li>
+<li><a class="reference internal" href="#qgis.core.QgsProfileExporterTask.ExportResult.Empty"><code class="docutils literal notranslate"><span class="pre">QgsProfileExporterTask.ExportResult.Empty</span></code></a></li>
+<li><a class="reference internal" href="#qgis.core.QgsProfileExporterTask.ExportResult.LayerExportFailed"><code class="docutils literal notranslate"><span class="pre">QgsProfileExporterTask.ExportResult.LayerExportFailed</span></code></a></li>
+<li><a class="reference internal" href="#qgis.core.QgsProfileExporterTask.ExportResult.Success"><code class="docutils literal notranslate"><span class="pre">QgsProfileExporterTask.ExportResult.Success</span></code></a></li>
+<li><a class="reference internal" href="#qgis.core.QgsProfileExporterTask.ExportResult.baseClass"><code class="docutils literal notranslate"><span class="pre">QgsProfileExporterTask.ExportResult.baseClass</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#qgis.core.QgsProfileExporterTask.cancel"><code class="docutils literal notranslate"><span class="pre">QgsProfileExporterTask.cancel()</span></code></a></li>
+<li><a class="reference internal" href="#qgis.core.QgsProfileExporterTask.childEvent"><code class="docutils literal notranslate"><span class="pre">QgsProfileExporterTask.childEvent()</span></code></a></li>
+<li><a class="reference internal" href="#qgis.core.QgsProfileExporterTask.connectNotify"><code class="docutils literal notranslate"><span class="pre">QgsProfileExporterTask.connectNotify()</span></code></a></li>
+<li><a class="reference internal" href="#qgis.core.QgsProfileExporterTask.createdFiles"><code class="docutils literal notranslate"><span class="pre">QgsProfileExporterTask.createdFiles()</span></code></a></li>
+<li><a class="reference internal" href="#qgis.core.QgsProfileExporterTask.customEvent"><code class="docutils literal notranslate"><span class="pre">QgsProfileExporterTask.customEvent()</span></code></a></li>
+<li><a class="reference internal" href="#qgis.core.QgsProfileExporterTask.disconnectNotify"><code class="docutils literal notranslate"><span class="pre">QgsProfileExporterTask.disconnectNotify()</span></code></a></li>
+<li><a class="reference internal" href="#qgis.core.QgsProfileExporterTask.error"><code class="docutils literal notranslate"><span class="pre">QgsProfileExporterTask.error()</span></code></a></li>
+<li><a class="reference internal" href="#qgis.core.QgsProfileExporterTask.finished"><code class="docutils literal notranslate"><span class="pre">QgsProfileExporterTask.finished()</span></code></a></li>
+<li><a class="reference internal" href="#qgis.core.QgsProfileExporterTask.isCanceled"><code class="docutils literal notranslate"><span class="pre">QgsProfileExporterTask.isCanceled()</span></code></a></li>
+<li><a class="reference internal" href="#qgis.core.QgsProfileExporterTask.isSignalConnected"><code class="docutils literal notranslate"><span class="pre">QgsProfileExporterTask.isSignalConnected()</span></code></a></li>
+<li><a class="reference internal" href="#qgis.core.QgsProfileExporterTask.receivers"><code class="docutils literal notranslate"><span class="pre">QgsProfileExporterTask.receivers()</span></code></a></li>
+<li><a class="reference internal" href="#qgis.core.QgsProfileExporterTask.result"><code class="docutils literal notranslate"><span class="pre">QgsProfileExporterTask.result()</span></code></a></li>
+<li><a class="reference internal" href="#qgis.core.QgsProfileExporterTask.run"><code class="docutils literal notranslate"><span class="pre">QgsProfileExporterTask.run()</span></code></a></li>
+<li><a class="reference internal" href="#qgis.core.QgsProfileExporterTask.sender"><code class="docutils literal notranslate"><span class="pre">QgsProfileExporterTask.sender()</span></code></a></li>
+<li><a class="reference internal" href="#qgis.core.QgsProfileExporterTask.senderSignalIndex"><code class="docutils literal notranslate"><span class="pre">QgsProfileExporterTask.senderSignalIndex()</span></code></a></li>
+<li><a class="reference internal" href="#qgis.core.QgsProfileExporterTask.setProgress"><code class="docutils literal notranslate"><span class="pre">QgsProfileExporterTask.setProgress()</span></code></a></li>
+<li><a class="reference internal" href="#qgis.core.QgsProfileExporterTask.takeLayers"><code class="docutils literal notranslate"><span class="pre">QgsProfileExporterTask.takeLayers()</span></code></a></li>
+<li><a class="reference internal" href="#qgis.core.QgsProfileExporterTask.timerEvent"><code class="docutils literal notranslate"><span class="pre">QgsProfileExporterTask.timerEvent()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">QGIS Python API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Class: QgsProfileExporterTask</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-QgsProfileExporterTask">
+<span id="class-qgsprofileexportertask"></span><h1>Class: QgsProfileExporterTask<a class="headerlink" href="#module-QgsProfileExporterTask" title="Link to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="qgis.core.QgsProfileExporterTask">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qgis.core.</span></span><span class="sig-name descname"><span class="pre">QgsProfileExporterTask</span></span><a class="headerlink" href="#qgis.core.QgsProfileExporterTask" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="QgsTask.html#module-QgsTask" title="QgsTask"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsTask</span></code></a></p>
+<p>Handles exports of elevation profiles in various formats in a background task.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.32.</span></p>
+</div>
+<p>QgsProfileExporterTask(sources: Iterable[QgsAbstractProfileSource], request: <a class="reference internal" href="QgsProfileRequest.html#qgis.core.QgsProfileRequest" title="qgis.core.QgsProfileRequest"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProfileRequest</span></code></a>, type: Qgis.ProfileExportType, destination: str, transformContext: <a class="reference internal" href="QgsCoordinateTransformContext.html#qgis.core.QgsCoordinateTransformContext" title="qgis.core.QgsCoordinateTransformContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsCoordinateTransformContext</span></code></a>)
+Constructor for <a class="reference internal" href="#qgis.core.QgsProfileExporterTask" title="qgis.core.QgsProfileExporterTask"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProfileExporterTask</span></code></a>, saving results to the specified <code class="docutils literal notranslate"><span class="pre">destination</span></code> file.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">destination</span></code> is an empty string then the profile results will be generated only and can
+be retrieved by calling <a class="reference internal" href="#qgis.core.QgsProfileExporterTask.takeLayers" title="qgis.core.QgsProfileExporterTask.takeLayers"><code class="xref py py-func docutils literal notranslate"><span class="pre">takeLayers()</span></code></a>.</p>
+<blockquote>
+<div><p class="rubric">Enums</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProfileExporterTask.ExportResult" title="qgis.core.QgsProfileExporterTask.ExportResult"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExportResult</span></code></a></p></td>
+<td><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.IntEnum</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProfileExporterTask.cancel" title="qgis.core.QgsProfileExporterTask.cancel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cancel</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProfileExporterTask.childEvent" title="qgis.core.QgsProfileExporterTask.childEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">childEvent</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProfileExporterTask.connectNotify" title="qgis.core.QgsProfileExporterTask.connectNotify"><code class="xref py py-obj docutils literal notranslate"><span class="pre">connectNotify</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProfileExporterTask.createdFiles" title="qgis.core.QgsProfileExporterTask.createdFiles"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createdFiles</span></code></a></p></td>
+<td><p>Returns a list of layer files created during the export.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProfileExporterTask.customEvent" title="qgis.core.QgsProfileExporterTask.customEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">customEvent</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProfileExporterTask.disconnectNotify" title="qgis.core.QgsProfileExporterTask.disconnectNotify"><code class="xref py py-obj docutils literal notranslate"><span class="pre">disconnectNotify</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProfileExporterTask.error" title="qgis.core.QgsProfileExporterTask.error"><code class="xref py py-obj docutils literal notranslate"><span class="pre">error</span></code></a></p></td>
+<td><p>Returns a descriptive error message, if available.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProfileExporterTask.finished" title="qgis.core.QgsProfileExporterTask.finished"><code class="xref py py-obj docutils literal notranslate"><span class="pre">finished</span></code></a></p></td>
+<td><p>If the task is managed by a <a class="reference internal" href="QgsTaskManager.html#module-QgsTaskManager" title="QgsTaskManager"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsTaskManager</span></code></a>, this will be called after the task has finished (whether through successful completion or via early termination).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProfileExporterTask.isCanceled" title="qgis.core.QgsProfileExporterTask.isCanceled"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isCanceled</span></code></a></p></td>
+<td><p>Will return <code class="docutils literal notranslate"><span class="pre">True</span></code> if task should terminate ASAP.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProfileExporterTask.isSignalConnected" title="qgis.core.QgsProfileExporterTask.isSignalConnected"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isSignalConnected</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProfileExporterTask.receivers" title="qgis.core.QgsProfileExporterTask.receivers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">receivers</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProfileExporterTask.result" title="qgis.core.QgsProfileExporterTask.result"><code class="xref py py-obj docutils literal notranslate"><span class="pre">result</span></code></a></p></td>
+<td><p>Returns the result of the export operation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProfileExporterTask.run" title="qgis.core.QgsProfileExporterTask.run"><code class="xref py py-obj docutils literal notranslate"><span class="pre">run</span></code></a></p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">rtype<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProfileExporterTask.sender" title="qgis.core.QgsProfileExporterTask.sender"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sender</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProfileExporterTask.senderSignalIndex" title="qgis.core.QgsProfileExporterTask.senderSignalIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">senderSignalIndex</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProfileExporterTask.setProgress" title="qgis.core.QgsProfileExporterTask.setProgress"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setProgress</span></code></a></p></td>
+<td><p>Sets the task's current progress.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsProfileExporterTask.takeLayers" title="qgis.core.QgsProfileExporterTask.takeLayers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">takeLayers</span></code></a></p></td>
+<td><p>Returns a list of vector layer containing the exported profile results.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsProfileExporterTask.timerEvent" title="qgis.core.QgsProfileExporterTask.timerEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">timerEvent</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+</tbody>
+</table>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+</tbody>
+</table>
+</div></blockquote>
+<dl class="py class">
+<dt class="sig sig-object py" id="qgis.core.QgsProfileExporterTask.ExportResult">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ExportResult</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsProfileExporterTask.ExportResult" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.IntEnum</span></code></p>
+<p>Results of exporting the profile.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Success</span></code>: Successful export</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Empty</span></code>: Results were empty</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DeviceError</span></code>: Could not open output file device</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DxfExportFailed</span></code>: Generic error when outputting to DXF</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LayerExportFailed</span></code>: Generic error when outputting to files</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Canceled</span></code>: Export was canceled</p></li>
+</ul>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.QgsProfileExporterTask.ExportResult.Canceled">
+<span class="sig-name descname"><span class="pre">Canceled</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">5</span></em><a class="headerlink" href="#qgis.core.QgsProfileExporterTask.ExportResult.Canceled" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.QgsProfileExporterTask.ExportResult.DeviceError">
+<span class="sig-name descname"><span class="pre">DeviceError</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#qgis.core.QgsProfileExporterTask.ExportResult.DeviceError" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.QgsProfileExporterTask.ExportResult.DxfExportFailed">
+<span class="sig-name descname"><span class="pre">DxfExportFailed</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></em><a class="headerlink" href="#qgis.core.QgsProfileExporterTask.ExportResult.DxfExportFailed" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.QgsProfileExporterTask.ExportResult.Empty">
+<span class="sig-name descname"><span class="pre">Empty</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#qgis.core.QgsProfileExporterTask.ExportResult.Empty" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.QgsProfileExporterTask.ExportResult.LayerExportFailed">
+<span class="sig-name descname"><span class="pre">LayerExportFailed</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">4</span></em><a class="headerlink" href="#qgis.core.QgsProfileExporterTask.ExportResult.LayerExportFailed" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.QgsProfileExporterTask.ExportResult.Success">
+<span class="sig-name descname"><span class="pre">Success</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#qgis.core.QgsProfileExporterTask.ExportResult.Success" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qgis.core.QgsProfileExporterTask.ExportResult.baseClass">
+<span class="sig-name descname"><span class="pre">baseClass</span></span><a class="headerlink" href="#qgis.core.QgsProfileExporterTask.ExportResult.baseClass" title="Link to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#qgis.core.QgsProfileExporterTask" title="qgis._core.QgsProfileExporterTask"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProfileExporterTask</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProfileExporterTask.cancel">
+<span class="sig-name descname"><span class="pre">cancel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsProfileExporterTask.cancel" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProfileExporterTask.childEvent">
+<span class="sig-name descname"><span class="pre">childEvent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">QChildEvent</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsProfileExporterTask.childEvent" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProfileExporterTask.connectNotify">
+<span class="sig-name descname"><span class="pre">connectNotify</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">QMetaMethod</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsProfileExporterTask.connectNotify" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProfileExporterTask.createdFiles">
+<span class="sig-name descname"><span class="pre">createdFiles</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qgis.core.QgsProfileExporterTask.createdFiles" title="Link to this definition">¶</a></dt>
+<dd><p>Returns a list of layer files created during the export.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProfileExporterTask.customEvent">
+<span class="sig-name descname"><span class="pre">customEvent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">QEvent</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsProfileExporterTask.customEvent" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProfileExporterTask.disconnectNotify">
+<span class="sig-name descname"><span class="pre">disconnectNotify</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">QMetaMethod</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsProfileExporterTask.disconnectNotify" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProfileExporterTask.error">
+<span class="sig-name descname"><span class="pre">error</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#qgis.core.QgsProfileExporterTask.error" title="Link to this definition">¶</a></dt>
+<dd><p>Returns a descriptive error message, if available.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProfileExporterTask.finished">
+<span class="sig-name descname"><span class="pre">finished</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">result</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsProfileExporterTask.finished" title="Link to this definition">¶</a></dt>
+<dd><p>If the task is managed by a <a class="reference internal" href="QgsTaskManager.html#module-QgsTaskManager" title="QgsTaskManager"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsTaskManager</span></code></a>, this will be called after the
+task has finished (whether through successful completion or via early
+termination). The result argument reflects whether
+the task was successfully completed or not. This method is always called
+from the main thread, so it is safe to create widgets and perform other
+operations which require the main thread. However, the GUI will be blocked
+for the duration of this method so tasks should avoid performing any
+lengthy operations here.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProfileExporterTask.isCanceled">
+<span class="sig-name descname"><span class="pre">isCanceled</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#qgis.core.QgsProfileExporterTask.isCanceled" title="Link to this definition">¶</a></dt>
+<dd><p>Will return <code class="docutils literal notranslate"><span class="pre">True</span></code> if task should terminate ASAP. If the task reports the CanCancel
+flag, then derived classes’ <a class="reference internal" href="QgsTask.html#qgis.core.QgsTask.run" title="qgis.core.QgsTask.run"><code class="xref py py-func docutils literal notranslate"><span class="pre">run()</span></code></a> methods should periodically check this and
+terminate in a safe manner.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProfileExporterTask.isSignalConnected">
+<span class="sig-name descname"><span class="pre">isSignalConnected</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">QMetaMethod</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#qgis.core.QgsProfileExporterTask.isSignalConnected" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProfileExporterTask.receivers">
+<span class="sig-name descname"><span class="pre">receivers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">PYQT_SIGNAL</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#qgis.core.QgsProfileExporterTask.receivers" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProfileExporterTask.result">
+<span class="sig-name descname"><span class="pre">result</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#qgis.core.QgsProfileExporterTask.ExportResult" title="qgis.core.QgsProfileExporterTask.ExportResult"><span class="pre">QgsProfileExporterTask.ExportResult</span></a></span></span><a class="headerlink" href="#qgis.core.QgsProfileExporterTask.result" title="Link to this definition">¶</a></dt>
+<dd><p>Returns the result of the export operation.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsProfileExporterTask.error" title="qgis.core.QgsProfileExporterTask.error"><code class="xref py py-func docutils literal notranslate"><span class="pre">error()</span></code></a></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#qgis.core.QgsProfileExporterTask.ExportResult" title="qgis.core.QgsProfileExporterTask.ExportResult">QgsProfileExporterTask.ExportResult</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProfileExporterTask.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#qgis.core.QgsProfileExporterTask.run" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProfileExporterTask.sender">
+<span class="sig-name descname"><span class="pre">sender</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">QObject</span></span></span><a class="headerlink" href="#qgis.core.QgsProfileExporterTask.sender" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProfileExporterTask.senderSignalIndex">
+<span class="sig-name descname"><span class="pre">senderSignalIndex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#qgis.core.QgsProfileExporterTask.senderSignalIndex" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProfileExporterTask.setProgress">
+<span class="sig-name descname"><span class="pre">setProgress</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">progress</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsProfileExporterTask.setProgress" title="Link to this definition">¶</a></dt>
+<dd><p>Sets the task’s current progress. The derived class should call this method whenever
+the task wants to update its progress. Calling will automatically emit the progressChanged signal.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>progress</strong> – percent of progress, from 0.0 - 100.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProfileExporterTask.takeLayers">
+<span class="sig-name descname"><span class="pre">takeLayers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="QgsVectorLayer.html#qgis.core.QgsVectorLayer" title="qgis.core.QgsVectorLayer"><span class="pre">QgsVectorLayer</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qgis.core.QgsProfileExporterTask.takeLayers" title="Link to this definition">¶</a></dt>
+<dd><p>Returns a list of vector layer containing the exported profile results.</p>
+<p>While this method attempts to condense all results into a single layer, multiple layers may be returned
+when the geometry types of exported features differs.</p>
+<p>Ownership of the returned layers is transferred to the caller.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List[<a class="reference internal" href="QgsVectorLayer.html#qgis.core.QgsVectorLayer" title="qgis.core.QgsVectorLayer">QgsVectorLayer</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsProfileExporterTask.timerEvent">
+<span class="sig-name descname"><span class="pre">timerEvent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">QTimerEvent</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsProfileExporterTask.timerEvent" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      <span class="lastupdated">Last updated on 14:23 Aug 29, 2023.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> QGIS Python API</span>
+      v: master
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      
+      
+      <dl>
+        <dt>Versions</dt>
+        
+           <strong> 
+          <dd><a href="https://qgis.org/pyqgis/master">master</a></dd>
+           </strong> 
+        
+          
+          <dd><a href="https://qgis.org/pyqgis/3.32">3.32</a></dd>
+          
+        
+          
+          <dd><a href="https://qgis.org/pyqgis/3.30">3.30</a></dd>
+          
+        
+          
+          <dd><a href="https://qgis.org/pyqgis/3.28">3.28</a></dd>
+          
+        
+          
+          <dd><a href="https://qgis.org/pyqgis/3.26">3.26</a></dd>
+          
+        
+          
+          <dd><a href="https://qgis.org/pyqgis/3.24">3.24</a></dd>
+          
+        
+          
+          <dd><a href="https://qgis.org/pyqgis/3.22">3.22</a></dd>
+          
+        
+          
+          <dd><a href="https://qgis.org/pyqgis/3.20">3.20</a></dd>
+          
+        
+          
+          <dd><a href="https://qgis.org/pyqgis/3.18">3.18</a></dd>
+          
+        
+          
+          <dd><a href="https://qgis.org/pyqgis/3.16">3.16</a></dd>
+          
+        
+          
+          <dd><a href="https://qgis.org/pyqgis/3.14">3.14</a></dd>
+          
+        
+          
+          <dd><a href="https://qgis.org/pyqgis/3.12">3.12</a></dd>
+          
+        
+          
+          <dd><a href="https://qgis.org/pyqgis/3.10">3.10</a></dd>
+          
+        
+          
+          <dd><a href="https://qgis.org/pyqgis/3.8">3.8</a></dd>
+          
+        
+          
+          <dd><a href="https://qgis.org/pyqgis/3.6">3.6</a></dd>
+          
+        
+          
+          <dd><a href="https://qgis.org/pyqgis/3.4">3.4</a></dd>
+          
+        
+          
+          <dd><a href="https://qgis.org/pyqgis/3.2">3.2</a></dd>
+          
+        
+          
+          <dd><a href="https://qgis.org/pyqgis/3.0">3.0</a></dd>
+          
+        
+      </dl>
+      
+      
+      
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org" target="_blank" rel="noopener noreferrer">Project Home</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/pyqgis/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/master" target="_blank" rel="noopener noreferrer">Source Code</a>
+          </dd>
+      </dl>
+      <hr/>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>
