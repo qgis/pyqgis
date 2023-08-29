@@ -2249,9 +2249,9 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="class-qgsmaplayer">
-<h1>Class: QgsMapLayer<a class="headerlink" href="#class-qgsmaplayer" title="Link to this heading">¶</a></h1>
-<dl class="py class" id="module-QgsMapLayer">
+  <section id="module-QgsMapLayer">
+<span id="class-qgsmaplayer"></span><h1>Class: QgsMapLayer<a class="headerlink" href="#module-QgsMapLayer" title="Link to this heading">¶</a></h1>
+<dl class="py class">
 <dt class="sig sig-object py" id="qgis.core.QgsMapLayer">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qgis.core.</span></span><span class="sig-name descname"><span class="pre">QgsMapLayer</span></span><a class="headerlink" href="#qgis.core.QgsMapLayer" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">PyQt5.QtCore.QObject</span></code></p>
@@ -6056,20 +6056,26 @@ canvas must be refreshed separately in order to view the refreshed layer.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsMapLayer.setDataSource">
 <span class="sig-name descname"><span class="pre">setDataSource</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataSource</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">baseName</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">provider</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loadDefaultStyleFlag</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsMapLayer.setDataSource" title="Link to this definition">¶</a></dt>
-<dd><p>Updates the data source of the layer. The layer’s renderer and legend will be preserved only
+<dd><p>Updates the data source of the layer.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">dataSource</span></code> argument must specify the new data source string for the layer. The format varies depending on
+the specified data <code class="docutils literal notranslate"><span class="pre">provider</span></code> in use. See <a class="reference internal" href="QgsDataSourceUri.html#module-QgsDataSourceUri" title="QgsDataSourceUri"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsDataSourceUri</span></code></a> and the documentation for the various <a class="reference internal" href="#module-QgsMapLayer" title="QgsMapLayer"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMapLayer</span></code></a>
+subclasses for further details on data source strings.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">baseName</span></code> argument specifies the user-visible name to use for the layer. (See <a class="reference internal" href="#qgis.core.QgsMapLayer.name" title="qgis.core.QgsMapLayer.name"><code class="xref py py-func docutils literal notranslate"><span class="pre">name()</span></code></a> or <a class="reference internal" href="#qgis.core.QgsMapLayer.setName" title="qgis.core.QgsMapLayer.setName"><code class="xref py py-func docutils literal notranslate"><span class="pre">setName()</span></code></a>).</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">provider</span></code> argument is used to specify the unique key of the data provider to use for
+the layer. This must match one of the values returned by <a class="reference internal" href="QgsProviderRegistry.html#qgis.core.QgsProviderRegistry.instance" title="qgis.core.QgsProviderRegistry.instance"><code class="xref py py-func docutils literal notranslate"><span class="pre">QgsProviderRegistry.instance()</span></code></a>-&gt;:py:func:<cite>~QgsMapLayer.providerList</cite>.
+(See <a class="reference internal" href="#qgis.core.QgsMapLayer.providerType" title="qgis.core.QgsMapLayer.providerType"><code class="xref py py-func docutils literal notranslate"><span class="pre">providerType()</span></code></a>).</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">loadDefaultStyleFlag</span></code> is set to <code class="docutils literal notranslate"><span class="pre">True</span></code> then the layer’s existing style will be reset to the default
+for the data source.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">loadDefaultStyleFlag</span></code> is <code class="docutils literal notranslate"><span class="pre">False</span></code> then the layer’s renderer and legend will be preserved only
 if the geometry type of the new data source matches the current geometry type of the layer.</p>
+</div>
+<p>After setting a new data source callers can test <a class="reference internal" href="#qgis.core.QgsMapLayer.isValid" title="qgis.core.QgsMapLayer.isValid"><code class="xref py py-func docutils literal notranslate"><span class="pre">isValid()</span></code></a> to determine whether the new source
+and provider are valid and ready for use. If setting the new data source fails and the layer
+returns <code class="docutils literal notranslate"><span class="pre">False</span></code> to <a class="reference internal" href="#qgis.core.QgsMapLayer.isValid" title="qgis.core.QgsMapLayer.isValid"><code class="xref py py-func docutils literal notranslate"><span class="pre">isValid()</span></code></a>, then descriptive errors relating to setting the data source can
+be retrieved by calling <a class="reference internal" href="#qgis.core.QgsMapLayer.error" title="qgis.core.QgsMapLayer.error"><code class="xref py py-func docutils literal notranslate"><span class="pre">error()</span></code></a>.</p>
 <p>This method was defined in <a class="reference internal" href="QgsVectorLayer.html#module-QgsVectorLayer" title="QgsVectorLayer"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsVectorLayer</span></code></a> since 2.10 and was marked as deprecated since 3.2</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>dataSource</strong> (<em>str</em>) – new layer data source</p></li>
-<li><p><strong>baseName</strong> (<em>str</em>) – base name of the layer</p></li>
-<li><p><strong>provider</strong> (<em>str</em>) – provider string</p></li>
-<li><p><strong>loadDefaultStyleFlag</strong> (<em>bool = False</em>) – set to <code class="docutils literal notranslate"><span class="pre">True</span></code> to reset the layer’s style to the default for the
-data source</p></li>
-</ul>
-</dd>
-</dl>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsMapLayer.dataSourceChanged" title="qgis.core.QgsMapLayer.dataSourceChanged"><code class="xref py py-func docutils literal notranslate"><span class="pre">dataSourceChanged()</span></code></a></p>
@@ -6078,20 +6084,26 @@ data source</p></li>
 <p><span class="versionmodified added">New in version 3.20.</span></p>
 </div>
 <p>setDataSource(self, dataSource: str, baseName: str, provider: str, options: QgsDataProvider.ProviderOptions, loadDefaultStyleFlag: bool = False)
-Updates the data source of the layer. The layer’s renderer and legend will be preserved only
+Updates the data source of the layer.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">dataSource</span></code> argument must specify the new data source string for the layer. The format varies depending on
+the specified data <code class="docutils literal notranslate"><span class="pre">provider</span></code> in use. See <a class="reference internal" href="QgsDataSourceUri.html#module-QgsDataSourceUri" title="QgsDataSourceUri"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsDataSourceUri</span></code></a> and the documentation for the various <a class="reference internal" href="#module-QgsMapLayer" title="QgsMapLayer"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMapLayer</span></code></a>
+subclasses for further details on data source strings.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">baseName</span></code> argument specifies the user-visible name to use for the layer. (See <a class="reference internal" href="#qgis.core.QgsMapLayer.name" title="qgis.core.QgsMapLayer.name"><code class="xref py py-func docutils literal notranslate"><span class="pre">name()</span></code></a> or <a class="reference internal" href="#qgis.core.QgsMapLayer.setName" title="qgis.core.QgsMapLayer.setName"><code class="xref py py-func docutils literal notranslate"><span class="pre">setName()</span></code></a>).</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">provider</span></code> argument is used to specify the unique key of the data provider to use for
+the layer. This must match one of the values returned by <a class="reference internal" href="QgsProviderRegistry.html#qgis.core.QgsProviderRegistry.instance" title="qgis.core.QgsProviderRegistry.instance"><code class="xref py py-func docutils literal notranslate"><span class="pre">QgsProviderRegistry.instance()</span></code></a>-&gt;:py:func:<cite>~QgsMapLayer.providerList</cite>.
+(See <a class="reference internal" href="#qgis.core.QgsMapLayer.providerType" title="qgis.core.QgsMapLayer.providerType"><code class="xref py py-func docutils literal notranslate"><span class="pre">providerType()</span></code></a>).</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">options</span></code> argument can be used to pass additional layer properties to the new data provider.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">loadDefaultStyleFlag</span></code> is set to <code class="docutils literal notranslate"><span class="pre">True</span></code> then the layer’s existing style will be reset to the default
+for the data source.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">loadDefaultStyleFlag</span></code> is <code class="docutils literal notranslate"><span class="pre">False</span></code> then the layer’s renderer and legend will be preserved only
 if the geometry type of the new data source matches the current geometry type of the layer.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>dataSource</strong> – new layer data source</p></li>
-<li><p><strong>baseName</strong> – base name of the layer</p></li>
-<li><p><strong>provider</strong> – provider string</p></li>
-<li><p><strong>options</strong> – provider options</p></li>
-<li><p><strong>loadDefaultStyleFlag</strong> – set to <code class="docutils literal notranslate"><span class="pre">True</span></code> to reset the layer’s style to the default for the
-data source</p></li>
-</ul>
-</dd>
-</dl>
+</div>
+<p>After setting a new data source callers can test <a class="reference internal" href="#qgis.core.QgsMapLayer.isValid" title="qgis.core.QgsMapLayer.isValid"><code class="xref py py-func docutils literal notranslate"><span class="pre">isValid()</span></code></a> to determine whether the new source
+and provider are valid and ready for use. If setting the new data source fails and the layer
+returns <code class="docutils literal notranslate"><span class="pre">False</span></code> to <a class="reference internal" href="#qgis.core.QgsMapLayer.isValid" title="qgis.core.QgsMapLayer.isValid"><code class="xref py py-func docutils literal notranslate"><span class="pre">isValid()</span></code></a>, then descriptive errors relating to setting the data source can
+be retrieved by calling <a class="reference internal" href="#qgis.core.QgsMapLayer.error" title="qgis.core.QgsMapLayer.error"><code class="xref py py-func docutils literal notranslate"><span class="pre">error()</span></code></a>.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsMapLayer.dataSourceChanged" title="qgis.core.QgsMapLayer.dataSourceChanged"><code class="xref py py-func docutils literal notranslate"><span class="pre">dataSourceChanged()</span></code></a></p>
@@ -6100,20 +6112,26 @@ data source</p></li>
 <p><span class="versionmodified added">New in version 3.6.</span></p>
 </div>
 <p>setDataSource(self, dataSource: str, baseName: str, provider: str, options: QgsDataProvider.ProviderOptions, flags: Union[QgsDataProvider.ReadFlags, QgsDataProvider.ReadFlag])
-Updates the data source of the layer. The layer’s renderer and legend will be preserved only
+Updates the data source of the layer.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">dataSource</span></code> argument must specify the new data source string for the layer. The format varies depending on
+the specified data <code class="docutils literal notranslate"><span class="pre">provider</span></code> in use. See <a class="reference internal" href="QgsDataSourceUri.html#module-QgsDataSourceUri" title="QgsDataSourceUri"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsDataSourceUri</span></code></a> and the documentation for the various <a class="reference internal" href="#module-QgsMapLayer" title="QgsMapLayer"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMapLayer</span></code></a>
+subclasses for further details on data source strings.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">baseName</span></code> argument specifies the user-visible name to use for the layer. (See <a class="reference internal" href="#qgis.core.QgsMapLayer.name" title="qgis.core.QgsMapLayer.name"><code class="xref py py-func docutils literal notranslate"><span class="pre">name()</span></code></a> or <a class="reference internal" href="#qgis.core.QgsMapLayer.setName" title="qgis.core.QgsMapLayer.setName"><code class="xref py py-func docutils literal notranslate"><span class="pre">setName()</span></code></a>).</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">provider</span></code> argument is used to specify the unique key of the data provider to use for
+the layer. This must match one of the values returned by <a class="reference internal" href="QgsProviderRegistry.html#qgis.core.QgsProviderRegistry.instance" title="qgis.core.QgsProviderRegistry.instance"><code class="xref py py-func docutils literal notranslate"><span class="pre">QgsProviderRegistry.instance()</span></code></a>-&gt;:py:func:<cite>~QgsMapLayer.providerList</cite>.
+(See <a class="reference internal" href="#qgis.core.QgsMapLayer.providerType" title="qgis.core.QgsMapLayer.providerType"><code class="xref py py-func docutils literal notranslate"><span class="pre">providerType()</span></code></a>).</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">options</span></code> argument can be used to pass additional layer properties to the new data provider.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">flags</span></code> argument specifies provider read flags which control the data provider construction,
+such as <a class="reference internal" href="QgsDataProvider.html#module-QgsDataProvider" title="QgsDataProvider"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsDataProvider</span></code></a>.ReadFlag.FlagTrustDataSource, <a class="reference internal" href="QgsDataProvider.html#module-QgsDataProvider" title="QgsDataProvider"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsDataProvider</span></code></a>.ReadFlag.FlagLoadDefaultStyle, etc.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The layer’s renderer and legend will be preserved only
 if the geometry type of the new data source matches the current geometry type of the layer.</p>
-<p>Subclasses should override setDataSourcePrivate: default implementation does nothing.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>dataSource</strong> – new layer data source</p></li>
-<li><p><strong>baseName</strong> – base name of the layer</p></li>
-<li><p><strong>provider</strong> – provider string</p></li>
-<li><p><strong>options</strong> – provider options</p></li>
-<li><p><strong>flags</strong> – provider read flags which control dataprovider construction like FlagTrustDataSource, FlagLoadDefaultStyle, etc</p></li>
-</ul>
-</dd>
-</dl>
+</div>
+<p>After setting a new data source callers can test <a class="reference internal" href="#qgis.core.QgsMapLayer.isValid" title="qgis.core.QgsMapLayer.isValid"><code class="xref py py-func docutils literal notranslate"><span class="pre">isValid()</span></code></a> to determine whether the new source
+and provider are valid and ready for use. If setting the new data source fails and the layer
+returns <code class="docutils literal notranslate"><span class="pre">False</span></code> to <a class="reference internal" href="#qgis.core.QgsMapLayer.isValid" title="qgis.core.QgsMapLayer.isValid"><code class="xref py py-func docutils literal notranslate"><span class="pre">isValid()</span></code></a>, then descriptive errors relating to setting the data source can
+be retrieved by calling <a class="reference internal" href="#qgis.core.QgsMapLayer.error" title="qgis.core.QgsMapLayer.error"><code class="xref py py-func docutils literal notranslate"><span class="pre">error()</span></code></a>.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qgis.core.QgsMapLayer.dataSourceChanged" title="qgis.core.QgsMapLayer.dataSourceChanged"><code class="xref py py-func docutils literal notranslate"><span class="pre">dataSourceChanged()</span></code></a></p>
@@ -6121,6 +6139,16 @@ if the geometry type of the new data source matches the current geometry type of
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.20.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataSource</strong> (<em>str</em>) – </p></li>
+<li><p><strong>baseName</strong> (<em>str</em>) – </p></li>
+<li><p><strong>provider</strong> (<em>str</em>) – </p></li>
+<li><p><strong>loadDefaultStyleFlag</strong> (<em>bool = False</em>) – </p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -7222,7 +7250,7 @@ project files.</p>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:33 Aug 29, 2023.
+      <span class="lastupdated">Last updated on 02:43 Aug 29, 2023.
       </span></p>
   </div>
 
