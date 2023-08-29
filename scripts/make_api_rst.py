@@ -85,6 +85,10 @@ Bug Reporting
 If you think you have found a bug in the documentation, please report it using our `bug tracker <https://github.com/qgis/pyqgis/issues>`_.
 When reporting bugs, please be available to follow up on your initial report.
 
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
+
 """
 
 document_footer = """
