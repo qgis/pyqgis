@@ -10,6 +10,7 @@ import argparse
 with open('pyqgis_conf.yml', 'r') as f:
     cfg = yaml.safe_load(f)
 
+
 parser = argparse.ArgumentParser(description='Create RST files for QGIS Python API Documentation')
 parser.add_argument('--version', '-v', dest='qgis_version', default="master")
 parser.add_argument('--package', '-p', dest='package_limit', default=None, nargs='+',
@@ -26,11 +27,26 @@ if args.package_limit:
 else:
     from qgis import core, gui, analysis, server, processing, _3d
     packages = {'core': core, 'gui': gui, 'analysis': analysis, 'server': server, 'processing': processing, '_3d': _3d}
- 
+
+
+def ltr_tag(v):
+    try:
+        pr = int(v.split('.')[1])  # 3.22 => 22
+        if (pr+2) % 3 == 0:  # LTR is every 3 releases starting at 3.4
+            return ' (LTR)'
+    except IndexError:
+        pass
+    return ''
+
+
+version_list = cfg['version_list'].replace(' ', '').split(',')
+version_links = ', '.join([f'`{v}{ltr_tag(v)} <https://qgis.org/pyqgis/{v}>`_' for v in version_list])
+
+
 
 # Make sure :numbered: is only specified in the top level index - see
 # sphinx docs about this.
-document_header = """
+document_header = f"""
 :tocdepth: 5
 
 Welcome to the QGIS Python API documentation project
@@ -54,24 +70,7 @@ Earlier versions of the API
 
 See `Backwards Incompatible Changes <https://api.qgis.org/api/master/api_break.html>`_ for information about incompatible changes to API between releases.
 
-Earlier versions of the documentation are also available on the QGIS website:
-`3.32 <https://qgis.org/pyqgis/3.32>`_,
-`3.30 <https://qgis.org/pyqgis/3.30>`_,
-`3.28 (LTR) <https://qgis.org/pyqgis/3.28>`_,
-`3.26 <https://qgis.org/pyqgis/3.26>`_,
-`3.24 <https://qgis.org/pyqgis/3.24>`_,
-`3.22 (LTR) <https://qgis.org/pyqgis/3.22>`_,
-`3.20 <https://qgis.org/pyqgis/3.20>`_,
-`3.18 <https://qgis.org/pyqgis/3.18>`_,
-`3.16 (LTR) <https://qgis.org/pyqgis/3.16>`_,
-`3.14 <https://qgis.org/pyqgis/3.14>`_,
-`3.12 <https://qgis.org/pyqgis/3.12>`_,
-`3.10 (LTR) <https://qgis.org/pyqgis/3.10>`_,
-`3.8 <https://qgis.org/pyqgis/3.8>`_,
-`3.6 <https://qgis.org/pyqgis/3.6>`_,
-`3.4 (LTR) <https://qgis.org/pyqgis/3.4>`_,
-`3.2 <https://qgis.org/pyqgis/3.2>`_, and
-`3.0 <https://qgis.org/pyqgis/3.0>`_.
+Earlier versions of the documentation are also available on the QGIS website: {version_links}.
 
 Communication channels
 ----------------------
