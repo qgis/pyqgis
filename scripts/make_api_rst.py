@@ -40,7 +40,7 @@ def ltr_tag(v):
 
 
 version_list = cfg['version_list'].replace(' ', '').split(',')
-version_links = ', '.join([f'`{v}{ltr_tag(v)} <https://qgis.org/pyqgis/{v}>`_' for v in version_list])
+version_links = ', '.join([f'`{v}{ltr_tag(v)} <https://qgis.org/pyqgis/{v}>`_' for v in version_list if v != 'master'])
 
 
 
