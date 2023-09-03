@@ -2319,11 +2319,17 @@ Constructor for QgsAbstractGeometry.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractGeometry.boundingBox" title="qgis.core.QgsAbstractGeometry.boundingBox"><code class="xref py py-obj docutils literal notranslate"><span class="pre">boundingBox</span></code></a></p></td>
 <td><p>Returns the minimal bounding box for the geometry</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractGeometry.boundingBoxIntersects" title="qgis.core.QgsAbstractGeometry.boundingBoxIntersects"><code class="xref py py-obj docutils literal notranslate"><span class="pre">boundingBoxIntersects</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractGeometry.boundingBox3D" title="qgis.core.QgsAbstractGeometry.boundingBox3D"><code class="xref py py-obj docutils literal notranslate"><span class="pre">boundingBox3D</span></code></a></p></td>
+<td><p>Returns the 3D bounding box for the geometry.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractGeometry.boundingBoxIntersects" title="qgis.core.QgsAbstractGeometry.boundingBoxIntersects"><code class="xref py py-obj docutils literal notranslate"><span class="pre">boundingBoxIntersects</span></code></a></p></td>
 <td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the bounding box of this geometry intersects with a <code class="docutils literal notranslate"><span class="pre">rectangle</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractGeometry.calculateBoundingBox" title="qgis.core.QgsAbstractGeometry.calculateBoundingBox"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calculateBoundingBox</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractGeometry.calculateBoundingBox" title="qgis.core.QgsAbstractGeometry.calculateBoundingBox"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calculateBoundingBox</span></code></a></p></td>
 <td><p>Default calculator for the minimal bounding box for the geometry.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractGeometry.calculateBoundingBox3D" title="qgis.core.QgsAbstractGeometry.calculateBoundingBox3D"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calculateBoundingBox3D</span></code></a></p></td>
+<td><p>Calculates the minimal 3D bounding box for the geometry.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractGeometry.centroid" title="qgis.core.QgsAbstractGeometry.centroid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">centroid</span></code></a></p></td>
 <td><p>Returns the centroid of the geometry</p></td>
@@ -2929,6 +2935,20 @@ For instance, a polygon geometry will have a boundary consisting of the linestri
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsAbstractGeometry.boundingBox3D">
+<span class="sig-name descname"><span class="pre">boundingBox3D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="QgsBox3D.html#qgis.core.QgsBox3D" title="qgis.core.QgsBox3D"><span class="pre">QgsBox3D</span></a></span></span><a class="headerlink" href="#qgis.core.QgsAbstractGeometry.boundingBox3D" title="Link to this definition">¶</a></dt>
+<dd><p>Returns the 3D bounding box for the geometry.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.34.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsBox3D.html#qgis.core.QgsBox3D" title="qgis.core.QgsBox3D">QgsBox3D</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsAbstractGeometry.boundingBoxIntersects">
 <span class="sig-name descname"><span class="pre">boundingBoxIntersects</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rectangle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsRectangle.html#qgis.core.QgsRectangle" title="qgis.core.QgsRectangle"><span class="pre">QgsRectangle</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#qgis.core.QgsAbstractGeometry.boundingBoxIntersects" title="Link to this definition">¶</a></dt>
 <dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the bounding box of this geometry intersects with a <code class="docutils literal notranslate"><span class="pre">rectangle</span></code>.</p>
@@ -2936,6 +2956,13 @@ For instance, a polygon geometry will have a boundary consisting of the linestri
 calculate and handles invalid geometries.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.20.</span></p>
+</div>
+<p>boundingBoxIntersects(self, box3d: <a class="reference internal" href="QgsBox3D.html#qgis.core.QgsBox3D" title="qgis.core.QgsBox3D"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsBox3D</span></code></a>) -&gt; bool
+Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the bounding box of this geometry intersects with a <code class="docutils literal notranslate"><span class="pre">box3d</span></code>.</p>
+<p>Since this test only considers the bounding box of the geometry, is is very fast to
+calculate and handles invalid geometries.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.34.</span></p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2955,6 +2982,24 @@ if a more efficient bounding box calculation is available.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference internal" href="QgsRectangle.html#qgis.core.QgsRectangle" title="qgis.core.QgsRectangle">QgsRectangle</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsAbstractGeometry.calculateBoundingBox3D">
+<span class="sig-name descname"><span class="pre">calculateBoundingBox3D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="QgsBox3D.html#qgis.core.QgsBox3D" title="qgis.core.QgsBox3D"><span class="pre">QgsBox3D</span></a></span></span><a class="headerlink" href="#qgis.core.QgsAbstractGeometry.calculateBoundingBox3D" title="Link to this definition">¶</a></dt>
+<dd><p>Calculates the minimal 3D bounding box for the geometry.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsAbstractGeometry.calculateBoundingBox" title="qgis.core.QgsAbstractGeometry.calculateBoundingBox"><code class="xref py py-func docutils literal notranslate"><span class="pre">calculateBoundingBox()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.34.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsBox3D.html#qgis.core.QgsBox3D" title="qgis.core.QgsBox3D">QgsBox3D</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -4059,7 +4104,7 @@ modified using the iterator. See <code class="xref py py-func docutils literal n
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:34 Sep 03, 2023.
+      <span class="lastupdated">Last updated on 02:56 Sep 03, 2023.
       </span></p>
   </div>
 
