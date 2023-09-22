@@ -156,6 +156,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsActionScope.html">Class: QgsActionScope</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsActionScopeRegistry.html">Class: QgsActionScopeRegistry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAggregateCalculator.html">Class: QgsAggregateCalculator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsAlignRasterData.html">Class: QgsAlignRasterData</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAnimatedIcon.html">Class: QgsAnimatedIcon</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAnimatedMarkerSymbolLayer.html">Class: QgsAnimatedMarkerSymbolLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAnnotation.html">Class: QgsAnnotation</a></li>
@@ -847,6 +848,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingOutputVectorLayer.html">Class: QgsProcessingOutputVectorLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingOutputVectorTileLayer.html">Class: QgsProcessingOutputVectorTileLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingParameterAggregate.html">Class: QgsProcessingParameterAggregate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsProcessingParameterAlignRasterLayers.html">Class: QgsProcessingParameterAlignRasterLayers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingParameterAnnotationLayer.html">Class: QgsProcessingParameterAnnotationLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingParameterAuthConfig.html">Class: QgsProcessingParameterAuthConfig</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsProcessingParameterBand.html">Class: QgsProcessingParameterBand</a></li>
@@ -2070,7 +2072,9 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../analysis/index.html">analysis</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../analysis/Flags.html">Class: Flags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../analysis/Qgis.html">Class: Qgis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../analysis/QgsAlignRaster.html">Class: QgsAlignRaster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../analysis/QgsAlignRasterData.html">Class: QgsAlignRasterData</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../analysis/QgsAnalysis.html">Class: QgsAnalysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../analysis/QgsAspectFilter.html">Class: QgsAspectFilter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../analysis/QgsBatchGeocodeAlgorithm.html">Class: QgsBatchGeocodeAlgorithm</a></li>
@@ -2276,175 +2280,178 @@ through <a class="reference internal" href="QgsApplication.html#qgis.core.QgsApp
 <p class="rubric">Methods</p>
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.beginGroup" title="qgis.core.QgsRuntimeProfiler.beginGroup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">beginGroup</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.asText" title="qgis.core.QgsRuntimeProfiler.asText"><code class="xref py py-obj docutils literal notranslate"><span class="pre">asText</span></code></a></p></td>
+<td><p>Returns the model as a multi-line text string.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.beginGroup" title="qgis.core.QgsRuntimeProfiler.beginGroup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">beginGroup</span></code></a></p></td>
 <td><p>Begin the group for the profiler.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.beginInsertColumns" title="qgis.core.QgsRuntimeProfiler.beginInsertColumns"><code class="xref py py-obj docutils literal notranslate"><span class="pre">beginInsertColumns</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.beginInsertColumns" title="qgis.core.QgsRuntimeProfiler.beginInsertColumns"><code class="xref py py-obj docutils literal notranslate"><span class="pre">beginInsertColumns</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.beginInsertRows" title="qgis.core.QgsRuntimeProfiler.beginInsertRows"><code class="xref py py-obj docutils literal notranslate"><span class="pre">beginInsertRows</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.beginInsertRows" title="qgis.core.QgsRuntimeProfiler.beginInsertRows"><code class="xref py py-obj docutils literal notranslate"><span class="pre">beginInsertRows</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.beginMoveColumns" title="qgis.core.QgsRuntimeProfiler.beginMoveColumns"><code class="xref py py-obj docutils literal notranslate"><span class="pre">beginMoveColumns</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.beginMoveColumns" title="qgis.core.QgsRuntimeProfiler.beginMoveColumns"><code class="xref py py-obj docutils literal notranslate"><span class="pre">beginMoveColumns</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.beginMoveRows" title="qgis.core.QgsRuntimeProfiler.beginMoveRows"><code class="xref py py-obj docutils literal notranslate"><span class="pre">beginMoveRows</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.beginMoveRows" title="qgis.core.QgsRuntimeProfiler.beginMoveRows"><code class="xref py py-obj docutils literal notranslate"><span class="pre">beginMoveRows</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.beginRemoveColumns" title="qgis.core.QgsRuntimeProfiler.beginRemoveColumns"><code class="xref py py-obj docutils literal notranslate"><span class="pre">beginRemoveColumns</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.beginRemoveColumns" title="qgis.core.QgsRuntimeProfiler.beginRemoveColumns"><code class="xref py py-obj docutils literal notranslate"><span class="pre">beginRemoveColumns</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.beginRemoveRows" title="qgis.core.QgsRuntimeProfiler.beginRemoveRows"><code class="xref py py-obj docutils literal notranslate"><span class="pre">beginRemoveRows</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.beginRemoveRows" title="qgis.core.QgsRuntimeProfiler.beginRemoveRows"><code class="xref py py-obj docutils literal notranslate"><span class="pre">beginRemoveRows</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.beginResetModel" title="qgis.core.QgsRuntimeProfiler.beginResetModel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">beginResetModel</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.beginResetModel" title="qgis.core.QgsRuntimeProfiler.beginResetModel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">beginResetModel</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.changePersistentIndex" title="qgis.core.QgsRuntimeProfiler.changePersistentIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">changePersistentIndex</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.changePersistentIndex" title="qgis.core.QgsRuntimeProfiler.changePersistentIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">changePersistentIndex</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.changePersistentIndexList" title="qgis.core.QgsRuntimeProfiler.changePersistentIndexList"><code class="xref py py-obj docutils literal notranslate"><span class="pre">changePersistentIndexList</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.changePersistentIndexList" title="qgis.core.QgsRuntimeProfiler.changePersistentIndexList"><code class="xref py py-obj docutils literal notranslate"><span class="pre">changePersistentIndexList</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.childEvent" title="qgis.core.QgsRuntimeProfiler.childEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">childEvent</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.childEvent" title="qgis.core.QgsRuntimeProfiler.childEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">childEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.childGroups" title="qgis.core.QgsRuntimeProfiler.childGroups"><code class="xref py py-obj docutils literal notranslate"><span class="pre">childGroups</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.childGroups" title="qgis.core.QgsRuntimeProfiler.childGroups"><code class="xref py py-obj docutils literal notranslate"><span class="pre">childGroups</span></code></a></p></td>
 <td><p>Returns a list of all child groups with the specified <code class="docutils literal notranslate"><span class="pre">parent</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.clear" title="qgis.core.QgsRuntimeProfiler.clear"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clear</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.clear" title="qgis.core.QgsRuntimeProfiler.clear"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clear</span></code></a></p></td>
 <td><p>clear Clear all profile data.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.columnCount" title="qgis.core.QgsRuntimeProfiler.columnCount"><code class="xref py py-obj docutils literal notranslate"><span class="pre">columnCount</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.columnCount" title="qgis.core.QgsRuntimeProfiler.columnCount"><code class="xref py py-obj docutils literal notranslate"><span class="pre">columnCount</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param parent<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.connectNotify" title="qgis.core.QgsRuntimeProfiler.connectNotify"><code class="xref py py-obj docutils literal notranslate"><span class="pre">connectNotify</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.connectNotify" title="qgis.core.QgsRuntimeProfiler.connectNotify"><code class="xref py py-obj docutils literal notranslate"><span class="pre">connectNotify</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.createIndex" title="qgis.core.QgsRuntimeProfiler.createIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createIndex</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.createIndex" title="qgis.core.QgsRuntimeProfiler.createIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createIndex</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.customEvent" title="qgis.core.QgsRuntimeProfiler.customEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">customEvent</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.customEvent" title="qgis.core.QgsRuntimeProfiler.customEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">customEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.data" title="qgis.core.QgsRuntimeProfiler.data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">data</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.data" title="qgis.core.QgsRuntimeProfiler.data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">data</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param index<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.decodeData" title="qgis.core.QgsRuntimeProfiler.decodeData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decodeData</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.decodeData" title="qgis.core.QgsRuntimeProfiler.decodeData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decodeData</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.disconnectNotify" title="qgis.core.QgsRuntimeProfiler.disconnectNotify"><code class="xref py py-obj docutils literal notranslate"><span class="pre">disconnectNotify</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.disconnectNotify" title="qgis.core.QgsRuntimeProfiler.disconnectNotify"><code class="xref py py-obj docutils literal notranslate"><span class="pre">disconnectNotify</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.encodeData" title="qgis.core.QgsRuntimeProfiler.encodeData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">encodeData</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.encodeData" title="qgis.core.QgsRuntimeProfiler.encodeData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">encodeData</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.end" title="qgis.core.QgsRuntimeProfiler.end"><code class="xref py py-obj docutils literal notranslate"><span class="pre">end</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.end" title="qgis.core.QgsRuntimeProfiler.end"><code class="xref py py-obj docutils literal notranslate"><span class="pre">end</span></code></a></p></td>
 <td><p>End the current profile event.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.endGroup" title="qgis.core.QgsRuntimeProfiler.endGroup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">endGroup</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.endGroup" title="qgis.core.QgsRuntimeProfiler.endGroup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">endGroup</span></code></a></p></td>
 <td><p>End the current active group.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.endInsertColumns" title="qgis.core.QgsRuntimeProfiler.endInsertColumns"><code class="xref py py-obj docutils literal notranslate"><span class="pre">endInsertColumns</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.endInsertColumns" title="qgis.core.QgsRuntimeProfiler.endInsertColumns"><code class="xref py py-obj docutils literal notranslate"><span class="pre">endInsertColumns</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.endInsertRows" title="qgis.core.QgsRuntimeProfiler.endInsertRows"><code class="xref py py-obj docutils literal notranslate"><span class="pre">endInsertRows</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.endInsertRows" title="qgis.core.QgsRuntimeProfiler.endInsertRows"><code class="xref py py-obj docutils literal notranslate"><span class="pre">endInsertRows</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.endMoveColumns" title="qgis.core.QgsRuntimeProfiler.endMoveColumns"><code class="xref py py-obj docutils literal notranslate"><span class="pre">endMoveColumns</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.endMoveColumns" title="qgis.core.QgsRuntimeProfiler.endMoveColumns"><code class="xref py py-obj docutils literal notranslate"><span class="pre">endMoveColumns</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.endMoveRows" title="qgis.core.QgsRuntimeProfiler.endMoveRows"><code class="xref py py-obj docutils literal notranslate"><span class="pre">endMoveRows</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.endMoveRows" title="qgis.core.QgsRuntimeProfiler.endMoveRows"><code class="xref py py-obj docutils literal notranslate"><span class="pre">endMoveRows</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.endRemoveColumns" title="qgis.core.QgsRuntimeProfiler.endRemoveColumns"><code class="xref py py-obj docutils literal notranslate"><span class="pre">endRemoveColumns</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.endRemoveColumns" title="qgis.core.QgsRuntimeProfiler.endRemoveColumns"><code class="xref py py-obj docutils literal notranslate"><span class="pre">endRemoveColumns</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.endRemoveRows" title="qgis.core.QgsRuntimeProfiler.endRemoveRows"><code class="xref py py-obj docutils literal notranslate"><span class="pre">endRemoveRows</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.endRemoveRows" title="qgis.core.QgsRuntimeProfiler.endRemoveRows"><code class="xref py py-obj docutils literal notranslate"><span class="pre">endRemoveRows</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.endResetModel" title="qgis.core.QgsRuntimeProfiler.endResetModel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">endResetModel</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.endResetModel" title="qgis.core.QgsRuntimeProfiler.endResetModel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">endResetModel</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.groupAdded" title="qgis.core.QgsRuntimeProfiler.groupAdded"><code class="xref py py-obj docutils literal notranslate"><span class="pre">groupAdded</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.groupAdded" title="qgis.core.QgsRuntimeProfiler.groupAdded"><code class="xref py py-obj docutils literal notranslate"><span class="pre">groupAdded</span></code></a></p></td>
 <td><p>Emitted when a new group has started being profiled.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.groupIsActive" title="qgis.core.QgsRuntimeProfiler.groupIsActive"><code class="xref py py-obj docutils literal notranslate"><span class="pre">groupIsActive</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.groupIsActive" title="qgis.core.QgsRuntimeProfiler.groupIsActive"><code class="xref py py-obj docutils literal notranslate"><span class="pre">groupIsActive</span></code></a></p></td>
 <td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the specified <code class="docutils literal notranslate"><span class="pre">group</span></code> is currently being logged, i.e. it has a entry which has started and not yet stopped.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.groups" title="qgis.core.QgsRuntimeProfiler.groups"><code class="xref py py-obj docutils literal notranslate"><span class="pre">groups</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.groups" title="qgis.core.QgsRuntimeProfiler.groups"><code class="xref py py-obj docutils literal notranslate"><span class="pre">groups</span></code></a></p></td>
 <td><p>Returns the set of known groups.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.headerData" title="qgis.core.QgsRuntimeProfiler.headerData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">headerData</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.headerData" title="qgis.core.QgsRuntimeProfiler.headerData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">headerData</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param section<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.index" title="qgis.core.QgsRuntimeProfiler.index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">index</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.index" title="qgis.core.QgsRuntimeProfiler.index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">index</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param row<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.isSignalConnected" title="qgis.core.QgsRuntimeProfiler.isSignalConnected"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isSignalConnected</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.isSignalConnected" title="qgis.core.QgsRuntimeProfiler.isSignalConnected"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isSignalConnected</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.parent" title="qgis.core.QgsRuntimeProfiler.parent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parent</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.parent" title="qgis.core.QgsRuntimeProfiler.parent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parent</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param child<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.persistentIndexList" title="qgis.core.QgsRuntimeProfiler.persistentIndexList"><code class="xref py py-obj docutils literal notranslate"><span class="pre">persistentIndexList</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.persistentIndexList" title="qgis.core.QgsRuntimeProfiler.persistentIndexList"><code class="xref py py-obj docutils literal notranslate"><span class="pre">persistentIndexList</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.profileTime" title="qgis.core.QgsRuntimeProfiler.profileTime"><code class="xref py py-obj docutils literal notranslate"><span class="pre">profileTime</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.profileTime" title="qgis.core.QgsRuntimeProfiler.profileTime"><code class="xref py py-obj docutils literal notranslate"><span class="pre">profileTime</span></code></a></p></td>
 <td><p>Returns the profile time for the specified <code class="docutils literal notranslate"><span class="pre">name</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.receivers" title="qgis.core.QgsRuntimeProfiler.receivers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">receivers</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.receivers" title="qgis.core.QgsRuntimeProfiler.receivers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">receivers</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.record" title="qgis.core.QgsRuntimeProfiler.record"><code class="xref py py-obj docutils literal notranslate"><span class="pre">record</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.record" title="qgis.core.QgsRuntimeProfiler.record"><code class="xref py py-obj docutils literal notranslate"><span class="pre">record</span></code></a></p></td>
 <td><p>Manually adds a profile event with the given name and total <code class="docutils literal notranslate"><span class="pre">time</span></code> (in seconds).</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.resetInternalData" title="qgis.core.QgsRuntimeProfiler.resetInternalData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">resetInternalData</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.resetInternalData" title="qgis.core.QgsRuntimeProfiler.resetInternalData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">resetInternalData</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.rowCount" title="qgis.core.QgsRuntimeProfiler.rowCount"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rowCount</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.rowCount" title="qgis.core.QgsRuntimeProfiler.rowCount"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rowCount</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param parent<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.sender" title="qgis.core.QgsRuntimeProfiler.sender"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sender</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.sender" title="qgis.core.QgsRuntimeProfiler.sender"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sender</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.senderSignalIndex" title="qgis.core.QgsRuntimeProfiler.senderSignalIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">senderSignalIndex</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.senderSignalIndex" title="qgis.core.QgsRuntimeProfiler.senderSignalIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">senderSignalIndex</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.start" title="qgis.core.QgsRuntimeProfiler.start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">start</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.start" title="qgis.core.QgsRuntimeProfiler.start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">start</span></code></a></p></td>
 <td><p>Start a profile event with the given name.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.timerEvent" title="qgis.core.QgsRuntimeProfiler.timerEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">timerEvent</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.timerEvent" title="qgis.core.QgsRuntimeProfiler.timerEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">timerEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.totalTime" title="qgis.core.QgsRuntimeProfiler.totalTime"><code class="xref py py-obj docutils literal notranslate"><span class="pre">totalTime</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.totalTime" title="qgis.core.QgsRuntimeProfiler.totalTime"><code class="xref py py-obj docutils literal notranslate"><span class="pre">totalTime</span></code></a></p></td>
 <td><p>The current total time collected in the profiler.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.translateGroupName" title="qgis.core.QgsRuntimeProfiler.translateGroupName"><code class="xref py py-obj docutils literal notranslate"><span class="pre">translateGroupName</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRuntimeProfiler.translateGroupName" title="qgis.core.QgsRuntimeProfiler.translateGroupName"><code class="xref py py-obj docutils literal notranslate"><span class="pre">translateGroupName</span></code></a></p></td>
 <td><p>Returns the translated name of a standard profile <code class="docutils literal notranslate"><span class="pre">group</span></code>.</p></td>
 </tr>
 </tbody>
@@ -2458,6 +2465,25 @@ through <a class="reference internal" href="QgsApplication.html#qgis.core.QgsApp
 </tbody>
 </table>
 </div>
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsRuntimeProfiler.asText">
+<span class="sig-name descname"><span class="pre">asText</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#qgis.core.QgsRuntimeProfiler.asText" title="Link to this definition">¶</a></dt>
+<dd><p>Returns the model as a multi-line text string.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>group</strong> (<em>str = ''</em>) – A group name to filter the model against.</p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.34.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsRuntimeProfiler.beginGroup">
 <span class="sig-name descname"><span class="pre">beginGroup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsRuntimeProfiler.beginGroup" title="Link to this definition">¶</a></dt>
@@ -2907,7 +2933,7 @@ the active <code class="docutils literal notranslate"><span class="pre">group</s
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:35 Sep 22, 2023.
+      <span class="lastupdated">Last updated on 05:12 Sep 22, 2023.
       </span></p>
   </div>
 
