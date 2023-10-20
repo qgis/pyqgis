@@ -2325,7 +2325,7 @@ the normalization step will not be applied automatically.</p>
 <td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the box is empty.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsBox3D.isNull" title="qgis.core.QgsBox3D.isNull"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isNull</span></code></a></p></td>
-<td><p>Test if the box is null (all coordinates NaN or after call to <a class="reference internal" href="#qgis.core.QgsBox3D.setMinimal" title="qgis.core.QgsBox3D.setMinimal"><code class="xref py py-func docutils literal notranslate"><span class="pre">setMinimal()</span></code></a>).</p></td>
+<td><p>Test if the box is null (holding no spatial information).</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsBox3D.normalize" title="qgis.core.QgsBox3D.normalize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">normalize</span></code></a></p></td>
 <td><p>Normalize the box so it has non-negative width/height/depth.</p></td>
@@ -2333,8 +2333,8 @@ the normalization step will not be applied automatically.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsBox3D.scale" title="qgis.core.QgsBox3D.scale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale</span></code></a></p></td>
 <td><p>Scale the rectangle around a <code class="docutils literal notranslate"><span class="pre">center</span></code> <a class="reference internal" href="QgsPoint.html#module-QgsPoint" title="QgsPoint"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsPoint</span></code></a>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsBox3D.setMinimal" title="qgis.core.QgsBox3D.setMinimal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setMinimal</span></code></a></p></td>
-<td><p>Set a box so that min corner is at std.numeric_limits&lt;double&gt;.max() and max corner is at -std.numeric_limits&lt;double&gt;.max().</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsBox3D.setNull" title="qgis.core.QgsBox3D.setNull"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setNull</span></code></a></p></td>
+<td><p>Mark a box as being null (holding no spatial information).</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsBox3D.setXMaximum" title="qgis.core.QgsBox3D.setXMaximum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setXMaximum</span></code></a></p></td>
 <td><p>Sets the maximum <code class="docutils literal notranslate"><span class="pre">x</span></code> value.</p></td>
@@ -2585,7 +2585,9 @@ If the box is not normalized, this returns <code class="docutils literal notrans
 <dt class="sig sig-object py" id="qgis.core.QgsBox3D.isEmpty">
 <span class="sig-name descname"><span class="pre">isEmpty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#qgis.core.QgsBox3D.isEmpty" title="Link to this definition">¶</a></dt>
 <dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the box is empty.
-An empty box may still be non-null if it contains valid information (e.g. bounding box of a point).</p>
+An empty box may still be non-null if it contains valid
+spatial information (e.g. bounding box of a point or of a vertical
+or horizontal segment).</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.34.</span></p>
 </div>
@@ -2599,8 +2601,12 @@ An empty box may still be non-null if it contains valid information (e.g. boundi
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsBox3D.isNull">
 <span class="sig-name descname"><span class="pre">isNull</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#qgis.core.QgsBox3D.isNull" title="Link to this definition">¶</a></dt>
-<dd><p>Test if the box is null (all coordinates NaN or after call to <a class="reference internal" href="#qgis.core.QgsBox3D.setMinimal" title="qgis.core.QgsBox3D.setMinimal"><code class="xref py py-func docutils literal notranslate"><span class="pre">setMinimal()</span></code></a>).
-A null box is also an empty box.</p>
+<dd><p>Test if the box is null (holding no spatial information).</p>
+<p>A null box is also an empty box.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsBox3D.setNull" title="qgis.core.QgsBox3D.setNull"><code class="xref py py-func docutils literal notranslate"><span class="pre">setNull()</span></code></a></p>
+</div>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.34.</span></p>
 </div>
@@ -2641,11 +2647,9 @@ Scale the rectangle around a center coordinates.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="qgis.core.QgsBox3D.setMinimal">
-<span class="sig-name descname"><span class="pre">setMinimal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsBox3D.setMinimal" title="Link to this definition">¶</a></dt>
-<dd><p>Set a box so that min corner is at std.numeric_limits&lt;double&gt;.max()
-and max corner is at -std.numeric_limits&lt;double&gt;.max().
-It is NOT normalized.</p>
+<dt class="sig sig-object py" id="qgis.core.QgsBox3D.setNull">
+<span class="sig-name descname"><span class="pre">setNull</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsBox3D.setNull" title="Link to this definition">¶</a></dt>
+<dd><p>Mark a box as being null (holding no spatial information).</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.34.</span></p>
 </div>
@@ -2957,7 +2961,7 @@ If the specified precision is less than 0, a suitable minimum precision is used.
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:33 Oct 20, 2023.
+      <span class="lastupdated">Last updated on 03:51 Oct 20, 2023.
       </span></p>
   </div>
 
