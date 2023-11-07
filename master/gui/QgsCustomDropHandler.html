@@ -419,6 +419,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsFileUtils.html">Class: QgsFileUtils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsFillSymbol.html">Class: QgsFillSymbol</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsFillSymbolLayer.html">Class: QgsFillSymbolLayer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../core/QgsFilledLineSymbolLayer.html">Class: QgsFilledLineSymbolLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsFilledMarkerSymbolLayer.html">Class: QgsFilledMarkerSymbolLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsFlatTerrainProvider.html">Class: QgsFlatTerrainProvider</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../core/QgsFontManager.html">Class: QgsFontManager</a></li>
@@ -1633,6 +1634,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsFieldValuesLineEdit.html">Class: QgsFieldValuesLineEdit</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsFileDownloaderDialog.html">Class: QgsFileDownloaderDialog</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsFileWidget.html">Class: QgsFileWidget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsFilledLineSymbolLayerWidget.html">Class: QgsFilledLineSymbolLayerWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsFilledMarkerSymbolLayerWidget.html">Class: QgsFilledMarkerSymbolLayerWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsFilterLineEdit.html">Class: QgsFilterLineEdit</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsFindFilesByPatternDialog.html">Class: QgsFindFilesByPatternDialog</a></li>
@@ -2265,22 +2267,22 @@
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">PyQt5.QtCore.QObject</span></code></p>
 <p>Abstract base class that may be implemented to handle new types of data to be dropped in QGIS.</p>
 <p>Implementations have three approaches they can use to handle drops.</p>
-<dl class="simple">
-<dt># The simplest approach is to implement <code class="xref py py-func docutils literal notranslate"><span class="pre">handeFileDrop()</span></code> when they need to handle</dt><dd><p>dropped files (i.e. with mime type “text/uri-list”).</p>
-</dd>
-<dt># Reimplement <a class="reference internal" href="#qgis.gui.QgsCustomDropHandler.handleCustomUriDrop" title="qgis.gui.QgsCustomDropHandler.handleCustomUriDrop"><code class="xref py py-func docutils literal notranslate"><span class="pre">handleCustomUriDrop()</span></code></a> when they want to handle dropped custom</dt><dd><p><a class="reference internal" href="../core/QgsMimeDataUtils.html#module-QgsMimeDataUtils" title="QgsMimeDataUtils"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMimeDataUtils</span></code></a>.Uri entries, for instance handling dropping custom entries
+<ul class="simple">
+<li><p>The simplest approach is to implement <a class="reference internal" href="#qgis.gui.QgsCustomDropHandler.handleFileDrop" title="qgis.gui.QgsCustomDropHandler.handleFileDrop"><code class="xref py py-func docutils literal notranslate"><span class="pre">handleFileDrop()</span></code></a> when they need to handle
+dropped files (i.e. with mime type “text/uri-list”).</p></li>
+<li><p>Reimplement <a class="reference internal" href="#qgis.gui.QgsCustomDropHandler.handleCustomUriDrop" title="qgis.gui.QgsCustomDropHandler.handleCustomUriDrop"><code class="xref py py-func docutils literal notranslate"><span class="pre">handleCustomUriDrop()</span></code></a> when they want to handle dropped custom
+<a class="reference internal" href="../core/QgsMimeDataUtils.html#module-QgsMimeDataUtils" title="QgsMimeDataUtils"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMimeDataUtils</span></code></a>.Uri entries, for instance handling dropping custom entries
 from the browser tree (with mime type “application/x-vnd.qgis.qgis.uri”). In
 this case the implementation’s <a class="reference internal" href="#qgis.gui.QgsCustomDropHandler.customUriProviderKey" title="qgis.gui.QgsCustomDropHandler.customUriProviderKey"><code class="xref py py-func docutils literal notranslate"><span class="pre">customUriProviderKey()</span></code></a> must match the uri
-entry’s providerKey.</p>
-</dd>
-<dt># Reimplement <a class="reference internal" href="#qgis.gui.QgsCustomDropHandler.handleMimeData" title="qgis.gui.QgsCustomDropHandler.handleMimeData"><code class="xref py py-func docutils literal notranslate"><span class="pre">handleMimeData()</span></code></a> to directly handle dropped QMimeData.</dt><dd><p>Subclasses should take care when overriding this method. When a drop event
+entry’s providerKey.</p></li>
+<li><p>Reimplement <a class="reference internal" href="#qgis.gui.QgsCustomDropHandler.handleMimeData" title="qgis.gui.QgsCustomDropHandler.handleMimeData"><code class="xref py py-func docutils literal notranslate"><span class="pre">handleMimeData()</span></code></a> to directly handle dropped QMimeData.
+Subclasses should take care when overriding this method. When a drop event
 occurs, Qt will lock the source application of the drag for the duration
 of the drop event handling via <a class="reference internal" href="#qgis.gui.QgsCustomDropHandler.handleMimeData" title="qgis.gui.QgsCustomDropHandler.handleMimeData"><code class="xref py py-func docutils literal notranslate"><span class="pre">handleMimeData()</span></code></a> (e.g. dragging files from
 explorer to QGIS will lock the explorer window until the drop handling has
 been complete). Accordingly <a class="reference internal" href="#qgis.gui.QgsCustomDropHandler.handleMimeData" title="qgis.gui.QgsCustomDropHandler.handleMimeData"><code class="xref py py-func docutils literal notranslate"><span class="pre">handleMimeData()</span></code></a> implementations must return
-quickly and defer any intensive or slow processing.</p>
-</dd>
-</dl>
+quickly and defer any intensive or slow processing.</p></li>
+</ul>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0: </span></p>
 <table class="autosummary longtable docutils align-default">
@@ -2604,7 +2606,7 @@ and it should not be further processed (e.g. by other <code class="xref py py-cl
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:32 Nov 07, 2023.
+      <span class="lastupdated">Last updated on 03:08 Nov 07, 2023.
       </span></p>
   </div>
 
