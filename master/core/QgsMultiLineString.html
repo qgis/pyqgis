@@ -2377,16 +2377,19 @@ Constructor for an empty multilinestring geometry.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMultiLineString.lineStringN" title="qgis.core.QgsMultiLineString.lineStringN"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lineStringN</span></code></a></p></td>
 <td><p>Returns the line string with the specified <code class="docutils literal notranslate"><span class="pre">index</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMultiLineString.setZMTypeFromSubGeometry" title="qgis.core.QgsMultiLineString.setZMTypeFromSubGeometry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setZMTypeFromSubGeometry</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMultiLineString.measuredLine" title="qgis.core.QgsMultiLineString.measuredLine"><code class="xref py py-obj docutils literal notranslate"><span class="pre">measuredLine</span></code></a></p></td>
+<td><p>Re-write the measure ordinate (or add one, if it isn't already there) interpolating the measure between the supplied <code class="docutils literal notranslate"><span class="pre">start</span></code> and <code class="docutils literal notranslate"><span class="pre">end</span></code> values.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMultiLineString.setZMTypeFromSubGeometry" title="qgis.core.QgsMultiLineString.setZMTypeFromSubGeometry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setZMTypeFromSubGeometry</span></code></a></p></td>
 <td><p>Updates the geometry type based on whether sub geometries contain z or m values.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMultiLineString.sortIndex" title="qgis.core.QgsMultiLineString.sortIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sortIndex</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMultiLineString.sortIndex" title="qgis.core.QgsMultiLineString.sortIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sortIndex</span></code></a></p></td>
 <td><p>Returns the sort index for the geometry, used in the <a class="reference internal" href="QgsAbstractGeometry.html#qgis.core.QgsAbstractGeometry.compareTo" title="qgis.core.QgsAbstractGeometry.compareTo"><code class="xref py py-func docutils literal notranslate"><span class="pre">compareTo()</span></code></a> method to compare geometries of different types.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMultiLineString.toCurveType" title="qgis.core.QgsMultiLineString.toCurveType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">toCurveType</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMultiLineString.toCurveType" title="qgis.core.QgsMultiLineString.toCurveType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">toCurveType</span></code></a></p></td>
 <td><p>Returns the geometry converted to the more generic curve type <a class="reference internal" href="QgsMultiCurve.html#module-QgsMultiCurve" title="QgsMultiCurve"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMultiCurve</span></code></a></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMultiLineString.wktOmitChildType" title="qgis.core.QgsMultiLineString.wktOmitChildType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wktOmitChildType</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMultiLineString.wktOmitChildType" title="qgis.core.QgsMultiLineString.wktOmitChildType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wktOmitChildType</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">rtype<span class="colon">:</span></dt>
 <dd class="field-odd"><p>bool</p>
@@ -2605,6 +2608,27 @@ if a more efficient bounding box calculation is available.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsMultiLineString.measuredLine">
+<span class="sig-name descname"><span class="pre">measuredLine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#qgis.core.QgsMultiLineString" title="qgis.core.QgsMultiLineString"><span class="pre">QgsMultiLineString</span></a></span></span><a class="headerlink" href="#qgis.core.QgsMultiLineString.measuredLine" title="Link to this definition">¶</a></dt>
+<dd><p>Re-write the measure ordinate (or add one, if it isn’t already there) interpolating
+the measure between the supplied <code class="docutils literal notranslate"><span class="pre">start</span></code> and <code class="docutils literal notranslate"><span class="pre">end</span></code> values.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.36.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start</strong> (<em>float</em>) – </p></li>
+<li><p><strong>end</strong> (<em>float</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#qgis.core.QgsMultiLineString" title="qgis.core.QgsMultiLineString">QgsMultiLineString</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsMultiLineString.setZMTypeFromSubGeometry">
 <span class="sig-name descname"><span class="pre">setZMTypeFromSubGeometry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subggeom</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsAbstractGeometry.html#qgis.core.QgsAbstractGeometry" title="qgis.core.QgsAbstractGeometry"><span class="pre">QgsAbstractGeometry</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">baseGeomType</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="Qgis.html#qgis.core.Qgis.WkbType" title="qgis.core.Qgis.WkbType"><span class="pre">Qgis.WkbType</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsMultiLineString.setZMTypeFromSubGeometry" title="Link to this definition">¶</a></dt>
 <dd><p>Updates the geometry type based on whether sub geometries contain z or m values.</p>
@@ -2657,7 +2681,7 @@ geometries of different types.</p>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:30 Dec 14, 2023.
+      <span class="lastupdated">Last updated on 01:49 Dec 14, 2023.
       </span></p>
   </div>
 
