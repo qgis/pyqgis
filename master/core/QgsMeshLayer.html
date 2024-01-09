@@ -144,6 +144,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsAbstractLayerMetadataProvider.html">Class: QgsAbstractLayerMetadataProvider</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAbstractLayoutIterator.html">Class: QgsAbstractLayoutIterator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAbstractLayoutUndoCommand.html">Class: QgsAbstractLayoutUndoCommand</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsAbstractMeshLayerLabeling.html">Class: QgsAbstractMeshLayerLabeling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAbstractMetadataBase.html">Class: QgsAbstractMetadataBase</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAbstractMetadataBaseValidator.html">Class: QgsAbstractMetadataBaseValidator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAbstractPointCloud3DRenderer.html">Class: QgsAbstractPointCloud3DRenderer</a></li>
@@ -700,6 +701,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsMeshElevationAveragingMethod.html">Class: QgsMeshElevationAveragingMethod</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Class: QgsMeshLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsMeshLayerElevationProperties.html">Class: QgsMeshLayerElevationProperties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsMeshLayerSimpleLabeling.html">Class: QgsMeshLayerSimpleLabeling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsMeshLayerTemporalProperties.html">Class: QgsMeshLayerTemporalProperties</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsMeshMultiLevelsAveragingMethod.html">Class: QgsMeshMultiLevelsAveragingMethod</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsMeshRelativeHeightAveragingMethod.html">Class: QgsMeshRelativeHeightAveragingMethod</a></li>
@@ -2526,6 +2528,12 @@ parameters used by the data provider as url query items.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.isSignalConnected" title="qgis.core.QgsMeshLayer.isSignalConnected"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isSignalConnected</span></code></a></p></td>
 <td><p></p></td>
 </tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.labeling" title="qgis.core.QgsMeshLayer.labeling"><code class="xref py py-obj docutils literal notranslate"><span class="pre">labeling</span></code></a></p></td>
+<td><p>Access to labeling configuration.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.labelsEnabled" title="qgis.core.QgsMeshLayer.labelsEnabled"><code class="xref py py-obj docutils literal notranslate"><span class="pre">labelsEnabled</span></code></a></p></td>
+<td><p>Returns whether the layer contains labels which are enabled and should be drawn.</p></td>
+</tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.loadDefaultStyle" title="qgis.core.QgsMeshLayer.loadDefaultStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">loadDefaultStyle</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">rtype<span class="colon">:</span></dt>
@@ -2623,6 +2631,12 @@ parameters used by the data provider as url query items.</p>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.setExtent3D" title="qgis.core.QgsMeshLayer.setExtent3D"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setExtent3D</span></code></a></p></td>
 <td><p>Sets the extent</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.setLabeling" title="qgis.core.QgsMeshLayer.setLabeling"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setLabeling</span></code></a></p></td>
+<td><p>Sets labeling configuration.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.setLabelsEnabled" title="qgis.core.QgsMeshLayer.setLabelsEnabled"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setLabelsEnabled</span></code></a></p></td>
+<td><p>Sets whether labels should be <code class="docutils literal notranslate"><span class="pre">enabled</span></code> for the layer.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsMeshLayer.setProviderType" title="qgis.core.QgsMeshLayer.setProviderType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setProviderType</span></code></a></p></td>
 <td><p>Sets the <code class="docutils literal notranslate"><span class="pre">providerType</span></code> (provider key)</p></td>
@@ -3716,6 +3730,53 @@ happens.</p>
 <dd></dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsMeshLayer.labeling">
+<span class="sig-name descname"><span class="pre">labeling</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="QgsAbstractMeshLayerLabeling.html#qgis.core.QgsAbstractMeshLayerLabeling" title="qgis.core.QgsAbstractMeshLayerLabeling"><span class="pre">QgsAbstractMeshLayerLabeling</span></a></span></span><a class="headerlink" href="#qgis.core.QgsMeshLayer.labeling" title="Link to this definition">¶</a></dt>
+<dd><p>Access to labeling configuration. May be <code class="docutils literal notranslate"><span class="pre">None</span></code> if labeling is not used.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Labels will only be rendered if <a class="reference internal" href="#qgis.core.QgsMeshLayer.labelsEnabled" title="qgis.core.QgsMeshLayer.labelsEnabled"><code class="xref py py-func docutils literal notranslate"><span class="pre">labelsEnabled()</span></code></a> returns <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsMeshLayer.labelsEnabled" title="qgis.core.QgsMeshLayer.labelsEnabled"><code class="xref py py-func docutils literal notranslate"><span class="pre">labelsEnabled()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.36.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsAbstractMeshLayerLabeling.html#qgis.core.QgsAbstractMeshLayerLabeling" title="qgis.core.QgsAbstractMeshLayerLabeling">QgsAbstractMeshLayerLabeling</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsMeshLayer.labelsEnabled">
+<span class="sig-name descname"><span class="pre">labelsEnabled</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#qgis.core.QgsMeshLayer.labelsEnabled" title="Link to this definition">¶</a></dt>
+<dd><p>Returns whether the layer contains labels which are enabled and should be drawn.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if layer contains enabled labels</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsMeshLayer.setLabelsEnabled" title="qgis.core.QgsMeshLayer.setLabelsEnabled"><code class="xref py py-func docutils literal notranslate"><span class="pre">setLabelsEnabled()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsMeshLayer.labeling" title="qgis.core.QgsMeshLayer.labeling"><code class="xref py py-func docutils literal notranslate"><span class="pre">labeling()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.36.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsMeshLayer.loadDefaultStyle">
 <span class="sig-name descname"><span class="pre">loadDefaultStyle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qgis.core.QgsMeshLayer.loadDefaultStyle" title="Link to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
@@ -4102,6 +4163,47 @@ Changes active dataset groups if those one are not enabled anymore :</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsMeshLayer.setLabeling">
+<span class="sig-name descname"><span class="pre">setLabeling</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labeling</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsAbstractMeshLayerLabeling.html#qgis.core.QgsAbstractMeshLayerLabeling" title="qgis.core.QgsAbstractMeshLayerLabeling"><span class="pre">QgsAbstractMeshLayerLabeling</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsMeshLayer.setLabeling" title="Link to this definition">¶</a></dt>
+<dd><p>Sets labeling configuration. Takes ownership of the object.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.36.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>labeling</strong> (<a class="reference internal" href="QgsAbstractMeshLayerLabeling.html#qgis.core.QgsAbstractMeshLayerLabeling" title="qgis.core.QgsAbstractMeshLayerLabeling"><em>QgsAbstractMeshLayerLabeling</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsMeshLayer.setLabelsEnabled">
+<span class="sig-name descname"><span class="pre">setLabelsEnabled</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enabled</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsMeshLayer.setLabelsEnabled" title="Link to this definition">¶</a></dt>
+<dd><p>Sets whether labels should be <code class="docutils literal notranslate"><span class="pre">enabled</span></code> for the layer.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Labels will only be rendered if <a class="reference internal" href="#qgis.core.QgsMeshLayer.labelsEnabled" title="qgis.core.QgsMeshLayer.labelsEnabled"><code class="xref py py-func docutils literal notranslate"><span class="pre">labelsEnabled()</span></code></a> is <code class="docutils literal notranslate"><span class="pre">True</span></code> and a labeling
+object is returned by <a class="reference internal" href="#qgis.core.QgsMeshLayer.labeling" title="qgis.core.QgsMeshLayer.labeling"><code class="xref py py-func docutils literal notranslate"><span class="pre">labeling()</span></code></a>.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsMeshLayer.labelsEnabled" title="qgis.core.QgsMeshLayer.labelsEnabled"><code class="xref py py-func docutils literal notranslate"><span class="pre">labelsEnabled()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsMeshLayer.labeling" title="qgis.core.QgsMeshLayer.labeling"><code class="xref py py-func docutils literal notranslate"><span class="pre">labeling()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.36.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>enabled</strong> (<em>bool</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsMeshLayer.setProviderType">
 <span class="sig-name descname"><span class="pre">setProviderType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">providerType</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsMeshLayer.setProviderType" title="Link to this definition">¶</a></dt>
 <dd><p>Sets the <code class="docutils literal notranslate"><span class="pre">providerType</span></code> (provider key)</p>
@@ -4475,7 +4577,7 @@ arguments is the optional sequence of the names of the signal’s arguments.</p>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:31 Jan 09, 2024.
+      <span class="lastupdated">Last updated on 01:42 Jan 09, 2024.
       </span></p>
   </div>
 

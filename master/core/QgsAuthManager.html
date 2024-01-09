@@ -144,6 +144,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsAbstractLayerMetadataProvider.html">Class: QgsAbstractLayerMetadataProvider</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAbstractLayoutIterator.html">Class: QgsAbstractLayoutIterator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAbstractLayoutUndoCommand.html">Class: QgsAbstractLayoutUndoCommand</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsAbstractMeshLayerLabeling.html">Class: QgsAbstractMeshLayerLabeling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAbstractMetadataBase.html">Class: QgsAbstractMetadataBase</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAbstractMetadataBaseValidator.html">Class: QgsAbstractMetadataBaseValidator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsAbstractPointCloud3DRenderer.html">Class: QgsAbstractPointCloud3DRenderer</a></li>
@@ -700,6 +701,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsMeshElevationAveragingMethod.html">Class: QgsMeshElevationAveragingMethod</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsMeshLayer.html">Class: QgsMeshLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsMeshLayerElevationProperties.html">Class: QgsMeshLayerElevationProperties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsMeshLayerSimpleLabeling.html">Class: QgsMeshLayerSimpleLabeling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsMeshLayerTemporalProperties.html">Class: QgsMeshLayerTemporalProperties</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsMeshMultiLevelsAveragingMethod.html">Class: QgsMeshMultiLevelsAveragingMethod</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsMeshRelativeHeightAveragingMethod.html">Class: QgsMeshRelativeHeightAveragingMethod</a></li>
@@ -2511,85 +2513,88 @@ and to utilize configurations through various authentication method plugins</p>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAuthManager.setScheduledAuthDatabaseEraseRequestEmitted" title="qgis.core.QgsAuthManager.setScheduledAuthDatabaseEraseRequestEmitted"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setScheduledAuthDatabaseEraseRequestEmitted</span></code></a></p></td>
 <td><p>Re-emit a signal to schedule an optional erase of authentication database.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAuthManager.sslCertCustomConfig" title="qgis.core.QgsAuthManager.sslCertCustomConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sslCertCustomConfig</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAuthManager.setup" title="qgis.core.QgsAuthManager.setup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setup</span></code></a></p></td>
+<td><p>Sets up the authentication manager configuration.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAuthManager.sslCertCustomConfig" title="qgis.core.QgsAuthManager.sslCertCustomConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sslCertCustomConfig</span></code></a></p></td>
 <td><p>sslCertCustomConfig get an SSL certificate custom config by <code class="docutils literal notranslate"><span class="pre">id</span></code> (sha hash) and <code class="docutils literal notranslate"><span class="pre">hostport</span></code> (host:port)</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAuthManager.sslCertCustomConfigByHost" title="qgis.core.QgsAuthManager.sslCertCustomConfigByHost"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sslCertCustomConfigByHost</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAuthManager.sslCertCustomConfigByHost" title="qgis.core.QgsAuthManager.sslCertCustomConfigByHost"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sslCertCustomConfigByHost</span></code></a></p></td>
 <td><p>sslCertCustomConfigByHost get an SSL certificate custom config by <code class="docutils literal notranslate"><span class="pre">hostport</span></code> (host:port)</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAuthManager.sslCertCustomConfigs" title="qgis.core.QgsAuthManager.sslCertCustomConfigs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sslCertCustomConfigs</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAuthManager.sslCertCustomConfigs" title="qgis.core.QgsAuthManager.sslCertCustomConfigs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sslCertCustomConfigs</span></code></a></p></td>
 <td><p>sslCertCustomConfigs get SSL certificate custom configs</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAuthManager.storeAuthSetting" title="qgis.core.QgsAuthManager.storeAuthSetting"><code class="xref py py-obj docutils literal notranslate"><span class="pre">storeAuthSetting</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAuthManager.storeAuthSetting" title="qgis.core.QgsAuthManager.storeAuthSetting"><code class="xref py py-obj docutils literal notranslate"><span class="pre">storeAuthSetting</span></code></a></p></td>
 <td><p>Store an authentication setting (stored as string via QVariant( value ).toString() )</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAuthManager.storeAuthenticationConfig" title="qgis.core.QgsAuthManager.storeAuthenticationConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">storeAuthenticationConfig</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAuthManager.storeAuthenticationConfig" title="qgis.core.QgsAuthManager.storeAuthenticationConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">storeAuthenticationConfig</span></code></a></p></td>
 <td><p>Store an authentication config in the database</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAuthManager.storeCertAuthorities" title="qgis.core.QgsAuthManager.storeCertAuthorities"><code class="xref py py-obj docutils literal notranslate"><span class="pre">storeCertAuthorities</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAuthManager.storeCertAuthorities" title="qgis.core.QgsAuthManager.storeCertAuthorities"><code class="xref py py-obj docutils literal notranslate"><span class="pre">storeCertAuthorities</span></code></a></p></td>
 <td><p>Store multiple certificate authorities</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAuthManager.storeCertAuthority" title="qgis.core.QgsAuthManager.storeCertAuthority"><code class="xref py py-obj docutils literal notranslate"><span class="pre">storeCertAuthority</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAuthManager.storeCertAuthority" title="qgis.core.QgsAuthManager.storeCertAuthority"><code class="xref py py-obj docutils literal notranslate"><span class="pre">storeCertAuthority</span></code></a></p></td>
 <td><p>Store a certificate authority</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAuthManager.storeCertIdentity" title="qgis.core.QgsAuthManager.storeCertIdentity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">storeCertIdentity</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAuthManager.storeCertIdentity" title="qgis.core.QgsAuthManager.storeCertIdentity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">storeCertIdentity</span></code></a></p></td>
 <td><p>Store a certificate identity</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAuthManager.storeCertTrustPolicy" title="qgis.core.QgsAuthManager.storeCertTrustPolicy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">storeCertTrustPolicy</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAuthManager.storeCertTrustPolicy" title="qgis.core.QgsAuthManager.storeCertTrustPolicy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">storeCertTrustPolicy</span></code></a></p></td>
 <td><p>Store user trust value for a certificate</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAuthManager.storeSslCertCustomConfig" title="qgis.core.QgsAuthManager.storeSslCertCustomConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">storeSslCertCustomConfig</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAuthManager.storeSslCertCustomConfig" title="qgis.core.QgsAuthManager.storeSslCertCustomConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">storeSslCertCustomConfig</span></code></a></p></td>
 <td><p>Store an SSL certificate custom config</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAuthManager.supportedAuthMethodExpansions" title="qgis.core.QgsAuthManager.supportedAuthMethodExpansions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">supportedAuthMethodExpansions</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAuthManager.supportedAuthMethodExpansions" title="qgis.core.QgsAuthManager.supportedAuthMethodExpansions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">supportedAuthMethodExpansions</span></code></a></p></td>
 <td><p>Gets supported authentication method expansion(s), e.g. NetworkRequest | DataSourceURI, as flags.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAuthManager.systemRootCAs" title="qgis.core.QgsAuthManager.systemRootCAs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">systemRootCAs</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAuthManager.systemRootCAs" title="qgis.core.QgsAuthManager.systemRootCAs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">systemRootCAs</span></code></a></p></td>
 <td><p>systemRootCAs get root system certificate authorities</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAuthManager.timerEvent" title="qgis.core.QgsAuthManager.timerEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">timerEvent</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAuthManager.timerEvent" title="qgis.core.QgsAuthManager.timerEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">timerEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAuthManager.trustedCaCerts" title="qgis.core.QgsAuthManager.trustedCaCerts"><code class="xref py py-obj docutils literal notranslate"><span class="pre">trustedCaCerts</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAuthManager.trustedCaCerts" title="qgis.core.QgsAuthManager.trustedCaCerts"><code class="xref py py-obj docutils literal notranslate"><span class="pre">trustedCaCerts</span></code></a></p></td>
 <td><p>trustedCaCerts get list of all trusted CA certificates</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAuthManager.trustedCaCertsCache" title="qgis.core.QgsAuthManager.trustedCaCertsCache"><code class="xref py py-obj docutils literal notranslate"><span class="pre">trustedCaCertsCache</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAuthManager.trustedCaCertsCache" title="qgis.core.QgsAuthManager.trustedCaCertsCache"><code class="xref py py-obj docutils literal notranslate"><span class="pre">trustedCaCertsCache</span></code></a></p></td>
 <td><p>trustedCaCertsCache cache of trusted certificate authorities, ready for network connections</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAuthManager.trustedCaCertsPemText" title="qgis.core.QgsAuthManager.trustedCaCertsPemText"><code class="xref py py-obj docutils literal notranslate"><span class="pre">trustedCaCertsPemText</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAuthManager.trustedCaCertsPemText" title="qgis.core.QgsAuthManager.trustedCaCertsPemText"><code class="xref py py-obj docutils literal notranslate"><span class="pre">trustedCaCertsPemText</span></code></a></p></td>
 <td><p>trustedCaCertsPemText get concatenated string of all trusted CA certificates</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAuthManager.uniqueConfigId" title="qgis.core.QgsAuthManager.uniqueConfigId"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uniqueConfigId</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAuthManager.uniqueConfigId" title="qgis.core.QgsAuthManager.uniqueConfigId"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uniqueConfigId</span></code></a></p></td>
 <td><p>Gets a unique generated 7-character string to assign to as config id</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAuthManager.untrustedCaCerts" title="qgis.core.QgsAuthManager.untrustedCaCerts"><code class="xref py py-obj docutils literal notranslate"><span class="pre">untrustedCaCerts</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAuthManager.untrustedCaCerts" title="qgis.core.QgsAuthManager.untrustedCaCerts"><code class="xref py py-obj docutils literal notranslate"><span class="pre">untrustedCaCerts</span></code></a></p></td>
 <td><p>untrustedCaCerts get list of untrusted certificate authorities</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAuthManager.updateAuthenticationConfig" title="qgis.core.QgsAuthManager.updateAuthenticationConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">updateAuthenticationConfig</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAuthManager.updateAuthenticationConfig" title="qgis.core.QgsAuthManager.updateAuthenticationConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">updateAuthenticationConfig</span></code></a></p></td>
 <td><p>Update an authentication config in the database</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAuthManager.updateConfigAuthMethods" title="qgis.core.QgsAuthManager.updateConfigAuthMethods"><code class="xref py py-obj docutils literal notranslate"><span class="pre">updateConfigAuthMethods</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAuthManager.updateConfigAuthMethods" title="qgis.core.QgsAuthManager.updateConfigAuthMethods"><code class="xref py py-obj docutils literal notranslate"><span class="pre">updateConfigAuthMethods</span></code></a></p></td>
 <td><p>Sync the confg/authentication method cache with what is in database</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAuthManager.updateDataSourceUriItems" title="qgis.core.QgsAuthManager.updateDataSourceUriItems"><code class="xref py py-obj docutils literal notranslate"><span class="pre">updateDataSourceUriItems</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAuthManager.updateDataSourceUriItems" title="qgis.core.QgsAuthManager.updateDataSourceUriItems"><code class="xref py py-obj docutils literal notranslate"><span class="pre">updateDataSourceUriItems</span></code></a></p></td>
 <td><p>Provider call to update a <a class="reference internal" href="QgsDataSourceUri.html#module-QgsDataSourceUri" title="QgsDataSourceUri"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsDataSourceUri</span></code></a> with an authentication config</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAuthManager.updateIgnoredSslErrorsCache" title="qgis.core.QgsAuthManager.updateIgnoredSslErrorsCache"><code class="xref py py-obj docutils literal notranslate"><span class="pre">updateIgnoredSslErrorsCache</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAuthManager.updateIgnoredSslErrorsCache" title="qgis.core.QgsAuthManager.updateIgnoredSslErrorsCache"><code class="xref py py-obj docutils literal notranslate"><span class="pre">updateIgnoredSslErrorsCache</span></code></a></p></td>
 <td><p>Update ignored SSL error cache with possible ignored SSL errors, using sha:host:port key</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAuthManager.updateIgnoredSslErrorsCacheFromConfig" title="qgis.core.QgsAuthManager.updateIgnoredSslErrorsCacheFromConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">updateIgnoredSslErrorsCacheFromConfig</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAuthManager.updateIgnoredSslErrorsCacheFromConfig" title="qgis.core.QgsAuthManager.updateIgnoredSslErrorsCacheFromConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">updateIgnoredSslErrorsCacheFromConfig</span></code></a></p></td>
 <td><p>Update ignored SSL error cache with possible ignored SSL errors, using server config</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAuthManager.updateNetworkProxy" title="qgis.core.QgsAuthManager.updateNetworkProxy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">updateNetworkProxy</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAuthManager.updateNetworkProxy" title="qgis.core.QgsAuthManager.updateNetworkProxy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">updateNetworkProxy</span></code></a></p></td>
 <td><p>Provider call to update a QNetworkProxy with an authentication config</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAuthManager.updateNetworkReply" title="qgis.core.QgsAuthManager.updateNetworkReply"><code class="xref py py-obj docutils literal notranslate"><span class="pre">updateNetworkReply</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAuthManager.updateNetworkReply" title="qgis.core.QgsAuthManager.updateNetworkReply"><code class="xref py py-obj docutils literal notranslate"><span class="pre">updateNetworkReply</span></code></a></p></td>
 <td><p>Provider call to update a QNetworkReply with an authentication config (used to skip known SSL errors, etc.)</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAuthManager.updateNetworkRequest" title="qgis.core.QgsAuthManager.updateNetworkRequest"><code class="xref py py-obj docutils literal notranslate"><span class="pre">updateNetworkRequest</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAuthManager.updateNetworkRequest" title="qgis.core.QgsAuthManager.updateNetworkRequest"><code class="xref py py-obj docutils literal notranslate"><span class="pre">updateNetworkRequest</span></code></a></p></td>
 <td><p>Provider call to update a QNetworkRequest with an authentication config</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAuthManager.verifyMasterPassword" title="qgis.core.QgsAuthManager.verifyMasterPassword"><code class="xref py py-obj docutils literal notranslate"><span class="pre">verifyMasterPassword</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAuthManager.verifyMasterPassword" title="qgis.core.QgsAuthManager.verifyMasterPassword"><code class="xref py py-obj docutils literal notranslate"><span class="pre">verifyMasterPassword</span></code></a></p></td>
 <td><p>Verify the supplied master password against any existing hash in authentication database</p></td>
 </tr>
 </tbody>
@@ -3319,7 +3324,7 @@ arguments is the optional sequence of the names of the signal’s arguments.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsAuthManager.hasConfigId">
-<span class="sig-name descname"><span class="pre">hasConfigId</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">txt</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#qgis.core.QgsAuthManager.hasConfigId" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">hasConfigId</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">txt</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#qgis.core.QgsAuthManager.hasConfigId" title="Link to this definition">¶</a></dt>
 <dd><p>Returns whether a string includes an authcfg ID token</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -3379,6 +3384,10 @@ arguments is the optional sequence of the names of the signal’s arguments.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="QgsApplication.html#qgis.core.QgsApplication.qgisAuthDatabaseFilePath" title="qgis.core.QgsApplication.qgisAuthDatabaseFilePath"><code class="xref py py-func docutils literal notranslate"><span class="pre">QgsApplication.qgisAuthDatabaseFilePath()</span></code></a></p>
+</div>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version QGIS: </span>3.36
+use <a class="reference internal" href="#qgis.core.QgsAuthManager.setup" title="qgis.core.QgsAuthManager.setup"><code class="xref py py-func docutils literal notranslate"><span class="pre">setup()</span></code></a> instead.</p>
 </div>
 </dd></dl>
 
@@ -3542,7 +3551,7 @@ arguments is the optional sequence of the names of the signal’s arguments.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsAuthManager.passwordHelperEnabled">
-<span class="sig-name descname"><span class="pre">passwordHelperEnabled</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#qgis.core.QgsAuthManager.passwordHelperEnabled" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">passwordHelperEnabled</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#qgis.core.QgsAuthManager.passwordHelperEnabled" title="Link to this definition">¶</a></dt>
 <dd><p>Password helper enabled getter</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -3939,6 +3948,22 @@ Setting to <code class="docutils literal notranslate"><span class="pre">True</sp
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsAuthManager.setup">
+<span class="sig-name descname"><span class="pre">setup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pluginPath</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">authDatabasePath</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsAuthManager.setup" title="Link to this definition">¶</a></dt>
+<dd><p>Sets up the authentication manager configuration.</p>
+<p>This method does not initialize the authentication framework, instead that is deferred
+to lazy-initialize when required.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pluginPath</strong> (<em>str = ''</em>) – the plugin path</p></li>
+<li><p><strong>authDatabasePath</strong> (<em>str = ''</em>) – the authentication DB path</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsAuthManager.sslCertCustomConfig">
 <span class="sig-name descname"><span class="pre">sslCertCustomConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hostport</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="QgsAuthConfigSslServer.html#qgis.core.QgsAuthConfigSslServer" title="qgis.core.QgsAuthConfigSslServer"><span class="pre">QgsAuthConfigSslServer</span></a></span></span><a class="headerlink" href="#qgis.core.QgsAuthManager.sslCertCustomConfig" title="Link to this definition">¶</a></dt>
 <dd><p>sslCertCustomConfig get an SSL certificate custom config by <code class="docutils literal notranslate"><span class="pre">id</span></code> (sha hash) and <code class="docutils literal notranslate"><span class="pre">hostport</span></code> (host:port)</p>
@@ -4128,7 +4153,7 @@ Setting to <code class="docutils literal notranslate"><span class="pre">True</sp
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsAuthManager.systemRootCAs">
-<span class="sig-name descname"><span class="pre">systemRootCAs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">QSslCertificate</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qgis.core.QgsAuthManager.systemRootCAs" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">systemRootCAs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">QSslCertificate</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qgis.core.QgsAuthManager.systemRootCAs" title="Link to this definition">¶</a></dt>
 <dd><p>systemRootCAs get root system certificate authorities</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
@@ -4404,7 +4429,7 @@ Setting to <code class="docutils literal notranslate"><span class="pre">True</sp
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:31 Jan 09, 2024.
+      <span class="lastupdated">Last updated on 01:42 Jan 09, 2024.
       </span></p>
   </div>
 
