@@ -2221,6 +2221,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../_3d/QgsMaterialRegistry.html">Class: QgsMaterialRegistry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_3d/QgsMaterialSettingsAbstractMetadata.html">Class: QgsMaterialSettingsAbstractMetadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_3d/QgsMaterialSettingsRenderingTechnique.html">Class: QgsMaterialSettingsRenderingTechnique</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_3d/QgsMetalRoughMaterialSettings.html">Class: QgsMetalRoughMaterialSettings</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_3d/QgsNullMaterialSettings.html">Class: QgsNullMaterialSettings</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_3d/QgsPhongMaterialSettings.html">Class: QgsPhongMaterialSettings</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_3d/QgsPhongTexturedMaterialSettings.html">Class: QgsPhongTexturedMaterialSettings</a></li>
@@ -2408,6 +2409,12 @@ Constructor for QgsAbstractGeometry.</p>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractGeometry.fromWkt" title="qgis.core.QgsAbstractGeometry.fromWkt"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fromWkt</span></code></a></p></td>
 <td><p>Sets the geometry from a WKT string.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractGeometry.fuzzyDistanceEqual" title="qgis.core.QgsAbstractGeometry.fuzzyDistanceEqual"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fuzzyDistanceEqual</span></code></a></p></td>
+<td><p>Performs fuzzy distance comparison between this geometry and <code class="docutils literal notranslate"><span class="pre">other</span></code> using an <code class="docutils literal notranslate"><span class="pre">epsilon</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractGeometry.fuzzyEqual" title="qgis.core.QgsAbstractGeometry.fuzzyEqual"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fuzzyEqual</span></code></a></p></td>
+<td><p>Performs fuzzy comparison between this geometry and <code class="docutils literal notranslate"><span class="pre">other</span></code> using an <code class="docutils literal notranslate"><span class="pre">epsilon</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsAbstractGeometry.geometryType" title="qgis.core.QgsAbstractGeometry.geometryType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geometryType</span></code></a></p></td>
 <td><p>Returns a unique string representing the geometry type.</p></td>
@@ -3374,6 +3381,67 @@ After successful read the wkb argument will be at the position where the reading
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsAbstractGeometry.fuzzyDistanceEqual">
+<span class="sig-name descname"><span class="pre">fuzzyDistanceEqual</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">other</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#qgis.core.QgsAbstractGeometry" title="qgis.core.QgsAbstractGeometry"><span class="pre">QgsAbstractGeometry</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">epsilon</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1e-08</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#qgis.core.QgsAbstractGeometry.fuzzyDistanceEqual" title="Link to this definition">¶</a></dt>
+<dd><p>Performs fuzzy distance comparison between this geometry and <code class="docutils literal notranslate"><span class="pre">other</span></code> using an <code class="docutils literal notranslate"><span class="pre">epsilon</span></code>.</p>
+<p>Traditionally, the comparison is done by examining the specific values (such as x and y) that define the location of vertices in the geometry.
+It focuses on the numerical differences or relationships between these values.
+On the other hand, comparing distances between points considers the actual spatial separation or length between the points, regardless of their coordinate values.
+This comparison involves measuring the distance between two points using formulas like the distance formula. Here, it’s the “distance comparison” (fuzzyDistanceEqual).</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsAbstractGeometry.fuzzyEqual" title="qgis.core.QgsAbstractGeometry.fuzzyEqual"><code class="xref py py-func docutils literal notranslate"><span class="pre">fuzzyEqual()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><code class="xref py py-func docutils literal notranslate"><span class="pre">QgsGeometryUtilsBase.fuzzyEqual()</span></code></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.36.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>other</strong> (<a class="reference internal" href="#qgis.core.QgsAbstractGeometry" title="qgis.core.QgsAbstractGeometry"><em>QgsAbstractGeometry</em></a>) – </p></li>
+<li><p><strong>epsilon</strong> (<em>float = 1e-08</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsAbstractGeometry.fuzzyEqual">
+<span class="sig-name descname"><span class="pre">fuzzyEqual</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">other</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#qgis.core.QgsAbstractGeometry" title="qgis.core.QgsAbstractGeometry"><span class="pre">QgsAbstractGeometry</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">epsilon</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1e-08</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#qgis.core.QgsAbstractGeometry.fuzzyEqual" title="Link to this definition">¶</a></dt>
+<dd><p>Performs fuzzy comparison between this geometry and <code class="docutils literal notranslate"><span class="pre">other</span></code> using an <code class="docutils literal notranslate"><span class="pre">epsilon</span></code>.</p>
+<p>The comparison is done by examining the specific values (such as x and y) that define the location of vertices in the geometry.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsAbstractGeometry.fuzzyDistanceEqual" title="qgis.core.QgsAbstractGeometry.fuzzyDistanceEqual"><code class="xref py py-func docutils literal notranslate"><span class="pre">fuzzyDistanceEqual()</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><code class="xref py py-func docutils literal notranslate"><span class="pre">QgsGeometryUtilsBase.fuzzyDistanceEqual()</span></code></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.36.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>other</strong> (<a class="reference internal" href="#qgis.core.QgsAbstractGeometry" title="qgis.core.QgsAbstractGeometry"><em>QgsAbstractGeometry</em></a>) – </p></li>
+<li><p><strong>epsilon</strong> (<em>float = 1e-08</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsAbstractGeometry.geometryType">
 <span class="sig-name descname"><span class="pre">geometryType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#qgis.core.QgsAbstractGeometry.geometryType" title="Link to this definition">¶</a></dt>
 <dd><p>Returns a unique string representing the geometry type.</p>
@@ -4122,7 +4190,7 @@ modified using the iterator. See <code class="xref py py-func docutils literal n
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:31 Jan 12, 2024.
+      <span class="lastupdated">Last updated on 01:49 Jan 12, 2024.
       </span></p>
   </div>
 
