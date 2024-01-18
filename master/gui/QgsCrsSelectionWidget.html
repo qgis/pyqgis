@@ -1952,6 +1952,8 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsRasterRendererWidget.html">Class: QgsRasterRendererWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsRasterTransparencyWidget.html">Class: QgsRasterTransparencyWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsRatioLockButton.html">Class: QgsRatioLockButton</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsRecentCoordinateReferenceSystemsModel.html">Class: QgsRecentCoordinateReferenceSystemsModel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsRecentCoordinateReferenceSystemsProxyModel.html">Class: QgsRecentCoordinateReferenceSystemsProxyModel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsRelationAggregateSearchWidgetWrapper.html">Class: QgsRelationAggregateSearchWidgetWrapper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsRelationEditorConfigWidget.html">Class: QgsRelationEditorConfigWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsRelationEditorWidget.html">Class: QgsRelationEditorWidget</a></li>
@@ -2279,8 +2281,11 @@
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.24.</span></p>
 </div>
-<p>QgsCrsSelectionWidget(parent: QWidget = None)
+<p>QgsCrsSelectionWidget(parent: QWidget = None, filters: Union[QgsCoordinateReferenceSystemProxyModel.Filters, QgsCoordinateReferenceSystemProxyModel.Filter] = QgsCoordinateReferenceSystemProxyModel.FilterHorizontal|QgsCoordinateReferenceSystemProxyModel.FilterCompound)
 Constructor for <a class="reference internal" href="#qgis.gui.QgsCrsSelectionWidget" title="qgis.gui.QgsCrsSelectionWidget"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsCrsSelectionWidget</span></code></a>, with the specified <code class="docutils literal notranslate"><span class="pre">parent</span></code> widget.</p>
+<p>Since QGIS 3.36, the optional <code class="docutils literal notranslate"><span class="pre">filter</span></code> argument can be used to specify filters on the systems
+shown in the widget. The default is to show all horizontal and compound CRS in order to match
+the behavior of older QGIS releases. The <code class="docutils literal notranslate"><span class="pre">filter</span></code> can be altered to also include vertical CRS if desired.</p>
 <blockquote>
 <div><table class="autosummary longtable docutils align-default">
 <tbody>
@@ -2340,83 +2345,89 @@ Constructor for <a class="reference internal" href="#qgis.gui.QgsCrsSelectionWid
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsCrsSelectionWidget.event" title="qgis.gui.QgsCrsSelectionWidget.event"><code class="xref py py-obj docutils literal notranslate"><span class="pre">event</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsCrsSelectionWidget.focusInEvent" title="qgis.gui.QgsCrsSelectionWidget.focusInEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">focusInEvent</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsCrsSelectionWidget.filters" title="qgis.gui.QgsCrsSelectionWidget.filters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">filters</span></code></a></p></td>
+<td><p>Returns the filters set on the available CRS.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsCrsSelectionWidget.focusInEvent" title="qgis.gui.QgsCrsSelectionWidget.focusInEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">focusInEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsCrsSelectionWidget.focusNextChild" title="qgis.gui.QgsCrsSelectionWidget.focusNextChild"><code class="xref py py-obj docutils literal notranslate"><span class="pre">focusNextChild</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsCrsSelectionWidget.focusNextChild" title="qgis.gui.QgsCrsSelectionWidget.focusNextChild"><code class="xref py py-obj docutils literal notranslate"><span class="pre">focusNextChild</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsCrsSelectionWidget.focusNextPrevChild" title="qgis.gui.QgsCrsSelectionWidget.focusNextPrevChild"><code class="xref py py-obj docutils literal notranslate"><span class="pre">focusNextPrevChild</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsCrsSelectionWidget.focusNextPrevChild" title="qgis.gui.QgsCrsSelectionWidget.focusNextPrevChild"><code class="xref py py-obj docutils literal notranslate"><span class="pre">focusNextPrevChild</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsCrsSelectionWidget.focusOutEvent" title="qgis.gui.QgsCrsSelectionWidget.focusOutEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">focusOutEvent</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsCrsSelectionWidget.focusOutEvent" title="qgis.gui.QgsCrsSelectionWidget.focusOutEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">focusOutEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsCrsSelectionWidget.focusPreviousChild" title="qgis.gui.QgsCrsSelectionWidget.focusPreviousChild"><code class="xref py py-obj docutils literal notranslate"><span class="pre">focusPreviousChild</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsCrsSelectionWidget.focusPreviousChild" title="qgis.gui.QgsCrsSelectionWidget.focusPreviousChild"><code class="xref py py-obj docutils literal notranslate"><span class="pre">focusPreviousChild</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsCrsSelectionWidget.hasValidSelection" title="qgis.gui.QgsCrsSelectionWidget.hasValidSelection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hasValidSelection</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsCrsSelectionWidget.hasValidSelection" title="qgis.gui.QgsCrsSelectionWidget.hasValidSelection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hasValidSelection</span></code></a></p></td>
 <td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the widget has a valid CRS defined.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsCrsSelectionWidget.hideEvent" title="qgis.gui.QgsCrsSelectionWidget.hideEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hideEvent</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsCrsSelectionWidget.hideEvent" title="qgis.gui.QgsCrsSelectionWidget.hideEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hideEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsCrsSelectionWidget.initPainter" title="qgis.gui.QgsCrsSelectionWidget.initPainter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">initPainter</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsCrsSelectionWidget.initPainter" title="qgis.gui.QgsCrsSelectionWidget.initPainter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">initPainter</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsCrsSelectionWidget.inputMethodEvent" title="qgis.gui.QgsCrsSelectionWidget.inputMethodEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">inputMethodEvent</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsCrsSelectionWidget.inputMethodEvent" title="qgis.gui.QgsCrsSelectionWidget.inputMethodEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">inputMethodEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsCrsSelectionWidget.isSignalConnected" title="qgis.gui.QgsCrsSelectionWidget.isSignalConnected"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isSignalConnected</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsCrsSelectionWidget.isSignalConnected" title="qgis.gui.QgsCrsSelectionWidget.isSignalConnected"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isSignalConnected</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsCrsSelectionWidget.keyPressEvent" title="qgis.gui.QgsCrsSelectionWidget.keyPressEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">keyPressEvent</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsCrsSelectionWidget.keyPressEvent" title="qgis.gui.QgsCrsSelectionWidget.keyPressEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">keyPressEvent</span></code></a></p></td>
 <td><p>Overridden key press event to handle the esc event on the widget.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsCrsSelectionWidget.keyReleaseEvent" title="qgis.gui.QgsCrsSelectionWidget.keyReleaseEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">keyReleaseEvent</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsCrsSelectionWidget.keyReleaseEvent" title="qgis.gui.QgsCrsSelectionWidget.keyReleaseEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">keyReleaseEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsCrsSelectionWidget.leaveEvent" title="qgis.gui.QgsCrsSelectionWidget.leaveEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">leaveEvent</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsCrsSelectionWidget.leaveEvent" title="qgis.gui.QgsCrsSelectionWidget.leaveEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">leaveEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsCrsSelectionWidget.metric" title="qgis.gui.QgsCrsSelectionWidget.metric"><code class="xref py py-obj docutils literal notranslate"><span class="pre">metric</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsCrsSelectionWidget.metric" title="qgis.gui.QgsCrsSelectionWidget.metric"><code class="xref py py-obj docutils literal notranslate"><span class="pre">metric</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsCrsSelectionWidget.mouseDoubleClickEvent" title="qgis.gui.QgsCrsSelectionWidget.mouseDoubleClickEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mouseDoubleClickEvent</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsCrsSelectionWidget.mouseDoubleClickEvent" title="qgis.gui.QgsCrsSelectionWidget.mouseDoubleClickEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mouseDoubleClickEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsCrsSelectionWidget.mouseMoveEvent" title="qgis.gui.QgsCrsSelectionWidget.mouseMoveEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mouseMoveEvent</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsCrsSelectionWidget.mouseMoveEvent" title="qgis.gui.QgsCrsSelectionWidget.mouseMoveEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mouseMoveEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsCrsSelectionWidget.mousePressEvent" title="qgis.gui.QgsCrsSelectionWidget.mousePressEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mousePressEvent</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsCrsSelectionWidget.mousePressEvent" title="qgis.gui.QgsCrsSelectionWidget.mousePressEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mousePressEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsCrsSelectionWidget.mouseReleaseEvent" title="qgis.gui.QgsCrsSelectionWidget.mouseReleaseEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mouseReleaseEvent</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsCrsSelectionWidget.mouseReleaseEvent" title="qgis.gui.QgsCrsSelectionWidget.mouseReleaseEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mouseReleaseEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsCrsSelectionWidget.moveEvent" title="qgis.gui.QgsCrsSelectionWidget.moveEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">moveEvent</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsCrsSelectionWidget.moveEvent" title="qgis.gui.QgsCrsSelectionWidget.moveEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">moveEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsCrsSelectionWidget.nativeEvent" title="qgis.gui.QgsCrsSelectionWidget.nativeEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nativeEvent</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsCrsSelectionWidget.nativeEvent" title="qgis.gui.QgsCrsSelectionWidget.nativeEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nativeEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsCrsSelectionWidget.paintEvent" title="qgis.gui.QgsCrsSelectionWidget.paintEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">paintEvent</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsCrsSelectionWidget.paintEvent" title="qgis.gui.QgsCrsSelectionWidget.paintEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">paintEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsCrsSelectionWidget.receivers" title="qgis.gui.QgsCrsSelectionWidget.receivers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">receivers</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsCrsSelectionWidget.receivers" title="qgis.gui.QgsCrsSelectionWidget.receivers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">receivers</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsCrsSelectionWidget.resizeEvent" title="qgis.gui.QgsCrsSelectionWidget.resizeEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">resizeEvent</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsCrsSelectionWidget.resizeEvent" title="qgis.gui.QgsCrsSelectionWidget.resizeEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">resizeEvent</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsCrsSelectionWidget.sender" title="qgis.gui.QgsCrsSelectionWidget.sender"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sender</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsCrsSelectionWidget.sender" title="qgis.gui.QgsCrsSelectionWidget.sender"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sender</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsCrsSelectionWidget.senderSignalIndex" title="qgis.gui.QgsCrsSelectionWidget.senderSignalIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">senderSignalIndex</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsCrsSelectionWidget.senderSignalIndex" title="qgis.gui.QgsCrsSelectionWidget.senderSignalIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">senderSignalIndex</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsCrsSelectionWidget.setCrs" title="qgis.gui.QgsCrsSelectionWidget.setCrs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setCrs</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsCrsSelectionWidget.setCrs" title="qgis.gui.QgsCrsSelectionWidget.setCrs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setCrs</span></code></a></p></td>
 <td><p>Sets the <code class="docutils literal notranslate"><span class="pre">crs</span></code> to show within the widget.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.gui.QgsCrsSelectionWidget.setFilters" title="qgis.gui.QgsCrsSelectionWidget.setFilters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setFilters</span></code></a></p></td>
+<td><p>Sets <code class="docutils literal notranslate"><span class="pre">filters</span></code> for the available CRS.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qgis.gui.QgsCrsSelectionWidget.setMessage" title="qgis.gui.QgsCrsSelectionWidget.setMessage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setMessage</span></code></a></p></td>
 <td><p>Sets a <code class="docutils literal notranslate"><span class="pre">message</span></code> to show in the dialog.</p></td>
@@ -2622,6 +2633,24 @@ arguments is the optional sequence of the names of the signal’s arguments.</p>
 <dd></dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.gui.QgsCrsSelectionWidget.filters">
+<span class="sig-name descname"><span class="pre">filters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="QgsCoordinateReferenceSystemProxyModel.html#qgis.gui.QgsCoordinateReferenceSystemProxyModel.Filters" title="qgis.gui.QgsCoordinateReferenceSystemProxyModel.Filters"><span class="pre">QgsCoordinateReferenceSystemProxyModel.Filters</span></a></span></span><a class="headerlink" href="#qgis.gui.QgsCrsSelectionWidget.filters" title="Link to this definition">¶</a></dt>
+<dd><p>Returns the filters set on the available CRS.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.gui.QgsCrsSelectionWidget.setFilters" title="qgis.gui.QgsCrsSelectionWidget.setFilters"><code class="xref py py-func docutils literal notranslate"><span class="pre">setFilters()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.36.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="QgsCoordinateReferenceSystemProxyModel.html#qgis.gui.QgsCoordinateReferenceSystemProxyModel.Filters" title="qgis.gui.QgsCoordinateReferenceSystemProxyModel.Filters">QgsCoordinateReferenceSystemProxyModel.Filters</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.gui.QgsCrsSelectionWidget.focusInEvent">
 <span class="sig-name descname"><span class="pre">focusInEvent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">QFocusEvent</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsCrsSelectionWidget.focusInEvent" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -2801,6 +2830,24 @@ arguments is the optional sequence of the names of the signal’s arguments.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.gui.QgsCrsSelectionWidget.setFilters">
+<span class="sig-name descname"><span class="pre">setFilters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filters</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="QgsCoordinateReferenceSystemProxyModel.html#qgis.gui.QgsCoordinateReferenceSystemProxyModel.Filters" title="qgis.gui.QgsCoordinateReferenceSystemProxyModel.Filters"><span class="pre">QgsCoordinateReferenceSystemProxyModel.Filters</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="QgsCoordinateReferenceSystemProxyModel.html#qgis.gui.QgsCoordinateReferenceSystemProxyModel.Filter" title="qgis.gui.QgsCoordinateReferenceSystemProxyModel.Filter"><span class="pre">QgsCoordinateReferenceSystemProxyModel.Filter</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsCrsSelectionWidget.setFilters" title="Link to this definition">¶</a></dt>
+<dd><p>Sets <code class="docutils literal notranslate"><span class="pre">filters</span></code> for the available CRS.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.gui.QgsCrsSelectionWidget.filters" title="qgis.gui.QgsCrsSelectionWidget.filters"><code class="xref py py-func docutils literal notranslate"><span class="pre">filters()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.36.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>filters</strong> (<em>Union</em><em>[</em><a class="reference internal" href="QgsCoordinateReferenceSystemProxyModel.html#qgis.gui.QgsCoordinateReferenceSystemProxyModel.Filters" title="qgis.gui.QgsCoordinateReferenceSystemProxyModel.Filters"><em>QgsCoordinateReferenceSystemProxyModel.Filters</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.gui.QgsCrsSelectionWidget.setMessage">
 <span class="sig-name descname"><span class="pre">setMessage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.gui.QgsCrsSelectionWidget.setMessage" title="Link to this definition">¶</a></dt>
 <dd><p>Sets a <code class="docutils literal notranslate"><span class="pre">message</span></code> to show in the dialog.</p>
@@ -2922,7 +2969,7 @@ option is selected, calling <a class="reference internal" href="#qgis.gui.QgsCrs
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:31 Jan 18, 2024.
+      <span class="lastupdated">Last updated on 01:57 Jan 18, 2024.
       </span></p>
   </div>
 
