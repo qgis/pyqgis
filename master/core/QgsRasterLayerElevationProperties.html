@@ -1025,6 +1025,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsRasterPyramid.html">Class: QgsRasterPyramid</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsRasterRange.html">Class: QgsRasterRange</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsRasterRenderer.html">Class: QgsRasterRenderer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QgsRasterRendererRegistry.html">Class: QgsRasterRendererRegistry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsRasterRendererUtils.html">Class: QgsRasterRendererUtils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsRasterResampleFilter.html">Class: QgsRasterResampleFilter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsRasterResampler.html">Class: QgsRasterResampler</a></li>
@@ -1327,6 +1328,7 @@
 <li class="toctree-l2"><a class="reference internal" href="QgsZipItem.html">Class: QgsZipItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QgsZipUtils.html">Class: QgsZipUtils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="RasterBandStatistics.html">Class: RasterBandStatistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="RasterRendererCapabilities.html">Class: RasterRendererCapabilities</a></li>
 <li class="toctree-l2"><a class="reference internal" href="RasterRendererFlags.html">Class: RasterRendererFlags</a></li>
 <li class="toctree-l2"><a class="reference internal" href="RasterTemporalCapabilityFlags.html">Class: RasterTemporalCapabilityFlags</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ReadWriteContextEnterCategory.html">Class: ReadWriteContextEnterCategory</a></li>
@@ -1654,6 +1656,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsEffectStackCompactWidget.html">Class: QgsEffectStackCompactWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsEffectStackPropertiesDialog.html">Class: QgsEffectStackPropertiesDialog</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsEffectStackPropertiesWidget.html">Class: QgsEffectStackPropertiesWidget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui/QgsElevationControllerSettingsAction.html">Class: QgsElevationControllerSettingsAction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsElevationControllerWidget.html">Class: QgsElevationControllerWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsElevationProfileCanvas.html">Class: QgsElevationProfileCanvas</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gui/QgsEllipseSymbolLayerWidget.html">Class: QgsEllipseSymbolLayerWidget</a></li>
@@ -2390,7 +2393,10 @@ Constructor for <a class="reference internal" href="#qgis.core.QgsRasterLayerEle
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterLayerElevationProperties.fixedRange" title="qgis.core.QgsRasterLayerElevationProperties.fixedRange"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fixedRange</span></code></a></p></td>
 <td><p>Returns the fixed elevation range for the raster.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterLayerElevationProperties.hasElevation" title="qgis.core.QgsRasterLayerElevationProperties.hasElevation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hasElevation</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterLayerElevationProperties.fixedRangePerBand" title="qgis.core.QgsRasterLayerElevationProperties.fixedRangePerBand"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fixedRangePerBand</span></code></a></p></td>
+<td><p>Returns the fixed elevation range for each band.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterLayerElevationProperties.hasElevation" title="qgis.core.QgsRasterLayerElevationProperties.hasElevation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hasElevation</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">rtype<span class="colon">:</span></dt>
 <dd class="field-odd"><p>bool</p>
@@ -2398,7 +2404,7 @@ Constructor for <a class="reference internal" href="#qgis.core.QgsRasterLayerEle
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterLayerElevationProperties.htmlSummary" title="qgis.core.QgsRasterLayerElevationProperties.htmlSummary"><code class="xref py py-obj docutils literal notranslate"><span class="pre">htmlSummary</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterLayerElevationProperties.htmlSummary" title="qgis.core.QgsRasterLayerElevationProperties.htmlSummary"><code class="xref py py-obj docutils literal notranslate"><span class="pre">htmlSummary</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">rtype<span class="colon">:</span></dt>
 <dd class="field-odd"><p>str</p>
@@ -2406,64 +2412,67 @@ Constructor for <a class="reference internal" href="#qgis.core.QgsRasterLayerEle
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterLayerElevationProperties.isEnabled" title="qgis.core.QgsRasterLayerElevationProperties.isEnabled"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isEnabled</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterLayerElevationProperties.isEnabled" title="qgis.core.QgsRasterLayerElevationProperties.isEnabled"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isEnabled</span></code></a></p></td>
 <td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the elevation properties are enabled, i.e. the raster layer values represent an elevation surface.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterLayerElevationProperties.isSignalConnected" title="qgis.core.QgsRasterLayerElevationProperties.isSignalConnected"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isSignalConnected</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterLayerElevationProperties.isSignalConnected" title="qgis.core.QgsRasterLayerElevationProperties.isSignalConnected"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isSignalConnected</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterLayerElevationProperties.isVisibleInZRange" title="qgis.core.QgsRasterLayerElevationProperties.isVisibleInZRange"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isVisibleInZRange</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterLayerElevationProperties.isVisibleInZRange" title="qgis.core.QgsRasterLayerElevationProperties.isVisibleInZRange"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isVisibleInZRange</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param range<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterLayerElevationProperties.layerLooksLikeDem" title="qgis.core.QgsRasterLayerElevationProperties.layerLooksLikeDem"><code class="xref py py-obj docutils literal notranslate"><span class="pre">layerLooksLikeDem</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterLayerElevationProperties.layerLooksLikeDem" title="qgis.core.QgsRasterLayerElevationProperties.layerLooksLikeDem"><code class="xref py py-obj docutils literal notranslate"><span class="pre">layerLooksLikeDem</span></code></a></p></td>
 <td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if a raster <code class="docutils literal notranslate"><span class="pre">layer</span></code> looks like a DEM.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterLayerElevationProperties.mode" title="qgis.core.QgsRasterLayerElevationProperties.mode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mode</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterLayerElevationProperties.mode" title="qgis.core.QgsRasterLayerElevationProperties.mode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mode</span></code></a></p></td>
 <td><p>Returns the elevation mode.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterLayerElevationProperties.profileFillSymbol" title="qgis.core.QgsRasterLayerElevationProperties.profileFillSymbol"><code class="xref py py-obj docutils literal notranslate"><span class="pre">profileFillSymbol</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterLayerElevationProperties.profileFillSymbol" title="qgis.core.QgsRasterLayerElevationProperties.profileFillSymbol"><code class="xref py py-obj docutils literal notranslate"><span class="pre">profileFillSymbol</span></code></a></p></td>
 <td><p>Returns the fill symbol used to render the raster profile in elevation profile plots.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterLayerElevationProperties.profileLineSymbol" title="qgis.core.QgsRasterLayerElevationProperties.profileLineSymbol"><code class="xref py py-obj docutils literal notranslate"><span class="pre">profileLineSymbol</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterLayerElevationProperties.profileLineSymbol" title="qgis.core.QgsRasterLayerElevationProperties.profileLineSymbol"><code class="xref py py-obj docutils literal notranslate"><span class="pre">profileLineSymbol</span></code></a></p></td>
 <td><p>Returns the line symbol used to render the raster profile in elevation profile plots.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterLayerElevationProperties.profileSymbology" title="qgis.core.QgsRasterLayerElevationProperties.profileSymbology"><code class="xref py py-obj docutils literal notranslate"><span class="pre">profileSymbology</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterLayerElevationProperties.profileSymbology" title="qgis.core.QgsRasterLayerElevationProperties.profileSymbology"><code class="xref py py-obj docutils literal notranslate"><span class="pre">profileSymbology</span></code></a></p></td>
 <td><p>Returns the symbology option used to render the raster profile in elevation profile plots.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterLayerElevationProperties.readCommonProperties" title="qgis.core.QgsRasterLayerElevationProperties.readCommonProperties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readCommonProperties</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterLayerElevationProperties.readCommonProperties" title="qgis.core.QgsRasterLayerElevationProperties.readCommonProperties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readCommonProperties</span></code></a></p></td>
 <td><p>Reads common class properties from a DOM <code class="docutils literal notranslate"><span class="pre">element</span></code> previously written by <a class="reference internal" href="QgsMapLayerElevationProperties.html#qgis.core.QgsMapLayerElevationProperties.writeXml" title="qgis.core.QgsMapLayerElevationProperties.writeXml"><code class="xref py py-func docutils literal notranslate"><span class="pre">writeXml()</span></code></a>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterLayerElevationProperties.readXml" title="qgis.core.QgsRasterLayerElevationProperties.readXml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readXml</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterLayerElevationProperties.readXml" title="qgis.core.QgsRasterLayerElevationProperties.readXml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readXml</span></code></a></p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param element<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterLayerElevationProperties.receivers" title="qgis.core.QgsRasterLayerElevationProperties.receivers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">receivers</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterLayerElevationProperties.receivers" title="qgis.core.QgsRasterLayerElevationProperties.receivers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">receivers</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterLayerElevationProperties.sender" title="qgis.core.QgsRasterLayerElevationProperties.sender"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sender</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterLayerElevationProperties.sender" title="qgis.core.QgsRasterLayerElevationProperties.sender"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sender</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterLayerElevationProperties.senderSignalIndex" title="qgis.core.QgsRasterLayerElevationProperties.senderSignalIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">senderSignalIndex</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterLayerElevationProperties.senderSignalIndex" title="qgis.core.QgsRasterLayerElevationProperties.senderSignalIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">senderSignalIndex</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterLayerElevationProperties.setBandNumber" title="qgis.core.QgsRasterLayerElevationProperties.setBandNumber"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setBandNumber</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterLayerElevationProperties.setBandNumber" title="qgis.core.QgsRasterLayerElevationProperties.setBandNumber"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setBandNumber</span></code></a></p></td>
 <td><p>Sets the <code class="docutils literal notranslate"><span class="pre">band</span></code> number from which the elevation should be taken.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterLayerElevationProperties.setElevationLimit" title="qgis.core.QgsRasterLayerElevationProperties.setElevationLimit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setElevationLimit</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterLayerElevationProperties.setElevationLimit" title="qgis.core.QgsRasterLayerElevationProperties.setElevationLimit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setElevationLimit</span></code></a></p></td>
 <td><p>Sets the elevation <code class="docutils literal notranslate"><span class="pre">limit</span></code>, which is used when <a class="reference internal" href="#qgis.core.QgsRasterLayerElevationProperties.profileSymbology" title="qgis.core.QgsRasterLayerElevationProperties.profileSymbology"><code class="xref py py-func docutils literal notranslate"><span class="pre">profileSymbology()</span></code></a> is <a class="reference internal" href="../gui/Qgis.html#module-Qgis" title="Qgis"><code class="xref py py-class docutils literal notranslate"><span class="pre">Qgis</span></code></a>.ProfileSurfaceSymbology.FillBelow or <a class="reference internal" href="../gui/Qgis.html#module-Qgis" title="Qgis"><code class="xref py py-class docutils literal notranslate"><span class="pre">Qgis</span></code></a>.ProfileSurfaceSymbology.FillAbove to limit the fill to a specific elevation range.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterLayerElevationProperties.setEnabled" title="qgis.core.QgsRasterLayerElevationProperties.setEnabled"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setEnabled</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterLayerElevationProperties.setEnabled" title="qgis.core.QgsRasterLayerElevationProperties.setEnabled"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setEnabled</span></code></a></p></td>
 <td><p>Sets whether the elevation properties are enabled, i.e. the raster layer values represent an elevation surface.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterLayerElevationProperties.setFixedRange" title="qgis.core.QgsRasterLayerElevationProperties.setFixedRange"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setFixedRange</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterLayerElevationProperties.setFixedRange" title="qgis.core.QgsRasterLayerElevationProperties.setFixedRange"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setFixedRange</span></code></a></p></td>
 <td><p>Sets the fixed elevation <code class="docutils literal notranslate"><span class="pre">range</span></code> for the raster.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qgis.core.QgsRasterLayerElevationProperties.setFixedRangePerBand" title="qgis.core.QgsRasterLayerElevationProperties.setFixedRangePerBand"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setFixedRangePerBand</span></code></a></p></td>
+<td><p>Sets the fixed elevation range for each band.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qgis.core.QgsRasterLayerElevationProperties.setMode" title="qgis.core.QgsRasterLayerElevationProperties.setMode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setMode</span></code></a></p></td>
 <td><p>Sets the elevation <code class="docutils literal notranslate"><span class="pre">mode</span></code>.</p></td>
@@ -2644,6 +2653,32 @@ to limit the fill to a specific elevation range.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference internal" href="QgsDoubleRange.html#qgis.core.QgsDoubleRange" title="qgis.core.QgsDoubleRange">QgsDoubleRange</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsRasterLayerElevationProperties.fixedRangePerBand">
+<span class="sig-name descname"><span class="pre">fixedRangePerBand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="QgsDoubleRange.html#qgis.core.QgsDoubleRange" title="qgis.core.QgsDoubleRange"><span class="pre">QgsDoubleRange</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qgis.core.QgsRasterLayerElevationProperties.fixedRangePerBand" title="Link to this definition">¶</a></dt>
+<dd><p>Returns the fixed elevation range for each band.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is only considered when <a class="reference internal" href="#qgis.core.QgsRasterLayerElevationProperties.mode" title="qgis.core.QgsRasterLayerElevationProperties.mode"><code class="xref py py-func docutils literal notranslate"><span class="pre">mode()</span></code></a> is <a class="reference internal" href="../gui/Qgis.html#module-Qgis" title="Qgis"><code class="xref py py-class docutils literal notranslate"><span class="pre">Qgis</span></code></a>.RasterElevationMode.FixedRangePerBand.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When a fixed range is set any <code class="xref py py-func docutils literal notranslate"><span class="pre">zOffset()</span></code> and <code class="xref py py-func docutils literal notranslate"><span class="pre">zScale()</span></code> is ignored.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsRasterLayerElevationProperties.setFixedRangePerBand" title="qgis.core.QgsRasterLayerElevationProperties.setFixedRangePerBand"><code class="xref py py-func docutils literal notranslate"><span class="pre">setFixedRangePerBand()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.38.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dict[int, <a class="reference internal" href="QgsDoubleRange.html#qgis.core.QgsDoubleRange" title="qgis.core.QgsDoubleRange">QgsDoubleRange</a>]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2916,6 +2951,32 @@ to limit the fill to a specific elevation range.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qgis.core.QgsRasterLayerElevationProperties.setFixedRangePerBand">
+<span class="sig-name descname"><span class="pre">setFixedRangePerBand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ranges</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="QgsDoubleRange.html#qgis.core.QgsDoubleRange" title="qgis.core.QgsDoubleRange"><span class="pre">QgsDoubleRange</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsRasterLayerElevationProperties.setFixedRangePerBand" title="Link to this definition">¶</a></dt>
+<dd><p>Sets the fixed elevation range for each band.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is only considered when <a class="reference internal" href="#qgis.core.QgsRasterLayerElevationProperties.mode" title="qgis.core.QgsRasterLayerElevationProperties.mode"><code class="xref py py-func docutils literal notranslate"><span class="pre">mode()</span></code></a> is <a class="reference internal" href="../gui/Qgis.html#module-Qgis" title="Qgis"><code class="xref py py-class docutils literal notranslate"><span class="pre">Qgis</span></code></a>.RasterElevationMode.FixedRangePerBand.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When a fixed range is set any <code class="xref py py-func docutils literal notranslate"><span class="pre">zOffset()</span></code> and <code class="xref py py-func docutils literal notranslate"><span class="pre">zScale()</span></code> is ignored.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgis.core.QgsRasterLayerElevationProperties.fixedRangePerBand" title="qgis.core.QgsRasterLayerElevationProperties.fixedRangePerBand"><code class="xref py py-func docutils literal notranslate"><span class="pre">fixedRangePerBand()</span></code></a></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.38.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ranges</strong> (<em>Dict</em><em>[</em><em>int</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qgis.core.QgsRasterLayerElevationProperties.setMode">
 <span class="sig-name descname"><span class="pre">setMode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="Qgis.html#qgis.core.Qgis.RasterElevationMode" title="qgis.core.Qgis.RasterElevationMode"><span class="pre">Qgis.RasterElevationMode</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qgis.core.QgsRasterLayerElevationProperties.setMode" title="Link to this definition">¶</a></dt>
 <dd><p>Sets the elevation <code class="docutils literal notranslate"><span class="pre">mode</span></code>.</p>
@@ -3038,7 +3099,7 @@ to limit the fill to a specific elevation range.</p>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on 00:30 Mar 19, 2024.
+      <span class="lastupdated">Last updated on 01:53 Mar 19, 2024.
       </span></p>
   </div>
 
